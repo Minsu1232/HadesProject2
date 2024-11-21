@@ -1,0 +1,25 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8fddbb632c428a9448f9fc18199e5fc3, type: 3}
+  m_Name: GreatSwordData
+  m_EditorClassIdentifier: 
+  weaponName: GreatSword
+  baseDamage: 20
+  baseGagePerHit: 15
+  defaultPosition: {x: 0.096, y: -0.133, z: 0.2663}
+  defaultRotation: {x: 8.5, y: -3.539, z: 159.05}
+  maxChargeTime: 2
+  chargeMultiplier: 1.5
+  damageUpgradeCount: 0
+  gageUpgradeCount: 0
+  additionalDamage: 0
+  additionalGagePerHit: 0
