@@ -15,10 +15,7 @@ public class MeleeDamageDealer : MonoBehaviour, IDamageDealer
         this.comboStep = comboStep;
         damagedTargets.Clear(); // 새로운 공격 시 초기화
     }
-    private void Update()
-    {
-        Debug.Log($"현재 타임스케일 {Time.timeScale}");
-    }
+
     public int GetDamage()
     {
 
