@@ -1,0 +1,37 @@
+{
+    "skills": [
+        {
+            "skillID": "sword_01",
+            "name": "Berserk Slash",
+            "weaponType": "greatsword",
+            "damage": 50,
+            "critChance": 20,
+            "energyCost": 100,
+            "cooldown": 5,
+            "effects": [
+                {
+                    "type": "buff",
+                    "target": "self",
+                    "stat": "damage",
+                    "value": 20,
+                    "duration": 10
+                }
+            ]
+        },
+        {
+            "skillID": "dagger_01",
+            "name": "Assassin's Stealth",
+            "weaponType": "dagger",
+            "damageMultiplier": 3.0,
+            "energyCost": 100,
+            "cooldown": 8,
+            "effects": [
+                {
+                    "type": "stealth",
+                    "target": "self",
+                    "duration": 5
+                }
+            ]
+        }
+    ]
+}

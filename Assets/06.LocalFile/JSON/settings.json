@@ -1,0 +1,16 @@
+{
+    "graphics": {
+        "resolution": "1920x1080",
+        "quality": "high"
+    },
+    "sound": {
+        "volume": 80,
+        "mute": false
+    },
+    "controls": {
+        "moveUp": "W",
+        "moveDown": "S",
+        "moveLeft": "A",
+        "moveRight": "D"
+    }
+}

@@ -1,0 +1,3 @@
+itemID,name,description,effectType,effectValue,rarity
+101,Health Potion,Restores health,heal,50,common
+102,Power Elixir,Increases attack temporarily,buff,10,rare

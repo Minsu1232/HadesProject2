@@ -1,0 +1,26 @@
+{
+    "userID": "Player",
+    "currentChapter": 1,
+    "completedQuests": [],
+  "characterStats": {
+
+    "baseHp":100,
+    "baseGage" :0,
+    "baseAttackPower":10,
+    "baseAttackSpeed":1.2,
+    "baseCriticalCance":0.3,
+    "baseSpeed":1,
+    "upgradeCount":3
+
+  },
+    "inventory": [
+        {
+            "itemID": 101,
+            "quantity": 3
+        },
+        {
+            "itemID": 102,
+            "quantity": 1
+        }
+    ]
+}

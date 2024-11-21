@@ -1,0 +1,11 @@
+{
+    "quests": [
+        {
+            "questID": 1,
+            "chapter": 1,
+            "description": "Defeat the Chaos Legion",
+            "isComplete": false,
+            "reward": "dagger"
+        }
+    ]
+}

@@ -1,0 +1,30 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3f3f1e72e7cc7174493cb626365fefcc, type: 3}
+  m_Name: TestData(Warrior)
+  m_EditorClassIdentifier: 
+  userID: Player
+  currentChapter: 1
+  completedQuests: 
+  characterStats:
+    baseHp: 100
+    baseGage: 0
+    baseAttackPower: 10
+    baseAttackSpeed: 1.2
+    baseCriticalCance: 0.3
+    baseSpeed: 1
+    upgradeCount: 3
+  inventory:
+  - itemID: 101
+    quantity: 3
+  - itemID: 102
+    quantity: 1
