@@ -1,8 +1,45 @@
 # Auto detect text files and perform LF normalization
-* text=auto
+* text=auto eol=lf
 
 # Unity YAML merge tool
 *.unity merge=unityyamlmerge
 *.prefab merge=unityyamlmerge
 *.mat merge=unityyamlmerge
 *.asset merge=unityyamlmerge
+
+# Treat binary files as-is (no line ending conversion)
+*.png binary
+*.jpg binary
+*.jpeg binary
+*.tga binary
+*.gif binary
+*.psd binary
+*.tiff binary
+
+# Audio files treated as binary
+*.wav binary
+*.mp3 binary
+*.ogg binary
+*.flac binary
+
+# Video files treated as binary
+*.mp4 binary
+*.mov binary
+*.mkv binary
+*.avi binary
+
+# Font files treated as binary
+*.ttf binary
+*.otf binary
+
+# Don't diff compiled shader files
+*.compiled binary
+*.shader binary
+
+# Forcing LF line endings for scripts and text files
+*.cs text eol=lf
+*.js text eol=lf
+*.shader text eol=lf
+*.txt text eol=lf
+*.json text eol=lf
+*.xml text eol=lf
