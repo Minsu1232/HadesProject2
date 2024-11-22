@@ -13,4 +13,6 @@ public class WeaponScriptableObject : ScriptableObject
     public int gageUpgradeCount;        // 게이지 업그레이드 횟수
     public int additionalDamage;        // 추가 데미지
     public int additionalGagePerHit;    // 추가 게이지 증가량
+    public GameObject vfxPrefab;        // 스페셜어택 VFX
+    public AudioClip soundEffect;       // 스페셜어택 사운드
 }

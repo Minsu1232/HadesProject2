@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: GreatSwordData
   m_EditorClassIdentifier: 
   weaponName: GreatSword
-  baseDamage: 20
+  baseDamage: 22
   baseGagePerHit: 15
   defaultPosition: {x: 0.096, y: -0.133, z: 0.2663}
   defaultRotation: {x: 8.5, y: -3.539, z: 159.05}
@@ -23,3 +23,5 @@ MonoBehaviour:
   gageUpgradeCount: 0
   additionalDamage: 0
   additionalGagePerHit: 0
+  vfxPrefab: {fileID: 4526682489233482748, guid: 27b2b8d6393befa4ca5d9a5bc811bb32, type: 3}
+  soundEffect: {fileID: 0}

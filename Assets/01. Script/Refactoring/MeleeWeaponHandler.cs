@@ -25,14 +25,11 @@ public class MeleeDamageDealer : MonoBehaviour, IDamageDealer
 
 
     }
-    public AttackType GetAttackType()
-    {
-        return weapon.IsChargeAttack ? AttackType.Charge : AttackType.Normal;
-    }
+
     public void DealDamage(IDamageable target)
     {
         
-        target.TakeDamage(GetDamage(),GetAttackType());
+        target.TakeDamage(GetDamage(),weapon.GetAttackType());
         
     }
 

@@ -9,8 +9,6 @@ public abstract class WeaponBase : WeaponManager, IWeaponCollider
     
 
     protected abstract override void InitializeComponents();
-
-
     // IWeapon ±¸Çö
     public abstract override void OnAttack(Transform origin, int comboStep);
 

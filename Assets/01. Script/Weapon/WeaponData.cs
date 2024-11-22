@@ -22,4 +22,5 @@ public class WeaponData
     public int gageUpgradeCount;
     public int additionalDamage;
     public int additionalGagePerHit;
+ 
 }

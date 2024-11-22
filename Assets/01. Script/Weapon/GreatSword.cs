@@ -6,10 +6,7 @@ using UnityEngine.ResourceManagement.AsyncOperations;
 
 public class GreatSword : WeaponBase
 // Start is called before the first frame update
-{
-
-
-    
+{    
     private MeleeDamageDealer damageDealer;
 
     protected override void InitializeComponents()
@@ -22,10 +19,13 @@ public class GreatSword : WeaponBase
                 damageDealer = _weaponInstance.AddComponent<MeleeDamageDealer>();
             }
             damageDealer.Initialize(this, 0);
+            
         }
 
         // 차징 컴포넌트 초기화
-        chargeComponent = new GreatSwordCharge(this);
+            chargeComponent = new GreatSwordCharge(this);
+            specialAttackComponent = new GreatSwordSpecialAttack(this);
+        
     }
 
     public override void OnAttack(Transform origin, int comboStep)
@@ -43,9 +43,22 @@ public class GreatSword : WeaponBase
     public override void SpecialAttack()
     {
         Debug.Log("대검의 특수 스킬 발동!");
+        if (specialAttackComponent != null)
+        {
+            specialAttackComponent.Execute();
+        }
+        else
+        {
+            Debug.LogError("널인디요");
+        }
+        
     }
-  
-
+  //애니메이션 이벤트
+    public void PlayVFX()
+    {
+        specialAttackComponent.PlayVFX();
+        specialAttackComponent.PlaySound();
+    }
     public MeleeDamageDealer ReturnDealer()
     {
         return damageDealer;

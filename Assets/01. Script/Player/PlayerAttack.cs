@@ -41,6 +41,10 @@ public class PlayerAttack : MonoBehaviour
             characterAttack?.ReleaseCharge();
             OnAttackInput?.Invoke(AttackType.Charge);
         }
+        if (Input.GetKeyDown(KeyCode.Q)) // 스킬 사용 입력
+        {
+            characterAttack?.SpecialAttack();            
+        }
     }
 }
 

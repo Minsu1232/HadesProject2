@@ -70,9 +70,22 @@ public class CharacterAttackBase : MonoBehaviour, ICharacterAttack
         }
        
     }
-    public virtual void SkillAttack(int skillIndex)
+    public virtual void SpecialAttack()
     {
-        throw new System.NotImplementedException();
+        if (currentWeapon is WeaponManager weaponManager /*&& weaponManager.CanUseSpecialAttack)*/)
+        { 
+            
+            // 조건을 만족하면 애니메이션 실행
+            animationController.SetTrigger("SpecialAttack");
+            
+
+            // 무기 스킬 실행
+            currentWeapon.SpecialAttack();
+        }
+        else
+        {
+            Debug.Log("허허");
+        }
     }
   
     public void ComboStepUpdate(int step)
