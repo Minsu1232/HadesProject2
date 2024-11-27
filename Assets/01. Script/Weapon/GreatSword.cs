@@ -8,6 +8,7 @@ public class GreatSword : WeaponBase
 // Start is called before the first frame update
 {    
     private MeleeDamageDealer damageDealer;
+    bool isSpecialAttacking = false;
 
     protected override void InitializeComponents()
     {
@@ -46,6 +47,7 @@ public class GreatSword : WeaponBase
         if (specialAttackComponent != null)
         {
             specialAttackComponent.Execute();
+            CurrentGage = 0;
         }
         else
         {

@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.Text;
+using DG.Tweening;
 using UnityEngine;
 
 public class PlayerMovement : MonoBehaviour
@@ -10,9 +11,11 @@ public class PlayerMovement : MonoBehaviour
     private Animator animator;
     private float smoothTime = 0.1f; // 애니메이션 파라미터 전환 속도
     private Vector2 currentAnimatorParameters; // 현재 Horizontal, Vertical 값을 저장
-
+    protected bool isDashing = false;
+    public Rigidbody rb;
     void Awake()
     {
+        rb = GetComponent<Rigidbody>();
         mainCamera = Camera.main;
         if (mainCamera == null)
         {
@@ -70,7 +73,7 @@ public class PlayerMovement : MonoBehaviour
         if (playerClass == null || direction.magnitude == 0) return;
 
         // 이동: WSAD로 입력된 고정된 방향으로만 이동
-        playerClass.rb.MovePosition(playerClass.rb.position + direction * playerClass.CurrentSpeed * Time.fixedDeltaTime);
+        rb.MovePosition(rb.position + direction * playerClass.PlayerStats.Speed * Time.fixedDeltaTime);
     }
 
     private void SetAnimatorParameters(Vector3 moveDirection)
@@ -101,6 +104,18 @@ public class PlayerMovement : MonoBehaviour
 
     public void Dash(Vector3 direction)
     {
-        playerClass?.Dash(direction); // Dash 호출을 PlayerClass에 위임
+        if (isDashing) return;
+        isDashing = true;
+
+        Vector3 dashTarget = rb.position + direction; // 최종 대시 목표 설정
+
+
+        rb.DOMove(dashTarget, 0.2f)
+            .SetEase(Ease.OutQuad)
+            .OnComplete(() =>
+            {
+
+                isDashing = false;
+            });
     }
 }

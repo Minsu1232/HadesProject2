@@ -1,14 +1,17 @@
 using RPGCharacterAnims.Lookups;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AddressableAssets;
 using UnityEngine.ResourceManagement.AsyncOperations;
 using static AttackData;
-
+/// <summary>
+/// 모든 무가들의 기반 클래스
+/// </summary>
 public abstract class WeaponManager : MonoBehaviour, IWeapon
 {
-    
+    #region 변수들
     [SerializeField] public WeaponScriptableObject weaponData;
     protected WeaponChargeBase chargeComponent;
     protected SpecialAttackBase specialAttackComponent;
@@ -17,7 +20,21 @@ public abstract class WeaponManager : MonoBehaviour, IWeapon
     protected GameObject _weaponInstance;
     protected Collider weaponCollider;
     //protected Animator weaponAnimator;
-    protected int currentGage; // 현재 게이지
+
+
+    public event Action<int> OnGageChanged; // 게이지 변경 이벤트
+    
+    private int currentGage;
+
+    public int CurrentGage
+    {
+        get => currentGage;
+        protected set
+        {
+            currentGage = Mathf.Clamp(value, 0, 100); // 0~100 범위로 제한
+            OnGageChanged?.Invoke(currentGage); // 게이지 변경 시 이벤트 호출
+        }
+    }
 
     // 속성값 접근자
     public string WeaponName => weaponData?.weaponName ?? "Unknown";
@@ -30,18 +47,26 @@ public abstract class WeaponManager : MonoBehaviour, IWeapon
     public bool IsSpecialAttack { get; set; } = false;
 
     public bool CanUseSpecialAttack => currentGage >= 100;
-    // 초기화
-    public virtual void InitializeWeapon(Animator animator)
+
+    public Color GageColor => weaponData?.gageColor ?? Color.yellow;
+
+
+
+    #endregion
+
+
+    
+    public virtual void InitializeWeapon(Animator animator) // 무기 초기화
     {
         LoadAnimatorOverride(WeaponName, animator);
        
     }
-    public AttackType GetAttackType()
+    public AttackType GetAttackType() // 무기 어택타입 반환
     {
         return IsChargeAttack ? AttackType.Charge : AttackType.Normal;
     }
     // 무기 모델 로드
-    public virtual GameObject WeaponLoad(Transform parentTransform)
+    public virtual GameObject WeaponLoad(Transform parentTransform) // 무기 소환 및 장착
     {
         Addressables.LoadAssetAsync<GameObject>(weaponData.weaponName).Completed += handle =>
         {
@@ -64,7 +89,7 @@ public abstract class WeaponManager : MonoBehaviour, IWeapon
         };
         return _weaponInstance;
     }
-    public virtual void LoadAnimatorOverride(string weaponName, Animator animator)
+    public virtual void LoadAnimatorOverride(string weaponName, Animator animator) // 무기에 맞는 애니메이션컨트롤러 장착
     {
         if (animator == null)
         {
@@ -85,20 +110,24 @@ public abstract class WeaponManager : MonoBehaviour, IWeapon
         };
     }
     // 공격 로직
-    public abstract void OnAttack(Transform origin, int comboStep);
+    public abstract void OnAttack(Transform origin, int comboStep); //기본공격(콤보를 받기위해)
 
     // 게이지 시스템
-    public virtual void GetGage(int amount)
+    public virtual void GetGage(int amount) // 게이지 획득
     {
-        currentGage += amount;
-        if (currentGage > 100) currentGage = 100;
-        Debug.Log($"{WeaponName} 게이지 증가: {currentGage}/100");
+        if (!specialAttackComponent.isSpecialAttack) // 스킬 실행중엔 게이지 획득 x
+        {
+            CurrentGage += amount; // CurrentGage를 통해 값 변경
+            Debug.Log($"{WeaponName} 게이지 증가: {CurrentGage}/100");
+        }
+       
     }
+    public abstract void SpecialAttack(); //무기별 고유 공격
 
-    public abstract void SpecialAttack();
+    #region 차징
 
     // 차징 시스템
-    public virtual void StartCharge()
+    public virtual void StartCharge() 
     {
         IsChargeAttack = true;
         chargeComponent?.StartCharge();
@@ -107,6 +136,8 @@ public abstract class WeaponManager : MonoBehaviour, IWeapon
     public virtual void UpdateCharge(float deltaTime)
     {
         chargeComponent?.UpdateCharge(deltaTime);
+        
+        
     }
 
     public virtual void ReleaseCharge()
@@ -117,16 +148,17 @@ public abstract class WeaponManager : MonoBehaviour, IWeapon
     {
         IsChargeAttack = false;
     }
-    protected abstract void InitializeComponents();
+    #endregion 
+    protected abstract void InitializeComponents(); // 무기별 속성(근접이나 원기리 등) 컴포넌트를 받기 위한 매서드
  
 
-    public abstract int GetDamage(int _baseDamage, int comboStep);
+    public abstract int GetDamage(int _baseDamage, int comboStep); // 데미지 계산 매서드
 
-    public abstract int GetChargeDamage();
+    public abstract int GetChargeDamage(); // 차지 데미지 게산 매서드
 
-    public void ResetGage()
+    public void ResetGage(int currentGage_) // 스페셜어택 후 반환받을 게이지
     {
-        currentGage = 0;
+        currentGage = currentGage_;
     }
 
 }

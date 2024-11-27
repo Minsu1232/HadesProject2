@@ -9,76 +9,77 @@ using UnityEngine;
 public class GameInitializer : Singleton<GameInitializer>
 {
 
+    [SerializeField] private PlayerClassData playerClassData;
+    [SerializeField] private Transform weaponMount;
+
+    private WeaponService weaponService;
     private PlayerClass playerClass;
     private ICharacterAttack characterAttack;
-    [SerializeField] private Transform weaponTransform;
-    private IWeapon currentWeapon;
-
-    [SerializeField] private PlayerClassData testData;
     private Animator animator;
-
 
     private void Awake()
     {
-        // JSON 데이터를 불러와 testData에 적용
-        string filePath = Application.persistentDataPath + "/SaveFiles/playerData.json";
-        Debug.Log("파일 경로: " + filePath);
-        DataManager.Instance.LoadPlayerDataFromJson(filePath, testData);
-
-        InitializePlayer();
-        currentWeapon = null;
+        LoadGameData();
+        InitializeComponents();
     }
 
-    private void InitializePlayer()
+    private void LoadGameData()
     {
-        animator = GetComponent<Animator>();
-        Rigidbody rb = gameObject.GetComponent<Rigidbody>() ?? gameObject.AddComponent<Rigidbody>();
-        Transform playerTransform = transform;
-        characterAttack = GetComponent<ICharacterAttack>();
-
-        // PlayerClassData를 통해 PlayerClass를 직접 생성
-        playerClass = new PlayerClass(testData, characterAttack, rb, playerTransform, animator);
-
-        Debug.Log($"Initialized class: {playerClass._playerClassData.name}");
+        string filePath = $"{Application.persistentDataPath}/SaveFiles/playerData.json";
+        Debug.Log($"Loading game data from: {filePath}");
+        DataManager.Instance.LoadPlayerDataFromJson(filePath, playerClassData);
     }
 
-    public void EquipWeapon(IWeapon weapon)
+    private void InitializeComponents()
     {
-        if (characterAttack == null)
+        try
         {
-            Debug.LogError("characterAttack이 초기화되지 않았습니다.");
-            return;
+            animator = GetComponent<Animator>();
+            characterAttack = GetComponent<ICharacterAttack>();
+
+            if (animator == null || characterAttack == null)
+            {
+                throw new System.Exception("Required components are missing!");
+            }
+
+            InitializeWeaponService();
+            InitializePlayerClass();
+
+            Debug.Log("All components initialized successfully");
         }
-        if (weapon == null)
+        catch (System.Exception e)
         {
-            Debug.LogError("전달된 weapon이 null입니다.");
-            return;
-        }
-
-        Debug.Log($"장착된 무기: {weapon.GetType().Name} 초기화 시작");
-
-        if (currentWeapon != null && currentWeapon is Component currentWeaponComponent)
-        {
-            Destroy(currentWeaponComponent);
-            Debug.Log("기존 무기 제거 완료");
-        }
-
-        currentWeapon = weapon;
-
-        if (currentWeapon != null)
-        {
-            characterAttack.EquipWeapon(currentWeapon);
-            currentWeapon.WeaponLoad(weaponTransform);
-            playerClass.SelectWeapon(currentWeapon);
-
-            
-        }
-        else
-        {
-            Debug.LogError("무기 컴포넌트를 Player에 추가하는 데 실패했습니다.");
+            Debug.LogError($"Failed to initialize components: {e.Message}");
         }
     }
 
-    public IWeapon GetCurrentWeapon() => currentWeapon;
+    private void InitializeWeaponService()
+    {
+        weaponService = gameObject.AddComponent<WeaponService>();
+        weaponService.OnWeaponChanged += OnWeaponChanged;
+        weaponService.weaponMount = weaponMount;
+    }
+
+    private void InitializePlayerClass()
+    {
+        playerClass = new PlayerClass(playerClassData, characterAttack, transform, animator);
+        Debug.Log($"Initialized player class: {playerClassData.name}");
+    }
+
+    private void OnWeaponChanged(WeaponManager weapon)
+    {
+        characterAttack?.EquipWeapon(weapon);
+        playerClass?.SelectWeapon(weapon);
+    }
+
+    public WeaponService GetWeaponService() => weaponService;
     public PlayerClass GetPlayerClass() => playerClass;
+
+    private void OnDestroy()
+    {
+        if (weaponService != null)
+        {
+            weaponService.OnWeaponChanged -= OnWeaponChanged;
+        }
+    }
 }

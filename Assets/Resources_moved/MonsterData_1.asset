@@ -13,9 +13,9 @@ MonoBehaviour:
   m_Name: MonsterData_1
   m_EditorClassIdentifier: 
   monsterName: Dummy
-  initialHp: 100
+  initialHp: 1000
   initialAttackPower: 10
-  initialAttackSpeed: 5
+  initialAttackSpeed: 1
   initialSpeed: 1
   attackRange: 3
   dropChance: 0

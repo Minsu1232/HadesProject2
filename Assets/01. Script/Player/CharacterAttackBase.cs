@@ -1,85 +1,91 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+
 public class CharacterAttackBase : MonoBehaviour, ICharacterAttack
 {
     protected IWeapon currentWeapon;
-    protected CharacterAnimationController animationController; // CharacterAnimationController 사용
+    protected Animator animator;
     public int comboStep;
-    
-    protected bool isAttacking;
-    private bool isCharging = false;
-    private int hashAttackCount = Animator.StringToHash("AttackCount");
+
+    public bool isCharging = false;
+    protected float currentChargeTime = 0f;
+    public event Action<float> OnChargeTimeUpdated;
+
+    private static readonly int HashAttackCount = Animator.StringToHash("AttackCount");
+    private static readonly int HashAttack = Animator.StringToHash("Attack");
+    private static readonly int HashChargingAttack = Animator.StringToHash("ChargingAttack");
+    private static readonly int HashReleaseCharge = Animator.StringToHash("ReleaseCharge");
+    private static readonly int HashSpecialAttack = Animator.StringToHash("SpecialAttack");
+
     public int AttackCount
     {
-        get => animationController.GetInteger(hashAttackCount);
-        set => animationController.SetInteger(hashAttackCount, value);
+        get => animator ? animator.GetInteger(HashAttackCount) : 0;
+        set
+        {
+            if (animator) animator.SetInteger(HashAttackCount, value);
+        }
     }
 
     protected virtual void Awake()
     {
-        animationController = GetComponent<CharacterAnimationController>();
-        if (animationController == null)
+        animator = GetComponent<Animator>();
+        if (animator == null)
         {
-            Debug.LogError("CharacterAnimationController가 연결되지 않았습니다.");
+            Debug.LogError($"Animator missing on {gameObject.name}");
         }
-    }
-
-    protected virtual void Start()
-    {
-        currentWeapon = GameInitializer.Instance.GetCurrentWeapon();
-        comboStep = 0;
     }
 
     public void EquipWeapon(IWeapon weapon)
     {
         currentWeapon = weapon;
-        Animator animator = animationController != null ? animationController.GetAnimator() : null;
         currentWeapon?.InitializeWeapon(animator);
     }
 
     public virtual void BasicAttack()
     {
-        animationController.SetTrigger("Attack"); // 애니메이션 호출
+        animator?.SetTrigger(HashAttack);
         currentWeapon?.OnAttack(transform, comboStep);
     }
 
     public virtual void ChargingAttack()
     {
-        animationController.SetTrigger("ChargingAttack"); // 차징 애니메이션 호출
+        animator?.SetTrigger(HashChargingAttack);
         Debug.Log("차징 시작");
         isCharging = true;
         currentWeapon?.StartCharge();
         currentWeapon?.OnAttack(transform, comboStep);
     }
+
     public void UpdateCharge(float deltaTime)
     {
         if (isCharging)
         {
+            currentChargeTime += deltaTime;
+            OnChargeTimeUpdated?.Invoke(currentChargeTime);
             currentWeapon?.UpdateCharge(deltaTime);
         }
     }
+
     public virtual void ReleaseCharge()
     {
         if (isCharging)
         {
             isCharging = false;
-            animationController.SetTrigger("ReleaseCharge"); // 차징 해제 애니메이션 호출
+            currentChargeTime = 0f;
+            OnChargeTimeUpdated?.Invoke(0f);
+            animator?.SetTrigger(HashReleaseCharge);
             currentWeapon?.ReleaseCharge();
         }
-       
     }
+
     public virtual void SpecialAttack()
     {
-        if (currentWeapon is WeaponManager weaponManager /*&& weaponManager.CanUseSpecialAttack)*/)
-        { 
-            
-            // 조건을 만족하면 애니메이션 실행
-            animationController.SetTrigger("SpecialAttack");
-            
-
-            // 무기 스킬 실행
+        if (currentWeapon is WeaponManager weaponManager && weaponManager.CurrentGage == 100)
+        {
+            animator?.SetTrigger(HashSpecialAttack);
             currentWeapon.SpecialAttack();
         }
         else
@@ -87,17 +93,16 @@ public class CharacterAttackBase : MonoBehaviour, ICharacterAttack
             Debug.Log("허허");
         }
     }
-  
+
     public void ComboStepUpdate(int step)
     {
         comboStep = step;
         currentWeapon?.OnAttack(transform, comboStep);
     }
-
 }
-    
-  
-   
 
-    
+
+
+
+
 

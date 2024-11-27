@@ -15,4 +15,5 @@ public class WeaponScriptableObject : ScriptableObject
     public int additionalGagePerHit;    // 추가 게이지 증가량
     public GameObject vfxPrefab;        // 스페셜어택 VFX
     public AudioClip soundEffect;       // 스페셜어택 사운드
+    public Color gageColor;             // 무기별 게이지 컬러
 }

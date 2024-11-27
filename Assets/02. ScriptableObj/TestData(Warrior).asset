@@ -19,7 +19,7 @@ MonoBehaviour:
     baseHp: 100
     baseGage: 0
     baseAttackPower: 10
-    baseAttackSpeed: 1.2
+    baseAttackSpeed: 1
     baseCriticalCance: 0.3
     baseSpeed: 1
     upgradeCount: 3

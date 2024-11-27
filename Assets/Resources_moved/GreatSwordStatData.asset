@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: GreatSwordStatData
   m_EditorClassIdentifier: 
   buffDuration: 15
-  healthBoost: 100
+  healthBoost: 50
   attackBoost: 15
   speedBoost: 1
   criticalChanceBoost: 0.15

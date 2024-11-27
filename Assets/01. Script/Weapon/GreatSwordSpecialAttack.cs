@@ -5,9 +5,10 @@ using UnityEngine.ResourceManagement.AsyncOperations;
 
 public class GreatSwordSpecialAttack : SpecialAttackBase
 {
+    
     private PlayerClass playerclass;
     private GameObject activeVFX;
-
+    
     private StatModifierData cachedStatModifierData;
     private bool isDataLoaded = false;
 
@@ -15,8 +16,10 @@ public class GreatSwordSpecialAttack : SpecialAttackBase
 
     protected override void PerformSkillEffect()
     {
-        if (!isDataLoaded)
+        if (!isDataLoaded && !isSpecialAttack)
         {
+            isSpecialAttack = true;
+            WeaponresetGage = 0;
             // 최초 실행 시 StatModifierData 로드
             Addressables.LoadAssetAsync<StatModifierData>("GreatSwordStatData").Completed += handle =>
             {
@@ -77,6 +80,7 @@ public class GreatSwordSpecialAttack : SpecialAttackBase
         // 능력치 증가
         playerclass.ModifyPower(
             cachedStatModifierData.healthBoost,
+            cachedStatModifierData.healthBoost,
             0,
             cachedStatModifierData.attackBoost,
             0,
@@ -95,7 +99,8 @@ public class GreatSwordSpecialAttack : SpecialAttackBase
                 Debug.Log("VFX 비활성화");
             }
 
-            playerclass.ResetPower();
+            playerclass.ResetPower(false,true,true,true,true,true,true);
+            isSpecialAttack = false;
             Debug.Log("스킬 효과 종료, 능력치 복구 완료");
         });
     }

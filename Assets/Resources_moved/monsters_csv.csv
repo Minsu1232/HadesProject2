@@ -1,2 +1,2 @@
 ﻿monsterID,name,health,attackPower,attackSpeed,Speed,attackRange,dropChance,dropItemID,moveRange,chaseRange,monsterPrefab
-1,Dummy,100,10,1,1,3,0,0,5,7,DummyMonster
+1,Dummy,1000,10,1,1,3,0,0,5,7,DummyMonster

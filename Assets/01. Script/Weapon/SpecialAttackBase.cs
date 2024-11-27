@@ -4,7 +4,9 @@ using UnityEngine;
 
 public abstract class SpecialAttackBase
 {
-    protected WeaponManager weaponManager;  
+    protected WeaponManager weaponManager;
+    public int WeaponresetGage { get; protected set; }
+    public bool isSpecialAttack;
     Animator animator;
    
 
@@ -22,11 +24,13 @@ public abstract class SpecialAttackBase
         //    return;
         //}      
    
-        // 무기 게이지 초기화
-        weaponManager.ResetGage();
+       
 
         // 스킬 고유 효과 실행
         PerformSkillEffect();
+
+        // 무기 게이지 초기화
+        weaponManager.ResetGage(WeaponresetGage);
     }
 
     public virtual void PlayVFX()

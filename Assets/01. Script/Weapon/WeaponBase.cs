@@ -15,7 +15,7 @@ public abstract class WeaponBase : WeaponManager, IWeaponCollider
 
     public override int GetDamage(int _baseDamage, int comboStep)
     {
-        int playerDamage = GameInitializer.Instance.GetPlayerClass().CurrentAttackPower;
+        int playerDamage = GameInitializer.Instance.GetPlayerClass().PlayerStats.AttackPower;
         return comboStep * (BaseDamage + playerDamage);
     }
     public override int GetChargeDamage()
