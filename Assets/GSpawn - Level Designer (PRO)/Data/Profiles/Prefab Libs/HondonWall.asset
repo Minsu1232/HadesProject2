@@ -1,0 +1,4595 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &-9076136052594464712
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7bfdaf7f2c4c1d04580d676ed3717f21, type: 3}
+  m_Name: Cave_Lair_Cave_Stone_Rock_Stalagmite_Joined_01_Atlased
+  m_EditorClassIdentifier: 
+  _guid:
+    _guidString: b53ddfe8-32a7-4d3e-b1bc-745c9ba99e9f
+  _prefabAsset: {fileID: 6640870417982166603, guid: 66b98e4babf74374b87db63fa756d506, type: 3}
+  _preview:
+    _prefabAsset: {fileID: 6640870417982166603, guid: 66b98e4babf74374b87db63fa756d506, type: 3}
+    _texture: {fileID: 0}
+    _yaw: 0
+    _pitch: 0
+  _sceneToObjectGroup:
+    _serializedKeys: []
+    _serializedValues: []
+  _spawnGuideTransformTRS:
+    _position: {x: 0, y: 0, z: 0}
+    _rotation: {x: 0, y: -0, z: -0, w: 1}
+    _scale: {x: 1, y: 1, z: 1}
+  _modularSnapVerticalStep: 0
+  _surfaceSnapAppliedOffsetFromSurface: 0
+  _tags: 0
+  _modelSize: {x: 1.749858, y: 6.804591, z: 1.6802382}
+  _uiSelected: 0
+--- !u!114 &-8916998345590628344
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7bfdaf7f2c4c1d04580d676ed3717f21, type: 3}
+  m_Name: Cave_Lair_Wooden_Timber_Fence_Broken_Small_03_Atlased
+  m_EditorClassIdentifier: 
+  _guid:
+    _guidString: c5c12f52-4f80-4135-ae78-6be837aa7572
+  _prefabAsset: {fileID: 3348452983336486730, guid: 3e44b5682bed71f45bd2cdc7e2ee6c13, type: 3}
+  _preview:
+    _prefabAsset: {fileID: 3348452983336486730, guid: 3e44b5682bed71f45bd2cdc7e2ee6c13, type: 3}
+    _texture: {fileID: 0}
+    _yaw: 0
+    _pitch: 0
+  _sceneToObjectGroup:
+    _serializedKeys: []
+    _serializedValues: []
+  _spawnGuideTransformTRS:
+    _position: {x: 0, y: 0, z: 0}
+    _rotation: {x: 0, y: -0, z: -0, w: 1}
+    _scale: {x: 1, y: 1, z: 1}
+  _modularSnapVerticalStep: 0
+  _surfaceSnapAppliedOffsetFromSurface: 0
+  _tags: 0
+  _modelSize: {x: 1.5952737, y: 1.124649, z: 0.225}
+  _uiSelected: 0
+--- !u!114 &-8908527288891907075
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7bfdaf7f2c4c1d04580d676ed3717f21, type: 3}
+  m_Name: Cave_Lair_Mining_Cart_Base_Metal_01_Atlased
+  m_EditorClassIdentifier: 
+  _guid:
+    _guidString: 346d6df5-5900-4c3f-9e19-0e8eecf9cd7a
+  _prefabAsset: {fileID: 4923589222687313244, guid: 9d7943733ac984c4aac604f45353b26a, type: 3}
+  _preview:
+    _prefabAsset: {fileID: 4923589222687313244, guid: 9d7943733ac984c4aac604f45353b26a, type: 3}
+    _texture: {fileID: 0}
+    _yaw: 0
+    _pitch: 0
+  _sceneToObjectGroup:
+    _serializedKeys: []
+    _serializedValues: []
+  _spawnGuideTransformTRS:
+    _position: {x: 0, y: 0, z: 0}
+    _rotation: {x: 0, y: -0, z: -0, w: 1}
+    _scale: {x: 1, y: 1, z: 1}
+  _modularSnapVerticalStep: 0
+  _surfaceSnapAppliedOffsetFromSurface: 0
+  _tags: 0
+  _modelSize: {x: 1.1541595, y: 0.485516, z: 0.669553}
+  _uiSelected: 0
+--- !u!114 &-8704745720492729555
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7bfdaf7f2c4c1d04580d676ed3717f21, type: 3}
+  m_Name: Cave_Lair_Vegetation_Swamp_Mushroom_Side_01_Atlased
+  m_EditorClassIdentifier: 
+  _guid:
+    _guidString: a93a988e-dc51-47a9-a59a-b8868cba076f
+  _prefabAsset: {fileID: 3274663797619816956, guid: a9d80d650651e4b4f91039b34fc63f64, type: 3}
+  _preview:
+    _prefabAsset: {fileID: 3274663797619816956, guid: a9d80d650651e4b4f91039b34fc63f64, type: 3}
+    _texture: {fileID: 0}
+    _yaw: 0
+    _pitch: 0
+  _sceneToObjectGroup:
+    _serializedKeys: []
+    _serializedValues: []
+  _spawnGuideTransformTRS:
+    _position: {x: 0, y: 0, z: 0}
+    _rotation: {x: 0, y: -0, z: -0, w: 1}
+    _scale: {x: 1, y: 1, z: 1}
+  _modularSnapVerticalStep: 0
+  _surfaceSnapAppliedOffsetFromSurface: 0
+  _tags: 0
+  _modelSize: {x: 0.8705811, y: 0.9718071, z: 0.85233164}
+  _uiSelected: 0
+--- !u!114 &-8614574714532453406
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7bfdaf7f2c4c1d04580d676ed3717f21, type: 3}
+  m_Name: Cave_Lair_Wooden_Timber_Fence_Post_01_Atlased
+  m_EditorClassIdentifier: 
+  _guid:
+    _guidString: 2c6fbbdd-f4f2-461c-a2b6-ea3a63505c47
+  _prefabAsset: {fileID: 3887500795313001471, guid: fda5cceca39f31842946d0e1fd47d972, type: 3}
+  _preview:
+    _prefabAsset: {fileID: 3887500795313001471, guid: fda5cceca39f31842946d0e1fd47d972, type: 3}
+    _texture: {fileID: 0}
+    _yaw: 0
+    _pitch: 0
+  _sceneToObjectGroup:
+    _serializedKeys: []
+    _serializedValues: []
+  _spawnGuideTransformTRS:
+    _position: {x: 0, y: 0, z: 0}
+    _rotation: {x: 0, y: -0, z: -0, w: 1}
+    _scale: {x: 1, y: 1, z: 1}
+  _modularSnapVerticalStep: 0
+  _surfaceSnapAppliedOffsetFromSurface: 0
+  _tags: 0
+  _modelSize: {x: 0.225, y: 1.124649, z: 0.225}
+  _uiSelected: 0
+--- !u!114 &-8441425940887433378
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7bfdaf7f2c4c1d04580d676ed3717f21, type: 3}
+  m_Name: Cave_Lair_Vegetation_Swamp_Mushroom_Button_01_Atlased
+  m_EditorClassIdentifier: 
+  _guid:
+    _guidString: 095c93f8-7de1-42cf-8ecc-b10d3c12ca89
+  _prefabAsset: {fileID: 5927602837592690593, guid: b295b1f1de73bf04a95ced75f183cfa7, type: 3}
+  _preview:
+    _prefabAsset: {fileID: 5927602837592690593, guid: b295b1f1de73bf04a95ced75f183cfa7, type: 3}
+    _texture: {fileID: 0}
+    _yaw: 0
+    _pitch: 0
+  _sceneToObjectGroup:
+    _serializedKeys: []
+    _serializedValues: []
+  _spawnGuideTransformTRS:
+    _position: {x: 0, y: 0, z: 0}
+    _rotation: {x: 0, y: -0, z: -0, w: 1}
+    _scale: {x: 1, y: 1, z: 1}
+  _modularSnapVerticalStep: 0
+  _surfaceSnapAppliedOffsetFromSurface: 0
+  _tags: 0
+  _modelSize: {x: 0.1405619, y: 0.1306419, z: 0.1405619}
+  _uiSelected: 0
+--- !u!114 &-8414508757782007423
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7bfdaf7f2c4c1d04580d676ed3717f21, type: 3}
+  m_Name: Cave_Lair_Vegetation_Swamp_Tree_Roots_Large_01_Atlased
+  m_EditorClassIdentifier: 
+  _guid:
+    _guidString: f755499b-699c-4efa-aa3a-87490b6dcad8
+  _prefabAsset: {fileID: 7714810419608185479, guid: ff0ca6e693e61c24581c230ac4734efd, type: 3}
+  _preview:
+    _prefabAsset: {fileID: 7714810419608185479, guid: ff0ca6e693e61c24581c230ac4734efd, type: 3}
+    _texture: {fileID: 0}
+    _yaw: 0
+    _pitch: 0
+  _sceneToObjectGroup:
+    _serializedKeys: []
+    _serializedValues: []
+  _spawnGuideTransformTRS:
+    _position: {x: 0, y: 0, z: 0}
+    _rotation: {x: 0, y: -0, z: -0, w: 1}
+    _scale: {x: 1, y: 1, z: 1}
+  _modularSnapVerticalStep: 0
+  _surfaceSnapAppliedOffsetFromSurface: 0
+  _tags: 0
+  _modelSize: {x: 12.717116, y: 7.746049, z: 24.73272}
+  _uiSelected: 0
+--- !u!114 &-8348622757258152644
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5b09c502d52d26944bd03a0b831a19c4, type: 3}
+  m_Name: Cave Lair
+  m_EditorClassIdentifier: 
+  _guid:
+    _guidString: 85f050aa-ac18-40dc-a711-f933b5c61831
+  _parentLib: {fileID: 0}
+  _directChildren: []
+  _prefabsVisibleInManager: 1
+  _libName: Cave Lair
+  _folderPath:
+    _path: Assets/Off Axis Studios/Polyworks/Prefabs/Atlased/Cave Lair
+    _reveresedPath: Cave Lair/Atlased/Prefabs/Polyworks/Off Axis Studios/Assets
+  _prefabs:
+  - {fileID: 3770853262686122988}
+  - {fileID: 3136231100539455358}
+  - {fileID: -1753182708956447504}
+  - {fileID: 6967362034984973394}
+  - {fileID: 3620891724780253471}
+  - {fileID: 4739309175376718072}
+  - {fileID: -5866909599488940450}
+  - {fileID: -4751688087534674821}
+  - {fileID: 3696288032601079648}
+  - {fileID: -1446521363605532947}
+  - {fileID: -1485072546955770200}
+  - {fileID: -5365565191494151531}
+  - {fileID: -8173401799419582625}
+  - {fileID: 7201359862102950759}
+  - {fileID: -2405369064526880676}
+  - {fileID: -4886083348754230103}
+  - {fileID: -1901791506705824670}
+  - {fileID: -5981945548396589677}
+  - {fileID: 2061222989650302023}
+  - {fileID: 1970345951927653630}
+  - {fileID: 4576832304312532707}
+  - {fileID: 7664046769479625598}
+  - {fileID: 384645782399518028}
+  - {fileID: 7013717563123272900}
+  - {fileID: -8090655296228945633}
+  - {fileID: -990507394555172235}
+  - {fileID: 3064206362556545528}
+  - {fileID: -4511325877586269360}
+  - {fileID: 7920536363287507782}
+  - {fileID: 7984902032382180903}
+  - {fileID: -1893482640260661544}
+  - {fileID: 3516532828864275390}
+  - {fileID: -301300203821941623}
+  - {fileID: 1509498672504702291}
+  - {fileID: -9076136052594464712}
+  - {fileID: 6592675852885237689}
+  - {fileID: 2597080307387769826}
+  - {fileID: 1225652913784186968}
+  - {fileID: -1589983079819272963}
+  - {fileID: 8176432985489828231}
+  - {fileID: 7189292387251307355}
+  - {fileID: 5113059548073702558}
+  - {fileID: -6844506854860993709}
+  - {fileID: 7726218620825368527}
+  - {fileID: 8344442574024265006}
+  - {fileID: -4548279653175043537}
+  - {fileID: -8908527288891907075}
+  - {fileID: -1945674745247207548}
+  - {fileID: -851223218330807902}
+  - {fileID: 2256873991848074628}
+  - {fileID: -404562245356217137}
+  - {fileID: 244678518967822236}
+  - {fileID: 4299574223097257475}
+  - {fileID: -4494443728315791531}
+  - {fileID: 3786966175422213863}
+  - {fileID: -2527737271437366578}
+  - {fileID: 2533905795908040263}
+  - {fileID: -1690283244368852499}
+  - {fileID: -6358220093604640556}
+  - {fileID: 8035490313284926363}
+  - {fileID: -1922740186876767429}
+  - {fileID: 4464128593205336632}
+  - {fileID: -6483105024545852198}
+  - {fileID: 1879540215469625564}
+  - {fileID: -8441425940887433378}
+  - {fileID: -3309738932776823039}
+  - {fileID: 3750025578804006970}
+  - {fileID: -1564744319045615741}
+  - {fileID: -3161672596773276544}
+  - {fileID: 9108329226910437070}
+  - {fileID: 2203820815262892408}
+  - {fileID: -6283486916335242121}
+  - {fileID: -8704745720492729555}
+  - {fileID: 3549401686626293715}
+  - {fileID: -7612043666701600033}
+  - {fileID: 4987002885906083428}
+  - {fileID: -6305678582573040581}
+  - {fileID: -130838807325720335}
+  - {fileID: -6647444097821843921}
+  - {fileID: -3496410902098756107}
+  - {fileID: -3218057365096181183}
+  - {fileID: 7518703013153959617}
+  - {fileID: 5881251070143888948}
+  - {fileID: -8414508757782007423}
+  - {fileID: 6438320765757887461}
+  - {fileID: 9178591971609035846}
+  - {fileID: 4981766904112466970}
+  - {fileID: 640093907001549171}
+  - {fileID: 1973111703600585918}
+  - {fileID: -2742983581947727260}
+  - {fileID: -4607259281019469158}
+  - {fileID: -2249816376170106440}
+  - {fileID: -4342218070001703044}
+  - {fileID: -4776153534447018164}
+  - {fileID: -5801560958894724689}
+  - {fileID: 2324900775612111966}
+  - {fileID: -3893115833144140113}
+  - {fileID: -6579538015313760518}
+  - {fileID: 1377413841823561105}
+  - {fileID: -231134516157454438}
+  - {fileID: 4666452002677782790}
+  - {fileID: -7155126124041286227}
+  - {fileID: -8916998345590628344}
+  - {fileID: -4231770489145696090}
+  - {fileID: 4575971258438426339}
+  - {fileID: -3210740416899962349}
+  - {fileID: -3447042187035675471}
+  - {fileID: -290755490393099612}
+  - {fileID: -8614574714532453406}
+  - {fileID: -5094616924284899612}
+  - {fileID: 3751730294343377193}
+  - {fileID: 2755534325339473729}
+  - {fileID: 4239906274039068760}
+  - {fileID: 3634628078818836073}
+  - {fileID: -4167389603220424953}
+  - {fileID: -6361634952870342775}
+  - {fileID: 1026656571786562885}
+  - {fileID: -1861463555465230778}
+  - {fileID: -7621502683559695746}
+  - {fileID: 2123397645151935573}
+  - {fileID: -8043935261548617028}
+  - {fileID: 57166630331703775}
+  - {fileID: 6729661855228874622}
+  - {fileID: -5290336485913536623}
+  - {fileID: -3893040915326585024}
+  - {fileID: 1650041487395993087}
+  - {fileID: 3362288337359481248}
+  - {fileID: 3591895556546887120}
+  - {fileID: 3525403361781772797}
+  - {fileID: -5639866565663471745}
+  - {fileID: -3994682043660020729}
+  - {fileID: 1705101950666321467}
+  - {fileID: 8064454995277962628}
+  - {fileID: -370297970475697251}
+  - {fileID: 6357582434103397996}
+  - {fileID: 4360657681133919768}
+  - {fileID: -2382216627130824813}
+  - {fileID: 8992400211670447538}
+  _uiSelected: 0
+  _uiPinned: 0
+--- !u!114 &-8173401799419582625
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7bfdaf7f2c4c1d04580d676ed3717f21, type: 3}
+  m_Name: Cave_Lair_Cave_Stone_Rock_Bedrock_Open_01_Atlased
+  m_EditorClassIdentifier: 
+  _guid:
+    _guidString: f7f2e966-f188-4d98-ba2e-cbc5bc674c2d
+  _prefabAsset: {fileID: 5462045304669638001, guid: c60a6e2ef996fa64fb875ae5c0aa88a2, type: 3}
+  _preview:
+    _prefabAsset: {fileID: 5462045304669638001, guid: c60a6e2ef996fa64fb875ae5c0aa88a2, type: 3}
+    _texture: {fileID: 0}
+    _yaw: 0
+    _pitch: 0
+  _sceneToObjectGroup:
+    _serializedKeys: []
+    _serializedValues: []
+  _spawnGuideTransformTRS:
+    _position: {x: 0, y: 0, z: 0}
+    _rotation: {x: 0, y: -0, z: -0, w: 1}
+    _scale: {x: 1, y: 1, z: 1}
+  _modularSnapVerticalStep: 0
+  _surfaceSnapAppliedOffsetFromSurface: 0
+  _tags: 0
+  _modelSize: {x: 25.15658, y: 5.785844, z: 44.99716}
+  _uiSelected: 0
+--- !u!114 &-8090655296228945633
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7bfdaf7f2c4c1d04580d676ed3717f21, type: 3}
+  m_Name: Cave_Lair_Cave_Stone_Rock_Spire_02_Atlased
+  m_EditorClassIdentifier: 
+  _guid:
+    _guidString: f4119b44-4d60-419d-981a-b38e7e6a15be
+  _prefabAsset: {fileID: 8677308291588281872, guid: 80624c69b021d184098f1ef51cc561f1, type: 3}
+  _preview:
+    _prefabAsset: {fileID: 8677308291588281872, guid: 80624c69b021d184098f1ef51cc561f1, type: 3}
+    _texture: {fileID: 0}
+    _yaw: 0
+    _pitch: 0
+  _sceneToObjectGroup:
+    _serializedKeys: []
+    _serializedValues: []
+  _spawnGuideTransformTRS:
+    _position: {x: 0, y: 0, z: 0}
+    _rotation: {x: 0, y: -0, z: -0, w: 1}
+    _scale: {x: 1, y: 1, z: 1}
+  _modularSnapVerticalStep: 0
+  _surfaceSnapAppliedOffsetFromSurface: 0
+  _tags: 0
+  _modelSize: {x: 12.25375, y: 11.30783, z: 11.842984}
+  _uiSelected: 0
+--- !u!114 &-8043935261548617028
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7bfdaf7f2c4c1d04580d676ed3717f21, type: 3}
+  m_Name: Cave_Lair_Wooden_Timber_Plank_02_Atlased
+  m_EditorClassIdentifier: 
+  _guid:
+    _guidString: 2128824c-8ab4-4a02-b9c2-6bb0f7870b61
+  _prefabAsset: {fileID: 6369800730868107605, guid: 3b056f67d8fefa046b69268c42c1259e, type: 3}
+  _preview:
+    _prefabAsset: {fileID: 6369800730868107605, guid: 3b056f67d8fefa046b69268c42c1259e, type: 3}
+    _texture: {fileID: 0}
+    _yaw: 0
+    _pitch: 0
+  _sceneToObjectGroup:
+    _serializedKeys: []
+    _serializedValues: []
+  _spawnGuideTransformTRS:
+    _position: {x: 0, y: 0, z: 0}
+    _rotation: {x: 0, y: -0, z: -0, w: 1}
+    _scale: {x: 1, y: 1, z: 1}
+  _modularSnapVerticalStep: 0
+  _surfaceSnapAppliedOffsetFromSurface: 0
+  _tags: 0
+  _modelSize: {x: 0.17685369, y: 1.371814, z: 0.04679228}
+  _uiSelected: 0
+--- !u!114 &-7621502683559695746
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7bfdaf7f2c4c1d04580d676ed3717f21, type: 3}
+  m_Name: Cave_Lair_Wooden_Timber_Metal_Hull_Broken_Junk_02_Atlased
+  m_EditorClassIdentifier: 
+  _guid:
+    _guidString: b8f2c536-a1b9-4945-8067-1e43c6d599cf
+  _prefabAsset: {fileID: 7697933815016323036, guid: 471f8d7c0a6f029458478f2f5572ac23, type: 3}
+  _preview:
+    _prefabAsset: {fileID: 7697933815016323036, guid: 471f8d7c0a6f029458478f2f5572ac23, type: 3}
+    _texture: {fileID: 0}
+    _yaw: 0
+    _pitch: 0
+  _sceneToObjectGroup:
+    _serializedKeys: []
+    _serializedValues: []
+  _spawnGuideTransformTRS:
+    _position: {x: 0, y: 0, z: 0}
+    _rotation: {x: 0, y: -0, z: -0, w: 1}
+    _scale: {x: 1, y: 1, z: 1}
+  _modularSnapVerticalStep: 0
+  _surfaceSnapAppliedOffsetFromSurface: 0
+  _tags: 0
+  _modelSize: {x: 0.9339096, y: 3.729084, z: 0.7631086}
+  _uiSelected: 0
+--- !u!114 &-7612043666701600033
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7bfdaf7f2c4c1d04580d676ed3717f21, type: 3}
+  m_Name: Cave_Lair_Vegetation_Swamp_Thorn_Spike_01_Atlased
+  m_EditorClassIdentifier: 
+  _guid:
+    _guidString: 9b1c9158-4cff-4b9d-a37a-74d5c86d2ef0
+  _prefabAsset: {fileID: 3135070234170493137, guid: 9b3ece18f5e4a1440a14aaf7803f5d3d, type: 3}
+  _preview:
+    _prefabAsset: {fileID: 3135070234170493137, guid: 9b3ece18f5e4a1440a14aaf7803f5d3d, type: 3}
+    _texture: {fileID: 0}
+    _yaw: 0
+    _pitch: 0
+  _sceneToObjectGroup:
+    _serializedKeys: []
+    _serializedValues: []
+  _spawnGuideTransformTRS:
+    _position: {x: 0, y: 0, z: 0}
+    _rotation: {x: 0, y: -0, z: -0, w: 1}
+    _scale: {x: 1, y: 1, z: 1}
+  _modularSnapVerticalStep: 0
+  _surfaceSnapAppliedOffsetFromSurface: 0
+  _tags: 0
+  _modelSize: {x: 0.645, y: 2.04688, z: 0.5815}
+  _uiSelected: 0
+--- !u!114 &-7155126124041286227
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7bfdaf7f2c4c1d04580d676ed3717f21, type: 3}
+  m_Name: Cave_Lair_Wooden_Timber_Fence_Broken_Small_02_Atlased
+  m_EditorClassIdentifier: 
+  _guid:
+    _guidString: 564bd215-9ccf-47aa-a51f-3344d0571c51
+  _prefabAsset: {fileID: 1260806369814806766, guid: aaae229c837bef14598ecb1dc1beb335, type: 3}
+  _preview:
+    _prefabAsset: {fileID: 1260806369814806766, guid: aaae229c837bef14598ecb1dc1beb335, type: 3}
+    _texture: {fileID: 0}
+    _yaw: 0
+    _pitch: 0
+  _sceneToObjectGroup:
+    _serializedKeys: []
+    _serializedValues: []
+  _spawnGuideTransformTRS:
+    _position: {x: 0, y: 0, z: 0}
+    _rotation: {x: 0, y: -0, z: -0, w: 1}
+    _scale: {x: 1, y: 1, z: 1}
+  _modularSnapVerticalStep: 0
+  _surfaceSnapAppliedOffsetFromSurface: 0
+  _tags: 0
+  _modelSize: {x: 1.5886487, y: 1.124649, z: 0.225}
+  _uiSelected: 0
+--- !u!114 &-6844506854860993709
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7bfdaf7f2c4c1d04580d676ed3717f21, type: 3}
+  m_Name: Cave_Lair_Metal_Pan_Junk_01_Atlased
+  m_EditorClassIdentifier: 
+  _guid:
+    _guidString: fae1c0ee-8fca-4b88-bb0f-882dc33f1b32
+  _prefabAsset: {fileID: 2423048480155898960, guid: a9ad1c7064c48ba48b00db250cb4a4bc, type: 3}
+  _preview:
+    _prefabAsset: {fileID: 2423048480155898960, guid: a9ad1c7064c48ba48b00db250cb4a4bc, type: 3}
+    _texture: {fileID: 0}
+    _yaw: 0
+    _pitch: 0
+  _sceneToObjectGroup:
+    _serializedKeys: []
+    _serializedValues: []
+  _spawnGuideTransformTRS:
+    _position: {x: 0, y: 0, z: 0}
+    _rotation: {x: 0, y: -0, z: -0, w: 1}
+    _scale: {x: 1, y: 1, z: 1}
+  _modularSnapVerticalStep: 0
+  _surfaceSnapAppliedOffsetFromSurface: 0
+  _tags: 0
+  _modelSize: {x: 0.5341, y: 0.0667377, z: 0.2646}
+  _uiSelected: 0
+--- !u!114 &-6647444097821843921
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7bfdaf7f2c4c1d04580d676ed3717f21, type: 3}
+  m_Name: Cave_Lair_Vegetation_Swamp_Tree_Foliage_Willow_02_Atlased
+  m_EditorClassIdentifier: 
+  _guid:
+    _guidString: 535e0eb7-dc3d-4921-8013-9a4e18ae66c5
+  _prefabAsset: {fileID: 9136083407382099611, guid: f54f0e5dd5c3b2f4ca5c3e42f9866bf6, type: 3}
+  _preview:
+    _prefabAsset: {fileID: 9136083407382099611, guid: f54f0e5dd5c3b2f4ca5c3e42f9866bf6, type: 3}
+    _texture: {fileID: 0}
+    _yaw: 0
+    _pitch: 0
+  _sceneToObjectGroup:
+    _serializedKeys: []
+    _serializedValues: []
+  _spawnGuideTransformTRS:
+    _position: {x: 0, y: 0, z: 0}
+    _rotation: {x: 0, y: -0, z: -0, w: 1}
+    _scale: {x: 1, y: 1, z: 1}
+  _modularSnapVerticalStep: 0
+  _surfaceSnapAppliedOffsetFromSurface: 0
+  _tags: 0
+  _modelSize: {x: 1.2360228, y: 3.269377, z: 0.9107372}
+  _uiSelected: 0
+--- !u!114 &-6579538015313760518
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7bfdaf7f2c4c1d04580d676ed3717f21, type: 3}
+  m_Name: Cave_Lair_Wooden_Timber_Bridge_Platform_01_Atlased
+  m_EditorClassIdentifier: 
+  _guid:
+    _guidString: ceeb7681-65d1-4458-b22b-aebb084ce1b2
+  _prefabAsset: {fileID: 1867648164719320097, guid: 5a45a7a9ea8d4414fb368a1ee9c17a02, type: 3}
+  _preview:
+    _prefabAsset: {fileID: 1867648164719320097, guid: 5a45a7a9ea8d4414fb368a1ee9c17a02, type: 3}
+    _texture: {fileID: 0}
+    _yaw: 0
+    _pitch: 0
+  _sceneToObjectGroup:
+    _serializedKeys: []
+    _serializedValues: []
+  _spawnGuideTransformTRS:
+    _position: {x: 0, y: 0, z: 0}
+    _rotation: {x: 0, y: -0, z: -0, w: 1}
+    _scale: {x: 1, y: 1, z: 1}
+  _modularSnapVerticalStep: 0
+  _surfaceSnapAppliedOffsetFromSurface: 0
+  _tags: 0
+  _modelSize: {x: 3.266188, y: 0.1018735, z: 1.8904535}
+  _uiSelected: 0
+--- !u!114 &-6483105024545852198
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7bfdaf7f2c4c1d04580d676ed3717f21, type: 3}
+  m_Name: Cave_Lair_Terrain_Stone_Rock_Bridge_Large_01_Atlased
+  m_EditorClassIdentifier: 
+  _guid:
+    _guidString: 12888ad2-e7d3-463a-8f16-cc75937d3628
+  _prefabAsset: {fileID: 1851496824660091329, guid: 097d458d21e0fba409c1a9d8f1cab806, type: 3}
+  _preview:
+    _prefabAsset: {fileID: 1851496824660091329, guid: 097d458d21e0fba409c1a9d8f1cab806, type: 3}
+    _texture: {fileID: 0}
+    _yaw: 0
+    _pitch: 0
+  _sceneToObjectGroup:
+    _serializedKeys: []
+    _serializedValues: []
+  _spawnGuideTransformTRS:
+    _position: {x: 0, y: 0, z: 0}
+    _rotation: {x: 0, y: -0, z: -0, w: 1}
+    _scale: {x: 1, y: 1, z: 1}
+  _modularSnapVerticalStep: 0
+  _surfaceSnapAppliedOffsetFromSurface: 0
+  _tags: 0
+  _modelSize: {x: 26.63372, y: 20.131, z: 107.98982}
+  _uiSelected: 0
+--- !u!114 &-6361634952870342775
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7bfdaf7f2c4c1d04580d676ed3717f21, type: 3}
+  m_Name: Cave_Lair_Wooden_Timber_Fence_Small_05_Atlased
+  m_EditorClassIdentifier: 
+  _guid:
+    _guidString: 333bac9a-6841-453e-a0fd-a29c460aaeb3
+  _prefabAsset: {fileID: 3729400492056605201, guid: a0b8cf3713455c948b352465c10e0ed0, type: 3}
+  _preview:
+    _prefabAsset: {fileID: 3729400492056605201, guid: a0b8cf3713455c948b352465c10e0ed0, type: 3}
+    _texture: {fileID: 0}
+    _yaw: 0
+    _pitch: 0
+  _sceneToObjectGroup:
+    _serializedKeys: []
+    _serializedValues: []
+  _spawnGuideTransformTRS:
+    _position: {x: 0, y: 0, z: 0}
+    _rotation: {x: 0, y: -0, z: -0, w: 1}
+    _scale: {x: 1, y: 1, z: 1}
+  _modularSnapVerticalStep: 0
+  _surfaceSnapAppliedOffsetFromSurface: 0
+  _tags: 0
+  _modelSize: {x: 1.69, y: 1.124649, z: 0.225}
+  _uiSelected: 0
+--- !u!114 &-6358220093604640556
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7bfdaf7f2c4c1d04580d676ed3717f21, type: 3}
+  m_Name: Cave_Lair_Rope_Long_01_Atlased
+  m_EditorClassIdentifier: 
+  _guid:
+    _guidString: f7fcfaf8-00b1-407e-9f9a-aee060390ec8
+  _prefabAsset: {fileID: 6366707356687571762, guid: 0115d9c189f6087469fcbfcdb6d9372f, type: 3}
+  _preview:
+    _prefabAsset: {fileID: 6366707356687571762, guid: 0115d9c189f6087469fcbfcdb6d9372f, type: 3}
+    _texture: {fileID: 0}
+    _yaw: 0
+    _pitch: 0
+  _sceneToObjectGroup:
+    _serializedKeys: []
+    _serializedValues: []
+  _spawnGuideTransformTRS:
+    _position: {x: 0, y: 0, z: 0}
+    _rotation: {x: 0, y: -0, z: -0, w: 1}
+    _scale: {x: 1, y: 1, z: 1}
+  _modularSnapVerticalStep: 0
+  _surfaceSnapAppliedOffsetFromSurface: 0
+  _tags: 0
+  _modelSize: {x: 12.294521, y: 0.5188088, z: 0.1615592}
+  _uiSelected: 0
+--- !u!114 &-6305678582573040581
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7bfdaf7f2c4c1d04580d676ed3717f21, type: 3}
+  m_Name: Cave_Lair_Vegetation_Swamp_Thorn_Spike_03_Atlased
+  m_EditorClassIdentifier: 
+  _guid:
+    _guidString: 64d03625-16d3-42fe-b842-100d6577fc5d
+  _prefabAsset: {fileID: 532144070864605750, guid: 93906ff079027dd489ff1435a8509548, type: 3}
+  _preview:
+    _prefabAsset: {fileID: 532144070864605750, guid: 93906ff079027dd489ff1435a8509548, type: 3}
+    _texture: {fileID: 0}
+    _yaw: 0
+    _pitch: 0
+  _sceneToObjectGroup:
+    _serializedKeys: []
+    _serializedValues: []
+  _spawnGuideTransformTRS:
+    _position: {x: 0, y: 0, z: 0}
+    _rotation: {x: 0, y: -0, z: -0, w: 1}
+    _scale: {x: 1, y: 1, z: 1}
+  _modularSnapVerticalStep: 0
+  _surfaceSnapAppliedOffsetFromSurface: 0
+  _tags: 0
+  _modelSize: {x: 0.8165902, y: 1.55232, z: 0.7037818}
+  _uiSelected: 0
+--- !u!114 &-6283486916335242121
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7bfdaf7f2c4c1d04580d676ed3717f21, type: 3}
+  m_Name: Cave_Lair_Vegetation_Swamp_Mushroom_Pointy_01_Atlased
+  m_EditorClassIdentifier: 
+  _guid:
+    _guidString: 9558099a-95bf-4dec-b006-183ba4246da0
+  _prefabAsset: {fileID: 2678468276156206215, guid: b4d99c4353698b9419805c61ae10df16, type: 3}
+  _preview:
+    _prefabAsset: {fileID: 2678468276156206215, guid: b4d99c4353698b9419805c61ae10df16, type: 3}
+    _texture: {fileID: 0}
+    _yaw: 0
+    _pitch: 0
+  _sceneToObjectGroup:
+    _serializedKeys: []
+    _serializedValues: []
+  _spawnGuideTransformTRS:
+    _position: {x: 0, y: 0, z: 0}
+    _rotation: {x: 0, y: -0, z: -0, w: 1}
+    _scale: {x: 1, y: 1, z: 1}
+  _modularSnapVerticalStep: 0
+  _surfaceSnapAppliedOffsetFromSurface: 0
+  _tags: 0
+  _modelSize: {x: 0.2417102, y: 0.6224401, z: 0.2417102}
+  _uiSelected: 0
+--- !u!114 &-5981945548396589677
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7bfdaf7f2c4c1d04580d676ed3717f21, type: 3}
+  m_Name: Cave_Lair_Cave_Stone_Rock_Hanging_Spike_02_Atlased
+  m_EditorClassIdentifier: 
+  _guid:
+    _guidString: 9a21018f-7148-4c8a-80fe-859059961598
+  _prefabAsset: {fileID: 2946194529414709275, guid: 858cf44c51c11b24fae57c043a729336, type: 3}
+  _preview:
+    _prefabAsset: {fileID: 2946194529414709275, guid: 858cf44c51c11b24fae57c043a729336, type: 3}
+    _texture: {fileID: 0}
+    _yaw: 0
+    _pitch: 0
+  _sceneToObjectGroup:
+    _serializedKeys: []
+    _serializedValues: []
+  _spawnGuideTransformTRS:
+    _position: {x: 0, y: 0, z: 0}
+    _rotation: {x: 0, y: -0, z: -0, w: 1}
+    _scale: {x: 1, y: 1, z: 1}
+  _modularSnapVerticalStep: 0
+  _surfaceSnapAppliedOffsetFromSurface: 0
+  _tags: 0
+  _modelSize: {x: 5.31784, y: 5.625448, z: 7.005126}
+  _uiSelected: 0
+--- !u!114 &-5866909599488940450
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7bfdaf7f2c4c1d04580d676ed3717f21, type: 3}
+  m_Name: Cave_Lair_Cave_Stone_Pillar_Damaged_01_Atlased
+  m_EditorClassIdentifier: 
+  _guid:
+    _guidString: 9486f00f-c124-4558-aa8c-a988e894a83e
+  _prefabAsset: {fileID: 793021481112729677, guid: b2444c2059601414fa751b2a3a443a18, type: 3}
+  _preview:
+    _prefabAsset: {fileID: 793021481112729677, guid: b2444c2059601414fa751b2a3a443a18, type: 3}
+    _texture: {fileID: 0}
+    _yaw: 0
+    _pitch: 0
+  _sceneToObjectGroup:
+    _serializedKeys: []
+    _serializedValues: []
+  _spawnGuideTransformTRS:
+    _position: {x: 0, y: 0, z: 0}
+    _rotation: {x: 0, y: -0, z: -0, w: 1}
+    _scale: {x: 1, y: 1, z: 1}
+  _modularSnapVerticalStep: 0
+  _surfaceSnapAppliedOffsetFromSurface: 0
+  _tags: 0
+  _modelSize: {x: 1.0035198, y: 2.79401, z: 1.0035198}
+  _uiSelected: 0
+--- !u!114 &-5801560958894724689
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7bfdaf7f2c4c1d04580d676ed3717f21, type: 3}
+  m_Name: Cave_Lair_Wooden_Timber_Beam_01_Atlased
+  m_EditorClassIdentifier: 
+  _guid:
+    _guidString: 0e45ce50-a210-4cc7-868c-2cf13e860263
+  _prefabAsset: {fileID: 6754097296597260805, guid: a9eb37d6c596dd34d86565ffd22dfde7, type: 3}
+  _preview:
+    _prefabAsset: {fileID: 6754097296597260805, guid: a9eb37d6c596dd34d86565ffd22dfde7, type: 3}
+    _texture: {fileID: 0}
+    _yaw: 0
+    _pitch: 0
+  _sceneToObjectGroup:
+    _serializedKeys: []
+    _serializedValues: []
+  _spawnGuideTransformTRS:
+    _position: {x: 0, y: 0, z: 0}
+    _rotation: {x: 0, y: -0, z: -0, w: 1}
+    _scale: {x: 1, y: 1, z: 1}
+  _modularSnapVerticalStep: 0
+  _surfaceSnapAppliedOffsetFromSurface: 0
+  _tags: 0
+  _modelSize: {x: 0.50421363, y: 3.606296, z: 0.34395242}
+  _uiSelected: 0
+--- !u!114 &-5639866565663471745
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7bfdaf7f2c4c1d04580d676ed3717f21, type: 3}
+  m_Name: Cave_Lair_Wooden_Timber_Pole_02_Atlased
+  m_EditorClassIdentifier: 
+  _guid:
+    _guidString: 07100856-12b4-4e74-8e9e-da4faec2017f
+  _prefabAsset: {fileID: 8490070430707710681, guid: b96b7dc2ec2ee734393dd33b492d5b57, type: 3}
+  _preview:
+    _prefabAsset: {fileID: 8490070430707710681, guid: b96b7dc2ec2ee734393dd33b492d5b57, type: 3}
+    _texture: {fileID: 0}
+    _yaw: 0
+    _pitch: 0
+  _sceneToObjectGroup:
+    _serializedKeys: []
+    _serializedValues: []
+  _spawnGuideTransformTRS:
+    _position: {x: 0, y: 0, z: 0}
+    _rotation: {x: 0, y: -0, z: -0, w: 1}
+    _scale: {x: 1, y: 1, z: 1}
+  _modularSnapVerticalStep: 0
+  _surfaceSnapAppliedOffsetFromSurface: 0
+  _tags: 0
+  _modelSize: {x: 0.2336074, y: 1.864215, z: 0.2159392}
+  _uiSelected: 0
+--- !u!114 &-5365565191494151531
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7bfdaf7f2c4c1d04580d676ed3717f21, type: 3}
+  m_Name: Cave_Lair_Cave_Stone_Rock_Bedrock_03_Atlased
+  m_EditorClassIdentifier: 
+  _guid:
+    _guidString: 706777f9-daf1-4ad5-a7a6-f417e4fa788e
+  _prefabAsset: {fileID: 9058236185896987464, guid: 8ecc77e74f478f647b3a45c548f54939, type: 3}
+  _preview:
+    _prefabAsset: {fileID: 9058236185896987464, guid: 8ecc77e74f478f647b3a45c548f54939, type: 3}
+    _texture: {fileID: 0}
+    _yaw: 0
+    _pitch: 0
+  _sceneToObjectGroup:
+    _serializedKeys: []
+    _serializedValues: []
+  _spawnGuideTransformTRS:
+    _position: {x: 0, y: 0, z: 0}
+    _rotation: {x: 0, y: -0, z: -0, w: 1}
+    _scale: {x: 1, y: 1, z: 1}
+  _modularSnapVerticalStep: 0
+  _surfaceSnapAppliedOffsetFromSurface: 0
+  _tags: 0
+  _modelSize: {x: 11.633716, y: 2.719518, z: 10.72844}
+  _uiSelected: 0
+--- !u!114 &-5290336485913536623
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7bfdaf7f2c4c1d04580d676ed3717f21, type: 3}
+  m_Name: Cave_Lair_Wooden_Timber_Plank_05_Atlased
+  m_EditorClassIdentifier: 
+  _guid:
+    _guidString: 40ee8b65-4935-426a-8719-9e60c24a41be
+  _prefabAsset: {fileID: 4770056041376760564, guid: c623d1902c621ba48bab93a864800315, type: 3}
+  _preview:
+    _prefabAsset: {fileID: 4770056041376760564, guid: c623d1902c621ba48bab93a864800315, type: 3}
+    _texture: {fileID: 0}
+    _yaw: 0
+    _pitch: 0
+  _sceneToObjectGroup:
+    _serializedKeys: []
+    _serializedValues: []
+  _spawnGuideTransformTRS:
+    _position: {x: 0, y: 0, z: 0}
+    _rotation: {x: 0, y: -0, z: -0, w: 1}
+    _scale: {x: 1, y: 1, z: 1}
+  _modularSnapVerticalStep: 0
+  _surfaceSnapAppliedOffsetFromSurface: 0
+  _tags: 0
+  _modelSize: {x: 0.18094426, y: 1.366983, z: 0.04679228}
+  _uiSelected: 0
+--- !u!114 &-5094616924284899612
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7bfdaf7f2c4c1d04580d676ed3717f21, type: 3}
+  m_Name: Cave_Lair_Wooden_Timber_Fence_Post_02_Atlased
+  m_EditorClassIdentifier: 
+  _guid:
+    _guidString: 20ad0d71-c5d7-4b95-bef4-b3f7e39eff40
+  _prefabAsset: {fileID: 6343035393362036777, guid: 1759c2f962ad1814793b205606a9d44f, type: 3}
+  _preview:
+    _prefabAsset: {fileID: 6343035393362036777, guid: 1759c2f962ad1814793b205606a9d44f, type: 3}
+    _texture: {fileID: 0}
+    _yaw: 0
+    _pitch: 0
+  _sceneToObjectGroup:
+    _serializedKeys: []
+    _serializedValues: []
+  _spawnGuideTransformTRS:
+    _position: {x: 0, y: 0, z: 0}
+    _rotation: {x: 0, y: -0, z: -0, w: 1}
+    _scale: {x: 1, y: 1, z: 1}
+  _modularSnapVerticalStep: 0
+  _surfaceSnapAppliedOffsetFromSurface: 0
+  _tags: 0
+  _modelSize: {x: 0.225, y: 1.124649, z: 0.225}
+  _uiSelected: 0
+--- !u!114 &-4886083348754230103
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7bfdaf7f2c4c1d04580d676ed3717f21, type: 3}
+  m_Name: Cave_Lair_Cave_Stone_Rock_Crater_01_Atlased
+  m_EditorClassIdentifier: 
+  _guid:
+    _guidString: 4043a4b6-fe32-4697-99af-3c1350cb8a48
+  _prefabAsset: {fileID: 5153006877051908934, guid: d5c7323c6f519d840b5c72e258674fd9, type: 3}
+  _preview:
+    _prefabAsset: {fileID: 5153006877051908934, guid: d5c7323c6f519d840b5c72e258674fd9, type: 3}
+    _texture: {fileID: 0}
+    _yaw: 0
+    _pitch: 0
+  _sceneToObjectGroup:
+    _serializedKeys: []
+    _serializedValues: []
+  _spawnGuideTransformTRS:
+    _position: {x: 0, y: 0, z: 0}
+    _rotation: {x: 0, y: -0, z: -0, w: 1}
+    _scale: {x: 1, y: 1, z: 1}
+  _modularSnapVerticalStep: 0
+  _surfaceSnapAppliedOffsetFromSurface: 0
+  _tags: 0
+  _modelSize: {x: 6.647298, y: 2.619245, z: 7.005126}
+  _uiSelected: 0
+--- !u!114 &-4776153534447018164
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7bfdaf7f2c4c1d04580d676ed3717f21, type: 3}
+  m_Name: Cave_Lair_Weapon_Wooden_Timber_Staff_01_Atlased
+  m_EditorClassIdentifier: 
+  _guid:
+    _guidString: 22ff9417-ac7f-4925-9401-7bbad7a0f57c
+  _prefabAsset: {fileID: 8603776468559676237, guid: eaf5396a51aa5bf449cefb61a624a293, type: 3}
+  _preview:
+    _prefabAsset: {fileID: 8603776468559676237, guid: eaf5396a51aa5bf449cefb61a624a293, type: 3}
+    _texture: {fileID: 0}
+    _yaw: 0
+    _pitch: 0
+  _sceneToObjectGroup:
+    _serializedKeys: []
+    _serializedValues: []
+  _spawnGuideTransformTRS:
+    _position: {x: 0, y: 0, z: 0}
+    _rotation: {x: 0, y: -0, z: -0, w: 1}
+    _scale: {x: 1, y: 1, z: 1}
+  _modularSnapVerticalStep: 0
+  _surfaceSnapAppliedOffsetFromSurface: 0
+  _tags: 0
+  _modelSize: {x: 0.1706544, y: 1.750948, z: 0.13375375}
+  _uiSelected: 0
+--- !u!114 &-4751688087534674821
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7bfdaf7f2c4c1d04580d676ed3717f21, type: 3}
+  m_Name: Cave_Lair_Cave_Stone_Pillar_Damaged_02_Atlased
+  m_EditorClassIdentifier: 
+  _guid:
+    _guidString: 7c698e00-8b7e-4fe7-abac-cc843a769d70
+  _prefabAsset: {fileID: 2789357953653488752, guid: 272b791f130e57643a685ccbf9dce847, type: 3}
+  _preview:
+    _prefabAsset: {fileID: 2789357953653488752, guid: 272b791f130e57643a685ccbf9dce847, type: 3}
+    _texture: {fileID: 0}
+    _yaw: 0
+    _pitch: 0
+  _sceneToObjectGroup:
+    _serializedKeys: []
+    _serializedValues: []
+  _spawnGuideTransformTRS:
+    _position: {x: 0, y: 0, z: 0}
+    _rotation: {x: 0, y: -0, z: -0, w: 1}
+    _scale: {x: 1, y: 1, z: 1}
+  _modularSnapVerticalStep: 0
+  _surfaceSnapAppliedOffsetFromSurface: 0
+  _tags: 0
+  _modelSize: {x: 1.0035198, y: 1.684303, z: 1.0035198}
+  _uiSelected: 0
+--- !u!114 &-4607259281019469158
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7bfdaf7f2c4c1d04580d676ed3717f21, type: 3}
+  m_Name: Cave_Lair_Weapon_Wooden_Timber_Spear_01_Atlased
+  m_EditorClassIdentifier: 
+  _guid:
+    _guidString: b52fac96-b6c8-4a2f-a93b-726a5ccd20f7
+  _prefabAsset: {fileID: 1837636939079185997, guid: 363fc0c9c0a0d1d4480733e7ffce59cb, type: 3}
+  _preview:
+    _prefabAsset: {fileID: 1837636939079185997, guid: 363fc0c9c0a0d1d4480733e7ffce59cb, type: 3}
+    _texture: {fileID: 0}
+    _yaw: 0
+    _pitch: 0
+  _sceneToObjectGroup:
+    _serializedKeys: []
+    _serializedValues: []
+  _spawnGuideTransformTRS:
+    _position: {x: 0, y: 0, z: 0}
+    _rotation: {x: 0, y: -0, z: -0, w: 1}
+    _scale: {x: 1, y: 1, z: 1}
+  _modularSnapVerticalStep: 0
+  _surfaceSnapAppliedOffsetFromSurface: 0
+  _tags: 0
+  _modelSize: {x: 0.12236686, y: 1.880841, z: 0.0814}
+  _uiSelected: 0
+--- !u!114 &-4548279653175043537
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7bfdaf7f2c4c1d04580d676ed3717f21, type: 3}
+  m_Name: Cave_Lair_Metal_Ring_Junk_01_Atlased
+  m_EditorClassIdentifier: 
+  _guid:
+    _guidString: 4ae9b0ef-6618-4721-bd30-eba1746e40f9
+  _prefabAsset: {fileID: 8444888006686747065, guid: 37268e8b90bfc1f428fdde80c877cabc, type: 3}
+  _preview:
+    _prefabAsset: {fileID: 8444888006686747065, guid: 37268e8b90bfc1f428fdde80c877cabc, type: 3}
+    _texture: {fileID: 0}
+    _yaw: 0
+    _pitch: 0
+  _sceneToObjectGroup:
+    _serializedKeys: []
+    _serializedValues: []
+  _spawnGuideTransformTRS:
+    _position: {x: 0, y: 0, z: 0}
+    _rotation: {x: 0, y: -0, z: -0, w: 1}
+    _scale: {x: 1, y: 1, z: 1}
+  _modularSnapVerticalStep: 0
+  _surfaceSnapAppliedOffsetFromSurface: 0
+  _tags: 0
+  _modelSize: {x: 0.636, y: 0.1026257, z: 0.604872}
+  _uiSelected: 0
+--- !u!114 &-4511325877586269360
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7bfdaf7f2c4c1d04580d676ed3717f21, type: 3}
+  m_Name: Cave_Lair_Cave_Stone_Rock_Spire_05_Atlased
+  m_EditorClassIdentifier: 
+  _guid:
+    _guidString: 816e5318-d94a-4ab6-89b8-c9a92f0ec6c0
+  _prefabAsset: {fileID: 1017274446837535391, guid: 48c044f77b63380479d1b2a40f7292b1, type: 3}
+  _preview:
+    _prefabAsset: {fileID: 1017274446837535391, guid: 48c044f77b63380479d1b2a40f7292b1, type: 3}
+    _texture: {fileID: 0}
+    _yaw: 0
+    _pitch: 0
+  _sceneToObjectGroup:
+    _serializedKeys: []
+    _serializedValues: []
+  _spawnGuideTransformTRS:
+    _position: {x: 0, y: 0, z: 0}
+    _rotation: {x: 0, y: -0, z: -0, w: 1}
+    _scale: {x: 1, y: 1, z: 1}
+  _modularSnapVerticalStep: 0
+  _surfaceSnapAppliedOffsetFromSurface: 0
+  _tags: 0
+  _modelSize: {x: 9.423824, y: 13.33575, z: 4.582492}
+  _uiSelected: 0
+--- !u!114 &-4494443728315791531
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7bfdaf7f2c4c1d04580d676ed3717f21, type: 3}
+  m_Name: Cave_Lair_Rail_Road_Track_Straight_01_Atlased
+  m_EditorClassIdentifier: 
+  _guid:
+    _guidString: d7051536-36b1-4e45-b470-b383703a18d2
+  _prefabAsset: {fileID: 5013048544326157357, guid: dcfe9df6537592449978f393148ae8d7, type: 3}
+  _preview:
+    _prefabAsset: {fileID: 5013048544326157357, guid: dcfe9df6537592449978f393148ae8d7, type: 3}
+    _texture: {fileID: 0}
+    _yaw: 0
+    _pitch: 0
+  _sceneToObjectGroup:
+    _serializedKeys: []
+    _serializedValues: []
+  _spawnGuideTransformTRS:
+    _position: {x: 0, y: 0, z: 0}
+    _rotation: {x: 0, y: -0, z: -0, w: 1}
+    _scale: {x: 1, y: 1, z: 1}
+  _modularSnapVerticalStep: 0
+  _surfaceSnapAppliedOffsetFromSurface: 0
+  _tags: 0
+  _modelSize: {x: 2, y: 0.09999999, z: 0.8}
+  _uiSelected: 0
+--- !u!114 &-4342218070001703044
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7bfdaf7f2c4c1d04580d676ed3717f21, type: 3}
+  m_Name: Cave_Lair_Weapon_Wooden_Timber_Spike_Large_01_Atlased
+  m_EditorClassIdentifier: 
+  _guid:
+    _guidString: 77093924-8e57-487a-907f-2e6477b3c02c
+  _prefabAsset: {fileID: 224095891155816919, guid: bbb2f25897bf127459dab80f29dce734, type: 3}
+  _preview:
+    _prefabAsset: {fileID: 224095891155816919, guid: bbb2f25897bf127459dab80f29dce734, type: 3}
+    _texture: {fileID: 0}
+    _yaw: 0
+    _pitch: 0
+  _sceneToObjectGroup:
+    _serializedKeys: []
+    _serializedValues: []
+  _spawnGuideTransformTRS:
+    _position: {x: 0, y: 0, z: 0}
+    _rotation: {x: 0, y: -0, z: -0, w: 1}
+    _scale: {x: 1, y: 1, z: 1}
+  _modularSnapVerticalStep: 0
+  _surfaceSnapAppliedOffsetFromSurface: 0
+  _tags: 0
+  _modelSize: {x: 0.1964409, y: 1.528106, z: 0.202211}
+  _uiSelected: 0
+--- !u!114 &-4231770489145696090
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7bfdaf7f2c4c1d04580d676ed3717f21, type: 3}
+  m_Name: Cave_Lair_Wooden_Timber_Fence_Broken_Small_04_Atlased
+  m_EditorClassIdentifier: 
+  _guid:
+    _guidString: 2feda284-4592-44d8-828b-ac0bede8c25d
+  _prefabAsset: {fileID: 570698259157845248, guid: 5c7f52be66a9e5a4496d3ff80254bd36, type: 3}
+  _preview:
+    _prefabAsset: {fileID: 570698259157845248, guid: 5c7f52be66a9e5a4496d3ff80254bd36, type: 3}
+    _texture: {fileID: 0}
+    _yaw: 0
+    _pitch: 0
+  _sceneToObjectGroup:
+    _serializedKeys: []
+    _serializedValues: []
+  _spawnGuideTransformTRS:
+    _position: {x: 0, y: 0, z: 0}
+    _rotation: {x: 0, y: -0, z: -0, w: 1}
+    _scale: {x: 1, y: 1, z: 1}
+  _modularSnapVerticalStep: 0
+  _surfaceSnapAppliedOffsetFromSurface: 0
+  _tags: 0
+  _modelSize: {x: 1.563234, y: 1.124649, z: 0.225}
+  _uiSelected: 0
+--- !u!114 &-4167389603220424953
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7bfdaf7f2c4c1d04580d676ed3717f21, type: 3}
+  m_Name: Cave_Lair_Wooden_Timber_Fence_Small_04_Atlased
+  m_EditorClassIdentifier: 
+  _guid:
+    _guidString: 5d945906-6b3a-4732-9a78-a89e85faf71b
+  _prefabAsset: {fileID: 2418976987878076843, guid: f4b115ce52265bf4fa2d9ac6e2f1d9c5, type: 3}
+  _preview:
+    _prefabAsset: {fileID: 2418976987878076843, guid: f4b115ce52265bf4fa2d9ac6e2f1d9c5, type: 3}
+    _texture: {fileID: 0}
+    _yaw: 0
+    _pitch: 0
+  _sceneToObjectGroup:
+    _serializedKeys: []
+    _serializedValues: []
+  _spawnGuideTransformTRS:
+    _position: {x: 0, y: 0, z: 0}
+    _rotation: {x: 0, y: -0, z: -0, w: 1}
+    _scale: {x: 1, y: 1, z: 1}
+  _modularSnapVerticalStep: 0
+  _surfaceSnapAppliedOffsetFromSurface: 0
+  _tags: 0
+  _modelSize: {x: 1.69, y: 1.124649, z: 0.225}
+  _uiSelected: 0
+--- !u!114 &-3994682043660020729
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7bfdaf7f2c4c1d04580d676ed3717f21, type: 3}
+  m_Name: Cave_Lair_Wooden_Timber_Pole_03_Atlased
+  m_EditorClassIdentifier: 
+  _guid:
+    _guidString: 1bd4d4c2-2639-45fb-9df6-c171373e3ff3
+  _prefabAsset: {fileID: 2490330214277596347, guid: 4b79e0198bfabf443982b2641585ab96, type: 3}
+  _preview:
+    _prefabAsset: {fileID: 2490330214277596347, guid: 4b79e0198bfabf443982b2641585ab96, type: 3}
+    _texture: {fileID: 0}
+    _yaw: 0
+    _pitch: 0
+  _sceneToObjectGroup:
+    _serializedKeys: []
+    _serializedValues: []
+  _spawnGuideTransformTRS:
+    _position: {x: 0, y: 0, z: 0}
+    _rotation: {x: 0, y: -0, z: -0, w: 1}
+    _scale: {x: 1, y: 1, z: 1}
+  _modularSnapVerticalStep: 0
+  _surfaceSnapAppliedOffsetFromSurface: 0
+  _tags: 0
+  _modelSize: {x: 0.18150835, y: 1.387818, z: 0.17979228}
+  _uiSelected: 0
+--- !u!114 &-3893115833144140113
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7bfdaf7f2c4c1d04580d676ed3717f21, type: 3}
+  m_Name: Cave_Lair_Wooden_Timber_Bridge_Large_01_Atlased
+  m_EditorClassIdentifier: 
+  _guid:
+    _guidString: ead51ad3-8a58-4563-97f6-da8e7c5ce837
+  _prefabAsset: {fileID: 8532398056105567496, guid: 35c719b38917eb940a3e943d06ccf3fd, type: 3}
+  _preview:
+    _prefabAsset: {fileID: 8532398056105567496, guid: 35c719b38917eb940a3e943d06ccf3fd, type: 3}
+    _texture: {fileID: 0}
+    _yaw: 0
+    _pitch: 0
+  _sceneToObjectGroup:
+    _serializedKeys: []
+    _serializedValues: []
+  _spawnGuideTransformTRS:
+    _position: {x: 0, y: 0, z: 0}
+    _rotation: {x: 0, y: -0, z: -0, w: 1}
+    _scale: {x: 1, y: 1, z: 1}
+  _modularSnapVerticalStep: 0
+  _surfaceSnapAppliedOffsetFromSurface: 0
+  _tags: 0
+  _modelSize: {x: 14.132648, y: 2.642406, z: 4.21712}
+  _uiSelected: 0
+--- !u!114 &-3893040915326585024
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7bfdaf7f2c4c1d04580d676ed3717f21, type: 3}
+  m_Name: Cave_Lair_Wooden_Timber_Plank_06_Atlased
+  m_EditorClassIdentifier: 
+  _guid:
+    _guidString: 0cd3899f-2b01-44e6-bfdf-2bb3e72c4a92
+  _prefabAsset: {fileID: 438320010179181603, guid: 2d6f2947ff31ecb4e9f3628911bcaa18, type: 3}
+  _preview:
+    _prefabAsset: {fileID: 438320010179181603, guid: 2d6f2947ff31ecb4e9f3628911bcaa18, type: 3}
+    _texture: {fileID: 0}
+    _yaw: 0
+    _pitch: 0
+  _sceneToObjectGroup:
+    _serializedKeys: []
+    _serializedValues: []
+  _spawnGuideTransformTRS:
+    _position: {x: 0, y: 0, z: 0}
+    _rotation: {x: 0, y: -0, z: -0, w: 1}
+    _scale: {x: 1, y: 1, z: 1}
+  _modularSnapVerticalStep: 0
+  _surfaceSnapAppliedOffsetFromSurface: 0
+  _tags: 0
+  _modelSize: {x: 0.1786453, y: 1.291021, z: 0.04679228}
+  _uiSelected: 0
+--- !u!114 &-3496410902098756107
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7bfdaf7f2c4c1d04580d676ed3717f21, type: 3}
+  m_Name: Cave_Lair_Vegetation_Swamp_Tree_Roots_01_Atlased
+  m_EditorClassIdentifier: 
+  _guid:
+    _guidString: 7a33bf0e-c273-4eae-bb7b-1b013d7d3c88
+  _prefabAsset: {fileID: 2109489745318603532, guid: f38a97c8ffdf9644bb820ff056a22eeb, type: 3}
+  _preview:
+    _prefabAsset: {fileID: 2109489745318603532, guid: f38a97c8ffdf9644bb820ff056a22eeb, type: 3}
+    _texture: {fileID: 0}
+    _yaw: 0
+    _pitch: 0
+  _sceneToObjectGroup:
+    _serializedKeys: []
+    _serializedValues: []
+  _spawnGuideTransformTRS:
+    _position: {x: 0, y: 0, z: 0}
+    _rotation: {x: 0, y: -0, z: -0, w: 1}
+    _scale: {x: 1, y: 1, z: 1}
+  _modularSnapVerticalStep: 0
+  _surfaceSnapAppliedOffsetFromSurface: 0
+  _tags: 0
+  _modelSize: {x: 3.9711912, y: 9.011085, z: 3.3824985}
+  _uiSelected: 0
+--- !u!114 &-3447042187035675471
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7bfdaf7f2c4c1d04580d676ed3717f21, type: 3}
+  m_Name: Cave_Lair_Wooden_Timber_Fence_Corner_Medium_01_Atlased
+  m_EditorClassIdentifier: 
+  _guid:
+    _guidString: aba71c09-8111-41d1-8cdf-83858cbc2eff
+  _prefabAsset: {fileID: 6410382790178027787, guid: c8d748c776117744f9c80eaf4624e566, type: 3}
+  _preview:
+    _prefabAsset: {fileID: 6410382790178027787, guid: c8d748c776117744f9c80eaf4624e566, type: 3}
+    _texture: {fileID: 0}
+    _yaw: 0
+    _pitch: 0
+  _sceneToObjectGroup:
+    _serializedKeys: []
+    _serializedValues: []
+  _spawnGuideTransformTRS:
+    _position: {x: 0, y: 0, z: 0}
+    _rotation: {x: 0, y: -0, z: -0, w: 1}
+    _scale: {x: 1, y: 1, z: 1}
+  _modularSnapVerticalStep: 0
+  _surfaceSnapAppliedOffsetFromSurface: 0
+  _tags: 0
+  _modelSize: {x: 3.225, y: 1.124649, z: 3.225}
+  _uiSelected: 0
+--- !u!114 &-3309738932776823039
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7bfdaf7f2c4c1d04580d676ed3717f21, type: 3}
+  m_Name: Cave_Lair_Vegetation_Swamp_Mushroom_Enoki_01_Atlased
+  m_EditorClassIdentifier: 
+  _guid:
+    _guidString: 36f4538b-0e1f-4d4b-b621-6bb0e26ff9ac
+  _prefabAsset: {fileID: 4806598447646674370, guid: 1195b43cc8cecc64cb240e738c96d111, type: 3}
+  _preview:
+    _prefabAsset: {fileID: 4806598447646674370, guid: 1195b43cc8cecc64cb240e738c96d111, type: 3}
+    _texture: {fileID: 0}
+    _yaw: 0
+    _pitch: 0
+  _sceneToObjectGroup:
+    _serializedKeys: []
+    _serializedValues: []
+  _spawnGuideTransformTRS:
+    _position: {x: 0, y: 0, z: 0}
+    _rotation: {x: 0, y: -0, z: -0, w: 1}
+    _scale: {x: 1, y: 1, z: 1}
+  _modularSnapVerticalStep: 0
+  _surfaceSnapAppliedOffsetFromSurface: 0
+  _tags: 0
+  _modelSize: {x: 0.1405619, y: 0.9351403, z: 0.1405619}
+  _uiSelected: 0
+--- !u!114 &-3218057365096181183
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7bfdaf7f2c4c1d04580d676ed3717f21, type: 3}
+  m_Name: Cave_Lair_Vegetation_Swamp_Tree_Roots_02_Atlased
+  m_EditorClassIdentifier: 
+  _guid:
+    _guidString: acf53d53-9d42-4fe8-a820-7be5cb59f87a
+  _prefabAsset: {fileID: 2170830986683010238, guid: d2b0b4266981f124d987193e62813525, type: 3}
+  _preview:
+    _prefabAsset: {fileID: 2170830986683010238, guid: d2b0b4266981f124d987193e62813525, type: 3}
+    _texture: {fileID: 0}
+    _yaw: 0
+    _pitch: 0
+  _sceneToObjectGroup:
+    _serializedKeys: []
+    _serializedValues: []
+  _spawnGuideTransformTRS:
+    _position: {x: 0, y: 0, z: 0}
+    _rotation: {x: 0, y: -0, z: -0, w: 1}
+    _scale: {x: 1, y: 1, z: 1}
+  _modularSnapVerticalStep: 0
+  _surfaceSnapAppliedOffsetFromSurface: 0
+  _tags: 0
+  _modelSize: {x: 2.229809, y: 6.54096, z: 4.190403}
+  _uiSelected: 0
+--- !u!114 &-3210740416899962349
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7bfdaf7f2c4c1d04580d676ed3717f21, type: 3}
+  m_Name: Cave_Lair_Wooden_Timber_Fence_Corner_Large_01_Atlased
+  m_EditorClassIdentifier: 
+  _guid:
+    _guidString: 48d00b1f-bbaf-4f1c-9651-d617e522a6dd
+  _prefabAsset: {fileID: 3325598944061008263, guid: d4e270ac56685534489d3a852e31b653, type: 3}
+  _preview:
+    _prefabAsset: {fileID: 3325598944061008263, guid: d4e270ac56685534489d3a852e31b653, type: 3}
+    _texture: {fileID: 0}
+    _yaw: 0
+    _pitch: 0
+  _sceneToObjectGroup:
+    _serializedKeys: []
+    _serializedValues: []
+  _spawnGuideTransformTRS:
+    _position: {x: 0, y: 0, z: 0}
+    _rotation: {x: 0, y: -0, z: -0, w: 1}
+    _scale: {x: 1, y: 1, z: 1}
+  _modularSnapVerticalStep: 0
+  _surfaceSnapAppliedOffsetFromSurface: 0
+  _tags: 0
+  _modelSize: {x: 4.725, y: 1.124649, z: 4.725}
+  _uiSelected: 0
+--- !u!114 &-3161672596773276544
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7bfdaf7f2c4c1d04580d676ed3717f21, type: 3}
+  m_Name: Cave_Lair_Vegetation_Swamp_Mushroom_Large_03_Atlased
+  m_EditorClassIdentifier: 
+  _guid:
+    _guidString: 0934dfd6-5a99-4362-824b-d083d5ff8187
+  _prefabAsset: {fileID: 7912214477232960399, guid: c862c53438d51a649b50501f8e3d19b9, type: 3}
+  _preview:
+    _prefabAsset: {fileID: 7912214477232960399, guid: c862c53438d51a649b50501f8e3d19b9, type: 3}
+    _texture: {fileID: 0}
+    _yaw: 0
+    _pitch: 0
+  _sceneToObjectGroup:
+    _serializedKeys: []
+    _serializedValues: []
+  _spawnGuideTransformTRS:
+    _position: {x: 0, y: 0, z: 0}
+    _rotation: {x: 0, y: -0, z: -0, w: 1}
+    _scale: {x: 1, y: 1, z: 1}
+  _modularSnapVerticalStep: 0
+  _surfaceSnapAppliedOffsetFromSurface: 0
+  _tags: 0
+  _modelSize: {x: 5.284792, y: 0.7099057, z: 5.728646}
+  _uiSelected: 0
+--- !u!114 &-2742983581947727260
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7bfdaf7f2c4c1d04580d676ed3717f21, type: 3}
+  m_Name: Cave_Lair_Weapon_Wooden_Timber_Shield_01_Atlased
+  m_EditorClassIdentifier: 
+  _guid:
+    _guidString: 627693c0-d21b-48cc-930d-948e3f0c3570
+  _prefabAsset: {fileID: 41149064425096472, guid: 00077a2cc1821ee43af413ab7e87c7af, type: 3}
+  _preview:
+    _prefabAsset: {fileID: 41149064425096472, guid: 00077a2cc1821ee43af413ab7e87c7af, type: 3}
+    _texture: {fileID: 0}
+    _yaw: 0
+    _pitch: 0
+  _sceneToObjectGroup:
+    _serializedKeys: []
+    _serializedValues: []
+  _spawnGuideTransformTRS:
+    _position: {x: 0, y: 0, z: 0}
+    _rotation: {x: 0, y: -0, z: -0, w: 1}
+    _scale: {x: 1, y: 1, z: 1}
+  _modularSnapVerticalStep: 0
+  _surfaceSnapAppliedOffsetFromSurface: 0
+  _tags: 0
+  _modelSize: {x: 0.3358382, y: 0.5668725, z: 0.08179228}
+  _uiSelected: 0
+--- !u!114 &-2527737271437366578
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7bfdaf7f2c4c1d04580d676ed3717f21, type: 3}
+  m_Name: Cave_Lair_Rail_Road_Track_Straight_Corner_Split_Switch_01_Atlased
+  m_EditorClassIdentifier: 
+  _guid:
+    _guidString: eaa0db7b-5403-45af-bbf4-94433dccde2b
+  _prefabAsset: {fileID: 2331212737179214396, guid: 32e4cd6f8ffbbcb40a6003c40100d9d8, type: 3}
+  _preview:
+    _prefabAsset: {fileID: 2331212737179214396, guid: 32e4cd6f8ffbbcb40a6003c40100d9d8, type: 3}
+    _texture: {fileID: 0}
+    _yaw: 0
+    _pitch: 0
+  _sceneToObjectGroup:
+    _serializedKeys: []
+    _serializedValues: []
+  _spawnGuideTransformTRS:
+    _position: {x: 0, y: 0, z: 0}
+    _rotation: {x: 0, y: -0, z: -0, w: 1}
+    _scale: {x: 1, y: 1, z: 1}
+  _modularSnapVerticalStep: 0
+  _surfaceSnapAppliedOffsetFromSurface: 0
+  _tags: 0
+  _modelSize: {x: 0.5552225, y: 0.053, z: 0.1}
+  _uiSelected: 0
+--- !u!114 &-2405369064526880676
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7bfdaf7f2c4c1d04580d676ed3717f21, type: 3}
+  m_Name: Cave_Lair_Cave_Stone_Rock_Bedrock_Open_03_Atlased
+  m_EditorClassIdentifier: 
+  _guid:
+    _guidString: 518a6daa-b1cf-4e49-b80b-d652935ab90d
+  _prefabAsset: {fileID: 5885677985476955529, guid: f8a52c6a022b0f342ba86840800dd7a1, type: 3}
+  _preview:
+    _prefabAsset: {fileID: 5885677985476955529, guid: f8a52c6a022b0f342ba86840800dd7a1, type: 3}
+    _texture: {fileID: 0}
+    _yaw: 0
+    _pitch: 0
+  _sceneToObjectGroup:
+    _serializedKeys: []
+    _serializedValues: []
+  _spawnGuideTransformTRS:
+    _position: {x: 0, y: 0, z: 0}
+    _rotation: {x: 0, y: -0, z: -0, w: 1}
+    _scale: {x: 1, y: 1, z: 1}
+  _modularSnapVerticalStep: 0
+  _surfaceSnapAppliedOffsetFromSurface: 0
+  _tags: 0
+  _modelSize: {x: 11.960538, y: 1.476616, z: 10.410432}
+  _uiSelected: 0
+--- !u!114 &-2382216627130824813
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7bfdaf7f2c4c1d04580d676ed3717f21, type: 3}
+  m_Name: Cave_Lair_Wooden_Timber_Wagon_Wheel_Junk_01_Atlased
+  m_EditorClassIdentifier: 
+  _guid:
+    _guidString: d66b7de5-8c9a-4017-b4c6-5031762df0d9
+  _prefabAsset: {fileID: 279571627270051292, guid: 91b079884a52d2a40a37192966514a46, type: 3}
+  _preview:
+    _prefabAsset: {fileID: 279571627270051292, guid: 91b079884a52d2a40a37192966514a46, type: 3}
+    _texture: {fileID: 0}
+    _yaw: 0
+    _pitch: 0
+  _sceneToObjectGroup:
+    _serializedKeys: []
+    _serializedValues: []
+  _spawnGuideTransformTRS:
+    _position: {x: 0, y: 0, z: 0}
+    _rotation: {x: 0, y: -0, z: -0, w: 1}
+    _scale: {x: 1, y: 1, z: 1}
+  _modularSnapVerticalStep: 0
+  _surfaceSnapAppliedOffsetFromSurface: 0
+  _tags: 0
+  _modelSize: {x: 0.924075, y: 0.924075, z: 0.102265805}
+  _uiSelected: 0
+--- !u!114 &-2249816376170106440
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7bfdaf7f2c4c1d04580d676ed3717f21, type: 3}
+  m_Name: Cave_Lair_Weapon_Wooden_Timber_Spear_02_Atlased
+  m_EditorClassIdentifier: 
+  _guid:
+    _guidString: 368d2a0c-9ed3-4f04-8140-07a3e93430f6
+  _prefabAsset: {fileID: 7040015848032583762, guid: 769960b4028488c4abb93e3eee02a2d5, type: 3}
+  _preview:
+    _prefabAsset: {fileID: 7040015848032583762, guid: 769960b4028488c4abb93e3eee02a2d5, type: 3}
+    _texture: {fileID: 0}
+    _yaw: 0
+    _pitch: 0
+  _sceneToObjectGroup:
+    _serializedKeys: []
+    _serializedValues: []
+  _spawnGuideTransformTRS:
+    _position: {x: 0, y: 0, z: 0}
+    _rotation: {x: 0, y: -0, z: -0, w: 1}
+    _scale: {x: 1, y: 1, z: 1}
+  _modularSnapVerticalStep: 0
+  _surfaceSnapAppliedOffsetFromSurface: 0
+  _tags: 0
+  _modelSize: {x: 0.0417072, y: 1.880841, z: 0.04293228}
+  _uiSelected: 0
+--- !u!114 &-1945674745247207548
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7bfdaf7f2c4c1d04580d676ed3717f21, type: 3}
+  m_Name: Cave_Lair_Mining_Cart_Base_w_Wheel_Metal_01_Atlased
+  m_EditorClassIdentifier: 
+  _guid:
+    _guidString: fc7ceeb8-7b3c-4837-b6a3-e3df3ccc638d
+  _prefabAsset: {fileID: 8694790313657276243, guid: e933e5790a39d0145b706086fa4bcc37, type: 3}
+  _preview:
+    _prefabAsset: {fileID: 8694790313657276243, guid: e933e5790a39d0145b706086fa4bcc37, type: 3}
+    _texture: {fileID: 0}
+    _yaw: 0
+    _pitch: 0
+  _sceneToObjectGroup:
+    _serializedKeys: []
+    _serializedValues: []
+  _spawnGuideTransformTRS:
+    _position: {x: 0, y: 0, z: 0}
+    _rotation: {x: 0, y: -0, z: -0, w: 1}
+    _scale: {x: 1, y: 1, z: 1}
+  _modularSnapVerticalStep: 0
+  _surfaceSnapAppliedOffsetFromSurface: 0
+  _tags: 0
+  _modelSize: {x: 1.4988618, y: 0.740756, z: 0.669553}
+  _uiSelected: 0
+--- !u!114 &-1922740186876767429
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7bfdaf7f2c4c1d04580d676ed3717f21, type: 3}
+  m_Name: Cave_Lair_Rope_Short_01_Atlased
+  m_EditorClassIdentifier: 
+  _guid:
+    _guidString: d5a287c6-5712-46ed-8abf-8a0426e48057
+  _prefabAsset: {fileID: 8688159827031497700, guid: 532cae962e4ac72419e117a624d89829, type: 3}
+  _preview:
+    _prefabAsset: {fileID: 8688159827031497700, guid: 532cae962e4ac72419e117a624d89829, type: 3}
+    _texture: {fileID: 0}
+    _yaw: 0
+    _pitch: 0
+  _sceneToObjectGroup:
+    _serializedKeys: []
+    _serializedValues: []
+  _spawnGuideTransformTRS:
+    _position: {x: 0, y: 0, z: 0}
+    _rotation: {x: 0, y: -0, z: -0, w: 1}
+    _scale: {x: 1, y: 1, z: 1}
+  _modularSnapVerticalStep: 0
+  _surfaceSnapAppliedOffsetFromSurface: 0
+  _tags: 0
+  _modelSize: {x: 3.729956, y: 0.4013572, z: 0.1340872}
+  _uiSelected: 0
+--- !u!114 &-1901791506705824670
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7bfdaf7f2c4c1d04580d676ed3717f21, type: 3}
+  m_Name: Cave_Lair_Cave_Stone_Rock_Hanging_Spike_01_Atlased
+  m_EditorClassIdentifier: 
+  _guid:
+    _guidString: fae4e357-7d79-44a9-bd9b-ac0bcd2f9cdf
+  _prefabAsset: {fileID: 7349740103005670657, guid: 3b2a1f3bb32acd74f8fe94e0c666e9a3, type: 3}
+  _preview:
+    _prefabAsset: {fileID: 7349740103005670657, guid: 3b2a1f3bb32acd74f8fe94e0c666e9a3, type: 3}
+    _texture: {fileID: 0}
+    _yaw: 0
+    _pitch: 0
+  _sceneToObjectGroup:
+    _serializedKeys: []
+    _serializedValues: []
+  _spawnGuideTransformTRS:
+    _position: {x: 0, y: 0, z: 0}
+    _rotation: {x: 0, y: -0, z: -0, w: 1}
+    _scale: {x: 1, y: 1, z: 1}
+  _modularSnapVerticalStep: 0
+  _surfaceSnapAppliedOffsetFromSurface: 0
+  _tags: 0
+  _modelSize: {x: 2.664156, y: 4.759455, z: 2.595516}
+  _uiSelected: 0
+--- !u!114 &-1893482640260661544
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7bfdaf7f2c4c1d04580d676ed3717f21, type: 3}
+  m_Name: Cave_Lair_Cave_Stone_Rock_Stalagmite_01_Atlased
+  m_EditorClassIdentifier: 
+  _guid:
+    _guidString: ec4c555e-7478-4051-9ccf-6e2f07fa8484
+  _prefabAsset: {fileID: 5061512179865167827, guid: 2b21c02f464aa8f45b51e04383fa0718, type: 3}
+  _preview:
+    _prefabAsset: {fileID: 5061512179865167827, guid: 2b21c02f464aa8f45b51e04383fa0718, type: 3}
+    _texture: {fileID: 0}
+    _yaw: 0
+    _pitch: 0
+  _sceneToObjectGroup:
+    _serializedKeys: []
+    _serializedValues: []
+  _spawnGuideTransformTRS:
+    _position: {x: 0, y: 0, z: 0}
+    _rotation: {x: 0, y: -0, z: -0, w: 1}
+    _scale: {x: 1, y: 1, z: 1}
+  _modularSnapVerticalStep: 0
+  _surfaceSnapAppliedOffsetFromSurface: 0
+  _tags: 0
+  _modelSize: {x: 1.749858, y: 3.089383, z: 1.6802382}
+  _uiSelected: 0
+--- !u!114 &-1861463555465230778
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7bfdaf7f2c4c1d04580d676ed3717f21, type: 3}
+  m_Name: Cave_Lair_Wooden_Timber_Metal_Hull_Broken_Junk_01_Atlased
+  m_EditorClassIdentifier: 
+  _guid:
+    _guidString: b1656f53-883f-4243-9db6-1b6430a375e6
+  _prefabAsset: {fileID: 4564336837760579668, guid: 2ae516631ec9a9c41acbb6fd96f29f4d, type: 3}
+  _preview:
+    _prefabAsset: {fileID: 4564336837760579668, guid: 2ae516631ec9a9c41acbb6fd96f29f4d, type: 3}
+    _texture: {fileID: 0}
+    _yaw: 0
+    _pitch: 0
+  _sceneToObjectGroup:
+    _serializedKeys: []
+    _serializedValues: []
+  _spawnGuideTransformTRS:
+    _position: {x: 0, y: 0, z: 0}
+    _rotation: {x: 0, y: -0, z: -0, w: 1}
+    _scale: {x: 1, y: 1, z: 1}
+  _modularSnapVerticalStep: 0
+  _surfaceSnapAppliedOffsetFromSurface: 0
+  _tags: 0
+  _modelSize: {x: 3.484776, y: 5.646602, z: 1.190006}
+  _uiSelected: 0
+--- !u!114 &-1753182708956447504
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7bfdaf7f2c4c1d04580d676ed3717f21, type: 3}
+  m_Name: Cave_Lair_Cave_Stone_Block_Eroded_03_Atlased
+  m_EditorClassIdentifier: 
+  _guid:
+    _guidString: 2d7cccd8-f6a6-415a-8460-630d5e085c55
+  _prefabAsset: {fileID: 8039665812648609213, guid: d322d570ba8efd04d96f5909c85f9975, type: 3}
+  _preview:
+    _prefabAsset: {fileID: 8039665812648609213, guid: d322d570ba8efd04d96f5909c85f9975, type: 3}
+    _texture: {fileID: 0}
+    _yaw: 0
+    _pitch: 0
+  _sceneToObjectGroup:
+    _serializedKeys: []
+    _serializedValues: []
+  _spawnGuideTransformTRS:
+    _position: {x: 0, y: 0, z: 0}
+    _rotation: {x: 0, y: -0, z: -0, w: 1}
+    _scale: {x: 1, y: 1, z: 1}
+  _modularSnapVerticalStep: 0
+  _surfaceSnapAppliedOffsetFromSurface: 0
+  _tags: 0
+  _modelSize: {x: 3.270692, y: 3.213112, z: 2.015922}
+  _uiSelected: 0
+--- !u!114 &-1690283244368852499
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7bfdaf7f2c4c1d04580d676ed3717f21, type: 3}
+  m_Name: Cave_Lair_Rail_Road_Track_Straight_Intersection_01_Atlased
+  m_EditorClassIdentifier: 
+  _guid:
+    _guidString: 3fd5fba6-6a46-4297-a148-8927e2731a15
+  _prefabAsset: {fileID: 5010221868183685380, guid: 214bfe8d6865f6d4ebf6d39d95a1159a, type: 3}
+  _preview:
+    _prefabAsset: {fileID: 5010221868183685380, guid: 214bfe8d6865f6d4ebf6d39d95a1159a, type: 3}
+    _texture: {fileID: 0}
+    _yaw: 0
+    _pitch: 0
+  _sceneToObjectGroup:
+    _serializedKeys: []
+    _serializedValues: []
+  _spawnGuideTransformTRS:
+    _position: {x: 0, y: 0, z: 0}
+    _rotation: {x: 0, y: -0, z: -0, w: 1}
+    _scale: {x: 1, y: 1, z: 1}
+  _modularSnapVerticalStep: 0
+  _surfaceSnapAppliedOffsetFromSurface: 0
+  _tags: 0
+  _modelSize: {x: 2, y: 0.09999999, z: 2}
+  _uiSelected: 0
+--- !u!114 &-1589983079819272963
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7bfdaf7f2c4c1d04580d676ed3717f21, type: 3}
+  m_Name: Cave_Lair_Metal_Chain_Hanging_01_Atlased
+  m_EditorClassIdentifier: 
+  _guid:
+    _guidString: 54e843ff-39eb-41fa-abd9-a5af6a453de1
+  _prefabAsset: {fileID: 3275710992678715793, guid: edb251cd9696f8a4fac045aa8bfe8d53, type: 3}
+  _preview:
+    _prefabAsset: {fileID: 3275710992678715793, guid: edb251cd9696f8a4fac045aa8bfe8d53, type: 3}
+    _texture: {fileID: 0}
+    _yaw: 0
+    _pitch: 0
+  _sceneToObjectGroup:
+    _serializedKeys: []
+    _serializedValues: []
+  _spawnGuideTransformTRS:
+    _position: {x: 0, y: 0, z: 0}
+    _rotation: {x: 0, y: -0, z: -0, w: 1}
+    _scale: {x: 1, y: 1, z: 1}
+  _modularSnapVerticalStep: 0
+  _surfaceSnapAppliedOffsetFromSurface: 0
+  _tags: 0
+  _modelSize: {x: 1.2374735, y: 0.336417, z: 0.09927688}
+  _uiSelected: 0
+--- !u!114 &-1564744319045615741
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7bfdaf7f2c4c1d04580d676ed3717f21, type: 3}
+  m_Name: Cave_Lair_Vegetation_Swamp_Mushroom_Large_02_Atlased
+  m_EditorClassIdentifier: 
+  _guid:
+    _guidString: 1bb443fe-3f8f-4b5e-8936-bce28337da74
+  _prefabAsset: {fileID: 2749872037342144354, guid: c79713eb2b2e3b74b8b1c6491bdcd23c, type: 3}
+  _preview:
+    _prefabAsset: {fileID: 2749872037342144354, guid: c79713eb2b2e3b74b8b1c6491bdcd23c, type: 3}
+    _texture: {fileID: 0}
+    _yaw: 0
+    _pitch: 0
+  _sceneToObjectGroup:
+    _serializedKeys: []
+    _serializedValues: []
+  _spawnGuideTransformTRS:
+    _position: {x: 0, y: 0, z: 0}
+    _rotation: {x: 0, y: -0, z: -0, w: 1}
+    _scale: {x: 1, y: 1, z: 1}
+  _modularSnapVerticalStep: 0
+  _surfaceSnapAppliedOffsetFromSurface: 0
+  _tags: 0
+  _modelSize: {x: 3.846412, y: 0.3963244, z: 4.176232}
+  _uiSelected: 0
+--- !u!114 &-1485072546955770200
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7bfdaf7f2c4c1d04580d676ed3717f21, type: 3}
+  m_Name: Cave_Lair_Cave_Stone_Rock_Bedrock_02_Atlased
+  m_EditorClassIdentifier: 
+  _guid:
+    _guidString: 55d26695-abdd-487d-8b04-987c310cb793
+  _prefabAsset: {fileID: 2795500649483958308, guid: 652bd00b70af08f4f91ea7f99bfbbf31, type: 3}
+  _preview:
+    _prefabAsset: {fileID: 2795500649483958308, guid: 652bd00b70af08f4f91ea7f99bfbbf31, type: 3}
+    _texture: {fileID: 0}
+    _yaw: 0
+    _pitch: 0
+  _sceneToObjectGroup:
+    _serializedKeys: []
+    _serializedValues: []
+  _spawnGuideTransformTRS:
+    _position: {x: 0, y: 0, z: 0}
+    _rotation: {x: 0, y: -0, z: -0, w: 1}
+    _scale: {x: 1, y: 1, z: 1}
+  _modularSnapVerticalStep: 0
+  _surfaceSnapAppliedOffsetFromSurface: 0
+  _tags: 0
+  _modelSize: {x: 17.809147, y: 6.470948, z: 34.7756}
+  _uiSelected: 0
+--- !u!114 &-1446521363605532947
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7bfdaf7f2c4c1d04580d676ed3717f21, type: 3}
+  m_Name: Cave_Lair_Cave_Stone_Rock_Bedrock_01_Atlased
+  m_EditorClassIdentifier: 
+  _guid:
+    _guidString: 5130c691-9840-4a25-bbce-77041124854e
+  _prefabAsset: {fileID: 5050465785397970120, guid: 252754b54f6bc6b4c872c77424645fb9, type: 3}
+  _preview:
+    _prefabAsset: {fileID: 5050465785397970120, guid: 252754b54f6bc6b4c872c77424645fb9, type: 3}
+    _texture: {fileID: 0}
+    _yaw: 0
+    _pitch: 0
+  _sceneToObjectGroup:
+    _serializedKeys: []
+    _serializedValues: []
+  _spawnGuideTransformTRS:
+    _position: {x: 0, y: 0, z: 0}
+    _rotation: {x: 0, y: -0, z: -0, w: 1}
+    _scale: {x: 1, y: 1, z: 1}
+  _modularSnapVerticalStep: 0
+  _surfaceSnapAppliedOffsetFromSurface: 0
+  _tags: 0
+  _modelSize: {x: 25.15658, y: 5.785844, z: 44.99716}
+  _uiSelected: 0
+--- !u!114 &-990507394555172235
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7bfdaf7f2c4c1d04580d676ed3717f21, type: 3}
+  m_Name: Cave_Lair_Cave_Stone_Rock_Spire_03_Atlased
+  m_EditorClassIdentifier: 
+  _guid:
+    _guidString: a9fb4b1e-e09a-435b-bcdb-f8948d73b0a4
+  _prefabAsset: {fileID: 8617552846574427526, guid: 6e4fbcd95f21e56458e3401121d621e8, type: 3}
+  _preview:
+    _prefabAsset: {fileID: 8617552846574427526, guid: 6e4fbcd95f21e56458e3401121d621e8, type: 3}
+    _texture: {fileID: 0}
+    _yaw: 0
+    _pitch: 0
+  _sceneToObjectGroup:
+    _serializedKeys: []
+    _serializedValues: []
+  _spawnGuideTransformTRS:
+    _position: {x: 0, y: 0, z: 0}
+    _rotation: {x: 0, y: -0, z: -0, w: 1}
+    _scale: {x: 1, y: 1, z: 1}
+  _modularSnapVerticalStep: 0
+  _surfaceSnapAppliedOffsetFromSurface: 0
+  _tags: 0
+  _modelSize: {x: 6.583676, y: 13.0623, z: 4.493732}
+  _uiSelected: 0
+--- !u!114 &-851223218330807902
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7bfdaf7f2c4c1d04580d676ed3717f21, type: 3}
+  m_Name: Cave_Lair_Mining_Cart_Bucket_Metal_01_Atlased
+  m_EditorClassIdentifier: 
+  _guid:
+    _guidString: 4d2a778b-466f-4eb4-af53-945d34bdf6cc
+  _prefabAsset: {fileID: 6460984269266234224, guid: 4bc53774c22aa7447a0c013da5b79fce, type: 3}
+  _preview:
+    _prefabAsset: {fileID: 6460984269266234224, guid: 4bc53774c22aa7447a0c013da5b79fce, type: 3}
+    _texture: {fileID: 0}
+    _yaw: 0
+    _pitch: 0
+  _sceneToObjectGroup:
+    _serializedKeys: []
+    _serializedValues: []
+  _spawnGuideTransformTRS:
+    _position: {x: 0, y: 0, z: 0}
+    _rotation: {x: 0, y: -0, z: -0, w: 1}
+    _scale: {x: 1, y: 1, z: 1}
+  _modularSnapVerticalStep: 0
+  _surfaceSnapAppliedOffsetFromSurface: 0
+  _tags: 0
+  _modelSize: {x: 1.3252246, y: 0.5383939, z: 0.775099}
+  _uiSelected: 0
+--- !u!114 &-404562245356217137
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7bfdaf7f2c4c1d04580d676ed3717f21, type: 3}
+  m_Name: Cave_Lair_Rail_Road_Track_Corner_Small_01_Atlased
+  m_EditorClassIdentifier: 
+  _guid:
+    _guidString: bc810469-d9b7-406c-8644-6514b6e7c26e
+  _prefabAsset: {fileID: 7989089908157551896, guid: 521531ea7d58f4f4aad45ff6375925dc, type: 3}
+  _preview:
+    _prefabAsset: {fileID: 7989089908157551896, guid: 521531ea7d58f4f4aad45ff6375925dc, type: 3}
+    _texture: {fileID: 0}
+    _yaw: 0
+    _pitch: 0
+  _sceneToObjectGroup:
+    _serializedKeys: []
+    _serializedValues: []
+  _spawnGuideTransformTRS:
+    _position: {x: 0, y: 0, z: 0}
+    _rotation: {x: 0, y: -0, z: -0, w: 1}
+    _scale: {x: 1, y: 1, z: 1}
+  _modularSnapVerticalStep: 0
+  _surfaceSnapAppliedOffsetFromSurface: 0
+  _tags: 0
+  _modelSize: {x: 1.3961515, y: 0.09999999, z: 1.3961515}
+  _uiSelected: 0
+--- !u!114 &-370297970475697251
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7bfdaf7f2c4c1d04580d676ed3717f21, type: 3}
+  m_Name: Cave_Lair_Wooden_Timber_Suspension_Bridge_01_Atlased
+  m_EditorClassIdentifier: 
+  _guid:
+    _guidString: 305de835-6ff9-415a-9892-89bc7971b9fc
+  _prefabAsset: {fileID: 4404971455476422777, guid: 97d4fb169340f834485564c9e7a7b2f4, type: 3}
+  _preview:
+    _prefabAsset: {fileID: 4404971455476422777, guid: 97d4fb169340f834485564c9e7a7b2f4, type: 3}
+    _texture: {fileID: 0}
+    _yaw: 0
+    _pitch: 0
+  _sceneToObjectGroup:
+    _serializedKeys: []
+    _serializedValues: []
+  _spawnGuideTransformTRS:
+    _position: {x: 0, y: 0, z: 0}
+    _rotation: {x: 0, y: -0, z: -0, w: 1}
+    _scale: {x: 1, y: 1, z: 1}
+  _modularSnapVerticalStep: 0
+  _surfaceSnapAppliedOffsetFromSurface: 0
+  _tags: 0
+  _modelSize: {x: 14.076742, y: 3.000737, z: 3.990772}
+  _uiSelected: 0
+--- !u!114 &-301300203821941623
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7bfdaf7f2c4c1d04580d676ed3717f21, type: 3}
+  m_Name: Cave_Lair_Cave_Stone_Rock_Stalagmite_03_Atlased
+  m_EditorClassIdentifier: 
+  _guid:
+    _guidString: 45cba14f-2235-461d-b9de-89dbd0abcb1b
+  _prefabAsset: {fileID: 6073606612901849364, guid: aac7b1981b6ab7e42a981f5f103e4a1d, type: 3}
+  _preview:
+    _prefabAsset: {fileID: 6073606612901849364, guid: aac7b1981b6ab7e42a981f5f103e4a1d, type: 3}
+    _texture: {fileID: 0}
+    _yaw: 0
+    _pitch: 0
+  _sceneToObjectGroup:
+    _serializedKeys: []
+    _serializedValues: []
+  _spawnGuideTransformTRS:
+    _position: {x: 0, y: 0, z: 0}
+    _rotation: {x: 0, y: -0, z: -0, w: 1}
+    _scale: {x: 1, y: 1, z: 1}
+  _modularSnapVerticalStep: 0
+  _surfaceSnapAppliedOffsetFromSurface: 0
+  _tags: 0
+  _modelSize: {x: 1.8900356, y: 2.978917, z: 2.28064}
+  _uiSelected: 0
+--- !u!114 &-290755490393099612
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7bfdaf7f2c4c1d04580d676ed3717f21, type: 3}
+  m_Name: Cave_Lair_Wooden_Timber_Fence_Corner_Small_01_Atlased
+  m_EditorClassIdentifier: 
+  _guid:
+    _guidString: 445b5183-a481-4508-9e7c-80390b69b1dd
+  _prefabAsset: {fileID: 5340865851381801370, guid: d651d154d27b059489047e9d8e287d69, type: 3}
+  _preview:
+    _prefabAsset: {fileID: 5340865851381801370, guid: d651d154d27b059489047e9d8e287d69, type: 3}
+    _texture: {fileID: 0}
+    _yaw: 0
+    _pitch: 0
+  _sceneToObjectGroup:
+    _serializedKeys: []
+    _serializedValues: []
+  _spawnGuideTransformTRS:
+    _position: {x: 0, y: 0, z: 0}
+    _rotation: {x: 0, y: -0, z: -0, w: 1}
+    _scale: {x: 1, y: 1, z: 1}
+  _modularSnapVerticalStep: 0
+  _surfaceSnapAppliedOffsetFromSurface: 0
+  _tags: 0
+  _modelSize: {x: 1.725, y: 1.124649, z: 1.725}
+  _uiSelected: 0
+--- !u!114 &-231134516157454438
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7bfdaf7f2c4c1d04580d676ed3717f21, type: 3}
+  m_Name: Cave_Lair_Wooden_Timber_Fence_Broken_02_Atlased
+  m_EditorClassIdentifier: 
+  _guid:
+    _guidString: a52923b3-a280-4b7c-aee0-6ac740539e52
+  _prefabAsset: {fileID: 9165211249660672217, guid: 4d3d65951e802fd4f92669c5c976eaf5, type: 3}
+  _preview:
+    _prefabAsset: {fileID: 9165211249660672217, guid: 4d3d65951e802fd4f92669c5c976eaf5, type: 3}
+    _texture: {fileID: 0}
+    _yaw: 0
+    _pitch: 0
+  _sceneToObjectGroup:
+    _serializedKeys: []
+    _serializedValues: []
+  _spawnGuideTransformTRS:
+    _position: {x: 0, y: 0, z: 0}
+    _rotation: {x: 0, y: -0, z: -0, w: 1}
+    _scale: {x: 1, y: 1, z: 1}
+  _modularSnapVerticalStep: 0
+  _surfaceSnapAppliedOffsetFromSurface: 0
+  _tags: 0
+  _modelSize: {x: 1.4276674, y: 1.1504238, z: 0.14999907}
+  _uiSelected: 0
+--- !u!114 &-130838807325720335
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7bfdaf7f2c4c1d04580d676ed3717f21, type: 3}
+  m_Name: Cave_Lair_Vegetation_Swamp_Tree_Foliage_Willow_01_Atlased
+  m_EditorClassIdentifier: 
+  _guid:
+    _guidString: a0174be9-eaa7-4afc-8fbc-46985ccbd0e3
+  _prefabAsset: {fileID: 6103412310266340899, guid: 9b708fd0135436e43a8e8f6d6b623e6b, type: 3}
+  _preview:
+    _prefabAsset: {fileID: 6103412310266340899, guid: 9b708fd0135436e43a8e8f6d6b623e6b, type: 3}
+    _texture: {fileID: 0}
+    _yaw: 0
+    _pitch: 0
+  _sceneToObjectGroup:
+    _serializedKeys: []
+    _serializedValues: []
+  _spawnGuideTransformTRS:
+    _position: {x: 0, y: 0, z: 0}
+    _rotation: {x: 0, y: -0, z: -0, w: 1}
+    _scale: {x: 1, y: 1, z: 1}
+  _modularSnapVerticalStep: 0
+  _surfaceSnapAppliedOffsetFromSurface: 0
+  _tags: 0
+  _modelSize: {x: 0.9365938, y: 3.344142, z: 0.7377368}
+  _uiSelected: 0
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8d27d60231fbfd54a8dd0a2b498f7841, type: 3}
+  m_Name: HondonWall
+  m_EditorClassIdentifier: 
+  _profileName: HondonWall
+  _libs:
+  - {fileID: -8348622757258152644}
+--- !u!114 &57166630331703775
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7bfdaf7f2c4c1d04580d676ed3717f21, type: 3}
+  m_Name: Cave_Lair_Wooden_Timber_Plank_03_Atlased
+  m_EditorClassIdentifier: 
+  _guid:
+    _guidString: 6dd88ca0-ee37-4843-af25-2e3d6b016cdd
+  _prefabAsset: {fileID: 6508450560820276605, guid: 91261840d5e932742885254df87e3f21, type: 3}
+  _preview:
+    _prefabAsset: {fileID: 6508450560820276605, guid: 91261840d5e932742885254df87e3f21, type: 3}
+    _texture: {fileID: 0}
+    _yaw: 0
+    _pitch: 0
+  _sceneToObjectGroup:
+    _serializedKeys: []
+    _serializedValues: []
+  _spawnGuideTransformTRS:
+    _position: {x: 0, y: 0, z: 0}
+    _rotation: {x: 0, y: -0, z: -0, w: 1}
+    _scale: {x: 1, y: 1, z: 1}
+  _modularSnapVerticalStep: 0
+  _surfaceSnapAppliedOffsetFromSurface: 0
+  _tags: 0
+  _modelSize: {x: 0.18150835, y: 1.387818, z: 0.04679228}
+  _uiSelected: 0
+--- !u!114 &244678518967822236
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7bfdaf7f2c4c1d04580d676ed3717f21, type: 3}
+  m_Name: Cave_Lair_Rail_Road_Track_Curved_Incline_01_Atlased
+  m_EditorClassIdentifier: 
+  _guid:
+    _guidString: 42181d42-366f-4d2e-bb84-18867ea889a2
+  _prefabAsset: {fileID: 926909446369836227, guid: 61d4e65fa5f322f47827184ec9099b98, type: 3}
+  _preview:
+    _prefabAsset: {fileID: 926909446369836227, guid: 61d4e65fa5f322f47827184ec9099b98, type: 3}
+    _texture: {fileID: 0}
+    _yaw: 0
+    _pitch: 0
+  _sceneToObjectGroup:
+    _serializedKeys: []
+    _serializedValues: []
+  _spawnGuideTransformTRS:
+    _position: {x: 0, y: 0, z: 0}
+    _rotation: {x: 0, y: -0, z: -0, w: 1}
+    _scale: {x: 1, y: 1, z: 1}
+  _modularSnapVerticalStep: 0
+  _surfaceSnapAppliedOffsetFromSurface: 0
+  _tags: 0
+  _modelSize: {x: 2, y: 1.1, z: 0.8}
+  _uiSelected: 0
+--- !u!114 &384645782399518028
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7bfdaf7f2c4c1d04580d676ed3717f21, type: 3}
+  m_Name: Cave_Lair_Cave_Stone_Rock_Speleothem_Small_01_Atlased
+  m_EditorClassIdentifier: 
+  _guid:
+    _guidString: 34c31bf9-5038-41bf-8ca5-d3a5a3e904ae
+  _prefabAsset: {fileID: 2503140112638422443, guid: f1ca81260f970f04c8f38a0a5159209f, type: 3}
+  _preview:
+    _prefabAsset: {fileID: 2503140112638422443, guid: f1ca81260f970f04c8f38a0a5159209f, type: 3}
+    _texture: {fileID: 0}
+    _yaw: 0
+    _pitch: 0
+  _sceneToObjectGroup:
+    _serializedKeys: []
+    _serializedValues: []
+  _spawnGuideTransformTRS:
+    _position: {x: 0, y: 0, z: 0}
+    _rotation: {x: 0, y: -0, z: -0, w: 1}
+    _scale: {x: 1, y: 1, z: 1}
+  _modularSnapVerticalStep: 0
+  _surfaceSnapAppliedOffsetFromSurface: 0
+  _tags: 0
+  _modelSize: {x: 7.141612, y: 2.123893, z: 5.728646}
+  _uiSelected: 0
+--- !u!114 &640093907001549171
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7bfdaf7f2c4c1d04580d676ed3717f21, type: 3}
+  m_Name: Cave_Lair_Weapon_Stone_Spear_Flint_02_Atlased
+  m_EditorClassIdentifier: 
+  _guid:
+    _guidString: b9176f79-2619-4169-886d-789ccf248bc3
+  _prefabAsset: {fileID: 4255775066002992604, guid: c81b1c866fbfc3d4f978c750cbca9dcb, type: 3}
+  _preview:
+    _prefabAsset: {fileID: 4255775066002992604, guid: c81b1c866fbfc3d4f978c750cbca9dcb, type: 3}
+    _texture: {fileID: 0}
+    _yaw: 0
+    _pitch: 0
+  _sceneToObjectGroup:
+    _serializedKeys: []
+    _serializedValues: []
+  _spawnGuideTransformTRS:
+    _position: {x: 0, y: 0, z: 0}
+    _rotation: {x: 0, y: -0, z: -0, w: 1}
+    _scale: {x: 1, y: 1, z: 1}
+  _modularSnapVerticalStep: 0
+  _surfaceSnapAppliedOffsetFromSurface: 0
+  _tags: 0
+  _modelSize: {x: 0.12703001, y: 1.871292, z: 0.0814}
+  _uiSelected: 0
+--- !u!114 &1026656571786562885
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7bfdaf7f2c4c1d04580d676ed3717f21, type: 3}
+  m_Name: Cave_Lair_Wooden_Timber_Ladder_01_Atlased
+  m_EditorClassIdentifier: 
+  _guid:
+    _guidString: 282ee6ab-3b4c-4d07-82ec-d6e0b3c9039c
+  _prefabAsset: {fileID: 945743657293150788, guid: cf17e936e1bd6c4489d01a9677abc4cf, type: 3}
+  _preview:
+    _prefabAsset: {fileID: 945743657293150788, guid: cf17e936e1bd6c4489d01a9677abc4cf, type: 3}
+    _texture: {fileID: 0}
+    _yaw: 0
+    _pitch: 0
+  _sceneToObjectGroup:
+    _serializedKeys: []
+    _serializedValues: []
+  _spawnGuideTransformTRS:
+    _position: {x: 0, y: 0, z: 0}
+    _rotation: {x: 0, y: -0, z: -0, w: 1}
+    _scale: {x: 1, y: 1, z: 1}
+  _modularSnapVerticalStep: 0
+  _surfaceSnapAppliedOffsetFromSurface: 0
+  _tags: 0
+  _modelSize: {x: 0.5448266, y: 1.856617, z: 0.12045796}
+  _uiSelected: 0
+--- !u!114 &1225652913784186968
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7bfdaf7f2c4c1d04580d676ed3717f21, type: 3}
+  m_Name: Cave_Lair_Metal_Chain_Anchor_Eyelet_01_Atlased
+  m_EditorClassIdentifier: 
+  _guid:
+    _guidString: ddfc396d-ceb8-4051-b468-5519388b2616
+  _prefabAsset: {fileID: 258810338921168445, guid: 3a9dc3ea33550f04d81560011022a7d0, type: 3}
+  _preview:
+    _prefabAsset: {fileID: 258810338921168445, guid: 3a9dc3ea33550f04d81560011022a7d0, type: 3}
+    _texture: {fileID: 0}
+    _yaw: 0
+    _pitch: 0
+  _sceneToObjectGroup:
+    _serializedKeys: []
+    _serializedValues: []
+  _spawnGuideTransformTRS:
+    _position: {x: 0, y: 0, z: 0}
+    _rotation: {x: 0, y: -0, z: -0, w: 1}
+    _scale: {x: 1, y: 1, z: 1}
+  _modularSnapVerticalStep: 0
+  _surfaceSnapAppliedOffsetFromSurface: 0
+  _tags: 0
+  _modelSize: {x: 0.1716399, y: 0.1576, z: 0.144}
+  _uiSelected: 0
+--- !u!114 &1377413841823561105
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7bfdaf7f2c4c1d04580d676ed3717f21, type: 3}
+  m_Name: Cave_Lair_Wooden_Timber_Fence_Broken_01_Atlased
+  m_EditorClassIdentifier: 
+  _guid:
+    _guidString: a78c67bb-dce0-4f5b-8b2f-acbcaa1a766a
+  _prefabAsset: {fileID: 2862738620280381148, guid: 1f1d674cf0fd7c94d9fba8a2588e74cb, type: 3}
+  _preview:
+    _prefabAsset: {fileID: 2862738620280381148, guid: 1f1d674cf0fd7c94d9fba8a2588e74cb, type: 3}
+    _texture: {fileID: 0}
+    _yaw: 0
+    _pitch: 0
+  _sceneToObjectGroup:
+    _serializedKeys: []
+    _serializedValues: []
+  _spawnGuideTransformTRS:
+    _position: {x: 0, y: 0, z: 0}
+    _rotation: {x: 0, y: -0, z: -0, w: 1}
+    _scale: {x: 1, y: 1, z: 1}
+  _modularSnapVerticalStep: 0
+  _surfaceSnapAppliedOffsetFromSurface: 0
+  _tags: 0
+  _modelSize: {x: 1.4572291, y: 1.138329, z: 0.14494303}
+  _uiSelected: 0
+--- !u!114 &1509498672504702291
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7bfdaf7f2c4c1d04580d676ed3717f21, type: 3}
+  m_Name: Cave_Lair_Cave_Stone_Rock_Stalagmite_04_Atlased
+  m_EditorClassIdentifier: 
+  _guid:
+    _guidString: b6aeeb7c-f905-42ae-8a11-8d39a27edb78
+  _prefabAsset: {fileID: 1198828089500046315, guid: 819d4864ec16e644996239359e1d131b, type: 3}
+  _preview:
+    _prefabAsset: {fileID: 1198828089500046315, guid: 819d4864ec16e644996239359e1d131b, type: 3}
+    _texture: {fileID: 0}
+    _yaw: 0
+    _pitch: 0
+  _sceneToObjectGroup:
+    _serializedKeys: []
+    _serializedValues: []
+  _spawnGuideTransformTRS:
+    _position: {x: 0, y: 0, z: 0}
+    _rotation: {x: 0, y: -0, z: -0, w: 1}
+    _scale: {x: 1, y: 1, z: 1}
+  _modularSnapVerticalStep: 0
+  _surfaceSnapAppliedOffsetFromSurface: 0
+  _tags: 0
+  _modelSize: {x: 1.6970336, y: 2.815354, z: 1.6279476}
+  _uiSelected: 0
+--- !u!114 &1650041487395993087
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7bfdaf7f2c4c1d04580d676ed3717f21, type: 3}
+  m_Name: Cave_Lair_Wooden_Timber_Plank_Large_01_Atlased
+  m_EditorClassIdentifier: 
+  _guid:
+    _guidString: 6b441eeb-6c20-4e47-8539-df366160bdef
+  _prefabAsset: {fileID: 1993014466006254192, guid: b46c9e23b11b553498070aa73c0c940d, type: 3}
+  _preview:
+    _prefabAsset: {fileID: 1993014466006254192, guid: b46c9e23b11b553498070aa73c0c940d, type: 3}
+    _texture: {fileID: 0}
+    _yaw: 0
+    _pitch: 0
+  _sceneToObjectGroup:
+    _serializedKeys: []
+    _serializedValues: []
+  _spawnGuideTransformTRS:
+    _position: {x: 0, y: 0, z: 0}
+    _rotation: {x: 0, y: -0, z: -0, w: 1}
+    _scale: {x: 1, y: 1, z: 1}
+  _modularSnapVerticalStep: 0
+  _surfaceSnapAppliedOffsetFromSurface: 0
+  _tags: 0
+  _modelSize: {x: 1.0129638, y: 0.103, z: 3.54629}
+  _uiSelected: 0
+--- !u!114 &1705101950666321467
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7bfdaf7f2c4c1d04580d676ed3717f21, type: 3}
+  m_Name: Cave_Lair_Wooden_Timber_Rail_Large_01_Atlased
+  m_EditorClassIdentifier: 
+  _guid:
+    _guidString: f4528f22-4aa2-4eec-923f-44cb47cd7dc1
+  _prefabAsset: {fileID: 8293450565025853004, guid: a9692849d62317e499e63f477a8f240d, type: 3}
+  _preview:
+    _prefabAsset: {fileID: 8293450565025853004, guid: a9692849d62317e499e63f477a8f240d, type: 3}
+    _texture: {fileID: 0}
+    _yaw: 0
+    _pitch: 0
+  _sceneToObjectGroup:
+    _serializedKeys: []
+    _serializedValues: []
+  _spawnGuideTransformTRS:
+    _position: {x: 0, y: 0, z: 0}
+    _rotation: {x: 0, y: -0, z: -0, w: 1}
+    _scale: {x: 1, y: 1, z: 1}
+  _modularSnapVerticalStep: 0
+  _surfaceSnapAppliedOffsetFromSurface: 0
+  _tags: 0
+  _modelSize: {x: 5.877946, y: 1.244508, z: 0.738094}
+  _uiSelected: 0
+--- !u!114 &1879540215469625564
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7bfdaf7f2c4c1d04580d676ed3717f21, type: 3}
+  m_Name: Cave_Lair_Terrain_Stone_Rock_Bridge_Large_02_Atlased
+  m_EditorClassIdentifier: 
+  _guid:
+    _guidString: 2502af34-546c-4a90-844f-d56deb342204
+  _prefabAsset: {fileID: 4063596460610821093, guid: ca404e22444939f45885493f577eb526, type: 3}
+  _preview:
+    _prefabAsset: {fileID: 4063596460610821093, guid: ca404e22444939f45885493f577eb526, type: 3}
+    _texture: {fileID: 0}
+    _yaw: 0
+    _pitch: 0
+  _sceneToObjectGroup:
+    _serializedKeys: []
+    _serializedValues: []
+  _spawnGuideTransformTRS:
+    _position: {x: 0, y: 0, z: 0}
+    _rotation: {x: 0, y: -0, z: -0, w: 1}
+    _scale: {x: 1, y: 1, z: 1}
+  _modularSnapVerticalStep: 0
+  _surfaceSnapAppliedOffsetFromSurface: 0
+  _tags: 0
+  _modelSize: {x: 34.411, y: 15.72735, z: 106.26374}
+  _uiSelected: 0
+--- !u!114 &1970345951927653630
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7bfdaf7f2c4c1d04580d676ed3717f21, type: 3}
+  m_Name: Cave_Lair_Cave_Stone_Rock_Rubble_Pile_01_Atlased
+  m_EditorClassIdentifier: 
+  _guid:
+    _guidString: c70e5f15-e0e2-48f7-868e-8e406e8ff05b
+  _prefabAsset: {fileID: 4845058964313788256, guid: 7344e0c62fafce843b77b75bbbecb99f, type: 3}
+  _preview:
+    _prefabAsset: {fileID: 4845058964313788256, guid: 7344e0c62fafce843b77b75bbbecb99f, type: 3}
+    _texture: {fileID: 0}
+    _yaw: 0
+    _pitch: 0
+  _sceneToObjectGroup:
+    _serializedKeys: []
+    _serializedValues: []
+  _spawnGuideTransformTRS:
+    _position: {x: 0, y: 0, z: 0}
+    _rotation: {x: 0, y: -0, z: -0, w: 1}
+    _scale: {x: 1, y: 1, z: 1}
+  _modularSnapVerticalStep: 0
+  _surfaceSnapAppliedOffsetFromSurface: 0
+  _tags: 0
+  _modelSize: {x: 15.371336, y: 1.617959, z: 11.236896}
+  _uiSelected: 0
+--- !u!114 &1973111703600585918
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7bfdaf7f2c4c1d04580d676ed3717f21, type: 3}
+  m_Name: Cave_Lair_Weapon_Stone_Sword_Flint_01_Atlased
+  m_EditorClassIdentifier: 
+  _guid:
+    _guidString: 76eb6592-8acf-4e7e-8ef0-efe5fd1c39c8
+  _prefabAsset: {fileID: 2297710653142930968, guid: f6d80b7f06c92424598987702571c81d, type: 3}
+  _preview:
+    _prefabAsset: {fileID: 2297710653142930968, guid: f6d80b7f06c92424598987702571c81d, type: 3}
+    _texture: {fileID: 0}
+    _yaw: 0
+    _pitch: 0
+  _sceneToObjectGroup:
+    _serializedKeys: []
+    _serializedValues: []
+  _spawnGuideTransformTRS:
+    _position: {x: 0, y: 0, z: 0}
+    _rotation: {x: 0, y: -0, z: -0, w: 1}
+    _scale: {x: 1, y: 1, z: 1}
+  _modularSnapVerticalStep: 0
+  _surfaceSnapAppliedOffsetFromSurface: 0
+  _tags: 0
+  _modelSize: {x: 0.161172, y: 1.105175, z: 0.161172}
+  _uiSelected: 0
+--- !u!114 &2061222989650302023
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7bfdaf7f2c4c1d04580d676ed3717f21, type: 3}
+  m_Name: Cave_Lair_Cave_Stone_Rock_Mineral_Spikes_01_Atlased
+  m_EditorClassIdentifier: 
+  _guid:
+    _guidString: d76ec155-eaec-463f-ba7b-486e86c4f6f2
+  _prefabAsset: {fileID: 905130411173168820, guid: b7a21ee1b5d12d342878913eb67b2af5, type: 3}
+  _preview:
+    _prefabAsset: {fileID: 905130411173168820, guid: b7a21ee1b5d12d342878913eb67b2af5, type: 3}
+    _texture: {fileID: 0}
+    _yaw: 0
+    _pitch: 0
+  _sceneToObjectGroup:
+    _serializedKeys: []
+    _serializedValues: []
+  _spawnGuideTransformTRS:
+    _position: {x: 0, y: 0, z: 0}
+    _rotation: {x: 0, y: -0, z: -0, w: 1}
+    _scale: {x: 1, y: 1, z: 1}
+  _modularSnapVerticalStep: 0
+  _surfaceSnapAppliedOffsetFromSurface: 0
+  _tags: 0
+  _modelSize: {x: 7.529258, y: 5.218563, z: 7.048416}
+  _uiSelected: 0
+--- !u!114 &2123397645151935573
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7bfdaf7f2c4c1d04580d676ed3717f21, type: 3}
+  m_Name: Cave_Lair_Wooden_Timber_Plank_01_Atlased
+  m_EditorClassIdentifier: 
+  _guid:
+    _guidString: b2e627c4-c213-4173-a42a-f99f4077a7ec
+  _prefabAsset: {fileID: 7720486055067995442, guid: 554d96ffcaf863548bac7e326a63a98c, type: 3}
+  _preview:
+    _prefabAsset: {fileID: 7720486055067995442, guid: 554d96ffcaf863548bac7e326a63a98c, type: 3}
+    _texture: {fileID: 0}
+    _yaw: 0
+    _pitch: 0
+  _sceneToObjectGroup:
+    _serializedKeys: []
+    _serializedValues: []
+  _spawnGuideTransformTRS:
+    _position: {x: 0, y: 0, z: 0}
+    _rotation: {x: 0, y: -0, z: -0, w: 1}
+    _scale: {x: 1, y: 1, z: 1}
+  _modularSnapVerticalStep: 0
+  _surfaceSnapAppliedOffsetFromSurface: 0
+  _tags: 0
+  _modelSize: {x: 0.35099, y: 1.425159, z: 0.04679228}
+  _uiSelected: 0
+--- !u!114 &2203820815262892408
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7bfdaf7f2c4c1d04580d676ed3717f21, type: 3}
+  m_Name: Cave_Lair_Vegetation_Swamp_Mushroom_Large_05_Atlased
+  m_EditorClassIdentifier: 
+  _guid:
+    _guidString: 571f32fc-d3b4-45e1-a9a8-547813ef223f
+  _prefabAsset: {fileID: 2936225118786908574, guid: 3f6be83ba4eb6f747b046c2cc6359853, type: 3}
+  _preview:
+    _prefabAsset: {fileID: 2936225118786908574, guid: 3f6be83ba4eb6f747b046c2cc6359853, type: 3}
+    _texture: {fileID: 0}
+    _yaw: 0
+    _pitch: 0
+  _sceneToObjectGroup:
+    _serializedKeys: []
+    _serializedValues: []
+  _spawnGuideTransformTRS:
+    _position: {x: 0, y: 0, z: 0}
+    _rotation: {x: 0, y: -0, z: -0, w: 1}
+    _scale: {x: 1, y: 1, z: 1}
+  _modularSnapVerticalStep: 0
+  _surfaceSnapAppliedOffsetFromSurface: 0
+  _tags: 0
+  _modelSize: {x: 3.116212, y: 0.3204128, z: 3.24577}
+  _uiSelected: 0
+--- !u!114 &2256873991848074628
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7bfdaf7f2c4c1d04580d676ed3717f21, type: 3}
+  m_Name: Cave_Lair_Rail_Road_Track_Corner_Large_01_Atlased
+  m_EditorClassIdentifier: 
+  _guid:
+    _guidString: d3c6dce0-3ed9-4dcb-a8ed-4ecf7f05440f
+  _prefabAsset: {fileID: 7774492950303482308, guid: 8999f26bce2a4f24c86598c45e7267fd, type: 3}
+  _preview:
+    _prefabAsset: {fileID: 7774492950303482308, guid: 8999f26bce2a4f24c86598c45e7267fd, type: 3}
+    _texture: {fileID: 0}
+    _yaw: 0
+    _pitch: 0
+  _sceneToObjectGroup:
+    _serializedKeys: []
+    _serializedValues: []
+  _spawnGuideTransformTRS:
+    _position: {x: 0, y: 0, z: 0}
+    _rotation: {x: 0, y: -0, z: -0, w: 1}
+    _scale: {x: 1, y: 1, z: 1}
+  _modularSnapVerticalStep: 0
+  _surfaceSnapAppliedOffsetFromSurface: 0
+  _tags: 0
+  _modelSize: {x: 3.401114, y: 0.09999999, z: 3.401114}
+  _uiSelected: 0
+--- !u!114 &2324900775612111966
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7bfdaf7f2c4c1d04580d676ed3717f21, type: 3}
+  m_Name: Cave_Lair_Wooden_Timber_Beam_02_Atlased
+  m_EditorClassIdentifier: 
+  _guid:
+    _guidString: 920f2ca0-4936-4729-9741-576eec16341a
+  _prefabAsset: {fileID: 31083350491416970, guid: 472694d07d539474b8242b929cef3225, type: 3}
+  _preview:
+    _prefabAsset: {fileID: 31083350491416970, guid: 472694d07d539474b8242b929cef3225, type: 3}
+    _texture: {fileID: 0}
+    _yaw: 0
+    _pitch: 0
+  _sceneToObjectGroup:
+    _serializedKeys: []
+    _serializedValues: []
+  _spawnGuideTransformTRS:
+    _position: {x: 0, y: 0, z: 0}
+    _rotation: {x: 0, y: -0, z: -0, w: 1}
+    _scale: {x: 1, y: 1, z: 1}
+  _modularSnapVerticalStep: 0
+  _surfaceSnapAppliedOffsetFromSurface: 0
+  _tags: 0
+  _modelSize: {x: 1.0775049, y: 3.606296, z: 0.34395242}
+  _uiSelected: 0
+--- !u!114 &2533905795908040263
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7bfdaf7f2c4c1d04580d676ed3717f21, type: 3}
+  m_Name: Cave_Lair_Rail_Road_Track_Straight_Incline_01_Atlased
+  m_EditorClassIdentifier: 
+  _guid:
+    _guidString: 8ea7073a-161a-464e-95a9-0ee38e2360ed
+  _prefabAsset: {fileID: 955117550216773164, guid: ed71b4e50e8364d428a74c8f2e72aa8b, type: 3}
+  _preview:
+    _prefabAsset: {fileID: 955117550216773164, guid: ed71b4e50e8364d428a74c8f2e72aa8b, type: 3}
+    _texture: {fileID: 0}
+    _yaw: 0
+    _pitch: 0
+  _sceneToObjectGroup:
+    _serializedKeys: []
+    _serializedValues: []
+  _spawnGuideTransformTRS:
+    _position: {x: 0, y: 0, z: 0}
+    _rotation: {x: 0, y: -0, z: -0, w: 1}
+    _scale: {x: 1, y: 1, z: 1}
+  _modularSnapVerticalStep: 0
+  _surfaceSnapAppliedOffsetFromSurface: 0
+  _tags: 0
+  _modelSize: {x: 2, y: 1.1, z: 0.8}
+  _uiSelected: 0
+--- !u!114 &2597080307387769826
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7bfdaf7f2c4c1d04580d676ed3717f21, type: 3}
+  m_Name: Cave_Lair_Metal_Brazier_Cage_Damaged_01_Atlased
+  m_EditorClassIdentifier: 
+  _guid:
+    _guidString: 0a21f980-344b-4104-ac58-473803f535c2
+  _prefabAsset: {fileID: 2853495514206627888, guid: 723120b14c31f7b469c65eb9ecc43fe6, type: 3}
+  _preview:
+    _prefabAsset: {fileID: 2853495514206627888, guid: 723120b14c31f7b469c65eb9ecc43fe6, type: 3}
+    _texture: {fileID: 0}
+    _yaw: 0
+    _pitch: 0
+  _sceneToObjectGroup:
+    _serializedKeys: []
+    _serializedValues: []
+  _spawnGuideTransformTRS:
+    _position: {x: 0, y: 0, z: 0}
+    _rotation: {x: 0, y: -0, z: -0, w: 1}
+    _scale: {x: 1, y: 1, z: 1}
+  _modularSnapVerticalStep: 0
+  _surfaceSnapAppliedOffsetFromSurface: 0
+  _tags: 0
+  _modelSize: {x: 1.7168849, y: 1, z: 1.5832326}
+  _uiSelected: 0
+--- !u!114 &2755534325339473729
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7bfdaf7f2c4c1d04580d676ed3717f21, type: 3}
+  m_Name: Cave_Lair_Wooden_Timber_Fence_Small_01_Atlased
+  m_EditorClassIdentifier: 
+  _guid:
+    _guidString: b578b38e-add5-4c69-86ba-7c84364c8c62
+  _prefabAsset: {fileID: 6113578852646383139, guid: b04a82237ce4ebe488071c310e458b03, type: 3}
+  _preview:
+    _prefabAsset: {fileID: 6113578852646383139, guid: b04a82237ce4ebe488071c310e458b03, type: 3}
+    _texture: {fileID: 0}
+    _yaw: 0
+    _pitch: 0
+  _sceneToObjectGroup:
+    _serializedKeys: []
+    _serializedValues: []
+  _spawnGuideTransformTRS:
+    _position: {x: 0, y: 0, z: 0}
+    _rotation: {x: 0, y: -0, z: -0, w: 1}
+    _scale: {x: 1, y: 1, z: 1}
+  _modularSnapVerticalStep: 0
+  _surfaceSnapAppliedOffsetFromSurface: 0
+  _tags: 0
+  _modelSize: {x: 1.692, y: 1.126122, z: 0.225}
+  _uiSelected: 0
+--- !u!114 &3064206362556545528
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7bfdaf7f2c4c1d04580d676ed3717f21, type: 3}
+  m_Name: Cave_Lair_Cave_Stone_Rock_Spire_04_Atlased
+  m_EditorClassIdentifier: 
+  _guid:
+    _guidString: e3feae3d-fd50-45a5-858b-07298c4d1508
+  _prefabAsset: {fileID: 8857684818365357945, guid: 0d193c2ece39134409f3c5a0218c6881, type: 3}
+  _preview:
+    _prefabAsset: {fileID: 8857684818365357945, guid: 0d193c2ece39134409f3c5a0218c6881, type: 3}
+    _texture: {fileID: 0}
+    _yaw: 0
+    _pitch: 0
+  _sceneToObjectGroup:
+    _serializedKeys: []
+    _serializedValues: []
+  _spawnGuideTransformTRS:
+    _position: {x: 0, y: 0, z: 0}
+    _rotation: {x: 0, y: -0, z: -0, w: 1}
+    _scale: {x: 1, y: 1, z: 1}
+  _modularSnapVerticalStep: 0
+  _surfaceSnapAppliedOffsetFromSurface: 0
+  _tags: 0
+  _modelSize: {x: 6.836332, y: 10.8571, z: 7.25142}
+  _uiSelected: 0
+--- !u!114 &3136231100539455358
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7bfdaf7f2c4c1d04580d676ed3717f21, type: 3}
+  m_Name: Cave_Lair_Cave_Stone_Block_Eroded_02_Atlased
+  m_EditorClassIdentifier: 
+  _guid:
+    _guidString: d42306b2-66e2-4a78-a95f-501b0a6a18c1
+  _prefabAsset: {fileID: 5425762968727034135, guid: 21cad5b6213a2024fa5e8daadfbd0ef1, type: 3}
+  _preview:
+    _prefabAsset: {fileID: 5425762968727034135, guid: 21cad5b6213a2024fa5e8daadfbd0ef1, type: 3}
+    _texture: {fileID: 0}
+    _yaw: 0
+    _pitch: 0
+  _sceneToObjectGroup:
+    _serializedKeys: []
+    _serializedValues: []
+  _spawnGuideTransformTRS:
+    _position: {x: 0, y: 0, z: 0}
+    _rotation: {x: 0, y: -0, z: -0, w: 1}
+    _scale: {x: 1, y: 1, z: 1}
+  _modularSnapVerticalStep: 0
+  _surfaceSnapAppliedOffsetFromSurface: 0
+  _tags: 0
+  _modelSize: {x: 3.20833, y: 3.22762, z: 2.08944}
+  _uiSelected: 0
+--- !u!114 &3362288337359481248
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7bfdaf7f2c4c1d04580d676ed3717f21, type: 3}
+  m_Name: Cave_Lair_Wooden_Timber_Plank_Large_02_Atlased
+  m_EditorClassIdentifier: 
+  _guid:
+    _guidString: cc518599-7ef5-4926-909e-7ddc7a83dc2d
+  _prefabAsset: {fileID: 2758660704517683125, guid: 76943897d18b00941b9615a8b46a7bd0, type: 3}
+  _preview:
+    _prefabAsset: {fileID: 2758660704517683125, guid: 76943897d18b00941b9615a8b46a7bd0, type: 3}
+    _texture: {fileID: 0}
+    _yaw: 0
+    _pitch: 0
+  _sceneToObjectGroup:
+    _serializedKeys: []
+    _serializedValues: []
+  _spawnGuideTransformTRS:
+    _position: {x: 0, y: 0, z: 0}
+    _rotation: {x: 0, y: -0, z: -0, w: 1}
+    _scale: {x: 1, y: 1, z: 1}
+  _modularSnapVerticalStep: 0
+  _surfaceSnapAppliedOffsetFromSurface: 0
+  _tags: 0
+  _modelSize: {x: 0.91258, y: 0.103, z: 3.54629}
+  _uiSelected: 0
+--- !u!114 &3516532828864275390
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7bfdaf7f2c4c1d04580d676ed3717f21, type: 3}
+  m_Name: Cave_Lair_Cave_Stone_Rock_Stalagmite_02_Atlased
+  m_EditorClassIdentifier: 
+  _guid:
+    _guidString: 3a7c20d7-72f2-4e74-b46d-abf255b0c651
+  _prefabAsset: {fileID: 8045430880515831397, guid: b5664ffe463d9a647aecb8ebf4b25ca6, type: 3}
+  _preview:
+    _prefabAsset: {fileID: 8045430880515831397, guid: b5664ffe463d9a647aecb8ebf4b25ca6, type: 3}
+    _texture: {fileID: 0}
+    _yaw: 0
+    _pitch: 0
+  _sceneToObjectGroup:
+    _serializedKeys: []
+    _serializedValues: []
+  _spawnGuideTransformTRS:
+    _position: {x: 0, y: 0, z: 0}
+    _rotation: {x: 0, y: -0, z: -0, w: 1}
+    _scale: {x: 1, y: 1, z: 1}
+  _modularSnapVerticalStep: 0
+  _surfaceSnapAppliedOffsetFromSurface: 0
+  _tags: 0
+  _modelSize: {x: 1.8802044, y: 3.376403, z: 2.204828}
+  _uiSelected: 0
+--- !u!114 &3525403361781772797
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7bfdaf7f2c4c1d04580d676ed3717f21, type: 3}
+  m_Name: Cave_Lair_Wooden_Timber_Pole_01_Atlased
+  m_EditorClassIdentifier: 
+  _guid:
+    _guidString: bdbaf81f-7398-44b0-84bb-d45ba2634f15
+  _prefabAsset: {fileID: 2198590530575391063, guid: a7b0d649d268ed2469d71605ebe0a625, type: 3}
+  _preview:
+    _prefabAsset: {fileID: 2198590530575391063, guid: a7b0d649d268ed2469d71605ebe0a625, type: 3}
+    _texture: {fileID: 0}
+    _yaw: 0
+    _pitch: 0
+  _sceneToObjectGroup:
+    _serializedKeys: []
+    _serializedValues: []
+  _spawnGuideTransformTRS:
+    _position: {x: 0, y: 0, z: 0}
+    _rotation: {x: 0, y: -0, z: -0, w: 1}
+    _scale: {x: 1, y: 1, z: 1}
+  _modularSnapVerticalStep: 0
+  _surfaceSnapAppliedOffsetFromSurface: 0
+  _tags: 0
+  _modelSize: {x: 0.2296448, y: 1.897215, z: 0.2250054}
+  _uiSelected: 0
+--- !u!114 &3549401686626293715
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7bfdaf7f2c4c1d04580d676ed3717f21, type: 3}
+  m_Name: Cave_Lair_Vegetation_Swamp_Mushroom_Stalk_Side_01_Atlased
+  m_EditorClassIdentifier: 
+  _guid:
+    _guidString: 07a75578-1c67-42f8-ac51-9e718c5342d0
+  _prefabAsset: {fileID: 8405358438691988466, guid: 81c6d21e3f5205042a32354e0690abf3, type: 3}
+  _preview:
+    _prefabAsset: {fileID: 8405358438691988466, guid: 81c6d21e3f5205042a32354e0690abf3, type: 3}
+    _texture: {fileID: 0}
+    _yaw: 0
+    _pitch: 0
+  _sceneToObjectGroup:
+    _serializedKeys: []
+    _serializedValues: []
+  _spawnGuideTransformTRS:
+    _position: {x: 0, y: 0, z: 0}
+    _rotation: {x: 0, y: -0, z: -0, w: 1}
+    _scale: {x: 1, y: 1, z: 1}
+  _modularSnapVerticalStep: 0
+  _surfaceSnapAppliedOffsetFromSurface: 0
+  _tags: 0
+  _modelSize: {x: 0.6074309, y: 0.6074309, z: 0.3471034}
+  _uiSelected: 0
+--- !u!114 &3591895556546887120
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7bfdaf7f2c4c1d04580d676ed3717f21, type: 3}
+  m_Name: Cave_Lair_Wooden_Timber_Plank_Large_03_Atlased
+  m_EditorClassIdentifier: 
+  _guid:
+    _guidString: f25b28e2-e019-4221-9cc7-6289e697d40f
+  _prefabAsset: {fileID: 2144315387483236014, guid: a89bc52e5b76f1e4d99d6d585a5ee197, type: 3}
+  _preview:
+    _prefabAsset: {fileID: 2144315387483236014, guid: a89bc52e5b76f1e4d99d6d585a5ee197, type: 3}
+    _texture: {fileID: 0}
+    _yaw: 0
+    _pitch: 0
+  _sceneToObjectGroup:
+    _serializedKeys: []
+    _serializedValues: []
+  _spawnGuideTransformTRS:
+    _position: {x: 0, y: 0, z: 0}
+    _rotation: {x: 0, y: -0, z: -0, w: 1}
+    _scale: {x: 1, y: 1, z: 1}
+  _modularSnapVerticalStep: 0
+  _surfaceSnapAppliedOffsetFromSurface: 0
+  _tags: 0
+  _modelSize: {x: 1.0677186, y: 0.103, z: 3.54629}
+  _uiSelected: 0
+--- !u!114 &3620891724780253471
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7bfdaf7f2c4c1d04580d676ed3717f21, type: 3}
+  m_Name: Cave_Lair_Cave_Stone_Block_Eroded_05_Atlased
+  m_EditorClassIdentifier: 
+  _guid:
+    _guidString: 5d4821ea-f44c-4134-9485-e0f1b6d8eb9c
+  _prefabAsset: {fileID: 6067487919623856179, guid: 3f7b0e5ed22cdc543a9df34fd224983e, type: 3}
+  _preview:
+    _prefabAsset: {fileID: 6067487919623856179, guid: 3f7b0e5ed22cdc543a9df34fd224983e, type: 3}
+    _texture: {fileID: 0}
+    _yaw: 0
+    _pitch: 0
+  _sceneToObjectGroup:
+    _serializedKeys: []
+    _serializedValues: []
+  _spawnGuideTransformTRS:
+    _position: {x: 0, y: 0, z: 0}
+    _rotation: {x: 0, y: -0, z: -0, w: 1}
+    _scale: {x: 1, y: 1, z: 1}
+  _modularSnapVerticalStep: 0
+  _surfaceSnapAppliedOffsetFromSurface: 0
+  _tags: 0
+  _modelSize: {x: 1.776588, y: 1.022922, z: 3.871098}
+  _uiSelected: 0
+--- !u!114 &3634628078818836073
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7bfdaf7f2c4c1d04580d676ed3717f21, type: 3}
+  m_Name: Cave_Lair_Wooden_Timber_Fence_Small_03_Atlased
+  m_EditorClassIdentifier: 
+  _guid:
+    _guidString: 0db8a733-dd15-4a69-a80e-d7668c6219e7
+  _prefabAsset: {fileID: 7993149337591785670, guid: 32eee5bf68f11e440a045359842caffc, type: 3}
+  _preview:
+    _prefabAsset: {fileID: 7993149337591785670, guid: 32eee5bf68f11e440a045359842caffc, type: 3}
+    _texture: {fileID: 0}
+    _yaw: 0
+    _pitch: 0
+  _sceneToObjectGroup:
+    _serializedKeys: []
+    _serializedValues: []
+  _spawnGuideTransformTRS:
+    _position: {x: 0, y: 0, z: 0}
+    _rotation: {x: 0, y: -0, z: -0, w: 1}
+    _scale: {x: 1, y: 1, z: 1}
+  _modularSnapVerticalStep: 0
+  _surfaceSnapAppliedOffsetFromSurface: 0
+  _tags: 0
+  _modelSize: {x: 1.692, y: 1.124649, z: 0.225}
+  _uiSelected: 0
+--- !u!114 &3696288032601079648
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7bfdaf7f2c4c1d04580d676ed3717f21, type: 3}
+  m_Name: Cave_Lair_Cave_Stone_Pillar_Damaged_03_Atlased
+  m_EditorClassIdentifier: 
+  _guid:
+    _guidString: a7348d07-94fe-4910-b698-b2a5afbd2ef8
+  _prefabAsset: {fileID: 1029624397469390088, guid: 193fdcc9c52009c4aae69c09144509de, type: 3}
+  _preview:
+    _prefabAsset: {fileID: 1029624397469390088, guid: 193fdcc9c52009c4aae69c09144509de, type: 3}
+    _texture: {fileID: 0}
+    _yaw: 0
+    _pitch: 0
+  _sceneToObjectGroup:
+    _serializedKeys: []
+    _serializedValues: []
+  _spawnGuideTransformTRS:
+    _position: {x: 0, y: 0, z: 0}
+    _rotation: {x: 0, y: -0, z: -0, w: 1}
+    _scale: {x: 1, y: 1, z: 1}
+  _modularSnapVerticalStep: 0
+  _surfaceSnapAppliedOffsetFromSurface: 0
+  _tags: 0
+  _modelSize: {x: 1.0035198, y: 2.895872, z: 1.0035198}
+  _uiSelected: 0
+--- !u!114 &3750025578804006970
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7bfdaf7f2c4c1d04580d676ed3717f21, type: 3}
+  m_Name: Cave_Lair_Vegetation_Swamp_Mushroom_Large_01_Atlased
+  m_EditorClassIdentifier: 
+  _guid:
+    _guidString: 7defc70a-b829-43b0-8937-703c8b708913
+  _prefabAsset: {fileID: 1819022513200399769, guid: 2d1fbcc54c5313e419fd58ad49870fca, type: 3}
+  _preview:
+    _prefabAsset: {fileID: 1819022513200399769, guid: 2d1fbcc54c5313e419fd58ad49870fca, type: 3}
+    _texture: {fileID: 0}
+    _yaw: 0
+    _pitch: 0
+  _sceneToObjectGroup:
+    _serializedKeys: []
+    _serializedValues: []
+  _spawnGuideTransformTRS:
+    _position: {x: 0, y: 0, z: 0}
+    _rotation: {x: 0, y: -0, z: -0, w: 1}
+    _scale: {x: 1, y: 1, z: 1}
+  _modularSnapVerticalStep: 0
+  _surfaceSnapAppliedOffsetFromSurface: 0
+  _tags: 0
+  _modelSize: {x: 3.155098, y: 2.871407, z: 3.286272}
+  _uiSelected: 0
+--- !u!114 &3751730294343377193
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7bfdaf7f2c4c1d04580d676ed3717f21, type: 3}
+  m_Name: Cave_Lair_Wooden_Timber_Fence_Post_03_Atlased
+  m_EditorClassIdentifier: 
+  _guid:
+    _guidString: 788eb540-99e7-46dd-a292-81089600d91c
+  _prefabAsset: {fileID: 1093382230773691596, guid: 9fccb5640f788aa45952b784b0edb083, type: 3}
+  _preview:
+    _prefabAsset: {fileID: 1093382230773691596, guid: 9fccb5640f788aa45952b784b0edb083, type: 3}
+    _texture: {fileID: 0}
+    _yaw: 0
+    _pitch: 0
+  _sceneToObjectGroup:
+    _serializedKeys: []
+    _serializedValues: []
+  _spawnGuideTransformTRS:
+    _position: {x: 0, y: 0, z: 0}
+    _rotation: {x: 0, y: -0, z: -0, w: 1}
+    _scale: {x: 1, y: 1, z: 1}
+  _modularSnapVerticalStep: 0
+  _surfaceSnapAppliedOffsetFromSurface: 0
+  _tags: 0
+  _modelSize: {x: 0.225, y: 1.124649, z: 0.225}
+  _uiSelected: 0
+--- !u!114 &3770853262686122988
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7bfdaf7f2c4c1d04580d676ed3717f21, type: 3}
+  m_Name: Cave_Lair_Cave_Stone_Block_Eroded_01_Atlased
+  m_EditorClassIdentifier: 
+  _guid:
+    _guidString: 7e6805a0-0543-4807-ab55-46e43332fb29
+  _prefabAsset: {fileID: 1422335497483128935, guid: 249809034fbafa349b25d6ac11b46bac, type: 3}
+  _preview:
+    _prefabAsset: {fileID: 1422335497483128935, guid: 249809034fbafa349b25d6ac11b46bac, type: 3}
+    _texture: {fileID: 0}
+    _yaw: 0
+    _pitch: 0
+  _sceneToObjectGroup:
+    _serializedKeys: []
+    _serializedValues: []
+  _spawnGuideTransformTRS:
+    _position: {x: 0, y: 0, z: 0}
+    _rotation: {x: 0, y: -0, z: -0, w: 1}
+    _scale: {x: 1, y: 1, z: 1}
+  _modularSnapVerticalStep: 0
+  _surfaceSnapAppliedOffsetFromSurface: 0
+  _tags: 0
+  _modelSize: {x: 1.7661544, y: 4.559278, z: 1.7651097}
+  _uiSelected: 0
+--- !u!114 &3786966175422213863
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7bfdaf7f2c4c1d04580d676ed3717f21, type: 3}
+  m_Name: Cave_Lair_Rail_Road_Track_Straight_Corner_Split_01_Atlased
+  m_EditorClassIdentifier: 
+  _guid:
+    _guidString: 0d47d0f1-edf3-4805-bbf0-cd0961bb99d2
+  _prefabAsset: {fileID: 124531932084517583, guid: ee3c41f85e1dff343a54dab13ddfc1fb, type: 3}
+  _preview:
+    _prefabAsset: {fileID: 124531932084517583, guid: ee3c41f85e1dff343a54dab13ddfc1fb, type: 3}
+    _texture: {fileID: 0}
+    _yaw: 0
+    _pitch: 0
+  _sceneToObjectGroup:
+    _serializedKeys: []
+    _serializedValues: []
+  _spawnGuideTransformTRS:
+    _position: {x: 0, y: 0, z: 0}
+    _rotation: {x: 0, y: -0, z: -0, w: 1}
+    _scale: {x: 1, y: 1, z: 1}
+  _modularSnapVerticalStep: 0
+  _surfaceSnapAppliedOffsetFromSurface: 0
+  _tags: 0
+  _modelSize: {x: 2, y: 0.09999999, z: 1.4}
+  _uiSelected: 0
+--- !u!114 &4239906274039068760
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7bfdaf7f2c4c1d04580d676ed3717f21, type: 3}
+  m_Name: Cave_Lair_Wooden_Timber_Fence_Small_02_Atlased
+  m_EditorClassIdentifier: 
+  _guid:
+    _guidString: dde52e69-7abf-49d6-b1d5-26b050aa7e44
+  _prefabAsset: {fileID: 4149403698143035464, guid: 7cc05592918ecfd47a5afd3a961c14b9, type: 3}
+  _preview:
+    _prefabAsset: {fileID: 4149403698143035464, guid: 7cc05592918ecfd47a5afd3a961c14b9, type: 3}
+    _texture: {fileID: 0}
+    _yaw: 0
+    _pitch: 0
+  _sceneToObjectGroup:
+    _serializedKeys: []
+    _serializedValues: []
+  _spawnGuideTransformTRS:
+    _position: {x: 0, y: 0, z: 0}
+    _rotation: {x: 0, y: -0, z: -0, w: 1}
+    _scale: {x: 1, y: 1, z: 1}
+  _modularSnapVerticalStep: 0
+  _surfaceSnapAppliedOffsetFromSurface: 0
+  _tags: 0
+  _modelSize: {x: 1.692, y: 1.124649, z: 0.225}
+  _uiSelected: 0
+--- !u!114 &4299574223097257475
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7bfdaf7f2c4c1d04580d676ed3717f21, type: 3}
+  m_Name: Cave_Lair_Rail_Road_Track_End_Stop_01_Atlased
+  m_EditorClassIdentifier: 
+  _guid:
+    _guidString: 7fbfe7b1-eaf7-4c65-9c30-6f8bf29a6326
+  _prefabAsset: {fileID: 6870008942869629767, guid: 75fbd36835a2cff428973aabf8191294, type: 3}
+  _preview:
+    _prefabAsset: {fileID: 6870008942869629767, guid: 75fbd36835a2cff428973aabf8191294, type: 3}
+    _texture: {fileID: 0}
+    _yaw: 0
+    _pitch: 0
+  _sceneToObjectGroup:
+    _serializedKeys: []
+    _serializedValues: []
+  _spawnGuideTransformTRS:
+    _position: {x: 0, y: 0, z: 0}
+    _rotation: {x: 0, y: -0, z: -0, w: 1}
+    _scale: {x: 1, y: 1, z: 1}
+  _modularSnapVerticalStep: 0
+  _surfaceSnapAppliedOffsetFromSurface: 0
+  _tags: 0
+  _modelSize: {x: 0.5, y: 0.554809, z: 0.8}
+  _uiSelected: 0
+--- !u!114 &4360657681133919768
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7bfdaf7f2c4c1d04580d676ed3717f21, type: 3}
+  m_Name: Cave_Lair_Wooden_Timber_Suspension_Rope_02_Atlased
+  m_EditorClassIdentifier: 
+  _guid:
+    _guidString: 9ff4220f-ba0b-4e20-b0e7-3582ebba3e7e
+  _prefabAsset: {fileID: 4014430160876766333, guid: 48b86d0e2193a1c4dad4d0feba328b91, type: 3}
+  _preview:
+    _prefabAsset: {fileID: 4014430160876766333, guid: 48b86d0e2193a1c4dad4d0feba328b91, type: 3}
+    _texture: {fileID: 0}
+    _yaw: 0
+    _pitch: 0
+  _sceneToObjectGroup:
+    _serializedKeys: []
+    _serializedValues: []
+  _spawnGuideTransformTRS:
+    _position: {x: 0, y: 0, z: 0}
+    _rotation: {x: 0, y: -0, z: -0, w: 1}
+    _scale: {x: 1, y: 1, z: 1}
+  _modularSnapVerticalStep: 0
+  _surfaceSnapAppliedOffsetFromSurface: 0
+  _tags: 0
+  _modelSize: {x: 14.012772, y: 3.000737, z: 1.085185}
+  _uiSelected: 0
+--- !u!114 &4464128593205336632
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7bfdaf7f2c4c1d04580d676ed3717f21, type: 3}
+  m_Name: Cave_Lair_Terrain_Stone_Rock_Arch_Large_01_Atlased
+  m_EditorClassIdentifier: 
+  _guid:
+    _guidString: 85ac1cca-4d39-44f6-bc5b-c9ee89129115
+  _prefabAsset: {fileID: 3097588088543394573, guid: c72f2e31fb92d3e49bdb433c6cc74eda, type: 3}
+  _preview:
+    _prefabAsset: {fileID: 3097588088543394573, guid: c72f2e31fb92d3e49bdb433c6cc74eda, type: 3}
+    _texture: {fileID: 0}
+    _yaw: 0
+    _pitch: 0
+  _sceneToObjectGroup:
+    _serializedKeys: []
+    _serializedValues: []
+  _spawnGuideTransformTRS:
+    _position: {x: 0, y: 0, z: 0}
+    _rotation: {x: 0, y: -0, z: -0, w: 1}
+    _scale: {x: 1, y: 1, z: 1}
+  _modularSnapVerticalStep: 0
+  _surfaceSnapAppliedOffsetFromSurface: 0
+  _tags: 0
+  _modelSize: {x: 70.43144, y: 31.75753, z: 22.6943}
+  _uiSelected: 0
+--- !u!114 &4575971258438426339
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7bfdaf7f2c4c1d04580d676ed3717f21, type: 3}
+  m_Name: Cave_Lair_Wooden_Timber_Fence_Broken_Small_05_Atlased
+  m_EditorClassIdentifier: 
+  _guid:
+    _guidString: f3425847-22c1-4fbb-b162-240d6b054a29
+  _prefabAsset: {fileID: 2004878607264093607, guid: b3ff4697651ce4049ba7e29ba1549a2f, type: 3}
+  _preview:
+    _prefabAsset: {fileID: 2004878607264093607, guid: b3ff4697651ce4049ba7e29ba1549a2f, type: 3}
+    _texture: {fileID: 0}
+    _yaw: 0
+    _pitch: 0
+  _sceneToObjectGroup:
+    _serializedKeys: []
+    _serializedValues: []
+  _spawnGuideTransformTRS:
+    _position: {x: 0, y: 0, z: 0}
+    _rotation: {x: 0, y: -0, z: -0, w: 1}
+    _scale: {x: 1, y: 1, z: 1}
+  _modularSnapVerticalStep: 0
+  _surfaceSnapAppliedOffsetFromSurface: 0
+  _tags: 0
+  _modelSize: {x: 1.5632341, y: 1.124649, z: 0.225}
+  _uiSelected: 0
+--- !u!114 &4576832304312532707
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7bfdaf7f2c4c1d04580d676ed3717f21, type: 3}
+  m_Name: Cave_Lair_Cave_Stone_Rock_Rubble_Pile_02_Atlased
+  m_EditorClassIdentifier: 
+  _guid:
+    _guidString: e83e52f8-8879-49fd-95e2-41a33d97cd74
+  _prefabAsset: {fileID: 6546477320955065498, guid: 567124eda69d48b49b33ba32e72d576e, type: 3}
+  _preview:
+    _prefabAsset: {fileID: 6546477320955065498, guid: 567124eda69d48b49b33ba32e72d576e, type: 3}
+    _texture: {fileID: 0}
+    _yaw: 0
+    _pitch: 0
+  _sceneToObjectGroup:
+    _serializedKeys: []
+    _serializedValues: []
+  _spawnGuideTransformTRS:
+    _position: {x: 0, y: 0, z: 0}
+    _rotation: {x: 0, y: -0, z: -0, w: 1}
+    _scale: {x: 1, y: 1, z: 1}
+  _modularSnapVerticalStep: 0
+  _surfaceSnapAppliedOffsetFromSurface: 0
+  _tags: 0
+  _modelSize: {x: 10.49282, y: 2.349741, z: 7.925098}
+  _uiSelected: 0
+--- !u!114 &4666452002677782790
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7bfdaf7f2c4c1d04580d676ed3717f21, type: 3}
+  m_Name: Cave_Lair_Wooden_Timber_Fence_Broken_Small_01_Atlased
+  m_EditorClassIdentifier: 
+  _guid:
+    _guidString: 15b0bb1c-c1ed-49c5-bafb-6737e9eff6a2
+  _prefabAsset: {fileID: 1213839075013843714, guid: 6d6a252930675c24b936d6637044d3e3, type: 3}
+  _preview:
+    _prefabAsset: {fileID: 1213839075013843714, guid: 6d6a252930675c24b936d6637044d3e3, type: 3}
+    _texture: {fileID: 0}
+    _yaw: 0
+    _pitch: 0
+  _sceneToObjectGroup:
+    _serializedKeys: []
+    _serializedValues: []
+  _spawnGuideTransformTRS:
+    _position: {x: 0, y: 0, z: 0}
+    _rotation: {x: 0, y: -0, z: -0, w: 1}
+    _scale: {x: 1, y: 1, z: 1}
+  _modularSnapVerticalStep: 0
+  _surfaceSnapAppliedOffsetFromSurface: 0
+  _tags: 0
+  _modelSize: {x: 1.6222897, y: 1.1261219, z: 0.225}
+  _uiSelected: 0
+--- !u!114 &4739309175376718072
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7bfdaf7f2c4c1d04580d676ed3717f21, type: 3}
+  m_Name: Cave_Lair_Cave_Stone_Block_Eroded_06_Atlased
+  m_EditorClassIdentifier: 
+  _guid:
+    _guidString: 9f108ca1-8b41-4e72-9195-af410de1187c
+  _prefabAsset: {fileID: 6959688227014015356, guid: ff05fcbc7031f4543887a323fc3feb2c, type: 3}
+  _preview:
+    _prefabAsset: {fileID: 6959688227014015356, guid: ff05fcbc7031f4543887a323fc3feb2c, type: 3}
+    _texture: {fileID: 0}
+    _yaw: 0
+    _pitch: 0
+  _sceneToObjectGroup:
+    _serializedKeys: []
+    _serializedValues: []
+  _spawnGuideTransformTRS:
+    _position: {x: 0, y: 0, z: 0}
+    _rotation: {x: 0, y: -0, z: -0, w: 1}
+    _scale: {x: 1, y: 1, z: 1}
+  _modularSnapVerticalStep: 0
+  _surfaceSnapAppliedOffsetFromSurface: 0
+  _tags: 0
+  _modelSize: {x: 1.792615, y: 0.9824044, z: 1.2998788}
+  _uiSelected: 0
+--- !u!114 &4981766904112466970
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7bfdaf7f2c4c1d04580d676ed3717f21, type: 3}
+  m_Name: Cave_Lair_Weapon_Stone_Spear_Flint_01_Atlased
+  m_EditorClassIdentifier: 
+  _guid:
+    _guidString: 2c4214fe-3a2e-4ee7-b2b6-54a3f0c2ca5d
+  _prefabAsset: {fileID: 8838045360369921571, guid: 5966aad5fe9e67d42aa1353877a5f48e, type: 3}
+  _preview:
+    _prefabAsset: {fileID: 8838045360369921571, guid: 5966aad5fe9e67d42aa1353877a5f48e, type: 3}
+    _texture: {fileID: 0}
+    _yaw: 0
+    _pitch: 0
+  _sceneToObjectGroup:
+    _serializedKeys: []
+    _serializedValues: []
+  _spawnGuideTransformTRS:
+    _position: {x: 0, y: 0, z: 0}
+    _rotation: {x: 0, y: -0, z: -0, w: 1}
+    _scale: {x: 1, y: 1, z: 1}
+  _modularSnapVerticalStep: 0
+  _surfaceSnapAppliedOffsetFromSurface: 0
+  _tags: 0
+  _modelSize: {x: 0.15403004, y: 1.871292, z: 0.0814}
+  _uiSelected: 0
+--- !u!114 &4987002885906083428
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7bfdaf7f2c4c1d04580d676ed3717f21, type: 3}
+  m_Name: Cave_Lair_Vegetation_Swamp_Thorn_Spike_02_Atlased
+  m_EditorClassIdentifier: 
+  _guid:
+    _guidString: 2630288a-0e97-4261-9f64-2c0034b5a1ee
+  _prefabAsset: {fileID: 2307924449488650696, guid: e6ea7786a0dcc42458ade6413faef6cc, type: 3}
+  _preview:
+    _prefabAsset: {fileID: 2307924449488650696, guid: e6ea7786a0dcc42458ade6413faef6cc, type: 3}
+    _texture: {fileID: 0}
+    _yaw: 0
+    _pitch: 0
+  _sceneToObjectGroup:
+    _serializedKeys: []
+    _serializedValues: []
+  _spawnGuideTransformTRS:
+    _position: {x: 0, y: 0, z: 0}
+    _rotation: {x: 0, y: -0, z: -0, w: 1}
+    _scale: {x: 1, y: 1, z: 1}
+  _modularSnapVerticalStep: 0
+  _surfaceSnapAppliedOffsetFromSurface: 0
+  _tags: 0
+  _modelSize: {x: 0.7307552, y: 1.6541, z: 0.6045908}
+  _uiSelected: 0
+--- !u!114 &5113059548073702558
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7bfdaf7f2c4c1d04580d676ed3717f21, type: 3}
+  m_Name: Cave_Lair_Metal_Chest_Damaged_Open_Junk_01_Atlased
+  m_EditorClassIdentifier: 
+  _guid:
+    _guidString: d6fd6fd3-f5d5-437a-a8be-994ab8ecb73f
+  _prefabAsset: {fileID: 6474911024724549102, guid: 99405538125b8874191d2d4426455de9, type: 3}
+  _preview:
+    _prefabAsset: {fileID: 6474911024724549102, guid: 99405538125b8874191d2d4426455de9, type: 3}
+    _texture: {fileID: 0}
+    _yaw: 0
+    _pitch: 0
+  _sceneToObjectGroup:
+    _serializedKeys: []
+    _serializedValues: []
+  _spawnGuideTransformTRS:
+    _position: {x: 0, y: 0, z: 0}
+    _rotation: {x: 0, y: -0, z: -0, w: 1}
+    _scale: {x: 1, y: 1, z: 1}
+  _modularSnapVerticalStep: 0
+  _surfaceSnapAppliedOffsetFromSurface: 0
+  _tags: 0
+  _modelSize: {x: 1.088669, y: 0.4773251, z: 0.6310344}
+  _uiSelected: 0
+--- !u!114 &5881251070143888948
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7bfdaf7f2c4c1d04580d676ed3717f21, type: 3}
+  m_Name: Cave_Lair_Vegetation_Swamp_Tree_Roots_04_Atlased
+  m_EditorClassIdentifier: 
+  _guid:
+    _guidString: 6d231868-3aa4-4b8c-81df-e0c137c599a9
+  _prefabAsset: {fileID: 7324557612030399121, guid: 5925b78a640e3a04d80281748de836b9, type: 3}
+  _preview:
+    _prefabAsset: {fileID: 7324557612030399121, guid: 5925b78a640e3a04d80281748de836b9, type: 3}
+    _texture: {fileID: 0}
+    _yaw: 0
+    _pitch: 0
+  _sceneToObjectGroup:
+    _serializedKeys: []
+    _serializedValues: []
+  _spawnGuideTransformTRS:
+    _position: {x: 0, y: 0, z: 0}
+    _rotation: {x: 0, y: -0, z: -0, w: 1}
+    _scale: {x: 1, y: 1, z: 1}
+  _modularSnapVerticalStep: 0
+  _surfaceSnapAppliedOffsetFromSurface: 0
+  _tags: 0
+  _modelSize: {x: 1.6910722, y: 3.3807468, z: 1.696456}
+  _uiSelected: 0
+--- !u!114 &6357582434103397996
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7bfdaf7f2c4c1d04580d676ed3717f21, type: 3}
+  m_Name: Cave_Lair_Wooden_Timber_Suspension_Rope_01_Atlased
+  m_EditorClassIdentifier: 
+  _guid:
+    _guidString: 287218f7-eca6-4bf8-a449-1c880a1c77a2
+  _prefabAsset: {fileID: 4373271901777958059, guid: e85dda9179839df41ab008b86065d927, type: 3}
+  _preview:
+    _prefabAsset: {fileID: 4373271901777958059, guid: e85dda9179839df41ab008b86065d927, type: 3}
+    _texture: {fileID: 0}
+    _yaw: 0
+    _pitch: 0
+  _sceneToObjectGroup:
+    _serializedKeys: []
+    _serializedValues: []
+  _spawnGuideTransformTRS:
+    _position: {x: 0, y: 0, z: 0}
+    _rotation: {x: 0, y: -0, z: -0, w: 1}
+    _scale: {x: 1, y: 1, z: 1}
+  _modularSnapVerticalStep: 0
+  _surfaceSnapAppliedOffsetFromSurface: 0
+  _tags: 0
+  _modelSize: {x: 14.012366, y: 3.000737, z: 1.0707084}
+  _uiSelected: 0
+--- !u!114 &6438320765757887461
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7bfdaf7f2c4c1d04580d676ed3717f21, type: 3}
+  m_Name: Cave_Lair_Vegetation_Swamp_Tree_Roots_Large_02_Atlased
+  m_EditorClassIdentifier: 
+  _guid:
+    _guidString: 0f916596-5101-4033-9c56-477623ae5d87
+  _prefabAsset: {fileID: 2387554479865981362, guid: b7d012c0069f3954cb80d803f38ccb7d, type: 3}
+  _preview:
+    _prefabAsset: {fileID: 2387554479865981362, guid: b7d012c0069f3954cb80d803f38ccb7d, type: 3}
+    _texture: {fileID: 0}
+    _yaw: 0
+    _pitch: 0
+  _sceneToObjectGroup:
+    _serializedKeys: []
+    _serializedValues: []
+  _spawnGuideTransformTRS:
+    _position: {x: 0, y: 0, z: 0}
+    _rotation: {x: 0, y: -0, z: -0, w: 1}
+    _scale: {x: 1, y: 1, z: 1}
+  _modularSnapVerticalStep: 0
+  _surfaceSnapAppliedOffsetFromSurface: 0
+  _tags: 0
+  _modelSize: {x: 12.670782, y: 6.62092, z: 14.18098}
+  _uiSelected: 0
+--- !u!114 &6592675852885237689
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7bfdaf7f2c4c1d04580d676ed3717f21, type: 3}
+  m_Name: Cave_Lair_Cave_Stone_Rock_Stalagmite_Joined_02_Atlased
+  m_EditorClassIdentifier: 
+  _guid:
+    _guidString: a1cc6f19-6bb5-4f4f-a307-26541818618d
+  _prefabAsset: {fileID: 9130847175725968703, guid: dafd1b556b8b8824786f6ea07a4db8de, type: 3}
+  _preview:
+    _prefabAsset: {fileID: 9130847175725968703, guid: dafd1b556b8b8824786f6ea07a4db8de, type: 3}
+    _texture: {fileID: 0}
+    _yaw: 0
+    _pitch: 0
+  _sceneToObjectGroup:
+    _serializedKeys: []
+    _serializedValues: []
+  _spawnGuideTransformTRS:
+    _position: {x: 0, y: 0, z: 0}
+    _rotation: {x: 0, y: -0, z: -0, w: 1}
+    _scale: {x: 1, y: 1, z: 1}
+  _modularSnapVerticalStep: 0
+  _surfaceSnapAppliedOffsetFromSurface: 0
+  _tags: 0
+  _modelSize: {x: 1.8998886, y: 6.804591, z: 2.28064}
+  _uiSelected: 0
+--- !u!114 &6729661855228874622
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7bfdaf7f2c4c1d04580d676ed3717f21, type: 3}
+  m_Name: Cave_Lair_Wooden_Timber_Plank_04_Atlased
+  m_EditorClassIdentifier: 
+  _guid:
+    _guidString: c04f865e-ff59-4918-9dce-52f33347dcf9
+  _prefabAsset: {fileID: 4320072335623107336, guid: 63a4af2eeb6d1284abc2e1d44a872b21, type: 3}
+  _preview:
+    _prefabAsset: {fileID: 4320072335623107336, guid: 63a4af2eeb6d1284abc2e1d44a872b21, type: 3}
+    _texture: {fileID: 0}
+    _yaw: 0
+    _pitch: 0
+  _sceneToObjectGroup:
+    _serializedKeys: []
+    _serializedValues: []
+  _spawnGuideTransformTRS:
+    _position: {x: 0, y: 0, z: 0}
+    _rotation: {x: 0, y: -0, z: -0, w: 1}
+    _scale: {x: 1, y: 1, z: 1}
+  _modularSnapVerticalStep: 0
+  _surfaceSnapAppliedOffsetFromSurface: 0
+  _tags: 0
+  _modelSize: {x: 0.1708183, y: 1.371349, z: 0.04679228}
+  _uiSelected: 0
+--- !u!114 &6967362034984973394
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7bfdaf7f2c4c1d04580d676ed3717f21, type: 3}
+  m_Name: Cave_Lair_Cave_Stone_Block_Eroded_04_Atlased
+  m_EditorClassIdentifier: 
+  _guid:
+    _guidString: bc7d8799-95a3-4baf-a73c-5d5bee4e4921
+  _prefabAsset: {fileID: 2936913633318843529, guid: ad41a1669b69c2e47a101cbb83af8ec8, type: 3}
+  _preview:
+    _prefabAsset: {fileID: 2936913633318843529, guid: ad41a1669b69c2e47a101cbb83af8ec8, type: 3}
+    _texture: {fileID: 0}
+    _yaw: 0
+    _pitch: 0
+  _sceneToObjectGroup:
+    _serializedKeys: []
+    _serializedValues: []
+  _spawnGuideTransformTRS:
+    _position: {x: 0, y: 0, z: 0}
+    _rotation: {x: 0, y: -0, z: -0, w: 1}
+    _scale: {x: 1, y: 1, z: 1}
+  _modularSnapVerticalStep: 0
+  _surfaceSnapAppliedOffsetFromSurface: 0
+  _tags: 0
+  _modelSize: {x: 5.815206, y: 1.621057, z: 4.84846}
+  _uiSelected: 0
+--- !u!114 &7013717563123272900
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7bfdaf7f2c4c1d04580d676ed3717f21, type: 3}
+  m_Name: Cave_Lair_Cave_Stone_Rock_Spire_01_Atlased
+  m_EditorClassIdentifier: 
+  _guid:
+    _guidString: 36d892c7-87bb-46cc-8200-9add6d243e79
+  _prefabAsset: {fileID: 4246536615871583215, guid: 53e527e9175bbd9409b041dc8afab56f, type: 3}
+  _preview:
+    _prefabAsset: {fileID: 4246536615871583215, guid: 53e527e9175bbd9409b041dc8afab56f, type: 3}
+    _texture: {fileID: 0}
+    _yaw: 0
+    _pitch: 0
+  _sceneToObjectGroup:
+    _serializedKeys: []
+    _serializedValues: []
+  _spawnGuideTransformTRS:
+    _position: {x: 0, y: 0, z: 0}
+    _rotation: {x: 0, y: -0, z: -0, w: 1}
+    _scale: {x: 1, y: 1, z: 1}
+  _modularSnapVerticalStep: 0
+  _surfaceSnapAppliedOffsetFromSurface: 0
+  _tags: 0
+  _modelSize: {x: 14.548406, y: 22.84807, z: 12.407972}
+  _uiSelected: 0
+--- !u!114 &7189292387251307355
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7bfdaf7f2c4c1d04580d676ed3717f21, type: 3}
+  m_Name: Cave_Lair_Metal_Chain_Link_01_Atlased
+  m_EditorClassIdentifier: 
+  _guid:
+    _guidString: aa7a172e-d314-46c5-99c9-401606e7a1f4
+  _prefabAsset: {fileID: 3058902450534586705, guid: 68bddbc80a443ab48aacbc69547d875f, type: 3}
+  _preview:
+    _prefabAsset: {fileID: 3058902450534586705, guid: 68bddbc80a443ab48aacbc69547d875f, type: 3}
+    _texture: {fileID: 0}
+    _yaw: 0
+    _pitch: 0
+  _sceneToObjectGroup:
+    _serializedKeys: []
+    _serializedValues: []
+  _spawnGuideTransformTRS:
+    _position: {x: 0, y: 0, z: 0}
+    _rotation: {x: 0, y: -0, z: -0, w: 1}
+    _scale: {x: 1, y: 1, z: 1}
+  _modularSnapVerticalStep: 0
+  _surfaceSnapAppliedOffsetFromSurface: 0
+  _tags: 0
+  _modelSize: {x: 0.1596436, y: 0.03319757, z: 0.0993414}
+  _uiSelected: 0
+--- !u!114 &7201359862102950759
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7bfdaf7f2c4c1d04580d676ed3717f21, type: 3}
+  m_Name: Cave_Lair_Cave_Stone_Rock_Bedrock_Open_02_Atlased
+  m_EditorClassIdentifier: 
+  _guid:
+    _guidString: 89d2975b-4fc4-443c-8873-402f71f476d7
+  _prefabAsset: {fileID: 6632898123493719322, guid: e763d32c35879674cb2920c4f55ee16b, type: 3}
+  _preview:
+    _prefabAsset: {fileID: 6632898123493719322, guid: e763d32c35879674cb2920c4f55ee16b, type: 3}
+    _texture: {fileID: 0}
+    _yaw: 0
+    _pitch: 0
+  _sceneToObjectGroup:
+    _serializedKeys: []
+    _serializedValues: []
+  _spawnGuideTransformTRS:
+    _position: {x: 0, y: 0, z: 0}
+    _rotation: {x: 0, y: -0, z: -0, w: 1}
+    _scale: {x: 1, y: 1, z: 1}
+  _modularSnapVerticalStep: 0
+  _surfaceSnapAppliedOffsetFromSurface: 0
+  _tags: 0
+  _modelSize: {x: 15.427036, y: 4.831957, z: 8.729332}
+  _uiSelected: 0
+--- !u!114 &7518703013153959617
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7bfdaf7f2c4c1d04580d676ed3717f21, type: 3}
+  m_Name: Cave_Lair_Vegetation_Swamp_Tree_Roots_03_Atlased
+  m_EditorClassIdentifier: 
+  _guid:
+    _guidString: 59afe2d3-ea76-4d94-a0fe-31a266f5be75
+  _prefabAsset: {fileID: 5315201465051028885, guid: 0974cc7500156124f83d4d1fd58d49dd, type: 3}
+  _preview:
+    _prefabAsset: {fileID: 5315201465051028885, guid: 0974cc7500156124f83d4d1fd58d49dd, type: 3}
+    _texture: {fileID: 0}
+    _yaw: 0
+    _pitch: 0
+  _sceneToObjectGroup:
+    _serializedKeys: []
+    _serializedValues: []
+  _spawnGuideTransformTRS:
+    _position: {x: 0, y: 0, z: 0}
+    _rotation: {x: 0, y: -0, z: -0, w: 1}
+    _scale: {x: 1, y: 1, z: 1}
+  _modularSnapVerticalStep: 0
+  _surfaceSnapAppliedOffsetFromSurface: 0
+  _tags: 0
+  _modelSize: {x: 3.6222482, y: 4.654521, z: 4.50937}
+  _uiSelected: 0
+--- !u!114 &7664046769479625598
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7bfdaf7f2c4c1d04580d676ed3717f21, type: 3}
+  m_Name: Cave_Lair_Cave_Stone_Rock_Speleothem_Large_01_Atlased
+  m_EditorClassIdentifier: 
+  _guid:
+    _guidString: 89d0c907-1b6d-427d-8695-8d6ce998d9c6
+  _prefabAsset: {fileID: 6096085134827370333, guid: 34128ee25ee2a2c4c8bcdd84e0470248, type: 3}
+  _preview:
+    _prefabAsset: {fileID: 6096085134827370333, guid: 34128ee25ee2a2c4c8bcdd84e0470248, type: 3}
+    _texture: {fileID: 0}
+    _yaw: 0
+    _pitch: 0
+  _sceneToObjectGroup:
+    _serializedKeys: []
+    _serializedValues: []
+  _spawnGuideTransformTRS:
+    _position: {x: 0, y: 0, z: 0}
+    _rotation: {x: 0, y: -0, z: -0, w: 1}
+    _scale: {x: 1, y: 1, z: 1}
+  _modularSnapVerticalStep: 0
+  _surfaceSnapAppliedOffsetFromSurface: 0
+  _tags: 0
+  _modelSize: {x: 15.154344, y: 8.675518, z: 11.29396}
+  _uiSelected: 0
+--- !u!114 &7726218620825368527
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7bfdaf7f2c4c1d04580d676ed3717f21, type: 3}
+  m_Name: Cave_Lair_Metal_Pot_Junk_01_Atlased
+  m_EditorClassIdentifier: 
+  _guid:
+    _guidString: 98eecb85-c40c-44fa-8f35-d9cb8d83f23a
+  _prefabAsset: {fileID: 2457454677120606815, guid: e0b5b440ac3bdbb4e8d62a36140f7547, type: 3}
+  _preview:
+    _prefabAsset: {fileID: 2457454677120606815, guid: e0b5b440ac3bdbb4e8d62a36140f7547, type: 3}
+    _texture: {fileID: 0}
+    _yaw: 0
+    _pitch: 0
+  _sceneToObjectGroup:
+    _serializedKeys: []
+    _serializedValues: []
+  _spawnGuideTransformTRS:
+    _position: {x: 0, y: 0, z: 0}
+    _rotation: {x: 0, y: -0, z: -0, w: 1}
+    _scale: {x: 1, y: 1, z: 1}
+  _modularSnapVerticalStep: 0
+  _surfaceSnapAppliedOffsetFromSurface: 0
+  _tags: 0
+  _modelSize: {x: 0.4557992, y: 0.221, z: 0.4517328}
+  _uiSelected: 0
+--- !u!114 &7920536363287507782
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7bfdaf7f2c4c1d04580d676ed3717f21, type: 3}
+  m_Name: Cave_Lair_Cave_Stone_Rock_Spire_06_Atlased
+  m_EditorClassIdentifier: 
+  _guid:
+    _guidString: 2eaf9591-d573-4939-9b1c-4dd27d897fd5
+  _prefabAsset: {fileID: 2395620441270474980, guid: 8019c6284bc433d43abae6fc0d03980f, type: 3}
+  _preview:
+    _prefabAsset: {fileID: 2395620441270474980, guid: 8019c6284bc433d43abae6fc0d03980f, type: 3}
+    _texture: {fileID: 0}
+    _yaw: 0
+    _pitch: 0
+  _sceneToObjectGroup:
+    _serializedKeys: []
+    _serializedValues: []
+  _spawnGuideTransformTRS:
+    _position: {x: 0, y: 0, z: 0}
+    _rotation: {x: 0, y: -0, z: -0, w: 1}
+    _scale: {x: 1, y: 1, z: 1}
+  _modularSnapVerticalStep: 0
+  _surfaceSnapAppliedOffsetFromSurface: 0
+  _tags: 0
+  _modelSize: {x: 2.539608, y: 7.492351, z: 2.585296}
+  _uiSelected: 0
+--- !u!114 &7984902032382180903
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7bfdaf7f2c4c1d04580d676ed3717f21, type: 3}
+  m_Name: Cave_Lair_Cave_Stone_Rock_Spire_07_Atlased
+  m_EditorClassIdentifier: 
+  _guid:
+    _guidString: 10f73a63-50d2-4c33-8882-5857a2db7ec7
+  _prefabAsset: {fileID: 3981309308467021781, guid: 6add367c13951f34794b1bf5d3800ffb, type: 3}
+  _preview:
+    _prefabAsset: {fileID: 3981309308467021781, guid: 6add367c13951f34794b1bf5d3800ffb, type: 3}
+    _texture: {fileID: 0}
+    _yaw: 0
+    _pitch: 0
+  _sceneToObjectGroup:
+    _serializedKeys: []
+    _serializedValues: []
+  _spawnGuideTransformTRS:
+    _position: {x: 0, y: 0, z: 0}
+    _rotation: {x: 0, y: -0, z: -0, w: 1}
+    _scale: {x: 1, y: 1, z: 1}
+  _modularSnapVerticalStep: 0
+  _surfaceSnapAppliedOffsetFromSurface: 0
+  _tags: 0
+  _modelSize: {x: 3.043086, y: 13.73193, z: 4.550712}
+  _uiSelected: 0
+--- !u!114 &8035490313284926363
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7bfdaf7f2c4c1d04580d676ed3717f21, type: 3}
+  m_Name: Cave_Lair_Rope_Scrap_Hanging_01_Atlased
+  m_EditorClassIdentifier: 
+  _guid:
+    _guidString: 67a0ca68-b054-4b9b-affa-4823b5d48a39
+  _prefabAsset: {fileID: 5500439992148545483, guid: 9d8b89d9330f6284d83018d6fc1ee01e, type: 3}
+  _preview:
+    _prefabAsset: {fileID: 5500439992148545483, guid: 9d8b89d9330f6284d83018d6fc1ee01e, type: 3}
+    _texture: {fileID: 0}
+    _yaw: 0
+    _pitch: 0
+  _sceneToObjectGroup:
+    _serializedKeys: []
+    _serializedValues: []
+  _spawnGuideTransformTRS:
+    _position: {x: 0, y: 0, z: 0}
+    _rotation: {x: 0, y: -0, z: -0, w: 1}
+    _scale: {x: 1, y: 1, z: 1}
+  _modularSnapVerticalStep: 0
+  _surfaceSnapAppliedOffsetFromSurface: 0
+  _tags: 0
+  _modelSize: {x: 0.2793966, y: 1.898417, z: 0.4301806}
+  _uiSelected: 0
+--- !u!114 &8064454995277962628
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7bfdaf7f2c4c1d04580d676ed3717f21, type: 3}
+  m_Name: Cave_Lair_Wooden_Timber_Spike_Roped_Large_01_Atlased
+  m_EditorClassIdentifier: 
+  _guid:
+    _guidString: eb6a7d2c-da24-4bc1-be8e-2d39a45d88b8
+  _prefabAsset: {fileID: 2273480781025663562, guid: f9e6d6de1171a0b4c8c2af61d23e8792, type: 3}
+  _preview:
+    _prefabAsset: {fileID: 2273480781025663562, guid: f9e6d6de1171a0b4c8c2af61d23e8792, type: 3}
+    _texture: {fileID: 0}
+    _yaw: 0
+    _pitch: 0
+  _sceneToObjectGroup:
+    _serializedKeys: []
+    _serializedValues: []
+  _spawnGuideTransformTRS:
+    _position: {x: 0, y: 0, z: 0}
+    _rotation: {x: 0, y: -0, z: -0, w: 1}
+    _scale: {x: 1, y: 1, z: 1}
+  _modularSnapVerticalStep: 0
+  _surfaceSnapAppliedOffsetFromSurface: 0
+  _tags: 0
+  _modelSize: {x: 1.033804, y: 3.000737, z: 0.9859408}
+  _uiSelected: 0
+--- !u!114 &8176432985489828231
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7bfdaf7f2c4c1d04580d676ed3717f21, type: 3}
+  m_Name: Cave_Lair_Metal_Chain_Hanging_02_Atlased
+  m_EditorClassIdentifier: 
+  _guid:
+    _guidString: 5b3a0f1d-471c-46a2-b6a8-6b4d5108df22
+  _prefabAsset: {fileID: 6826632692772000413, guid: ebaed497489dc044bae2c3867fc4d001, type: 3}
+  _preview:
+    _prefabAsset: {fileID: 6826632692772000413, guid: ebaed497489dc044bae2c3867fc4d001, type: 3}
+    _texture: {fileID: 0}
+    _yaw: 0
+    _pitch: 0
+  _sceneToObjectGroup:
+    _serializedKeys: []
+    _serializedValues: []
+  _spawnGuideTransformTRS:
+    _position: {x: 0, y: 0, z: 0}
+    _rotation: {x: 0, y: -0, z: -0, w: 1}
+    _scale: {x: 1, y: 1, z: 1}
+  _modularSnapVerticalStep: 0
+  _surfaceSnapAppliedOffsetFromSurface: 0
+  _tags: 0
+  _modelSize: {x: 1.1934168, y: 0.32219613, z: 0.099276885}
+  _uiSelected: 0
+--- !u!114 &8344442574024265006
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7bfdaf7f2c4c1d04580d676ed3717f21, type: 3}
+  m_Name: Cave_Lair_Metal_Pot_Junk_02_Atlased
+  m_EditorClassIdentifier: 
+  _guid:
+    _guidString: 62c6e462-5cc3-493f-bf81-2b40cbeeafe1
+  _prefabAsset: {fileID: 5652619085852623496, guid: e89aa49eced07744db5c1b466211fe5a, type: 3}
+  _preview:
+    _prefabAsset: {fileID: 5652619085852623496, guid: e89aa49eced07744db5c1b466211fe5a, type: 3}
+    _texture: {fileID: 0}
+    _yaw: 0
+    _pitch: 0
+  _sceneToObjectGroup:
+    _serializedKeys: []
+    _serializedValues: []
+  _spawnGuideTransformTRS:
+    _position: {x: 0, y: 0, z: 0}
+    _rotation: {x: 0, y: -0, z: -0, w: 1}
+    _scale: {x: 1, y: 1, z: 1}
+  _modularSnapVerticalStep: 0
+  _surfaceSnapAppliedOffsetFromSurface: 0
+  _tags: 0
+  _modelSize: {x: 0.45, y: 0.40016, z: 0.378}
+  _uiSelected: 0
+--- !u!114 &8992400211670447538
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7bfdaf7f2c4c1d04580d676ed3717f21, type: 3}
+  m_Name: Cave_Lair_Wood_Timber_Log_Large_01_Atlased
+  m_EditorClassIdentifier: 
+  _guid:
+    _guidString: 797394a2-f71e-4855-a1ad-442a3e843aa6
+  _prefabAsset: {fileID: 2911827138747959378, guid: f35d9895be0bab54fa3214c4aacb13f5, type: 3}
+  _preview:
+    _prefabAsset: {fileID: 2911827138747959378, guid: f35d9895be0bab54fa3214c4aacb13f5, type: 3}
+    _texture: {fileID: 0}
+    _yaw: 0
+    _pitch: 0
+  _sceneToObjectGroup:
+    _serializedKeys: []
+    _serializedValues: []
+  _spawnGuideTransformTRS:
+    _position: {x: 0, y: 0, z: 0}
+    _rotation: {x: 0, y: -0, z: -0, w: 1}
+    _scale: {x: 1, y: 1, z: 1}
+  _modularSnapVerticalStep: 0
+  _surfaceSnapAppliedOffsetFromSurface: 0
+  _tags: 0
+  _modelSize: {x: 12.495781, y: 1.465294, z: 1.5420291}
+  _uiSelected: 0
+--- !u!114 &9108329226910437070
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7bfdaf7f2c4c1d04580d676ed3717f21, type: 3}
+  m_Name: Cave_Lair_Vegetation_Swamp_Mushroom_Large_04_Atlased
+  m_EditorClassIdentifier: 
+  _guid:
+    _guidString: d91fd4c6-98fb-4867-bdcd-676b79501458
+  _prefabAsset: {fileID: 3428940952088464594, guid: 2a687087febfda1419ce39af6c17f462, type: 3}
+  _preview:
+    _prefabAsset: {fileID: 3428940952088464594, guid: 2a687087febfda1419ce39af6c17f462, type: 3}
+    _texture: {fileID: 0}
+    _yaw: 0
+    _pitch: 0
+  _sceneToObjectGroup:
+    _serializedKeys: []
+    _serializedValues: []
+  _spawnGuideTransformTRS:
+    _position: {x: 0, y: 0, z: 0}
+    _rotation: {x: 0, y: -0, z: -0, w: 1}
+    _scale: {x: 1, y: 1, z: 1}
+  _modularSnapVerticalStep: 0
+  _surfaceSnapAppliedOffsetFromSurface: 0
+  _tags: 0
+  _modelSize: {x: 3.24846, y: 0.5053856, z: 3.383876}
+  _uiSelected: 0
+--- !u!114 &9178591971609035846
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7bfdaf7f2c4c1d04580d676ed3717f21, type: 3}
+  m_Name: Cave_Lair_Weapon_Metal_Sword_Jagged_01_Atlased
+  m_EditorClassIdentifier: 
+  _guid:
+    _guidString: 24575754-1e5e-448e-aecd-292893a81295
+  _prefabAsset: {fileID: 1076849089185412980, guid: 184546e46df5b01429c6a236378ee991, type: 3}
+  _preview:
+    _prefabAsset: {fileID: 1076849089185412980, guid: 184546e46df5b01429c6a236378ee991, type: 3}
+    _texture: {fileID: 0}
+    _yaw: 0
+    _pitch: 0
+  _sceneToObjectGroup:
+    _serializedKeys: []
+    _serializedValues: []
+  _spawnGuideTransformTRS:
+    _position: {x: 0, y: 0, z: 0}
+    _rotation: {x: 0, y: -0, z: -0, w: 1}
+    _scale: {x: 1, y: 1, z: 1}
+  _modularSnapVerticalStep: 0
+  _surfaceSnapAppliedOffsetFromSurface: 0
+  _tags: 0
+  _modelSize: {x: 0.18224297, y: 0.8122661, z: 0.0272412}
+  _uiSelected: 0

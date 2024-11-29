@@ -1,0 +1,811 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0d66032b72d2c674db017dba8e203d6a, type: 3}
+  m_Name: Default
+  m_EditorClassIdentifier: 
+  _profileName: Default
+  _shortcutCategories:
+  - _guid:
+      _guidString: 6bb101ef-4b3e-4c60-96c8-53b95715ab96
+    _name: Global
+    _shortcuts:
+    - _guid:
+        _guidString: 987add19-50e3-455f-93f7-817baad51e7f
+      _canChangeFromUI: 1
+      _keyCombo:
+        _cmd: 0
+        _ctrl: 0
+        _shift: 0
+        _key: 49
+      _name: Object Spawn
+      _conflicts: []
+      _uiSelected: 0
+    - _guid:
+        _guidString: 36f36dd9-0b56-43ea-b77a-794b3985fbf6
+      _canChangeFromUI: 1
+      _keyCombo:
+        _cmd: 0
+        _ctrl: 0
+        _shift: 0
+        _key: 50
+      _name: Object Selection
+      _conflicts: []
+      _uiSelected: 0
+    - _guid:
+        _guidString: 57cebbbc-3a3e-43b4-b519-44418caf37ae
+      _canChangeFromUI: 1
+      _keyCombo:
+        _cmd: 0
+        _ctrl: 0
+        _shift: 0
+        _key: 51
+      _name: Object Erase
+      _conflicts: []
+      _uiSelected: 0
+    - _guid:
+        _guidString: bd7ad5ae-4aca-4450-9ab7-965b5ce10d74
+      _canChangeFromUI: 1
+      _keyCombo:
+        _cmd: 0
+        _ctrl: 0
+        _shift: 0
+        _key: 91
+      _name: Grid/Vertical Step Down
+      _conflicts: []
+      _uiSelected: 0
+    - _guid:
+        _guidString: 7761bed5-b46b-470c-a098-b0cb62167a79
+      _canChangeFromUI: 1
+      _keyCombo:
+        _cmd: 0
+        _ctrl: 0
+        _shift: 0
+        _key: 93
+      _name: Grid/Vertical Step Up
+      _conflicts: []
+      _uiSelected: 0
+    - _guid:
+        _guidString: 7dc67c77-0d39-4cdd-84df-f20f9dbcaec8
+      _canChangeFromUI: 1
+      _keyCombo:
+        _cmd: 0
+        _ctrl: 0
+        _shift: 0
+        _key: 103
+      _name: Grid/Snap to Picked Object
+      _conflicts: []
+      _uiSelected: 0
+    - _guid:
+        _guidString: b5b07856-1061-47ca-9839-cdab7873e722
+      _canChangeFromUI: 1
+      _keyCombo:
+        _cmd: 0
+        _ctrl: 0
+        _shift: 0
+        _key: 120
+      _name: Transform/Rotate Around X
+      _conflicts: []
+      _uiSelected: 0
+    - _guid:
+        _guidString: e2afa311-182c-4aba-b3c4-07f2fc7abff7
+      _canChangeFromUI: 1
+      _keyCombo:
+        _cmd: 0
+        _ctrl: 0
+        _shift: 0
+        _key: 121
+      _name: Transform/Rotate Around Y
+      _conflicts: []
+      _uiSelected: 0
+    - _guid:
+        _guidString: ce2da01e-aa23-4250-b165-520872a679eb
+      _canChangeFromUI: 1
+      _keyCombo:
+        _cmd: 0
+        _ctrl: 0
+        _shift: 0
+        _key: 122
+      _name: Transform/Rotate Around Z
+      _conflicts: []
+      _uiSelected: 0
+    - _guid:
+        _guidString: 9b17300e-7c78-47c4-9d0e-3fb87a950cd8
+      _canChangeFromUI: 1
+      _keyCombo:
+        _cmd: 0
+        _ctrl: 0
+        _shift: 1
+        _key: 120
+      _name: Transform/Rotate Around X Around Center
+      _conflicts: []
+      _uiSelected: 0
+    - _guid:
+        _guidString: ec7285b2-8eb7-47b0-924e-631b0e3f9d59
+      _canChangeFromUI: 1
+      _keyCombo:
+        _cmd: 0
+        _ctrl: 0
+        _shift: 1
+        _key: 121
+      _name: Transform/Rotate Around Y Around Center
+      _conflicts: []
+      _uiSelected: 0
+    - _guid:
+        _guidString: a6c44462-8095-48db-9b56-dc576f020cb8
+      _canChangeFromUI: 1
+      _keyCombo:
+        _cmd: 0
+        _ctrl: 0
+        _shift: 1
+        _key: 122
+      _name: Transform/Rotate Around Z Around Center
+      _conflicts: []
+      _uiSelected: 0
+    - _guid:
+        _guidString: 09122284-2d1e-47a0-afb6-2d1eaadb678a
+      _canChangeFromUI: 1
+      _keyCombo:
+        _cmd: 0
+        _ctrl: 0
+        _shift: 0
+        _key: 105
+      _name: Transform/Reset Rotation to Original
+      _conflicts: []
+      _uiSelected: 0
+    - _guid:
+        _guidString: e2006464-9a0c-4d8f-a32c-7ce93ae6adf5
+      _canChangeFromUI: 1
+      _keyCombo:
+        _cmd: 0
+        _ctrl: 0
+        _shift: 0
+        _key: 111
+      _name: Transform/Reset Scale to Original
+      _conflicts: []
+      _uiSelected: 0
+    - _guid:
+        _guidString: 48abbcf9-1849-4e6d-a3c2-e22393e310f6
+      _canChangeFromUI: 1
+      _keyCombo:
+        _cmd: 0
+        _ctrl: 1
+        _shift: 0
+        _key: 113
+      _name: Mirror Gizmo/Toggle
+      _conflicts: []
+      _uiSelected: 0
+    - _guid:
+        _guidString: d33aaa51-6b99-47ad-b44b-71d8fbd64b80
+      _canChangeFromUI: 1
+      _keyCombo:
+        _cmd: 0
+        _ctrl: 1
+        _shift: 0
+        _key: 102
+      _name: Mirror Gizmo/Snap to View
+      _conflicts: []
+      _uiSelected: 0
+    - _guid:
+        _guidString: 6ae31bb0-0e6a-4d19-88ce-256226af35d6
+      _canChangeFromUI: 1
+      _keyCombo:
+        _cmd: 0
+        _ctrl: 0
+        _shift: 0
+        _key: 102
+      _name: Selection/Frame Selected
+      _conflicts: []
+      _uiSelected: 0
+    - _guid:
+        _guidString: 801b9a88-9303-499a-8f68-2cb79f5fca7a
+      _canChangeFromUI: 1
+      _keyCombo:
+        _cmd: 0
+        _ctrl: 0
+        _shift: 0
+        _key: 127
+      _name: Selection/Delete Selected
+      _conflicts: []
+      _uiSelected: 0
+    - _guid:
+        _guidString: 3d213e1c-3101-4c07-921d-973eedc3a0cc
+      _canChangeFromUI: 1
+      _keyCombo:
+        _cmd: 0
+        _ctrl: 1
+        _shift: 0
+        _key: 100
+      _name: Selection/Duplicate Selected
+      _conflicts: []
+      _uiSelected: 0
+    _uiSelected: 0
+  - _guid:
+      _guidString: 61035a1e-a522-4488-ba8c-972e0f9426c2
+    _name: Object Transform Sessions
+    _shortcuts:
+    - _guid:
+        _guidString: 65f75dd8-972e-41c9-8479-eef61b8c5770
+      _canChangeFromUI: 1
+      _keyCombo:
+        _cmd: 0
+        _ctrl: 0
+        _shift: 0
+        _key: 101
+      _name: Modular Snap/Vertical Step Up
+      _conflicts: []
+      _uiSelected: 0
+    - _guid:
+        _guidString: 79e5bf3f-1a2e-4083-b36e-c6f070e58198
+      _canChangeFromUI: 1
+      _keyCombo:
+        _cmd: 0
+        _ctrl: 0
+        _shift: 0
+        _key: 113
+      _name: Modular Snap/Vertical Step Down
+      _conflicts: []
+      _uiSelected: 0
+    - _guid:
+        _guidString: c732e458-aff3-494b-9457-5584aeff2008
+      _canChangeFromUI: 1
+      _keyCombo:
+        _cmd: 0
+        _ctrl: 0
+        _shift: 0
+        _key: 114
+      _name: Modular Snap/Reset Vertical Step
+      _conflicts: []
+      _uiSelected: 0
+    - _guid:
+        _guidString: 2349d1c0-d869-42d0-ba85-367ab03f105e
+      _canChangeFromUI: 1
+      _keyCombo:
+        _cmd: 0
+        _ctrl: 0
+        _shift: 1
+        _key: 114
+      _name: Modular Snap/Reset Vertical Step to Original
+      _conflicts: []
+      _uiSelected: 0
+    - _guid:
+        _guidString: 0ac2dcef-fe67-42c3-b989-c709b35af4dc
+      _canChangeFromUI: 1
+      _keyCombo:
+        _cmd: 0
+        _ctrl: 0
+        _shift: 0
+        _key: 110
+      _name: Modular Snap/Toggle Half-Space
+      _conflicts: []
+      _uiSelected: 0
+    - _guid:
+        _guidString: 217263e4-d3c3-4a56-b36c-2937cab3a682
+      _canChangeFromUI: 1
+      _keyCombo:
+        _cmd: 0
+        _ctrl: 0
+        _shift: 0
+        _key: 115
+      _name: Modular Snap/Toggle Object-to-Object Snap
+      _conflicts: []
+      _uiSelected: 0
+    - _guid:
+        _guidString: e1b8288d-7d16-43a1-9293-05d59bca60d7
+      _canChangeFromUI: 1
+      _keyCombo:
+        _cmd: 0
+        _ctrl: 0
+        _shift: 1
+        _key: 99
+      _name: Modular Snap/Toggle Grid Snap Climb
+      _conflicts: []
+      _uiSelected: 0
+    - _guid:
+        _guidString: 657e042e-f712-42f0-8a23-6890acbec719
+      _canChangeFromUI: 1
+      _keyCombo:
+        _cmd: 0
+        _ctrl: 0
+        _shift: 0
+        _key: 32
+      _name: Modular Snap/Toggle Alignment Highlights
+      _conflicts: []
+      _uiSelected: 0
+    - _guid:
+        _guidString: 89710fa1-f649-4c03-aafd-ad644d78a0e1
+      _canChangeFromUI: 1
+      _keyCombo:
+        _cmd: 0
+        _ctrl: 0
+        _shift: 1
+        _key: 32
+      _name: Modular Snap/Toggle Alignment Hints
+      _conflicts: []
+      _uiSelected: 0
+    - _guid:
+        _guidString: d28ea300-e4f9-4e0a-8725-361960172a41
+      _canChangeFromUI: 1
+      _keyCombo:
+        _cmd: 0
+        _ctrl: 0
+        _shift: 0
+        _key: 114
+      _name: Surface Snap/Reset Mouse Offset from Surface
+      _conflicts: []
+      _uiSelected: 0
+    - _guid:
+        _guidString: 0e9446f0-c3bc-4e5e-b883-59a5e7668191
+      _canChangeFromUI: 1
+      _keyCombo:
+        _cmd: 0
+        _ctrl: 0
+        _shift: 1
+        _key: 97
+      _name: Surface Snap/Toggle Axis Alignment
+      _conflicts: []
+      _uiSelected: 0
+    _uiSelected: 0
+  - _guid:
+      _guidString: 7f925386-7ad7-45c1-8112-1c52f7aab275
+    _name: Object Spawn
+    _shortcuts:
+    - _guid:
+        _guidString: 4deceeff-e8b4-4b34-b106-dac87be41b0f
+      _canChangeFromUI: 1
+      _keyCombo:
+        _cmd: 0
+        _ctrl: 0
+        _shift: 0
+        _key: 107
+      _name: Spawn Guide/Sync Grid Cell Size
+      _conflicts: []
+      _uiSelected: 0
+    - _guid:
+        _guidString: 6a5bcc4c-138c-4c60-b1a4-bf029629b9e6
+      _canChangeFromUI: 1
+      _keyCombo:
+        _cmd: 0
+        _ctrl: 0
+        _shift: 1
+        _key: 118
+      _name: Spawn Guide/Toggle Decor Rules
+      _conflicts: []
+      _uiSelected: 0
+    - _guid:
+        _guidString: 78de176c-3bfb-47ab-826e-a85e8b0ffaec
+      _canChangeFromUI: 1
+      _keyCombo:
+        _cmd: 0
+        _ctrl: 1
+        _shift: 0
+        _key: 32
+      _name: Spawn Guide/Scroll Prefab
+      _conflicts: []
+      _uiSelected: 0
+    - _guid:
+        _guidString: 5444fb9a-c054-49ac-babc-026f73d08365
+      _canChangeFromUI: 1
+      _keyCombo:
+        _cmd: 0
+        _ctrl: 0
+        _shift: 0
+        _key: 113
+      _name: Tile Rule Spawn/Paint
+      _conflicts: []
+      _uiSelected: 0
+    - _guid:
+        _guidString: a1081f84-ebd2-4337-91ff-5bca55d020b2
+      _canChangeFromUI: 1
+      _keyCombo:
+        _cmd: 0
+        _ctrl: 0
+        _shift: 0
+        _key: 119
+      _name: Tile Rule Spawn/Ramp
+      _conflicts: []
+      _uiSelected: 0
+    - _guid:
+        _guidString: 23a7cf32-1099-45c2-9728-6f82d5790ace
+      _canChangeFromUI: 1
+      _keyCombo:
+        _cmd: 0
+        _ctrl: 0
+        _shift: 0
+        _key: 101
+      _name: Tile Rule Spawn/Erase
+      _conflicts: []
+      _uiSelected: 0
+    - _guid:
+        _guidString: 3cf1edf5-8f16-4bad-b32f-3cbe64ebbc82
+      _canChangeFromUI: 1
+      _keyCombo:
+        _cmd: 0
+        _ctrl: 0
+        _shift: 0
+        _key: 114
+      _name: Tile Rule Spawn/Connect
+      _conflicts: []
+      _uiSelected: 0
+    - _guid:
+        _guidString: 4878ff36-fc52-405f-a489-6197c0c76244
+      _canChangeFromUI: 1
+      _keyCombo:
+        _cmd: 0
+        _ctrl: 0
+        _shift: 0
+        _key: 32
+      _name: Tile Rule Spawn/Connect/Change Major Axis
+      _conflicts: []
+      _uiSelected: 0
+    - _guid:
+        _guidString: fa2907ae-f9f3-411e-ae3d-a4f57e6bc8b2
+      _canChangeFromUI: 1
+      _keyCombo:
+        _cmd: 0
+        _ctrl: 0
+        _shift: 1
+        _key: 113
+      _name: Tile Rule Spawn/Box Brush
+      _conflicts: []
+      _uiSelected: 0
+    - _guid:
+        _guidString: c4967edd-cc23-4a8e-8202-dc0d42a0e7d3
+      _canChangeFromUI: 1
+      _keyCombo:
+        _cmd: 0
+        _ctrl: 0
+        _shift: 1
+        _key: 119
+      _name: Tile Rule Spawn/Flexi Box Brush
+      _conflicts: []
+      _uiSelected: 0
+    - _guid:
+        _guidString: e6dfdaa6-d3f8-4d33-8447-0ec2aa29dc69
+      _canChangeFromUI: 1
+      _keyCombo:
+        _cmd: 0
+        _ctrl: 0
+        _shift: 1
+        _key: 101
+      _name: Tile Rule Spawn/Segments Brush
+      _conflicts: []
+      _uiSelected: 0
+    - _guid:
+        _guidString: e7ecf416-f42e-4e7b-a3a0-41be76f60324
+      _canChangeFromUI: 1
+      _keyCombo:
+        _cmd: 0
+        _ctrl: 1
+        _shift: 0
+        _key: 97
+      _name: Curve Spawn/Select All Control Points
+      _conflicts: []
+      _uiSelected: 0
+    - _guid:
+        _guidString: 928bc0c1-c2f7-48e7-9523-5cee7bcb057a
+      _canChangeFromUI: 1
+      _keyCombo:
+        _cmd: 0
+        _ctrl: 0
+        _shift: 0
+        _key: 99
+      _name: Curve Spawn/Insert Control Point
+      _conflicts: []
+      _uiSelected: 0
+    - _guid:
+        _guidString: 4372a653-6de6-4597-8d37-437f4b5294f8
+      _canChangeFromUI: 1
+      _keyCombo:
+        _cmd: 0
+        _ctrl: 0
+        _shift: 1
+        _key: 102
+      _name: Curve Spawn/Project Selected Control Points
+      _conflicts: []
+      _uiSelected: 0
+    - _guid:
+        _guidString: 58e094c5-cc44-4a1b-89c2-d14c1e7c8fb0
+      _canChangeFromUI: 1
+      _keyCombo:
+        _cmd: 0
+        _ctrl: 0
+        _shift: 0
+        _key: 119
+      _name: Curve Spawn/Move Gizmo
+      _conflicts: []
+      _uiSelected: 0
+    - _guid:
+        _guidString: 6b097c4c-5490-4057-8afd-18e6906e21fc
+      _canChangeFromUI: 1
+      _keyCombo:
+        _cmd: 0
+        _ctrl: 0
+        _shift: 0
+        _key: 101
+      _name: Curve Spawn/Rotation Gizmo
+      _conflicts: []
+      _uiSelected: 0
+    - _guid:
+        _guidString: 915ae6c2-86c2-4bfe-91fe-33a2d1e10bd1
+      _canChangeFromUI: 1
+      _keyCombo:
+        _cmd: 0
+        _ctrl: 0
+        _shift: 0
+        _key: 114
+      _name: Curve Spawn/Scale Gizmo
+      _conflicts: []
+      _uiSelected: 0
+    _uiSelected: 0
+  - _guid:
+      _guidString: 738b62e3-1315-4fa2-b744-1241f871ae0f
+    _name: Object Selection
+    _shortcuts:
+    - _guid:
+        _guidString: fa17f65d-3def-426b-a58e-1f29ea9415ff
+      _canChangeFromUI: 1
+      _keyCombo:
+        _cmd: 0
+        _ctrl: 0
+        _shift: 1
+        _key: 115
+      _name: Snap All Axes
+      _conflicts: []
+      _uiSelected: 0
+    - _guid:
+        _guidString: a1b591ae-e78b-4376-b774-51555aa14a36
+      _canChangeFromUI: 1
+      _keyCombo:
+        _cmd: 0
+        _ctrl: 0
+        _shift: 1
+        _key: 97
+      _name: Select Similar Prefabs
+      _conflicts: []
+      _uiSelected: 0
+    - _guid:
+        _guidString: f2ee05e6-c1ca-40d8-a299-77020e13358f
+      _canChangeFromUI: 1
+      _keyCombo:
+        _cmd: 0
+        _ctrl: 0
+        _shift: 1
+        _key: 99
+      _name: Select Prefabs in Manager
+      _conflicts: []
+      _uiSelected: 0
+    - _guid:
+        _guidString: ef7ac4b0-764f-46c4-af69-1734010300f0
+      _canChangeFromUI: 1
+      _keyCombo:
+        _cmd: 0
+        _ctrl: 0
+        _shift: 1
+        _key: 103
+      _name: Project On Grid
+      _conflicts: []
+      _uiSelected: 0
+    - _guid:
+        _guidString: d60532b8-6630-4e98-a6dd-7099674c7f17
+      _canChangeFromUI: 1
+      _keyCombo:
+        _cmd: 0
+        _ctrl: 0
+        _shift: 1
+        _key: 102
+      _name: Project On Object
+      _conflicts: []
+      _uiSelected: 0
+    - _guid:
+        _guidString: 824fed4e-6849-4037-9698-f5398294d09d
+      _canChangeFromUI: 1
+      _keyCombo:
+        _cmd: 0
+        _ctrl: 0
+        _shift: 0
+        _key: 119
+      _name: Move Gizmo
+      _conflicts: []
+      _uiSelected: 0
+    - _guid:
+        _guidString: a8c437d6-d39b-40b2-8346-7923a35d59ed
+      _canChangeFromUI: 1
+      _keyCombo:
+        _cmd: 0
+        _ctrl: 0
+        _shift: 0
+        _key: 101
+      _name: Rotation Gizmo
+      _conflicts: []
+      _uiSelected: 0
+    - _guid:
+        _guidString: 9c024c5c-e591-4631-b96a-1cbf9db92380
+      _canChangeFromUI: 1
+      _keyCombo:
+        _cmd: 0
+        _ctrl: 0
+        _shift: 0
+        _key: 114
+      _name: Scale Gizmo
+      _conflicts: []
+      _uiSelected: 0
+    - _guid:
+        _guidString: 6eda8d6e-b3e2-42bc-b18e-b9ec586ecb3c
+      _canChangeFromUI: 1
+      _keyCombo:
+        _cmd: 0
+        _ctrl: 0
+        _shift: 0
+        _key: 116
+      _name: Universal Gizmo
+      _conflicts: []
+      _uiSelected: 0
+    - _guid:
+        _guidString: a8aa23b9-5571-4b53-a3bd-2ee5e32e28db
+      _canChangeFromUI: 1
+      _keyCombo:
+        _cmd: 0
+        _ctrl: 0
+        _shift: 0
+        _key: 117
+      _name: Extrude Gizmo
+      _conflicts: []
+      _uiSelected: 0
+    - _guid:
+        _guidString: 51c28155-1ec5-4b22-8cf0-c7a8f093c341
+      _canChangeFromUI: 1
+      _keyCombo:
+        _cmd: 0
+        _ctrl: 0
+        _shift: 1
+        _key: 49
+      _name: Selection Rectangle
+      _conflicts: []
+      _uiSelected: 0
+    - _guid:
+        _guidString: 582dc617-6641-48c5-a8c2-4ee0834181fa
+      _canChangeFromUI: 1
+      _keyCombo:
+        _cmd: 0
+        _ctrl: 0
+        _shift: 1
+        _key: 50
+      _name: Selection Segments
+      _conflicts: []
+      _uiSelected: 0
+    - _guid:
+        _guidString: e282d70b-4936-4bda-81d6-f1349c1fdc12
+      _canChangeFromUI: 1
+      _keyCombo:
+        _cmd: 0
+        _ctrl: 0
+        _shift: 1
+        _key: 51
+      _name: Selection Box
+      _conflicts: []
+      _uiSelected: 0
+    - _guid:
+        _guidString: eeb0b421-50aa-4a0e-acac-e24418dbc8bc
+      _canChangeFromUI: 1
+      _keyCombo:
+        _cmd: 0
+        _ctrl: 0
+        _shift: 0
+        _key: 109
+      _name: Mirror Selected
+      _conflicts: []
+      _uiSelected: 0
+    - _guid:
+        _guidString: 8f6af444-185c-476e-8e79-c583e64b3442
+      _canChangeFromUI: 1
+      _keyCombo:
+        _cmd: 0
+        _ctrl: 0
+        _shift: 0
+        _key: 100
+      _name: Modular Snap
+      _conflicts: []
+      _uiSelected: 0
+    - _guid:
+        _guidString: 71f96ea8-8546-49ac-a739-5dd17506e9e9
+      _canChangeFromUI: 1
+      _keyCombo:
+        _cmd: 0
+        _ctrl: 0
+        _shift: 0
+        _key: 99
+      _name: Surface Snap
+      _conflicts: []
+      _uiSelected: 0
+    - _guid:
+        _guidString: ed3d11c2-c166-452c-b4ac-3fd60d0f780c
+      _canChangeFromUI: 1
+      _keyCombo:
+        _cmd: 0
+        _ctrl: 0
+        _shift: 0
+        _key: 118
+      _name: Vertex Snap
+      _conflicts: []
+      _uiSelected: 0
+    - _guid:
+        _guidString: 696036b5-6921-4d5e-8d57-6bffcf07d03e
+      _canChangeFromUI: 1
+      _keyCombo:
+        _cmd: 0
+        _ctrl: 0
+        _shift: 0
+        _key: 98
+      _name: Box Snap
+      _conflicts: []
+      _uiSelected: 0
+    - _guid:
+        _guidString: 59633b64-a90b-47a9-ba17-ec1d9a9c3cb7
+      _canChangeFromUI: 1
+      _keyCombo:
+        _cmd: 0
+        _ctrl: 0
+        _shift: 1
+        _key: 118
+      _name: Filter Out of View
+      _conflicts: []
+      _uiSelected: 0
+    - _guid:
+        _guidString: 0840b329-fc4b-4936-a9e7-5caee0d5f3ef
+      _canChangeFromUI: 1
+      _keyCombo:
+        _cmd: 0
+        _ctrl: 0
+        _shift: 0
+        _key: 32
+      _name: Grow
+      _conflicts: []
+      _uiSelected: 0
+    _uiSelected: 0
+  - _guid:
+      _guidString: d15d6895-ea96-47db-a48d-147b3eb53d0a
+    _name: Object Erase
+    _shortcuts:
+    - _guid:
+        _guidString: 61a2f004-75ea-4caa-8a95-89dd08b0dfa0
+      _canChangeFromUI: 1
+      _keyCombo:
+        _cmd: 0
+        _ctrl: 0
+        _shift: 1
+        _key: 49
+      _name: Erase Cursor
+      _conflicts: []
+      _uiSelected: 0
+    - _guid:
+        _guidString: e06ab527-cc5e-4046-b3a2-3ac0e7499b62
+      _canChangeFromUI: 1
+      _keyCombo:
+        _cmd: 0
+        _ctrl: 0
+        _shift: 1
+        _key: 50
+      _name: Erase Brush 2D
+      _conflicts: []
+      _uiSelected: 0
+    - _guid:
+        _guidString: 48937262-2ec0-4ac2-9d35-b9881491f768
+      _canChangeFromUI: 1
+      _keyCombo:
+        _cmd: 0
+        _ctrl: 0
+        _shift: 1
+        _key: 51
+      _name: Erase Brush 3D
+      _conflicts: []
+      _uiSelected: 0
+    _uiSelected: 0

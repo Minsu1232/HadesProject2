@@ -10,7 +10,7 @@ public class CharacterStats
     public float baseAttackPower = 10;
     public float baseAttackSpeed = 1f;
     public float baseCriticalCance = 0.3f;
-    public float baseSpeed = 1;
+    public float baseSpeed = 3f;
     public int upgradeCount = 3;
 }
 
