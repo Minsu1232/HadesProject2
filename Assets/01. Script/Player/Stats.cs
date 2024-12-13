@@ -1,3 +1,4 @@
+using Sirenix.OdinInspector;
 using System;
 
 public class Stats
@@ -12,7 +13,7 @@ public class Stats
     public event Action<int> OnMaxHealthChanged;
 
     // 스탯 프로퍼티들
-    private int health;
+    [ShowInInspector] private int health;
     public int Health
     {
         get => health;
@@ -38,7 +39,7 @@ public class Stats
             }
         }
     }
-    private int mana;
+    [ShowInInspector] private int mana;
     public int Mana
     {
         get => mana;
@@ -52,7 +53,7 @@ public class Stats
         }
     }
 
-    private int attackPower;
+    [ShowInInspector] private int attackPower;
     public int AttackPower
     {
         get => attackPower;
@@ -66,7 +67,7 @@ public class Stats
         }
     }
 
-    private int attackSpeed;
+    [ShowInInspector] private int attackSpeed;
     public int AttackSpeed
     {
         get => attackSpeed;
@@ -80,7 +81,7 @@ public class Stats
         }
     }
 
-    private float speed;
+    [ShowInInspector] private float speed;
     public float Speed
     {
         get => speed;
@@ -94,7 +95,7 @@ public class Stats
         }
     }
 
-    private float criticalChance;
+    [ShowInInspector] private float criticalChance;
     public float CriticalChance
     {
         get => criticalChance;

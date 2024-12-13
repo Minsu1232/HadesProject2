@@ -1,7 +1,8 @@
+using Sirenix.OdinInspector;
 using System;
 using UnityEngine;
 using static AttackData;
-
+[System.Serializable]
 public class PlayerClass : ICreature, IDamageable
 {
     #region º¯¼ö
@@ -21,6 +22,7 @@ public class PlayerClass : ICreature, IDamageable
     public PlayerClassData _playerClassData;
 
     public Transform playerTransform;
+    [ShowInInspector]
     public Stats PlayerStats { get; private set; }
 
     private bool isDead = false;

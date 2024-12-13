@@ -1,3 +1,4 @@
+using Sirenix.OdinInspector;
 using System.Collections;
 using System.Collections.Generic;
 using System.Net;
@@ -13,7 +14,10 @@ public class GameInitializer : Singleton<GameInitializer>
     [SerializeField] private Transform weaponMount;
 
     private WeaponService weaponService;
+    //[ShowInInspector]
+    [SerializeField]
     private PlayerClass playerClass;
+
     private ICharacterAttack characterAttack;
     private Animator animator;
 

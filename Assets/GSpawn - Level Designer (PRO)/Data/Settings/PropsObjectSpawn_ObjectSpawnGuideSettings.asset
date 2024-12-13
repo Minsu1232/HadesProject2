@@ -14,5 +14,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _applyDecorRules: 0
   _transformRandomizationSettings: {fileID: 0}
-  _randomizePrefab: 0
+  _randomizePrefab: 1
   _randomPrefabProfileName: Default

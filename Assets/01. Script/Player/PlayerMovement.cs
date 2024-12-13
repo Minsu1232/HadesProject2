@@ -44,8 +44,7 @@ public class PlayerMovement : MonoBehaviour
         rb.interpolation = RigidbodyInterpolation.Interpolate;
         rb.collisionDetectionMode = CollisionDetectionMode.Continuous;
 
-        // 드래그 값 조정
-        rb.drag = 5f; // 기본 드래그 값 설정
+        
     }
 
     private void Update()
@@ -114,6 +113,7 @@ public class PlayerMovement : MonoBehaviour
                 rb.velocity = new Vector3(0, rb.velocity.y, 0);
             }
         }
+
     }
 
     private void SetAnimatorParameters(Vector3 moveDirection)
@@ -147,16 +147,16 @@ public class PlayerMovement : MonoBehaviour
     private IEnumerator DashCoroutine()
     {
         if (isDashing) yield break;
-
+        
         isDashing = true;
         float originalDrag = rb.drag;
         rb.drag = 0; // 대시 중에는 드래그를 0으로 설정
 
         Vector3 dashDirection = moveDirection.normalized;
         rb.AddForce(dashDirection * dashForce, ForceMode.Impulse);
-
+        
         yield return new WaitForSeconds(dashDuration);
-
+        
         rb.drag = originalDrag; // 원래 드래그 값으로 복구
         rb.velocity = rb.velocity * 0.3f; // 대시 후 속도 감소
         isDashing = false;

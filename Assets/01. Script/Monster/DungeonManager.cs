@@ -20,7 +20,7 @@ public class DungeonManager : Singleton<DungeonManager>
 
         player = GameInitializer.Instance.GetPlayerClass().playerTransform.transform;
         // 테스트로 몬스터 생성
-        SpawnMonster(new Vector3(0, 3, 0));
+        SpawnMonster(new Vector3(7.5999999f, 1.28999996f, 57.0354156f));
     }
 
     private MonsterFactoryBase GetMonsterFactoryForDungeon(string dungeonType)

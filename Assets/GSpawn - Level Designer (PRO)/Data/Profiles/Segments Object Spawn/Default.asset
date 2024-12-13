@@ -45,6 +45,6 @@ MonoBehaviour:
   _bottomBorderWidth: 1
   _segmentCapBorderWidth: 0
   _prefabPickMode: 0
-  _randomPrefabProfileName: Default
+  _randomPrefabProfileName: TempleFieldTile
   _heightRangePrefabProfileName: Default
-  _projectionMode: 0
+  _projectionMode: 1

@@ -14,7 +14,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _profiles:
   - {fileID: 11400000, guid: 58e05be828d8365408dadc916ffde6ee, type: 2}
-  _activeProfile: {fileID: 0}
+  - {fileID: 11400000, guid: b551dcbad7d30ce43ab6d96e0414e5f8, type: 2}
+  _activeProfile: {fileID: 11400000, guid: 58e05be828d8365408dadc916ffde6ee, type: 2}
 --- !u!114 &3154157697347913533
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -30,9 +31,9 @@ MonoBehaviour:
   selectedItems:
     _serializedList: []
   selectRangeBeginId:
-    _guidString: 00000000-0000-0000-0000-000000000000
+    _guidString: dababc25-a4df-45a8-9da5-b5adced5ed97
   selectRangeEndId:
-    _guidString: 00000000-0000-0000-0000-000000000000
+    _guidString: c4ee1f98-39b4-459f-ae30-36e7e48883c6
   hasSelectRange: 0
   scrollOffset: {x: 0, y: 0}
   vertScrollHighValue: 0
