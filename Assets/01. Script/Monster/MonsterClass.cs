@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using static AttackData;
+using static MonsterData;
 
 public abstract class MonsterClass : ICreature,IDamageable
 {
@@ -19,6 +20,27 @@ public abstract class MonsterClass : ICreature,IDamageable
     public int CurrentMoveRange {  get; private set; }
     public int CurrentChaseRange { get; private set; }
 
+    public float CurrentSkillCooldown { get; private set; }
+
+    public int CurrentAggroDropRange { get; private set; }
+
+    public float CurrentSkillRange {  get; private set; }
+    public float CurrentSKillDuration {  get; private set; }
+    public float CurrentSkillDamage { get; private set; }
+
+    public float CurrentHitStunDuration {  get; private set; }
+
+    public float CurrentDeathDuration { get; private set; }
+
+    public float CurrentSpawnDuration { get; private set; }
+
+    public MonsterGrade grade { get; private set; }
+    public SpawnStrategyType CurrentSpawnStrategy { get; private set; }
+    public MovementStrategyType CurrentMoveStrategy { get; private set; }
+    public AttackStrategyType CurrentAttackStrategy { get; private set; }
+    public IdleStrategyType CurrentIdleStrategy { get; private set; }
+    public SkillStrategyType CurrentSkillStrategy { get; private set; }
+    public DieStrategyType CurrentDieStrategy { get; private set; }
     public bool isBasicAttack { get; private set; }
 
     protected bool isDashing = false;
@@ -43,6 +65,21 @@ public abstract class MonsterClass : ICreature,IDamageable
         CurrentAttackSpeed = monsterData.initialAttackSpeed;
         CurrentMoveRange = monsterData.moveRange;
         CurrentChaseRange = monsterData.chaseRange;
+        CurrentSkillCooldown = monsterData.skillCooldown;
+        CurrentAggroDropRange = monsterData.aggroDropRange;
+        CurrentSkillRange = monsterData.skillRange;
+        CurrentSKillDuration = monsterData.skillDuration;
+        CurrentHitStunDuration = monsterData.hitStunDuration;
+        CurrentDeathDuration = monsterData.deathDuration;
+        CurrentSpawnDuration = monsterData.spawnDuration;
+        grade = monsterData.grade;
+        CurrentSkillDamage = monsterData.skillDamage;
+        CurrentSpawnStrategy = monsterData.spawnStrategy;
+        CurrentMoveStrategy = monsterData.moveStrategy;
+        CurrentAttackStrategy = monsterData.attackStrategy;
+        CurrentIdleStrategy = monsterData.idleStrategy;
+        CurrentSkillStrategy = monsterData.skillStrategy;
+        CurrentDieStrategy = monsterData.dieStrategy;
     }
     public MonsterData GetMonsterData()
     {

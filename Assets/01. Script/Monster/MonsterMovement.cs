@@ -4,11 +4,13 @@ using UnityEngine;
 
 public class MonsterMovement : MonoBehaviour
 {
-    public float moveRange = 3f; // 태어난 위치로부터의 이동 범위
-    public float chaseRange = 12f; // 플레이어를 추격하기 시작하는 거리
+    [SerializeField] float moveRange; // 태어난 위치로부터의 이동 범위
+    [SerializeField] float chaseRange; // 플레이어를 추격하기 시작하는 거리
+    [SerializeField] int aggroDropRange;
     public LayerMask wallLayer; // 벽 레이어
 
     private MonsterClass monsterClass;
+    private MonsterData monsterData;
     private float moveSpeed;
     private Vector3 originPosition;
     private Transform player;
@@ -21,9 +23,11 @@ public class MonsterMovement : MonoBehaviour
     {   
         
         monsterClass = DungeonManager.Instance.GetMonsterClass();
+        
         moveRange = monsterClass.CurrentMoveRange;
         moveSpeed = monsterClass.CurrentSpeed;
         chaseRange = monsterClass.CurrentChaseRange;
+        aggroDropRange = monsterClass.CurrentAggroDropRange;
         player = DungeonManager.Instance.GetPlayerTransform();
         originPosition = transform.position;
        
@@ -46,7 +50,7 @@ public class MonsterMovement : MonoBehaviour
             }
             ChasePlayer();
         }
-        else if (distanceToPlayer > chaseRange * 1.5f && isChasing)
+        else if (distanceToPlayer > aggroDropRange && isChasing)
         {
             // 추격 범위를 벗어났을 때 랜덤 이동 재개
             isChasing = false;

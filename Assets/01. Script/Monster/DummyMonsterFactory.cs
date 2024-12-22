@@ -9,28 +9,44 @@ public class DummyMonsterFactory : MonsterFactoryBase
 {
     public override MonsterClass CreateMonster(Vector3 spawnPosition, Action<MonsterClass> onMonsterCreated)
     {
-        Addressables.LoadAssetAsync<MonsterData>("MonsterData_1").Completed += handle =>
+        // 1. MonsterData 로드
+        Addressables.LoadAssetAsync<MonsterData>("MonsterData_1").Completed += dataHandle =>
         {
-            if (handle.Status == AsyncOperationStatus.Succeeded)
+            if (dataHandle.Status == AsyncOperationStatus.Succeeded)
             {
-                MonsterData monsterData = handle.Result;
-                monsterData.monsterPrefab.InstantiateAsync(spawnPosition, Quaternion.identity).Completed += prefabHandle =>
+                MonsterData monsterData = dataHandle.Result;
+
+                if (monsterData == null || string.IsNullOrEmpty(monsterData.monsterPrefabKey))
+                {
+                    Debug.LogError("MonsterData is null or PrefabKey is missing.");
+                    return;
+                }
+
+                // 2. Prefab InstantiateAsync
+                Addressables.InstantiateAsync(monsterData.monsterPrefabKey, spawnPosition, Quaternion.identity).Completed += prefabHandle =>
                 {
                     if (prefabHandle.Status == AsyncOperationStatus.Succeeded)
                     {
                         GameObject monsterObject = prefabHandle.Result;
 
-                        // MonsterClass 인스턴스 생성
+                        // 3. MonsterClass 및 Status 초기화
                         MonsterClass monster = new DummyMonster(monsterData);
-
-                        // MonsterStatus 컴포넌트 추가 및 초기화
                         MonsterStatus monsterStatus = monsterObject.AddComponent<MonsterStatus>();
-                        monsterStatus.Initialize(monster); // MonsterClass로 초기화
+                        monsterStatus.Initialize(monster);
 
+                        // 4. Callback 호출
                         onMonsterCreated?.Invoke(monster);
                     }
+                    else
+                    {
+                        Debug.LogError($"Failed to instantiate monster prefab with Key: {monsterData.monsterPrefabKey}");
+                    }
                 };
-            } 
+            }
+            else
+            {
+                Debug.LogError("Failed to load MonsterData with Key: MonsterData_1");
+            }
         };
 
         return null; // 비동기 처리가 완료될 때까지 반환할 값 없음

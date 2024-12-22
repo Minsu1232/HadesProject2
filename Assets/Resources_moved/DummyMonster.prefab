@@ -10,12 +10,11 @@ GameObject:
   m_Component:
   - component: {fileID: 2619852923373194530}
   - component: {fileID: 2320068535398641739}
-  - component: {fileID: 1328159503504050682}
   - component: {fileID: 2827613261616358019}
   - component: {fileID: 5930001300218740649}
   - component: {fileID: 5473152024169263454}
-  - component: {fileID: 8345651953897623114}
   - component: {fileID: 2802317495666376575}
+  - component: {fileID: -8020807522819655809}
   m_Layer: 0
   m_Name: DummyMonster
   m_TagString: Monster
@@ -46,23 +45,6 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6778603661364353518}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
---- !u!114 &1328159503504050682
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6778603661364353518}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1d0895ccbd4336d4eb853f5be65054f4, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  moveRange: 5
-  chaseRange: 7
-  wallLayer:
-    serializedVersion: 2
-    m_Bits: 64
 --- !u!23 &2827613261616358019
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -153,18 +135,6 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 80
   m_CollisionDetection: 0
---- !u!114 &8345651953897623114
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6778603661364353518}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8469d17aca27b8146b55570e6b777634, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &2802317495666376575
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -175,5 +145,17 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 488c1116bb4429742914072d90604ad2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &-8020807522819655809
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6778603661364353518}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3ccfc846ca2f9d94bb16257a7904546c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 

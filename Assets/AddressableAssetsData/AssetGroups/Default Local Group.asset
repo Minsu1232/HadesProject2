@@ -18,7 +18,7 @@ MonoBehaviour:
   m_GUID: 17420f5f1eec1a444b48d05887629950
   m_SerializeEntries:
   - m_GUID: aa3840fe5ab496e4e8235b160a7e8761
-    m_Address: DummyMonster
+    m_Address: Monster_DummyMonster
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0

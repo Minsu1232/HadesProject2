@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   monsterName: Dummy
   initialHp: 1000
-  initialAttackPower: 10
+  initialAttackPower: 20
   initialAttackSpeed: 1
   initialSpeed: 1
   attackRange: 3
@@ -22,8 +22,12 @@ MonoBehaviour:
   dropItem: 0
   moveRange: 5
   chaseRange: 7
-  monsterPrefab:
-    m_AssetGUID: DummyMonster
-    m_SubObjectName: 
-    m_SubObjectType: 
-    m_EditorAssetChanged: 0
+  monsterPrefabKey: Monster_DummyMonster
+  skillCooldown: 5
+  aggroDropRange: 12
+  skillRange: 10
+  skillDuration: 1
+  hitStunDuration: 0.3
+  deathDuration: 1.5
+  spawnDuration: 1
+  grade: 0

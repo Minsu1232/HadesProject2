@@ -1,0 +1,46 @@
+12/17
+
+1단계: 몬스터 시스템 완성
+- 몬스터 상태 시스템, 행동 트리 구현
+
+
+2단계: 스테이지 기반 작업
+- LoadingUI 구현
+- StageData 구조 설계
+- 스테이지별 몬스터 스폰 데이터 CSV 구성
+
+3단계: 스테이지 관리 시스템
+- StageManager 구현
+- 몬스터 스폰 시스템과 연동
+- 스테이지 클리어 조건 구현
+
+4단계: 최적화 및 개선
+- 메모리 관리 최적화
+- 몬스터 풀링 시스템 구현
+- 비동기 로딩 개선
+
+12/21
+
+MonsterClass추가 데이터
+
+열거형으로 몬스터들의 타입 정리
+
+public enum MonsterGrade
+{
+    Normal,     // 기본 몹
+    Elite,      // 정예 몹
+    MiniBoss,   // 중간보스
+    Boss        // 최종보스
+}
+
+// 공격/스킬 관련
+skillCooldown      (스킬 재사용 대기시간) 플롯
+skillRange        (스킬 사용 가능 범위) 인트
+skillDuration     (스킬 시전까지의 시간)
+
+// 상태 관련
+hitStunDuration   (피격시 경직 시간) 플롯
+deathDuration     (사망 연출 시간) 플롯
+
+// 스폰 관련
+spawnDuration     (스폰 연출 시간) 플롯

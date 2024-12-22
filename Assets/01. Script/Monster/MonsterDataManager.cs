@@ -1,30 +1,58 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.IO;
 using UnityEngine;
 using UnityEngine.AddressableAssets;
+using static MonsterData;
 
 public class MonsterDataManager : Singleton<MonsterDataManager>
 {
     private Dictionary<int, MonsterData> monsterDatabase = new Dictionary<int, MonsterData>();
+    private string persistentFilePath; // 실제 사용할 CSV 경로
+    private string streamingFilePath;  // 초기 CSV 경로
+
+    private void Awake()
+    {
+        // 경로 초기화
+        persistentFilePath = Path.Combine(Application.persistentDataPath, "Monsters.csv");
+        streamingFilePath = Path.Combine(Application.streamingAssetsPath, "Monsters.csv");
+
+        // CSV 파일 존재 여부 확인
+        if (!File.Exists(persistentFilePath))
+        {
+            Debug.LogWarning($"CSV 파일이 없습니다. StreamingAssets에서 복사합니다: {persistentFilePath}");
+            CopyCSVFromStreamingAssets();
+        }
+    }
 
     public void InitializeMonsters()
     {
         LoadMonstersFromCSV();
     }
 
+    private void CopyCSVFromStreamingAssets()
+    {
+        if (File.Exists(streamingFilePath))
+        {
+            File.Copy(streamingFilePath, persistentFilePath);
+            Debug.Log($"StreamingAssets에서 CSV 파일 복사 완료: {persistentFilePath}");
+        }
+        else
+        {
+            Debug.LogError("StreamingAssets에서 Monsters.csv 파일을 찾을 수 없습니다.");
+        }
+    }
+
     private async void LoadMonstersFromCSV()
     {
-        // CSV 파일을 Addressables로 로드
-        var csvHandle = Addressables.LoadAssetAsync<TextAsset>("monsters_csv");
-        TextAsset csvFile = await csvHandle.Task;
-
-        if (csvFile == null)
+        if (!File.Exists(persistentFilePath))
         {
-            Debug.LogError("몬스터 데이터 CSV 파일을 찾을 수 없습니다!");
+            Debug.LogError($"몬스터 데이터 CSV 파일을 찾을 수 없습니다: {persistentFilePath}");
             return;
         }
 
-        string[] lines = csvFile.text.Split('\n');
+        string[] lines = File.ReadAllLines(persistentFilePath);
         bool isFirstLine = true;
 
         foreach (string line in lines)
@@ -38,44 +66,55 @@ public class MonsterDataManager : Singleton<MonsterDataManager>
             if (string.IsNullOrWhiteSpace(line)) continue;
 
             string[] values = line.Trim().Split(',');
-
-            // ScriptableObject를 Addressables로 로드
             string monsterDataPath = $"MonsterData_{values[0]}"; // Addressables에 등록된 ScriptableObject 키
             var monsterDataHandle = Addressables.LoadAssetAsync<MonsterData>(monsterDataPath);
             MonsterData monsterData = await monsterDataHandle.Task;
-            Debug.Log(values[0]);
-             Debug.Log($"찾으려는 ScriptableObject 주소: {monsterDataPath}");
 
             if (monsterData != null)
             {
-                // CSV 데이터를 ScriptableObject에 할당
-                monsterData.monsterName = values[1];
-                monsterData.initialHp = int.Parse(values[2]);
-                monsterData.initialAttackPower = int.Parse(values[3]);
-                monsterData.initialAttackSpeed = float.Parse(values[4]);
-                monsterData.initialSpeed = int.Parse(values[5]);
-                monsterData.attackRange = int.Parse(values[6]);
-                monsterData.dropChance = float.Parse(values[7]);
-                monsterData.dropItem = int.Parse(values[8]);
-                monsterData.moveRange = int.Parse(values[9]);
-                monsterData.chaseRange = int.Parse(values[10]);
-
-                // Addressable 프리팹 참조 설정
-                string prefabPath = values[11]; // Addressables에 등록된 프리팹 키
-                monsterData.monsterPrefab = new AssetReferenceGameObject(prefabPath);
-
-                // Dictionary에 추가
+                UpdateMonsterData(monsterData, values);
                 int monsterId = int.Parse(values[0]);
-                monsterDatabase.Add(monsterId, monsterData);
-
+                monsterDatabase[monsterId] = monsterData;
                 Debug.Log($"몬스터 로드: ID {monsterId}, 이름 {monsterData.monsterName}");
+            }
+            else
+            {
+                Debug.LogError($"몬스터 데이터를 찾을 수 없습니다: {monsterDataPath}");
             }
         }
 
-        // CSV 파일 해제
-        Addressables.Release(csvHandle);
-
         Debug.Log($"몬스터 데이터 로드 완료: {monsterDatabase.Count}개의 몬스터");
+    }
+
+    private void UpdateMonsterData(MonsterData monsterData, string[] values)
+    {
+        monsterData.monsterName = values[1];
+        monsterData.initialHp = int.Parse(values[2]);
+        monsterData.initialAttackPower = int.Parse(values[3]);
+        monsterData.initialAttackSpeed = float.Parse(values[4]);
+        monsterData.initialSpeed = int.Parse(values[5]);
+        monsterData.attackRange = float.Parse(values[6]);
+        monsterData.dropChance = float.Parse(values[7]);
+        monsterData.dropItem = int.Parse(values[8]);
+        monsterData.moveRange = int.Parse(values[9]);
+        monsterData.chaseRange = int.Parse(values[10]);        
+        monsterData.monsterPrefabKey = values[11];
+        monsterData.skillCooldown = float.Parse(values[12]);
+        monsterData.aggroDropRange = int.Parse(values[13]);
+        monsterData.skillRange = float.Parse(values[14]);
+        monsterData.skillDuration = float.Parse(values[15]);
+        monsterData.hitStunDuration = float.Parse(values[16]);
+        monsterData.deathDuration = float.Parse(values[17]);
+        monsterData.spawnDuration = float.Parse(values[18]);
+        monsterData.grade = (MonsterGrade)Enum.Parse(typeof(MonsterGrade), values[19]);
+        monsterData.skillDamage = int.Parse(values[20]);
+        monsterData.spawnStrategy = (SpawnStrategyType)Enum.Parse(typeof(SpawnStrategyType), values[21]);
+        monsterData.moveStrategy = (MovementStrategyType)Enum.Parse(typeof(MovementStrategyType), values[22]);
+        monsterData.attackStrategy = (AttackStrategyType)Enum.Parse(typeof(AttackStrategyType), values[23]);
+        monsterData.idleStrategy = (IdleStrategyType)Enum.Parse(typeof(IdleStrategyType), values[24]);
+        monsterData.skillStrategy = (SkillStrategyType)Enum.Parse(typeof(SkillStrategyType), values[25]);
+        monsterData.dieStrategy = (DieStrategyType)Enum.Parse(typeof(DieStrategyType), values[26]);
+        monsterData.hitStrategy = (HitStrategyType)Enum.Parse(typeof(HitStrategyType), values[27]);
     }
 
     public MonsterData GetMonsterData(int monsterId)
@@ -88,16 +127,41 @@ public class MonsterDataManager : Singleton<MonsterDataManager>
         return null;
     }
 
-    // 선택적: 모든 리소스 해제
-    public void ReleaseAllResources()
+    // CSV에 현재 데이터 저장
+    public void SaveMonsterDataToCSV()
     {
-        foreach (var monsterData in monsterDatabase.Values)
+        using (StreamWriter writer = new StreamWriter(persistentFilePath))
         {
-            if (monsterData.monsterPrefab.IsValid())
+            // 헤더 작성
+            writer.WriteLine("ID,Name,HP,AttackPower,AttackSpeed,Speed,AttackRange,DropChance,DropItem,MoveRange,ChaseRange,PrefabPath");
+
+            foreach (var pair in monsterDatabase)
             {
-                Addressables.Release(monsterData.monsterPrefab);
+                MonsterData monster = pair.Value;
+                string line = $"{pair.Key}," +
+                            $"{monster.monsterName}," +
+                            $"{monster.initialHp}," +
+                            $"{monster.initialAttackPower}," +
+                            $"{monster.initialAttackSpeed}," +
+                            $"{monster.initialSpeed}," +
+                            $"{monster.attackRange}," +
+                            $"{monster.dropChance}," +
+                            $"{monster.dropItem}," +
+                            $"{monster.moveRange}," +
+                            $"{monster.chaseRange}," +
+                            //$"{monster.monsterPrefab.AssetGUID}" +
+                            $"{monster.skillCooldown}" +
+                            $"{monster.aggroDropRange}";
+
+                writer.WriteLine(line);
             }
         }
+        Debug.Log($"몬스터 데이터 저장 완료: {persistentFilePath}");
+    }
+
+    public void ReleaseAllResources()
+    {
+       
         monsterDatabase.Clear();
     }
 }

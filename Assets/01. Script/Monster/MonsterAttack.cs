@@ -13,21 +13,21 @@ public class MonsterAttack : MonoBehaviour
     private PlayerClass playerClass;
     private MonsterClass monsterClass;
     private bool isAttacking = false;
-
+    MonsterData md;
     private void Start()
     {
         playerClass = GameInitializer.Instance.GetPlayerClass();
         monsterClass = DungeonManager.Instance.GetMonsterClass();
         player = DungeonManager.Instance.GetPlayerTransform();  // 플레이어 참조 가져오기
 
-
+        md = monsterClass.GetMonsterData();
         attackRange = monsterClass.CurrentAttackRange;
         attackSpeed = monsterClass.CurrentAttackSpeed;
 
         Debug.Log($"{attackSpeed} = 어택스피트");
 
 
-
+   
     }
 
     private void Update()

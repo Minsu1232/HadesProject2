@@ -1,3 +1,4 @@
+using GSpawn_Pro;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -9,6 +10,7 @@ public class DungeonManager : Singleton<DungeonManager>
     private MonsterFactoryBase monsterFactory;
     private MonsterClass currentMonster; // 현재 생성된 몬스터를 저장하는 필드
     [SerializeField] private Transform player; // 플레이어의 Transform 참조
+
     private void Awake()
     {
         MonsterDataManager.Instance.InitializeMonsters();
@@ -41,8 +43,7 @@ public class DungeonManager : Singleton<DungeonManager>
     {
         monsterFactory.CreateMonster(spawnPosition, monster =>
         {
-            Debug.Log($"Monster {monster.GetName()} 생성 완료");
-           
+            Debug.Log($"Monster {monster.GetName()} 생성 완료");         
      
 
             currentMonster = monster; // 현재 생성된 몬스터를 필드에 저장

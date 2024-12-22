@@ -1,0 +1,5 @@
+코드어필
+
+SOLID원칙
+
+몬스터 AI - State, 전략, Btree
