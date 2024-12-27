@@ -3,3 +3,32 @@
 SOLID원칙
 
 몬스터 AI - State, 전략, Btree
+
+State Pattern
+
+
+모든 기본 상태들 구현 (Spawn, Idle, Move, Attack, Skill, Hit, Die)
+각 상태별 전략 구현
+
+
+Strategy Pattern
+
+
+각 상태별 전략 인터페이스
+기본(Basic) 전략들 구현
+전략 생성을 위한 Factory 구현
+
+
+Behavior Tree
+
+
+기본 노드 구조 (BTNode, Sequence, Selector)
+조건 체크 노드들 (CheckHealth, CheckPlayerInRange, CheckPlayerInAttackRange)
+행동 노드들 (CombatDecision, ChangeState)
+전체 의사결정 트리 구성
+
+이제 이 프레임워크 위에서:
+
+다양한 전략들 추가
+새로운 행동 패턴 구현
+구체적인 몬스터 타입별 AI 구현

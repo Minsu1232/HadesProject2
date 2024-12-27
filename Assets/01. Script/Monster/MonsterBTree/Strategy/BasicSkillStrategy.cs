@@ -2,27 +2,40 @@ using UnityEngine;
 
 public class BasicSkillStrategy : ISkillStrategy
 {
-    private bool isUsingSkill;
+    private ISkillEffect skillEffect;
+    private MonsterStatus monsterStatus;
+    private bool isUsingSkill = false;
     private bool skillComplete;
-    private float lastSkillTime = -999f; // 처음에는 바로 스킬 사용 가능하도록
-    private float skillDamage;
+    private float lastSkillTime;
     private float skillCoolTime;
-    private float skillDuration;    // 스킬 시전까지의 시간
-    private float skillRange; // 스킬 시전 가능한 범위
+    private float skillDuration;    // 스킬 모션/시전 시간
     private float skillTimer;
-
+    private bool hasExecutedSkill = false;  // 스킬이 실제로 실행되었는지 체크
+    public float SkillRange { get; set; }
     public bool IsSkillComplete => skillComplete;
     public bool IsUsingSkill => isUsingSkill;
     public float GetLastSkillTime => lastSkillTime;
 
+    public BasicSkillStrategy(MonsterAI owner)
+    {
+        monsterStatus = owner.GetStatus();
+    }
+
+    public void Initialize(ISkillEffect effect)
+    {
+        this.skillEffect = effect;
+    }
+
     public void StartSkill(Transform transform, Transform target, MonsterClass monsterData)
     {
-        skillDamage = monsterData.CurrentSkillDamage;
         skillCoolTime = monsterData.CurrentSkillCooldown;
         skillDuration = monsterData.CurrentSKillDuration;
-        skillRange = monsterData.CurrentSkillRange;
+        skillEffect.Initialize(monsterStatus, target);
+
+        // 스킬 시작 상태만 설정
         isUsingSkill = true;
         skillComplete = false;
+        hasExecutedSkill = false;
         skillTimer = 0f;
         lastSkillTime = Time.time;
     }
@@ -33,25 +46,17 @@ public class BasicSkillStrategy : ISkillStrategy
 
         skillTimer += Time.deltaTime;
 
-        // 스킬 진행 로직
-        if (skillTimer <= skillDuration)
+        // 스킬 시전 시간이 되었고, 아직 실행되지 않았다면 실행
+        if (skillTimer >= skillDuration && !hasExecutedSkill)
         {
-            ExecuteSkillLogic(transform, target, monsterData);
+            skillEffect.Execute();  // 실제 스킬 실행
+            hasExecutedSkill = true;
         }
-        else
+
+        // 스킬이 실행되었다면 완료 처리
+        if (hasExecutedSkill)
         {
             CompleteSkill();
-        }
-    }
-
-    private void ExecuteSkillLogic(Transform transform, Transform target, MonsterClass monsterData)
-    {
-        // 여기에 실제 스킬 효과 구현
-        // 예: 범위 공격, 버프/디버프 등
-        PlayerClass playerClass = GameInitializer.Instance.GetPlayerClass();
-        if (playerClass != null)
-        {            
-            playerClass.TakeDamage((int)skillDamage, AttackData.AttackType.Charge);
         }
     }
 
@@ -59,12 +64,14 @@ public class BasicSkillStrategy : ISkillStrategy
     {
         isUsingSkill = false;
         skillComplete = true;
+        hasExecutedSkill = false;
+        skillTimer = 0;
     }
 
     public bool CanUseSkill(float distanceToTarget, MonsterClass monsterData)
     {
-        return !isUsingSkill;
-               //Time.time >= lastSkillTime + monsterClass.CurrentSkillCooldown &&
-               //distanceToTarget <= monsterClass.CurrentAttackRange * 1.5f; // 스킬 사거리는 좀 더 김
+        return !isUsingSkill &&
+               Time.time > lastSkillTime + skillCoolTime &&
+               distanceToTarget <= SkillRange;
     }
 }

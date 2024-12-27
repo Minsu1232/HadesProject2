@@ -38,8 +38,25 @@ public class MonsterData : ScriptableObject
     public float skillRange;      // 스킬 사용 가능 범위
     public float skillDuration;   // 스킬 시전까지의 시간
     public float skillDamage;     // 스킬 데미지
+    public float projectileSpeed; // 프리팹 이동 속도
+    public float rotateSpeed; // 호핑타입 회전 속도
+    public string skillSpawnPointTag = "SkillSpawnPoint";  // 프리팹에서 찾을 스킬 발사 위치의 태그
+    // 범위 스킬용 데이터
+    public GameObject areaEffectPrefab;
+    public float areaRadius;
+    
 
+    // 버프 스킬용 데이터
+    public BuffType buffType;
+    public float buffDuration;
+    public float buffValue;
+
+    // 소환 스킬용 데이터
+    public GameObject summonPrefab;
+    public int summonCount;
+    public float summonRadius;
     [Header("State Durations")]
+
     public float hitStunDuration; // 피격시 경직 시간
     public float deathDuration;   // 사망 연출 시간
     public float spawnDuration;   // 스폰 연출 시간
@@ -52,8 +69,18 @@ public class MonsterData : ScriptableObject
     public SkillStrategyType skillStrategy = SkillStrategyType.Basic;
     public DieStrategyType dieStrategy = DieStrategyType.Basic;
     public HitStrategyType hitStrategy = HitStrategyType.Basic;
+    public ProjectileMovementType projectileType = ProjectileMovementType.Straight;
+    public SkillEffectType skillEffectType;
     [Header("Reference")]
     public string monsterPrefabKey; // Prefab Addressables Key
+    public GameObject projectilePrefab;
+    
+
+    [Header("Behavior Conditions")]
+    public bool useHealthRetreat;           // 체력기반 도주 사용
+    public float healthRetreatThreshold;    // 도주 시작 체력 비율
+    public bool isPhaseChange;             // 페이즈 전환용 도주인지
+
 }
 
 public enum SpawnStrategyType
@@ -69,7 +96,8 @@ public enum MovementStrategyType
     Aggressive,    // 적극적 추적
     Defensive,     // 거리 유지
     Ranged,        // 원거리 유지
-    Patrol         // 정찰 패턴
+    Patrol,         // 정찰 패턴
+    Retreat         // 도망 패턴
 }
 
 public enum AttackStrategyType
@@ -110,5 +138,37 @@ public enum DieStrategyType
     Split,         // 분열하며 죽음
     Resurrection,  // 부활 가능
     DropItem       // 특별 아이템 드랍
+}
+public enum ProjectileMovementType
+{
+    Straight,
+    Homing
+}
+public enum SkillEffectType
+{
+    Projectile,
+    AreaEffect,
+    Buff,
+    Summon,
+    // ... 다른 이펙트 타입들
+}
+public enum BuffType
+{
+    None,
+    AttackUp,       // 공격력 증가
+    DefenseUp,      // 방어력 증가
+    SpeedUp,        // 이동속도 증가
+    AttackSpeedUp,  // 공격속도 증가
+    Heal,           // 체력 회복
+    Rage,           // 분노(공격력 + 공격속도)
+    Invincible,     // 무적
+    // 디버프
+    AttackDown,     // 공격력 감소
+    DefenseDown,    // 방어력 감소
+    SpeedDown,      // 이동속도 감소
+    Stun,           // 기절
+    Poison,         // 독
+    Burn,           // 화상
+    Freeze          // 빙결
 }
 

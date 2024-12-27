@@ -1,6 +1,7 @@
 using RPGCharacterAnims.Lookups;
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 using static AttackData;
 
@@ -9,10 +10,19 @@ public class MonsterStatus : MonoBehaviour, IDamageable
     private MonsterClass monsterClass; // 데이터 관리용
     private bool isDie = false;
     private HitEffectsManager hitEffectsManager; // 연출 담당 컴포넌트
+    private Transform skillSpawnPoint;
 
     private void Awake()
     {
         hitEffectsManager = GetComponent<HitEffectsManager>(); // HitEffectsManager 연결
+        skillSpawnPoint = GetComponentsInChildren<Transform>()
+          .FirstOrDefault(t => t.name == "SkillSpawnPoint");
+
+        if (skillSpawnPoint == null)
+        {
+            Debug.LogWarning($"{gameObject.name}에서 SkillSpawnPoint를 찾지 못했습니다. 몬스터 위치를 사용합니다.");
+            skillSpawnPoint = transform;
+        }
     }
 
     public void Initialize(MonsterClass data)
@@ -26,7 +36,7 @@ public class MonsterStatus : MonoBehaviour, IDamageable
     public void TakeDamage(int damage, AttackType attackType)
     {
         monsterClass.TakeDamage(damage,GetAttackType()); // MonsterClass에 데미지 적용h}");
-                                         // 공격 타입에 따라 연출 트리거
+        Debug.Log($"맞기전 체력 {monsterClass.CurrentHealth + damage} 맞은 후 체력 {monsterClass.CurrentHealth} ");// 공격 타입에 따라 연출 트리거
         if (attackType == AttackType.Normal)
         {
             hitEffectsManager.TriggerHitStop(0.1f); // 기본 공격 히트스탑
@@ -63,6 +73,10 @@ public class MonsterStatus : MonoBehaviour, IDamageable
             }
         }
 
+    }
+    public Transform GetSkillSpawnPoint()
+    {
+        return skillSpawnPoint;
     }
     // 지속 피해에는 애니메이션 트리거 없음
     private void Die()

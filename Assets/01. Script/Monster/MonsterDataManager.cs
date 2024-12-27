@@ -115,6 +115,20 @@ public class MonsterDataManager : Singleton<MonsterDataManager>
         monsterData.skillStrategy = (SkillStrategyType)Enum.Parse(typeof(SkillStrategyType), values[25]);
         monsterData.dieStrategy = (DieStrategyType)Enum.Parse(typeof(DieStrategyType), values[26]);
         monsterData.hitStrategy = (HitStrategyType)Enum.Parse(typeof(HitStrategyType), values[27]);
+        monsterData.useHealthRetreat = bool.Parse(values[28]);           // 체력 기반 도주 사용 여부
+        monsterData.healthRetreatThreshold = float.Parse(values[29]);    // 도주 시작 체력 비율
+        monsterData.isPhaseChange = bool.Parse(values[30]);             // 페이즈 전환용 도주인지
+                                                                        // 새로 추가되는 부분
+        monsterData.projectileSpeed = float.Parse(values[31]);
+        monsterData.rotateSpeed = float.Parse(values[32]);
+        monsterData.areaRadius = float.Parse(values[33]);
+        monsterData.buffType = (BuffType)Enum.Parse(typeof(BuffType), values[34]);
+        monsterData.buffDuration = float.Parse(values[35]);
+        monsterData.buffValue = float.Parse(values[36]);
+        monsterData.summonCount = int.Parse(values[37]);
+        monsterData.summonRadius = float.Parse(values[38]);
+        monsterData.projectileType = (ProjectileMovementType)Enum.Parse(typeof(ProjectileMovementType), values[39]);
+        monsterData.skillEffectType = (SkillEffectType)Enum.Parse(typeof(SkillEffectType), values[40]);
     }
 
     public MonsterData GetMonsterData(int monsterId)

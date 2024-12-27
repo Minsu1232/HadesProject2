@@ -13,6 +13,7 @@ MonoBehaviour:
   m_Name: MonsterData_1
   m_EditorClassIdentifier: 
   monsterName: Dummy
+  grade: 0
   initialHp: 1000
   initialAttackPower: 20
   initialAttackSpeed: 1
@@ -22,12 +23,22 @@ MonoBehaviour:
   dropItem: 0
   moveRange: 5
   chaseRange: 7
-  monsterPrefabKey: Monster_DummyMonster
-  skillCooldown: 5
   aggroDropRange: 12
-  skillRange: 10
+  skillCooldown: 5
+  skillRange: 30
   skillDuration: 1
+  skillDamage: 30
   hitStunDuration: 0.3
   deathDuration: 1.5
   spawnDuration: 1
-  grade: 0
+  spawnStrategy: 0
+  moveStrategy: 0
+  attackStrategy: 0
+  idleStrategy: 0
+  skillStrategy: 0
+  dieStrategy: 0
+  hitStrategy: 0
+  monsterPrefabKey: Monster_DummyMonster
+  useHealthRetreat: 1
+  healthRetreatThreshold: 0.3
+  isPhaseChange: 1

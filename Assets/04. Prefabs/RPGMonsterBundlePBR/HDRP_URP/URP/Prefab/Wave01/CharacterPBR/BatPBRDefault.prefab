@@ -1184,6 +1184,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5122791751604887389}
   - component: {fileID: 5122791751595274401}
+  - component: {fileID: 4512717629299196431}
   m_Layer: 0
   m_Name: BatPBRDefault
   m_TagString: Untagged
@@ -1218,7 +1219,7 @@ Animator:
   m_GameObject: {fileID: 5122791751604650877}
   m_Enabled: 1
   m_Avatar: {fileID: 9000000, guid: 4103c29849f2490dac70eb3d4b71f445, type: 3}
-  m_Controller: {fileID: 9100000, guid: 861eaa107c294bde819afc3bda1694cb, type: 2}
+  m_Controller: {fileID: 9100000, guid: b6adb4f643558a340b49d5cd29a741f4, type: 2}
   m_CullingMode: 1
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -1229,6 +1230,18 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!114 &4512717629299196431
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5122791751604650877}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3ccfc846ca2f9d94bb16257a7904546c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &5122791751604650879
 GameObject:
   m_ObjectHideFlags: 0

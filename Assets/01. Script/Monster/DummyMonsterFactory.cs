@@ -10,7 +10,7 @@ public class DummyMonsterFactory : MonsterFactoryBase
     public override MonsterClass CreateMonster(Vector3 spawnPosition, Action<MonsterClass> onMonsterCreated)
     {
         // 1. MonsterData ·Îµå
-        Addressables.LoadAssetAsync<MonsterData>("MonsterData_1").Completed += dataHandle =>
+        Addressables.LoadAssetAsync<MonsterData>("MonsterData_2").Completed += dataHandle =>
         {
             if (dataHandle.Status == AsyncOperationStatus.Succeeded)
             {

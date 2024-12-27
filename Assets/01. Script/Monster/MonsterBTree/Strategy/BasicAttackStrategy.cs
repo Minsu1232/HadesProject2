@@ -18,12 +18,6 @@ public class BasicAttackStrategy : IAttackStrategy
         lastAttackTime = Time.time;
         isAttacking = true;
 
-        // 실제 공격 실행
-        PlayerClass playerClass = GameInitializer.Instance.GetPlayerClass();
-        if (playerClass != null)
-        {
-            ApplyDamage(playerClass, monsterData);
-        }
 
         isAttacking = false;
     }
@@ -44,7 +38,7 @@ public class BasicAttackStrategy : IAttackStrategy
         isAttacking = false;
     }
 
-    private void ApplyDamage(IDamageable target, MonsterClass monsterData)
+    public void ApplyDamage(IDamageable target, MonsterClass monsterData)
     {
         int damageAmount = monsterData.CurrentAttackPower;
         target.TakeDamage(damageAmount,

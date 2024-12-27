@@ -6,6 +6,7 @@ public interface IAttackStrategy
     bool CanAttack(float distanceToTarget, MonsterClass monsterData);
     void StartAttack();
     void StopAttack();
+    void ApplyDamage(IDamageable target, MonsterClass monsterData);
     bool IsAttacking { get; }
     float GetLastAttackTime { get; }
 }

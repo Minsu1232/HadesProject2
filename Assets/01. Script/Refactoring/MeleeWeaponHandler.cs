@@ -6,16 +6,14 @@ public class MeleeDamageDealer : MonoBehaviour, IDamageDealer
 {
     private WeaponManager weapon;
     private int comboStep;
-    private HashSet<Collider> damagedTargets = new HashSet<Collider>();
+    private HashSet<MonsterStatus> damagedMonsters = new HashSet<MonsterStatus>();  // 콜라이더가 아닌 몬스터 기준으로 변경
 
     public void Initialize(WeaponManager weapon, int comboStep)
-    {  
-        
+    {
         this.weapon = weapon;
         this.comboStep = comboStep;
-        damagedTargets.Clear(); // 새로운 공격 시 초기화
+        damagedMonsters.Clear(); // 새로운 공격 시 초기화
     }
-
     public int GetDamage()
     {
 
@@ -35,27 +33,35 @@ public class MeleeDamageDealer : MonoBehaviour, IDamageDealer
 
     private void OnTriggerEnter(Collider other)
     {
-        if (weapon == null)
+        if (weapon == null) return;
+
+        MonsterHitBox hitBox = other.GetComponent<MonsterHitBox>();
+        if (hitBox != null)
         {
-            return;
-        }
-        if (other.CompareTag("Monster") && !damagedTargets.Contains(other) && weapon != null)
-        {
-            MonsterStatus monster = other.GetComponent<MonsterStatus>();
-            if (monster != null)
+            MonsterStatus monster = hitBox.GetMonsterStatus();
+            if (monster != null && !damagedMonsters.Contains(monster))  // 몬스터 기준으로 체크
             {
+                float damageMultiplier = hitBox.GetDamageMultiplier(transform.position);
+                int finalDamage = Mathf.RoundToInt(GetDamage() * damageMultiplier);
+
+                if (damageMultiplier > 1f)
+                {
+                    Debug.Log("백어택!");
+                }
+
                 DealDamage(monster);
-                damagedTargets.Add(other); // 같은 대상에 대해 다시 데미지를 주지 않도록 저장
-                weapon.GetGage(weapon.GagePerHit);                
+                damagedMonsters.Add(monster);  // 몬스터를 저장
+                weapon.GetGage(weapon.GagePerHit);
+
                 Debug.Log($"현재무기{weapon.WeaponName} 현재 게이지 {weapon.GagePerHit} ");
                 Debug.Log($"{monster.GetMonsterClass().MONSTERNAME} 남은 체력: {monster.GetMonsterClass().CurrentHealth}");
                 Debug.Log($"{weapon.WeaponName}의 데미지 {GetDamage()}");
-            } 
+            }
         }
     }
 
     private void OnDisable()
     {
-        damagedTargets.Clear(); // 콜라이더가 비활성화될 때 초기화하여 다음 공격에 재사용 가능
+        damagedMonsters.Clear();
     }
 }

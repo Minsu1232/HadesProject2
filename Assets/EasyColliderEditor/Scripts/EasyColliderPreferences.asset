@@ -18,10 +18,10 @@ MonoBehaviour:
   AutoIncludeChildSkinnedMeshes: 1
   AutoSkinnedForce256Triangles: 1
   AutoSkinnedMinBoneWeight: 0.746
-  AutoSkinnedMinRealignAngle: 2.4
+  AutoSkinnedMinRealignAngle: 2.2
   AutoSkinnedAllowRealign: 1
   AutoSkinnedColliderType: 0
-  AutoSkinnedDepenetrate: 0
+  AutoSkinnedDepenetrate: 1
   AutoSkinnedIndents: 1
   AutoSkinnedIterativeDepenetrationCount: 15
   AutoSkinnedPairing: 1

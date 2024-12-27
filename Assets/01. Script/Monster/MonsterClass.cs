@@ -8,6 +8,7 @@ using static MonsterData;
 public abstract class MonsterClass : ICreature,IDamageable
 {
     private MonsterData monsterData;
+    private PlayerClass playerClass;
     
     public string MONSTERNAME { get; private set; }
     public int CurrentHealth { get; private set; }
@@ -41,6 +42,22 @@ public abstract class MonsterClass : ICreature,IDamageable
     public IdleStrategyType CurrentIdleStrategy { get; private set; }
     public SkillStrategyType CurrentSkillStrategy { get; private set; }
     public DieStrategyType CurrentDieStrategy { get; private set; }
+
+    public bool UseHealthRetreat { get; private set; }           // 체력기반 도주 사용
+    public float HealthRetreatThreshold { get; private set; }    // 도주 시작 체력 비율
+
+
+    public bool IsPhaseChange { get; private set; }             // 페이즈 전환용 도주인지
+    public float CurrentProjectileSpeed { get; private set; }
+    public float CurrentRotateSpeed { get; private set; }
+    public float CurrentAreaRadius { get; private set; }
+    public BuffType CurrentBuffType { get; private set; }
+    public float CurrentBuffDuration { get; private set; }
+    public float CurrentBuffValue { get; private set; }
+    public int CurrentSummonCount { get; private set; }
+    public float CurrentSummonRadius { get; private set; }
+    public ProjectileMovementType CurrentProjectileType { get; private set; }
+    public SkillEffectType CurrentSkillEffectType { get; private set; }
     public bool isBasicAttack { get; private set; }
 
     protected bool isDashing = false;
@@ -80,6 +97,23 @@ public abstract class MonsterClass : ICreature,IDamageable
         CurrentIdleStrategy = monsterData.idleStrategy;
         CurrentSkillStrategy = monsterData.skillStrategy;
         CurrentDieStrategy = monsterData.dieStrategy;
+        UseHealthRetreat = monsterData.useHealthRetreat;
+        HealthRetreatThreshold = monsterData.healthRetreatThreshold;
+        IsPhaseChange = monsterData.isPhaseChange;
+
+        CurrentProjectileSpeed = monsterData.projectileSpeed;
+        CurrentRotateSpeed = monsterData.rotateSpeed;
+        CurrentAreaRadius = monsterData.areaRadius;
+        CurrentBuffType = monsterData.buffType;
+        CurrentBuffDuration = monsterData.buffDuration;
+        CurrentBuffValue = monsterData.buffValue;
+        CurrentSummonCount = monsterData.summonCount;
+        CurrentSummonRadius = monsterData.summonRadius;
+        CurrentProjectileType = monsterData.projectileType;
+        CurrentSkillEffectType = monsterData.skillEffectType;
+
+
+        playerClass = GameInitializer.Instance.GetPlayerClass();
     }
     public MonsterData GetMonsterData()
     {
@@ -130,5 +164,10 @@ public abstract class MonsterClass : ICreature,IDamageable
     public virtual void SetPosition(Vector3 spawnPosition)
     {
         throw new NotImplementedException();
+    }
+
+    public  Vector3 GetPlayerPosition()
+    {        
+        return playerClass.playerTransform.position;
     }
 }
