@@ -18,12 +18,13 @@ public class MonsterDataManager : Singleton<MonsterDataManager>
         persistentFilePath = Path.Combine(Application.persistentDataPath, "Monsters.csv");
         streamingFilePath = Path.Combine(Application.streamingAssetsPath, "Monsters.csv");
 
-        // CSV 파일 존재 여부 확인
-        if (!File.Exists(persistentFilePath))
-        {
-            Debug.LogWarning($"CSV 파일이 없습니다. StreamingAssets에서 복사합니다: {persistentFilePath}");
-            CopyCSVFromStreamingAssets();
-        }
+        //// CSV 파일 존재 여부 확인
+        //if (!File.Exists(persistentFilePath))
+        //{
+        //    Debug.LogWarning($"CSV 파일이 없습니다. StreamingAssets에서 복사합니다: {persistentFilePath}");
+        //}
+        CopyCSVFromStreamingAssets(); // 현재 개발 단계이기에 무조건적 복사 > 에디터에서 수정을 위함
+    
     }
 
     public void InitializeMonsters()
@@ -35,7 +36,8 @@ public class MonsterDataManager : Singleton<MonsterDataManager>
     {
         if (File.Exists(streamingFilePath))
         {
-            File.Copy(streamingFilePath, persistentFilePath);
+            // overwrite 파라미터를 true로 설정
+            File.Copy(streamingFilePath, persistentFilePath, true);
             Debug.Log($"StreamingAssets에서 CSV 파일 복사 완료: {persistentFilePath}");
         }
         else
