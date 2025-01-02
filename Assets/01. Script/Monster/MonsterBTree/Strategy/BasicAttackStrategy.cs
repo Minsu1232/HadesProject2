@@ -14,7 +14,7 @@ public class BasicAttackStrategy : IAttackStrategy
     {
         if (!CanAttack(Vector3.Distance(transform.position, target.position), monsterData))
             return;
-
+        
         lastAttackTime = Time.time;
         isAttacking = true;
 

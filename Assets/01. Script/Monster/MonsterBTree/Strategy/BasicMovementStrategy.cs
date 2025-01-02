@@ -45,6 +45,10 @@ public class BasicMovementStrategy : IMovementStrategy
     private void ChaseMove(Transform transform, Transform target, MonsterClass monsterData)
     {
         Vector3 direction = (target.position - transform.position).normalized;
+        // 타겟을 향해 회전
+        Quaternion targetRotation = Quaternion.LookRotation(direction);
+        transform.rotation = Quaternion.Lerp(transform.rotation, targetRotation, Time.deltaTime * 5f);
+        // 이동
         transform.position += direction * monsterData.CurrentSpeed * Time.deltaTime;
     }
 
@@ -52,6 +56,10 @@ public class BasicMovementStrategy : IMovementStrategy
     {
         if (currentMoveTime > 0)
         {
+            // 현재 이동 방향을 향해 회전
+            Quaternion targetRotation = Quaternion.LookRotation(randomDirection);
+            transform.rotation = Quaternion.Lerp(transform.rotation, targetRotation, Time.deltaTime * 5f);
+            // 이동
             transform.position += randomDirection * monsterData.CurrentSpeed * Time.deltaTime;
             currentMoveTime -= Time.deltaTime;
         }
