@@ -4,17 +4,19 @@ using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 using static AttackData;
+using static IMonsterState;
 
-public class MonsterStatus : MonoBehaviour, IDamageable
+public class MonsterStatus : MonoBehaviour,IDamageable
 {
     private MonsterClass monsterClass; // 데이터 관리용
     private bool isDie = false;
-    private HitEffectsManager hitEffectsManager; // 연출 담당 컴포넌트
-    private Transform skillSpawnPoint;
-
+    
+    [SerializeField] private Transform skillSpawnPoint;
+    private MonsterUIManager uiManager; // MonsterUIManager 캐싱용 변수 추가
     private void Awake()
     {
-        hitEffectsManager = GetComponent<HitEffectsManager>(); // HitEffectsManager 연결
+        uiManager = GetComponent<MonsterUIManager>(); // 시작 시 한 번만 가져오기
+       
         skillSpawnPoint = GetComponentsInChildren<Transform>()
           .FirstOrDefault(t => t.name == "SkillSpawnPoint");
 
@@ -35,21 +37,22 @@ public class MonsterStatus : MonoBehaviour, IDamageable
     }
     public void TakeDamage(int damage, AttackType attackType)
     {
-        monsterClass.TakeDamage(damage,GetAttackType()); // MonsterClass에 데미지 적용h}");
-        Debug.Log($"맞기전 체력 {monsterClass.CurrentHealth + damage} 맞은 후 체력 {monsterClass.CurrentHealth} ");// 공격 타입에 따라 연출 트리거
-        if (attackType == AttackType.Normal)
+        if (isDie) return;
+
+        monsterClass.TakeDamage(damage, GetAttackType());
+        Debug.Log($"맞기전 체력 {monsterClass.CurrentHealth + damage} 맞은 후 체력 {monsterClass.CurrentHealth}");
+
+        // 캐싱된 uiManager 사용
+        if (uiManager != null)
         {
-            hitEffectsManager.TriggerHitStop(0.1f); // 기본 공격 히트스탑
-            hitEffectsManager.TriggerShake(0.2f, 0.2f); // 기본 공격 흔들림
-                                                        // 카메라 흔들림 호출
-            CameraShakeManager.TriggerShake(0.1f, 0.1f); // 기본 공격
+            uiManager.UpdateHealthUI(monsterClass.CurrentHealth);
+            uiManager.SpawnDamageText(damage, attackType);
         }
-        else if (attackType == AttackType.Charge)
+
+        var monsterAI = GetComponent<MonsterAI>();
+        if (monsterAI != null)
         {
-            hitEffectsManager.TriggerHitStop(0.3f); // 강공격 히트스탑
-            hitEffectsManager.TriggerShake(0.5f, 0.5f); // 강공격 흔들림
-                                                        // 더 강한 카메라 흔들림 호출
-            CameraShakeManager.TriggerShake(0.3f, 0.2f); // 강공격
+            monsterAI.OnDamaged(damage, attackType);
         }
 
         if (monsterClass.CurrentHealth <= 0 && gameObject != null)
@@ -64,11 +67,7 @@ public class MonsterStatus : MonoBehaviour, IDamageable
             monsterClass.TakeDotDamage(dotDamage);
 
             if (monsterClass.CurrentHealth <= 0)
-            {    // 히트스탑과 같은 연출 중단
-                if (hitEffectsManager != null)
-                {
-                    StopAllCoroutines(); // 모든 Coroutine 중단
-                }
+            {    
                 Die();
             }
         }

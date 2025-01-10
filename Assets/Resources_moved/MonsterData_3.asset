@@ -14,25 +14,27 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   monsterName: Spider
   grade: 0
-  initialHp: 1000
-  initialAttackPower: 20
-  initialAttackSpeed: 1
-  initialSpeed: 1
+  initialHp: 2000
+  initialAttackPower: 30
+  initialAttackSpeed: 1.5
+  initialSpeed: 2
   attackRange: 2
   dropChance: 0
   dropItem: 0
-  moveRange: 5
-  chaseRange: 7
+  armorValue: 0
+  moveRange: 6
+  chaseRange: 10
   aggroDropRange: 12
-  skillCooldown: 5
-  skillRange: 30
-  skillDuration: 1
-  skillDamage: 30
+  skillCooldown: 10
+  skillRange: 12
+  skillDuration: 0.65
+  skillDamage: 4
   projectileSpeed: 5
   rotateSpeed: 1
   skillSpawnPointTag: SkillSpawnPoint
-  areaEffectPrefab: {fileID: 0}
+  areaEffectPrefab: {fileID: 4860386018252860835, guid: 2508887ed842451459e2ce4f5bc54fd6, type: 3}
   areaRadius: 5
+  areaDuration: 5
   buffType: 0
   buffDuration: 0
   buffValue: 0
@@ -42,6 +44,11 @@ MonoBehaviour:
   hitStunDuration: 0.3
   deathDuration: 1.5
   spawnDuration: 1
+  superArmorThreshold: 0
+  hitStunMultiplier: 1
+  knockbackForce: 1
+  cameraShakeIntensity: 0.75
+  cameraShakeDuration: 0.1
   spawnStrategy: 0
   moveStrategy: 0
   attackStrategy: 0
@@ -49,10 +56,12 @@ MonoBehaviour:
   skillStrategy: 0
   dieStrategy: 0
   hitStrategy: 0
-  projectileType: 0
+  projectileType: 2
+  projectileImpactType: 1
   skillEffectType: 0
-  monsterPrefabKey: Monster_Bat
-  projectilePrefab: {fileID: 9075382225027520842, guid: 0637da77766c32644b51b3d756f57dc1, type: 3}
+  monsterPrefabKey: Monster_Spider
+  projectilePrefab: {fileID: 2553268908299751650, guid: 2335504e8d820374fadaf74f9d0ffd46, type: 3}
+  hitEffect: {fileID: 7115196862161730274, guid: 1a23bb3efbdb62842abffc7b85bf4aa1, type: 3}
   useHealthRetreat: 1
   healthRetreatThreshold: 0.3
   isPhaseChange: 1

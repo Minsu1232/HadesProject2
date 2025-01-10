@@ -88,7 +88,22 @@ public static class StrategyFactory
         return type switch
         {
             ProjectileMovementType.Homing => new HomingMovement(),
-            _ => new StraightMovement(),
+            ProjectileMovementType.Parabolic => new ParabolicMovement(),
+            ProjectileMovementType.Straight => new StraightMovement(),
+            _ => null
+        };
+    }
+
+    public static IProjectileImpact CreateProjectileImpact(ProjectileImpactType type, MonsterData data)
+    {
+        return type switch
+        {
+            ProjectileImpactType.Poison => new AreaImpact(
+                data.areaEffectPrefab,
+                data.areaDuration,
+                data.areaRadius
+            ),
+            _ => null
         };
     }
 
@@ -103,7 +118,14 @@ public static class StrategyFactory
                     return null;
                 }
                 var moveStrategy = CreateProjectileMovement(data.projectileType);
-                return new ProjectileSkillEffect(data.projectilePrefab, data.projectileSpeed, moveStrategy);
+                var impactEffect = CreateProjectileImpact(data.projectileImpactType, data);
+                return new ProjectileSkillEffect(
+                    data.projectilePrefab,
+                    data.projectileSpeed,
+                    moveStrategy,
+                    impactEffect,
+                    data.hitEffect
+                );
 
             case SkillEffectType.AreaEffect:
                 if (data.areaEffectPrefab == null)
@@ -141,4 +163,5 @@ public static class StrategyFactory
                 return null;
         }
     }
+
 }

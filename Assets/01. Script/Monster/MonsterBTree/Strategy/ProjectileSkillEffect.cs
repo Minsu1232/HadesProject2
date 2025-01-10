@@ -6,16 +6,21 @@ public class ProjectileSkillEffect : ISkillEffect
     private MonsterStatus monsterStatus;
     private Transform target;
     private GameObject projectilePrefab;
+    private GameObject hitEffect;
     private float projectileSpeed;
     private float skillDamage;
     private IProjectileMovement moveStrategy;
+    private IProjectileImpact impactEffect;
     private Transform spawnPoint;  // 스킬 발사 위치
 
-    public ProjectileSkillEffect(GameObject prefab, float speed, IProjectileMovement moveStrategy)
+    public ProjectileSkillEffect(GameObject prefab, float speed,
+        IProjectileMovement moveStrategy, IProjectileImpact impactEffect, GameObject hitEffect)
     {
         this.projectilePrefab = prefab;
         this.projectileSpeed = speed;
         this.moveStrategy = moveStrategy;
+        this.impactEffect = impactEffect;
+        this.hitEffect = hitEffect;
     }
 
     public void Initialize(MonsterStatus status, Transform target)
@@ -24,6 +29,7 @@ public class ProjectileSkillEffect : ISkillEffect
         this.target = target;
         this.skillDamage = status.GetMonsterClass().CurrentSkillDamage;
         this.spawnPoint = status.GetSkillSpawnPoint();
+       
     }
 
     public void Execute()
@@ -32,10 +38,10 @@ public class ProjectileSkillEffect : ISkillEffect
             spawnPoint.position,
             spawnPoint.rotation);
 
-        if (projectile.TryGetComponent<SkillProjectile>(out var skillProjectile))
+        if (projectile.TryGetComponent<BaseProjectile>(out var skillProjectile))
         {
             skillProjectile.Initialize(spawnPoint.position, target,
-                projectileSpeed, skillDamage, moveStrategy);
+                projectileSpeed, skillDamage, moveStrategy, impactEffect,hitEffect);
             skillProjectile.Launch();
         }
     }

@@ -33,13 +33,20 @@ public class CameraShakeManager : Singleton<CameraShakeManager>
     private IEnumerator ShakeCoroutine(float intensity, float duration)
     {
         float elapsedTime = 0f;
+        float currentIntensity = intensity;
 
         while (elapsedTime < duration)
         {
-            // 흔들림 오프셋 계산
-            float xOffset = Random.Range(-1f, 1f) * intensity;
-            float yOffset = Random.Range(-1f, 1f) * intensity;
+            // 시간에 따라 강도 감소
+            float percentComplete = elapsedTime / duration;
+            currentIntensity = intensity * (1f - percentComplete);
 
+            // 추가로 매 프레임마다도 감소
+            currentIntensity *= 0.95f;
+
+            // 흔들림 오프셋 계산
+            float xOffset = Random.Range(-1f, 1f) * currentIntensity;
+            float yOffset = Random.Range(-1f, 1f) * currentIntensity;
             shakeOffset = new Vector3(xOffset, yOffset, 0f);
 
             elapsedTime += Time.deltaTime;

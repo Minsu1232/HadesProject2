@@ -1,30 +1,35 @@
+
 using UnityEngine;
 
 public class BasicHitStrategy : IHitStrategy
 {
-    private float hitStunDuration;  // 피격 경직 시간
+   private float hitStunDuration;
     private float hitTimer;
     private bool isHitComplete;
-
+    private bool isInHitStun;
+    
     public bool IsHitComplete => isHitComplete;
 
     public void OnHit(Transform transform, MonsterClass monsterData, int damage)
     {
-        hitStunDuration = monsterData.CurrentHitStunDuration;
+        MonsterData data = monsterData.GetMonsterData();
+        
+        // 기본 몬스터는 모든 공격에 경직
+        hitStunDuration = monsterData.CurrentHitStunDuration * data.hitStunMultiplier;
         hitTimer = 0f;
         isHitComplete = false;
-
-        // 여기에 피격 효과 (이펙트, 애니메이션 등) 추가 가능
+        isInHitStun = true;
     }
 
     public void UpdateHit()
     {
-        if (!isHitComplete)
+        if (isInHitStun)
         {
             hitTimer += Time.deltaTime;
             if (hitTimer >= hitStunDuration)
             {
                 isHitComplete = true;
+                isInHitStun = false;
             }
         }
     }

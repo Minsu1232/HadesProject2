@@ -18,9 +18,10 @@ MonoBehaviour:
   initialAttackPower: 20
   initialAttackSpeed: 1
   initialSpeed: 1
-  attackRange: 3
+  attackRange: 2
   dropChance: 0
   dropItem: 0
+  armorValue: 0
   moveRange: 5
   chaseRange: 7
   aggroDropRange: 12
@@ -28,9 +29,26 @@ MonoBehaviour:
   skillRange: 30
   skillDuration: 1
   skillDamage: 30
+  projectileSpeed: 3
+  rotateSpeed: 1
+  skillSpawnPointTag: SkillSpawnPoint
+  areaEffectPrefab: {fileID: 0}
+  areaRadius: 5
+  areaDuration: 0
+  buffType: 0
+  buffDuration: 0
+  buffValue: 0
+  summonPrefab: {fileID: 0}
+  summonCount: 0
+  summonRadius: 0
   hitStunDuration: 0.3
   deathDuration: 1.5
   spawnDuration: 1
+  superArmorThreshold: 0
+  hitStunMultiplier: 1
+  knockbackForce: 1
+  cameraShakeIntensity: 1
+  cameraShakeDuration: 0.15
   spawnStrategy: 0
   moveStrategy: 0
   attackStrategy: 0
@@ -38,7 +56,12 @@ MonoBehaviour:
   skillStrategy: 0
   dieStrategy: 0
   hitStrategy: 0
+  projectileType: 1
+  projectileImpactType: 0
+  skillEffectType: 0
   monsterPrefabKey: Monster_DummyMonster
+  projectilePrefab: {fileID: 0}
+  hitEffect: {fileID: 0}
   useHealthRetreat: 1
   healthRetreatThreshold: 0.3
   isPhaseChange: 1

@@ -15,23 +15,26 @@ MonoBehaviour:
   monsterName: Bat
   grade: 0
   initialHp: 1000
-  initialAttackPower: 20
+  initialAttackPower: 25
   initialAttackSpeed: 1
-  initialSpeed: 1
+  initialSpeed: 3
   attackRange: 2
   dropChance: 0
   dropItem: 0
+  armorValue: 0
   moveRange: 5
   chaseRange: 7
   aggroDropRange: 12
   skillCooldown: 5
-  skillRange: 30
-  skillDuration: 1
+  skillRange: 12
+  skillDuration: 0.72
   skillDamage: 30
   projectileSpeed: 5
   rotateSpeed: 1
+  skillSpawnPointTag: SkillSpawnPoint
   areaEffectPrefab: {fileID: 0}
   areaRadius: 5
+  areaDuration: 0
   buffType: 0
   buffDuration: 0
   buffValue: 0
@@ -41,6 +44,11 @@ MonoBehaviour:
   hitStunDuration: 0.3
   deathDuration: 1.5
   spawnDuration: 1
+  superArmorThreshold: 0
+  hitStunMultiplier: 1
+  knockbackForce: 1
+  cameraShakeIntensity: 0.75
+  cameraShakeDuration: 0.1
   spawnStrategy: 0
   moveStrategy: 0
   attackStrategy: 0
@@ -49,9 +57,11 @@ MonoBehaviour:
   dieStrategy: 0
   hitStrategy: 0
   projectileType: 0
+  projectileImpactType: 0
   skillEffectType: 0
   monsterPrefabKey: Monster_Bat
   projectilePrefab: {fileID: 9075382225027520842, guid: 0637da77766c32644b51b3d756f57dc1, type: 3}
+  hitEffect: {fileID: 5642766282230003982, guid: b5c8ca7ed10b61e499cce8ec3b6e2e4c, type: 3}
   useHealthRetreat: 1
   healthRetreatThreshold: 0.3
   isPhaseChange: 1

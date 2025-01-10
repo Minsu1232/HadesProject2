@@ -27,6 +27,7 @@ public class MonsterData : ScriptableObject
     public float attackRange;
     public float dropChance;
     public int dropItem;
+    public int armorValue;
 
     [Header("Movement Settings")]
     public int moveRange;    // 기본 배회 범위
@@ -44,7 +45,9 @@ public class MonsterData : ScriptableObject
     // 범위 스킬용 데이터
     public GameObject areaEffectPrefab;
     public float areaRadius;
-    
+
+    // 0106 csv에 추가해야할사항
+    public float areaDuration = 5f;
 
     // 버프 스킬용 데이터
     public BuffType buffType;
@@ -60,6 +63,13 @@ public class MonsterData : ScriptableObject
     public float hitStunDuration; // 피격시 경직 시간
     public float deathDuration;   // 사망 연출 시간
     public float spawnDuration;   // 스폰 연출 시간
+    [Header("Hit Settings")]
+
+    public float superArmorThreshold;    // 슈퍼아머 발동 기준 데미지
+    public float hitStunMultiplier = 1f; // 경직 시간 배율 (기본:1, 엘리트:0.5, 미니보스:0.35, 보스:0.25)
+    public float knockbackForce;         // 넉백 강도
+    public float cameraShakeIntensity;   // 카메라 흔들림 강도
+    public float cameraShakeDuration;    // 카메라 흔들림 지속시간
 
     [Header("AI Strategies")]
     public SpawnStrategyType spawnStrategy = SpawnStrategyType.Basic;
@@ -70,10 +80,13 @@ public class MonsterData : ScriptableObject
     public DieStrategyType dieStrategy = DieStrategyType.Basic;
     public HitStrategyType hitStrategy = HitStrategyType.Basic;
     public ProjectileMovementType projectileType = ProjectileMovementType.Straight;
+    public ProjectileImpactType projectileImpactType = ProjectileImpactType.Basic;
     public SkillEffectType skillEffectType;
+
     [Header("Reference")]
     public string monsterPrefabKey; // Prefab Addressables Key
     public GameObject projectilePrefab;
+    public GameObject hitEffect;
     
 
     [Header("Behavior Conditions")]
@@ -142,7 +155,8 @@ public enum DieStrategyType
 public enum ProjectileMovementType
 {
     Straight,
-    Homing
+    Homing,
+    Parabolic    // 추가
 }
 public enum SkillEffectType
 {
@@ -151,6 +165,14 @@ public enum SkillEffectType
     Buff,
     Summon,
     // ... 다른 이펙트 타입들
+}
+public enum ProjectileImpactType
+{
+    Basic,
+    Poison,
+    //Explosion,
+    //Freeze
+    // 추가 가능
 }
 public enum BuffType
 {

@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.IO;
+using System.Threading.Tasks;
 using UnityEngine;
 using UnityEngine.AddressableAssets;
 using static MonsterData;
@@ -9,8 +10,8 @@ using static MonsterData;
 public class MonsterDataManager : Singleton<MonsterDataManager>
 {
     private Dictionary<int, MonsterData> monsterDatabase = new Dictionary<int, MonsterData>();
-    private string persistentFilePath; // 실제 사용할 CSV 경로
-    private string streamingFilePath;  // 초기 CSV 경로
+    private string persistentFilePath; //로컬 내 파일 ()
+    private string streamingFilePath ;//유니티 에셋내 파일(복사용)
 
     private void Awake()
     {
@@ -27,12 +28,12 @@ public class MonsterDataManager : Singleton<MonsterDataManager>
     
     }
 
-    public void InitializeMonsters()
+    public async Task InitializeMonsters()
     {
-        LoadMonstersFromCSV();
+        await LoadMonstersFromCSV();
     }
 
-    private void CopyCSVFromStreamingAssets()
+    public void CopyCSVFromStreamingAssets()
     {
         if (File.Exists(streamingFilePath))
         {
@@ -46,8 +47,9 @@ public class MonsterDataManager : Singleton<MonsterDataManager>
         }
     }
 
-    private async void LoadMonstersFromCSV()
+    private async Task LoadMonstersFromCSV()
     {
+        
         if (!File.Exists(persistentFilePath))
         {
             Debug.LogError($"몬스터 데이터 CSV 파일을 찾을 수 없습니다: {persistentFilePath}");
@@ -131,6 +133,14 @@ public class MonsterDataManager : Singleton<MonsterDataManager>
         monsterData.summonRadius = float.Parse(values[38]);
         monsterData.projectileType = (ProjectileMovementType)Enum.Parse(typeof(ProjectileMovementType), values[39]);
         monsterData.skillEffectType = (SkillEffectType)Enum.Parse(typeof(SkillEffectType), values[40]);
+        monsterData.projectileImpactType = (ProjectileImpactType)Enum.Parse(typeof(ProjectileImpactType), values[41]);
+        monsterData.areaDuration = float.Parse(values[42]);
+        monsterData.superArmorThreshold = float.Parse(values[43]);
+        monsterData.hitStunMultiplier = float.Parse(values[44]);
+        monsterData.knockbackForce = float.Parse(values[45]);
+        monsterData.cameraShakeIntensity = float.Parse(values[46]);
+        monsterData.cameraShakeDuration = float.Parse(values[47]);
+        monsterData.armorValue = int.Parse(values[48]);
     }
 
     public MonsterData GetMonsterData(int monsterId)

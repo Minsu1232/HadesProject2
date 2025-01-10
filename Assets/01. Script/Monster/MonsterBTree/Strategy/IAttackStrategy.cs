@@ -9,4 +9,7 @@ public interface IAttackStrategy
     void ApplyDamage(IDamageable target, MonsterClass monsterData);
     bool IsAttacking { get; }
     float GetLastAttackTime { get; }
+
+   
+    void OnAttackAnimationEnd();
 }

@@ -5,31 +5,33 @@ using UnityEngine;
 using static AttackData;
 using static MonsterData;
 
-public abstract class MonsterClass : ICreature,IDamageable
+public abstract class MonsterClass : ICreature
 {
     private MonsterData monsterData;
     private PlayerClass playerClass;
-    
+
     public string MONSTERNAME { get; private set; }
     public int CurrentHealth { get; private set; }
     public int CurrentDeffense { get; private set; }
     public int CurrentAttackPower { get; private set; }
     public float CurrentAttackSpeed { get; private set; }
     public int CurrentSpeed { get; private set; }
-    public float CurrentAttackRange {  get; private set; }  
+    public float CurrentAttackRange { get; private set; }
 
-    public int CurrentMoveRange {  get; private set; }
+    public int CurrentMoveRange { get; private set; }
     public int CurrentChaseRange { get; private set; }
 
     public float CurrentSkillCooldown { get; private set; }
 
     public int CurrentAggroDropRange { get; private set; }
 
-    public float CurrentSkillRange {  get; private set; }
-    public float CurrentSKillDuration {  get; private set; }
+    public float CurrentSkillRange { get; private set; }
+    public float CurrentSKillDuration { get; private set; }
+
+    public float CurrentAreaDuration { get; private set; }
     public float CurrentSkillDamage { get; private set; }
 
-    public float CurrentHitStunDuration {  get; private set; }
+    public float CurrentHitStunDuration { get; private set; }
 
     public float CurrentDeathDuration { get; private set; }
 
@@ -56,12 +58,20 @@ public abstract class MonsterClass : ICreature,IDamageable
     public float CurrentBuffValue { get; private set; }
     public int CurrentSummonCount { get; private set; }
     public float CurrentSummonRadius { get; private set; }
+
+    public float CurrentSuperArmorThreshold { get; private set; }
+    public float CurrentHitStunMultplier { get; private set; }
+    public float CurrentKnockbackForce { get; private set; }
+    public float CurrentCameraShakeIntensity { get; private set; }
+    public float CurrentCameraShakeDuration { get; private set; }
     public ProjectileMovementType CurrentProjectileType { get; private set; }
+    public ProjectileImpactType CurrentProjectileImpactType { get; private set; }
     public SkillEffectType CurrentSkillEffectType { get; private set; }
     public bool isBasicAttack { get; private set; }
+    public float CurrentArmor { get; private set; }
 
     protected bool isDashing = false;
-   
+    public GameObject hitEffect;
     public MonsterClass(MonsterData data)
     {
         monsterData = data;
@@ -111,9 +121,18 @@ public abstract class MonsterClass : ICreature,IDamageable
         CurrentSummonRadius = monsterData.summonRadius;
         CurrentProjectileType = monsterData.projectileType;
         CurrentSkillEffectType = monsterData.skillEffectType;
-
-
+        CurrentProjectileImpactType = monsterData.projectileImpactType;
+        CurrentAreaDuration = monsterData.areaDuration;
+        hitEffect = monsterData.hitEffect;
+        CurrentSuperArmorThreshold = monsterData.superArmorThreshold;
+        CurrentHitStunMultplier = monsterData.hitStunMultiplier;
+        CurrentKnockbackForce = monsterData.knockbackForce;
+        CurrentCameraShakeIntensity = monsterData.cameraShakeIntensity;
+        CurrentCameraShakeDuration = monsterData.cameraShakeDuration;
+        CurrentArmor = monsterData.armorValue;
         playerClass = GameInitializer.Instance.GetPlayerClass();
+
+        Debug.Log(CurrentCameraShakeIntensity);
     }
     public MonsterData GetMonsterData()
     {
@@ -123,7 +142,7 @@ public abstract class MonsterClass : ICreature,IDamageable
     {
         return monsterData.monsterName;
     }
-    
+
     protected virtual void Debuff()
     {
         GameInitializer.Instance.GetPlayerClass();
@@ -158,16 +177,16 @@ public abstract class MonsterClass : ICreature,IDamageable
         // 지속 피해에는 애니메이션 트리거 없음
     }
     public abstract void Die();
- 
-    
+
+
 
     public virtual void SetPosition(Vector3 spawnPosition)
     {
         throw new NotImplementedException();
     }
 
-    public  Vector3 GetPlayerPosition()
-    {        
+    public Vector3 GetPlayerPosition()
+    {
         return playerClass.playerTransform.position;
     }
 }

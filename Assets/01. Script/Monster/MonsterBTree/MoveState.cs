@@ -19,17 +19,22 @@ public class MoveState : MonsterBaseState
         animator.SetTrigger("Move");
         float distanceToPlayer = GetDistanceToPlayer();
 
-        // 상태 전환 체크
+        // 공격 사정거리 안에 있으면 Idle 상태로 전환
+        if (distanceToPlayer <= monsterClass.CurrentAttackRange)
+        {
+            
+            owner.ChangeState(MonsterStateType.Idle);
+            return;
+        }
+
+        // 기존 상태 전환 체크와 이동 로직
         if (currentStrategy.ShouldChangeState(distanceToPlayer, monsterClass))
         {
-            if (distanceToPlayer <= monsterClass.CurrentAttackRange)
-                owner.ChangeState(MonsterStateType.Attack);
-            else if (distanceToPlayer > monsterClass.CurrentAggroDropRange)
+            if (distanceToPlayer > monsterClass.CurrentAggroDropRange)
                 owner.ChangeState(MonsterStateType.Move);
             return;
         }
 
-        // 이동 실행
         currentStrategy.Move(transform, player, monsterClass);
     }
 
@@ -41,6 +46,16 @@ public class MoveState : MonsterBaseState
 
     public override bool CanTransition()
     {
+        float distanceToPlayer = GetDistanceToPlayer();
+
+        // 공격 사정거리 안에 있으면 이동 상태 전환을 막음 > 수정해야함
+        //if (distanceToPlayer <= monsterClass.CurrentAttackRange)
+        //{
+        //    Debug.Log("못변해");
+        //    return false;
+        //}
+     
+
         return true;
     }
 }

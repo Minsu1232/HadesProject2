@@ -16,7 +16,9 @@ public class DungeonManager : Singleton<DungeonManager>
     public enum DungeonType
     {
         Test,
-        SpiderTest
+        SpiderTest,
+        SlimeTest
+
     }
 
     [Title("Dungeon Settings")]
@@ -24,9 +26,9 @@ public class DungeonManager : Singleton<DungeonManager>
     [SerializeField]
     private DungeonType selectedDungeonType;
 
-    private void Awake()
+    private async void Awake()
     {
-        MonsterDataManager.Instance.InitializeMonsters();
+       await MonsterDataManager.Instance.InitializeMonsters();
     }
 
     private void Start()
@@ -45,6 +47,13 @@ public class DungeonManager : Singleton<DungeonManager>
                 return new DummyMonsterFactory();
             case "spidertest":
                 return new SPiderMonsterFactory();
+            case "slimetest":
+                // 슬라임, 터틀 몬스터를 둘 다 생성할 수 있는 CompositeMonsterFactory 반환
+                return new CompositeMonsterFactory(
+                    new SlimeMonsterFactory(),
+                    new TurtleMonsterFactory()
+                );
+
             default:
                 Debug.LogError($"알 수 없는 던전 타입입니다: {dungeonType}");
                 return null;

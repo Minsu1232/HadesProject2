@@ -4,6 +4,7 @@ using Unity.IO.LowLevel.Unsafe;
 using UnityEditor;
 using static IMonsterState;
 using System;
+using static AttackData;
 
 public class MonsterAI : MonoBehaviour
 {
@@ -19,6 +20,10 @@ public class MonsterAI : MonoBehaviour
     private ISkillStrategy skillStrategy;
     private IDieStrategy dieStrategy;
     private IHitStrategy hitStrategy;
+
+
+    
+
 
     private void Start()
     {
@@ -122,20 +127,36 @@ public class MonsterAI : MonoBehaviour
            )
        );
     }
+    public IMonsterState GetCurrentState()
+    {
+        return currentState;
+    }
+    public void OnDamaged(int damage, AttackType attackType)
+    {
+        
+        if (currentState is DieState)
+            return;
+       
+        if (currentState.CanTransition())
+        {
+                ChangeState(MonsterStateType.Hit);       
+            
+        }
+    }
     private void Update()
     {
         behaviorTree.Execute();  // 행동 트리 실행
         
         if (currentState != null)
         {
-            Debug.Log(currentState);
+            
             currentState.Execute();            
         }
     }
 
     public void ChangeState(MonsterStateType newStateType)
     {
-        Debug.Log("바뀔 상태 :"+ newStateType);
+        
         if (currentState != null)
         {
             
@@ -156,5 +177,11 @@ public class MonsterAI : MonoBehaviour
         return monsterStatus;
     }
 
-   
+    public void OnAttackAnimationEnd()
+    {
+        attackStrategy.OnAttackAnimationEnd();
+    }
+    // PlayerAttack의 OnAttackInput 이벤트가 발생하면 이 함수가 호출됨
+  
+  
 }

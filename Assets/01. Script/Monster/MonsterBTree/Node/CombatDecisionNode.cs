@@ -9,7 +9,6 @@ public class CombatDecisionNode : BTNode
 
     public CombatDecisionNode(MonsterAI owner) : base(owner)
     {
-        // 전략들은 이미 MonsterAI에서 초기화되어 있을 것
         attackStrategy = owner.GetAttackStrategy();
         skillStrategy = owner.GetSkillStrategy();
     }
@@ -18,17 +17,29 @@ public class CombatDecisionNode : BTNode
     {
         MonsterClass monster = owner.GetStatus().GetMonsterClass();
         float distanceToPlayer = Vector3.Distance(owner.transform.position, monster.GetPlayerPosition());
-        
-        // 각 전략의 판단 로직 사용
+
+        // 스킬이나 공격이 가능한 상태인지 확인
         if (skillStrategy.CanUseSkill(distanceToPlayer, monster))
         {
-            
+            Debug.Log("스킬 사용 가능!");
+            Debug.Log($"isUsingSkill: {skillStrategy.IsUsingSkill}");
+            Debug.Log($"쿨타임 체크: {Time.time > skillStrategy.GetLastSkillTime + monster.CurrentSkillCooldown}");
+            Debug.Log($"범위 체크: {distanceToPlayer <= skillStrategy.SkillRange}");
             owner.ChangeState(MonsterStateType.Skill);
+           
             return NodeStatus.Success;
         }
         else if (attackStrategy.CanAttack(distanceToPlayer, monster))
         {
             owner.ChangeState(MonsterStateType.Attack);
+           
+            return NodeStatus.Success;
+        }
+        else if (distanceToPlayer <= monster.CurrentAttackRange)
+        {
+            // 공격 범위 안이지만 스킬/공격 불가능(쿨타임)한 경우
+            owner.ChangeState(MonsterStateType.Idle);
+            
             return NodeStatus.Success;
         }
 

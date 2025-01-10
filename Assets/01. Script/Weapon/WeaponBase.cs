@@ -34,6 +34,7 @@ public abstract class WeaponBase : WeaponManager, IWeaponCollider
         if (weaponCollider != null)
         {
             weaponCollider.enabled = true;
+
         }
     }
 
@@ -42,6 +43,11 @@ public abstract class WeaponBase : WeaponManager, IWeaponCollider
         if (weaponCollider != null)
         {
             weaponCollider.enabled = false;
+            MeleeDamageDealer damageDealer = GetComponentInChildren<MeleeDamageDealer>();
+            if (damageDealer != null)
+            {
+                damageDealer.ClearDamagedMonsters();
+            }
         }
     }
     public void OnChargeAttackEnd()
