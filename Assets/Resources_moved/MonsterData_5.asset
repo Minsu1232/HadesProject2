@@ -65,7 +65,7 @@ MonoBehaviour:
   skillStrategy: 0
   dieStrategy: 0
   hitStrategy: 0
-  projectileType: 0
+  projectileType: 1
   projectileImpactType: 0
   skillEffectType: 0
   groggyStrategy: 0

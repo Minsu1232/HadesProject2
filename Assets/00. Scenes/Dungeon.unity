@@ -877,7 +877,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   player: {fileID: 0}
-  selectedDungeonType: 1
+  selectedDungeonType: 0
 --- !u!4 &400737765
 Transform:
   m_ObjectHideFlags: 0

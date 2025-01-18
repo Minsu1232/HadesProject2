@@ -14,48 +14,28 @@ public class MoveState : MonsterBaseState
         animator = owner.GetComponent<Animator>();
     }
 
+    public override void Enter()
+    {
+        Debug.Log("Move State Enter");
+        animator.SetTrigger("Move"); // 진입할 때만 트리거 설정
+    }
+
     public override void Execute()
     {
-        animator.SetTrigger("Move");
-        float distanceToPlayer = GetDistanceToPlayer();
-
-        // 공격 사정거리 안에 있으면 Idle 상태로 전환
-        if (distanceToPlayer <= monsterClass.CurrentAttackRange)
-        {
-            
-            owner.ChangeState(MonsterStateType.Idle);
-            return;
-        }
-
-        // 기존 상태 전환 체크와 이동 로직
-        if (currentStrategy.ShouldChangeState(distanceToPlayer, monsterClass))
-        {
-            if (distanceToPlayer > monsterClass.CurrentAggroDropRange)
-                owner.ChangeState(MonsterStateType.Move);
-            return;
-        }
-
+        // 이동 처리만 담당하고, 상태 전환은 BehaviorTree에 맡김
         currentStrategy.Move(transform, player, monsterClass);
     }
 
     public override void Exit()
     {
-        animator.ResetTrigger("Move");
         currentStrategy.StopMoving();
+        animator.ResetTrigger("Move");
+        Debug.Log("Move State Exit");
     }
 
     public override bool CanTransition()
     {
-        float distanceToPlayer = GetDistanceToPlayer();
-
-        // 공격 사정거리 안에 있으면 이동 상태 전환을 막음 > 수정해야함
-        //if (distanceToPlayer <= monsterClass.CurrentAttackRange)
-        //{
-        //    Debug.Log("못변해");
-        //    return false;
-        //}
-     
-
+        // 모든 상태 전환 허용 (BehaviorTree가 판단)
         return true;
     }
 }

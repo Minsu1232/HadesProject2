@@ -19,11 +19,11 @@ MonoBehaviour:
   initialAttackSpeed: 1
   initialSpeed: 3
   initialDeffense: 0
-  attackRange: 2
+  attackRange: 6
   dropChance: 0
   dropItem: 0
   armorValue: 50
-  moveRange: 5
+  moveRange: 6
   chaseRange: 7
   aggroDropRange: 12
   skillCooldown: 5
@@ -65,7 +65,7 @@ MonoBehaviour:
   skillStrategy: 0
   dieStrategy: 0
   hitStrategy: 0
-  projectileType: 0
+  projectileType: 1
   projectileImpactType: 0
   skillEffectType: 0
   groggyStrategy: 0

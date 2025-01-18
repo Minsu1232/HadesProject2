@@ -14,12 +14,18 @@ public class CheckPlayerInAttackRange : BTNode
             owner.GetStatus().GetMonsterClass().GetPlayerPosition()
         );
 
-        // 스킬 범위나 공격 범위 중 하나라도 안에 있으면 Success
-        if (distanceToPlayer <= monster.CurrentSkillRange ||
-            distanceToPlayer <= monster.CurrentAttackRange)
+        Debug.Log($"Distance to player: {distanceToPlayer}");
+        Debug.Log($"Attack range: {monster.CurrentAttackRange}");
+        Debug.Log($"Skill range: {monster.CurrentSkillRange}");
+
+        if (distanceToPlayer <= monster.CurrentAttackRange ||
+            distanceToPlayer <= monster.CurrentSkillRange)
         {
+            Debug.Log("Player in attack/skill range!");
             return NodeStatus.Success;
         }
+
+        Debug.Log("Player out of range");
         return NodeStatus.Failure;
     }
 }

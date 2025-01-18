@@ -16,33 +16,33 @@ public class CombatDecisionNode : BTNode
     public override NodeStatus Execute()
     {
         MonsterClass monster = owner.GetStatus().GetMonsterClass();
-        float distanceToPlayer = Vector3.Distance(owner.transform.position, monster.GetPlayerPosition());
+        float distanceToPlayer = Vector3.Distance(
+            owner.transform.position,
+            monster.GetPlayerPosition()
+        );
 
-        // 스킬이나 공격이 가능한 상태인지 확인
+        Debug.Log($"Combat Decision - Current State: {owner.GetCurrentState()}");
+
         if (skillStrategy.CanUseSkill(distanceToPlayer, monster))
         {
-            Debug.Log("스킬 사용 가능!");
-            Debug.Log($"isUsingSkill: {skillStrategy.IsUsingSkill}");
-            Debug.Log($"쿨타임 체크: {Time.time > skillStrategy.GetLastSkillTime + monster.CurrentSkillCooldown}");
-            Debug.Log($"범위 체크: {distanceToPlayer <= skillStrategy.SkillRange}");
+            Debug.Log("Changing to Skill state");
             owner.ChangeState(MonsterStateType.Skill);
-           
             return NodeStatus.Success;
         }
         else if (attackStrategy.CanAttack(distanceToPlayer, monster))
         {
+            Debug.Log("Changing to Attack state");
             owner.ChangeState(MonsterStateType.Attack);
-           
             return NodeStatus.Success;
         }
         else if (distanceToPlayer <= monster.CurrentAttackRange)
         {
-            // 공격 범위 안이지만 스킬/공격 불가능(쿨타임)한 경우
+            Debug.Log("Changing to Idle state");
             owner.ChangeState(MonsterStateType.Idle);
-            
             return NodeStatus.Success;
         }
 
+        Debug.Log("No combat action possible");
         return NodeStatus.Failure;
     }
 }

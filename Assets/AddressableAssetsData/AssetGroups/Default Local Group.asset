@@ -38,8 +38,8 @@ MonoBehaviour:
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
-  - m_GUID: 0b3cb0a187edb824d81727d8d4ef925e
-    m_Address: monsters_csv
+  - m_GUID: 576f988ce6a12124b9a4ea26249d62f9
+    m_Address: Assets/StreamingAssets/Monsters.csv
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
@@ -110,6 +110,16 @@ MonoBehaviour:
     FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: d30fdc2a3ab50ab47bc74d27b13b2011
     m_Address: BossData_2
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: cee1aefb92eb55f40aee4a5bfc1a77e7
+    m_Address: Assets/StreamingAssets/MonsterSkills.csv
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 8e32376dc370c304c895ebfcbc1db84b
+    m_Address: Assets/StreamingAssets/MonsterStrategies.csv
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0

@@ -31,16 +31,20 @@ public abstract class CreatureAI : MonoBehaviour, ICreatureAI
         {
             currentState.Execute();
         }
+        Debug.Log(currentState.ToString());
     }
 
     #region Core Methods
     public virtual void ChangeState(MonsterStateType newStateType)
     {
+        Debug.Log(newStateType.ToString());
+        
         if (currentState != null)
         {
+            
             if (!currentState.CanTransition())
                 return;
-
+           
             currentState.Exit();
         }
 

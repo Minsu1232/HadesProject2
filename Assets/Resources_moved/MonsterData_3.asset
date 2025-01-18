@@ -14,9 +14,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   monsterName: Spider
   grade: 0
-  initialHp: 2000
+  initialHp: 2333
   initialAttackPower: 30
-  initialAttackSpeed: 1.5
+  initialAttackSpeed: 2
   initialSpeed: 2
   initialDeffense: 0
   attackRange: 2
@@ -24,7 +24,7 @@ MonoBehaviour:
   dropItem: 0
   armorValue: 50
   moveRange: 6
-  chaseRange: 10
+  chaseRange: 7
   aggroDropRange: 12
   skillCooldown: 10
   skillRange: 12
@@ -65,7 +65,7 @@ MonoBehaviour:
   skillStrategy: 0
   dieStrategy: 0
   hitStrategy: 0
-  projectileType: 2
+  projectileType: 3
   projectileImpactType: 1
   skillEffectType: 0
   groggyStrategy: 0
