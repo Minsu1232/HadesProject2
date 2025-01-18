@@ -11,9 +11,9 @@ GameObject:
   - component: {fileID: 668392710809429737}
   - component: {fileID: 8390440071913293037}
   - component: {fileID: 5061557438723380076}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: UpperCover
-  m_TagString: Untagged
+  m_TagString: Monster
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -78,9 +78,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6218870129736688436}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: HornRTip04
-  m_TagString: Untagged
+  m_TagString: Monster
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -111,9 +111,9 @@ GameObject:
   - component: {fileID: 7034290742237489117}
   - component: {fileID: 7221522508695241543}
   - component: {fileID: 5430230080984598341}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: HornLTip03
-  m_TagString: Untagged
+  m_TagString: Monster
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -180,9 +180,9 @@ GameObject:
   - component: {fileID: 3130596319426117536}
   - component: {fileID: 3605211243684610246}
   - component: {fileID: 6575084192094680068}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: BottomCover
-  m_TagString: Untagged
+  m_TagString: Monster
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -249,9 +249,9 @@ GameObject:
   - component: {fileID: 2689982147278715897}
   - component: {fileID: 4479359449819412710}
   - component: {fileID: 6626624296063625284}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: HornMidTip02
-  m_TagString: Untagged
+  m_TagString: Monster
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -318,9 +318,9 @@ GameObject:
   - component: {fileID: 6312341496985541360}
   - component: {fileID: 8690349217518965670}
   - component: {fileID: 8991162688509658081}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: HornLTip02
-  m_TagString: Untagged
+  m_TagString: Monster
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -385,9 +385,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5312975414555295447}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: HornMid02
-  m_TagString: Untagged
+  m_TagString: Monster
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -417,9 +417,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2676890610842758992}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: HornL01
-  m_TagString: Untagged
+  m_TagString: Monster
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -449,9 +449,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3434629165591907971}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: HornR02
-  m_TagString: Untagged
+  m_TagString: Monster
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -484,9 +484,9 @@ GameObject:
   - component: {fileID: 1629024434659107260}
   - component: {fileID: 2784635825408709207}
   - component: {fileID: 6858699414064718047}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Body
-  m_TagString: Untagged
+  m_TagString: Monster
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -627,6 +627,81 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   isBackHitBox: 1
   backAttackMultiplier: 1.5
+--- !u!1 &3096167466121881633
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 7742178668840708817}
+  - component: {fileID: 3127510517502886547}
+  - component: {fileID: 3848946995356196216}
+  m_Layer: 7
+  m_Name: Armor
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &7742178668840708817
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3096167466121881633}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 18.880405}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 6661695238374413201}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: -73.64692, y: 0.35000038}
+  m_SizeDelta: {x: 15, y: 1}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!222 &3127510517502886547
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3096167466121881633}
+  m_CullTransparentMesh: 1
+--- !u!114 &3848946995356196216
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3096167466121881633}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 1, g: 1, b: 0, a: 1}
+  m_RaycastTarget: 1
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_Sprite: {fileID: 21300000, guid: a30d813ea1bde3b479b73cd4c57e224d, type: 3}
+  m_Type: 3
+  m_PreserveAspect: 0
+  m_FillCenter: 1
+  m_FillMethod: 0
+  m_FillAmount: 1
+  m_FillClockwise: 1
+  m_FillOrigin: 1
+  m_UseSpriteMesh: 0
+  m_PixelsPerUnitMultiplier: 1
 --- !u!1 &3130997933226658983
 GameObject:
   m_ObjectHideFlags: 0
@@ -636,9 +711,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2801817750531040613}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: SkillSpawnPoint
-  m_TagString: Untagged
+  m_TagString: Monster
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -667,9 +742,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2123466848578587834}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: HornL02
-  m_TagString: Untagged
+  m_TagString: Monster
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -701,9 +776,9 @@ GameObject:
   - component: {fileID: 2853989831815889003}
   - component: {fileID: 2395437434664797259}
   - component: {fileID: 4790965039852476589}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: HornMidTip01
-  m_TagString: Untagged
+  m_TagString: Monster
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -770,9 +845,9 @@ GameObject:
   - component: {fileID: 1887779553247192921}
   - component: {fileID: 5779175742027468898}
   - component: {fileID: 4704971455842253891}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Shell
-  m_TagString: Untagged
+  m_TagString: Monster
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -850,9 +925,9 @@ GameObject:
   - component: {fileID: 8294054557405142137}
   - component: {fileID: 3650867944246102795}
   - component: {fileID: 8838703482362547908}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Spine02
-  m_TagString: Untagged
+  m_TagString: Monster
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -918,9 +993,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5770299387052241278}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: HornR03
-  m_TagString: Untagged
+  m_TagString: Monster
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -952,9 +1027,9 @@ GameObject:
   - component: {fileID: 4668041984451434274}
   - component: {fileID: 621065412909117055}
   - component: {fileID: 6325420527066438376}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: HornMidTip03
-  m_TagString: Untagged
+  m_TagString: Monster
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1019,9 +1094,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6210407746932624}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Spine01
-  m_TagString: Untagged
+  m_TagString: Monster
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1054,9 +1129,9 @@ GameObject:
   - component: {fileID: 7284789056533953285}
   - component: {fileID: 2172202796303422771}
   - component: {fileID: 1645227982566151214}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Head
-  m_TagString: Untagged
+  m_TagString: Monster
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1126,9 +1201,9 @@ GameObject:
   - component: {fileID: 5648537414611162304}
   - component: {fileID: 4228483134636436971}
   - component: {fileID: 4114652955274001464}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: HornRTip02
-  m_TagString: Untagged
+  m_TagString: Monster
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1215,6 +1290,7 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 2411658888306543619}
+  - {fileID: 7742178668840708817}
   m_Father: {fileID: 8813570860934281314}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 1}
@@ -1269,9 +1345,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6795751522072942651}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: HornR01
-  m_TagString: Untagged
+  m_TagString: Monster
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1301,9 +1377,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 441329493982577983}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: HornL04
-  m_TagString: Untagged
+  m_TagString: Monster
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1333,9 +1409,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 9178977995339326346}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: HornMid01
-  m_TagString: Untagged
+  m_TagString: Monster
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1367,9 +1443,9 @@ GameObject:
   - component: {fileID: 7157984884938499201}
   - component: {fileID: 7006587997400940666}
   - component: {fileID: 1239846524833649811}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: HornRTip03
-  m_TagString: Untagged
+  m_TagString: Monster
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1439,9 +1515,9 @@ GameObject:
   - component: {fileID: 3860673643750330359}
   - component: {fileID: 8692849683912012082}
   - component: {fileID: 4339297353358998452}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Monster_Turtle
-  m_TagString: Untagged
+  m_TagString: Monster
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1522,6 +1598,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   worldSpaceCanvas: {fileID: 7699813544617523468}
   healthBar: {fileID: 2940327508879899012}
+  armorBar: {fileID: 3848946995356196216}
   damageTextPrefab: {fileID: 8342705067347850425, guid: de4cd1e0557f17146b9e848d367d117a, type: 3}
 --- !u!54 &4339297353358998452
 Rigidbody:
@@ -1559,9 +1636,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 181485527237316058}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: HornL03
-  m_TagString: Untagged
+  m_TagString: Monster
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1593,9 +1670,9 @@ GameObject:
   - component: {fileID: 1414120803310476753}
   - component: {fileID: 3603099012178608686}
   - component: {fileID: 5458175107177674980}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: HornLTip04
-  m_TagString: Untagged
+  m_TagString: Monster
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1662,9 +1739,9 @@ GameObject:
   - component: {fileID: 998692671990774705}
   - component: {fileID: 1392870240071404664}
   - component: {fileID: 7536656213040016501}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: HornRTip01
-  m_TagString: Untagged
+  m_TagString: Monster
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1731,9 +1808,9 @@ GameObject:
   - component: {fileID: 6876854973674761595}
   - component: {fileID: 7197556128754588184}
   - component: {fileID: 1542761243583754766}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: HornLTip01
-  m_TagString: Untagged
+  m_TagString: Monster
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1798,9 +1875,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6314273604542929608}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: HornR04
-  m_TagString: Untagged
+  m_TagString: Monster
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1830,9 +1907,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7748292344113572265}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: HornMid03
-  m_TagString: Untagged
+  m_TagString: Monster
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1864,9 +1941,9 @@ GameObject:
   - component: {fileID: 3487105974393881780}
   - component: {fileID: 2443466272083904422}
   - component: {fileID: 8450877401857925184}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Eyeball
-  m_TagString: Untagged
+  m_TagString: Monster
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

@@ -1,0 +1,105 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 81195776f1de1ac4693e323c7fc8e082, type: 3}
+  m_Name: BossData_2
+  m_EditorClassIdentifier: 
+  monsterName: 
+  grade: 0
+  initialHp: 0
+  initialAttackPower: 0
+  initialAttackSpeed: 0
+  initialSpeed: 0
+  initialDeffense: 0
+  attackRange: 0
+  dropChance: 0
+  dropItem: 0
+  armorValue: 0
+  moveRange: 0
+  chaseRange: 0
+  aggroDropRange: 0
+  skillCooldown: 0
+  skillRange: 0
+  skillDuration: 0
+  skillDamage: 0
+  projectileSpeed: 0
+  rotateSpeed: 0
+  skillSpawnPointTag: SkillSpawnPoint
+  areaEffectPrefab: {fileID: 0}
+  ShorckEffectPrefab: {fileID: 0}
+  areaRadius: 0
+  areaDuration: 5
+  buffData:
+    buffTypes: 
+    durations: []
+    values: []
+  buffType: 0
+  buffDuration: 0
+  buffValue: 0
+  buffEffectPrefab: {fileID: 0}
+  summonPrefab: {fileID: 0}
+  summonCount: 0
+  summonRadius: 0
+  hitStunDuration: 0
+  deathDuration: 0
+  spawnDuration: 0
+  superArmorThreshold: 0
+  hitStunMultiplier: 1
+  knockbackForce: 0
+  cameraShakeIntensity: 0
+  cameraShakeDuration: 0
+  spawnStrategy: 0
+  moveStrategy: 0
+  attackStrategy: 0
+  idleStrategy: 0
+  skillStrategy: 0
+  dieStrategy: 0
+  hitStrategy: 0
+  projectileType: 0
+  projectileImpactType: 0
+  skillEffectType: 0
+  groggyStrategy: 0
+  monsterPrefabKey: 
+  projectilePrefab: {fileID: 0}
+  hitEffect: {fileID: 0}
+  useHealthRetreat: 0
+  healthRetreatThreshold: 0
+  isPhaseChange: 0
+  eliteOutlineMaterial: {fileID: 0}
+  shockwaveRadius: 0
+  groggyTime: 0
+  canBeInterrupted: 0
+  phaseTransitionDuration: 0
+  rageModeThreshold: 0
+  rageModeDuration: 0
+  invincibleOnSpawn: 0
+  aggroRange: 0
+  phaseData: []
+  phaseCount: 0
+  canSummonMinions: 0
+  minionPrefabs: []
+  maxMinionCount: 0
+  summonRadius: 0
+  summonInterval: 0
+  phaseTransitionEffects: []
+  rageEffect: {fileID: 0}
+  showHealthBar: 0
+  showPhaseNames: 0
+  phaseColors: []
+  globalSkillCooldownModifier: 0
+  skillPreDelayDefault: 0
+  skillPostDelayDefault: 0
+  defaultCameraDistance: 0
+  defaultCameraHeight: 0
+  defaultCameraFOV: 0
+  superArmorThreshold: 0
+  globalStunResistance: 0
+  knockbackResistance: 0

@@ -5,14 +5,14 @@ using UnityEngine;
 public class MonsterAttackCollider : MonoBehaviour
 {
     private MonsterClass monsterClass;
-    private MonsterAI monsterAI;
+    private CreatureAI CreatureAI;
     private bool canDealDamage = false;
     PlayerClass player;
     Animator animator;
     private void Start()
     {   
         //animator = GetComponent<Animator>();
-        monsterAI = GetComponent<MonsterAI>();
+        CreatureAI = GetComponent<CreatureAI>();
         monsterClass = GetComponentInParent<MonsterStatus>().GetMonsterClass();
         player = GameInitializer.Instance.GetPlayerClass();
     }
@@ -29,7 +29,7 @@ public class MonsterAttackCollider : MonoBehaviour
             {
                 canDealDamage = false;  // 한 번만 데미지
                 // 공격 타입에 따라 다른 데미지 적용
-                IAttackStrategy strategy = monsterAI.GetAttackStrategy();
+                IAttackStrategy strategy = CreatureAI.GetAttackStrategy();
                 //실제 공격 실행
 
                 strategy.ApplyDamage(player,monsterClass);

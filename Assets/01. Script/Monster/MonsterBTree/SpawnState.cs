@@ -4,7 +4,7 @@ public class SpawnState : MonsterBaseState
 {
     private readonly ISpawnStrategy spawnStrategy;
 
-    public SpawnState(MonsterAI owner, ISpawnStrategy strategy) : base(owner)
+    public SpawnState(CreatureAI owner, ISpawnStrategy strategy) : base(owner)
     {
         spawnStrategy = strategy;
     }

@@ -4,7 +4,7 @@ public class DieState : MonsterBaseState
 {
     private readonly IDieStrategy dieStrategy;
 
-    public DieState(MonsterAI owner, IDieStrategy strategy) : base(owner)
+    public DieState(CreatureAI owner, IDieStrategy strategy) : base(owner)
     {
         dieStrategy = strategy;
     }

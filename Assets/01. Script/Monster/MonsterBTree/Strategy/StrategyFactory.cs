@@ -25,14 +25,11 @@ public static class StrategyFactory
         };
     }
 
-    public static IAttackStrategy CreateAttackStrategy(AttackStrategyType type)
+    public static IAttackStrategy CreateAttackStrategy(AttackStrategyType type, MonsterData data)
     {
         return type switch
         {
-            //AttackStrategyType.Melee => new MeleeAttackStrategy(),
-            //AttackStrategyType.Ranged => new RangedAttackStrategy(),
-            //AttackStrategyType.AoE => new AoEAttackStrategy(),
-            //AttackStrategyType.Combo => new ComboAttackStrategy(),
+            AttackStrategyType.Jump => new JumpAttackStrategy(data.ShorckEffectPrefab,data.shockwaveRadius),
             _ => new BasicAttackStrategy()
         };
     }
@@ -48,11 +45,11 @@ public static class StrategyFactory
         };
     }
 
-    public static ISkillStrategy CreateSkillStrategy(SkillStrategyType type, MonsterAI owner)
+    public static ISkillStrategy CreateSkillStrategy(SkillStrategyType type, CreatureAI owner)
     {
         return type switch
         {
-            //SkillStrategyType.Buff => new BuffSkillStrategy(),
+            SkillStrategyType.Buff => new BuffSkillStrategy(owner),
             //SkillStrategyType.Debuff => new DebuffSkillStrategy(),
             //SkillStrategyType.Summon => new SummonSkillStrategy(),
             //SkillStrategyType.AreaControl => new AreaControlSkillStrategy(),
@@ -106,8 +103,16 @@ public static class StrategyFactory
             _ => null
         };
     }
-
-    public static ISkillEffect CreateSkillEffect(SkillEffectType effectType, MonsterData data, MonsterAI owner)
+    public static IGroggyStrategy CreateGroggyStrategy(GroggyStrategyType type, MonsterData data)
+    {
+        return type switch
+        {
+            //GroggyStrategyType.Elite => new EliteGroggyStrategy(data.groggyTime),
+            //GroggyStrategyType.Boss => new BossGroggyStrategy(data.groggyTime),
+            _ => new BasicGroggyStrategy(data.groggyTime)
+        };
+    }
+    public static ISkillEffect CreateSkillEffect(SkillEffectType effectType, MonsterData data, CreatureAI owner)
     {
         switch (effectType)
         {
@@ -141,9 +146,10 @@ public static class StrategyFactory
 
             case SkillEffectType.Buff:
                 return new BuffSkillEffect(
-                    data.buffType,
-                    data.buffDuration,
-                    data.buffValue  // MonsterData에 추가 필요
+                   data.buffData.buffTypes,    // 여러 버프 타입 배열
+        data.buffData.durations,    // 각 버프의 지속시간 배열
+        data.buffData.values,        // 각 버프의 수치값 배열
+        data.buffEffectPrefab
                 );
 
             case SkillEffectType.Summon:
@@ -164,4 +170,26 @@ public static class StrategyFactory
         }
     }
 
+}
+
+// AttackStrategyFactory 확장
+public static class AttackStrategyFactory
+{
+    private static GameObject shockwaveEffectPrefab; // 이펙트 프리팹 참조 저장
+
+    public static void Initialize(GameObject shockwaveEffect)
+    {
+        shockwaveEffectPrefab = shockwaveEffect;
+    }
+
+    public static IAttackStrategy CreateStrategy(AttackStrategyType type)
+    {
+        return type switch
+        {
+            //AttackStrategyType.Jump => new JumpAttackStrategy(shockwaveEffectPrefab),
+            //AttackStrategyType.Charge => new ChargeAttackStrategy(), // 구현 필요
+            //AttackStrategyType.Combo => new ComboAttackStrategy(),   // 구현 필요
+            _ => new BasicAttackStrategy()
+        };
+    }
 }

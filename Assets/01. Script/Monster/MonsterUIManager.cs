@@ -1,43 +1,58 @@
+// MonsterUIManager.cs
 using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 using static AttackData;
+using DG.Tweening;
 
 public class MonsterUIManager : MonoBehaviour
 {
-
     [Header("References")]
-    [SerializeField] private Canvas worldSpaceCanvas;
-    private MonsterStatus monsterStatus;
-    private MonsterClass monsterClass;
-    private Camera mainCamera;
+    [SerializeField] protected Canvas worldSpaceCanvas;
+    protected MonsterStatus monsterStatus;
+    protected MonsterClass monsterClass;
+    protected Camera mainCamera;
+
     [Header("UI Elements")]
-    [SerializeField] private Image healthBar;
-    
+    [SerializeField] protected Image healthBar;
+    [SerializeField] protected Image armorBar;
 
     [Header("Damage Text")]
-    [SerializeField] private GameObject damageTextPrefab;
-    private readonly Vector2[] damageTextOffsets = new Vector2[]
+    [SerializeField] protected GameObject damageTextPrefab;
+    protected readonly Vector2[] damageTextOffsets = new Vector2[]
     {
-        new Vector2(0.5f, 2f),
-        new Vector2(-0.5f, 2f),
-        
+       new Vector2(0.5f, 2f),
+       new Vector2(-0.5f, 2f),
     };
 
-    private int maxHealth;
+    protected int maxHealth;
+    protected int maxArmor;
 
-  
-
-    private void Start()
+    protected virtual void Start()
     {
         mainCamera = Camera.main;
         monsterStatus = GetComponent<MonsterStatus>();
+        monsterClass = monsterStatus.GetMonsterClass();
         InitializeReferences();
         SetupUI();
+
+        if (monsterClass != null)
+        {
+            monsterClass.OnArmorBreak += HandleArmorBreak;
+        }
     }
-    private void LateUpdate()
+
+    protected virtual void OnDestroy()
+    {
+        if (monsterClass != null)
+        {
+            monsterClass.OnArmorBreak -= HandleArmorBreak;
+        }
+    }
+
+    protected virtual void LateUpdate()
     {
         if (mainCamera != null && worldSpaceCanvas != null)
         {
@@ -46,7 +61,8 @@ public class MonsterUIManager : MonoBehaviour
             );
         }
     }
-    private void InitializeReferences()
+
+    protected virtual void InitializeReferences()
     {
         if (worldSpaceCanvas != null)
         {
@@ -60,56 +76,84 @@ public class MonsterUIManager : MonoBehaviour
             if (monsterClass != null)
             {
                 maxHealth = monsterClass.GetMonsterData().initialHp;
+                maxArmor = monsterClass.GetMonsterData().armorValue;
             }
         }
     }
 
-    private void SetupUI()
+    protected virtual void SetupUI()
     {
         if (monsterClass != null)
         {
             UpdateHealthUI(monsterClass.CurrentHealth);
+            UpdateArmorUI(monsterClass.CurrentArmor);
         }
     }
 
-    public void UpdateHealthUI(int currentHealth)
+    public virtual void UpdateHealthUI(int currentHealth)
     {
         if (healthBar != null)
+        {
+            maxHealth = monsterClass.MaxHealth;
             healthBar.fillAmount = (float)currentHealth / maxHealth;
-       
+        }
     }
-    public void SpawnDamageText(int damage, AttackType attackType)
+
+    public virtual void UpdateArmorUI(int currentHealth)
+    {
+        if (armorBar != null && monsterClass != null)
+        {
+            armorBar.fillAmount = (float)currentHealth / maxArmor;
+        }
+    }
+
+    protected virtual void HandleArmorBreak()
+    {
+        if (armorBar != null)
+        {
+            armorBar.DOFade(0f, 0.5f).OnComplete(() => {
+                armorBar.gameObject.SetActive(false);
+            });
+            SpawnArmorBreakText();
+        }
+    }
+
+    protected virtual void SpawnArmorBreakText()
+    {
+        if (damageTextPrefab == null) return;
+
+        GameObject armorBreakTextObj = Instantiate(damageTextPrefab, worldSpaceCanvas.transform);
+        armorBreakTextObj.transform.position = transform.position + new Vector3(0, 2.5f, 0);
+
+        TextMeshProUGUI armorBreakText = armorBreakTextObj.GetComponent<TextMeshProUGUI>();
+        if (armorBreakText != null)
+        {
+            armorBreakText.color = Color.yellow;
+            armorBreakText.fontSize *= 1.2f;
+            armorBreakText.text = "Baam";
+            HitStopManager.TriggerHitStop(0.5f, 3);
+            StartCoroutine(AnimateDamageText(armorBreakTextObj));
+        }
+    }
+
+    public virtual void SpawnDamageText(int damage, AttackType attackType)
     {
         if (damageTextPrefab == null) return;
 
         Vector2 offset = damageTextOffsets[Random.Range(0, damageTextOffsets.Length)];
-
         GameObject damageTextObj = Instantiate(damageTextPrefab, worldSpaceCanvas.transform);
         damageTextObj.transform.position = transform.position + new Vector3(offset.x, offset.y, 0);
 
         TextMeshProUGUI damageText = damageTextObj.GetComponent<TextMeshProUGUI>();
         if (damageText != null)
         {
-            switch (attackType)
-            {
-                //case AttackType.Critical:
-                //    damageText.color = Color.red;
-                //    damageText.fontSize *= 1.2f;
-                //    break;
-                //case AttackType.Dot:
-                //    damageText.color = Color.green;
-                //    break;
-                default:
-                    damageText.color = Color.white;
-                    break;
-            }
-
+            damageText.color = Color.white;
             damageText.text = damage.ToString();
             StartCoroutine(AnimateDamageText(damageTextObj));
         }
     }
 
-    private System.Collections.IEnumerator AnimateDamageText(GameObject textObj)
+    protected virtual IEnumerator AnimateDamageText(GameObject textObj)
     {
         float duration = 1f;
         float elapsed = 0f;

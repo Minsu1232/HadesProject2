@@ -14,18 +14,19 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   monsterName: Slime
   grade: 0
-  initialHp: 1000
+  initialHp: 3333
   initialAttackPower: 25
   initialAttackSpeed: 1
-  initialSpeed: 2
-  attackRange: 2
+  initialSpeed: 1
+  initialDeffense: 0
+  attackRange: 5
   dropChance: 0
   dropItem: 0
-  armorValue: 0
+  armorValue: 50
   moveRange: 5
   chaseRange: 7
   aggroDropRange: 12
-  skillCooldown: 5
+  skillCooldown: 7
   skillRange: 12
   skillDuration: 0.72
   skillDamage: 30
@@ -33,11 +34,23 @@ MonoBehaviour:
   rotateSpeed: 1
   skillSpawnPointTag: SkillSpawnPoint
   areaEffectPrefab: {fileID: 0}
+  ShorckEffectPrefab: {fileID: 5112054213284246415, guid: 5de378093d01f1748a644c9832d30c89, type: 3}
   areaRadius: 5
   areaDuration: 0
+  buffData:
+    buffTypes: 010000000300000004000000
+    durations:
+    - 5
+    - 5
+    - 5
+    values:
+    - 10
+    - 1
+    - 1
   buffType: 0
   buffDuration: 0
   buffValue: 0
+  buffEffectPrefab: {fileID: 2015227166078130037, guid: 8612b29c6b4e23c4a9a6f4053f9a155b, type: 3}
   summonPrefab: {fileID: 0}
   summonCount: 0
   summonRadius: 0
@@ -47,21 +60,25 @@ MonoBehaviour:
   superArmorThreshold: 0
   hitStunMultiplier: 1
   knockbackForce: 1
-  cameraShakeIntensity: 0.75
-  cameraShakeDuration: 0.1
+  cameraShakeIntensity: 1
+  cameraShakeDuration: 0.75
   spawnStrategy: 0
   moveStrategy: 0
-  attackStrategy: 0
+  attackStrategy: 1
   idleStrategy: 0
-  skillStrategy: 0
+  skillStrategy: 1
   dieStrategy: 0
   hitStrategy: 0
   projectileType: 0
   projectileImpactType: 0
-  skillEffectType: 0
+  skillEffectType: 2
+  groggyStrategy: 0
   monsterPrefabKey: Monster_Slime
   projectilePrefab: {fileID: 0}
   hitEffect: {fileID: 0}
   useHealthRetreat: 1
   healthRetreatThreshold: 0.3
   isPhaseChange: 1
+  eliteOutlineMaterial: {fileID: 2100000, guid: 02169a29bc93499d91fdd5dd16ead51a, type: 2}
+  shockwaveRadius: 0
+  groggyTime: 3

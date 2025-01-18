@@ -7,9 +7,9 @@ public enum NodeStatus
 
 public abstract class BTNode
 {
-    protected MonsterAI owner;
+    protected CreatureAI owner;
 
-    public BTNode(MonsterAI owner)
+    public BTNode(CreatureAI owner)
     {
         this.owner = owner;
     }

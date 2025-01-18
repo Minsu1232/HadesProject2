@@ -1,0 +1,7 @@
+BossID,PhaseNumber,EventType,CameraPosition,CameraRotation,CameraFOV,Duration,TargetPosition,LookAtTarget,ShakeIntensity,ShakeDuration,FadeType,FadeColor,FadeTime,BackgroundMusic,SoundEffect,UIEffect,ScreenEffect,TriggerTiming
+1,1,Spawn,"0,5,10","45,0,0",60,3,"0,0,0",True,0.0,0.0,FadeIn,Black,1,BGM_Dragon1,SFX_DragonRoar,UI_BossName,ScreenDistortion,0
+1,2,PhaseTrans,"0,8,12","50,0,0",65,2,"0,0,0",True,0.5,1.0,None,None,0,BGM_Dragon2,SFX_DragonRage,UI_PhaseChange,ChromaticAberration,0
+1,3,PhaseTrans,"0,10,15","55,0,0",70,2,"0,0,0",True,1.0,1.5,None,None,0,BGM_Dragon3,SFX_DragonFury,UI_FinalPhase,ScreenShake,0
+2,1,Spawn,"0,5,8","40,0,0",60,3,"0,0,0",True,0.0,0.0,FadeIn,Black,1,BGM_Golem1,SFX_GolemAwaken,UI_BossName,ScreenDistortion,0
+2,2,PhaseTrans,"0,7,10","45,0,0",65,2,"0,0,0",True,0.4,1.0,None,None,0,BGM_Golem2,SFX_GolemDefense,UI_PhaseChange,ChromaticAberration,0
+2,3,PhaseTrans,"0,8,12","50,0,0",70,2,"0,0,0",True,0.8,1.5,None,None,0,BGM_Golem3,SFX_GolemRage,UI_FinalPhase,ScreenShake,0

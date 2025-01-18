@@ -5,13 +5,13 @@ public class ChangeStateAction : BTNode
     private MovementStrategyType? moveStrategy;  // Move 상태일 때 사용할 전략
 
     // 기본 생성자
-    public ChangeStateAction(MonsterAI owner, MonsterStateType state) : base(owner)
+    public ChangeStateAction(CreatureAI owner, MonsterStateType state) : base(owner)
     {
         targetState = state;
     }
 
     // Move 상태를 위한 추가 생성자
-    public ChangeStateAction(MonsterAI owner, MonsterStateType state, MovementStrategyType moveStrategy)
+    public ChangeStateAction(CreatureAI owner, MonsterStateType state, MovementStrategyType moveStrategy)
         : base(owner)
     {
         targetState = state;

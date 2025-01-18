@@ -16,7 +16,7 @@ public class BasicSkillStrategy : ISkillStrategy
     public bool IsUsingSkill => isUsingSkill;
     public float GetLastSkillTime => lastSkillTime;
 
-    public BasicSkillStrategy(MonsterAI owner)
+    public BasicSkillStrategy(CreatureAI owner)
     {
         monsterStatus = owner.GetStatus();
     }

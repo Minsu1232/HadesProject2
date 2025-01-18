@@ -3,7 +3,7 @@ using static IMonsterState;
 
 public class HitStateAction : BTNode
 {
-    public HitStateAction(MonsterAI owner) : base(owner) { }
+    public HitStateAction(CreatureAI owner) : base(owner) { }
 
     public override NodeStatus Execute()
     {

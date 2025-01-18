@@ -20,6 +20,7 @@ public class PlayerClassData : ScriptableObject
         public float baseCriticalCance;
         public float baseSpeed;
         public int upgradeCount;
+        public float damageReceiveRate;  // 기본 피해 배율
     }
     public CharacterStats characterStats;  // JSON 구조와 맞춤
 

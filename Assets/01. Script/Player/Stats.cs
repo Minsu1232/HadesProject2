@@ -10,6 +10,7 @@ public class Stats
     public event Action<int> OnAttackSpeedChanged;
     public event Action<float> OnSpeedChanged;
     public event Action<float> OnCriticalChanceChanged;
+    public event Action<float> OndamageReceiveRateChanged;
     public event Action<int> OnMaxHealthChanged;
 
     // 스탯 프로퍼티들
@@ -108,7 +109,21 @@ public class Stats
             }
         }
     }
-    
+
+    [ShowInInspector] private float damageReceiveRate;
+    public float DamageReceiveRate
+    {
+        get => damageReceiveRate;
+        set
+        {
+            if (criticalChance != value)
+            {
+                damageReceiveRate = value;
+                OndamageReceiveRateChanged?.Invoke(damageReceiveRate);
+            }
+        }
+    }
+
     // 기본 스탯 저장을 위한 변수들
     private int defaultHealth;
     private int defaultHealthMax;
@@ -117,6 +132,7 @@ public class Stats
     private int defaultAttackSpeed;
     private float defaultSpeed;
     private float defaultCriticalChance;
+    private float defaultDamageReceiveRate;
 
     // 기본 스탯 저장 메서드
     public void SaveDefaultStats()
@@ -128,6 +144,7 @@ public class Stats
         defaultAttackSpeed = AttackSpeed;
         defaultSpeed = Speed;
         defaultCriticalChance = CriticalChance;
+        defaultDamageReceiveRate = DamageReceiveRate;
     }
 
     // 스탯 리셋 메서드
@@ -138,7 +155,8 @@ public class Stats
     bool resetAttackPower = false,
     bool resetAttackSpeed = false,
     bool resetSpeed = false,
-    bool resetCriticalChance = false)
+    bool resetCriticalChance = false,
+    bool resetDamageReceive = false)
     {
         if (resetHealth) Health = defaultHealth;
         if (resetMaxHealth) MaxHealth = defaultHealthMax;
@@ -147,6 +165,7 @@ public class Stats
         if (resetAttackSpeed) AttackSpeed = defaultAttackSpeed;
         if (resetSpeed) Speed = defaultSpeed;
         if (resetCriticalChance) CriticalChance = defaultCriticalChance;
+        if (resetDamageReceive) DamageReceiveRate = defaultDamageReceiveRate;
     }
 
 
@@ -154,7 +173,7 @@ public class Stats
     // 다른 최대 값들도 필요한 경우 추가...
 
     // 생성자 추가
-    public Stats(int baseHealth, int baseMana, int baseAttackPower, int baseAttackSpeed, float baseSpeed, float baseCriticalChance)
+    public Stats(int baseHealth, int baseMana, int baseAttackPower, int baseAttackSpeed, float baseSpeed, float baseCriticalChance, float damageRecive)
     {
         MaxHealth = baseHealth;
         Health = baseHealth;
@@ -166,6 +185,9 @@ public class Stats
         AttackSpeed = baseAttackSpeed;
         Speed = baseSpeed;
         CriticalChance = baseCriticalChance;
+
+        damageReceiveRate = damageRecive;
+
 
         // 기본 스탯 저장
         SaveDefaultStats();

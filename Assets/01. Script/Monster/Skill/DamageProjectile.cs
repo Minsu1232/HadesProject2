@@ -13,11 +13,11 @@ public class DamageProjectile : BaseProjectile
     protected override void OnImpact(Collider other)
     {
         // 이펙트를 생성하되, 부모를 따로 지정하지 않음
-        GameObject effect = Instantiate(hitEffect, transform.position, transform.rotation);
+        
         if (other.CompareTag("Player"))
         {
+            GameObject effect = Instantiate(hitEffect, transform.position, transform.rotation);
             ApplyDamageToPlayer(other);
-
            
         }
         Destroy(gameObject);

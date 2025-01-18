@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class CheckPlayerInAttackRange : BTNode
 {
-    public CheckPlayerInAttackRange(MonsterAI owner) : base(owner) { }
+    public CheckPlayerInAttackRange(CreatureAI owner) : base(owner) { }
 
     public override NodeStatus Execute()
     {

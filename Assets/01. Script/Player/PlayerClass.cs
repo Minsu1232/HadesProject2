@@ -52,15 +52,16 @@ public class PlayerClass : ICreature, IDamageable
             _playerClassData.characterStats.baseAttackPower,
             (int)_playerClassData.characterStats.baseAttackSpeed,
             _playerClassData.characterStats.baseSpeed,
-            _playerClassData.characterStats.baseCriticalCance
+            _playerClassData.characterStats.baseCriticalCance,
+            _playerClassData.characterStats.damageReceiveRate
         );
     }
     #endregion
-
+    public Stats GetStats() { return PlayerStats; }
     #region 테스트용
     public void Test()
     {
-        Debug.Log($"현재 플레이어 스탯 : 체력 {PlayerStats.Health}, 마나: {PlayerStats.Mana}, 파워: {PlayerStats.AttackPower}, 공속: {PlayerStats.AttackSpeed}, 이속: {PlayerStats.Speed}, 치확: {PlayerStats.CriticalChance}");
+        Debug.Log($"현재 플레이어 스탯 : 체력 {PlayerStats.Health}, 마나: {PlayerStats.Mana}, 파워: {PlayerStats.AttackPower}, 공속: {PlayerStats.AttackSpeed}, 이속: {PlayerStats.Speed}, 치확: {PlayerStats.CriticalChance}, 데미지배율: {PlayerStats.DamageReceiveRate}");
     }
 
     // 지울 가능성 있음 현재 사용 x
@@ -94,7 +95,7 @@ public class PlayerClass : ICreature, IDamageable
     #endregion
 
     #region 스탯 변동 매서드
-    public void ModifyPower(int healthAmount = 0,int maxHealth = 0, int manaAmount = 0, int attackAmount = 0, int attackSpeedAmount = 0, float speedAmount = 0, float criticalChanceAmount = 0)
+    public void ModifyPower(int healthAmount = 0,int maxHealth = 0, int manaAmount = 0, int attackAmount = 0, int attackSpeedAmount = 0, float speedAmount = 0, float criticalChanceAmount = 0, float DamageRecive = 0)
     {
         PlayerStats.Health += healthAmount;
         PlayerStats.MaxHealth += maxHealth;
@@ -103,6 +104,7 @@ public class PlayerClass : ICreature, IDamageable
         PlayerStats.AttackSpeed += attackSpeedAmount;
         PlayerStats.Speed += speedAmount;
         PlayerStats.CriticalChance += criticalChanceAmount;
+        PlayerStats.DamageReceiveRate += DamageRecive;
     }
 
     public void ResetPower(bool health,bool maxHealth ,bool mana,bool attackPw,bool attackSp,bool speed,bool critical)

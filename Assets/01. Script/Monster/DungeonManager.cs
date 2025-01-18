@@ -17,7 +17,8 @@ public class DungeonManager : Singleton<DungeonManager>
     {
         Test,
         SpiderTest,
-        SlimeTest
+        SlimeTest,
+        JumpTest
 
     }
 
@@ -26,13 +27,15 @@ public class DungeonManager : Singleton<DungeonManager>
     [SerializeField]
     private DungeonType selectedDungeonType;
 
-    private async void Awake()
+    private  void Awake()
     {
-       await MonsterDataManager.Instance.InitializeMonsters();
+        
     }
 
-    private void Start()
+    private async void Start()
     {
+        await MonsterDataManager.Instance.InitializeMonsters();
+        await BossDataManager.Instance.InitializeBosses();
         // enum 값을 문자열로 변환하여 팩토리 생성
         monsterFactory = GetMonsterFactoryForDungeon(selectedDungeonType.ToString());
         player = GameInitializer.Instance.GetPlayerClass().playerTransform.transform;
@@ -53,6 +56,8 @@ public class DungeonManager : Singleton<DungeonManager>
                     new SlimeMonsterFactory(),
                     new TurtleMonsterFactory()
                 );
+            case "JumpTest":
+                return new SlimeMonsterFactory();
 
             default:
                 Debug.LogError($"알 수 없는 던전 타입입니다: {dungeonType}");

@@ -8,7 +8,7 @@ public class HitState : MonsterBaseState
     private int damageAmount;
     Animator animator;
 
-    public HitState(MonsterAI owner, IHitStrategy strategy) : base(owner)
+    public HitState(CreatureAI owner, IHitStrategy strategy) : base(owner)
     {
         hitStrategy = strategy;
         animator = owner.GetComponent<Animator>();
@@ -64,11 +64,11 @@ public class HitState : MonsterBaseState
 
     public override bool CanTransition()
     {
-         // Hit 상태에서 다른 상태로 전환될 때만 IsHitComplete 체크
-        if (owner.GetCurrentState() is HitState)
-        {
-            return hitStrategy.IsHitComplete;
-        }
+        // // Hit 상태에서 다른 상태로 전환될 때만 IsHitComplete 체크
+        //if (owner.GetCurrentState() is HitState)
+        //{
+        //    return hitStrategy.IsHitComplete;
+        //}
         
         // 다른 상태에서 Hit 상태로 전환될 때는 항상 가능
         return true;

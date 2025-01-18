@@ -7,7 +7,7 @@ public class CombatDecisionNode : BTNode
     private IAttackStrategy attackStrategy;
     private ISkillStrategy skillStrategy;
 
-    public CombatDecisionNode(MonsterAI owner) : base(owner)
+    public CombatDecisionNode(CreatureAI owner) : base(owner)
     {
         attackStrategy = owner.GetAttackStrategy();
         skillStrategy = owner.GetSkillStrategy();

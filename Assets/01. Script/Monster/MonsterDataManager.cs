@@ -10,53 +10,118 @@ using static MonsterData;
 public class MonsterDataManager : Singleton<MonsterDataManager>
 {
     private Dictionary<int, MonsterData> monsterDatabase = new Dictionary<int, MonsterData>();
-    private string persistentFilePath; //로컬 내 파일 ()
-    private string streamingFilePath ;//유니티 에셋내 파일(복사용)
+    private Dictionary<int, Dictionary<string, string>> strategyData = new Dictionary<int, Dictionary<string, string>>();
+    private Dictionary<int, Dictionary<string, string>> skillData = new Dictionary<int, Dictionary<string, string>>();
+
+    private string monsterFilePath;
+    private string strategyFilePath;
+    private string skillFilePath;
 
     private void Awake()
     {
         // 경로 초기화
-        persistentFilePath = Path.Combine(Application.persistentDataPath, "Monsters.csv");
-        streamingFilePath = Path.Combine(Application.streamingAssetsPath, "Monsters.csv");
+        monsterFilePath = Path.Combine(Application.persistentDataPath, "Monsters.csv");
+        strategyFilePath = Path.Combine(Application.persistentDataPath, "MonsterStrategies.csv");
+        skillFilePath = Path.Combine(Application.persistentDataPath, "MonsterSkills.csv");
 
-        //// CSV 파일 존재 여부 확인
-        //if (!File.Exists(persistentFilePath))
-        //{
-        //    Debug.LogWarning($"CSV 파일이 없습니다. StreamingAssets에서 복사합니다: {persistentFilePath}");
-        //}
-        CopyCSVFromStreamingAssets(); // 현재 개발 단계이기에 무조건적 복사 > 에디터에서 수정을 위함
-    
+        CopyCSVFromStreamingAssets();
     }
 
     public async Task InitializeMonsters()
     {
+        await LoadAllMonsterData();
+    }
+
+    private void CopyCSVFromStreamingAssets()
+    {
+        string[] csvFiles = new string[] { "Monsters.csv", "MonsterStrategies.csv", "MonsterSkills.csv" };
+        foreach (string fileName in csvFiles)
+        {
+            string streamingPath = Path.Combine(Application.streamingAssetsPath, fileName);
+            string persistentPath = Path.Combine(Application.persistentDataPath, fileName);
+
+            if (File.Exists(streamingPath))
+            {
+                File.Copy(streamingPath, persistentPath, true);
+                Debug.Log($"CSV 파일 복사 완료: {fileName}");
+            }
+            else
+            {
+                Debug.LogError($"StreamingAssets에서 파일을 찾을 수 없습니다: {fileName}");
+            }
+        }
+    }
+
+    private async Task LoadAllMonsterData()
+    {
+        // 먼저 전략과 스킬 데이터를 로드
+        await LoadStrategyData();
+        await LoadSkillData();
+        // 마지막으로 몬스터 데이터를 로드하고 모든 데이터를 결합
         await LoadMonstersFromCSV();
     }
 
-    public void CopyCSVFromStreamingAssets()
+    private async Task LoadStrategyData()
     {
-        if (File.Exists(streamingFilePath))
+        if (!File.Exists(strategyFilePath))
         {
-            // overwrite 파라미터를 true로 설정
-            File.Copy(streamingFilePath, persistentFilePath, true);
-            Debug.Log($"StreamingAssets에서 CSV 파일 복사 완료: {persistentFilePath}");
+            Debug.LogError($"전략 데이터 CSV 파일을 찾을 수 없습니다: {strategyFilePath}");
+            return;
         }
-        else
+
+        string[] lines = File.ReadAllLines(strategyFilePath);
+        string[] headers = lines[0].Split(',');
+
+        for (int i = 1; i < lines.Length; i++)
         {
-            Debug.LogError("StreamingAssets에서 Monsters.csv 파일을 찾을 수 없습니다.");
+            string[] values = lines[i].Split(',');
+            int monsterId = int.Parse(values[0]);
+
+            var strategyDict = new Dictionary<string, string>();
+            for (int j = 1; j < headers.Length; j++)
+            {
+                strategyDict[headers[j]] = values[j];
+            }
+
+            strategyData[monsterId] = strategyDict;
+        }
+    }
+
+    private async Task LoadSkillData()
+    {
+        if (!File.Exists(skillFilePath))
+        {
+            Debug.LogError($"스킬 데이터 CSV 파일을 찾을 수 없습니다: {skillFilePath}");
+            return;
+        }
+
+        string[] lines = File.ReadAllLines(skillFilePath);
+        string[] headers = lines[0].Split(',');
+
+        for (int i = 1; i < lines.Length; i++)
+        {
+            string[] values = lines[i].Split(',');
+            int monsterId = int.Parse(values[0]);
+
+            var skillDict = new Dictionary<string, string>();
+            for (int j = 1; j < headers.Length; j++)
+            {
+                skillDict[headers[j]] = values[j];
+            }
+
+            skillData[monsterId] = skillDict;
         }
     }
 
     private async Task LoadMonstersFromCSV()
     {
-        
-        if (!File.Exists(persistentFilePath))
+        if (!File.Exists(monsterFilePath))
         {
-            Debug.LogError($"몬스터 데이터 CSV 파일을 찾을 수 없습니다: {persistentFilePath}");
+            Debug.LogError($"몬스터 데이터 CSV 파일을 찾을 수 없습니다: {monsterFilePath}");
             return;
         }
 
-        string[] lines = File.ReadAllLines(persistentFilePath);
+        string[] lines = File.ReadAllLines(monsterFilePath);
         bool isFirstLine = true;
 
         foreach (string line in lines)
@@ -69,15 +134,16 @@ public class MonsterDataManager : Singleton<MonsterDataManager>
 
             if (string.IsNullOrWhiteSpace(line)) continue;
 
-            string[] values = line.Trim().Split(',');
-            string monsterDataPath = $"MonsterData_{values[0]}"; // Addressables에 등록된 ScriptableObject 키
+            string[] values = line.Split(',');
+            int monsterId = int.Parse(values[0]);
+            string monsterDataPath = $"MonsterData_{monsterId}";
+
             var monsterDataHandle = Addressables.LoadAssetAsync<MonsterData>(monsterDataPath);
             MonsterData monsterData = await monsterDataHandle.Task;
 
             if (monsterData != null)
             {
-                UpdateMonsterData(monsterData, values);
-                int monsterId = int.Parse(values[0]);
+                UpdateMonsterData(monsterData, values, monsterId);
                 monsterDatabase[monsterId] = monsterData;
                 Debug.Log($"몬스터 로드: ID {monsterId}, 이름 {monsterData.monsterName}");
             }
@@ -86,61 +152,90 @@ public class MonsterDataManager : Singleton<MonsterDataManager>
                 Debug.LogError($"몬스터 데이터를 찾을 수 없습니다: {monsterDataPath}");
             }
         }
-
-        Debug.Log($"몬스터 데이터 로드 완료: {monsterDatabase.Count}개의 몬스터");
     }
 
-    private void UpdateMonsterData(MonsterData monsterData, string[] values)
+    private void UpdateMonsterData(MonsterData monsterData, string[] baseValues, int monsterId)
     {
-        monsterData.monsterName = values[1];
-        monsterData.initialHp = int.Parse(values[2]);
-        monsterData.initialAttackPower = int.Parse(values[3]);
-        monsterData.initialAttackSpeed = float.Parse(values[4]);
-        monsterData.initialSpeed = int.Parse(values[5]);
-        monsterData.attackRange = float.Parse(values[6]);
-        monsterData.dropChance = float.Parse(values[7]);
-        monsterData.dropItem = int.Parse(values[8]);
-        monsterData.moveRange = int.Parse(values[9]);
-        monsterData.chaseRange = int.Parse(values[10]);        
-        monsterData.monsterPrefabKey = values[11];
-        monsterData.skillCooldown = float.Parse(values[12]);
-        monsterData.aggroDropRange = int.Parse(values[13]);
-        monsterData.skillRange = float.Parse(values[14]);
-        monsterData.skillDuration = float.Parse(values[15]);
-        monsterData.hitStunDuration = float.Parse(values[16]);
-        monsterData.deathDuration = float.Parse(values[17]);
-        monsterData.spawnDuration = float.Parse(values[18]);
-        monsterData.grade = (MonsterGrade)Enum.Parse(typeof(MonsterGrade), values[19]);
-        monsterData.skillDamage = int.Parse(values[20]);
-        monsterData.spawnStrategy = (SpawnStrategyType)Enum.Parse(typeof(SpawnStrategyType), values[21]);
-        monsterData.moveStrategy = (MovementStrategyType)Enum.Parse(typeof(MovementStrategyType), values[22]);
-        monsterData.attackStrategy = (AttackStrategyType)Enum.Parse(typeof(AttackStrategyType), values[23]);
-        monsterData.idleStrategy = (IdleStrategyType)Enum.Parse(typeof(IdleStrategyType), values[24]);
-        monsterData.skillStrategy = (SkillStrategyType)Enum.Parse(typeof(SkillStrategyType), values[25]);
-        monsterData.dieStrategy = (DieStrategyType)Enum.Parse(typeof(DieStrategyType), values[26]);
-        monsterData.hitStrategy = (HitStrategyType)Enum.Parse(typeof(HitStrategyType), values[27]);
-        monsterData.useHealthRetreat = bool.Parse(values[28]);           // 체력 기반 도주 사용 여부
-        monsterData.healthRetreatThreshold = float.Parse(values[29]);    // 도주 시작 체력 비율
-        monsterData.isPhaseChange = bool.Parse(values[30]);             // 페이즈 전환용 도주인지
-                                                                        // 새로 추가되는 부분
-        monsterData.projectileSpeed = float.Parse(values[31]);
-        monsterData.rotateSpeed = float.Parse(values[32]);
-        monsterData.areaRadius = float.Parse(values[33]);
-        monsterData.buffType = (BuffType)Enum.Parse(typeof(BuffType), values[34]);
-        monsterData.buffDuration = float.Parse(values[35]);
-        monsterData.buffValue = float.Parse(values[36]);
-        monsterData.summonCount = int.Parse(values[37]);
-        monsterData.summonRadius = float.Parse(values[38]);
-        monsterData.projectileType = (ProjectileMovementType)Enum.Parse(typeof(ProjectileMovementType), values[39]);
-        monsterData.skillEffectType = (SkillEffectType)Enum.Parse(typeof(SkillEffectType), values[40]);
-        monsterData.projectileImpactType = (ProjectileImpactType)Enum.Parse(typeof(ProjectileImpactType), values[41]);
-        monsterData.areaDuration = float.Parse(values[42]);
-        monsterData.superArmorThreshold = float.Parse(values[43]);
-        monsterData.hitStunMultiplier = float.Parse(values[44]);
-        monsterData.knockbackForce = float.Parse(values[45]);
-        monsterData.cameraShakeIntensity = float.Parse(values[46]);
-        monsterData.cameraShakeDuration = float.Parse(values[47]);
-        monsterData.armorValue = int.Parse(values[48]);
+        // 기본 데이터 업데이트
+        monsterData.monsterName = baseValues[1];
+        monsterData.initialHp = int.Parse(baseValues[2]);
+        monsterData.initialAttackPower = int.Parse(baseValues[3]);
+        monsterData.initialAttackSpeed = float.Parse(baseValues[4]);
+        monsterData.initialSpeed = int.Parse(baseValues[5]);
+        monsterData.attackRange = float.Parse(baseValues[6]);
+        monsterData.dropChance = float.Parse(baseValues[7]);
+        monsterData.dropItem = int.Parse(baseValues[8]);
+        monsterData.moveRange = int.Parse(baseValues[9]);
+        monsterData.chaseRange = int.Parse(baseValues[10]);
+        monsterData.monsterPrefabKey = baseValues[11];
+        monsterData.grade = (MonsterGrade)Enum.Parse(typeof(MonsterGrade), baseValues[12]);
+        monsterData.armorValue = int.Parse(baseValues[13]);
+        monsterData.initialDeffense = int.Parse(baseValues[14]);
+        monsterData.aggroDropRange = int.Parse(baseValues[15]);
+
+        // 전략 데이터 업데이트
+        if (strategyData.TryGetValue(monsterId, out var strategies))
+        {
+            monsterData.spawnStrategy = (SpawnStrategyType)Enum.Parse(typeof(SpawnStrategyType), strategies["SpawnStrategy"]);
+            monsterData.moveStrategy = (MovementStrategyType)Enum.Parse(typeof(MovementStrategyType), strategies["MoveStrategy"]);
+            monsterData.attackStrategy = (AttackStrategyType)Enum.Parse(typeof(AttackStrategyType), strategies["AttackStrategy"]);
+            monsterData.idleStrategy = (IdleStrategyType)Enum.Parse(typeof(IdleStrategyType), strategies["IdleStrategy"]);
+            monsterData.skillStrategy = (SkillStrategyType)Enum.Parse(typeof(SkillStrategyType), strategies["SkillStrategy"]);
+            monsterData.dieStrategy = (DieStrategyType)Enum.Parse(typeof(DieStrategyType), strategies["DieStrategy"]);
+            monsterData.hitStrategy = (HitStrategyType)Enum.Parse(typeof(HitStrategyType), strategies["HitStrategy"]);
+            monsterData.useHealthRetreat = bool.Parse(strategies["UseHealthRetreat"]);
+            monsterData.healthRetreatThreshold = float.Parse(strategies["HealthRetreatThreshold"]);
+            monsterData.isPhaseChange = bool.Parse(strategies["IsPhaseChange"]);
+        }
+
+        // 스킬 데이터 업데이트
+        if (skillData.TryGetValue(monsterId, out var skills))
+        {
+            monsterData.skillCooldown = float.Parse(skills["SkillCooldown"]);
+            monsterData.skillRange = float.Parse(skills["SkillRange"]);
+            monsterData.skillDuration = float.Parse(skills["SkillDuration"]);
+            monsterData.skillDamage = int.Parse(skills["SkillDamage"]);
+            monsterData.hitStunDuration = float.Parse(skills["HitStunDuration"]);
+            monsterData.deathDuration = float.Parse(skills["DeathDuration"]);
+            monsterData.spawnDuration = float.Parse(skills["SpawnDuration"]);
+            monsterData.projectileSpeed = float.Parse(skills["ProjectileSpeed"]);
+            monsterData.rotateSpeed = float.Parse(skills["RotateSpeed"]);
+            monsterData.areaRadius = float.Parse(skills["AreaRadius"]);
+
+            // 버프 관련 데이터
+            string[] buffTypes = skills["BuffTypes"].Split('|');
+            string[] buffDurations = skills["BuffDurations"].Split('|');
+            string[] buffValues = skills["BuffValues"].Split('|');
+
+            monsterData.buffData.buffTypes = new BuffType[buffTypes.Length];
+            monsterData.buffData.durations = new float[buffDurations.Length];
+            monsterData.buffData.values = new float[buffValues.Length];
+
+            for (int i = 0; i < buffTypes.Length; i++)
+            {
+                if (buffTypes[i] != "None")
+                {
+                    monsterData.buffData.buffTypes[i] = (BuffType)Enum.Parse(typeof(BuffType), buffTypes[i]);
+                    if (i < buffDurations.Length)
+                        monsterData.buffData.durations[i] = float.Parse(buffDurations[i]);
+                    if (i < buffValues.Length)
+                        monsterData.buffData.values[i] = float.Parse(buffValues[i]);
+                }
+            }
+
+            monsterData.summonCount = int.Parse(skills["SummonCount"]);
+            monsterData.summonRadius = float.Parse(skills["SummonRadius"]);
+            monsterData.projectileType = (ProjectileMovementType)Enum.Parse(typeof(ProjectileMovementType), skills["ProjectileType"]);
+            monsterData.skillEffectType = (SkillEffectType)Enum.Parse(typeof(SkillEffectType), skills["SkillEffectType"]);
+            monsterData.projectileImpactType = (ProjectileImpactType)Enum.Parse(typeof(ProjectileImpactType), skills["ProjectileImpactType"]);
+            monsterData.areaDuration = float.Parse(skills["AreaDuration"]);
+            monsterData.superArmorThreshold = float.Parse(skills["SuperArmorThreshold"]);
+            monsterData.hitStunMultiplier = float.Parse(skills["HitStunMultiplier"]);
+            monsterData.knockbackForce = float.Parse(skills["KnockbackForce"]);
+            monsterData.cameraShakeIntensity = float.Parse(skills["CameraShakeIntensity"]);
+            monsterData.cameraShakeDuration = float.Parse(skills["CameraShakeDuration"]);
+            monsterData.shockwaveRadius = float.Parse(skills["ShockwaveRadius"]);
+        }
     }
 
     public MonsterData GetMonsterData(int monsterId)
@@ -153,41 +248,10 @@ public class MonsterDataManager : Singleton<MonsterDataManager>
         return null;
     }
 
-    // CSV에 현재 데이터 저장
-    public void SaveMonsterDataToCSV()
-    {
-        using (StreamWriter writer = new StreamWriter(persistentFilePath))
-        {
-            // 헤더 작성
-            writer.WriteLine("ID,Name,HP,AttackPower,AttackSpeed,Speed,AttackRange,DropChance,DropItem,MoveRange,ChaseRange,PrefabPath");
-
-            foreach (var pair in monsterDatabase)
-            {
-                MonsterData monster = pair.Value;
-                string line = $"{pair.Key}," +
-                            $"{monster.monsterName}," +
-                            $"{monster.initialHp}," +
-                            $"{monster.initialAttackPower}," +
-                            $"{monster.initialAttackSpeed}," +
-                            $"{monster.initialSpeed}," +
-                            $"{monster.attackRange}," +
-                            $"{monster.dropChance}," +
-                            $"{monster.dropItem}," +
-                            $"{monster.moveRange}," +
-                            $"{monster.chaseRange}," +
-                            //$"{monster.monsterPrefab.AssetGUID}" +
-                            $"{monster.skillCooldown}" +
-                            $"{monster.aggroDropRange}";
-
-                writer.WriteLine(line);
-            }
-        }
-        Debug.Log($"몬스터 데이터 저장 완료: {persistentFilePath}");
-    }
-
     public void ReleaseAllResources()
     {
-       
         monsterDatabase.Clear();
+        strategyData.Clear();
+        skillData.Clear();
     }
 }

@@ -18,10 +18,11 @@ MonoBehaviour:
   initialAttackPower: 30
   initialAttackSpeed: 1.5
   initialSpeed: 2
+  initialDeffense: 0
   attackRange: 2
   dropChance: 0
   dropItem: 0
-  armorValue: 0
+  armorValue: 50
   moveRange: 6
   chaseRange: 10
   aggroDropRange: 12
@@ -33,11 +34,19 @@ MonoBehaviour:
   rotateSpeed: 1
   skillSpawnPointTag: SkillSpawnPoint
   areaEffectPrefab: {fileID: 4860386018252860835, guid: 2508887ed842451459e2ce4f5bc54fd6, type: 3}
+  ShorckEffectPrefab: {fileID: 0}
   areaRadius: 5
-  areaDuration: 5
+  areaDuration: 0
+  buffData:
+    buffTypes: 00000000
+    durations:
+    - 0
+    values:
+    - 0
   buffType: 0
   buffDuration: 0
   buffValue: 0
+  buffEffectPrefab: {fileID: 0}
   summonPrefab: {fileID: 0}
   summonCount: 0
   summonRadius: 0
@@ -47,8 +56,8 @@ MonoBehaviour:
   superArmorThreshold: 0
   hitStunMultiplier: 1
   knockbackForce: 1
-  cameraShakeIntensity: 0.75
-  cameraShakeDuration: 0.1
+  cameraShakeIntensity: 1
+  cameraShakeDuration: 0.75
   spawnStrategy: 0
   moveStrategy: 0
   attackStrategy: 0
@@ -59,9 +68,13 @@ MonoBehaviour:
   projectileType: 2
   projectileImpactType: 1
   skillEffectType: 0
+  groggyStrategy: 0
   monsterPrefabKey: Monster_Spider
   projectilePrefab: {fileID: 2553268908299751650, guid: 2335504e8d820374fadaf74f9d0ffd46, type: 3}
   hitEffect: {fileID: 7115196862161730274, guid: 1a23bb3efbdb62842abffc7b85bf4aa1, type: 3}
   useHealthRetreat: 1
   healthRetreatThreshold: 0.3
   isPhaseChange: 1
+  eliteOutlineMaterial: {fileID: 2100000, guid: 02169a29bc93499d91fdd5dd16ead51a, type: 2}
+  shockwaveRadius: 0
+  groggyTime: 3

@@ -7,11 +7,17 @@ using static MonsterData;
 
 public abstract class MonsterClass : ICreature
 {
-    private MonsterData monsterData;
-    private PlayerClass playerClass;
+    // 아머 파괴 이벤트 (필요한 경우)
+    public event Action OnArmorBreak;
+
+    protected MonsterData monsterData;
+    protected PlayerClass playerClass;
+
+    public event Action<int, int> OnHealthChanged; // (현재 체력, 최대 체력)
 
     public string MONSTERNAME { get; private set; }
     public int CurrentHealth { get; private set; }
+    public int MaxHealth { get; private set; }
     public int CurrentDeffense { get; private set; }
     public int CurrentAttackPower { get; private set; }
     public float CurrentAttackSpeed { get; private set; }
@@ -68,13 +74,21 @@ public abstract class MonsterClass : ICreature
     public ProjectileImpactType CurrentProjectileImpactType { get; private set; }
     public SkillEffectType CurrentSkillEffectType { get; private set; }
     public bool isBasicAttack { get; private set; }
-    public float CurrentArmor { get; private set; }
+    public int CurrentArmor { get; private set; }
+
+    public float CurrentShockwaveRadius {  get; private set; }
 
     protected bool isDashing = false;
     public GameObject hitEffect;
     public MonsterClass(MonsterData data)
     {
         monsterData = data;
+
+        // 체력 초기화
+        MaxHealth = data.initialHp;
+        CurrentHealth = data.initialHp;
+
+        OnHealthChanged?.Invoke(CurrentHealth, MaxHealth); // 초기화 시 이벤트 호출
         InitializeStats();
     }
     public bool IsBasicAttack()
@@ -128,8 +142,10 @@ public abstract class MonsterClass : ICreature
         CurrentHitStunMultplier = monsterData.hitStunMultiplier;
         CurrentKnockbackForce = monsterData.knockbackForce;
         CurrentCameraShakeIntensity = monsterData.cameraShakeIntensity;
-        CurrentCameraShakeDuration = monsterData.cameraShakeDuration;
-        CurrentArmor = monsterData.armorValue;
+        CurrentCameraShakeDuration = monsterData.cameraShakeDuration;        
+        CurrentDeffense = monsterData.initialDeffense;
+        CurrentShockwaveRadius = monsterData.shockwaveRadius;
+
         playerClass = GameInitializer.Instance.GetPlayerClass();
 
         Debug.Log(CurrentCameraShakeIntensity);
@@ -155,15 +171,48 @@ public abstract class MonsterClass : ICreature
         CurrentAttackSpeed += attackSpeedAmount;
         CurrentSpeed += speedAmount;
     }
-    public abstract void Attack();  // 공격 메서드 정의
+    public virtual void Attack()
+    {
+
+    }  // 공격 메서드 정의
     public virtual void TakeDamage(int damage, AttackType attackType)
     {
-        CurrentHealth -= damage;
-        if (CurrentHealth <= 0)
+        // 기본 방어력 계산
+        float damageTakenMultiplier = CurrentDeffense >= 0
+            ? Math.Max(0.1f, 1f - (CurrentDeffense / 1000f))
+            : 1f + (Math.Abs(CurrentDeffense) / 1000f);
+
+        int incomingDamage = Mathf.Max(1, (int)(damage * damageTakenMultiplier));
+
+        // 아머 처리
+        if (CurrentArmor > 0)
         {
-            CurrentHealth = 0;
-            Die();
+            // 아머에 흡수되는 데미지 계산
+            int armorDamage = Mathf.Min(CurrentArmor, incomingDamage);
+            CurrentArmor -= armorDamage;
+
+            // 아머를 뚫고 들어가는 남은 데미지 계산
+            incomingDamage -= armorDamage;
+
+            // 아머가 파괴되었을 때 이벤트 발생
+            if (CurrentArmor == 0)
+            {
+                OnArmorBreak?.Invoke();
+            }
         }
+
+        // 남은 데미지로 체력 감소
+        if (incomingDamage > 0)
+        {
+            CurrentHealth -= incomingDamage;
+            if (CurrentHealth <= 0)
+            {
+                CurrentHealth = 0;
+                Die();
+            }
+        }
+
+        OnHealthChanged?.Invoke(CurrentHealth, MaxHealth);
     }
     public virtual void TakeDotDamage(int dotDamage)
     {
@@ -176,7 +225,10 @@ public abstract class MonsterClass : ICreature
         }
         // 지속 피해에는 애니메이션 트리거 없음
     }
-    public abstract void Die();
+    public virtual void Die()
+    {
+
+    }
 
 
 
@@ -188,5 +240,57 @@ public abstract class MonsterClass : ICreature
     public Vector3 GetPlayerPosition()
     {
         return playerClass.playerTransform.position;
+    }
+
+    internal void ModifyStats(
+          int healthAmount = 0,
+    int maxHealthAmount = 0, // 최대 체력 변경 추가
+    int defenseAmount = 0,
+    int attackAmount = 0,
+    float attackSpeedAmount = 0,
+    int speedAmount = 0,
+    float skillCooldownAmount = 0,
+    float areaRadiusAmount = 0,
+    float buffValueAmount = 0,
+    float skillRangeAmount = 0,
+    float attackRangeAmount = 0,
+    int armorAmount = 0)
+    {
+        // 현재 체력 비율 저장
+        float healthRatio = (float)CurrentHealth / MaxHealth;
+
+        // 최대 체력 변경
+        if (maxHealthAmount != 0)
+        {
+            MaxHealth += maxHealthAmount;
+
+            // 기존 비율에 따라 현재 체력 보정
+            CurrentHealth = Mathf.Clamp((int)(MaxHealth * healthRatio), 0, MaxHealth);
+        }
+
+        // 현재 체력 변경
+        if (healthAmount != 0)
+        {
+            CurrentHealth = Mathf.Clamp(CurrentHealth + healthAmount, 0, MaxHealth);
+        }
+
+        // 다른 스탯 변경
+        CurrentDeffense += defenseAmount;
+        CurrentAttackPower += attackAmount;
+        CurrentAttackSpeed += attackSpeedAmount;
+        CurrentSpeed += speedAmount;
+        CurrentSkillCooldown += skillCooldownAmount;
+        CurrentAreaRadius += areaRadiusAmount;
+        CurrentBuffValue += buffValueAmount;
+        CurrentSkillRange += skillRangeAmount;
+        CurrentAttackRange += attackRangeAmount;
+        CurrentArmor += armorAmount;
+
+        // 제한 조건
+        CurrentAttackSpeed = Mathf.Max(0.1f, CurrentAttackSpeed);
+        CurrentSpeed = Mathf.Max(0, CurrentSpeed);
+
+        // 체력 변화 이벤트 호출
+        OnHealthChanged?.Invoke(CurrentHealth, MaxHealth);
     }
 }

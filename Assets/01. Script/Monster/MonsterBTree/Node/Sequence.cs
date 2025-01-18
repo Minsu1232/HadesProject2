@@ -4,7 +4,7 @@ public class Sequence : BTNode
 {
     protected List<BTNode> children = new List<BTNode>();
 
-    public Sequence(MonsterAI owner, params BTNode[] nodes) : base(owner)
+    public Sequence(CreatureAI owner, params BTNode[] nodes) : base(owner)
     {
         children.AddRange(nodes);
     }

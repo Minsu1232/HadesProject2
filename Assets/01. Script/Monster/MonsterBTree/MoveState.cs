@@ -7,7 +7,7 @@ public class MoveState : MonsterBaseState
     private Vector3 originPosition;
     private Animator animator;
 
-    public MoveState(MonsterAI owner, IMovementStrategy strategy) : base(owner)
+    public MoveState(CreatureAI owner, IMovementStrategy strategy) : base(owner)
     {
         currentStrategy = strategy;
         originPosition = transform.position;

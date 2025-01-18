@@ -1,6 +1,6 @@
 public class CheckHealthCondition : BTNode
 {
-    public CheckHealthCondition(MonsterAI owner) : base(owner)
+    public CheckHealthCondition(CreatureAI owner) : base(owner)
     {
     }
 

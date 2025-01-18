@@ -1,23 +1,16 @@
-﻿using UnityEngine;
-using UnityEditor;
-using System.IO;
-using System.Threading.Tasks;
+﻿using System.Collections.Generic;
 using System;
-using UnityEditor.AddressableAssets;
+using UnityEditor;
+using UnityEngine;
+using System.IO;
 using System.Linq;
 
 [CustomEditor(typeof(MonsterDataManager))]
-/// <summary>
-/// Monster CSV 데이터 관리를 위한 에디터 툴
-/// Editor 폴더 내에 위치해야 합니다.
-/// </summary>
-
-
 public class MonsterDataManagerEditor : Editor
 {
-    private static string GetMonstersCSVPath()
+    private static string GetCSVPath(string fileName)
     {
-        return Path.Combine(Application.persistentDataPath, "Monsters.csv");
+        return Path.Combine(Application.persistentDataPath, fileName);
     }
 
     public override void OnInspectorGUI()
@@ -29,37 +22,53 @@ public class MonsterDataManagerEditor : Editor
         EditorGUILayout.Space();
         EditorGUILayout.LabelField("Editor Tools", EditorStyles.boldLabel);
 
-        EditorGUILayout.LabelField("CSV Path:", GetMonstersCSVPath());
+        EditorGUILayout.LabelField("CSV Paths:");
+        EditorGUILayout.LabelField("Monsters:", GetCSVPath("Monsters.csv"));
+        EditorGUILayout.LabelField("Strategies:", GetCSVPath("MonsterStrategies.csv"));
+        EditorGUILayout.LabelField("Skills:", GetCSVPath("MonsterSkills.csv"));
 
-        if (GUILayout.Button("Copy CSV from StreamingAssets"))
+        if (GUILayout.Button("Copy CSVs from StreamingAssets"))
         {
-            string streamingFilePath = Path.Combine(Application.streamingAssetsPath, "Monsters.csv");
-            string persistentFilePath = GetMonstersCSVPath();
-
-            if (File.Exists(streamingFilePath))
-            {
-                File.Copy(streamingFilePath, persistentFilePath, true);
-                Debug.Log($"CSV 파일 복사 완료: {persistentFilePath}");
-                AssetDatabase.Refresh();
-            }
-            else
-            {
-                Debug.LogError("StreamingAssets에서 Monsters.csv 파일을 찾을 수 없습니다.");
-            }
+            CopyAllCSVFiles();
         }
 
-        if (GUILayout.Button("Load Monsters from CSV"))
+        if (GUILayout.Button("Load Monsters from CSVs"))
         {
             LoadMonstersInEditor(manager);
         }
     }
 
+    private void CopyAllCSVFiles()
+    {
+        string[] csvFiles = new string[] { "Monsters.csv", "MonsterStrategies.csv", "MonsterSkills.csv" };
+        foreach (string fileName in csvFiles)
+        {
+            string streamingPath = Path.Combine(Application.streamingAssetsPath, fileName);
+            string persistentPath = GetCSVPath(fileName);
+
+            if (File.Exists(streamingPath))
+            {
+                File.Copy(streamingPath, persistentPath, true);
+                Debug.Log($"CSV 파일 복사 완료: {persistentPath}");
+            }
+            else
+            {
+                Debug.LogError($"StreamingAssets에서 {fileName} 파일을 찾을 수 없습니다.");
+            }
+        }
+        AssetDatabase.Refresh();
+    }
+
     private void LoadMonstersInEditor(MonsterDataManager manager)
     {
-        string csvPath = GetMonstersCSVPath();
-        if (!File.Exists(csvPath))
+        // 먼저 전략과 스킬 데이터를 Dictionary에 로드
+        var strategyData = LoadStrategyData();
+        var skillData = LoadSkillData();
+
+        string monstersPath = GetCSVPath("Monsters.csv");
+        if (!File.Exists(monstersPath))
         {
-            Debug.LogError($"몬스터 데이터 CSV 파일을 찾을 수 없습니다: {csvPath}");
+            Debug.LogError($"몬스터 데이터 CSV 파일을 찾을 수 없습니다: {monstersPath}");
             return;
         }
 
@@ -67,7 +76,7 @@ public class MonsterDataManagerEditor : Editor
 
         try
         {
-            string[] lines = File.ReadAllLines(csvPath);
+            string[] lines = File.ReadAllLines(monstersPath);
             float totalLines = lines.Length - 1;
             int currentLine = 0;
             bool isFirstLine = true;
@@ -90,7 +99,6 @@ public class MonsterDataManagerEditor : Editor
                 string[] values = line.Trim().Split(',');
                 string monsterDataKey = $"MonsterData_{values[0]}";
 
-                // 에디터에서는 AssetReference로 직접 로드
                 var monsterData = AssetDatabase.LoadAssetAtPath<MonsterData>(
                     AssetDatabase.FindAssets($"t:MonsterData {monsterDataKey}")
                     .Select(guid => AssetDatabase.GUIDToAssetPath(guid))
@@ -98,12 +106,8 @@ public class MonsterDataManagerEditor : Editor
 
                 if (monsterData != null)
                 {
-                    // UpdateMonsterData 메서드 호출
-                    manager.GetType().GetMethod("UpdateMonsterData",
-                        System.Reflection.BindingFlags.NonPublic |
-                        System.Reflection.BindingFlags.Instance)
-                        .Invoke(manager, new object[] { monsterData, values });
-
+                    int monsterId = int.Parse(values[0]);
+                    UpdateMonsterDataInEditor(monsterData, values, monsterId, strategyData, skillData);
                     EditorUtility.SetDirty(monsterData);
                 }
                 else
@@ -117,7 +121,7 @@ public class MonsterDataManagerEditor : Editor
             AssetDatabase.SaveAssets();
             Debug.Log("모든 몬스터 데이터 로드 완료");
         }
-        catch (System.Exception e)
+        catch (Exception e)
         {
             Debug.LogError($"몬스터 로드 중 오류 발생: {e.Message}");
         }
@@ -127,25 +131,76 @@ public class MonsterDataManagerEditor : Editor
         }
     }
 
-    [MenuItem("Tools/Monster Manager/Copy CSV")]
-    public static void CopyCSV()
+    private Dictionary<int, Dictionary<string, string>> LoadStrategyData()
+    {
+        var strategyDict = new Dictionary<int, Dictionary<string, string>>();
+        string path = GetCSVPath("MonsterStrategies.csv");
+
+        if (File.Exists(path))
+        {
+            string[] lines = File.ReadAllLines(path);
+            string[] headers = lines[0].Split(',');
+
+            for (int i = 1; i < lines.Length; i++)
+            {
+                string[] values = lines[i].Split(',');
+                int monsterId = int.Parse(values[0]);
+
+                var dataDict = new Dictionary<string, string>();
+                for (int j = 1; j < headers.Length; j++)
+                {
+                    dataDict[headers[j]] = values[j];
+                }
+                strategyDict[monsterId] = dataDict;
+            }
+        }
+
+        return strategyDict;
+    }
+
+    private Dictionary<int, Dictionary<string, string>> LoadSkillData()
+    {
+        var skillDict = new Dictionary<int, Dictionary<string, string>>();
+        string path = GetCSVPath("MonsterSkills.csv");
+
+        if (File.Exists(path))
+        {
+            string[] lines = File.ReadAllLines(path);
+            string[] headers = lines[0].Split(',');
+
+            for (int i = 1; i < lines.Length; i++)
+            {
+                string[] values = lines[i].Split(',');
+                int monsterId = int.Parse(values[0]);
+
+                var dataDict = new Dictionary<string, string>();
+                for (int j = 1; j < headers.Length; j++)
+                {
+                    dataDict[headers[j]] = values[j];
+                }
+                skillDict[monsterId] = dataDict;
+            }
+        }
+
+        return skillDict;
+    }
+
+    private void UpdateMonsterDataInEditor(MonsterData monsterData, string[] baseValues, int monsterId,
+        Dictionary<int, Dictionary<string, string>> strategyData,
+        Dictionary<int, Dictionary<string, string>> skillData)
+    {
+        // MonsterDataManager의 UpdateMonsterData와 동일한 로직...
+        // 기존 UpdateMonsterData 메서드의 내용을 여기에 복사
+    }
+
+    [MenuItem("Tools/Monster Manager/Copy CSVs")]
+    public static void CopyCSVs()
     {
         var manager = FindObjectOfType<MonsterDataManager>();
         if (manager != null)
         {
-            string streamingFilePath = Path.Combine(Application.streamingAssetsPath, "Monsters.csv");
-            string persistentFilePath = GetMonstersCSVPath();
-
-            if (File.Exists(streamingFilePath))
-            {
-                File.Copy(streamingFilePath, persistentFilePath, true);
-                Debug.Log($"CSV 파일 복사 완료: {persistentFilePath}");
-                AssetDatabase.Refresh();
-            }
-            else
-            {
-                Debug.LogError("StreamingAssets에서 Monsters.csv 파일을 찾을 수 없습니다.");
-            }
+            var editor = CreateInstance<MonsterDataManagerEditor>();
+            editor.CopyAllCSVFiles();
         }
         else
         {

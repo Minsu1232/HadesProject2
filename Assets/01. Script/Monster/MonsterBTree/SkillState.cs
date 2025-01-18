@@ -5,7 +5,7 @@ public class SkillState : MonsterBaseState
 {
     private readonly ISkillStrategy skillStrategy;
     private Animator animator;
-    public SkillState(MonsterAI owner, ISkillStrategy strategy) : base(owner)
+    public SkillState(CreatureAI owner, ISkillStrategy strategy) : base(owner)
     {
         skillStrategy = strategy;
         animator = owner.GetComponent<Animator>();

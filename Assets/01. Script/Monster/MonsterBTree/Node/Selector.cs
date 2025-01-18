@@ -4,7 +4,7 @@ public class Selector : BTNode
 {
     protected List<BTNode> children = new List<BTNode>();
 
-    public Selector(MonsterAI owner, params BTNode[] nodes) : base(owner)
+    public Selector(CreatureAI owner, params BTNode[] nodes) : base(owner)
     {
         children.AddRange(nodes);
     }

@@ -18,10 +18,11 @@ MonoBehaviour:
   initialAttackPower: 20
   initialAttackSpeed: 1
   initialSpeed: 1
+  initialDeffense: 0
   attackRange: 2
   dropChance: 0
   dropItem: 0
-  armorValue: 0
+  armorValue: 50
   moveRange: 5
   chaseRange: 7
   aggroDropRange: 12
@@ -33,11 +34,19 @@ MonoBehaviour:
   rotateSpeed: 1
   skillSpawnPointTag: SkillSpawnPoint
   areaEffectPrefab: {fileID: 0}
+  ShorckEffectPrefab: {fileID: 0}
   areaRadius: 5
   areaDuration: 0
+  buffData:
+    buffTypes: 00000000
+    durations:
+    - 0
+    values:
+    - 0
   buffType: 0
   buffDuration: 0
   buffValue: 0
+  buffEffectPrefab: {fileID: 0}
   summonPrefab: {fileID: 0}
   summonCount: 0
   summonRadius: 0
@@ -59,9 +68,13 @@ MonoBehaviour:
   projectileType: 1
   projectileImpactType: 0
   skillEffectType: 0
+  groggyStrategy: 0
   monsterPrefabKey: Monster_DummyMonster
   projectilePrefab: {fileID: 0}
   hitEffect: {fileID: 0}
   useHealthRetreat: 1
   healthRetreatThreshold: 0.3
   isPhaseChange: 1
+  eliteOutlineMaterial: {fileID: 0}
+  shockwaveRadius: 0
+  groggyTime: 0

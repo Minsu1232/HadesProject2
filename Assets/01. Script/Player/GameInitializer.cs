@@ -21,6 +21,8 @@ public class GameInitializer : Singleton<GameInitializer>
     private ICharacterAttack characterAttack;
     private Animator animator;
 
+    private IDamageable damageable;
+
     private void Awake()
     {
         LoadGameData();
@@ -67,6 +69,9 @@ public class GameInitializer : Singleton<GameInitializer>
     private void InitializePlayerClass()
     {
         playerClass = new PlayerClass(playerClassData, characterAttack, transform, animator);
+        damageable = playerClass;
+        if(damageable != null) Debug.Log(damageable.ToString());
+
         Debug.Log($"Initialized player class: {playerClassData.name}");
     }
 

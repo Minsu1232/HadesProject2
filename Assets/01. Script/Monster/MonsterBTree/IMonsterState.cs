@@ -8,6 +8,7 @@ public interface IMonsterState
         Attack,
         Skill,
         Hit,
+        Groggy,
         Die
     }
     void Enter();

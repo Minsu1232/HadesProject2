@@ -4,7 +4,7 @@ public class IdleState : MonsterBaseState
 {
     private readonly IIdleStrategy idleStrategy;
 
-    public IdleState(MonsterAI owner, IIdleStrategy strategy) : base(owner)
+    public IdleState(CreatureAI owner, IIdleStrategy strategy) : base(owner)
     {
         idleStrategy = strategy;
     }

@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AddressableAssets;
 
-[CreateAssetMenu(menuName = "Monster")]
+[CreateAssetMenu(fileName = "MonsterData", menuName = "Monster/MonsterData")]
 
 public class MonsterData : ScriptableObject
 {
@@ -24,6 +24,7 @@ public class MonsterData : ScriptableObject
     public int initialAttackPower;
     public float initialAttackSpeed;
     public int initialSpeed;
+    public int initialDeffense;
     public float attackRange;
     public float dropChance;
     public int dropItem;
@@ -44,15 +45,19 @@ public class MonsterData : ScriptableObject
     public string skillSpawnPointTag = "SkillSpawnPoint";  // 프리팹에서 찾을 스킬 발사 위치의 태그
     // 범위 스킬용 데이터
     public GameObject areaEffectPrefab;
+    public GameObject ShorckEffectPrefab;
     public float areaRadius;
 
     // 0106 csv에 추가해야할사항
     public float areaDuration = 5f;
-
+    [Header("Buff Settings")]
+    // 새로운 BuffData 추가
+    public BuffData buffData = new BuffData();
     // 버프 스킬용 데이터
     public BuffType buffType;
     public float buffDuration;
     public float buffValue;
+    public GameObject buffEffectPrefab;
 
     // 소환 스킬용 데이터
     public GameObject summonPrefab;
@@ -82,20 +87,25 @@ public class MonsterData : ScriptableObject
     public ProjectileMovementType projectileType = ProjectileMovementType.Straight;
     public ProjectileImpactType projectileImpactType = ProjectileImpactType.Basic;
     public SkillEffectType skillEffectType;
+    public GroggyStrategyType groggyStrategy;
 
     [Header("Reference")]
     public string monsterPrefabKey; // Prefab Addressables Key
     public GameObject projectilePrefab;
     public GameObject hitEffect;
-    
+
 
     [Header("Behavior Conditions")]
     public bool useHealthRetreat;           // 체력기반 도주 사용
     public float healthRetreatThreshold;    // 도주 시작 체력 비율
     public bool isPhaseChange;             // 페이즈 전환용 도주인지
 
-}
+    [Header("Elite Visual")]
+    public Material eliteOutlineMaterial;
 
+    public float shockwaveRadius;
+    public float groggyTime;
+}
 public enum SpawnStrategyType
 {
     Basic,
@@ -116,6 +126,8 @@ public enum MovementStrategyType
 public enum AttackStrategyType
 {
     Basic,
+    Charge,
+    Jump,
     Melee,         // 근접 공격
     Ranged,        // 원거리 공격
     AoE,           // 범위 공격
@@ -154,6 +166,7 @@ public enum DieStrategyType
 }
 public enum ProjectileMovementType
 {
+    None,
     Straight,
     Homing,
     Parabolic    // 추가
@@ -174,6 +187,14 @@ public enum ProjectileImpactType
     //Freeze
     // 추가 가능
 }
+public enum GroggyStrategyType
+{
+    Basic,
+    Poison,
+    //Explosion,
+    //Freeze
+    // 추가 가능
+}
 public enum BuffType
 {
     None,
@@ -184,7 +205,7 @@ public enum BuffType
     Heal,           // 체력 회복
     Rage,           // 분노(공격력 + 공격속도)
     Invincible,     // 무적
-    // 디버프
+                    // 디버프
     AttackDown,     // 공격력 감소
     DefenseDown,    // 방어력 감소
     SpeedDown,      // 이동속도 감소
@@ -193,4 +214,13 @@ public enum BuffType
     Burn,           // 화상
     Freeze          // 빙결
 }
+
+[System.Serializable]
+public class BuffData
+{
+    public BuffType[] buffTypes;
+    public float[] durations;
+    public float[] values;
+}
+
 

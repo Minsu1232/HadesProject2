@@ -1,7 +1,7 @@
 // 피격 상태 체크 노드
 public class CheckHitState : BTNode
 {
-    public CheckHitState(MonsterAI owner) : base(owner) { }
+    public CheckHitState(CreatureAI owner) : base(owner) { }
 
     public override NodeStatus Execute()
     {

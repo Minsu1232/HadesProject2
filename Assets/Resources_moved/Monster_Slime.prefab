@@ -9,9 +9,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5822934029209448704}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Side_L
-  m_TagString: Untagged
+  m_TagString: Monster
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -40,9 +40,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8279447106150706358}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: EyeCTRL
-  m_TagString: Untagged
+  m_TagString: Monster
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -74,9 +74,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8671847952864096897}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: SkillSpawnPoint
-  m_TagString: Untagged
+  m_TagString: Monster
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -107,9 +107,9 @@ GameObject:
   - component: {fileID: 2895748195940727532}
   - component: {fileID: 3890146840984320651}
   - component: {fileID: 3611525519711828710}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Crown
-  m_TagString: Untagged
+  m_TagString: Monster
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -177,9 +177,9 @@ GameObject:
   - component: {fileID: 3995314881040357521}
   - component: {fileID: 8423484836992231476}
   - component: {fileID: 4735243600754279616}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Body
-  m_TagString: Untagged
+  m_TagString: Monster
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -311,9 +311,9 @@ GameObject:
   - component: {fileID: 7360755197976518764}
   - component: {fileID: 905271897059871194}
   - component: {fileID: 3039553009742442290}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Head
-  m_TagString: Untagged
+  m_TagString: Monster
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -383,9 +383,9 @@ GameObject:
   - component: {fileID: 3457331704618073417}
   - component: {fileID: 8524094324497754699}
   - component: {fileID: 6618051740119824953}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: EyeBall
-  m_TagString: Untagged
+  m_TagString: Monster
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -420,7 +420,7 @@ MeshCollider:
     serializedVersion: 2
     m_Bits: 0
   m_LayerOverridePriority: 0
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 5
@@ -450,9 +450,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4823611548678206783}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Spine01
-  m_TagString: Untagged
+  m_TagString: Monster
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -486,9 +486,9 @@ GameObject:
   - component: {fileID: 7715874042936398151}
   - component: {fileID: 7011580063585631479}
   - component: {fileID: 8444823030526494085}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: BottomEyeCover
-  m_TagString: Untagged
+  m_TagString: Monster
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -523,7 +523,7 @@ MeshCollider:
     serializedVersion: 2
     m_Bits: 0
   m_LayerOverridePriority: 0
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 5
@@ -555,9 +555,9 @@ GameObject:
   - component: {fileID: 1501549225075346689}
   - component: {fileID: 1344297426361688012}
   - component: {fileID: 3039018902674791126}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: UpperEyeCover
-  m_TagString: Untagged
+  m_TagString: Monster
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -592,7 +592,7 @@ MeshCollider:
     serializedVersion: 2
     m_Bits: 0
   m_LayerOverridePriority: 0
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 5
@@ -790,6 +790,81 @@ MonoBehaviour:
   m_FillOrigin: 1
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
+--- !u!1 &8114706965995834069
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 839118809113424990}
+  - component: {fileID: 8385247035869354748}
+  - component: {fileID: 3194346238148978218}
+  m_Layer: 7
+  m_Name: Armor
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &839118809113424990
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8114706965995834069}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 17.679787}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 3627469358334342604}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: -66.789246, y: 0.35000277}
+  m_SizeDelta: {x: 15, y: 1}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!222 &8385247035869354748
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8114706965995834069}
+  m_CullTransparentMesh: 1
+--- !u!114 &3194346238148978218
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8114706965995834069}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 1, g: 1, b: 0, a: 1}
+  m_RaycastTarget: 1
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_Sprite: {fileID: 21300000, guid: a30d813ea1bde3b479b73cd4c57e224d, type: 3}
+  m_Type: 3
+  m_PreserveAspect: 0
+  m_FillCenter: 1
+  m_FillMethod: 0
+  m_FillAmount: 1
+  m_FillClockwise: 1
+  m_FillOrigin: 1
+  m_UseSpriteMesh: 0
+  m_PixelsPerUnitMultiplier: 1
 --- !u!1 &8444671845321486874
 GameObject:
   m_ObjectHideFlags: 0
@@ -821,6 +896,7 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1330614663151632490}
+  - {fileID: 839118809113424990}
   m_Father: {fileID: 3008860240339340401}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 1}
@@ -875,9 +951,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6375444897760674661}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Side_R
-  m_TagString: Untagged
+  m_TagString: Monster
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -911,9 +987,9 @@ GameObject:
   - component: {fileID: 7057679309587855765}
   - component: {fileID: 771824864286786366}
   - component: {fileID: 2193264782874796025}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Monster_Slime
-  m_TagString: Untagged
+  m_TagString: Monster
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -994,6 +1070,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   worldSpaceCanvas: {fileID: 1082126962811061938}
   healthBar: {fileID: 8055331885364364072}
+  armorBar: {fileID: 3194346238148978218}
   damageTextPrefab: {fileID: 8342705067347850425, guid: de4cd1e0557f17146b9e848d367d117a, type: 3}
 --- !u!54 &2193264782874796025
 Rigidbody:
@@ -1020,5 +1097,5 @@ Rigidbody:
   m_UseGravity: 0
   m_IsKinematic: 0
   m_Interpolate: 0
-  m_Constraints: 20
+  m_Constraints: 84
   m_CollisionDetection: 0
