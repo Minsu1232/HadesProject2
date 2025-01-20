@@ -95,7 +95,7 @@ public class MonsterData : ScriptableObject, ICreatureData
 
     
     [FoldoutGroup("Buff Settings"), ShowInInspector]
-    public BuffData buffData { get; set; } = new BuffData();
+    public BuffData buffData { get; set; }
 
     [FoldoutGroup("Buff Settings"), ShowInInspector]
     public BuffType buffType { get; set; }

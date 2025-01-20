@@ -128,6 +128,56 @@ MonoBehaviour:
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 0637da77766c32644b51b3d756f57dc1
+    m_Address: BatPrefab
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 2508887ed842451459e2ce4f5bc54fd6
+    m_Address: SpiderPoisonPrefab
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 2335504e8d820374fadaf74f9d0ffd46
+    m_Address: SpiderPosionProjectile
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 1a23bb3efbdb62842abffc7b85bf4aa1
+    m_Address: SpiderPosionProjectileHitEffect
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 0c44545a524952e49bd6e3296c3664a3
+    m_Address: TurtleProjectile
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 5e4fa688e991a694b865c0bb4de3ca07
+    m_Address: BatHitPrefab
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 26e3407058add794e85f3967e95b7b24
+    m_Address: BloodHitEffect
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 3e3c681fbc3bf474e9a19bb03ad68754
+    m_Address: BuffUpPrefab
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 3c15053f2eb12f04b84542d5e042e840
+    m_Address: ShorkWavePrefab
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 29321d9f3ca22774caba5e8e8679e682
+    m_Address: PBRDefault
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
   m_ReadOnly: 0
   m_Settings: {fileID: 11400000, guid: b00a60bada955e740bf4855b507f44d8, type: 2}
   m_SchemaSet:

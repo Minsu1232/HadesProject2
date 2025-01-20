@@ -12,18 +12,19 @@ public class MonsterDataManager : Singleton<MonsterDataManager>
     private Dictionary<int, MonsterData> monsterDatabase = new Dictionary<int, MonsterData>();
     private Dictionary<int, Dictionary<string, string>> strategyData = new Dictionary<int, Dictionary<string, string>>();
     private Dictionary<int, Dictionary<string, string>> skillData = new Dictionary<int, Dictionary<string, string>>();
+    private Dictionary<int, MonsterData> monsterPrefabData = new Dictionary<int, MonsterData>();
 
     private string monsterFilePath;
     private string strategyFilePath;
     private string skillFilePath;
-
+    private string prefabFilePath;
     private void Awake()
     {
         // 경로 초기화
         monsterFilePath = Path.Combine(Application.persistentDataPath, "Monsters.csv");
         strategyFilePath = Path.Combine(Application.persistentDataPath, "MonsterStrategies.csv");
         skillFilePath = Path.Combine(Application.persistentDataPath, "MonsterSkills.csv");
-
+        prefabFilePath = Path.Combine(Application.persistentDataPath, "MonsterPrefabs.csv");
         CopyCSVFromStreamingAssets();
     }
 
@@ -34,7 +35,7 @@ public class MonsterDataManager : Singleton<MonsterDataManager>
 
     private void CopyCSVFromStreamingAssets()
     {
-        string[] csvFiles = new string[] { "Monsters.csv", "MonsterStrategies.csv", "MonsterSkills.csv" };
+        string[] csvFiles = new string[] { "Monsters.csv", "MonsterStrategies.csv", "MonsterSkills.csv","MonsterPrefabs.csv" };
         foreach (string fileName in csvFiles)
         {
             string streamingPath = Path.Combine(Application.streamingAssetsPath, fileName);
@@ -57,8 +58,84 @@ public class MonsterDataManager : Singleton<MonsterDataManager>
         // 먼저 전략과 스킬 데이터를 로드
         await LoadStrategyData();
         await LoadSkillData();
+        await LoadPrefabsFromCSV();
         // 마지막으로 몬스터 데이터를 로드하고 모든 데이터를 결합
         await LoadMonstersFromCSV();
+    }
+    private async Task LoadPrefabsFromCSV()
+    {
+        if (!File.Exists(prefabFilePath))
+        {
+            Debug.LogError($"프리팹 데이터 CSV 파일을 찾을 수 없습니다: {prefabFilePath}");
+            return;
+        }
+
+        string[] lines = File.ReadAllLines(prefabFilePath);
+        string[] headers = lines[0].Split(',');
+        bool isFirstLine = true;
+
+        foreach (string line in lines)
+        {
+            if (isFirstLine)
+            {
+                isFirstLine = false;
+                continue;
+            }
+
+            if (string.IsNullOrWhiteSpace(line)) continue;
+
+            string[] values = line.Split(',');
+            int monsterId = int.Parse(values[0]);
+
+            try
+            {
+                // ScriptableObject.CreateInstance를 사용하여 MonsterData 인스턴스 생성
+                MonsterData prefabData = ScriptableObject.CreateInstance<MonsterData>();
+
+                // BuffData 초기화
+                prefabData.buffData = new BuffData
+                {
+                    buffTypes = new BuffType[0],
+                    durations = new float[0],
+                    values = new float[0]
+                };
+
+                // 프리팹 필드 매핑
+                prefabData.areaEffectPrefab = await LoadPrefab(values[1]);
+                prefabData.shorckEffectPrefab = await LoadPrefab(values[2]);
+                prefabData.buffEffectPrefab = await LoadPrefab(values[3]);
+                prefabData.summonPrefab = await LoadPrefab(values[4]);
+                prefabData.projectilePrefab = await LoadPrefab(values[5]);
+                prefabData.hitEffect = await LoadPrefab(values[6]);
+                prefabData.eliteOutlineMaterial = await LoadMaterial(values[7]);
+
+                // 프리팹 데이터를 별도 딕셔너리에 저장
+                monsterPrefabData[monsterId] = prefabData;
+                Debug.Log($"몬스터 프리팹 로드 완료: ID {monsterId}");
+            }
+            catch (Exception e)
+            {
+                Debug.LogError($"프리팹 로드 중 오류 발생 (ID: {monsterId}): {e.Message}");
+            }
+        }
+    }
+
+    // Addressables로 프리팹 로드
+    private async Task<GameObject> LoadPrefab(string prefabKey)
+    {
+        if (string.IsNullOrEmpty(prefabKey)) return null;
+
+        var handle = Addressables.LoadAssetAsync<GameObject>(prefabKey);
+        return await handle.Task;
+    }
+
+    // Addressables로 머티리얼 로드
+    private async Task<Material> LoadMaterial(string materialKey)
+    {
+        if (string.IsNullOrEmpty(materialKey)) return null;
+
+        var handle = Addressables.LoadAssetAsync<Material>(materialKey);
+        return await handle.Task;
     }
 
     private async Task LoadStrategyData()
@@ -138,20 +215,46 @@ public class MonsterDataManager : Singleton<MonsterDataManager>
             int monsterId = int.Parse(values[0]);
             string monsterDataPath = $"MonsterData_{monsterId}";
 
-            var monsterDataHandle = Addressables.LoadAssetAsync<MonsterData>(monsterDataPath);
-            MonsterData monsterData = await monsterDataHandle.Task;
+            try
+            {
+                var monsterDataHandle = Addressables.LoadAssetAsync<MonsterData>(monsterDataPath);
+                MonsterData monsterData = await monsterDataHandle.Task;
 
-            if (monsterData != null)
-            {
-                UpdateMonsterData(monsterData, values, monsterId);
-                monsterDatabase[monsterId] = monsterData;
-                Debug.Log($"몬스터 로드: ID {monsterId}, 이름 {monsterData.MonsterName}");
+                if (monsterData != null)
+                {
+                    UpdateMonsterData(monsterData, values, monsterId);
+
+                    // 프리팹 데이터가 있으면 복사
+                    if (monsterPrefabData.TryGetValue(monsterId, out MonsterData prefabData))
+                    {
+                        CopyPrefabData(monsterData, prefabData);
+                    }
+
+                    monsterDatabase[monsterId] = monsterData;
+                    Debug.Log($"몬스터 로드: ID {monsterId}, 이름 {monsterData.MonsterName}");
+                }
+                else
+                {
+                    Debug.LogError($"몬스터 데이터를 찾을 수 없습니다: {monsterDataPath}");
+                }
             }
-            else
+            catch (Exception e)
             {
-                Debug.LogError($"몬스터 데이터를 찾을 수 없습니다: {monsterDataPath}");
+                Debug.LogError($"몬스터 데이터 로드 중 오류 발생 (ID: {monsterId}): {e.Message}");
             }
         }
+    }
+
+    // 프리팹 데이터 복사 헬퍼 메서드
+    private void CopyPrefabData(MonsterData target, MonsterData source)
+    {
+        target.areaEffectPrefab = source.areaEffectPrefab;
+        target.shorckEffectPrefab = source.shorckEffectPrefab;
+        target.buffEffectPrefab = source.buffEffectPrefab;
+        target.summonPrefab = source.summonPrefab;
+        target.projectilePrefab = source.projectilePrefab;
+        target.hitEffect = source.hitEffect;
+        target.eliteOutlineMaterial = source.eliteOutlineMaterial;
     }
 
     private void UpdateMonsterData(MonsterData monsterData, string[] baseValues, int monsterId)
