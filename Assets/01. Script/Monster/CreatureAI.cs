@@ -5,9 +5,11 @@ using UnityEngine;
 
 public abstract class CreatureAI : MonoBehaviour, ICreatureAI
 {
+    protected ICreatureStatus creatureStatus;  // 공통 인터페이스 사용
+
     protected Dictionary<IMonsterState.MonsterStateType, IMonsterState> states;
     protected IMonsterState currentState;
-    protected MonsterStatus monsterStatus;
+
     protected ISpawnStrategy spawnStrategy;
     protected IMovementStrategy moveStrategy;
     protected IAttackStrategy attackStrategy;
@@ -19,10 +21,22 @@ public abstract class CreatureAI : MonoBehaviour, ICreatureAI
     protected BTNode behaviorTree;
     protected virtual void Start()
     {
-        monsterStatus = GetComponent<MonsterStatus>();
+        creatureStatus = GetComponent<ICreatureStatus>();
+        
+        creatureStatus.GetMonsterClass();
+        IMonsterClass monsterClass = creatureStatus.GetMonsterClass();
+        monsterClass.OnArmorBreak += HandleArmorBreak;
         InitializeStates();
     }
+    private void HandleArmorBreak()
+    {
+        if (currentState.CanTransition())
+        {
+            ChangeState(MonsterStateType.Groggy);
+        }
+    }
 
+    public ICreatureStatus GetStatus() => creatureStatus;
     protected abstract void InitializeStates();
 
     protected virtual void Update()
@@ -54,7 +68,7 @@ public abstract class CreatureAI : MonoBehaviour, ICreatureAI
 
     public IMonsterState GetCurrentState() => currentState;
 
-    public MonsterStatus GetStatus() => monsterStatus;
+    //public MonsterStatus GetStatus() => monsterStatus;
 
     public virtual void OnDamaged(int damage, AttackType attackType)
     {

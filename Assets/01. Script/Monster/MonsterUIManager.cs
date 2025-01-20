@@ -11,8 +11,8 @@ public class MonsterUIManager : MonoBehaviour
 {
     [Header("References")]
     [SerializeField] protected Canvas worldSpaceCanvas;
-    protected MonsterStatus monsterStatus;
-    protected MonsterClass monsterClass;
+    protected ICreatureStatus monsterStatus;
+    protected IMonsterClass monsterClass;
     protected Camera mainCamera;
 
     [Header("UI Elements")]
@@ -29,18 +29,28 @@ public class MonsterUIManager : MonoBehaviour
 
     protected int maxHealth;
     protected int maxArmor;
-
-    protected virtual void Start()
+    public virtual void Initialize(IMonsterClass monster)
     {
-        mainCamera = Camera.main;
-        monsterStatus = GetComponent<MonsterStatus>();
-        monsterClass = monsterStatus.GetMonsterClass();
+        monsterClass = monster;
+        // MonsterStatus로 GetComponent 후 ICreatureStatus로 할당
+        MonsterStatus status = GetComponent<MonsterStatus>();
+        monsterStatus = status;  // 인터페이스로 암시적 변환
         InitializeReferences();
         SetupUI();
 
         if (monsterClass != null)
         {
             monsterClass.OnArmorBreak += HandleArmorBreak;
+        }
+    }
+    protected virtual void Start()
+    {
+        if (monsterClass == null)
+        {
+            mainCamera = Camera.main;
+            // MonsterStatus로 GetComponent 후 GetMonsterClass 호출
+            MonsterStatus status = GetComponent<MonsterStatus>();
+            Initialize(status.GetMonsterClass());
         }
     }
 
@@ -75,8 +85,8 @@ public class MonsterUIManager : MonoBehaviour
             monsterClass = monsterStatus.GetMonsterClass();
             if (monsterClass != null)
             {
-                maxHealth = monsterClass.GetMonsterData().initialHp;
-                maxArmor = monsterClass.GetMonsterData().armorValue;
+                maxHealth = monsterClass.GetMonsterData().initialHp; 
+                maxArmor = monsterClass.GetMonsterData().armorValue; 
             }
         }
     }

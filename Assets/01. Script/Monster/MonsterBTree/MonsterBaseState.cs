@@ -2,16 +2,16 @@ using UnityEngine;
 
 public abstract class MonsterBaseState : IMonsterState
 {
-    protected CreatureAI owner;           // CreatureAI 대신 CreatureAI로 변경
-    protected MonsterStatus status;      // 스탯 관련
-    protected MonsterClass monsterClass; // 몬스터 데이터/기능
+    protected CreatureAI owner;
+    protected ICreatureStatus status;       // MonsterStatus 대신 인터페이스 사용
+    protected IMonsterClass monsterClass;   // MonsterClass 대신 인터페이스 사용
     protected Transform transform;       // 몬스터의 Transform
     protected Transform player;          // 플레이어 Transform
 
     public MonsterBaseState(CreatureAI owner)  // 생성자도 CreatureAI로 변경
     {
         this.owner = owner;
-        this.status = owner.GetStatus();  // CreatureAI의 GetStatus() 사용
+        this.status = owner.GetStatus();
         this.monsterClass = status.GetMonsterClass();
         this.transform = owner.transform;
         this.player = GameInitializer.Instance.GetPlayerClass().playerTransform;

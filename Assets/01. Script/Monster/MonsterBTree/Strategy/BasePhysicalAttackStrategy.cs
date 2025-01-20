@@ -30,13 +30,13 @@ public abstract class BasePhysicalAttackStrategy : IAttackStrategy
         isAttacking = false;
     }
 
-    public virtual bool CanAttack(float distanceToTarget, MonsterClass monsterData)
+    public virtual bool CanAttack(float distanceToTarget, IMonsterClass monsterData)
     {
         return distanceToTarget <= monsterData.CurrentAttackRange &&
                Time.time >= lastAttackTime + monsterData.CurrentAttackSpeed;
     }
 
-    public virtual void ApplyDamage(IDamageable target, MonsterClass monsterData)
+    public virtual void ApplyDamage(IDamageable target, IMonsterClass monsterData)
     {
         int baseDamage = monsterData.CurrentAttackPower;
         float multiplier = GetAttackPowerMultiplier();
@@ -66,5 +66,5 @@ public abstract class BasePhysicalAttackStrategy : IAttackStrategy
         }
     }
 
-    public abstract void Attack(Transform transform, Transform target, MonsterClass monsterData);
+    public abstract void Attack(Transform transform, Transform target, IMonsterClass monsterData);
 }

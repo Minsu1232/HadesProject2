@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class MonsterAttackCollider : MonoBehaviour
 {
-    private MonsterClass monsterClass;
+    private IMonsterClass monsterClass;
     private CreatureAI CreatureAI;
     private bool canDealDamage = false;
     PlayerClass player;

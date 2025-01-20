@@ -9,7 +9,7 @@ public class BasicDieStrategy : IDieStrategy
 
     public bool IsDeathComplete => isDeathComplete;
 
-    public void OnDie(Transform transform, MonsterClass monsterData)
+    public void OnDie(Transform transform, IMonsterClass monsterData)
     {
         deathDuration = monsterData.CurrentDeathDuration;
         deathTimer = 0f;

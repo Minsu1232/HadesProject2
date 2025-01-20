@@ -13,11 +13,11 @@ public enum PhysicalAttackType
 // 확장된 공격 전략 인터페이스
 public interface IAttackStrategy
 {
-    void Attack(Transform transform, Transform target, MonsterClass monsterData);
-    bool CanAttack(float distanceToTarget, MonsterClass monsterData);
+    void Attack(Transform transform, Transform target, IMonsterClass monsterData);
+    bool CanAttack(float distanceToTarget, IMonsterClass monsterData);
     void StartAttack();
     void StopAttack();
-    void ApplyDamage(IDamageable target, MonsterClass monsterData);
+    void ApplyDamage(IDamageable target, IMonsterClass monsterData);
     bool IsAttacking { get; }
     float GetLastAttackTime { get; }
     void OnAttackAnimationEnd();

@@ -16,33 +16,16 @@ public class BasicCreatureAI : CreatureAI
     protected override void Start()
     {
         base.Start();
-        MonsterClass monsterClass = monsterStatus.GetMonsterClass();
-        monsterClass.OnArmorBreak += HandleArmorBreak;
+
+       
     }
 
-    private void HandleArmorBreak()
-    {
-        if (currentState.CanTransition())
-        {
-            ChangeState(MonsterStateType.Groggy);
-        }
-    }
-
-    private void OnDestroy()
-    {
-        if (monsterStatus != null)
-        {
-            MonsterClass monsterClass = monsterStatus.GetMonsterClass();
-            if (monsterClass != null)
-            {
-                monsterClass.OnArmorBreak -= HandleArmorBreak;
-            }
-        }
-    }
+   
+   
     protected override void InitializeStates()
     {
-        MonsterClass monsterClass = monsterStatus.GetMonsterClass();
-        MonsterData data = monsterClass.GetMonsterData();
+        IMonsterClass monsterClass = creatureStatus.GetMonsterClass();
+        ICreatureData data = monsterClass.GetMonsterData();
 
         // 데이터의 전략 타입에 따라 전략 생성
         InitializeStrategies(data);
@@ -66,7 +49,7 @@ public class BasicCreatureAI : CreatureAI
         ChangeState(MonsterStateType.Spawn);
     }
 
-    private void InitializeStrategies(MonsterData data)
+    private void InitializeStrategies(ICreatureData data)
     {
         spawnStrategy = StrategyFactory.CreateSpawnStrategy(data.spawnStrategy);
         moveStrategy = StrategyFactory.CreateMovementStrategy(data.moveStrategy);
@@ -78,7 +61,7 @@ public class BasicCreatureAI : CreatureAI
         groggyStrategy = StrategyFactory.CreateGroggyStrategy(data.groggyStrategy, data);
     }
 
-    private void InitializeSkillEffect(MonsterData data)
+    private void InitializeSkillEffect(ICreatureData data)
     {
         ISkillEffect skillEffect = StrategyFactory.CreateSkillEffect(
             data.skillEffectType,
@@ -93,7 +76,7 @@ public class BasicCreatureAI : CreatureAI
         }
         else
         {
-            Debug.LogError($"Failed to create skill effect for monster: {data.monsterName}");
+            Debug.LogError($"Failed to create skill effect for monster: {data.MonsterName}");
         }
     }
 

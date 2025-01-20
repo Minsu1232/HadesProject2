@@ -8,7 +8,7 @@ public class RandomMovementStrategy : IMovementStrategy
     private float currentMoveTime;
     private Vector3 randomDirection;
 
-    public void Move(Transform transform, Transform target, MonsterClass monsterData)
+    public void Move(Transform transform, Transform target, IMonsterClass monsterData)
     {
         if (currentMoveTime > 0)
         {
@@ -39,7 +39,7 @@ public class RandomMovementStrategy : IMovementStrategy
         return new Vector3(randomDirection2D.x, 0, randomDirection2D.y);
     }
 
-    public bool ShouldChangeState(float distanceToTarget, MonsterClass monsterData)
+    public bool ShouldChangeState(float distanceToTarget, IMonsterClass monsterData)
     {
         return distanceToTarget <= monsterData.CurrentChaseRange;  // Chase·Î ÀüÈ¯
     }

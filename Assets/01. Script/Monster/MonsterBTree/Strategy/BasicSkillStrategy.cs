@@ -3,7 +3,7 @@ using UnityEngine;
 public class BasicSkillStrategy : ISkillStrategy
 {
     private ISkillEffect skillEffect;
-    private MonsterStatus monsterStatus;
+    private ICreatureStatus monsterStatus;
     private bool isUsingSkill = false;
     private bool skillComplete;
     private float lastSkillTime;
@@ -26,7 +26,7 @@ public class BasicSkillStrategy : ISkillStrategy
         this.skillEffect = effect;
     }
 
-    public void StartSkill(Transform transform, Transform target, MonsterClass monsterData)
+    public void StartSkill(Transform transform, Transform target, IMonsterClass monsterData)
     {
         skillCoolTime = monsterData.CurrentSkillCooldown;
         skillDuration = monsterData.CurrentSKillDuration;
@@ -40,7 +40,7 @@ public class BasicSkillStrategy : ISkillStrategy
         lastSkillTime = Time.time;
     }
 
-    public void UpdateSkill(Transform transform, Transform target, MonsterClass monsterData)
+    public void UpdateSkill(Transform transform, Transform target, IMonsterClass monsterData)
     {
         if (!isUsingSkill) return;
 
@@ -68,7 +68,7 @@ public class BasicSkillStrategy : ISkillStrategy
         skillTimer = 0;
     }
 
-    public bool CanUseSkill(float distanceToTarget, MonsterClass monsterData)
+    public bool CanUseSkill(float distanceToTarget, IMonsterClass monsterData)
     {
         return !isUsingSkill &&
                Time.time > lastSkillTime + skillCoolTime &&

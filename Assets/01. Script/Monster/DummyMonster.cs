@@ -5,7 +5,7 @@ using UnityEngine;
 public class DummyMonster : MonsterClass
 {   
     
-    public DummyMonster(MonsterData data) : base(data)
+    public DummyMonster(ICreatureData data) : base(data)
     {
     }
 

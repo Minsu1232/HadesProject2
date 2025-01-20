@@ -41,7 +41,7 @@ public class EliteMonsterController : MonoBehaviour
     private void ApplyEliteOutline()
     {
         var skinnedMeshRenderers = GetComponentsInChildren<SkinnedMeshRenderer>();
-        MonsterData data = monsterStatus.GetMonsterClass().GetMonsterData();
+        ICreatureData data = monsterStatus.GetMonsterClass().GetMonsterData();
 
         foreach (var skinnedRenderer in skinnedMeshRenderers)
         {

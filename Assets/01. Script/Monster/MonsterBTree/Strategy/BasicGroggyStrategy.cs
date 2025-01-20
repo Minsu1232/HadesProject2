@@ -14,7 +14,7 @@ public class BasicGroggyStrategy : IGroggyStrategy
 
     public bool IsGroggyComplete => isGroggyComplete;
 
-    public void OnGroggy(Transform transform, MonsterClass monsterData)
+    public void OnGroggy(Transform transform, IMonsterClass monsterData)
     {
         groggyTimer = 0f;
         isGroggyComplete = false;

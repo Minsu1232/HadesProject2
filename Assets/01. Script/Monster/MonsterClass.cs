@@ -5,12 +5,13 @@ using UnityEngine;
 using static AttackData;
 using static MonsterData;
 
-public abstract class MonsterClass : ICreature
+public abstract class MonsterClass : ICreature,IMonsterClass
 {
     // 아머 파괴 이벤트 (필요한 경우)
     public event Action OnArmorBreak;
 
-    protected MonsterData monsterData;
+    protected ICreatureData monsterData;
+
     protected PlayerClass playerClass;
 
     public event Action<int, int> OnHealthChanged; // (현재 체력, 최대 체력)
@@ -80,7 +81,7 @@ public abstract class MonsterClass : ICreature
 
     protected bool isDashing = false;
     public GameObject hitEffect;
-    public MonsterClass(MonsterData data)
+    public MonsterClass(ICreatureData data)
     {
         monsterData = data;
 
@@ -101,7 +102,7 @@ public abstract class MonsterClass : ICreature
         CurrentAttackPower = monsterData.initialAttackPower;
         CurrentAttackSpeed = monsterData.initialAttackSpeed;
         CurrentSpeed = monsterData.initialSpeed;
-        MONSTERNAME = monsterData.monsterName;
+        MONSTERNAME = monsterData.MonsterName;
         CurrentAttackRange = monsterData.attackRange;
         CurrentAttackSpeed = monsterData.initialAttackSpeed;
         CurrentMoveRange = monsterData.moveRange;
@@ -113,7 +114,7 @@ public abstract class MonsterClass : ICreature
         CurrentHitStunDuration = monsterData.hitStunDuration;
         CurrentDeathDuration = monsterData.deathDuration;
         CurrentSpawnDuration = monsterData.spawnDuration;
-        grade = monsterData.grade;
+        grade = monsterData.Grade;
         CurrentSkillDamage = monsterData.skillDamage;
         CurrentSpawnStrategy = monsterData.spawnStrategy;
         CurrentMoveStrategy = monsterData.moveStrategy;
@@ -150,13 +151,13 @@ public abstract class MonsterClass : ICreature
 
         Debug.Log(CurrentCameraShakeIntensity);
     }
-    public MonsterData GetMonsterData()
+    public ICreatureData GetMonsterData()
     {
         return monsterData;
     }
     public string GetName()
     {
-        return monsterData.monsterName;
+        return monsterData.MonsterName;
     }
 
     protected virtual void Debuff()
@@ -175,7 +176,7 @@ public abstract class MonsterClass : ICreature
     {
 
     }  // 공격 메서드 정의
-    public virtual void TakeDamage(int damage, AttackType attackType)
+    public virtual void TakeDamage(int damage)
     {
         // 기본 방어력 계산
         float damageTakenMultiplier = CurrentDeffense >= 0
@@ -232,17 +233,14 @@ public abstract class MonsterClass : ICreature
 
 
 
-    public virtual void SetPosition(Vector3 spawnPosition)
-    {
-        throw new NotImplementedException();
-    }
+
 
     public Vector3 GetPlayerPosition()
     {
         return playerClass.playerTransform.position;
     }
 
-    internal void ModifyStats(
+   public void ModifyStats(
           int healthAmount = 0,
     int maxHealthAmount = 0, // 최대 체력 변경 추가
     int defenseAmount = 0,

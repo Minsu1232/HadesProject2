@@ -6,7 +6,7 @@ public class ChaseMovementStrategy : IMovementStrategy
 {
     private bool isChasing;
 
-    public void Move(Transform transform, Transform target, MonsterClass monsterData)
+    public void Move(Transform transform, Transform target, IMonsterClass monsterData)
     {
         Vector3 direction = (target.position - transform.position).normalized;
         transform.position += direction * monsterData.CurrentSpeed * Time.deltaTime;
@@ -22,7 +22,7 @@ public class ChaseMovementStrategy : IMovementStrategy
         isChasing = false;
     }
 
-    public bool ShouldChangeState(float distanceToTarget, MonsterClass monsterData)
+    public bool ShouldChangeState(float distanceToTarget, IMonsterClass monsterData)
     {
         if (distanceToTarget <= monsterData.CurrentAttackRange)
             return true;  // Attack으로 전환

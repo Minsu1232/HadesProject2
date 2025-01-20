@@ -25,11 +25,11 @@ public static class StrategyFactory
         };
     }
 
-    public static IAttackStrategy CreateAttackStrategy(AttackStrategyType type, MonsterData data)
+    public static IAttackStrategy CreateAttackStrategy(AttackStrategyType type, ICreatureData data)
     {
         return type switch
         {
-            AttackStrategyType.Jump => new JumpAttackStrategy(data.ShorckEffectPrefab,data.shockwaveRadius),
+            AttackStrategyType.Jump => new JumpAttackStrategy(data.shorckEffectPrefab,data.shockwaveRadius),
             _ => new BasicAttackStrategy()
         };
     }
@@ -91,7 +91,7 @@ public static class StrategyFactory
         };
     }
 
-    public static IProjectileImpact CreateProjectileImpact(ProjectileImpactType type, MonsterData data)
+    public static IProjectileImpact CreateProjectileImpact(ProjectileImpactType type, ICreatureData data)
     {
         return type switch
         {
@@ -103,7 +103,7 @@ public static class StrategyFactory
             _ => null
         };
     }
-    public static IGroggyStrategy CreateGroggyStrategy(GroggyStrategyType type, MonsterData data)
+    public static IGroggyStrategy CreateGroggyStrategy(GroggyStrategyType type, ICreatureData data)
     {
         return type switch
         {
@@ -112,14 +112,14 @@ public static class StrategyFactory
             _ => new BasicGroggyStrategy(data.groggyTime)
         };
     }
-    public static ISkillEffect CreateSkillEffect(SkillEffectType effectType, MonsterData data, CreatureAI owner)
+    public static ISkillEffect CreateSkillEffect(SkillEffectType effectType, ICreatureData data, CreatureAI owner)
     {
         switch (effectType)
         {
             case SkillEffectType.Projectile:
                 if (data.projectilePrefab == null)
                 {
-                    Debug.LogError($"Projectile prefab is missing for monster: {data.monsterName}");
+                    Debug.LogError($"Projectile prefab is missing for monster: {data.MonsterName}");
                     return null;
                 }
                 var moveStrategy = CreateProjectileMovement(data.projectileType);
@@ -135,7 +135,7 @@ public static class StrategyFactory
             case SkillEffectType.AreaEffect:
                 if (data.areaEffectPrefab == null)
                 {
-                    Debug.LogError($"Area effect prefab is missing for monster: {data.monsterName}");
+                    Debug.LogError($"Area effect prefab is missing for monster: {data.MonsterName}");
                     return null;
                 }
                 return new AreaSkillEffect(
@@ -155,7 +155,7 @@ public static class StrategyFactory
             case SkillEffectType.Summon:
                 if (data.summonPrefab == null)
                 {
-                    Debug.LogError($"Summon prefab is missing for monster: {data.monsterName}");
+                    Debug.LogError($"Summon prefab is missing for monster: {data.MonsterName}");
                     return null;
                 }
                 return new SummonSkillEffect(
@@ -165,7 +165,7 @@ public static class StrategyFactory
                 );
 
             default:
-                Debug.LogError($"Unknown skill effect type: {effectType} for monster: {data.monsterName}");
+                Debug.LogError($"Unknown skill effect type: {effectType} for monster: {data.MonsterName}");
                 return null;
         }
     }

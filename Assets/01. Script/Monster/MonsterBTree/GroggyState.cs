@@ -15,7 +15,9 @@ public class GroggyState : MonsterBaseState
     public override void Enter()
     {
         groggyStrategy.OnGroggy(transform, monsterClass);
+        
         animator.SetBool("IsGroggy", true);  // SetTrigger 대신 SetBool 사용
+        Debug.Log("그로가");
     }
 
     public override void Execute()

@@ -7,7 +7,7 @@ public class BasicSpawnStrategy : ISpawnStrategy
 
     public bool IsSpawnComplete => spawnComplete;
 
-    public void OnSpawn(Transform transform, MonsterClass monsterData)
+    public void OnSpawn(Transform transform, IMonsterClass monsterData)
     {
         spawnDuration = monsterData.CurrentSpawnDuration;
         // 기본 스폰 로직

@@ -9,7 +9,7 @@ public class BasicMovementStrategy : IMovementStrategy
     private float currentMoveTime;
     private Vector3 randomDirection;
 
-    public void Move(Transform transform, Transform target, MonsterClass monsterData)
+    public void Move(Transform transform, Transform target, IMonsterClass monsterData)
     {
         float distanceToTarget = Vector3.Distance(transform.position, target.position);
         if (distanceToTarget <= monsterData.CurrentChaseRange)
@@ -42,7 +42,7 @@ public class BasicMovementStrategy : IMovementStrategy
         isChasing = false;
     }
 
-    private void ChaseMove(Transform transform, Transform target, MonsterClass monsterData)
+    private void ChaseMove(Transform transform, Transform target, IMonsterClass monsterData)
     {
         Vector3 direction = (target.position - transform.position).normalized;
         // 타겟을 향해 회전
@@ -52,7 +52,7 @@ public class BasicMovementStrategy : IMovementStrategy
         transform.position += direction * monsterData.CurrentSpeed * Time.deltaTime;
     }
 
-    private void RandomMove(Transform transform, MonsterClass monsterData)
+    private void RandomMove(Transform transform, IMonsterClass monsterData)
     {
         if (currentMoveTime > 0)
         {
@@ -82,7 +82,7 @@ public class BasicMovementStrategy : IMovementStrategy
         return new Vector3(randomDirection2D.x, 0, randomDirection2D.y);
     }
 
-    public bool ShouldChangeState(float distanceToTarget, MonsterClass monsterData)
+    public bool ShouldChangeState(float distanceToTarget, IMonsterClass monsterData)
     {
         if (isChasing)
         {

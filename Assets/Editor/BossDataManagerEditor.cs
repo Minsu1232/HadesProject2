@@ -94,21 +94,47 @@ public class BossDataManagerEditor : Editor
                     currentLine / totalLines);
 
                 string[] values = line.Trim().Split(',');
+                if (values.Length == 0)
+                {
+                    Debug.LogWarning($"잘못된 CSV 라인 형식: {line}");
+                    continue;
+                }
+
                 string bossDataKey = $"BossData_{values[0]}";
 
-                var bossData = AssetDatabase.LoadAssetAtPath<BossData>(
-                    AssetDatabase.FindAssets($"t:BossData {bossDataKey}")
-                    .Select(guid => AssetDatabase.GUIDToAssetPath(guid))
-                    .FirstOrDefault());
+                // GUID 검색 결과 확인
+                string[] guids = AssetDatabase.FindAssets($"t:BossData {bossDataKey}");
+                if (guids.Length == 0)
+                {
+                    Debug.LogError($"에셋을 찾을 수 없습니다: {bossDataKey}");
+                    continue;
+                }
 
-                if (bossData != null)
+                // 에셋 경로 확인
+                string assetPath = AssetDatabase.GUIDToAssetPath(guids[0]);
+                if (string.IsNullOrEmpty(assetPath))
+                {
+                    Debug.LogError($"에셋 경로를 찾을 수 없습니다: {bossDataKey}");
+                    continue;
+                }
+
+                // 에셋 로드 확인
+                var bossData = AssetDatabase.LoadAssetAtPath<BossData>(assetPath);
+                if (bossData == null)
+                {
+                    Debug.LogError($"보스 데이터를 로드할 수 없습니다: {bossDataKey} (경로: {assetPath})");
+                    continue;
+                }
+
+                try
                 {
                     UpdateBossDataInEditor(bossData, values);
                     EditorUtility.SetDirty(bossData);
                 }
-                else
+                catch (Exception ex)
                 {
-                    Debug.LogError($"보스 데이터를 찾을 수 없습니다: {bossDataKey}");
+                    Debug.LogError($"보스 데이터 업데이트 중 오류 발생 - {bossDataKey}: {ex.Message}");
+                    continue;
                 }
 
                 currentLine++;
@@ -119,7 +145,7 @@ public class BossDataManagerEditor : Editor
         }
         catch (Exception e)
         {
-            Debug.LogError($"보스 데이터 로드 중 오류 발생: {e.Message}");
+            Debug.LogError($"보스 데이터 로드 중 오류 발생: {e.Message}\n{e.StackTrace}");
         }
         finally
         {

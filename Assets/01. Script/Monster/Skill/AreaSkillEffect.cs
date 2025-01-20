@@ -4,7 +4,7 @@ public class AreaSkillEffect : ISkillEffect
 {
     private GameObject areaEffectPrefab;
     private float radius;
-    private MonsterStatus monsterStatus;
+    private ICreatureStatus monsterStatus;
     private Transform target;
     private float damage;
 
@@ -15,7 +15,7 @@ public class AreaSkillEffect : ISkillEffect
         this.damage = damage;
     }
 
-    public void Initialize(MonsterStatus status, Transform target)
+    public void Initialize(ICreatureStatus status, Transform target)
     {
         this.monsterStatus = status;
         this.target = target;

@@ -11,9 +11,9 @@ public class EliteHitStrategy : IHitStrategy
 
     public bool IsHitComplete => isHitComplete;
 
-    public void OnHit(Transform transform, MonsterClass monsterData, int damage)
+    public void OnHit(Transform transform, IMonsterClass monsterData, int damage)
     {
-        MonsterData data = monsterData.GetMonsterData();
+        ICreatureData data = monsterData.GetMonsterData();
 
         // 아머가 있으면 경직 없음
         if (monsterData.CurrentArmor > 0)

@@ -1,6 +1,7 @@
 using static AttackData;
 using System;
 using UnityEngine;
+using Unity.VisualScripting;
 
 public class BossMonster : MonsterClass
 {
@@ -24,7 +25,10 @@ public class BossMonster : MonsterClass
         bossData = data;
         InitializeBoss();
     }
-
+    public BossData GetBossData()
+    {
+        return bossData;
+    }
     private void InitializeBoss()
     {
         if (bossData.invincibleOnSpawn)
@@ -34,13 +38,13 @@ public class BossMonster : MonsterClass
         ApplyPhaseModifiers(currentPhase);
     }
 
-    public override void TakeDamage(int damage, AttackType attackType)
+    public override void TakeDamage(int damage)
     {
         if (isInvulnerable ||
             (CurrentPhaseData != null && CurrentPhaseData.isInvulnerableDuringTransition))
             return;
 
-        base.TakeDamage(damage, attackType);
+        base.TakeDamage(damage);
 
         CheckPhaseTransition();
         CheckRageMode();
@@ -53,7 +57,7 @@ public class BossMonster : MonsterClass
         float healthRatio = (float)CurrentHealth / MaxHealth;
         PhaseData nextPhase = bossData.phaseData[currentPhase + 1];
 
-        if (healthRatio <= nextPhase.healthThreshold)
+        if (healthRatio <= nextPhase.phaseTransitionThreshold)
         {
             TransitionToNextPhase();
         }

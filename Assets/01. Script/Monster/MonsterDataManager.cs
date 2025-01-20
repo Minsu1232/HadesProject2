@@ -145,7 +145,7 @@ public class MonsterDataManager : Singleton<MonsterDataManager>
             {
                 UpdateMonsterData(monsterData, values, monsterId);
                 monsterDatabase[monsterId] = monsterData;
-                Debug.Log($"몬스터 로드: ID {monsterId}, 이름 {monsterData.monsterName}");
+                Debug.Log($"몬스터 로드: ID {monsterId}, 이름 {monsterData.MonsterName}");
             }
             else
             {
@@ -157,7 +157,7 @@ public class MonsterDataManager : Singleton<MonsterDataManager>
     private void UpdateMonsterData(MonsterData monsterData, string[] baseValues, int monsterId)
     {
         // 기본 데이터 업데이트
-        monsterData.monsterName = baseValues[1];
+        monsterData.MonsterName = baseValues[1];
         monsterData.initialHp = int.Parse(baseValues[2]);
         monsterData.initialAttackPower = int.Parse(baseValues[3]);
         monsterData.initialAttackSpeed = float.Parse(baseValues[4]);
@@ -168,10 +168,11 @@ public class MonsterDataManager : Singleton<MonsterDataManager>
         monsterData.moveRange = int.Parse(baseValues[9]);
         monsterData.chaseRange = int.Parse(baseValues[10]);
         monsterData.monsterPrefabKey = baseValues[11];
-        monsterData.grade = (MonsterGrade)Enum.Parse(typeof(MonsterGrade), baseValues[12]);
+        monsterData.Grade = (MonsterGrade)Enum.Parse(typeof(MonsterGrade), baseValues[12]);
         monsterData.armorValue = int.Parse(baseValues[13]);
         monsterData.initialDeffense = int.Parse(baseValues[14]);
         monsterData.aggroDropRange = int.Parse(baseValues[15]);
+        monsterData.groggyTime = float.Parse(baseValues[16]);
 
         // 전략 데이터 업데이트
         if (strategyData.TryGetValue(monsterId, out var strategies))
@@ -206,7 +207,7 @@ public class MonsterDataManager : Singleton<MonsterDataManager>
             string[] buffTypes = skills["BuffTypes"].Split('|');
             string[] buffDurations = skills["BuffDurations"].Split('|');
             string[] buffValues = skills["BuffValues"].Split('|');
-
+            Debug.Log("지나가요ㅕ" + buffTypes.Length);
             monsterData.buffData.buffTypes = new BuffType[buffTypes.Length];
             monsterData.buffData.durations = new float[buffDurations.Length];
             monsterData.buffData.values = new float[buffValues.Length];

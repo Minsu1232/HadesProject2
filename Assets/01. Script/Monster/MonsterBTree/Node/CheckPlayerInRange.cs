@@ -6,7 +6,7 @@ public class CheckPlayerInRange : BTNode
 
     public override NodeStatus Execute()
     {
-        MonsterClass monster = owner.GetStatus().GetMonsterClass();
+        IMonsterClass monster = owner.GetStatus().GetMonsterClass();
         float distanceToPlayer = Vector3.Distance(
             owner.transform.position,
             owner.GetStatus().GetMonsterClass().GetPlayerPosition()

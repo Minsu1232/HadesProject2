@@ -10,6 +10,10 @@ public class BossAI : CreatureAI
     private float[] phaseThresholds;  // HP 비율 기준으로 페이즈 전환 (예: 0.7f, 0.4f, 0.2f)
     private float currentPhaseThreshold = 1.0f;
 
+    private Dictionary<int, List<AttackPatternData>> phasePatternData;  // 페이즈별 가능한 패턴들
+    private AttackPatternData currentPattern;                           // 현재 실행 중인 패턴
+    private int currentStepIndex;                                       // 현재 패턴의 스텝 인덱스
+
     protected override void Start()
     {
         base.Start();
@@ -18,44 +22,49 @@ public class BossAI : CreatureAI
 
     private void InitializePhases()
     {
-        MonsterClass monsterClass = monsterStatus.GetMonsterClass();
-        MonsterData data = monsterClass.GetMonsterData();
+        // 구체 클래스로 GetComponent 후 인터페이스로 사용
+        BossStatus bossStatusComponent = GetComponent<BossStatus>();
+        if (bossStatusComponent == null) return;
 
-        // 페이즈별 패턴 설정
-        phasePatterns = new Dictionary<int, Action>
+        IMonsterClass monster = bossStatusComponent.GetMonsterClass();
+        if (monster == null) return;
+
+        ICreatureData data = monster.GetMonsterData();
+        if (!(data is BossData bossData)) return;
+
+        phasePatternData = new Dictionary<int, List<AttackPatternData>>();
+        foreach (var phaseData in bossData.phaseData)
         {
-            { 1, ExecutePhase1Pattern },
-            { 2, ExecutePhase2Pattern },
-            { 3, ExecutePhase3Pattern }
-        };
-
-        phaseThresholds = new float[] { 0.7f, 0.4f, 0.2f };
+            int phaseNumber = bossData.phaseData.IndexOf(phaseData) + 1;
+            phasePatternData[phaseNumber] = phaseData.availablePatterns;
+        }
     }
 
     protected override void InitializeStates()
     {
-        MonsterClass monsterClass = monsterStatus.GetMonsterClass();
-        MonsterData data = monsterClass.GetMonsterData();
+        BossStatus bossStatusComponent = GetComponent<BossStatus>();
+        IMonsterClass monster = bossStatusComponent.GetMonsterClass();
+        ICreatureData data = monster.GetMonsterData();
 
         InitializeStrategies(data);
         InitializeSkillEffect(data);
 
         states = new Dictionary<IMonsterState.MonsterStateType, IMonsterState>
-        {
-            { MonsterStateType.Spawn, new SpawnState(this, spawnStrategy) },
-            { MonsterStateType.Idle, new IdleState(this, idleStrategy) },
-            { MonsterStateType.Move, new MoveState(this, moveStrategy) },
-            { MonsterStateType.Attack, new AttackState(this, attackStrategy) },
-            { MonsterStateType.Skill, new SkillState(this, skillStrategy) },
-            { MonsterStateType.Hit, new HitState(this, hitStrategy) },
-            { MonsterStateType.Groggy, new GroggyState(this, groggyStrategy) },
-            { MonsterStateType.Die, new DieState(this, dieStrategy) }
-        };
+       {
+           { MonsterStateType.Spawn, new SpawnState(this, spawnStrategy) },
+           { MonsterStateType.Idle, new IdleState(this, idleStrategy) },
+           { MonsterStateType.Move, new MoveState(this, moveStrategy) },
+           { MonsterStateType.Attack, new AttackState(this, attackStrategy) },
+           { MonsterStateType.Skill, new SkillState(this, skillStrategy) },
+           { MonsterStateType.Hit, new HitState(this, hitStrategy) },
+           { MonsterStateType.Groggy, new GroggyState(this, groggyStrategy) },
+           { MonsterStateType.Die, new DieState(this, dieStrategy) }
+       };
 
         ChangeState(MonsterStateType.Spawn);
     }
 
-    private void InitializeStrategies(MonsterData data)
+    private void InitializeStrategies(ICreatureData data)
     {
         spawnStrategy = StrategyFactory.CreateSpawnStrategy(data.spawnStrategy);
         moveStrategy = StrategyFactory.CreateMovementStrategy(data.moveStrategy);
@@ -65,13 +74,20 @@ public class BossAI : CreatureAI
         dieStrategy = StrategyFactory.CreatDieStrategy(data.dieStrategy);
         hitStrategy = StrategyFactory.CreatHitStrategy(data.hitStrategy);
         groggyStrategy = StrategyFactory.CreateGroggyStrategy(data.groggyStrategy, data);
+
+        if (data is BossData bossData)
+        {
+            attackStrategy = new PatternBasedAttackStrategy();
+            ((PatternBasedAttackStrategy)attackStrategy).Initialize(bossData);
+        }
     }
-    private void InitializeSkillEffect(MonsterData data)
+
+    private void InitializeSkillEffect(ICreatureData data)
     {
         ISkillEffect skillEffect = StrategyFactory.CreateSkillEffect(
             data.skillEffectType,
             data,
-                this
+            this
         );
 
         if (skillEffect != null)
@@ -81,9 +97,10 @@ public class BossAI : CreatureAI
         }
         else
         {
-            Debug.LogError($"Failed to create skill effect for monster: {data.monsterName}");
+            Debug.LogError($"Failed to create skill effect for monster: {data.MonsterName}");
         }
     }
+
     protected override void Update()
     {
         base.Update();
@@ -93,7 +110,8 @@ public class BossAI : CreatureAI
 
     private void CheckPhaseTransition()
     {
-        float healthRatio = (float)monsterStatus.GetMonsterClass().CurrentHealth / monsterStatus.GetMonsterClass().MaxHealth;
+        IMonsterClass monster = creatureStatus.GetMonsterClass();
+        float healthRatio = (float)monster.CurrentHealth / monster.MaxHealth;
 
         for (int i = 0; i < phaseThresholds.Length; i++)
         {

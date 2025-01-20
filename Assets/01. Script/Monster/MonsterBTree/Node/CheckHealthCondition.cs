@@ -6,8 +6,8 @@ public class CheckHealthCondition : BTNode
 
     public override NodeStatus Execute()
     {
-        MonsterClass monster = owner.GetStatus().GetMonsterClass();
-        MonsterData data = monster.GetMonsterData();
+        IMonsterClass monster = owner.GetStatus().GetMonsterClass();
+        ICreatureData data = monster.GetMonsterData();
 
         // 이 몬스터가 체력 체크를 사용하지 않으면 바로 실패
         if (!data.useHealthRetreat)

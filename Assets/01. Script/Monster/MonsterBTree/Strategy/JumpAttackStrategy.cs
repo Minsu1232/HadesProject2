@@ -22,14 +22,14 @@ public class JumpAttackStrategy : BasePhysicalAttackStrategy
 
     }
 
-    public override bool CanAttack(float distanceToTarget, MonsterClass monsterData)
+    public override bool CanAttack(float distanceToTarget, IMonsterClass monsterData)
     {
         // 점프 공격은 좀 더 먼 거리에서 가능
         return distanceToTarget <= monsterData.CurrentAttackRange * 1.5f &&
                Time.time >= lastAttackTime + monsterData.CurrentAttackSpeed * 1.2f;
     }
 
-    private void CreateShockwave(Vector3 position, MonsterClass monsterData)
+    private void CreateShockwave(Vector3 position, IMonsterClass monsterData)
     {
         if (shockwaveEffect != null)
         {
@@ -55,7 +55,7 @@ public class JumpAttackStrategy : BasePhysicalAttackStrategy
         }
     }
 
-    public override void Attack(Transform transform, Transform target, MonsterClass monsterData)
+    public override void Attack(Transform transform, Transform target, IMonsterClass monsterData)
     {
         // 이미 점프 중이거나 공격 조건을 만족하지 못하면 공격하지 않음
         if (isJumping || !CanAttack(Vector3.Distance(transform.position, target.position), monsterData))

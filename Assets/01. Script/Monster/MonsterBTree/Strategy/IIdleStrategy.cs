@@ -2,7 +2,7 @@ using UnityEngine;
 
 public interface IIdleStrategy
 {
-    void OnIdle(Transform transform, MonsterClass monsterData);
-    bool ShouldChangeState(float distanceToPlayer, MonsterClass monsterData);
+    void OnIdle(Transform transform, IMonsterClass monsterData);
+    bool ShouldChangeState(float distanceToPlayer, IMonsterClass monsterData);
     void UpdateIdle();
 }

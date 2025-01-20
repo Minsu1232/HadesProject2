@@ -3,7 +3,7 @@ using UnityEngine;
 
 public class ProjectileSkillEffect : ISkillEffect
 {
-    private MonsterStatus monsterStatus;
+    private ICreatureStatus monsterStatus;
     private Transform target;
     private GameObject projectilePrefab;
     private GameObject hitEffect;
@@ -23,7 +23,7 @@ public class ProjectileSkillEffect : ISkillEffect
         this.hitEffect = hitEffect;
     }
 
-    public void Initialize(MonsterStatus status, Transform target)
+    public void Initialize(ICreatureStatus status, Transform target)
     {
         this.monsterStatus = status;
         this.target = target;

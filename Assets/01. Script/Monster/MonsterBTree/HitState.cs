@@ -29,23 +29,16 @@ public class HitState : MonsterBaseState
             return;
         }
         // 현재 공격 타입 확인
+
+
+        //공격 타입에 따라 카메라 히트 스톱을 다르게 처리
       
-      
-        // 공격 타입에 따라 카메라 히트 스톱을 다르게 처리
-        if (owner.GetStatus().GetAttackType() == AttackType.Normal)
-        {
             HitStopManager.TriggerHitStop(
                 monsterClass.CurrentCameraShakeDuration,
                 monsterClass.CurrentCameraShakeIntensity
             );
-        }
-        else if (owner.GetStatus().GetAttackType() == AttackType.Charge)
-        {
-            HitStopManager.TriggerHitStop(
-                monsterClass.CurrentCameraShakeDuration * 1.5f,
-                monsterClass.CurrentCameraShakeIntensity * 1.5f
-            );
-        }
+        
+       
         // 아머가 없으면 피격 처리 및 애니메이션 재생
         hitStrategy.OnHit(transform, monsterClass, damageAmount);
         animator.SetTrigger("GetHit");

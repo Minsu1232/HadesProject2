@@ -5,7 +5,7 @@ public class RetreatMovementStrategy : IMovementStrategy
     private Vector3 retreatDirection;
     private bool isRetreating;
 
-    public void Move(Transform transform, Transform target, MonsterClass monsterData)
+    public void Move(Transform transform, Transform target, IMonsterClass monsterData)
     {
         if (!isRetreating)
             CalculateRetreatDirection(transform, target);
@@ -29,7 +29,7 @@ public class RetreatMovementStrategy : IMovementStrategy
         retreatDirection = (transform.position - target.position).normalized;
     }
 
-    public bool ShouldChangeState(float distanceToTarget, MonsterClass monsterData)
+    public bool ShouldChangeState(float distanceToTarget, IMonsterClass monsterData)
     {
         // 충분히 멀어졌거나, 안전한 위치에 도달했을 때
         return distanceToTarget >= monsterData.CurrentAggroDropRange;

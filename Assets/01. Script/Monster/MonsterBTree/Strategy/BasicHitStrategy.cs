@@ -10,9 +10,9 @@ public class BasicHitStrategy : IHitStrategy
     
     public bool IsHitComplete => isHitComplete;
 
-    public void OnHit(Transform transform, MonsterClass monsterData, int damage)
+    public void OnHit(Transform transform, IMonsterClass monsterData, int damage)
     {
-        MonsterData data = monsterData.GetMonsterData();
+        ICreatureData data = monsterData.GetMonsterData();
         
         // 기본 몬스터는 모든 공격에 경직
         hitStunDuration = monsterData.CurrentHitStunDuration * data.hitStunMultiplier;

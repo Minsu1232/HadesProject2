@@ -2,10 +2,12 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AddressableAssets;
+using Sirenix.OdinInspector;
+
 
 [CreateAssetMenu(fileName = "MonsterData", menuName = "Monster/MonsterData")]
 
-public class MonsterData : ScriptableObject
+public class MonsterData : ScriptableObject, ICreatureData
 {
     public enum MonsterGrade
     {
@@ -15,97 +17,193 @@ public class MonsterData : ScriptableObject
         Boss        // 최종보스
     }
 
-    [Header("Basic Info")]
-    public string monsterName;
-    public MonsterGrade grade;
+    #region ICreatureData Implementation
+    [FoldoutGroup("Basic Info"), ShowInInspector]
+    public string MonsterName { get; set; }
 
-    [Header("Base Stats")]
-    public int initialHp;
-    public int initialAttackPower;
-    public float initialAttackSpeed;
-    public int initialSpeed;
-    public int initialDeffense;
-    public float attackRange;
-    public float dropChance;
-    public int dropItem;
-    public int armorValue;
+    [FoldoutGroup("Basic Info"), ShowInInspector]
+    public MonsterGrade Grade { get; set; }
 
-    [Header("Movement Settings")]
-    public int moveRange;    // 기본 배회 범위
-    public int chaseRange;   // 추적 감지 범위
-    public int aggroDropRange;  // 어그로가 풀리는 범위 (chaseRange보다 큰 값)
+    [FoldoutGroup("Base Stats"), ShowInInspector]
+    public int initialHp { get; set; }
 
-    [Header("Skill Settings")]
-    public float skillCooldown;   // 스킬 쿨타임
-    public float skillRange;      // 스킬 사용 가능 범위
-    public float skillDuration;   // 스킬 시전까지의 시간
-    public float skillDamage;     // 스킬 데미지
-    public float projectileSpeed; // 프리팹 이동 속도
-    public float rotateSpeed; // 호핑타입 회전 속도
-    public string skillSpawnPointTag = "SkillSpawnPoint";  // 프리팹에서 찾을 스킬 발사 위치의 태그
-    // 범위 스킬용 데이터
-    public GameObject areaEffectPrefab;
-    public GameObject ShorckEffectPrefab;
-    public float areaRadius;
+    [FoldoutGroup("Base Stats"), ShowInInspector]
+    public int initialAttackPower { get; set; }
 
-    // 0106 csv에 추가해야할사항
-    public float areaDuration = 5f;
-    [Header("Buff Settings")]
-    // 새로운 BuffData 추가
-    public BuffData buffData = new BuffData();
-    // 버프 스킬용 데이터
-    public BuffType buffType;
-    public float buffDuration;
-    public float buffValue;
-    public GameObject buffEffectPrefab;
+    [FoldoutGroup("Base Stats"), ShowInInspector]
+    public float initialAttackSpeed { get; set; }
 
-    // 소환 스킬용 데이터
-    public GameObject summonPrefab;
-    public int summonCount;
-    public float summonRadius;
-    [Header("State Durations")]
+    [FoldoutGroup("Base Stats"), ShowInInspector]
+    public int initialSpeed { get; set; }
 
-    public float hitStunDuration; // 피격시 경직 시간
-    public float deathDuration;   // 사망 연출 시간
-    public float spawnDuration;   // 스폰 연출 시간
-    [Header("Hit Settings")]
+    [FoldoutGroup("Base Stats"), ShowInInspector]
+    public int initialDeffense { get; set; }
 
-    public float superArmorThreshold;    // 슈퍼아머 발동 기준 데미지
-    public float hitStunMultiplier = 1f; // 경직 시간 배율 (기본:1, 엘리트:0.5, 미니보스:0.35, 보스:0.25)
-    public float knockbackForce;         // 넉백 강도
-    public float cameraShakeIntensity;   // 카메라 흔들림 강도
-    public float cameraShakeDuration;    // 카메라 흔들림 지속시간
+    [FoldoutGroup("Base Stats"), ShowInInspector]
+    public float attackRange { get; set; }
 
-    [Header("AI Strategies")]
-    public SpawnStrategyType spawnStrategy = SpawnStrategyType.Basic;
-    public MovementStrategyType moveStrategy = MovementStrategyType.Basic;
-    public AttackStrategyType attackStrategy = AttackStrategyType.Basic;
-    public IdleStrategyType idleStrategy = IdleStrategyType.Basic;
-    public SkillStrategyType skillStrategy = SkillStrategyType.Basic;
-    public DieStrategyType dieStrategy = DieStrategyType.Basic;
-    public HitStrategyType hitStrategy = HitStrategyType.Basic;
-    public ProjectileMovementType projectileType = ProjectileMovementType.Straight;
-    public ProjectileImpactType projectileImpactType = ProjectileImpactType.Basic;
-    public SkillEffectType skillEffectType;
-    public GroggyStrategyType groggyStrategy;
+    [FoldoutGroup("Base Stats"), ShowInInspector]
+    public float dropChance { get; set; }
 
-    [Header("Reference")]
-    public string monsterPrefabKey; // Prefab Addressables Key
-    public GameObject projectilePrefab;
-    public GameObject hitEffect;
+    [FoldoutGroup("Base Stats"), ShowInInspector]
+    public int dropItem { get; set; }
 
+    [FoldoutGroup("Base Stats"), ShowInInspector]
+    public int armorValue { get; set; }
 
-    [Header("Behavior Conditions")]
-    public bool useHealthRetreat;           // 체력기반 도주 사용
-    public float healthRetreatThreshold;    // 도주 시작 체력 비율
-    public bool isPhaseChange;             // 페이즈 전환용 도주인지
+    [FoldoutGroup("Movement Settings"), ShowInInspector]
+    public int moveRange { get; set; }
 
-    [Header("Elite Visual")]
-    public Material eliteOutlineMaterial;
+    [FoldoutGroup("Movement Settings"), ShowInInspector]
+    public int chaseRange { get; set; }
 
-    public float shockwaveRadius;
-    public float groggyTime;
+    [FoldoutGroup("Movement Settings"), ShowInInspector]
+    public int aggroDropRange { get; set; }
+
+    [FoldoutGroup("Skill Settings"), ShowInInspector]
+    public float skillCooldown { get; set; }
+
+    [FoldoutGroup("Skill Settings"), ShowInInspector]
+    public float skillRange { get; set; }
+
+    [FoldoutGroup("Skill Settings"), ShowInInspector]
+    public float skillDuration { get; set; }
+
+    [FoldoutGroup("Skill Settings"), ShowInInspector]
+    public float skillDamage { get; set; }
+
+    [FoldoutGroup("Skill Settings"), ShowInInspector]
+    public float projectileSpeed { get; set; }
+
+    [FoldoutGroup("Skill Settings"), ShowInInspector]
+    public float rotateSpeed { get; set; }
+
+    [FoldoutGroup("Skill Settings"), ShowInInspector]
+    public string skillSpawnPointTag { get; set; }
+
+    [FoldoutGroup("Skill Settings"), ShowInInspector]
+    public GameObject areaEffectPrefab { get; set; }
+
+    [FoldoutGroup("Skill Settings"), ShowInInspector]
+    public GameObject shorckEffectPrefab { get; set; }
+
+    [FoldoutGroup("Skill Settings"), ShowInInspector]
+    public float areaRadius { get; set; }
+
+    [FoldoutGroup("Skill Settings"), ShowInInspector]
+    public float areaDuration { get; set; }
+
+    
+    [FoldoutGroup("Buff Settings"), ShowInInspector]
+    public BuffData buffData { get; set; } = new BuffData();
+
+    [FoldoutGroup("Buff Settings"), ShowInInspector]
+    public BuffType buffType { get; set; }
+
+    [FoldoutGroup("Buff Settings"), ShowInInspector]
+    public float buffDuration { get; set; }
+
+    [FoldoutGroup("Buff Settings"), ShowInInspector]
+    public float buffValue { get; set; }
+
+    [FoldoutGroup("Buff Settings"), ShowInInspector]
+    public GameObject buffEffectPrefab { get; set; }
+
+    [FoldoutGroup("Summon Settings"), ShowInInspector]
+    public GameObject summonPrefab { get; set; }
+
+    [FoldoutGroup("Summon Settings"), ShowInInspector]
+    public int summonCount { get; set; }
+
+    [FoldoutGroup("Summon Settings"), ShowInInspector]
+    public float summonRadius { get; set; }
+
+    [FoldoutGroup("State Durations"), ShowInInspector]
+    public float hitStunDuration { get; set; }
+
+    [FoldoutGroup("State Durations"), ShowInInspector]
+    public float deathDuration { get; set; }
+
+    [FoldoutGroup("State Durations"), ShowInInspector]
+    public float spawnDuration { get; set; }
+
+    [FoldoutGroup("Hit Settings"), ShowInInspector]
+    public float superArmorThreshold { get; set; }
+
+    [FoldoutGroup("Hit Settings"), ShowInInspector]
+    public float hitStunMultiplier { get; set; }
+
+    [FoldoutGroup("Hit Settings"), ShowInInspector]
+    public float knockbackForce { get; set; }
+
+    [FoldoutGroup("Hit Settings"), ShowInInspector]
+    public float cameraShakeIntensity { get; set; }
+
+    [FoldoutGroup("Hit Settings"), ShowInInspector]
+    public float cameraShakeDuration { get; set; }
+
+    [FoldoutGroup("Strategies"), ShowInInspector]
+    public SpawnStrategyType spawnStrategy { get; set; }
+
+    [FoldoutGroup("Strategies"), ShowInInspector]
+    public MovementStrategyType moveStrategy { get; set; }
+
+    [FoldoutGroup("Strategies"), ShowInInspector]
+    public AttackStrategyType attackStrategy { get; set; }
+
+    [FoldoutGroup("Strategies"), ShowInInspector]
+    public IdleStrategyType idleStrategy { get; set; }
+
+    [FoldoutGroup("Strategies"), ShowInInspector]
+    public SkillStrategyType skillStrategy { get; set; }
+
+    [FoldoutGroup("Strategies"), ShowInInspector]
+    public DieStrategyType dieStrategy { get; set; }
+
+    [FoldoutGroup("Strategies"), ShowInInspector]
+    public HitStrategyType hitStrategy { get; set; }
+
+    [FoldoutGroup("Strategies"), ShowInInspector]
+    public ProjectileMovementType projectileType { get; set; }
+
+    [FoldoutGroup("Strategies"), ShowInInspector]
+    public ProjectileImpactType projectileImpactType { get; set; }
+
+    [FoldoutGroup("Strategies"), ShowInInspector]
+    public SkillEffectType skillEffectType { get; set; }
+
+    [FoldoutGroup("Strategies"), ShowInInspector]
+    public GroggyStrategyType groggyStrategy { get; set; }
+
+    [FoldoutGroup("References"), ShowInInspector]
+    public string monsterPrefabKey { get; set; }
+
+    [FoldoutGroup("References"), ShowInInspector]
+    public GameObject projectilePrefab { get; set; }
+
+    [FoldoutGroup("References"), ShowInInspector]
+    public GameObject hitEffect { get; set; }
+
+    [FoldoutGroup("Behavior Conditions"), ShowInInspector]
+    public bool useHealthRetreat { get; set; }
+
+    [FoldoutGroup("Behavior Conditions"), ShowInInspector]
+    public float healthRetreatThreshold { get; set; }
+
+    [FoldoutGroup("Behavior Conditions"), ShowInInspector]
+    public bool isPhaseChange { get; set; }
+
+    [FoldoutGroup("Visual"), ShowInInspector]
+    public Material eliteOutlineMaterial { get; set; }
+
+    [FoldoutGroup("Visual"), ShowInInspector]
+    public float shockwaveRadius { get; set; }
+
+    [FoldoutGroup("Visual"), ShowInInspector]
+    public float groggyTime { get; set; }
+    #endregion
 }
+
 public enum SpawnStrategyType
 {
     Basic,
@@ -127,12 +225,14 @@ public enum AttackStrategyType
 {
     Basic,
     Charge,
+    Rush,
     Jump,
     Melee,         // 근접 공격
     Ranged,        // 원거리 공격
     AoE,           // 범위 공격
     Combo          // 연속 공격
 }
+
 public enum HitStrategyType
 {
     Basic,
@@ -140,6 +240,7 @@ public enum HitStrategyType
     MiniBoss,   // 중간보스
     Boss        // 최종보스
 }
+
 public enum IdleStrategyType
 {
     Basic,
@@ -156,6 +257,7 @@ public enum SkillStrategyType
     Summon,        // 소환
     AreaControl    // 영역 제어
 }
+
 public enum DieStrategyType
 {
     Basic,
@@ -164,6 +266,7 @@ public enum DieStrategyType
     Resurrection,  // 부활 가능
     DropItem       // 특별 아이템 드랍
 }
+
 public enum ProjectileMovementType
 {
     None,
@@ -171,6 +274,7 @@ public enum ProjectileMovementType
     Homing,
     Parabolic    // 추가
 }
+
 public enum SkillEffectType
 {
     Projectile,
@@ -179,6 +283,7 @@ public enum SkillEffectType
     Summon,
     // ... 다른 이펙트 타입들
 }
+
 public enum ProjectileImpactType
 {
     Basic,
@@ -187,6 +292,7 @@ public enum ProjectileImpactType
     //Freeze
     // 추가 가능
 }
+
 public enum GroggyStrategyType
 {
     Basic,
@@ -195,6 +301,7 @@ public enum GroggyStrategyType
     //Freeze
     // 추가 가능
 }
+
 public enum BuffType
 {
     None,
@@ -222,5 +329,3 @@ public class BuffData
     public float[] durations;
     public float[] values;
 }
-
-

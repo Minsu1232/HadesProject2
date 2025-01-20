@@ -9,7 +9,7 @@ using UnityEngine;
 using static AttackData;
 using static IMonsterState;
 
-public class MonsterStatus : MonoBehaviour,IDamageable
+public class MonsterStatus : MonoBehaviour,IDamageable, ICreatureStatus
 {
     [SerializeField] CreatureAI creatureAI;
     [SerializeField] private Transform skillSpawnPoint;
@@ -17,9 +17,8 @@ public class MonsterStatus : MonoBehaviour,IDamageable
     private bool isDie = false;
     [FoldoutGroup("Monster Stats")]
     [ReadOnly]
-    [ShowInInspector]
-    protected MonsterClass monsterClass;
-
+    [ShowInInspector]    
+    protected IMonsterClass monsterClass;  // MonsterClass 대신 인터페이스 사용
     [FoldoutGroup("Current Stats"), ReadOnly]
     [ShowInInspector]
     public int CurrentHealth => monsterClass?.CurrentHealth ?? 0;
@@ -96,7 +95,7 @@ public class MonsterStatus : MonoBehaviour,IDamageable
         }
     }
 
-    public virtual void Initialize(MonsterClass monster)
+    public virtual void Initialize(IMonsterClass monster)
     {
         monsterClass = monster;
         
@@ -105,15 +104,15 @@ public class MonsterStatus : MonoBehaviour,IDamageable
             //gameObject.AddComponent<BossAI>() :
             gameObject.AddComponent<BasicCreatureAI>();
     }
-    public AttackType GetAttackType()
-    {
-        return monsterClass.IsBasicAttack() ? AttackType.Normal : AttackType.Charge;
-    }
+    //public AttackType GetAttackType()
+    //{
+    //    //return monsterClass.IsBasicAttack() ? AttackType.Normal : AttackType.Charge;
+    //}
     public virtual void TakeDamage(int damage, AttackType attackType)
     {
         if (isDie) return;
         Debug.Log($"{monsterClass.CurrentArmor}");
-        monsterClass.TakeDamage(damage, GetAttackType());
+        monsterClass.TakeDamage(damage);
         Debug.Log($"{monsterClass.CurrentArmor}");
         //Debug.Log($"맞기전 체력 아머 {monsterClass.CurrentHealth + damage},  맞은 후 체력 {monsterClass.CurrentHealth}");
 
@@ -138,15 +137,15 @@ public class MonsterStatus : MonoBehaviour,IDamageable
     }
     public void TakeDotDamage(int dotDamage)
     {
-        if (!isDie)
-        {
-            monsterClass.TakeDotDamage(dotDamage);
+        //if (!isDie)
+        //{
+        //    monsterClass.TakeDotDamage(dotDamage);
 
-            if (monsterClass.CurrentHealth <= 0)
-            {    
-                Die();
-            }
-        }
+        //    if (monsterClass.CurrentHealth <= 0)
+        //    {    
+        //        Die();
+        //    }
+        //}
 
     }
     public Transform GetSkillSpawnPoint()
@@ -163,7 +162,7 @@ public class MonsterStatus : MonoBehaviour,IDamageable
         }
 
     }
-    public MonsterClass GetMonsterClass()
+    public IMonsterClass GetMonsterClass()
     {
         return monsterClass;
     }
@@ -325,5 +324,12 @@ public class MonsterStatus : MonoBehaviour,IDamageable
     protected virtual void OnDestroy()
     {
 
+    }
+
+  
+
+    IMonsterClass ICreatureStatus.GetMonsterClass()
+    {
+        return monsterClass;
     }
 }

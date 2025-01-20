@@ -5,7 +5,7 @@ public class BasicIdleStrategy : IIdleStrategy
     private float detectionCheckInterval = 0.5f;  // 감지 체크 주기
     private float nextDetectionCheck;
 
-    public void OnIdle(Transform transform, MonsterClass monsterData)
+    public void OnIdle(Transform transform, IMonsterClass monsterData)
     {
         nextDetectionCheck = Time.time + detectionCheckInterval;
     }
@@ -16,7 +16,7 @@ public class BasicIdleStrategy : IIdleStrategy
         // 나중에 Idle 애니메이션이나 대기 모션 추가 가능
     }
 
-    public bool ShouldChangeState(float distanceToPlayer, MonsterClass monsterData)
+    public bool ShouldChangeState(float distanceToPlayer, IMonsterClass monsterData)
     {
         if (Time.time >= nextDetectionCheck)
         {

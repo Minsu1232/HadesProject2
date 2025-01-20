@@ -87,10 +87,10 @@ MonoBehaviour:
   canSummonMinions: 0
   minionPrefabs: []
   maxMinionCount: 0
-  summonRadius: 0
   summonInterval: 0
   phaseTransitionEffects: []
   rageEffect: {fileID: 0}
+  spawnEffect: {fileID: 0}
   showHealthBar: 0
   showPhaseNames: 0
   phaseColors: []
@@ -100,6 +100,5 @@ MonoBehaviour:
   defaultCameraDistance: 0
   defaultCameraHeight: 0
   defaultCameraFOV: 0
-  superArmorThreshold: 0
   globalStunResistance: 0
   knockbackResistance: 0

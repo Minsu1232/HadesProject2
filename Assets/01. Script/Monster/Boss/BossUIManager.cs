@@ -1,5 +1,6 @@
 // BossUIManager.cs
 using DG.Tweening;
+using System.Collections;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
@@ -28,21 +29,28 @@ public class BossUIManager : MonsterUIManager
 
     protected override void Start()
     {
-        base.Start();
+        if (bossMonster == null)
+        {
+            base.Start();
+            Initialize(GetComponent<MonsterStatus>().GetMonsterClass());
+        }
+    }
+    public override void Initialize(IMonsterClass monster)
+    {
+        base.Initialize(monster);
 
-        bossMonster = monsterStatus.GetMonsterClass() as BossMonster;
+        bossMonster = monster as BossMonster;
         if (bossMonster != null)
         {
             bossData = bossMonster.GetMonsterData() as BossData;
             InitializeBossUI();
         }
     }
-
     private void InitializeBossUI()
     {
         if (bossNameText != null)
         {
-            bossNameText.text = bossData.monsterName;
+            bossNameText.text = bossData.MonsterName;
             if (bossData.showPhaseNames)
             {
                 phaseNameText.gameObject.SetActive(true);
@@ -51,7 +59,7 @@ public class BossUIManager : MonsterUIManager
         }
 
         InitializePhaseMarkers();
-        SetupRageModeUI(false);
+        SetRageModeUI(false);
     }
 
     private void InitializePhaseMarkers()
@@ -60,7 +68,7 @@ public class BossUIManager : MonsterUIManager
         {
             for (int i = 0; i < phaseThresholdMarkers.Length && i < bossData.phaseData.Count; i++)
             {
-                float threshold = bossData.phaseData[i].healthThreshold;
+                float threshold = bossData.phaseData[i].phaseTransitionThreshold;
                 phaseThresholdMarkers[i].fillAmount = threshold;
 
                 if (bossData.phaseColors != null && i < bossData.phaseColors.Length)
@@ -71,12 +79,22 @@ public class BossUIManager : MonsterUIManager
         }
     }
 
+    // 페이즈 전환 시 호출되는 메서드 (이펙트와 함께 표시)
     public void UpdatePhase(int newPhase)
     {
         UpdatePhaseText(newPhase);
-        PlayPhaseTransitionEffect(newPhase);
+        PlayPhaseTransitionEffect(newPhase);  // 전환 이펙트 포함
     }
 
+    // 일반적인 UI 업데이트 (체력 변화 등에 따른 갱신)
+    public void UpdatePhaseUI()
+    {
+        if (bossMonster != null)
+        {
+            UpdateHealthUI(bossMonster.CurrentHealth);  // 체력바 갱신
+            UpdatePhaseText(bossMonster.CurrentPhase);  // 페이즈 텍스트만 갱신 (이펙트 없음)
+        }
+    }
     private void UpdatePhaseText(int phase)
     {
         if (phaseNameText != null && bossData.phaseData != null && phase < bossData.phaseData.Count)
@@ -117,8 +135,8 @@ public class BossUIManager : MonsterUIManager
             healthBar.DOColor(Color.red, 0.3f).SetLoops(-1, LoopType.Yoyo);
         }
     }
-
-    public void SetupRageModeUI(bool active)
+ 
+    public void SetRageModeUI(bool active)
     {
         if (rageModeGroup != null)
         {
@@ -166,8 +184,8 @@ public class BossUIManager : MonsterUIManager
         base.OnDestroy();
     }
 
-    //protected override void AnimateDamageText(GameObject textObj)
-    //{
-    //    StartCoroutine(base.AnimateDamageText(textObj));
-    //}
+    protected override IEnumerator AnimateDamageText(GameObject textObj)
+    {
+        yield return StartCoroutine(base.AnimateDamageText(textObj));
+    }
 }

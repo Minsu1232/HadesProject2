@@ -6,7 +6,7 @@ public class EliteMonster : MonsterClass
 {
     private List<IEliteAbility> eliteAbilities = new List<IEliteAbility>();
 
-    public EliteMonster(MonsterData data) : base(data)
+    public EliteMonster(ICreatureData data) : base(data)
     {
         InitializeEliteMonster();
     }

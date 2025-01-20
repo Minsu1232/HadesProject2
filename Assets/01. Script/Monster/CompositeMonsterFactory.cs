@@ -10,8 +10,11 @@ public class CompositeMonsterFactory : MonsterFactoryBase
     {
         this.factories = factories;
     }
-
-    public override MonsterClass CreateMonster(Vector3 spawnPosition, Action<MonsterClass> onMonsterCreated)
+    protected override Type GetDataType()
+    {
+        return typeof(MonsterData);  // 일반 몬스터는 MonsterData 사용
+    }
+    public override IMonsterClass CreateMonster(Vector3 spawnPosition, Action<IMonsterClass> onMonsterCreated)
     {
         if (factories.Length > 0)
         {
@@ -21,7 +24,7 @@ public class CompositeMonsterFactory : MonsterFactoryBase
         return null;
     }
 
-    protected override MonsterClass CreateMonsterInstance(MonsterData data) => null;
+    protected override IMonsterClass CreateMonsterInstance(ICreatureData data) => null;
     protected override string GetMonsterDataKey() => "";
     protected override bool IsEliteAvailable() => false;
 

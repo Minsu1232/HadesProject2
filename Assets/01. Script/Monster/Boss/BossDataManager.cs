@@ -13,11 +13,14 @@ public class BossDataManager : Singleton<BossDataManager>
     private Dictionary<int, List<Dictionary<string, string>>> bossPhaseData = new Dictionary<int, List<Dictionary<string, string>>>();
     private Dictionary<int, List<Dictionary<string, string>>> bossSkillData = new Dictionary<int, List<Dictionary<string, string>>>();
     private Dictionary<int, List<Dictionary<string, string>>> bossCutsceneData = new Dictionary<int, List<Dictionary<string, string>>>();
-
+    private Dictionary<int, List<Dictionary<string, string>>> bossPatternData = new Dictionary<int, List<Dictionary<string, string>>>();
+    private Dictionary<int, List<Dictionary<string, string>>> bossPatternStepData = new Dictionary<int, List<Dictionary<string, string>>>();
     private string bossBasePath;
     private string bossPhasePath;
     private string bossSkillPath;
     private string bossCutscenePath;
+    private string bossPatternPath;
+    private string bossPatternStepPath;
 
     private void Awake()
     {
@@ -25,13 +28,16 @@ public class BossDataManager : Singleton<BossDataManager>
         bossPhasePath = Path.Combine(Application.persistentDataPath, "BossPhases.csv");
         bossSkillPath = Path.Combine(Application.persistentDataPath, "BossSkills.csv");
         bossCutscenePath = Path.Combine(Application.persistentDataPath, "BossCutscenes.csv");
+        bossPatternPath = Path.Combine(Application.persistentDataPath, "BossPatterns.csv");
+        bossPatternStepPath = Path.Combine(Application.persistentDataPath, "BossPatternSteps.csv");
 
         CopyCSVFromStreamingAssets();
     }
 
     private void CopyCSVFromStreamingAssets()
     {
-        string[] csvFiles = new string[] { "BossBase.csv", "BossPhases.csv", "BossSkills.csv", "BossCutscenes.csv" };
+        string[] csvFiles = new string[] { "BossBase.csv", "BossPhases.csv", "BossSkills.csv", "BossCutscenes.csv","BossPatterns.csv",
+    "BossPatternSteps.csv"  };
         foreach (string fileName in csvFiles)
         {
             string streamingPath = Path.Combine(Application.streamingAssetsPath, fileName);
@@ -60,9 +66,63 @@ public class BossDataManager : Singleton<BossDataManager>
         await LoadBossPhaseData();
         await LoadBossSkillData();
         await LoadBossCutsceneData();
+        await LoadBossPatternData();      // 추가
+        await LoadBossPatternStepData();  // 추가
         await InitializeBossData();
     }
+    private async Task LoadBossPatternData()
+    {
+        if (!File.Exists(bossPatternPath)) return;
 
+        string[] lines = File.ReadAllLines(bossPatternPath);
+        string[] headers = lines[0].Split(',');
+
+        for (int i = 1; i < lines.Length; i++)
+        {
+            string[] values = lines[i].Split(',');
+            int bossId = int.Parse(values[0]);
+
+            if (!bossPatternData.ContainsKey(bossId))
+            {
+                bossPatternData[bossId] = new List<Dictionary<string, string>>();
+            }
+
+            var patternDict = new Dictionary<string, string>();
+            for (int j = 0; j < headers.Length; j++)
+            {
+                patternDict[headers[j]] = values[j];
+            }
+
+            bossPatternData[bossId].Add(patternDict);
+        }
+    }
+
+    private async Task LoadBossPatternStepData()
+    {
+        if (!File.Exists(bossPatternStepPath)) return;
+
+        string[] lines = File.ReadAllLines(bossPatternStepPath);
+        string[] headers = lines[0].Split(',');
+
+        for (int i = 1; i < lines.Length; i++)
+        {
+            string[] values = lines[i].Split(',');
+            int patternId = int.Parse(values[0]);
+
+            if (!bossPatternStepData.ContainsKey(patternId))
+            {
+                bossPatternStepData[patternId] = new List<Dictionary<string, string>>();
+            }
+
+            var stepDict = new Dictionary<string, string>();
+            for (int j = 0; j < headers.Length; j++)
+            {
+                stepDict[headers[j]] = values[j];
+            }
+
+            bossPatternStepData[patternId].Add(stepDict);
+        }
+    }
     private async Task LoadBossBaseData()
     {
         if (!File.Exists(bossBasePath))
@@ -185,7 +245,7 @@ public class BossDataManager : Singleton<BossDataManager>
             {
                 UpdateBossData(bossData, bossId);
                 bossDatabase[bossId] = bossData;
-                Debug.Log($"보스 로드: ID {bossId}, 이름 {bossData.monsterName}");
+                Debug.Log($"보스 로드: ID {bossId}, 이름 {bossData.MonsterName}");
             }
             else
             {
@@ -215,17 +275,62 @@ public class BossDataManager : Singleton<BossDataManager>
         //{
         //    UpdateBossCutsceneData(bossData, cutscenes);
         //}
+        if (bossPatternData.TryGetValue(bossId, out var patterns))
+        {
+            UpdateBossPatternData(bossData, patterns);
+        }
     }
+    private void UpdateBossPatternData(BossData bossData, List<Dictionary<string, string>> patterns)
+    {
+        foreach (var pattern in patterns)
+        {
+            int patternId = int.Parse(pattern["PatternID"]);
+            AttackPatternData patternData = new AttackPatternData
+            {
+                patternName = pattern["PatternName"],
+                patternWeight = float.Parse(pattern["PatternWeight"]),
+                phaseNumber = int.Parse(pattern["PhaseNumber"]),
+                patternCooldown = float.Parse(pattern["PatternCooldown"]),
+                warningDuration = float.Parse(pattern["WarningDuration"]),
+                healthThresholdMin = float.Parse(pattern["HealthThresholdMin"]),
+                healthThresholdMax = float.Parse(pattern["HealthThresholdMax"]),
+                warningMessage = pattern["WarningMessage"]
+            };
 
+            if (bossPatternStepData.TryGetValue(patternId, out var steps))
+            {
+                foreach (var step in steps)
+                {
+                    AttackStepData stepData = new AttackStepData
+                    {
+                        attackType = (AttackStrategyType)Enum.Parse(typeof(AttackStrategyType), step["AttackType"]),
+                        stepDelay = float.Parse(step["StepDelay"]),
+                        hasMiniGame = bool.Parse(step["HasMiniGame"]),
+                        miniGameType = (MiniGameType)Enum.Parse(typeof(MiniGameType), step["MiniGameType"]),
+                        waitForMiniGame = bool.Parse(step["WaitForMiniGame"]),
+                        miniGameDifficulty = float.Parse(step["MiniGameDifficulty"])
+                    };
+
+                    patternData.steps.Add(stepData);
+                }
+            }
+
+            // PhaseData에 패턴 추가
+            if (patternData.phaseNumber <= bossData.phaseData.Count)
+            {
+                bossData.phaseData[patternData.phaseNumber - 1].availablePatterns.Add(patternData);
+            }
+        }
+    }
     private void UpdateBossBaseData(BossData bossData, Dictionary<string, string> baseData)
     {
-        bossData.monsterName = baseData["Name"];
+        bossData.MonsterName = baseData["Name"];
         bossData.initialHp = int.Parse(baseData["HP"]);
         bossData.initialAttackPower = int.Parse(baseData["AttackPower"]);
         bossData.initialAttackSpeed = float.Parse(baseData["AttackSpeed"]);
         bossData.initialSpeed = int.Parse(baseData["Speed"]);
         bossData.attackRange = float.Parse(baseData["BasicAttackRange"]);
-        bossData.grade = (MonsterGrade)Enum.Parse(typeof(MonsterGrade), baseData["Grade"]);
+        bossData.Grade = (MonsterGrade)Enum.Parse(typeof(MonsterGrade), baseData["Grade"]);
         bossData.monsterPrefabKey = baseData["PrefabPath"];
         bossData.moveRange = int.Parse(baseData["MoveRange"]);
         bossData.chaseRange = int.Parse(baseData["ChaseRange"]);
@@ -241,6 +346,7 @@ public class BossDataManager : Singleton<BossDataManager>
         bossData.rageModeThreshold = float.Parse(baseData["RageModeThreshold"]);    
         
         bossData.showPhaseNames = bool.Parse(baseData["ShowPhaseNames"]);
+        
     }
 
     private void UpdateBossPhaseData(BossData bossData, List<Dictionary<string, string>> phases)
@@ -251,7 +357,7 @@ public class BossDataManager : Singleton<BossDataManager>
             PhaseData phaseData = new PhaseData
             {
                 phaseName = phase["PhaseName"],
-                healthThreshold = float.Parse(phase["HealthThreshold"]),
+                phaseTransitionThreshold = float.Parse(phase["HealthThreshold"]),
                 transitionDuration = float.Parse(phase["TransitionDuration"]),
                 isInvulnerableDuringTransition = bool.Parse(phase["IsInvulnerableDuringTransition"]),
 
@@ -344,5 +450,7 @@ public class BossDataManager : Singleton<BossDataManager>
         bossPhaseData.Clear();
         bossSkillData.Clear();
         bossCutsceneData.Clear();
+        bossPatternData.Clear();
+        bossPatternStepData.Clear();
     }
 }

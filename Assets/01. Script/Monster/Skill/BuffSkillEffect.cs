@@ -5,7 +5,7 @@ public class BuffSkillEffect : ISkillEffect
     private BuffType[] buffTypes;
     private float[] durations;
     private float[] values;
-    private MonsterStatus monsterStatus;
+    private ICreatureStatus monsterStatus;
     private Transform target;
     private GameObject buffPrefab;
     bool isNopr;
@@ -18,7 +18,7 @@ public class BuffSkillEffect : ISkillEffect
         this.buffPrefab = buffPrefab;
     }
 
-    public void Initialize(MonsterStatus status, Transform target)
+    public void Initialize(ICreatureStatus status, Transform target)
     {
         this.monsterStatus = status;
         this.target = target;
@@ -150,10 +150,9 @@ public class BuffSkillEffect : ISkillEffect
     }
 
     private void SpawnBuffEffect()
-    {
-
-        GameObject effect = GameObject.Instantiate(buffPrefab, monsterStatus.transform.position, Quaternion.identity);
-        GameObject.Destroy(effect, 2f); // 2초 후 이펙트 제거
+    {       
+        //GameObject effect = GameObject.Instantiate(buffPrefab, monsterStatus.transform.position, Quaternion.identity);
+        //GameObject.Destroy(effect, 2f); // 2초 후 이펙트 제거
 
     }
 

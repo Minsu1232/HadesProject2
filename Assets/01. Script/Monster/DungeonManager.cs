@@ -9,7 +9,7 @@ using UnityEngine;
 public class DungeonManager : Singleton<DungeonManager>
 {
     private MonsterFactoryBase monsterFactory;
-    private MonsterClass currentMonster;
+    private IMonsterClass currentMonster;
     [SerializeField] private Transform player;
 
     // 던전 타입을 enum으로 정의
@@ -18,7 +18,8 @@ public class DungeonManager : Singleton<DungeonManager>
         Test,
         SpiderTest,
         SlimeTest,
-        JumpTest
+        JumpTest,
+        BossDungeon  // 보스 던전 추가
 
     }
 
@@ -58,7 +59,8 @@ public class DungeonManager : Singleton<DungeonManager>
                 );
             case "JumpTest":
                 return new SlimeMonsterFactory();
-
+            case "bossdungeon":
+                return new BossFactory(1);  // 보스 ID 전달
             default:
                 Debug.LogError($"알 수 없는 던전 타입입니다: {dungeonType}");
                 return null;
@@ -69,13 +71,13 @@ public class DungeonManager : Singleton<DungeonManager>
     {
         monsterFactory.CreateMonster(spawnPosition, monster =>
         {
-            Debug.Log($"Monster {monster.GetName()} 생성 완료");         
+               
      
 
             currentMonster = monster; // 현재 생성된 몬스터를 필드에 저장
         });
     }
-    public MonsterClass GetMonsterClass()
+    public IMonsterClass GetMonsterClass()
     {
         return currentMonster;
     }
