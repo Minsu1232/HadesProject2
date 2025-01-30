@@ -9,6 +9,8 @@ public interface IMonsterState
         Skill,
         Hit,
         Groggy,
+        PhaseTransition,
+        Gimmick,
         Die
     }
     void Enter();

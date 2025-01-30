@@ -310,7 +310,7 @@ public class MonsterDataManager : Singleton<MonsterDataManager>
             string[] buffTypes = skills["BuffTypes"].Split('|');
             string[] buffDurations = skills["BuffDurations"].Split('|');
             string[] buffValues = skills["BuffValues"].Split('|');
-            Debug.Log("지나가요ㅕ" + buffTypes.Length);
+           
             monsterData.buffData.buffTypes = new BuffType[buffTypes.Length];
             monsterData.buffData.durations = new float[buffDurations.Length];
             monsterData.buffData.values = new float[buffValues.Length];

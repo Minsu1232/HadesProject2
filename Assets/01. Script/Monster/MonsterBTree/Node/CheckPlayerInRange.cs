@@ -15,7 +15,7 @@ public class CheckPlayerInRange : BTNode
         // 추적 범위 안에 있는지 체크
         if (distanceToPlayer <= monster.CurrentChaseRange)
         {
-            Debug.Log("추저ㄱ범위");
+            
             return NodeStatus.Success;
         }
 

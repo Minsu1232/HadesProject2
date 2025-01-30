@@ -18,7 +18,7 @@ public class PlayerClass : ICreature, IDamageable
     public WeaponType weaponType;
     protected IWeapon currentWeapon;
     protected ICharacterAttack characterAttack;
-
+    public bool isInvicible = false;
     public PlayerClassData _playerClassData;
 
     public Transform playerTransform;
@@ -95,21 +95,21 @@ public class PlayerClass : ICreature, IDamageable
     #endregion
 
     #region 스탯 변동 매서드
-    public void ModifyPower(int healthAmount = 0,int maxHealth = 0, int manaAmount = 0, int attackAmount = 0, int attackSpeedAmount = 0, float speedAmount = 0, float criticalChanceAmount = 0, float DamageRecive = 0)
+    public void ModifyPower(int healthAmount = 0,int maxHealth = 0, int manaAmount = 0, int attackAmount = 0, int attackSpeedAmount = 0, float speedAmount = 0, float criticalChanceAmount = 0, float damageReceive = 0)
     {
-        PlayerStats.Health += healthAmount;
-        PlayerStats.MaxHealth += maxHealth;
-        PlayerStats.Mana += manaAmount;
-        PlayerStats.AttackPower += attackAmount;
-        PlayerStats.AttackSpeed += attackSpeedAmount;
-        PlayerStats.Speed += speedAmount;
-        PlayerStats.CriticalChance += criticalChanceAmount;
-        PlayerStats.DamageReceiveRate += DamageRecive;
+        PlayerStats.Health = Mathf.Clamp(PlayerStats.Health + healthAmount, 0, PlayerStats.MaxHealth);
+        PlayerStats.MaxHealth = Mathf.Max(PlayerStats.MaxHealth + maxHealth, 1);
+        PlayerStats.Mana = Mathf.Max(PlayerStats.Mana + manaAmount, 0);
+        PlayerStats.AttackPower = Mathf.Max(PlayerStats.AttackPower + attackAmount, 0);
+        PlayerStats.AttackSpeed = Mathf.Max(PlayerStats.AttackSpeed + attackSpeedAmount, 1);
+        PlayerStats.Speed = Mathf.Max(PlayerStats.Speed + speedAmount, 0);
+        PlayerStats.CriticalChance = Mathf.Clamp(PlayerStats.CriticalChance + criticalChanceAmount, 0, 100);
+        PlayerStats.DamageReceiveRate = Mathf.Max(PlayerStats.DamageReceiveRate + damageReceive, 0);
     }
 
-    public void ResetPower(bool health,bool maxHealth ,bool mana,bool attackPw,bool attackSp,bool speed,bool critical)
+    public void ResetPower(bool health,bool maxHealth ,bool mana,bool attackPw,bool attackSp,bool speed,bool critical,bool damageReceive)
     {
-        PlayerStats.ResetStats(health,maxHealth,mana,attackPw,attackSp,speed,critical);
+        PlayerStats.ResetStats(health,maxHealth,mana,attackPw,attackSp,speed,critical, damageReceive);
     }
     #endregion
 
@@ -120,8 +120,8 @@ public class PlayerClass : ICreature, IDamageable
         characterAttack?.BasicAttack();
     }
 
-    public virtual void TakeDamage(int damage, AttackType attackType)
-    {
+    public virtual void TakeDamage(int damage)
+    {if (isInvicible) return;
         Debug.Log(damage);
         PlayerStats.Health -= damage;
         Debug.Log($"맞은 후 체력 : {PlayerStats.Health}");
@@ -154,6 +154,7 @@ public class PlayerClass : ICreature, IDamageable
             isDead = true;
             animator?.SetTrigger("Die");
             Debug.Log("죽음");
+            ResetPower(true, true, true, true, true, true, true, true);
         }
     } 
     #endregion

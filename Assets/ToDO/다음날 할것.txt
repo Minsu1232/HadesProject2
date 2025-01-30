@@ -64,3 +64,7 @@ Armor파괴시 그로기 /몬스터 자체 버프류 ui업데이트
 페이즈 전환(PhaseTransitionState): 체력·시간·조건 등으로 페이즈가 바뀔 때, 전환 이펙트나 능력치 변화를 처리하고, 완료 후 일반 상태로 돌아오게 만드는 용도
 기믹(GimmickState): 광역 공격, 함정 설치, 소환 등 특수 행동을 수행하고 종료되면 다시 다른 상태(Idle, Move 등)로 전환
 전략(PhaseTransitionStrategy, GimmickStrategy 등): 내부에서 실제 로직을 구현(이펙트 재생, 데미지 산정, 소환 몬스터 설정 등)하고, 해당 로직은 필요에 따라 여러 유형으로 확장
+
+1/24 BossMonster와 BossStatus정리 필요 - 현재 BossMonster는 원래 데이터만 관린데 잡다한 매서드들이 있음
+
+1/27 BossUI정립

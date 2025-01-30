@@ -5,6 +5,7 @@ using UnityEngine;
 
 public abstract class CreatureAI : MonoBehaviour, ICreatureAI
 {
+    public Animator animator;
     protected ICreatureStatus creatureStatus;  // 공통 인터페이스 사용
 
     protected Dictionary<IMonsterState.MonsterStateType, IMonsterState> states;
@@ -19,8 +20,10 @@ public abstract class CreatureAI : MonoBehaviour, ICreatureAI
     protected IHitStrategy hitStrategy;
     protected IGroggyStrategy groggyStrategy;
     protected BTNode behaviorTree;
+    
     protected virtual void Start()
     {
+        animator = GetComponent<Animator>();
         creatureStatus = GetComponent<ICreatureStatus>();
         
         creatureStatus.GetMonsterClass();
@@ -45,13 +48,18 @@ public abstract class CreatureAI : MonoBehaviour, ICreatureAI
         {
             currentState.Execute();
         }
-        Debug.Log(currentState.ToString());
+        //if(behaviorTree != null)
+        //{
+        //    behaviorTree.Execute();
+        //}
+
+        
     }
 
     #region Core Methods
     public virtual void ChangeState(MonsterStateType newStateType)
     {
-        Debug.Log(newStateType.ToString());
+       
         
         if (currentState != null)
         {
@@ -70,7 +78,7 @@ public abstract class CreatureAI : MonoBehaviour, ICreatureAI
 
     //public MonsterStatus GetStatus() => monsterStatus;
 
-    public virtual void OnDamaged(int damage, AttackType attackType)
+    public virtual void OnDamaged(int damage)
     {
         if (currentState is DieState)
             return;
@@ -91,6 +99,7 @@ public abstract class CreatureAI : MonoBehaviour, ICreatureAI
     public abstract IDieStrategy GetDieStrategy();
     public abstract IHitStrategy GetHitStrategy();
     public abstract IGroggyStrategy GetGroggyStrategy();
+    public abstract IPhaseTransitionStrategy GetPhaseTransitionStrategy();
     #endregion
 
     #region Strategy Setters

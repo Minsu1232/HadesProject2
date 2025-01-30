@@ -28,7 +28,7 @@ public class DamageProjectile : BaseProjectile
         PlayerClass player = GameInitializer.Instance.GetPlayerClass();
         if (player != null)
         {
-            player.TakeDamage((int)damage, AttackData.AttackType.Normal);
+            player.TakeDamage((int)damage);
             hasDamageApplied = true;
         }
     }

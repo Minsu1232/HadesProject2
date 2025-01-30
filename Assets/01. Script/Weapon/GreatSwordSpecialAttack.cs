@@ -99,7 +99,7 @@ public class GreatSwordSpecialAttack : SpecialAttackBase
                 Debug.Log("VFX 비활성화");
             }
 
-            playerclass.ResetPower(false,true,true,true,true,true,true);
+            playerclass.ResetPower(false,true,true,true,true,true,true,true);
             isSpecialAttack = false;
             Debug.Log("스킬 효과 종료, 능력치 복구 완료");
         });

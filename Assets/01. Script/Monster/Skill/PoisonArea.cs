@@ -14,7 +14,7 @@ public class PoisonArea : BaseAreaEffect
                 PlayerClass player = GameInitializer.Instance.GetPlayerClass();
                 if (player != null)
                 {
-                    player.TakeDamage((int)damage, AttackData.AttackType.Normal);
+                    player.TakeDamage((int)damage);
                     break; // 콜라이더가 여러개기에 브레이크로 멈춤
                 }
             }

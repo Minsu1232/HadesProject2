@@ -26,7 +26,7 @@ public class ChangeStateAction : BTNode
         {
             owner.SetMovementStrategy(StrategyFactory.CreateMovementStrategy(moveStrategy.Value));
         }
-        Debug.Log(targetState.ToString());
+        
         owner.ChangeState(targetState);
         return NodeStatus.Success;
     }

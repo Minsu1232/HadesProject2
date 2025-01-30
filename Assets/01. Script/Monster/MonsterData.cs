@@ -4,7 +4,9 @@ using UnityEngine;
 using UnityEngine.AddressableAssets;
 using Sirenix.OdinInspector;
 
-
+/// <summary>
+/// 인터페이스 활용 및 데이터 저장/수정을위한 프로퍼티
+/// </summary>
 [CreateAssetMenu(fileName = "MonsterData", menuName = "Monster/MonsterData")]
 
 public class MonsterData : ScriptableObject, ICreatureData
@@ -95,7 +97,7 @@ public class MonsterData : ScriptableObject, ICreatureData
 
     
     [FoldoutGroup("Buff Settings"), ShowInInspector]
-    public BuffData buffData { get; set; }
+    public BuffData buffData { get; set; } = new BuffData();
 
     [FoldoutGroup("Buff Settings"), ShowInInspector]
     public BuffType buffType { get; set; }

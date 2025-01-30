@@ -12,78 +12,89 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 81195776f1de1ac4693e323c7fc8e082, type: 3}
   m_Name: BossData_2
   m_EditorClassIdentifier: 
-  monsterName: 
-  grade: 0
-  initialHp: 0
-  initialAttackPower: 0
-  initialAttackSpeed: 0
-  initialSpeed: 0
-  initialDeffense: 0
-  attackRange: 0
-  dropChance: 0
-  dropItem: 0
-  armorValue: 0
-  moveRange: 0
-  chaseRange: 0
-  aggroDropRange: 0
-  skillCooldown: 0
-  skillRange: 0
-  skillDuration: 0
-  skillDamage: 0
-  projectileSpeed: 0
-  rotateSpeed: 0
-  skillSpawnPointTag: SkillSpawnPoint
-  areaEffectPrefab: {fileID: 0}
-  ShorckEffectPrefab: {fileID: 0}
-  areaRadius: 0
-  areaDuration: 5
-  buffData:
-    buffTypes: 
-    durations: []
-    values: []
-  buffType: 0
-  buffDuration: 0
-  buffValue: 0
-  buffEffectPrefab: {fileID: 0}
-  summonPrefab: {fileID: 0}
-  summonCount: 0
-  summonRadius: 0
-  hitStunDuration: 0
-  deathDuration: 0
-  spawnDuration: 0
-  superArmorThreshold: 0
-  hitStunMultiplier: 1
-  knockbackForce: 0
-  cameraShakeIntensity: 0
-  cameraShakeDuration: 0
-  spawnStrategy: 0
-  moveStrategy: 0
-  attackStrategy: 0
-  idleStrategy: 0
-  skillStrategy: 0
-  dieStrategy: 0
-  hitStrategy: 0
-  projectileType: 0
-  projectileImpactType: 0
-  skillEffectType: 0
-  groggyStrategy: 0
-  monsterPrefabKey: 
-  projectilePrefab: {fileID: 0}
-  hitEffect: {fileID: 0}
-  useHealthRetreat: 0
-  healthRetreatThreshold: 0
-  isPhaseChange: 0
-  eliteOutlineMaterial: {fileID: 0}
-  shockwaveRadius: 0
-  groggyTime: 0
   canBeInterrupted: 0
-  phaseTransitionDuration: 0
-  rageModeThreshold: 0
+  phaseTransitionDuration: 2
+  rageModeThreshold: 0.25
   rageModeDuration: 0
   invincibleOnSpawn: 0
   aggroRange: 0
-  phaseData: []
-  phaseCount: 0
+  phaseData:
+  - phaseName: Normal
+    isInvulnerable: 0
+    phaseTransitionThreshold: 1
+    transitionDuration: 2
+    isInvulnerableDuringTransition: 1
+    patternChangeTime: 6
+    availablePatterns: []
+    moveType: 0
+    attackType: 0
+    skillType: 0
+    damageMultiplier: 1
+    speedMultiplier: 1
+    defenseMultiplier: 1
+    attackSpeedMultiplier: 0.1
+    canBeInterrupted: 1
+    stunResistance: 0
+    useHealthRetreat: 0
+    healthRetreatThreshold: 0
+    retreatDuration: 0
+    phaseStartEffect: {fileID: 0}
+    phaseLoopEffect: {fileID: 0}
+    exitEffect: {fileID: 0}
+    cutscenePath: 
+    specialMechanicType: 
+    specialMechanicValue: 0
+  - phaseName: Defensive
+    isInvulnerable: 0
+    phaseTransitionThreshold: 0.6
+    transitionDuration: 3
+    isInvulnerableDuringTransition: 1
+    patternChangeTime: 5
+    availablePatterns: []
+    moveType: 5
+    attackType: 3
+    skillType: 1
+    damageMultiplier: 1.2
+    speedMultiplier: 0.8
+    defenseMultiplier: 1.5
+    attackSpeedMultiplier: 0.1
+    canBeInterrupted: 1
+    stunResistance: 50
+    useHealthRetreat: 1
+    healthRetreatThreshold: 0.4
+    retreatDuration: 0
+    phaseStartEffect: {fileID: 0}
+    phaseLoopEffect: {fileID: 0}
+    exitEffect: {fileID: 0}
+    cutscenePath: 
+    specialMechanicType: 
+    specialMechanicValue: 0
+  - phaseName: Unleashed
+    isInvulnerable: 0
+    phaseTransitionThreshold: 0.3
+    transitionDuration: 3
+    isInvulnerableDuringTransition: 1
+    patternChangeTime: 4
+    availablePatterns: []
+    moveType: 1
+    attackType: 1
+    skillType: 4
+    damageMultiplier: 1.6
+    speedMultiplier: 1.3
+    defenseMultiplier: 0.7
+    attackSpeedMultiplier: 0.1
+    canBeInterrupted: 0
+    stunResistance: 100
+    useHealthRetreat: 0
+    healthRetreatThreshold: 0
+    retreatDuration: 0
+    phaseStartEffect: {fileID: 0}
+    phaseLoopEffect: {fileID: 0}
+    exitEffect: {fileID: 0}
+    cutscenePath: 
+    specialMechanicType: 
+    specialMechanicValue: 0
+  phaseCount: 1
   canSummonMinions: 0
   minionPrefabs: []
   maxMinionCount: 0
@@ -92,7 +103,7 @@ MonoBehaviour:
   rageEffect: {fileID: 0}
   spawnEffect: {fileID: 0}
   showHealthBar: 0
-  showPhaseNames: 0
+  showPhaseNames: 1
   phaseColors: []
   globalSkillCooldownModifier: 0
   skillPreDelayDefault: 0

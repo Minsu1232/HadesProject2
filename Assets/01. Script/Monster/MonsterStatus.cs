@@ -108,7 +108,8 @@ public class MonsterStatus : MonoBehaviour,IDamageable, ICreatureStatus
     //{
     //    //return monsterClass.IsBasicAttack() ? AttackType.Normal : AttackType.Charge;
     //}
-    public virtual void TakeDamage(int damage, AttackType attackType)
+   
+    public virtual void TakeDamage(int damage)
     {
         if (isDie) return;
         Debug.Log($"{monsterClass.CurrentArmor}");
@@ -121,13 +122,13 @@ public class MonsterStatus : MonoBehaviour,IDamageable, ICreatureStatus
         {
             uiManager.UpdateHealthUI(monsterClass.CurrentHealth);
             uiManager.UpdateArmorUI(monsterClass.CurrentArmor);
-            uiManager.SpawnDamageText(damage, attackType);
+            uiManager.SpawnDamageText(damage);
         }
 
         var CreatureAI = GetComponent<CreatureAI>();
         if (CreatureAI != null)
         {
-            CreatureAI.OnDamaged(damage, attackType);
+            CreatureAI.OnDamaged(damage);
         }
 
         if (monsterClass.CurrentHealth <= 0 && gameObject != null)

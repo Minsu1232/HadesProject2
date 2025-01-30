@@ -1,0 +1,3 @@
+BossId,AreaEffectPrefab,ShockEffectPrefab,BuffEffectPrefab,SummonPrefab,ProjectilePrefab,HitEffect,EliteOutlineMaterial
+1,,ShorkWavePrefab,,,BatPrefab,BloodHitEffect,
+2,,,,,,,

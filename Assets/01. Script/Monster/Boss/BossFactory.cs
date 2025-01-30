@@ -31,7 +31,7 @@ public class BossFactory : MonsterFactoryBase
     // LoadBossData, InstantiateBossPrefab은 제거하고 base의 구현 사용
 
     // FinalizeMonsterCreation만 보스 전용 로직이 필요한 경우 override
-    protected virtual void FinalizeMonsterCreation(GameObject bossObject, ICreatureData data, Action<IMonsterClass> onMonsterCreated)
+    protected override void FinalizeMonsterCreation(GameObject bossObject, ICreatureData data, Action<IMonsterClass> onMonsterCreated)
     {
         if (data is BossData bossData)
         {

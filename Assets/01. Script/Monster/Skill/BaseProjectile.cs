@@ -35,6 +35,7 @@ public abstract class BaseProjectile : MonoBehaviour
 
         isInitialized = false;
         elapsedTime = 0;
+        
     }
 
     protected virtual void SetInitialDirection(Vector3 startPos)
@@ -46,12 +47,19 @@ public abstract class BaseProjectile : MonoBehaviour
     public virtual void Launch()
     {
         isLaunched = true;
+       
     }
 
     protected virtual void Update()
     {
-        if (!isLaunched || moveStrategy == null) return;
+       
+        if (!isLaunched || moveStrategy == null) 
+        {           
+            return;
+        }
+       
         moveStrategy.Move(transform, target, speed);
+       
     }
 
     protected abstract void OnImpact(Collider other);

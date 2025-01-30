@@ -1,3 +1,4 @@
+using GSpawn_Pro;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -15,12 +16,17 @@ public class BossDataManager : Singleton<BossDataManager>
     private Dictionary<int, List<Dictionary<string, string>>> bossCutsceneData = new Dictionary<int, List<Dictionary<string, string>>>();
     private Dictionary<int, List<Dictionary<string, string>>> bossPatternData = new Dictionary<int, List<Dictionary<string, string>>>();
     private Dictionary<int, List<Dictionary<string, string>>> bossPatternStepData = new Dictionary<int, List<Dictionary<string, string>>>();
+    private Dictionary<int, List<Dictionary<string, string>>> bossSkillPrefabData = new Dictionary<int, List<Dictionary<string, string>>>();
+    private Dictionary<int, List<Dictionary<string, string>>> bossGimmickData = new Dictionary<int, List<Dictionary<string, string>>>();
+
     private string bossBasePath;
     private string bossPhasePath;
     private string bossSkillPath;
     private string bossCutscenePath;
     private string bossPatternPath;
     private string bossPatternStepPath;
+    private string bossPrefabPath;
+    private string bossGimmickPath;
 
     private void Awake()
     {
@@ -30,14 +36,16 @@ public class BossDataManager : Singleton<BossDataManager>
         bossCutscenePath = Path.Combine(Application.persistentDataPath, "BossCutscenes.csv");
         bossPatternPath = Path.Combine(Application.persistentDataPath, "BossPatterns.csv");
         bossPatternStepPath = Path.Combine(Application.persistentDataPath, "BossPatternSteps.csv");
+        bossPrefabPath = Path.Combine(Application.persistentDataPath, "BossPrefabs.csv");
+        bossGimmickPath = Path.Combine(Application.persistentDataPath, "BossGimmicks.csv");
 
         CopyCSVFromStreamingAssets();
     }
 
     private void CopyCSVFromStreamingAssets()
     {
-        string[] csvFiles = new string[] { "BossBase.csv", "BossPhases.csv", "BossSkills.csv", "BossCutscenes.csv","BossPatterns.csv",
-    "BossPatternSteps.csv"  };
+        string[] csvFiles = new string[] { "BossBase.csv", "BossPhases.csv", "BossSkills.csv", "BossCutscenes.csv","BossPatterns.csv","BossPrefabs.csv",
+    "BossPatternSteps.csv","BossGimmicks.csv"  };
         foreach (string fileName in csvFiles)
         {
             string streamingPath = Path.Combine(Application.streamingAssetsPath, fileName);
@@ -58,6 +66,8 @@ public class BossDataManager : Singleton<BossDataManager>
     public async Task InitializeBosses()
     {
         await LoadAllBossData();
+
+
     }
 
     private async Task LoadAllBossData()
@@ -65,10 +75,39 @@ public class BossDataManager : Singleton<BossDataManager>
         await LoadBossBaseData();
         await LoadBossPhaseData();
         await LoadBossSkillData();
+        await LoadBossPrefabs();
         await LoadBossCutsceneData();
         await LoadBossPatternData();      // 추가
         await LoadBossPatternStepData();  // 추가
+        await LoadBossGimmickData();
         await InitializeBossData();
+    }
+    private async Task LoadBossGimmickData()
+    {
+        string bossGimmickPath = Path.Combine(Application.persistentDataPath, "BossGimmicks.csv");
+        if (!File.Exists(bossGimmickPath)) return;
+
+        string[] lines = File.ReadAllLines(bossGimmickPath);
+        string[] headers = lines[0].Split(',');
+
+        for (int i = 1; i < lines.Length; i++)
+        {
+            string[] values = lines[i].Split(',');
+            int bossId = int.Parse(values[0]);
+
+            if (!bossGimmickData.ContainsKey(bossId))
+            {
+                bossGimmickData[bossId] = new List<Dictionary<string, string>>();
+            }
+
+            var gimmickDict = new Dictionary<string, string>();
+            for (int j = 0; j < headers.Length; j++)
+            {
+                gimmickDict[headers[j]] = values[j];
+            }
+
+            bossGimmickData[bossId].Add(gimmickDict);
+        }
     }
     private async Task LoadBossPatternData()
     {
@@ -202,7 +241,38 @@ public class BossDataManager : Singleton<BossDataManager>
             bossSkillData[bossId].Add(skillDict);
         }
     }
+    private async Task LoadBossPrefabs()
+    {
+        if (!File.Exists(bossPrefabPath))
+        {
+            Debug.LogError($"BossPrefab 파일이 존재하지 않습니다: {bossPrefabPath}");
+            return;
+        }
 
+        string[] lines = File.ReadAllLines(bossPrefabPath);
+        string[] headers = lines[0].Split(',');
+
+        for (int i = 1; i < lines.Length; i++)
+        {
+            string[] values = lines[i].Split(',');
+            int bossId = int.Parse(values[0]);
+
+            if (!bossSkillPrefabData.ContainsKey(bossId))
+            {
+                bossSkillPrefabData[bossId] = new List<Dictionary<string, string>>();
+            }
+
+            var prefabDict = new Dictionary<string, string>();
+            for (int j = 0; j < headers.Length; j++)
+            {
+                prefabDict[headers[j]] = values[j];
+            }
+
+            bossSkillPrefabData[bossId].Add(prefabDict);
+        }
+
+        Debug.Log($"bossSkillPrefabData 로드 완료: {bossSkillPrefabData.Count}개의 보스 프리팹 데이터 로드됨");
+    }
     private async Task LoadBossCutsceneData()
     {
         if (!File.Exists(bossCutscenePath)) return;
@@ -279,6 +349,10 @@ public class BossDataManager : Singleton<BossDataManager>
         {
             UpdateBossPatternData(bossData, patterns);
         }
+        if(bossSkillPrefabData.TryGetValue(bossId, out var skillsPrefab))
+        {
+            UpdateBossPrefab(bossData, skillsPrefab);
+        }
     }
     private void UpdateBossPatternData(BossData bossData, List<Dictionary<string, string>> patterns)
     {
@@ -294,7 +368,14 @@ public class BossDataManager : Singleton<BossDataManager>
                 warningDuration = float.Parse(pattern["WarningDuration"]),
                 healthThresholdMin = float.Parse(pattern["HealthThresholdMin"]),
                 healthThresholdMax = float.Parse(pattern["HealthThresholdMax"]),
-                warningMessage = pattern["WarningMessage"]
+                warningMessage = pattern["WarningMessage"],
+                  // 새로 추가한 필드들
+                isDisabled = false,  // 초기값은 false
+                requiredSuccessCount = int.Parse(pattern["RequiredSuccessCount"]),
+                currentSuccessCount = 0,  // 초기값은 0
+                baseDifficulty = float.Parse(pattern["baseDifficulty"]),
+                maxDifficulty = float.Parse(pattern["maxDifficulty"]),
+                difficultyIncreaseStep = float.Parse(pattern["difficultyIncreaseStep"])
             };
 
             if (bossPatternStepData.TryGetValue(patternId, out var steps))
@@ -308,7 +389,8 @@ public class BossDataManager : Singleton<BossDataManager>
                         hasMiniGame = bool.Parse(step["HasMiniGame"]),
                         miniGameType = (MiniGameType)Enum.Parse(typeof(MiniGameType), step["MiniGameType"]),
                         waitForMiniGame = bool.Parse(step["WaitForMiniGame"]),
-                        miniGameDifficulty = float.Parse(step["MiniGameDifficulty"])
+                        miniGameDifficulty = float.Parse(step["MiniGameDifficulty"]),
+                        isTransitionAnim = bool.Parse(step["IsAnim"])
                     };
 
                     patternData.steps.Add(stepData);
@@ -340,15 +422,39 @@ public class BossDataManager : Singleton<BossDataManager>
         bossData.dropChance = int.Parse(baseData["DropItemID"]);
         bossData.dropItem = int.Parse(baseData["DropRate"]);
         bossData.phaseCount = int.Parse(baseData["PhaseCount"]);
-
+        bossData.groggyTime = float.Parse(baseData["GroggyTime"]);
         
-        bossData.phaseTransitionDuration = float.Parse(baseData["PhaseTransitionDuration"]);
+        //bossData.phaseTransitionDuration = float.Parse(baseData["PhaseTransitionDuration"]);
         bossData.rageModeThreshold = float.Parse(baseData["RageModeThreshold"]);    
         
         bossData.showPhaseNames = bool.Parse(baseData["ShowPhaseNames"]);
-        
-    }
 
+       
+
+
+    }
+    private void UpdateBossPrefab(BossData bossData, List<Dictionary<string, string>> baseData)
+    {foreach(var baseDataes in baseData)
+        {
+            bossData.areaEffectPrefab = LoadPrefab(baseDataes["AreaEffectPrefab"]);
+            bossData.shorckEffectPrefab = LoadPrefab(baseDataes["ShockEffectPrefab"]);
+            bossData.buffEffectPrefab = LoadPrefab(baseDataes["BuffEffectPrefab"]);
+            bossData.summonPrefab = LoadPrefab(baseDataes["SummonPrefab"]);
+            bossData.projectilePrefab = LoadPrefab(baseDataes["ProjectilePrefab"]);
+            bossData.hitEffect = LoadPrefab(baseDataes["HitEffect"]);
+        }
+     
+       
+
+    }
+    private GameObject LoadPrefab(string prefabKey)
+    {
+        if (string.IsNullOrEmpty(prefabKey)) return null;
+
+        var handle = Addressables.LoadAssetAsync<GameObject>(prefabKey);
+
+        return handle.Task.Result;
+    }
     private void UpdateBossPhaseData(BossData bossData, List<Dictionary<string, string>> phases)
     {
         bossData.phaseData = new List<PhaseData>();
@@ -359,13 +465,13 @@ public class BossDataManager : Singleton<BossDataManager>
                 phaseName = phase["PhaseName"],
                 phaseTransitionThreshold = float.Parse(phase["HealthThreshold"]),
                 transitionDuration = float.Parse(phase["TransitionDuration"]),
-                isInvulnerableDuringTransition = bool.Parse(phase["IsInvulnerableDuringTransition"]),
-
+                isInvulnerableDuringTransition = bool.Parse(phase["IsInvulnerableDuringTransition"]),                
                 patternChangeTime = float.Parse(phase["PatternChangeTime"]),
 
                 moveType = (MovementStrategyType)Enum.Parse(typeof(MovementStrategyType), phase["MoveStrategy"]),
                 attackType = (AttackStrategyType)Enum.Parse(typeof(AttackStrategyType), phase["AttackStrategy"]),
                 skillType = (SkillStrategyType)Enum.Parse(typeof(SkillStrategyType), phase["SkillStrategy"]),
+                phaseTransitionType = (PhaseTransitionType)Enum.Parse(typeof(PhaseTransitionType), phase["PhaseTransitionType"]),
 
                 damageMultiplier = float.Parse(phase["DamageMultiplier"]),
                 speedMultiplier = float.Parse(phase["SpeedMultiplier"]),
@@ -375,14 +481,74 @@ public class BossDataManager : Singleton<BossDataManager>
                 canBeInterrupted = bool.Parse(phase["CanBeInterrupted"]),
                 stunResistance = float.Parse(phase["StunResistance"]),
                 useHealthRetreat = bool.Parse(phase["UseHealthRetreat"]),
-                healthRetreatThreshold = float.Parse(phase["HealthRetreatThreshold"])
+                healthRetreatThreshold = float.Parse(phase["HealthRetreatThreshold"])     ,    
+                
 
             };
+            // 해당 페이즈의 기믹 데이터 찾기
+            if (bossGimmickData.TryGetValue(int.Parse(phase["BossID"]), out var gimmickList))
+            {
+                foreach (var gimmickData in gimmickList)
+                {
+                    // 페이즈 번호가 일치하는 기믹만 추가
+                    if (int.Parse(gimmickData["PhaseNumber"]) == int.Parse(phase["PhaseNumber"]))
+                    {
+                        GimmickData gimmick = new GimmickData
+                        {
+                            gimmickName = gimmickData["GimmickName"],
+                            type = (GimmickType)Enum.Parse(typeof(GimmickType), gimmickData["Type"]),
+                            triggerHealthThreshold = float.Parse(gimmickData["TriggerHealth"]),
+                            duration = float.Parse(gimmickData["Duration"]),
+                            requirePlayerAction = bool.Parse(gimmickData["RequireAction"]),
+                            isInterruptible = bool.Parse(gimmickData["Interruptible"]),                           
+                            makeInvulnerable = bool.Parse(gimmickData["MakeInvulnerable"]),
+                            damageMultiplier = float.Parse(gimmickData["DamageMultiplier"]),
+                            failDamage = float.Parse(gimmickData["FailDamage"]),
+                            damage = float.Parse(gimmickData["Damage"]),
+                            useCustomPosition = bool.Parse(gimmickData["UseCustomPosition"]),
+                            gimmickPosition = new Vector3(
+                                float.Parse(gimmickData["PosX"]),
+                                float.Parse(gimmickData["PosY"]),
+                                float.Parse(gimmickData["PosZ"])
+                            ),
+                            areaRadius = float.Parse(gimmickData["Radius"]),
+                            preparationTime = float.Parse(gimmickData["PreparationTime"]),
+                            repeatInterval = float.Parse(gimmickData["RepeatInterval"]),
+                            affectStatusEffects = bool.Parse(gimmickData["affectStatusEffects"]),
+                            followTarget = bool.Parse(gimmickData["FollowTarget"]),
+                            collisionMask = ParseLayerMask(gimmickData["CollisionMask"]),
+                            successCount = int.Parse(gimmickData["SuccessCount"])
+                        };
+
+                        phaseData.gimmicks.Add(gimmick);
+                    }
+                }
+            }
 
             bossData.phaseData.Add(phaseData);
         }
+       
     }
+    // LayerMask 파싱 함수
+    private LayerMask ParseLayerMask(string layerString)
+    {
+        if (string.IsNullOrEmpty(layerString))
+            return 0; // 기본값
 
+        LayerMask mask = 0;
+        string[] layers = layerString.Split('|');
+
+        foreach (string layer in layers)
+        {
+            string trimmedLayer = layer.Trim();
+            if (!string.IsNullOrEmpty(trimmedLayer))
+            {
+                mask |= (1 << LayerMask.NameToLayer(trimmedLayer));
+            }
+        }
+
+        return mask;
+    }
     private void UpdateBossSkillData(BossData bossData, List<Dictionary<string, string>> skills)
     {
         foreach (var skill in skills)
@@ -397,10 +563,11 @@ public class BossDataManager : Singleton<BossDataManager>
                 bossData.skillDuration = float.Parse(skill["SkillDuration"]);
                 bossData.skillDamage = int.Parse(skill["SkillDamage"]);
                 bossData.projectileType = (ProjectileMovementType)Enum.Parse(typeof(ProjectileMovementType), skill["ProjectileType"]);
+                
                 bossData.skillEffectType = (SkillEffectType)Enum.Parse(typeof(SkillEffectType), skill["SkillEffectType"]);
                 bossData.projectileSpeed = float.Parse(skill["ProjectileSpeed"]);
                 bossData.areaRadius = float.Parse(skill["AreaRadius"]);
-
+               
                 bossData.hitStunDuration = float.Parse(skill["HitStunDuration"]);
                 bossData.knockbackForce = float.Parse(skill["KnockbackForce"]);
                 bossData.cameraShakeIntensity = float.Parse(skill["CameraShakeIntensity"]);

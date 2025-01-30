@@ -19,14 +19,14 @@ public class JumpAttackStrategy : BasePhysicalAttackStrategy
     {
         this.shockwaveEffect = shockwaveEffectPrefab;
         this.shockwaveRadius = shockwaveRadius;
-
+        lastAttackTime = Time.time - 100f;  // 첫 공격이 바로 가능하도록
     }
 
     public override bool CanAttack(float distanceToTarget, IMonsterClass monsterData)
     {
         // 점프 공격은 좀 더 먼 거리에서 가능
-        return distanceToTarget <= monsterData.CurrentAttackRange * 1.5f &&
-               Time.time >= lastAttackTime + monsterData.CurrentAttackSpeed * 1.2f;
+        return distanceToTarget <= monsterData.CurrentAttackRange * 1.45f &&
+               Time.time >= lastAttackTime + monsterData.CurrentAttackSpeed;
     }
 
     private void CreateShockwave(Vector3 position, IMonsterClass monsterData)
@@ -59,10 +59,11 @@ public class JumpAttackStrategy : BasePhysicalAttackStrategy
     {
         // 이미 점프 중이거나 공격 조건을 만족하지 못하면 공격하지 않음
         if (isJumping || !CanAttack(Vector3.Distance(transform.position, target.position), monsterData))
-        {
+        {   
+            Debug.Log("안대용" + isJumping + CanAttack(Vector3.Distance(transform.position, target.position), monsterData));
             return;
         }
-
+        Debug.Log("Executing Jump Attack Strategy...");
         // 공격 준비
         StartAttack();
         FaceTarget(transform, target);

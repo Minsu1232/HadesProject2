@@ -7,7 +7,7 @@ public abstract class BasePhysicalAttackStrategy : IAttackStrategy
     protected float lastAttackTime;
     protected bool isAttackAnimation;
 
-    public bool IsAttacking => isAttacking;
+    public virtual bool IsAttacking => isAttacking;
     public float GetLastAttackTime => lastAttackTime;
     public abstract PhysicalAttackType AttackType { get; }
 
@@ -45,12 +45,12 @@ public abstract class BasePhysicalAttackStrategy : IAttackStrategy
         {
             float damageReceiveRate = playerTarget.GetStats().DamageReceiveRate;
             int finalDamage = Mathf.RoundToInt(baseDamage * multiplier * damageReceiveRate);
-            target.TakeDamage(finalDamage, AttackData.AttackType.Charge);
+            target.TakeDamage(finalDamage);
         }
         else
         {
             int finalDamage = Mathf.RoundToInt(baseDamage * multiplier);
-            target.TakeDamage(finalDamage, AttackData.AttackType.Charge);
+            target.TakeDamage(finalDamage);
         }
     }
 

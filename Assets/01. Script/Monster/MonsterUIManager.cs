@@ -146,7 +146,7 @@ public class MonsterUIManager : MonoBehaviour
         }
     }
 
-    public virtual void SpawnDamageText(int damage, AttackType attackType)
+    public virtual void SpawnDamageText(int damage)
     {
         if (damageTextPrefab == null) return;
 

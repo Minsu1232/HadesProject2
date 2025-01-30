@@ -13,7 +13,7 @@ public class BasicGroggyStrategy : IGroggyStrategy
     }
 
     public bool IsGroggyComplete => isGroggyComplete;
-
+    public float GroggyDuration => groggyDuration;
     public void OnGroggy(Transform transform, IMonsterClass monsterData)
     {
         groggyTimer = 0f;

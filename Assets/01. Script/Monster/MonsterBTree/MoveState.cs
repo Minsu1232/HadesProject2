@@ -16,7 +16,7 @@ public class MoveState : MonsterBaseState
 
     public override void Enter()
     {
-        Debug.Log("Move State Enter");
+        
         animator.SetTrigger("Move"); // 진입할 때만 트리거 설정
     }
 
@@ -30,7 +30,7 @@ public class MoveState : MonsterBaseState
     {
         currentStrategy.StopMoving();
         animator.ResetTrigger("Move");
-        Debug.Log("Move State Exit");
+        
     }
 
     public override bool CanTransition()

@@ -1,4 +1,4 @@
-PatternID,StepNumber,AttackType,StepDelay,HasMiniGame,MiniGameType,WaitForMiniGame,MiniGameDifficulty
-1,1,Basic,0.5,FALSE,None,FALSE,0
-1,2,Jump,1,TRUE,Dodge,TRUE,1
-2,1,Rush,0.8,TRUE,Dodge,TRUE,1.2
+PatternID,StepNumber,AttackType,StepDelay,HasMiniGame,MiniGameType,WaitForMiniGame,MiniGameDifficulty,IsAnim
+1,1,Basic,1,FALSE,None,FALSE,0,FALSE
+1,2,Jump,1,TRUE,Dodge,TRUE,1,TRUE
+2,1,Rush,0.8,TRUE,Dodge,TRUE,1.2,TRUE

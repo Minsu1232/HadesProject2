@@ -26,14 +26,25 @@ public class DodgeMiniGame
     /// <summary>
     /// 미니게임 시작 시 성공 구간과 기본 상태를 초기화한다.
     /// </summary>
-    public void StartDodgeMiniGame()
+    public void StartDodgeMiniGame(float difficulty = 1f)  // 난이도 매개변수 추가
     {
-        // 0~1 범위 중에서 성공 구간을 잡는다. (예: 최대 0.6 폭까지)
-        float randomWidth = UnityEngine.Random.Range(0.2f, 0.4f);
-        successWindowStart = UnityEngine.Random.Range(0.2f, 0.8f - randomWidth);
+        
+        float maxWidth = Mathf.Lerp(0.4f, 0.3f, (difficulty - 1f) / 2f);
+        float minWidth = Mathf.Lerp(0.3f, 0.2f, (difficulty - 1f) / 2f);
+        float randomWidth = UnityEngine.Random.Range(minWidth, maxWidth);
+
+        // 시작 위치도 난이도에 따라 조절
+        float safeSpace = 1f - randomWidth;
+        successWindowStart = UnityEngine.Random.Range(0.2f, safeSpace - 0.2f);
         successWindowEnd = successWindowStart + randomWidth;
 
-        // 화살표 초기 상태
+        // 화살표 이동 속도를 난이도에 따라 증가
+        moveSpeed = 2f + (difficulty - 1f);  // 난이도 1~3에 따라 2~4로 조절
+
+        // 제한 시간을 난이도에 따라 감소
+        totalTime = Mathf.Lerp(3f, 1.5f, (difficulty - 1f) / 2f);  // 난이도 1~3에 따라 3~1.5초로 조절
+
+        // 기본 초기화
         currentProgress = 0f;
         isMovingRight = true;
         remainingTime = totalTime;
@@ -41,6 +52,11 @@ public class DodgeMiniGame
         // 슬로우 모션 적용
         Time.timeScale = slowMotionScale;
         AudioListener.pause = true;
+
+        Debug.Log($"DodgeMiniGame Started - Difficulty: {difficulty}, " +
+                  $"Window Size: {randomWidth}, " +
+                  $"Move Speed: {moveSpeed}, " +
+                  $"Total Time: {totalTime}");
     }
 
     /// <summary>

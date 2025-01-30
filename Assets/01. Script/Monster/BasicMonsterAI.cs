@@ -84,19 +84,19 @@ public class BasicCreatureAI : CreatureAI
     {
         behaviorTree = new Selector(this,
            // 1. 체력이 낮으면 도망
-           new Sequence(this,
+           new BTSequence(this,
                new CheckHealthCondition(this),
                new ChangeStateAction(this, MonsterStateType.Move, MovementStrategyType.Retreat)
            ),
 
            // 2. 전투 가능 거리면 전투
-           new Sequence(this,
+           new BTSequence(this,
                new CheckPlayerInAttackRange(this),
                new CombatDecisionNode(this)
            ),
 
            // 3. 감지 범위 안이면 추적
-           new Sequence(this,
+           new BTSequence(this,
                new CheckPlayerInRange(this),
                new ChangeStateAction(this, MonsterStateType.Move, MovementStrategyType.Basic)
            )
@@ -151,6 +151,11 @@ public class BasicCreatureAI : CreatureAI
     }
 
     public override void SetIdleStrategy(IIdleStrategy newStrategy)
+    {
+        throw new System.NotImplementedException();
+    }
+
+    public override IPhaseTransitionStrategy GetPhaseTransitionStrategy()
     {
         throw new System.NotImplementedException();
     }

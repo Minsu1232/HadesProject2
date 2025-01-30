@@ -24,6 +24,7 @@ public class BasicSkillStrategy : ISkillStrategy
     public void Initialize(ISkillEffect effect)
     {
         this.skillEffect = effect;
+        Debug.Log("스킬 이니셜라이즈");
     }
 
     public void StartSkill(Transform transform, Transform target, IMonsterClass monsterData)
@@ -38,17 +39,19 @@ public class BasicSkillStrategy : ISkillStrategy
         hasExecutedSkill = false;
         skillTimer = 0f;
         lastSkillTime = Time.time;
+        Debug.Log("실행");
     }
 
     public void UpdateSkill(Transform transform, Transform target, IMonsterClass monsterData)
     {
         if (!isUsingSkill) return;
-
+       
         skillTimer += Time.deltaTime;
 
         // 스킬 시전 시간이 되었고, 아직 실행되지 않았다면 실행
         if (skillTimer >= skillDuration && !hasExecutedSkill)
         {
+           
             skillEffect.Execute();  // 실제 스킬 실행
             hasExecutedSkill = true;
         }

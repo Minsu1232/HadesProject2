@@ -6,6 +6,6 @@ public interface ICreatureAI
 {
     void ChangeState(MonsterStateType newState);
     IMonsterState GetCurrentState();
-    void OnDamaged(int damage, AttackType attackType);
+    void OnDamaged(int damage);
     ICreatureStatus GetStatus();
 }

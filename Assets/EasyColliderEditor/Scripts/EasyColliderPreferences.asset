@@ -18,9 +18,9 @@ MonoBehaviour:
   AutoIncludeChildSkinnedMeshes: 1
   AutoSkinnedForce256Triangles: 1
   AutoSkinnedMinBoneWeight: 0.746
-  AutoSkinnedMinRealignAngle: 2.2
+  AutoSkinnedMinRealignAngle: 4.5
   AutoSkinnedAllowRealign: 1
-  AutoSkinnedColliderType: 0
+  AutoSkinnedColliderType: 3
   AutoSkinnedDepenetrate: 1
   AutoSkinnedIndents: 1
   AutoSkinnedIterativeDepenetrationCount: 15
@@ -33,7 +33,7 @@ MonoBehaviour:
   BoxSelectPlusKey: 97
   BoxSelectMinusKey: 115
   CapsuleColliderMethod: 1
-  CommonScalingMultiplier: 1
+  CommonScalingMultiplier: 3
   ConvexMeshReadWriteEnabled: 1
   DefaultScale: 0.01
   HoveredScaleMult: 1
@@ -57,7 +57,7 @@ MonoBehaviour:
   OverlapSelectedVertColour: {r: 1, g: 0, b: 0, a: 1}
   PointSelectKeyCode: 98
   PopupDialogOnFinish: 0
-  PreviewColliderType: 0
+  PreviewColliderType: 5
   PreviewDrawColor: {r: 0, g: 1, b: 1, a: 1}
   PreviewEnabled: 1
   RaycastDelayTime: 0.1
@@ -68,7 +68,7 @@ MonoBehaviour:
   rotatedDupeSettings:
     enabled: 0
     axis: 0
-    NumberOfDuplications: 4
+    NumberOfDuplications: 1
     StartRotation: 0
     EndRotation: 360
     pivot: {fileID: 0}
@@ -84,7 +84,7 @@ MonoBehaviour:
   ShortcutGrowLast: 108
   ShortcutClear: 99
   ShortcutRing: 114
-  ShowSelectedVertexCount: 0
+  ShowSelectedVertexCount: 1
   SphereColliderMethod: 2
   UseFixedGizmoScale: 1
   UseMouseClickSelection: 1
@@ -94,4 +94,4 @@ MonoBehaviour:
   VertexSnapMethod: 2
   VertSelectKeyCode: 118
   VHACDPreview: 1
-  CurrentWindowTab: 3
+  CurrentWindowTab: 0

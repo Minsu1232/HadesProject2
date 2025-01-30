@@ -1,6 +1,8 @@
 // BossUIManager.cs
 using DG.Tweening;
+using System;
 using System.Collections;
+using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
@@ -8,32 +10,42 @@ using static AttackData;
 
 public class BossUIManager : MonsterUIManager
 {
-    [Header("Boss UI References")]
-    [SerializeField] private Canvas screenSpaceCanvas;
+    [Header("Boss Info")]
+    [SerializeField] private Image phaseBackgroundImage;
+    [SerializeField] private Image[] phaseImages;
+    [SerializeField] private TextMeshProUGUI bossName;
 
-    [Header("Boss Health Bar")]
-    [SerializeField] private Image bossHealthBarBackground;
-    [SerializeField] private TextMeshProUGUI bossNameText;
-    [SerializeField] private TextMeshProUGUI phaseNameText;
+    [Header("Pattern Success UI")]
+    [SerializeField] private GameObject patternSuccessGroup;
+    [SerializeField] private Image patternSuccessIcon;
+    [SerializeField] private TextMeshProUGUI patternSuccessText;
 
-    [Header("Phase UI")]
-    [SerializeField] private Image[] phaseThresholdMarkers;
-    [SerializeField] private Image phaseBackgroundBar;
+    [Header("State System")]
+    [SerializeField] private Transform stateGroup;
+    [SerializeField] private GameObject stateIconPrefab;
+    private Dictionary<string, GameObject> activeStates = new Dictionary<string, GameObject>();
 
-    [Header("Rage Mode UI")]
-    [SerializeField] private CanvasGroup rageModeGroup;
-    [SerializeField] private Image rageModeBackgroundEffect;
+    [Header("State Sprites")]
+    [SerializeField] private Sprite groggySprite;
+    [SerializeField] private Sprite rageSprite;
+    [SerializeField] private Sprite defenseDownSprite;
+    [SerializeField] private Sprite attackUpSprite;
+    [SerializeField] private Sprite bleedingSprite;
+    [SerializeField] private Sprite poisonSprite;
+    [SerializeField] private Sprite stunSprite;
 
     private BossMonster bossMonster;
     private BossData bossData;
-
-    protected override void Start()
+    private int currentPhase = 0;
+    public enum StateType
     {
-        if (bossMonster == null)
-        {
-            base.Start();
-            Initialize(GetComponent<MonsterStatus>().GetMonsterClass());
-        }
+        Groggy,
+        Rage,
+        DefenseDown,
+        AttackUp,
+        Bleeding,
+        Poison,
+        Stun
     }
     public override void Initialize(IMonsterClass monster)
     {
@@ -44,137 +56,201 @@ public class BossUIManager : MonsterUIManager
         {
             bossData = bossMonster.GetMonsterData() as BossData;
             InitializeBossUI();
+            bossName.text = bossMonster.MONSTERNAME;
         }
     }
+
     private void InitializeBossUI()
     {
-        if (bossNameText != null)
+        if (patternSuccessGroup != null)
         {
-            bossNameText.text = bossData.MonsterName;
-            if (bossData.showPhaseNames)
-            {
-                phaseNameText.gameObject.SetActive(true);
-                UpdatePhaseText(0);
-            }
+            patternSuccessGroup.SetActive(false);
         }
 
-        InitializePhaseMarkers();
-        SetRageModeUI(false);
+        UpdatePhaseUI(0);
     }
 
-    private void InitializePhaseMarkers()
-    {
-        if (phaseThresholdMarkers != null && bossData.phaseData != null)
-        {
-            for (int i = 0; i < phaseThresholdMarkers.Length && i < bossData.phaseData.Count; i++)
-            {
-                float threshold = bossData.phaseData[i].phaseTransitionThreshold;
-                phaseThresholdMarkers[i].fillAmount = threshold;
-
-                if (bossData.phaseColors != null && i < bossData.phaseColors.Length)
-                {
-                    phaseThresholdMarkers[i].color = bossData.phaseColors[i];
-                }
-            }
-        }
-    }
-
-    // 페이즈 전환 시 호출되는 메서드 (이펙트와 함께 표시)
-    public void UpdatePhase(int newPhase)
-    {
-        UpdatePhaseText(newPhase);
-        PlayPhaseTransitionEffect(newPhase);  // 전환 이펙트 포함
-    }
-
-    // 일반적인 UI 업데이트 (체력 변화 등에 따른 갱신)
+    #region Phase Management
     public void UpdatePhaseUI()
     {
         if (bossMonster != null)
         {
-            UpdateHealthUI(bossMonster.CurrentHealth);  // 체력바 갱신
-            UpdatePhaseText(bossMonster.CurrentPhase);  // 페이즈 텍스트만 갱신 (이펙트 없음)
+            UpdateHealthUI(bossMonster.CurrentHealth);
+            UpdatePhaseUI(bossMonster.CurrentPhase);
         }
     }
-    private void UpdatePhaseText(int phase)
+
+    private void UpdatePhaseUI(int newPhase)
     {
-        if (phaseNameText != null && bossData.phaseData != null && phase < bossData.phaseData.Count)
+        if (newPhase == currentPhase || phaseImages == null ||
+            newPhase >= phaseImages.Length) return;
+
+        currentPhase = newPhase;
+        UpdatePhaseVisuals(newPhase);
+    }
+
+    private void UpdatePhaseVisuals(int phaseIndex)
+    {
+        for (int i = 0; i < phaseImages.Length; i++)
         {
-            phaseNameText.text = bossData.phaseData[phase].phaseName;
-
-            phaseNameText.transform.DOScale(1.2f, 0.2f)
-                .SetLoops(2, LoopType.Yoyo);
-
-            if (bossData.phaseColors != null && phase < bossData.phaseColors.Length)
+            if (i == phaseIndex)
             {
-                phaseNameText.DOColor(bossData.phaseColors[phase], 0.3f);
-            }
-        }
-    }
+                phaseImages[i].gameObject.SetActive(true);
+                phaseImages[i].DOFade(1f, 0.5f);
 
-    private void PlayPhaseTransitionEffect(int phase)
-    {
-        if (healthBar != null && bossData.phaseColors != null && phase < bossData.phaseColors.Length)
-        {
-            healthBar.DOColor(bossData.phaseColors[phase], 0.5f);
-        }
-
-        if (rageModeBackgroundEffect != null)
-        {
-            rageModeBackgroundEffect.DOFade(0.3f, 0.2f)
-                .SetLoops(2, LoopType.Yoyo)
-                .OnComplete(() => rageModeBackgroundEffect.gameObject.SetActive(false));
-        }
-    }
-
-    public override void UpdateHealthUI(int currentHealth)
-    {
-        base.UpdateHealthUI(currentHealth);
-
-        if (currentHealth < maxHealth * 0.3f)
-        {
-            healthBar.DOColor(Color.red, 0.3f).SetLoops(-1, LoopType.Yoyo);
-        }
-    }
- 
-    public void SetRageModeUI(bool active)
-    {
-        if (rageModeGroup != null)
-        {
-            float targetAlpha = active ? 1f : 0f;
-            rageModeGroup.DOFade(targetAlpha, 0.5f);
-
-            if (active)
-            {
-                healthBar.DOColor(Color.red, 0.3f);
-                phaseBackgroundBar?.DOColor(new Color(1f, 0f, 0f, 0.3f), 0.3f);
+                if (bossData.phaseColors != null && phaseIndex < bossData.phaseColors.Length)
+                {
+                    phaseImages[i].DOColor(bossData.phaseColors[phaseIndex], 0.5f);
+                }
             }
             else
             {
-                Color currentPhaseColor = bossData.phaseColors?[bossMonster.CurrentPhase] ?? Color.white;
-                healthBar.DOColor(currentPhaseColor, 0.3f);
-                phaseBackgroundBar?.DOColor(new Color(0f, 0f, 0f, 0.3f), 0.3f);
+                phaseImages[i].DOFade(0f, 0.3f)
+                    .OnComplete(() => phaseImages[i].gameObject.SetActive(false));
             }
         }
     }
+    #endregion
 
-    public override void SpawnDamageText(int damage, AttackType attackType)
+    #region Pattern Success Management
+    public void UpdatePatternSuccess(AttackPatternData pattern, int currentSuccess)
     {
-        base.SpawnDamageText(damage, attackType);
+        if (patternSuccessGroup == null) return;
 
-        if (damage > bossMonster.CurrentAttackPower * 1.5f)
+        patternSuccessGroup.SetActive(true);
+
+        if (patternSuccessText != null)
         {
-            PlayCriticalHitEffect();
+            patternSuccessText.text = $"{currentSuccess}/{pattern.requiredSuccessCount}";
+        }
+
+        if (patternSuccessIcon != null)
+        {
+            patternSuccessIcon.transform.DOScale(1.2f, 0.2f)
+                .SetLoops(2, LoopType.Yoyo)
+                .SetEase(Ease.OutBack);
+        }
+    }
+    #endregion
+
+    #region State System
+    public void AddState(StateType type, float duration = 0f)
+    {
+        string stateId = type.ToString();
+        Sprite stateSprite = GetSpriteForState(type);
+
+        if (stateSprite == null)
+        {
+            Debug.LogWarning($"No sprite found for state type: {type}");
+            return;
+        }
+
+        AddState(stateId, stateSprite, duration);
+    }
+
+    private Sprite GetSpriteForState(StateType type)
+    {
+        return type switch
+        {
+            StateType.Groggy => groggySprite,
+            StateType.Rage => rageSprite,
+            StateType.DefenseDown => defenseDownSprite,
+            StateType.AttackUp => attackUpSprite,
+            StateType.Bleeding => bleedingSprite,
+            StateType.Poison => poisonSprite,
+            StateType.Stun => stunSprite,
+            _ => null
+        };
+    }
+
+    private void AddState(string stateId, Sprite stateIcon, float duration = 0f)
+    {
+        if (activeStates.ContainsKey(stateId))
+        {
+            UpdateStateDuration(stateId, duration);
+            return;
+        }
+
+        GameObject stateObj = Instantiate(stateIconPrefab, stateGroup);
+        if (stateObj.TryGetComponent<Image>(out Image stateImage))
+        {
+            stateImage.sprite = stateIcon;
+        }
+
+        RectTransform rect = stateObj.GetComponent<RectTransform>();
+        rect.sizeDelta = new Vector2(30, 30);
+        stateObj.transform.localPosition += Vector3.right * 50;
+
+        stateObj.transform.DOLocalMoveX(0, 0.3f).SetEase(Ease.OutBack);
+        activeStates.Add(stateId, stateObj);
+
+        if (duration > 0)
+        {
+            StartCoroutine(RemoveStateAfterDuration(stateId, duration));
         }
     }
 
-    private void PlayCriticalHitEffect()
+    public void RemoveState(StateType type)
     {
-        if (rageModeBackgroundEffect != null)
+        RemoveState(type.ToString());
+    }
+
+    private void RemoveState(string stateId)
+    {
+        if (!activeStates.ContainsKey(stateId)) return;
+
+        GameObject stateObj = activeStates[stateId];
+        activeStates.Remove(stateId);
+
+        stateObj.transform.DOLocalMoveX(-50, 0.3f).SetEase(Ease.InBack)
+            .OnComplete(() =>
+            {
+                Destroy(stateObj);
+                RearrangeStateIcons();
+            });
+    }
+
+    private void RearrangeStateIcons()
+    {
+        foreach (var stateObj in activeStates.Values)
         {
-            rageModeBackgroundEffect.gameObject.SetActive(true);
-            rageModeBackgroundEffect.DOFade(0.2f, 0.1f)
-                .SetLoops(2, LoopType.Yoyo)
-                .OnComplete(() => rageModeBackgroundEffect.gameObject.SetActive(false));
+            stateObj.transform.DOScale(1.1f, 0.1f).SetLoops(2, LoopType.Yoyo);
+        }
+    }
+
+    private IEnumerator RemoveStateAfterDuration(string stateId, float duration)
+    {
+        yield return new WaitForSeconds(duration);
+        RemoveState(stateId);
+    }
+
+    private void UpdateStateDuration(string stateId, float newDuration)
+    {
+        if (!activeStates.ContainsKey(stateId)) return;
+
+        StopCoroutine($"RemoveStateAfterDuration_{stateId}");
+        if (newDuration > 0)
+        {
+            StartCoroutine(RemoveStateAfterDuration(stateId, newDuration));
+        }
+    }
+
+    public void ClearAllStates()
+    {
+        foreach (var stateId in new List<string>(activeStates.Keys))
+        {
+            RemoveState(stateId);
+        }
+    }
+    #endregion
+
+    public override void SpawnDamageText(int damage)
+    {
+        base.SpawnDamageText(damage);
+
+        if (bossMonster != null && damage > bossMonster.CurrentAttackPower * 1.5f)
+        {
+            // 크리티컬 히트 이펙트 추가 가능
         }
     }
 
@@ -182,10 +258,5 @@ public class BossUIManager : MonsterUIManager
     {
         DOTween.Kill(transform);
         base.OnDestroy();
-    }
-
-    protected override IEnumerator AnimateDamageText(GameObject textObj)
-    {
-        yield return StartCoroutine(base.AnimateDamageText(textObj));
     }
 }

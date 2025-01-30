@@ -5,7 +5,7 @@ using UnityEngine;
 using static AttackData;
 using static MonsterData;
 
-public abstract class MonsterClass : ICreature,IMonsterClass
+public abstract class MonsterClass : ICreature,IMonsterClass, IDamageable
 {
     // 아머 파괴 이벤트 (필요한 경우)
     public event Action OnArmorBreak;
@@ -17,31 +17,60 @@ public abstract class MonsterClass : ICreature,IMonsterClass
     public event Action<int, int> OnHealthChanged; // (현재 체력, 최대 체력)
 
     public string MONSTERNAME { get; private set; }
-    public int CurrentHealth { get; private set; }
-    public int MaxHealth { get; private set; }
-    public int CurrentDeffense { get; private set; }
-    public int CurrentAttackPower { get; private set; }
-    public float CurrentAttackSpeed { get; private set; }
-    public int CurrentSpeed { get; private set; }
-    public float CurrentAttackRange { get; private set; }
 
+    private int _currentHealth;
+    public int CurrentHealth
+    {
+        get => _currentHealth;
+        private set => _currentHealth = Mathf.Clamp(value, 0, MaxHealth);
+    }
+
+    private int _maxHealth;
+    public int MaxHealth
+    {
+        get => _maxHealth;
+        private set => _maxHealth = Mathf.Max(value, 0);
+    }
+
+    private int _currentDefense;
+    public int CurrentDeffense
+    {
+        get => _currentDefense;
+        private set => _currentDefense = Mathf.Max(value, 0);
+    }
+
+    private int _currentAttackPower;
+    public int CurrentAttackPower
+    {
+        get => _currentAttackPower;
+        private set => _currentAttackPower = Mathf.Max(value, 0);
+    }
+
+    private float _currentAttackSpeed;
+    public float CurrentAttackSpeed
+    {
+        get => _currentAttackSpeed;
+        private set => _currentAttackSpeed = Mathf.Max(value, 0.1f);
+    }
+
+    private int _currentSpeed;
+    public int CurrentSpeed
+    {
+        get => _currentSpeed;
+        private set => _currentSpeed = Mathf.Max(value, 0);
+    }
+
+    public float CurrentAttackRange { get; private set; }
     public int CurrentMoveRange { get; private set; }
     public int CurrentChaseRange { get; private set; }
-
     public float CurrentSkillCooldown { get; private set; }
-
     public int CurrentAggroDropRange { get; private set; }
-
     public float CurrentSkillRange { get; private set; }
     public float CurrentSKillDuration { get; private set; }
-
     public float CurrentAreaDuration { get; private set; }
     public float CurrentSkillDamage { get; private set; }
-
     public float CurrentHitStunDuration { get; private set; }
-
     public float CurrentDeathDuration { get; private set; }
-
     public float CurrentSpawnDuration { get; private set; }
 
     public MonsterGrade grade { get; private set; }
@@ -52,11 +81,10 @@ public abstract class MonsterClass : ICreature,IMonsterClass
     public SkillStrategyType CurrentSkillStrategy { get; private set; }
     public DieStrategyType CurrentDieStrategy { get; private set; }
 
-    public bool UseHealthRetreat { get; private set; }           // 체력기반 도주 사용
-    public float HealthRetreatThreshold { get; private set; }    // 도주 시작 체력 비율
+    public bool UseHealthRetreat { get; private set; }
+    public float HealthRetreatThreshold { get; private set; }
 
-
-    public bool IsPhaseChange { get; private set; }             // 페이즈 전환용 도주인지
+    public bool IsPhaseChange { get; private set; }
     public float CurrentProjectileSpeed { get; private set; }
     public float CurrentRotateSpeed { get; private set; }
     public float CurrentAreaRadius { get; private set; }
@@ -75,9 +103,15 @@ public abstract class MonsterClass : ICreature,IMonsterClass
     public ProjectileImpactType CurrentProjectileImpactType { get; private set; }
     public SkillEffectType CurrentSkillEffectType { get; private set; }
     public bool isBasicAttack { get; private set; }
-    public int CurrentArmor { get; private set; }
 
-    public float CurrentShockwaveRadius {  get; private set; }
+    private int _currentArmor;
+    public int CurrentArmor
+    {
+        get => _currentArmor;
+        private set => _currentArmor = Mathf.Max(value, 0);
+    }
+
+    public float CurrentShockwaveRadius { get; private set; }
 
     protected bool isDashing = false;
     public GameObject hitEffect;
@@ -96,7 +130,7 @@ public abstract class MonsterClass : ICreature,IMonsterClass
     {
         return isBasicAttack;
     }
-    private void InitializeStats()
+    protected virtual void InitializeStats()
     {
         CurrentHealth = monsterData.initialHp;
         CurrentAttackPower = monsterData.initialAttackPower;
@@ -149,7 +183,7 @@ public abstract class MonsterClass : ICreature,IMonsterClass
 
         playerClass = GameInitializer.Instance.GetPlayerClass();
 
-        Debug.Log(CurrentCameraShakeIntensity);
+       
     }
     public ICreatureData GetMonsterData()
     {
@@ -185,12 +219,15 @@ public abstract class MonsterClass : ICreature,IMonsterClass
 
         int incomingDamage = Mathf.Max(1, (int)(damage * damageTakenMultiplier));
 
+        Debug.Log($"방어력 적용된 최종 데미지: {incomingDamage}");
+
         // 아머 처리
         if (CurrentArmor > 0)
         {
             // 아머에 흡수되는 데미지 계산
             int armorDamage = Mathf.Min(CurrentArmor, incomingDamage);
             CurrentArmor -= armorDamage;
+            Debug.Log($"아머가 흡수한 데미지: {armorDamage}, 남은 아머: {CurrentArmor}");
 
             // 아머를 뚫고 들어가는 남은 데미지 계산
             incomingDamage -= armorDamage;
@@ -205,11 +242,15 @@ public abstract class MonsterClass : ICreature,IMonsterClass
         // 남은 데미지로 체력 감소
         if (incomingDamage > 0)
         {
+            int previousHealth = CurrentHealth;
             CurrentHealth -= incomingDamage;
+            Debug.Log($"체력 감소: {previousHealth} -> {CurrentHealth} (감소량: {incomingDamage})");
+
             if (CurrentHealth <= 0)
             {
                 CurrentHealth = 0;
                 Die();
+                PatternSequenceManager.ClearAllSequences();
             }
         }
 
@@ -233,8 +274,10 @@ public abstract class MonsterClass : ICreature,IMonsterClass
 
 
 
-
-
+    public void SetArmorValue(int value)
+    {
+        CurrentArmor = value;
+    }
     public Vector3 GetPlayerPosition()
     {
         return playerClass.playerTransform.position;
