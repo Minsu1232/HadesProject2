@@ -161,7 +161,9 @@ public class BossMonster : MonsterClass
                 stunResistance = phaseData.stunResistance,
                 useHealthRetreat = phaseData.useHealthRetreat,
                 healthRetreatThreshold = phaseData.healthRetreatThreshold,
-                retreatDuration = phaseData.retreatDuration
+                retreatDuration = phaseData.retreatDuration,
+                phaseAttackStrategies = new List<AttackStrategyWeight>(phaseData.phaseAttackStrategies) // 이 부분 추가
+               
             };
            
             runtimePhaseData.Add(newPhaseData);

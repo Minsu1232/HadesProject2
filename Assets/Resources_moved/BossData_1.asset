@@ -161,7 +161,7 @@ MonoBehaviour:
     specialMechanicType: 
     specialMechanicValue: 0
     gimmicks: []
-  - phaseName: Enraged
+  - phaseName: 2phase
     isInvulnerable: 0
     phaseTransitionThreshold: 0.5
     transitionDuration: 2
@@ -190,7 +190,7 @@ MonoBehaviour:
         stepEndEffect: {fileID: 0}
         stepAnimationTrigger: 
         isTransitionAnim: 1
-      patternWeight: 1.2
+      patternWeight: 1
       phaseNumber: 2
       patternCooldown: 8
       warningDuration: 1.5
@@ -206,29 +206,11 @@ MonoBehaviour:
       maxDifficulty: 3
       difficultyIncreaseStep: 0.5
       currentDifficulty: 0
-    - patternName: Desperation
-      steps: []
-      patternWeight: 2
-      phaseNumber: 3
-      patternCooldown: 12
-      warningDuration: 2
-      healthThresholdMin: 0
-      healthThresholdMax: 0.3
-      patternStartEffect: {fileID: 0}
-      patternEndEffect: {fileID: 0}
-      warningMessage: Ultimate Attack!
-      isDisabled: 0
-      requiredSuccessCount: 3
-      currentSuccessCount: 0
-      baseDifficulty: 1
-      maxDifficulty: 3
-      difficultyIncreaseStep: 0.5
-      currentDifficulty: 0
     phaseAttackStrategies:
-    - type: 0
-      weight: 0
     - type: 3
       weight: 1
+    - type: 0
+      weight: 0
     patternStrategyWeight: 0.4
     moveType: 1
     attackType: 3
@@ -282,7 +264,7 @@ MonoBehaviour:
       hazardPrefabKey: Stalactite
       warningSound: {fileID: 0}
       activeSound: {fileID: 0}
-  - phaseName: Enraged
+  - phaseName: 2phase
     isInvulnerable: 0
     phaseTransitionThreshold: 0.5
     transitionDuration: 2
@@ -311,7 +293,7 @@ MonoBehaviour:
         stepEndEffect: {fileID: 0}
         stepAnimationTrigger: 
         isTransitionAnim: 1
-      patternWeight: 1.2
+      patternWeight: 1
       phaseNumber: 2
       patternCooldown: 8
       warningDuration: 1.5
@@ -327,29 +309,11 @@ MonoBehaviour:
       maxDifficulty: 3
       difficultyIncreaseStep: 0.5
       currentDifficulty: 0
-    - patternName: Desperation
-      steps: []
-      patternWeight: 2
-      phaseNumber: 3
-      patternCooldown: 12
-      warningDuration: 2
-      healthThresholdMin: 0
-      healthThresholdMax: 0.3
-      patternStartEffect: {fileID: 0}
-      patternEndEffect: {fileID: 0}
-      warningMessage: Ultimate Attack!
-      isDisabled: 0
-      requiredSuccessCount: 3
-      currentSuccessCount: 0
-      baseDifficulty: 1
-      maxDifficulty: 3
-      difficultyIncreaseStep: 0.5
-      currentDifficulty: 0
     phaseAttackStrategies:
-    - type: 0
-      weight: 0
     - type: 3
       weight: 1
+    - type: 0
+      weight: 0
     patternStrategyWeight: 0.4
     moveType: 1
     attackType: 3

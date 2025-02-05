@@ -41,9 +41,12 @@ public class BossPhaseTransitionStrategy : IPhaseTransitionStrategy
         if (transitionTimer >= boss.CurrentPhaseData.transitionDuration)
         {
             isComplete = true;
+            // 새 페이즈의 공격 전략 설정
+            Debug.Log(phaseData.phaseName);
+            Debug.Log(phaseData.phaseAttackStrategies[0]);
+            bossAI.SetupPhaseAttackStrategies(phaseData, bossData);
             if (boss.CurrentPhaseData.isInvulnerableDuringTransition)
-            { // 새 페이즈의 공격 전략 설정
-                bossAI.SetupPhaseAttackStrategies(phaseData, bossData);
+            { 
                 boss.SetInvulnerable(false);
                 boss.CurrentPhaseData.isInvulnerableDuringTransition = false;  // 이 부분은 필요했던 거네요!
                 Debug.Log("변화완료");

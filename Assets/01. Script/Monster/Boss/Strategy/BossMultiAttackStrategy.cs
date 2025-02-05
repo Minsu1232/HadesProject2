@@ -86,7 +86,7 @@ public class BossMultiAttackStrategy : BasePhysicalAttackStrategy
     }
 
     public override PhysicalAttackType AttackType =>
-        currentStrategy?.AttackType ?? PhysicalAttackType.Basic;
+        currentStrategy.AttackType;
 
     public override string GetAnimationTriggerName()
     {

@@ -146,7 +146,7 @@ public class BossAI : CreatureAI
             // 공격 전략 설정
             if (miniGameManager != null)
             {
-                SetupPhaseAttackStrategies(bossData.phaseData[0], bossData);
+                SetupPhaseAttackStrategies(bossData.phaseData[currentPhase], bossData);
             }
             else
             {
@@ -179,6 +179,7 @@ public class BossAI : CreatureAI
     }
    public void SetupPhaseAttackStrategies(PhaseData phaseData, BossData bossData)
     {
+    
         var strategies = new List<IAttackStrategy>();
         var weights = new List<float>();
 
@@ -192,10 +193,14 @@ public class BossAI : CreatureAI
             patternStrategy.OnPhaseChanged(bossMonster.CurrentPhase);
             Debug.Log(patternStrategy.ToString());
         }
-
-        // 2. 현재 페이즈의 추가 전략들
+        if (phaseData.phaseName == "Enraged")  // 원하는 조건으로 변경
+        {
+            Debug.Break();
+        }
+        // 2. 현재 페이즈의 추가 전략들 205 이부분 문제
         foreach (var strategyData in phaseData.phaseAttackStrategies)
         {
+            Debug.Log(strategyData.type);
             var strategy = StrategyFactory.CreateAttackStrategy(strategyData.type, bossData);
             if (strategy != null)
             {
@@ -204,6 +209,10 @@ public class BossAI : CreatureAI
                 Debug.Log(strategy.ToString());
             }
         }
+
+        Debug.Log("여기부터 시작");
+        Debug.Log(strategies[0].ToString());
+        Debug.Log(phaseData.phaseName);
 
         // 3. MultiAttackStrategy 설정
         if (strategies.Count > 0)
