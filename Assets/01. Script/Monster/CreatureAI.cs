@@ -25,11 +25,11 @@ public abstract class CreatureAI : MonoBehaviour, ICreatureAI
     {
         animator = GetComponent<Animator>();
         creatureStatus = GetComponent<ICreatureStatus>();
-        
+        InitializeStates();
         creatureStatus.GetMonsterClass();
         IMonsterClass monsterClass = creatureStatus.GetMonsterClass();
         monsterClass.OnArmorBreak += HandleArmorBreak;
-        InitializeStates();
+      
     }
     private void HandleArmorBreak()
     {
@@ -100,8 +100,27 @@ public abstract class CreatureAI : MonoBehaviour, ICreatureAI
     public abstract IHitStrategy GetHitStrategy();
     public abstract IGroggyStrategy GetGroggyStrategy();
     public abstract IPhaseTransitionStrategy GetPhaseTransitionStrategy();
+    public abstract IGimmickStrategy GetGimmickStrategy();
     #endregion
 
+    // 애니메이션 이벤트 수신용 메서드들
+    public void OnSkillStart()
+    {
+        (currentState as SkillState)?.OnSkillStart();
+    }
+
+    public void OnSkillEffect()
+    {
+        (currentState as SkillState)?.OnSkillEffect();
+    }
+
+    public void OnSkillAnimationComplete()
+    {
+        (currentState as SkillState)?.OnSkillAnimationComplete();
+    }
+
+    // 파티클 생성 메서드 추가
+ 
     #region Strategy Setters
     public abstract void SetMovementStrategy(IMovementStrategy newStrategy);
     public abstract void SetAttackStrategy(IAttackStrategy newStrategy);

@@ -159,4 +159,9 @@ public class BasicCreatureAI : CreatureAI
     {
         throw new System.NotImplementedException();
     }
+
+    public override IGimmickStrategy GetGimmickStrategy()
+    {
+        throw new System.NotImplementedException();
+    }
 }

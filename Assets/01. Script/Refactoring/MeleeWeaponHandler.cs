@@ -108,7 +108,7 @@ public class MeleeDamageDealer : MonoBehaviour, IDamageDealer
     private IEnumerator ResetClearingFlag()
     {
         // 원하는 시간(예: 0.1초) 동안 OnTriggerEnter를 무시
-        yield return new WaitForSeconds(0.1f);
+        yield return new WaitForSeconds(0.3f);
         isClearingDamaged = false;
         Debug.Log("ClearingDamaged time ended. OnTriggerEnter is active again.");
     }

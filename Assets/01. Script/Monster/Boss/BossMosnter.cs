@@ -3,11 +3,15 @@ using System;
 using UnityEngine;
 using Unity.VisualScripting;
 using System.Collections.Generic;
+using UnityEngine.AddressableAssets;
 
 public class BossMonster : MonsterClass
 {
     // 읽기 전용 BossData 참조
     private readonly BossData bossData;
+
+
+
 
     // 기본 상태 프로퍼티
     public bool CanBeInterrupted { get; private set; }
@@ -16,9 +20,28 @@ public class BossMonster : MonsterClass
     public float AggroRange { get; private set; }
 
     // 페이즈 관련 상태
-    public int CurrentPhase { get; private set; }
+    private int _currentPhase = 1;  // 초기값 1로 설정
+
+    public int CurrentPhase
+    {
+        get => _currentPhase;
+        private set
+        {
+            if (_currentPhase == value) return;  // 동일한 값이면 변경하지 않음
+            if (value > bossData.phaseCount) return; // bossData.phaseCount보다 크면 변경하지 않음
+
+            Debug.Log($"[CurrentPhase] Phase changed! Old: {_currentPhase}, New: {value}");
+            Debug.Log($"[CurrentPhase] Call Stack:\n{System.Environment.StackTrace}");
+
+            _currentPhase = value;
+        }
+    }
+
     private List<PhaseData> runtimePhaseData;  // 실행 중 변경될 수 있는 페이즈 데이터
     public PhaseData CurrentPhaseData { get; set; }
+
+    private List<GimmickData> runtimeGimmickData;
+    public GimmickData CurrentPhaseGimmickData { get; set; }
     public bool IsInPhaseTransition { get; private set; }
 
     // 레이지 모드 상태
@@ -54,16 +77,20 @@ public class BossMonster : MonsterClass
     public event Action OnRageModeEnded;
 
     int a;
+
+    public bool IsInGimmick = false;
     public BossMonster(BossData data) : base(data)
     {
         bossData = data;
         InitializeRuntimeState();
-        InitializeBoss();
-        
+        InitializeBoss();      
+
+
     }
 
     private void InitializeRuntimeState()
     {
+        
         CurrentPhase = 1;
 
         SetArmorValue(bossData.armorValue);
@@ -77,7 +104,10 @@ public class BossMonster : MonsterClass
        
         IsInPhaseTransition = false;
         InitializePhaseData();
-        CurrentPhaseData = runtimePhaseData[CurrentPhase-1];
+        InitializeGimmickData();
+        CurrentPhaseData = runtimePhaseData[CurrentPhase];
+        CurrentPhaseGimmickData = runtimeGimmickData[CurrentPhase];
+
         // 레이지 모드 초기화
         IsInRageMode = false;
         RageModeThreshold = bossData.rageModeThreshold;
@@ -135,14 +165,60 @@ public class BossMonster : MonsterClass
             };
            
             runtimePhaseData.Add(newPhaseData);
-            Debug.Log(runtimePhaseData[a].phaseName);
+            Debug.Log(runtimePhaseData[a].phaseTransitionThreshold);
             a++;
         }
         
         
     }
+    private void InitializeGimmickData()
+    {     
+        runtimeGimmickData = new List<GimmickData>();
 
-    private void InitializePatternStates()
+        foreach (var phase in bossData.phaseData)
+        {
+            foreach (var gimmick in phase.gimmicks)
+            {
+                var newGimmick = new GimmickData
+                {
+                    gimmickName = gimmick.gimmickName,
+                    type = gimmick.type,
+                    triggerHealthThreshold = gimmick.triggerHealthThreshold,
+                    duration = gimmick.duration,
+                    isEnabled = gimmick.isEnabled,
+                    successCount = gimmick.successCount,
+                    moveSpeed = gimmick.moveSpeed,
+                    hazardSpawnType = gimmick.hazardSpawnType,
+                    targetType = gimmick.targetType,
+                    requirePlayerAction = gimmick.requirePlayerAction,
+                    isInterruptible = gimmick.isInterruptible,
+                    destroyAfterUse = gimmick.destroyAfterUse,
+                    makeInvulnerable = gimmick.makeInvulnerable,
+                    damageMultiplier = gimmick.damageMultiplier,
+                    failDamage = gimmick.failDamage,
+                    damage = gimmick.damage,
+                    affectStatusEffects = gimmick.affectStatusEffects,
+                    useCustomPosition = gimmick.useCustomPosition,
+                    gimmickPosition = gimmick.gimmickPosition,
+                    areaRadius = gimmick.areaRadius,
+                    followTarget = gimmick.followTarget,
+                    collisionMask = gimmick.collisionMask,
+                    preparationTime = gimmick.preparationTime,
+                    repeatInterval = gimmick.repeatInterval,
+                    warningEffect = gimmick.warningEffect,
+                    activeEffect = gimmick.activeEffect,
+                    hazardPrefab = gimmick.hazardPrefab,
+                    warningSound = gimmick.warningSound,
+                    activeSound = gimmick.activeSound
+                };
+
+                runtimeGimmickData.Add(newGimmick);
+            }
+        }
+
+       
+    }
+        private void InitializePatternStates()
     {
         foreach (var phaseData in runtimePhaseData)
         {
@@ -159,10 +235,7 @@ public class BossMonster : MonsterClass
     }
     private void InitializeBoss()
     {
-        if (IsInvulnerable)
-        {
-            IsInvulnerable = true;
-        }       
+       
     }
 
     public override void TakeDamage(int damage)
@@ -231,13 +304,44 @@ public class BossMonster : MonsterClass
             return;
         }
 
+        Debug.Log($"[Phase Change] SetCurrentPhase called! New Phase: {phase}");
+
+        // 스택 트레이스 출력 (어디서 호출했는지 확인 가능)
+        Debug.Log($"[Phase Change] Call Stack:\n{System.Environment.StackTrace}");
+
         CurrentPhase = phase;
-        CurrentPhaseData = runtimePhaseData[phase - 1];
+        CurrentPhaseData = runtimePhaseData[phase];
+        
         OnPhaseChanged?.Invoke(phase);
     }
     public void IncreasePhase()
     {
+        Debug.Log($"[Phase Change] IncreasePhase called! Current Phase: {CurrentPhase}, New Phase: {CurrentPhase + 1}");
+
+        //  스택 트레이스 출력
+        Debug.Log($"[Phase Change] IncreasePhase Call Stack:\n{System.Environment.StackTrace}");
+
         SetCurrentPhase(CurrentPhase + 1);
     }
     #endregion
+
+    public void ReleaseGimmickPrefabs()
+    {
+        foreach (var phase in runtimePhaseData)
+        {
+            foreach (var gimmick in phase.gimmicks)
+            {
+                if (gimmick.hazardPrefab != null)
+                {
+                    Addressables.Release(gimmick.hazardPrefab);
+                    gimmick.hazardPrefab = null;  // 참조 해제
+                }
+            }
+        }
+        Debug.Log("[BossMonster] 모든 기믹 프리팹 릴리즈 완료.");
+    }
+    public override DamageType GetDamageType()
+    {
+        return DamageType.Boss;
+    }
 }

@@ -76,4 +76,11 @@ public class BossStatus : MonsterStatus
     {
         base.OnDestroy();
     }
+    public override DamageType GetDamageType()
+    {
+        Debug.Log("보스데미지타입호출");
+        return DamageType.Boss;
+    }
+
+    
 }

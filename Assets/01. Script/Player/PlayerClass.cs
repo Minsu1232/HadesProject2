@@ -156,7 +156,14 @@ public class PlayerClass : ICreature, IDamageable
             Debug.Log("Á×À½");
             ResetPower(true, true, true, true, true, true, true, true);
         }
-    } 
+    }
+
+    public DamageType GetDamageType()
+    {
+        Debug.Log("È£Ãâ");
+        return DamageType.Player;
+        
+    }
     #endregion
-   
+
 }

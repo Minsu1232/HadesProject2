@@ -29,7 +29,7 @@ MonoBehaviour:
     - patternName: BasicCombo
       steps:
       - attackType: 0
-        stepDelay: 1
+        stepDelay: 0.2
         hasMiniGame: 0
         miniGameType: 0
         waitForMiniGame: 0
@@ -64,11 +64,16 @@ MonoBehaviour:
       maxDifficulty: 3
       difficultyIncreaseStep: 0.5
       currentDifficulty: 0
+    phaseAttackStrategies:
+    - type: 0
+      weight: 1
+    - type: 3
+      weight: 0
+    patternStrategyWeight: 0.4
     moveType: 0
     attackType: 0
     skillType: 0
     phaseTransitionType: 0
-    gimmickType: 0
     damageMultiplier: 1
     speedMultiplier: 1
     defenseMultiplier: 1
@@ -84,61 +89,78 @@ MonoBehaviour:
     cutscenePath: 
     specialMechanicType: 
     specialMechanicValue: 0
-    gimmicks:
-    - gimmickName: 
-      type: 0
-      triggerHealthThreshold: 0
-      duration: 0
-      isEnabled: 1
-      successCount: 0
-      requirePlayerAction: 0
-      isInterruptible: 0
-      destroyAfterUse: 1
-      makeInvulnerable: 0
-      damageMultiplier: 0
-      failDamage: 0
-      damage: 0
-      affectStatusEffects: 0
-      useCustomPosition: 0
-      gimmickPosition: {x: 0, y: 0, z: 0}
-      areaRadius: 0
-      followTarget: 0
-      collisionMask:
-        serializedVersion: 2
-        m_Bits: 0
-      preparationTime: 0
-      repeatInterval: 0
-      warningEffect: {fileID: 0}
-      activeEffect: {fileID: 0}
-      warningSound: {fileID: 0}
-      activeSound: {fileID: 0}
-    - gimmickName: 
-      type: 0
-      triggerHealthThreshold: 0
-      duration: 0
-      isEnabled: 1
-      successCount: 0
-      requirePlayerAction: 0
-      isInterruptible: 0
-      destroyAfterUse: 1
-      makeInvulnerable: 0
-      damageMultiplier: 0
-      failDamage: 0
-      damage: 0
-      affectStatusEffects: 0
-      useCustomPosition: 0
-      gimmickPosition: {x: 0, y: 0, z: 0}
-      areaRadius: 0
-      followTarget: 0
-      collisionMask:
-        serializedVersion: 2
-        m_Bits: 0
-      preparationTime: 0
-      repeatInterval: 0
-      warningEffect: {fileID: 0}
-      activeEffect: {fileID: 0}
-      warningSound: {fileID: 0}
-      activeSound: {fileID: 0}
+    gimmicks: []
+  - phaseName: Normal
+    isInvulnerable: 0
+    phaseTransitionThreshold: 0.9
+    transitionDuration: 2
+    isInvulnerableDuringTransition: 0
+    patternChangeTime: 5
+    availablePatterns:
+    - patternName: BasicCombo
+      steps:
+      - attackType: 0
+        stepDelay: 0.2
+        hasMiniGame: 0
+        miniGameType: 0
+        waitForMiniGame: 0
+        miniGameDifficulty: 0
+        stepStartEffect: {fileID: 0}
+        stepEndEffect: {fileID: 0}
+        stepAnimationTrigger: 
+        isTransitionAnim: 0
+      - attackType: 3
+        stepDelay: 1
+        hasMiniGame: 1
+        miniGameType: 1
+        waitForMiniGame: 1
+        miniGameDifficulty: 1
+        stepStartEffect: {fileID: 0}
+        stepEndEffect: {fileID: 0}
+        stepAnimationTrigger: 
+        isTransitionAnim: 1
+      patternWeight: 1
+      phaseNumber: 1
+      patternCooldown: 5
+      warningDuration: 1
+      healthThresholdMin: 0
+      healthThresholdMax: 1
+      patternStartEffect: {fileID: 0}
+      patternEndEffect: {fileID: 0}
+      warningMessage: Normal Attack Pattern
+      isDisabled: 0
+      requiredSuccessCount: 3
+      currentSuccessCount: 0
+      baseDifficulty: 1
+      maxDifficulty: 3
+      difficultyIncreaseStep: 0.5
+      currentDifficulty: 0
+    phaseAttackStrategies:
+    - type: 0
+      weight: 1
+    - type: 3
+      weight: 0
+    patternStrategyWeight: 0.4
+    moveType: 0
+    attackType: 0
+    skillType: 0
+    phaseTransitionType: 0
+    damageMultiplier: 1
+    speedMultiplier: 1
+    defenseMultiplier: 1
+    attackSpeedMultiplier: 0.1
+    canBeInterrupted: 1
+    stunResistance: 0
+    useHealthRetreat: 0
+    healthRetreatThreshold: 0
+    retreatDuration: 0
+    phaseStartEffect: {fileID: 0}
+    phaseLoopEffect: {fileID: 0}
+    exitEffect: {fileID: 0}
+    cutscenePath: 
+    specialMechanicType: 
+    specialMechanicValue: 0
+    gimmicks: []
   - phaseName: Enraged
     isInvulnerable: 0
     phaseTransitionThreshold: 0.5
@@ -148,12 +170,22 @@ MonoBehaviour:
     availablePatterns:
     - patternName: JumpCombo
       steps:
-      - attackType: 2
-        stepDelay: 0.8
+      - attackType: 3
+        stepDelay: 1.5
+        hasMiniGame: 0
+        miniGameType: 0
+        waitForMiniGame: 0
+        miniGameDifficulty: 0
+        stepStartEffect: {fileID: 0}
+        stepEndEffect: {fileID: 0}
+        stepAnimationTrigger: 
+        isTransitionAnim: 0
+      - attackType: 0
+        stepDelay: 1
         hasMiniGame: 1
         miniGameType: 1
         waitForMiniGame: 1
-        miniGameDifficulty: 1.2
+        miniGameDifficulty: 3
         stepStartEffect: {fileID: 0}
         stepEndEffect: {fileID: 0}
         stepAnimationTrigger: 
@@ -163,7 +195,7 @@ MonoBehaviour:
       patternCooldown: 8
       warningDuration: 1.5
       healthThresholdMin: 0
-      healthThresholdMax: 0.7
+      healthThresholdMax: 0.9
       patternStartEffect: {fileID: 0}
       patternEndEffect: {fileID: 0}
       warningMessage: Rush Attack Incoming!
@@ -174,61 +206,6 @@ MonoBehaviour:
       maxDifficulty: 3
       difficultyIncreaseStep: 0.5
       currentDifficulty: 0
-    moveType: 1
-    attackType: 3
-    skillType: 0
-    phaseTransitionType: 0
-    gimmickType: 0
-    damageMultiplier: 1.3
-    speedMultiplier: 1.2
-    defenseMultiplier: 0.8
-    attackSpeedMultiplier: 0.1
-    canBeInterrupted: 1
-    stunResistance: 50
-    useHealthRetreat: 1
-    healthRetreatThreshold: 0.5
-    retreatDuration: 0
-    phaseStartEffect: {fileID: 0}
-    phaseLoopEffect: {fileID: 0}
-    exitEffect: {fileID: 0}
-    cutscenePath: 
-    specialMechanicType: 
-    specialMechanicValue: 0
-    gimmicks:
-    - gimmickName: StalactiteFallGimmick
-      type: 1
-      triggerHealthThreshold: 0.6
-      duration: 30
-      isEnabled: 1
-      successCount: 1
-      requirePlayerAction: 1
-      isInterruptible: 1
-      destroyAfterUse: 1
-      makeInvulnerable: 1
-      damageMultiplier: 2
-      failDamage: 1000
-      damage: 9999
-      affectStatusEffects: 0
-      useCustomPosition: 1
-      gimmickPosition: {x: 10, y: 0, z: 10}
-      areaRadius: 5
-      followTarget: 1
-      collisionMask:
-        serializedVersion: 2
-        m_Bits: 0
-      preparationTime: 1.5
-      repeatInterval: 0
-      warningEffect: {fileID: 0}
-      activeEffect: {fileID: 0}
-      warningSound: {fileID: 0}
-      activeSound: {fileID: 0}
-  - phaseName: Berserk
-    isInvulnerable: 0
-    phaseTransitionThreshold: 0
-    transitionDuration: 2
-    isInvulnerableDuringTransition: 1
-    patternChangeTime: 3
-    availablePatterns:
     - patternName: Desperation
       steps: []
       patternWeight: 2
@@ -247,19 +224,210 @@ MonoBehaviour:
       maxDifficulty: 3
       difficultyIncreaseStep: 0.5
       currentDifficulty: 0
+    phaseAttackStrategies:
+    - type: 0
+      weight: 0
+    - type: 3
+      weight: 1
+    patternStrategyWeight: 0.4
+    moveType: 1
+    attackType: 3
+    skillType: 0
+    phaseTransitionType: 0
+    damageMultiplier: 1.3
+    speedMultiplier: 1.2
+    defenseMultiplier: 1.2
+    attackSpeedMultiplier: 0.1
+    canBeInterrupted: 1
+    stunResistance: 50
+    useHealthRetreat: 1
+    healthRetreatThreshold: 0
+    retreatDuration: 0
+    phaseStartEffect: {fileID: 0}
+    phaseLoopEffect: {fileID: 0}
+    exitEffect: {fileID: 0}
+    cutscenePath: 
+    specialMechanicType: 
+    specialMechanicValue: 0
+    gimmicks:
+    - gimmickName: StalactiteFallGimmick
+      type: 1
+      triggerHealthThreshold: 0.6
+      duration: 30
+      isEnabled: 1
+      successCount: 3
+      moveSpeed: 10
+      hazardSpawnType: 1
+      targetType: 1
+      requirePlayerAction: 1
+      isInterruptible: 1
+      destroyAfterUse: 1
+      makeInvulnerable: 1
+      damageMultiplier: 2
+      failDamage: 1000
+      damage: 10
+      affectStatusEffects: 0
+      useCustomPosition: 1
+      gimmickPosition: {x: 10, y: 0, z: 10}
+      areaRadius: 5
+      followTarget: 1
+      collisionMask:
+        serializedVersion: 2
+        m_Bits: 2147483648
+      preparationTime: 1
+      repeatInterval: 0
+      warningEffect: {fileID: 0}
+      activeEffect: {fileID: 0}
+      hazardPrefab: {fileID: 7489191758440052081, guid: 3e867b08564d97942b4eac4fdfa17926, type: 3}
+      hazardPrefabKey: Stalactite
+      warningSound: {fileID: 0}
+      activeSound: {fileID: 0}
+  - phaseName: Enraged
+    isInvulnerable: 0
+    phaseTransitionThreshold: 0.5
+    transitionDuration: 2
+    isInvulnerableDuringTransition: 1
+    patternChangeTime: 4
+    availablePatterns:
+    - patternName: JumpCombo
+      steps:
+      - attackType: 3
+        stepDelay: 1.5
+        hasMiniGame: 0
+        miniGameType: 0
+        waitForMiniGame: 0
+        miniGameDifficulty: 0
+        stepStartEffect: {fileID: 0}
+        stepEndEffect: {fileID: 0}
+        stepAnimationTrigger: 
+        isTransitionAnim: 0
+      - attackType: 0
+        stepDelay: 1
+        hasMiniGame: 1
+        miniGameType: 1
+        waitForMiniGame: 1
+        miniGameDifficulty: 3
+        stepStartEffect: {fileID: 0}
+        stepEndEffect: {fileID: 0}
+        stepAnimationTrigger: 
+        isTransitionAnim: 1
+      patternWeight: 1.2
+      phaseNumber: 2
+      patternCooldown: 8
+      warningDuration: 1.5
+      healthThresholdMin: 0
+      healthThresholdMax: 0.9
+      patternStartEffect: {fileID: 0}
+      patternEndEffect: {fileID: 0}
+      warningMessage: Rush Attack Incoming!
+      isDisabled: 0
+      requiredSuccessCount: 3
+      currentSuccessCount: 0
+      baseDifficulty: 1
+      maxDifficulty: 3
+      difficultyIncreaseStep: 0.5
+      currentDifficulty: 0
+    - patternName: Desperation
+      steps: []
+      patternWeight: 2
+      phaseNumber: 3
+      patternCooldown: 12
+      warningDuration: 2
+      healthThresholdMin: 0
+      healthThresholdMax: 0.3
+      patternStartEffect: {fileID: 0}
+      patternEndEffect: {fileID: 0}
+      warningMessage: Ultimate Attack!
+      isDisabled: 0
+      requiredSuccessCount: 3
+      currentSuccessCount: 0
+      baseDifficulty: 1
+      maxDifficulty: 3
+      difficultyIncreaseStep: 0.5
+      currentDifficulty: 0
+    phaseAttackStrategies:
+    - type: 0
+      weight: 0
+    - type: 3
+      weight: 1
+    patternStrategyWeight: 0.4
+    moveType: 1
+    attackType: 3
+    skillType: 0
+    phaseTransitionType: 0
+    damageMultiplier: 1.3
+    speedMultiplier: 1.2
+    defenseMultiplier: 1.2
+    attackSpeedMultiplier: 0.1
+    canBeInterrupted: 1
+    stunResistance: 50
+    useHealthRetreat: 1
+    healthRetreatThreshold: 0
+    retreatDuration: 0
+    phaseStartEffect: {fileID: 0}
+    phaseLoopEffect: {fileID: 0}
+    exitEffect: {fileID: 0}
+    cutscenePath: 
+    specialMechanicType: 
+    specialMechanicValue: 0
+    gimmicks:
+    - gimmickName: StalactiteFallGimmick
+      type: 1
+      triggerHealthThreshold: 0.6
+      duration: 30
+      isEnabled: 1
+      successCount: 3
+      moveSpeed: 10
+      hazardSpawnType: 1
+      targetType: 1
+      requirePlayerAction: 1
+      isInterruptible: 1
+      destroyAfterUse: 1
+      makeInvulnerable: 1
+      damageMultiplier: 2
+      failDamage: 1000
+      damage: 10
+      affectStatusEffects: 0
+      useCustomPosition: 1
+      gimmickPosition: {x: 10, y: 0, z: 10}
+      areaRadius: 5
+      followTarget: 1
+      collisionMask:
+        serializedVersion: 2
+        m_Bits: 2147483648
+      preparationTime: 1
+      repeatInterval: 0
+      warningEffect: {fileID: 0}
+      activeEffect: {fileID: 0}
+      hazardPrefab: {fileID: 7489191758440052081, guid: 3e867b08564d97942b4eac4fdfa17926, type: 3}
+      hazardPrefabKey: Stalactite
+      warningSound: {fileID: 0}
+      activeSound: {fileID: 0}
+  - phaseName: Berserk
+    isInvulnerable: 0
+    phaseTransitionThreshold: 0
+    transitionDuration: 2
+    isInvulnerableDuringTransition: 1
+    patternChangeTime: 3
+    availablePatterns: []
+    phaseAttackStrategies:
+    - type: 0
+      weight: 0.4
+    - type: 3
+      weight: 0.8
+    patternStrategyWeight: 0.4
     moveType: 1
     attackType: 1
     skillType: 0
     phaseTransitionType: 0
-    gimmickType: 0
     damageMultiplier: 1.5
     speedMultiplier: 1.4
-    defenseMultiplier: 0.7
+    defenseMultiplier: 1.2
     attackSpeedMultiplier: 0.1
     canBeInterrupted: 0
     stunResistance: 100
     useHealthRetreat: 1
-    healthRetreatThreshold: 0.2
+    healthRetreatThreshold: 0
     retreatDuration: 0
     phaseStartEffect: {fileID: 0}
     phaseLoopEffect: {fileID: 0}
@@ -268,7 +436,40 @@ MonoBehaviour:
     specialMechanicType: 
     specialMechanicValue: 0
     gimmicks: []
-  phaseCount: 1
+  - phaseName: Berserk
+    isInvulnerable: 0
+    phaseTransitionThreshold: 0
+    transitionDuration: 2
+    isInvulnerableDuringTransition: 1
+    patternChangeTime: 3
+    availablePatterns: []
+    phaseAttackStrategies:
+    - type: 0
+      weight: 0.4
+    - type: 3
+      weight: 0.8
+    patternStrategyWeight: 0.4
+    moveType: 1
+    attackType: 1
+    skillType: 0
+    phaseTransitionType: 0
+    damageMultiplier: 1.5
+    speedMultiplier: 1.4
+    defenseMultiplier: 1.2
+    attackSpeedMultiplier: 0.1
+    canBeInterrupted: 0
+    stunResistance: 100
+    useHealthRetreat: 1
+    healthRetreatThreshold: 0
+    retreatDuration: 0
+    phaseStartEffect: {fileID: 0}
+    phaseLoopEffect: {fileID: 0}
+    exitEffect: {fileID: 0}
+    cutscenePath: 
+    specialMechanicType: 
+    specialMechanicValue: 0
+    gimmicks: []
+  phaseCount: 3
   canSummonMinions: 0
   minionPrefabs: []
   maxMinionCount: 0

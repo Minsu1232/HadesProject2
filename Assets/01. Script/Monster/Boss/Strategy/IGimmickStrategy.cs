@@ -4,4 +4,6 @@ public interface IGimmickStrategy
     void UpdateGimmick();
     bool IsGimmickComplete { get; }
     string GetGimmickAnimationTrigger();
+    IGimmickStrategy GetGimmickStrategy();
+    void SucessTrigget();
 }

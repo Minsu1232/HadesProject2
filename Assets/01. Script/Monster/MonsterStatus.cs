@@ -333,4 +333,10 @@ public class MonsterStatus : MonoBehaviour,IDamageable, ICreatureStatus
     {
         return monsterClass;
     }
+
+    public virtual DamageType GetDamageType()
+    {
+        Debug.Log("몬스터데미지타입호출");
+        return DamageType.Monster;
+    }
 }

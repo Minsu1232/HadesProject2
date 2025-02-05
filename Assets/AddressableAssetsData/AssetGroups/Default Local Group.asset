@@ -163,6 +163,11 @@ MonoBehaviour:
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 3e867b08564d97942b4eac4fdfa17926
+    m_Address: Stalactite
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
   m_ReadOnly: 0
   m_Settings: {fileID: 11400000, guid: b00a60bada955e740bf4855b507f44d8, type: 2}
   m_SchemaSet:

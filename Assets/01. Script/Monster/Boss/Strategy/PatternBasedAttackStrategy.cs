@@ -1,9 +1,8 @@
 using DG.Tweening;
-using System.Collections.Generic;
-using System.Linq;
-using UnityEngine;
 using static IMonsterState;
-using static UnityEngine.UI.GridLayoutGroup;
+using System.Collections.Generic;
+using UnityEngine;
+using System.Linq;
 
 public class PatternBasedAttackStrategy : BasePhysicalAttackStrategy
 {
@@ -13,22 +12,22 @@ public class PatternBasedAttackStrategy : BasePhysicalAttackStrategy
     private CreatureAI owner;
     private BossPatternManager patternManager;
 
-    private List<AttackPatternData> currentPhasePatterns;
     private AttackPatternData currentPattern;
     private bool isExecutingPattern = false;
-    private DG.Tweening.Sequence currentPatternSequence;
-    private int currentPhase = 1;
+    private Sequence currentPatternSequence;
     private Transform currentTransform;
     private Transform currentTarget;
     private BossMonster currentMonster;
     private MiniGameManager miniGameManager;
     private BossUIManager bossUIManager;
+    private float lastAttackTime = 0f;
 
     public override bool IsAttacking => isExecutingPattern;
     public override PhysicalAttackType AttackType => PhysicalAttackType.Basic;
 
-    public void Initialize(BossData data, MiniGameManager mgr, CreatureAI ownerAI)
+    public void Initialize(BossData data, MiniGameManager mgr, CreatureAI ownerAI, BossMonster bossMonster)
     {
+        currentMonster = bossMonster;
         bossData = data;
         miniGameManager = mgr;
         owner = ownerAI;
@@ -41,9 +40,9 @@ public class PatternBasedAttackStrategy : BasePhysicalAttackStrategy
 
         playerClass = GameInitializer.Instance.GetPlayerClass();
         miniGameManager.OnMiniGameComplete += HandleMiniGameComplete;
-
-        UpdateAvailablePatterns();
         ValidateInitialization();
+
+        currentPattern = SelectPattern(currentMonster);
     }
 
     private void ValidateInitialization()
@@ -58,20 +57,32 @@ public class PatternBasedAttackStrategy : BasePhysicalAttackStrategy
 
         if (bossData.phaseData != null && bossData.phaseData.Count > 0)
         {
-            Debug.Log($"Phase Count: {bossData.phaseData.Count}");            
+            Debug.Log($"Phase Count: {bossData.phaseData.Count}");
             Debug.Log($"Phase 1 Pattern Count: {bossData.phaseData[0].availablePatterns.Count}");
-            foreach (var pattern in bossData.phaseData[0].availablePatterns)
+            foreach (var pattern in bossData.phaseData[currentMonster.CurrentPhase].availablePatterns)
             {
                 Debug.Log($"Pattern: {pattern.patternName}, Steps: {pattern.steps.Count}");
             }
         }
     }
 
+    private List<AttackPatternData> GetCurrentPhasePatterns()
+    {
+        int currentPhase = currentMonster.CurrentPhase;
+        Debug.Log(currentPhase);
+        if (currentPhase < bossData.phaseData.Count)
+        {
+            Debug.Log("들어왔네" + $"{bossData.phaseData[currentPhase].availablePatterns}");
+            return bossData.phaseData[currentPhase].availablePatterns;
+        }
+        Debug.Log("못들어왔네");
+        return null;
+    }
+
     public override void Attack(Transform transform, Transform target, IMonsterClass monsterData)
     {
         currentTransform = transform;
         currentTarget = target;
-        currentMonster = monsterData as BossMonster;
 
         if (bossUIManager == null)
         {
@@ -80,7 +91,7 @@ public class PatternBasedAttackStrategy : BasePhysicalAttackStrategy
 
         if (!isExecutingPattern && CanStartNewPattern())
         {
-            Debug.Log("Starting new pattern");
+            Debug.Log("[Attack] Starting new pattern attack.");
             StartNewPattern();
         }
     }
@@ -118,21 +129,17 @@ public class PatternBasedAttackStrategy : BasePhysicalAttackStrategy
         owner.ChangeState(MonsterStateType.Groggy);
     }
 
-    private void UpdateAvailablePatterns()
-    {
-        if (currentPhase - 1 < bossData.phaseData.Count)
-        {
-            currentPhasePatterns = bossData.phaseData[currentPhase - 1].availablePatterns;
-        }
-    }
-
     private AttackPatternData SelectPattern(IMonsterClass monsterData)
     {
-        if (currentPhasePatterns == null || currentPhasePatterns.Count == 0)
+        var patterns = GetCurrentPhasePatterns();
+        if (patterns == null || patterns.Count == 0)
+        {
+            Debug.Log("여기다");
             return null;
+        }
 
         float healthRatio = (float)monsterData.CurrentHealth / monsterData.MaxHealth;
-        var availablePatterns = GetAvailablePatternsForHealth(healthRatio);
+        var availablePatterns = GetAvailablePatternsForHealth(healthRatio, patterns);
 
         if (availablePatterns.Count == 0)
             return null;
@@ -140,9 +147,9 @@ public class PatternBasedAttackStrategy : BasePhysicalAttackStrategy
         return SelectWeightedPattern(availablePatterns);
     }
 
-    private List<AttackPatternData> GetAvailablePatternsForHealth(float healthRatio)
+    private List<AttackPatternData> GetAvailablePatternsForHealth(float healthRatio, List<AttackPatternData> patterns)
     {
-        return currentPhasePatterns.FindAll(p =>
+        return patterns.FindAll(p =>
             healthRatio >= p.healthThresholdMin && healthRatio <= p.healthThresholdMax);
     }
 
@@ -198,17 +205,20 @@ public class PatternBasedAttackStrategy : BasePhysicalAttackStrategy
     }
 
     private void AddStepToSequence(AttackStepData step)
-    {       
+    {
         if (step.isTransitionAnim)
         {
-            currentPatternSequence.AppendCallback(() => {
+            currentPatternSequence.AppendCallback(() =>
+            {
+                Debug.Log($"[AddStepToSequence] Playing transition animation for attack type: {step.attackType}");
                 PlayStepAnimation(step.attackType);
             });
-            Debug.Log($"Step Start - Type: {step.attackType}");
+            Debug.Log($"[AddStepToSequence] Step Start - Type: {step.attackType}");
         }
 
-        currentPatternSequence.AppendCallback(() => {
-            Debug.Log($"Executing attack: {step.attackType}");
+        currentPatternSequence.AppendCallback(() =>
+        {
+            Debug.Log($"[AddStepToSequence] Executing attack step: {step.attackType}");
             ExecuteStep(step);
         });
 
@@ -223,9 +233,11 @@ public class PatternBasedAttackStrategy : BasePhysicalAttackStrategy
     private void AddMiniGameToSequence(AttackStepData step)
     {
         Debug.Log($"Setting up minigame for: {step.attackType}");
-        currentPatternSequence.AppendCallback(() => {
+        currentPatternSequence.AppendCallback(() =>
+        {
             if (miniGameManager != null && patternManager != null)
             {
+                Debug.Log($"[AddMiniGameToSequence] Starting minigame for: {step.attackType}");
                 float currentDifficulty = patternManager.GetPatternDifficulty(currentPattern);
                 miniGameManager.StartMiniGame(step.miniGameType, currentDifficulty);
             }
@@ -237,7 +249,8 @@ public class PatternBasedAttackStrategy : BasePhysicalAttackStrategy
 
         if (step.waitForMiniGame)
         {
-            currentPatternSequence.AppendCallback(() => {
+            currentPatternSequence.AppendCallback(() =>
+            {
                 Debug.Log("Pattern Paused for MiniGame");
             });
         }
@@ -256,7 +269,8 @@ public class PatternBasedAttackStrategy : BasePhysicalAttackStrategy
 
     private void SetupPatternCompletion()
     {
-        currentPatternSequence.OnComplete(() => {
+        currentPatternSequence.OnComplete(() =>
+        {
             isExecutingPattern = false;
             lastAttackTime = Time.time;
         });
@@ -291,12 +305,13 @@ public class PatternBasedAttackStrategy : BasePhysicalAttackStrategy
 
         return Time.time >= lastAttackTime + currentPattern.patternCooldown;
     }
-
+    
     public void OnPhaseChanged(int newPhase)
     {
-        currentPhase = newPhase;
-        UpdateAvailablePatterns();
-        StopCurrentPattern();
+        StopCurrentPattern();  
+       
+       
+       
     }
 
     private void StopCurrentPattern()
@@ -308,10 +323,8 @@ public class PatternBasedAttackStrategy : BasePhysicalAttackStrategy
                 Debug.Log("Killing current pattern sequence.");
                 currentPatternSequence.Kill();
             }
-
             currentPatternSequence = null;
         }
-
         isExecutingPattern = false;
     }
 
@@ -327,7 +340,6 @@ public class PatternBasedAttackStrategy : BasePhysicalAttackStrategy
         {
             currentPatternSequence.Kill();
         }
-
         if (miniGameManager != null)
         {
             miniGameManager.OnMiniGameComplete -= HandleMiniGameComplete;
@@ -337,6 +349,15 @@ public class PatternBasedAttackStrategy : BasePhysicalAttackStrategy
     private void PlayStepAnimation(AttackStrategyType attackType)
     {
         IAttackStrategy baseAttack = StrategyFactory.CreateAttackStrategy(attackType, bossData);
-        owner.animator.SetTrigger(baseAttack.GetAnimationTriggerName());
+        string triggerName = baseAttack?.GetAnimationTriggerName() ?? "DefaultAttack";
+        Debug.Log($"[PlayStepAnimation] Triggering animation '{triggerName}' for attack type: {attackType}");
+        if (owner.animator != null)
+        {
+            owner.animator.SetTrigger(triggerName);
+        }
+        else
+        {
+            Debug.LogWarning("[PlayStepAnimation] Owner animator is null!");
+        }
     }
 }

@@ -203,8 +203,10 @@ public class MonsterData : ScriptableObject, ICreatureData
 
     [FoldoutGroup("Visual"), ShowInInspector]
     public float groggyTime { get; set; }
+
+ }
     #endregion
-}
+
 
 public enum SpawnStrategyType
 {

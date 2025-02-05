@@ -70,6 +70,10 @@ public class GimmickData
     public float duration;//
     public bool isEnabled = true;  // 기믹 활성화/비활성화 토글
     public int successCount;
+    public float moveSpeed;             // 이동 속도
+    public HazardSpawnType hazardSpawnType;         // 스폰 타입
+    public TargetType targetType;  // Transform 대신 타겟 타입으로 관리
+
     [Header("Conditions")]
     public bool requirePlayerAction;//
     public bool isInterruptible;
@@ -81,8 +85,9 @@ public class GimmickData
     public float failDamage;//
     public float damage;     // damagePerSecond (지속 피해용)
     public bool affectStatusEffects;   // 상태이상 면역/적용 여부
+    
    
-
+   
     [Header("Position Settings")]
     public bool useCustomPosition; //
     public Vector3 gimmickPosition; //
@@ -91,19 +96,26 @@ public class GimmickData
     public LayerMask collisionMask;    // 충돌 체크용 레이어
 
     [Header("Timing Settings")]
-    public float preparationTime;      // 기믹 시작 전 준비 시간
-    
+    public float preparationTime;      // 기믹 시작 전 준비 시간    
     public float repeatInterval;       // 반복 실행 간격 (0이면 반복 안함)
 
     [Header("Visual & Audio")]
     public GameObject warningEffect;   // 경고 이펙트
     public GameObject activeEffect;    // 활성화 이펙트
+    public GameObject hazardPrefab;     // 공격 프리팹
+    public string hazardPrefabKey;
     public AudioClip warningSound;     // 경고 사운드
     public AudioClip activeSound;      // 활성화 사운드
 
     // 제거된 항목:
     // timeLimit (duration으로 통합)
     // endTime (duration으로 통합)
+}
+[System.Serializable]
+public class AttackStrategyWeight
+{
+    public AttackStrategyType type;
+    public float weight;
 }
 [System.Serializable]
 public class PhaseData
@@ -119,13 +131,14 @@ public class PhaseData
     [Header("Pattern Settings")]
     public float patternChangeTime;
     public List<AttackPatternData> availablePatterns = new List<AttackPatternData>();  // patternWeights 대체
-
+    public List<AttackStrategyWeight> phaseAttackStrategies = new List<AttackStrategyWeight>();
+    public float patternStrategyWeight = 0.4f;  // 기본값 0.4
     [Header("Strategy Settings")]
     public MovementStrategyType moveType;
     public AttackStrategyType attackType;
     public SkillStrategyType skillType;
     public PhaseTransitionType phaseTransitionType;
-    public GimmickType gimmickType;
+    
 
     [Header("Phase Multipliers")]
     public float damageMultiplier;

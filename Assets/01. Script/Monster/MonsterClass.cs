@@ -6,7 +6,57 @@ using static AttackData;
 using static MonsterData;
 
 public abstract class MonsterClass : ICreature,IMonsterClass, IDamageable
-{
+{    // 디폴트 스탯 저장용 변수들
+    protected int defaultMaxHealth;
+    protected int defaultCurrentHealth;
+    protected int defaultDefense;
+    protected int defaultAttackPower;
+    protected float defaultAttackSpeed;
+    protected int defaultSpeed;
+    protected float defaultSkillCooldown;
+    protected float defaultAreaRadius;
+    protected float defaultBuffValue;
+    protected float defaultSkillRange;
+    protected float defaultAttackRange;
+    protected int defaultArmor; 
+    
+    protected virtual void SaveDefaultStats()
+    {
+        defaultMaxHealth = MaxHealth;
+        defaultCurrentHealth = CurrentHealth;
+        defaultDefense = CurrentDeffense;
+        defaultAttackPower = CurrentAttackPower;
+        defaultAttackSpeed = CurrentAttackSpeed;
+        defaultSpeed = CurrentSpeed;
+        defaultSkillCooldown = CurrentSkillCooldown;
+        defaultAreaRadius = CurrentAreaRadius;
+        defaultBuffValue = CurrentBuffValue;
+        defaultSkillRange = CurrentSkillRange;
+        defaultAttackRange = CurrentAttackRange;
+        defaultArmor = CurrentArmor;
+    }
+
+    public virtual void ResetToDefault()
+    {
+        float healthRatio = (float)CurrentHealth / MaxHealth;
+
+        MaxHealth = defaultMaxHealth;
+        CurrentHealth = Mathf.Clamp((int)(MaxHealth * healthRatio), 0, MaxHealth);
+        CurrentDeffense = defaultDefense;
+        CurrentAttackPower = defaultAttackPower;
+        CurrentAttackSpeed = defaultAttackSpeed;
+        CurrentSpeed = defaultSpeed;
+        CurrentSkillCooldown = defaultSkillCooldown;
+        CurrentAreaRadius = defaultAreaRadius;
+        CurrentBuffValue = defaultBuffValue;
+        CurrentSkillRange = defaultSkillRange;
+        CurrentAttackRange = defaultAttackRange;
+        CurrentArmor = defaultArmor;
+
+        OnHealthChanged?.Invoke(CurrentHealth, MaxHealth);
+    }
+
+
     // 아머 파괴 이벤트 (필요한 경우)
     public event Action OnArmorBreak;
 
@@ -125,6 +175,7 @@ public abstract class MonsterClass : ICreature,IMonsterClass, IDamageable
 
         OnHealthChanged?.Invoke(CurrentHealth, MaxHealth); // 초기화 시 이벤트 호출
         InitializeStats();
+        SaveDefaultStats();
     }
     public bool IsBasicAttack()
     {
@@ -333,5 +384,11 @@ public abstract class MonsterClass : ICreature,IMonsterClass, IDamageable
 
         // 체력 변화 이벤트 호출
         OnHealthChanged?.Invoke(CurrentHealth, MaxHealth);
+    }
+
+    public virtual DamageType GetDamageType()
+    {
+        Debug.Log("보스데미지타입호출");
+        return DamageType.Monster;
     }
 }

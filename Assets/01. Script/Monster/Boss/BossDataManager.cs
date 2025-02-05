@@ -5,6 +5,7 @@ using System.IO;
 using System.Threading.Tasks;
 using UnityEngine;
 using UnityEngine.AddressableAssets;
+using UnityEngine.ResourceManagement.AsyncOperations;
 using static MonsterData;
 
 public class BossDataManager : Singleton<BossDataManager>
@@ -133,6 +134,8 @@ public class BossDataManager : Singleton<BossDataManager>
             }
 
             bossPatternData[bossId].Add(patternDict);
+
+            Debug.Log($"[BossDataManager] Loaded BossPatternData: {bossPatternData.Count} bosses.");
         }
     }
 
@@ -383,7 +386,8 @@ public class BossDataManager : Singleton<BossDataManager>
                 foreach (var step in steps)
                 {
                     AttackStepData stepData = new AttackStepData
-                    {
+                    {   
+                        
                         attackType = (AttackStrategyType)Enum.Parse(typeof(AttackStrategyType), step["AttackType"]),
                         stepDelay = float.Parse(step["StepDelay"]),
                         hasMiniGame = bool.Parse(step["HasMiniGame"]),
@@ -400,9 +404,14 @@ public class BossDataManager : Singleton<BossDataManager>
             // PhaseData에 패턴 추가
             if (patternData.phaseNumber <= bossData.phaseData.Count)
             {
-                bossData.phaseData[patternData.phaseNumber - 1].availablePatterns.Add(patternData);
+                bossData.phaseData[patternData.phaseNumber].availablePatterns.Add(patternData);
             }
+
+            Debug.Log($"[UpdateBossPatternData] Boss ID: {bossData.MonsterName}, Total Patterns: {patterns.Count}");
+            Debug.Log($"[UpdateBossPatternData] Pattern '{patternData.patternName}' added to Phase {patternData.phaseNumber}");
         }
+
+
     }
     private void UpdateBossBaseData(BossData bossData, Dictionary<string, string> baseData)
     {
@@ -481,10 +490,30 @@ public class BossDataManager : Singleton<BossDataManager>
                 canBeInterrupted = bool.Parse(phase["CanBeInterrupted"]),
                 stunResistance = float.Parse(phase["StunResistance"]),
                 useHealthRetreat = bool.Parse(phase["UseHealthRetreat"]),
-                healthRetreatThreshold = float.Parse(phase["HealthRetreatThreshold"])     ,    
-                
+                healthRetreatThreshold = float.Parse(phase["HealthRetreatThreshold"])     ,
+
+                phaseAttackStrategies = new List<AttackStrategyWeight>()
 
             };
+            // 콤마로 구분된 전략 타입과 가중치 파싱
+            string[] strategyTypes = phase["AttackStrategies"].Split('|');
+            string[] strategyWeights = phase["StrategyWeights"].Split('|');
+
+            for (int i = 0; i < strategyTypes.Length; i++)
+            {
+                if (!string.IsNullOrEmpty(strategyTypes[i]))
+                {
+                    var strategyWeight = new AttackStrategyWeight
+                    {
+                        type = (AttackStrategyType)Enum.Parse(typeof(AttackStrategyType), strategyTypes[i]),
+                        weight = float.Parse(strategyWeights[i])
+                    };
+                    phaseData.phaseAttackStrategies.Add(strategyWeight);
+                }
+            }
+
+            // 나머지 기존 코드...
+            bossData.phaseData.Add(phaseData);
             // 해당 페이즈의 기믹 데이터 찾기
             if (bossGimmickData.TryGetValue(int.Parse(phase["BossID"]), out var gimmickList))
             {
@@ -517,9 +546,26 @@ public class BossDataManager : Singleton<BossDataManager>
                             affectStatusEffects = bool.Parse(gimmickData["affectStatusEffects"]),
                             followTarget = bool.Parse(gimmickData["FollowTarget"]),
                             collisionMask = ParseLayerMask(gimmickData["CollisionMask"]),
-                            successCount = int.Parse(gimmickData["SuccessCount"])
+                            successCount = int.Parse(gimmickData["SuccessCount"]),
+                            moveSpeed = float.Parse(gimmickData["MoveSpeed"]),
+                            hazardSpawnType = (HazardSpawnType)Enum.Parse(typeof(HazardSpawnType), gimmickData["HazardSpawnType"]),
+                            targetType = (TargetType)Enum.Parse(typeof(TargetType), gimmickData["TargetType"]),
+                            hazardPrefabKey = gimmickData["hazardPrefabKey"]
                         };
 
+                        Addressables.LoadAssetAsync<GameObject>(gimmick.hazardPrefabKey).Completed += handle =>
+                        {
+                            if (handle.Status == AsyncOperationStatus.Succeeded)
+                            {
+                                gimmick.hazardPrefab = handle.Result;  // GetComponent 제거하고 직접 저장
+
+                                Debug.Log($"[GimmickData] {gimmick.gimmickName}의 Prefab 로드 완료: {gimmick.hazardPrefabKey}");
+                            }
+                            else
+                            {
+                                Debug.LogError($"[GimmickData] {gimmick.gimmickName}의 Prefab 로드 실패: {gimmick.hazardPrefabKey}");
+                            }
+                        };
                         phaseData.gimmicks.Add(gimmick);
                     }
                 }

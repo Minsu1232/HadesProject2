@@ -2,6 +2,7 @@ using static IMonsterState;
 using System.Collections.Generic;
 using System;
 using UnityEngine;
+using static BossMultiAttackStrategy;
 
 public class BossAI : CreatureAI
 {
@@ -21,16 +22,18 @@ public class BossAI : CreatureAI
    
 
     private IPhaseTransitionStrategy currentPhaseStrategy;
+    private IGimmickStrategy gimmickStrategy;
     protected override void Start()
     {
         miniGameManager = FindObjectOfType<MiniGameManager>();
         bossUIManager = GetComponent<BossUIManager>();
         base.Start();
 
-        InitializePhases();
+        //InitializePhases();
         InitializeBehaviorTree();
-        
-        
+        InitializePhases();
+
+
     }
 
     private void InitializePhases()
@@ -48,7 +51,7 @@ public class BossAI : CreatureAI
         phasePatternData = new Dictionary<int, List<AttackPatternData>>();
         foreach (var phaseData in bossData.phaseData)
         {
-            int phaseNumber = bossData.phaseData.IndexOf(phaseData) + 1;
+            int phaseNumber = bossMonster.CurrentPhase;
             phasePatternData[phaseNumber] = phaseData.availablePatterns;
         }
     }
@@ -57,44 +60,40 @@ public class BossAI : CreatureAI
     {
         IMonsterClass monsterClass = creatureStatus.GetMonsterClass();
         ICreatureData data = monsterClass.GetMonsterData();
-        
 
-        InitializeStrategies(data);
-        InitializeSkillEffect(data);
+        // 1. states 딕셔너리 초기화
+        states = new Dictionary<IMonsterState.MonsterStateType, IMonsterState>();
 
-        // 보스 몬스터 참조 가져오기
+        // 2. 보스 몬스터 참조 초기화
         bossMonster = creatureStatus.GetMonsterClass() as BossMonster;
         BossData bossData = bossMonster.GetBossData();
-        currentPhaseStrategy = BossStrategyFactory.CreatePhaseTransitionStrategy(bossMonster.CurrentPhaseData.phaseTransitionType, bossMonster);
-        //// 보스만의 특수 상태 추가
-        //states[MonsterStateType.PhaseTransition] = new PhaseTransitionState(
-        //    this,
-        //    BossStrategyFactory.CreatePhaseTransitionStrategy(
-        //        bossMonster.CurrentPhaseData.phaseTransitionType,
-        //        bossMonster
-        //    )
-        //);
+      
+        states[MonsterStateType.Spawn] = new SpawnState(this, spawnStrategy ?? new BasicSpawnStrategy());
+        states[MonsterStateType.Idle] = new IdleState(this, idleStrategy ?? new BasicIdleStrategy());
+        states[MonsterStateType.Move] = new MoveState(this, moveStrategy ?? new BasicMovementStrategy());
+        states[MonsterStateType.Attack] = new AttackState(this, attackStrategy ?? new BasicAttackStrategy());
+        states[MonsterStateType.Skill] = new SkillState(this, skillStrategy ?? new BasicSkillStrategy(this));
+        states[MonsterStateType.Hit] = new HitState(this, hitStrategy ?? new BasicHitStrategy());
+        states[MonsterStateType.Groggy] = new GroggyState(this, groggyStrategy ?? new BasicGroggyStrategy(3f), bossUIManager);
+        states[MonsterStateType.Die] = new DieState(this, dieStrategy ?? new BasicDieStrategy());
+        states[MonsterStateType.PhaseTransition] = new PhaseTransitionState(this, currentPhaseStrategy ?? new BossPhaseTransitionStrategy(bossMonster, this), bossMonster);
+        states[MonsterStateType.Gimmick] = new GimmickState(this, gimmickStrategy ?? new HazardGimmickStrategy());
+        // 3. 모든 전략 초기화
+        InitializeStrategies(data);
 
-        //states[MonsterStateType.Gimmick] = new GimmickState(
-        //    this,
-        //    BossStrategyFactory.CreateGimmickStrategy(
-        //        bossMonster.CurrentPhaseData.gimmickType,
-        //        bossMonster
-        //    )
-        //);
-        states = new Dictionary<IMonsterState.MonsterStateType, IMonsterState>
-       {
-           { MonsterStateType.Spawn, new SpawnState(this, spawnStrategy) },
-           { MonsterStateType.Idle, new IdleState(this, idleStrategy) },
-           { MonsterStateType.Move, new MoveState(this, moveStrategy) },
-           { MonsterStateType.Attack, new AttackState(this, attackStrategy) },
-           { MonsterStateType.Skill, new SkillState(this, skillStrategy) },
-           { MonsterStateType.Hit, new HitState(this, hitStrategy) },
-           { MonsterStateType.Groggy, new GroggyState(this, groggyStrategy,bossUIManager) },
-           { MonsterStateType.Die, new DieState(this, dieStrategy) },
-            {MonsterStateType.PhaseTransition, new PhaseTransitionState(this,currentPhaseStrategy,bossMonster) }
-       };
+        // 4. states에 전략 할당
+        states[MonsterStateType.Spawn] = new SpawnState(this, spawnStrategy);
+        states[MonsterStateType.Idle] = new IdleState(this, idleStrategy);
+        states[MonsterStateType.Move] = new MoveState(this, moveStrategy);
+        states[MonsterStateType.Attack] = new AttackState(this, attackStrategy);
+        states[MonsterStateType.Skill] = new SkillState(this, skillStrategy);
+        states[MonsterStateType.Hit] = new HitState(this, hitStrategy);
+        states[MonsterStateType.Groggy] = new GroggyState(this, groggyStrategy, bossUIManager);
+        states[MonsterStateType.Die] = new DieState(this, dieStrategy);
+        states[MonsterStateType.PhaseTransition] = new PhaseTransitionState(this, currentPhaseStrategy, bossMonster);
+        states[MonsterStateType.Gimmick] = new GimmickState(this, gimmickStrategy);
 
+        // 5. 초기 상태 설정
         ChangeState(MonsterStateType.Spawn);
     }
     public void UpdatePhaseStrategies()
@@ -108,35 +107,56 @@ public class BossAI : CreatureAI
         {
             var newStrategy = BossStrategyFactory.CreatePhaseTransitionStrategy(
                 currentPhase.phaseTransitionType,
-                bossMonster
+                bossMonster,
+                this
             );
             phaseState.UpdateStrategy(newStrategy);
         }
     }
+       
+    
     private void InitializeStrategies(ICreatureData data)
     {
+        // 1. 기본 전략들 초기화
         spawnStrategy = StrategyFactory.CreateSpawnStrategy(data.spawnStrategy);
         moveStrategy = StrategyFactory.CreateMovementStrategy(data.moveStrategy);
-        attackStrategy = StrategyFactory.CreateAttackStrategy(data.attackStrategy, data);
         idleStrategy = StrategyFactory.CreatIdleStrategy(data.idleStrategy);
         skillStrategy = StrategyFactory.CreateSkillStrategy(data.skillStrategy, this);
         dieStrategy = StrategyFactory.CreatDieStrategy(data.dieStrategy);
         hitStrategy = StrategyFactory.CreatHitStrategy(data.hitStrategy);
         groggyStrategy = StrategyFactory.CreateGroggyStrategy(data.groggyStrategy, data);
-        
 
+        // 2. 보스 특수 전략들 초기화
         if (data is BossData bossData)
         {
-           if(miniGameManager != null)
+            // 페이즈 및 기믹 전략 초기화
+            currentPhaseStrategy = BossStrategyFactory.CreatePhaseTransitionStrategy(
+                bossMonster.CurrentPhaseData.phaseTransitionType,
+                bossMonster,
+                this
+            );
+
+            gimmickStrategy = BossStrategyFactory.CreateGimmickStrategy(
+                bossMonster.CurrentPhaseGimmickData.type,
+                this,
+                bossMonster.CurrentPhaseGimmickData,
+                bossMonster.CurrentPhaseGimmickData.hazardPrefab
+            );
+
+            // 공격 전략 설정
+            if (miniGameManager != null)
             {
-                var patternStrategy = new PatternBasedAttackStrategy();
-                patternStrategy.Initialize(bossData, miniGameManager,this);
-                attackStrategy = patternStrategy;
+                SetupPhaseAttackStrategies(bossData.phaseData[0], bossData);
             }
-           
-            
+            else
+            {
+                Debug.LogError("MiniGameManager is null!");
+            }
         }
-        
+
+        // 3. 스킬 이펙트 초기화
+        InitializeSkillEffect(data);
+
     }
 
     private void InitializeSkillEffect(ICreatureData data)
@@ -157,14 +177,59 @@ public class BossAI : CreatureAI
             Debug.LogError($"Failed to create skill effect for monster: {data.MonsterName}");
         }
     }
+   public void SetupPhaseAttackStrategies(PhaseData phaseData, BossData bossData)
+    {
+        var strategies = new List<IAttackStrategy>();
+        var weights = new List<float>();
+
+        // 1. 패턴 기반 공격 추가
+        if (miniGameManager != null)
+        {
+            var patternStrategy = new PatternBasedAttackStrategy();
+            patternStrategy.Initialize(bossData, miniGameManager, this, bossMonster);
+            strategies.Add(patternStrategy);
+            weights.Add(phaseData.patternStrategyWeight);
+            patternStrategy.OnPhaseChanged(bossMonster.CurrentPhase);
+            Debug.Log(patternStrategy.ToString());
+        }
+
+        // 2. 현재 페이즈의 추가 전략들
+        foreach (var strategyData in phaseData.phaseAttackStrategies)
+        {
+            var strategy = StrategyFactory.CreateAttackStrategy(strategyData.type, bossData);
+            if (strategy != null)
+            {
+                strategies.Add(strategy);
+                weights.Add(strategyData.weight);
+                Debug.Log(strategy.ToString());
+            }
+        }
+
+        // 3. MultiAttackStrategy 설정
+        if (strategies.Count > 0)
+        {   
+            Debug.Log(strategies.ToString());
+
+            var multiStrategy = new BossMultiAttackStrategy(strategies, weights);
+           
+            SetAttackStrategy(multiStrategy);  // 이걸로 변경
+
+        }
+
+        InitializePhases();
+    }
 
     protected override void Update()
     {
         base.Update();       
         
         behaviorTree?.Execute();
-
-       
+        if(bossMonster != null)
+        {
+            Debug.Log($"뭐야 {bossMonster.CurrentPhase}"); 
+        }
+     
+        Debug.Log(currentState);
 
     }
    
@@ -177,6 +242,10 @@ public class BossAI : CreatureAI
             new ExecutePhaseTransitionNode(this)
         ),
 
+        new BTSequence(this,
+        new CheckGimmickNode(this),
+        new ExecuteGimmickNode(this)
+        ),
         // 기존 로직
         new BTSequence(this,
             new CheckHealthCondition(this),
@@ -193,13 +262,6 @@ public class BossAI : CreatureAI
         )
     );
     }
-    private void TransitionToPhase(int newPhase)
-    {
-        currentPhase = newPhase;
-        // 페이즈 전환 효과나 특수 동작 실행
-        PlayPhaseTransitionEffect();
-    }
-
   
 
     #region Phase Patterns
@@ -222,10 +284,7 @@ public class BossAI : CreatureAI
     }
     #endregion
 
-    private void PlayPhaseTransitionEffect()
-    {
-        // 페이즈 전환시 이펙트, 사운드 등
-    }
+
 
     #region Strategy Implementation
     public override IAttackStrategy GetAttackStrategy() => attackStrategy;
@@ -236,15 +295,25 @@ public class BossAI : CreatureAI
     public override IDieStrategy GetDieStrategy() => dieStrategy;
     public override IHitStrategy GetHitStrategy() => hitStrategy;
     public override IGroggyStrategy GetGroggyStrategy() => groggyStrategy;
-
+    public override IGimmickStrategy GetGimmickStrategy() => gimmickStrategy;
     public override IPhaseTransitionStrategy GetPhaseTransitionStrategy() => currentPhaseStrategy;
 
-
+    public BossMonster GetBossMonster()
+    {
+        return bossMonster;
+    }
     public override void SetAttackStrategy(IAttackStrategy newStrategy)
     {
+        Debug.Log(newStrategy);
         attackStrategy = newStrategy;
+        Debug.Log(newStrategy);
+        if(states == null)
+        {
+            Debug.Log("비었다");
+        }
         if (states.ContainsKey(MonsterStateType.Attack))
         {
+            Debug.Log("새전략으로 바꿈");
             states[MonsterStateType.Attack] = new AttackState(this, attackStrategy);
         }
     }
@@ -260,6 +329,7 @@ public class BossAI : CreatureAI
 
     public override void SetSkillStrategy(ISkillStrategy newStrategy)
     {
+       
         skillStrategy = newStrategy;
         if (states.ContainsKey(MonsterStateType.Skill))
         {
@@ -275,5 +345,8 @@ public class BossAI : CreatureAI
             states[MonsterStateType.Idle] = new IdleState(this, idleStrategy);
         }
     }
+
+  
+   
     #endregion
 }

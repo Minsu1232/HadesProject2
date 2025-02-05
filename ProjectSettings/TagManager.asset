@@ -15,9 +15,9 @@ TagManager:
   - Wall
   - Monster
   - Projectile
-  - 
-  - 
-  - 
+  - CameraIgnore
+  - Ground
+  - WarningEffect
   - 
   - 
   - 

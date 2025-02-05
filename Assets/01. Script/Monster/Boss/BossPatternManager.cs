@@ -3,9 +3,9 @@ using System.Collections.Generic;
 
 public class BossPatternManager
 {
-    private Dictionary<AttackPatternData, int> patternSuccessCounts;
+   public Dictionary<AttackPatternData, int> patternSuccessCounts;
     private HashSet<AttackPatternData> disabledPatterns;
-    private Dictionary<AttackPatternData, float> patternDifficulties;
+    public Dictionary<AttackPatternData, float> patternDifficulties;
     private BossStatus bossStatus;
 
     public BossPatternManager(BossStatus status)
@@ -90,11 +90,11 @@ public class BossPatternManager
 
         return wasSuccess;
     }
-
+   
     public bool HandlePatternSuccess(AttackPatternData pattern)
     {
         if (disabledPatterns.Contains(pattern)) return false;
-
+        
         patternSuccessCounts[pattern]++;
         return patternSuccessCounts[pattern] >= pattern.requiredSuccessCount;
     }

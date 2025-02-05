@@ -13,6 +13,7 @@ public class SkillProjectile : BaseProjectile
         // 충돌 지점에 효과 생성
         impactEffect?.OnImpact(transform.position, damage);
         OnImpact(other);
+        Debug.Log("독구름펑");
         // 발사체 제거
         Destroy(gameObject);
     }

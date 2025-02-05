@@ -14,7 +14,7 @@ public class GimmickState : MonsterBaseState
 
     public override void Enter()
     {
-        animator.SetTrigger(gimmickStrategy.GetGimmickAnimationTrigger());
+        animator.SetBool(gimmickStrategy.GetGimmickAnimationTrigger(),true);        
         gimmickStrategy.StartGimmick();
     }
 
@@ -23,7 +23,8 @@ public class GimmickState : MonsterBaseState
         gimmickStrategy.UpdateGimmick();
         if (gimmickStrategy.IsGimmickComplete)
         {
-            owner.ChangeState(MonsterStateType.Idle);
+            animator.SetBool(gimmickStrategy.GetGimmickAnimationTrigger(), false);
+            owner.ChangeState(MonsterStateType.Groggy);
         }
     }
 

@@ -10,6 +10,7 @@ public interface IMonsterClass
     
     public event Action OnArmorBreak;
     ICreatureData GetMonsterData();  // MonsterData 대신 인터페이스 반환
+   
     string MONSTERNAME { get; }
     int CurrentHealth { get; }
     int MaxHealth { get; }

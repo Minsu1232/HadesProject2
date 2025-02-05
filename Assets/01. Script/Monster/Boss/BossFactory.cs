@@ -2,6 +2,7 @@ using System;
 using UnityEngine.AddressableAssets;
 using UnityEngine;
 using UnityEngine.ResourceManagement.AsyncOperations;
+using System.Linq;
 
 public class BossFactory : MonsterFactoryBase
 {
@@ -42,8 +43,11 @@ public class BossFactory : MonsterFactoryBase
             }
 
             IMonsterClass boss = new BossMonster(bossData);
+
             ICreatureStatus status = bossObject.AddComponent<BossStatus>();
+            
             status.Initialize(boss);
+           
 
             onMonsterCreated?.Invoke(boss);
         }
