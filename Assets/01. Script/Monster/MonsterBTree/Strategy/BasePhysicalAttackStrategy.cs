@@ -1,4 +1,5 @@
 // 물리 공격 전략들의 공통 기능을 담은 기본 클래스
+using System;
 using UnityEngine;
 
 public abstract class BasePhysicalAttackStrategy : IAttackStrategy
@@ -16,12 +17,15 @@ public abstract class BasePhysicalAttackStrategy : IAttackStrategy
 
     public virtual void StartAttack()
     {
+         
         isAttacking = true;
+       
     }
 
     public virtual void StopAttack()
     {
         isAttacking = false;
+
     }
 
     public virtual void OnAttackAnimationEnd()
@@ -32,6 +36,9 @@ public abstract class BasePhysicalAttackStrategy : IAttackStrategy
 
     public virtual bool CanAttack(float distanceToTarget, IMonsterClass monsterData)
     {
+        if (isAttacking) return false; //  공격 중이면 공격 불가
+        float timeCheck = Time.time - lastAttackTime;
+  
         return distanceToTarget <= monsterData.CurrentAttackRange &&
                Time.time >= lastAttackTime + monsterData.CurrentAttackSpeed;
     }
@@ -67,4 +74,9 @@ public abstract class BasePhysicalAttackStrategy : IAttackStrategy
     }
 
     public abstract void Attack(Transform transform, Transform target, IMonsterClass monsterData);
+
+    internal void UpdateLastAttackTime()
+    {
+        lastAttackTime = Time.time;
+    }
 }

@@ -52,8 +52,8 @@ public abstract class CreatureAI : MonoBehaviour, ICreatureAI
         //{
         //    behaviorTree.Execute();
         //}
+        Debug.Log(currentState);
 
-        
     }
 
     #region Core Methods
@@ -66,7 +66,7 @@ public abstract class CreatureAI : MonoBehaviour, ICreatureAI
             
             if (!currentState.CanTransition())
                 return;
-           
+            Debug.Log("out");
             currentState.Exit();
         }
 

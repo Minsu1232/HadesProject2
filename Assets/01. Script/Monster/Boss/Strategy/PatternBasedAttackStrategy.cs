@@ -20,10 +20,30 @@ public class PatternBasedAttackStrategy : BasePhysicalAttackStrategy
     private BossMonster currentMonster;
     private MiniGameManager miniGameManager;
     private BossUIManager bossUIManager;
-    private float lastAttackTime = 0f;
+   
 
-    public override bool IsAttacking => isExecutingPattern;
-    public override PhysicalAttackType AttackType => PhysicalAttackType.Basic;
+    public override bool IsAttacking =>
+     isExecutingPattern ||
+     (currentPatternSequence != null && currentPatternSequence.IsPlaying());
+
+
+
+    private AttackStrategyType currentStepAttackType; // 현재 스텝의 공격 타입 저장
+
+    public override PhysicalAttackType AttackType
+    {
+        get
+        {
+            // 현재 스텝의 공격 타입에 따라 PhysicalAttackType 반환
+            switch (currentStepAttackType)
+            {
+                case AttackStrategyType.Jump:
+                    return PhysicalAttackType.Jump;
+                default:
+                    return PhysicalAttackType.Basic;
+            }
+        }
+    }
 
     public void Initialize(BossData data, MiniGameManager mgr, CreatureAI ownerAI, BossMonster bossMonster)
     {
@@ -43,6 +63,11 @@ public class PatternBasedAttackStrategy : BasePhysicalAttackStrategy
         ValidateInitialization();
 
         currentPattern = SelectPattern(currentMonster);
+        if (currentPattern != null && currentPattern.steps.Count > 0)
+        {
+            currentStepAttackType = currentPattern.steps[0].attackType;
+            Debug.Log($"Initialize - Setting initial attack type to: {currentStepAttackType}");
+        }
     }
 
     private void ValidateInitialization()
@@ -81,6 +106,8 @@ public class PatternBasedAttackStrategy : BasePhysicalAttackStrategy
 
     public override void Attack(Transform transform, Transform target, IMonsterClass monsterData)
     {
+        Debug.Log($"Attack called - isExecutingPattern: {isExecutingPattern}, currentPattern: {currentPattern != null}, CanStartNewPattern: {CanStartNewPattern()}");
+
         currentTransform = transform;
         currentTarget = target;
 
@@ -89,10 +116,14 @@ public class PatternBasedAttackStrategy : BasePhysicalAttackStrategy
             bossUIManager = currentTransform.GetComponent<BossStatus>()?.GetBossUIManager();
         }
 
-        if (!isExecutingPattern && CanStartNewPattern())
+        if (!isExecutingPattern && CanStartNewPattern() && currentPattern == null)
         {
             Debug.Log("[Attack] Starting new pattern attack.");
             StartNewPattern();
+        }
+        else
+        {
+            Debug.Log($"Not starting new pattern - Reason: isExecutingPattern({isExecutingPattern}), CanStartNewPattern({CanStartNewPattern()}), currentPattern({currentPattern != null})");
         }
     }
 
@@ -177,8 +208,15 @@ public class PatternBasedAttackStrategy : BasePhysicalAttackStrategy
         {
             currentPatternSequence.Kill();
         }
-
+        
         currentPattern = SelectPattern(currentMonster);
+        if (currentPattern != null && currentPattern.steps.Count > 0)
+        {
+            // 첫 스텝의 attackType으로 초기화
+            currentStepAttackType = currentPattern.steps[0].attackType;
+            Debug.Log($"First Step Attack Type: {currentPattern.steps[0].attackType}"); // 여기에 디버그 추가
+        }
+        //currentStepAttackType = currentPattern.steps[0].attackType;
         Debug.Log($"Selected Pattern: {currentPattern?.patternName}");
 
         if (currentPattern != null)
@@ -196,6 +234,7 @@ public class PatternBasedAttackStrategy : BasePhysicalAttackStrategy
 
         foreach (var step in currentPattern.steps)
         {
+            Debug.Log(step.ToString() + "추가");
             AddStepToSequence(step);
         }
 
@@ -206,10 +245,13 @@ public class PatternBasedAttackStrategy : BasePhysicalAttackStrategy
 
     private void AddStepToSequence(AttackStepData step)
     {
+        //currentStepAttackType = step.attackType; // 실행 시점에 업데이트
         if (step.isTransitionAnim)
         {
+            
             currentPatternSequence.AppendCallback(() =>
             {
+               
                 Debug.Log($"[AddStepToSequence] Playing transition animation for attack type: {step.attackType}");
                 PlayStepAnimation(step.attackType);
             });
@@ -303,16 +345,25 @@ public class PatternBasedAttackStrategy : BasePhysicalAttackStrategy
         if (currentPattern == null)
             return true;
 
+        float timeSinceLastAttack = Time.time - lastAttackTime;
+        //Debug.Log($"Time since last attack: {timeSinceLastAttack}, Pattern cooldown: {currentPattern.patternCooldown}");
+        Debug.Log($"Current Phase: {currentMonster.CurrentPhase}");
+
         return Time.time >= lastAttackTime + currentPattern.patternCooldown;
     }
     
-    public void OnPhaseChanged(int newPhase)
-    {
-        StopCurrentPattern();  
-       
-       
-       
-    }
+    //public void OnPhaseChanged(int newPhase)
+    //{
+    //    StopCurrentPattern();
+    //    // 페이즈 변경시 즉시 새 패턴 선택 및 스텝 초기화
+    //    currentPattern = SelectPattern(currentMonster);
+    //    if (currentPattern != null && currentPattern.steps.Count > 0)
+    //    {
+    //        currentStepAttackType = currentPattern.steps[0].attackType;
+    //    }
+
+
+    //}
 
     private void StopCurrentPattern()
     {
@@ -334,16 +385,33 @@ public class PatternBasedAttackStrategy : BasePhysicalAttackStrategy
         base.StopAttack();
     }
 
-    private void OnDestroy()
+    public void Cleanup()
     {
-        if (currentPatternSequence != null && currentPatternSequence.IsPlaying())
+        // 1. 현재 실행 중인 패턴 정리
+        StopCurrentPattern();
+
+        // 2. 시퀀스 관련 정리
+        if (currentPatternSequence != null)
         {
             currentPatternSequence.Kill();
+            currentPatternSequence = null;
         }
+
+        // 3. 상태 초기화
+        isExecutingPattern = false;
+        currentPattern = null;
+        currentStepAttackType = AttackStrategyType.Basic; // 기본값으로 리셋
+
+        // 4. 타이머 리셋
+        lastAttackTime = 0f;
+
+        // 5. 이벤트 리스너 제거
         if (miniGameManager != null)
         {
             miniGameManager.OnMiniGameComplete -= HandleMiniGameComplete;
         }
+
+        Debug.Log("PatternBasedAttackStrategy cleaned up");
     }
 
     private void PlayStepAnimation(AttackStrategyType attackType)

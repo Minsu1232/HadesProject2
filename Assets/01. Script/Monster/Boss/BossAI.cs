@@ -31,30 +31,30 @@ public class BossAI : CreatureAI
 
         //InitializePhases();
         InitializeBehaviorTree();
-        InitializePhases();
+        //InitializePhases();
 
 
     }
 
-    private void InitializePhases()
-    {
-        // 구체 클래스로 GetComponent 후 인터페이스로 사용
-        BossStatus bossStatusComponent = GetComponent<BossStatus>();
-        if (bossStatusComponent == null) return;
+    //private void InitializePhases()
+    //{
+    //    // 구체 클래스로 GetComponent 후 인터페이스로 사용
+    //    BossStatus bossStatusComponent = GetComponent<BossStatus>();
+    //    if (bossStatusComponent == null) return;
 
-        IMonsterClass monster = bossStatusComponent.GetMonsterClass();
-        if (monster == null) return;
+    //    IMonsterClass monster = bossStatusComponent.GetMonsterClass();
+    //    if (monster == null) return;
 
-        ICreatureData data = monster.GetMonsterData();
-        if (!(data is BossData bossData)) return;
+    //    ICreatureData data = monster.GetMonsterData();
+    //    if (!(data is BossData bossData)) return;
 
-        phasePatternData = new Dictionary<int, List<AttackPatternData>>();
-        foreach (var phaseData in bossData.phaseData)
-        {
-            int phaseNumber = bossMonster.CurrentPhase;
-            phasePatternData[phaseNumber] = phaseData.availablePatterns;
-        }
-    }
+    //    phasePatternData = new Dictionary<int, List<AttackPatternData>>();
+    //    foreach (var phaseData in bossData.phaseData)
+    //    {
+    //        int phaseNumber = bossMonster.CurrentPhase;
+    //        phasePatternData[phaseNumber] = phaseData.availablePatterns;
+    //    }
+    //}
 
     protected override void InitializeStates()
     {
@@ -146,7 +146,8 @@ public class BossAI : CreatureAI
             // 공격 전략 설정
             if (miniGameManager != null)
             {
-                SetupPhaseAttackStrategies(bossData.phaseData[currentPhase], bossData);
+                //SetupPhaseAttackStrategies(bossMonster.CurrentPhaseData,bossData);
+                attackStrategy = new BasicToJumpPattern(miniGameManager, bossData.shorckEffectPrefab, bossData.shockwaveRadius, bossData, animator, this, bossMonster.CurrentPhaseData.availablePatterns[0]);
             }
             else
             {
@@ -177,55 +178,85 @@ public class BossAI : CreatureAI
             Debug.LogError($"Failed to create skill effect for monster: {data.MonsterName}");
         }
     }
-   public void SetupPhaseAttackStrategies(PhaseData phaseData, BossData bossData)
-    {
-    
-        var strategies = new List<IAttackStrategy>();
-        var weights = new List<float>();
+    //public void SetupPhaseAttackStrategies(PhaseData phaseData, BossData bossData)
+    //{
+    //    Debug.Log($"Setting up attack strategies for phase: {phaseData.phaseName}");
 
-        // 1. 패턴 기반 공격 추가
+    //    // 1. 기존 전략들 정리
+    //    CleanupExistingStrategies();
+
+    //    // 2. 새 전략 설정
+    //    var strategies = new List<IAttackStrategy>();
+    //    var weights = new List<float>();
+
+    //    // 3. 패턴 기반 전략 추가
+    //    AddPatternBasedStrategy(strategies, weights, phaseData, bossData);
+
+    //    // 4. 페이즈별 추가 전략 설정
+    //    AddPhaseSpecificStrategies(strategies, weights, phaseData, bossData);
+
+    //    // 5. MultiAttackStrategy 생성 및 설정
+    //    SetupMultiAttackStrategy(strategies, weights);
+    //}
+
+    private void CleanupExistingStrategies()
+    {
+        if (attackStrategy is BossMultiAttackStrategy multiStrategy)
+        {
+            foreach (var strategy in multiStrategy.GetStrategies())
+            {
+                if (strategy is PatternBasedAttackStrategy patternStrategy)
+                {
+                    patternStrategy.Cleanup();
+                }
+            }
+        }
+    }
+
+    private void AddPatternBasedStrategy(List<IAttackStrategy> strategies, List<float> weights,
+        PhaseData phaseData, BossData bossData)
+    {
         if (miniGameManager != null)
         {
             var patternStrategy = new PatternBasedAttackStrategy();
             patternStrategy.Initialize(bossData, miniGameManager, this, bossMonster);
             strategies.Add(patternStrategy);
             weights.Add(phaseData.patternStrategyWeight);
-            patternStrategy.OnPhaseChanged(bossMonster.CurrentPhase);
-            Debug.Log(patternStrategy.ToString());
+            Debug.Log($"Added pattern strategy with weight: {phaseData.patternStrategyWeight}");
         }
-        if (phaseData.phaseName == "Enraged")  // 원하는 조건으로 변경
+        else
         {
-            Debug.Break();
+            Debug.LogError("MiniGameManager is null when adding pattern strategy");
         }
-        // 2. 현재 페이즈의 추가 전략들 205 이부분 문제
+    }
+
+    private void AddPhaseSpecificStrategies(List<IAttackStrategy> strategies, List<float> weights,
+        PhaseData phaseData, BossData bossData)
+    {
         foreach (var strategyData in phaseData.phaseAttackStrategies)
         {
-            Debug.Log(strategyData.type);
             var strategy = StrategyFactory.CreateAttackStrategy(strategyData.type, bossData);
             if (strategy != null)
             {
                 strategies.Add(strategy);
                 weights.Add(strategyData.weight);
-                Debug.Log(strategy.ToString());
+                Debug.Log($"Added phase specific strategy: {strategyData.type} with weight: {strategyData.weight}");
             }
         }
+    }
 
-        Debug.Log("여기부터 시작");
-        Debug.Log(strategies[0].ToString());
-        Debug.Log(phaseData.phaseName);
-
-        // 3. MultiAttackStrategy 설정
+    private void SetupMultiAttackStrategy(List<IAttackStrategy> strategies, List<float> weights)
+    {
         if (strategies.Count > 0)
-        {   
-            Debug.Log(strategies.ToString());
-
+        {
+            Debug.Log($"Creating MultiAttackStrategy with {strategies.Count} strategies");
             var multiStrategy = new BossMultiAttackStrategy(strategies, weights);
-           
-            SetAttackStrategy(multiStrategy);  // 이걸로 변경
-
+            SetAttackStrategy(multiStrategy);
         }
-
-        InitializePhases();
+        else
+        {
+            Debug.LogError("No strategies available for MultiAttackStrategy");
+        }
     }
 
     protected override void Update()
@@ -313,9 +344,9 @@ public class BossAI : CreatureAI
     }
     public override void SetAttackStrategy(IAttackStrategy newStrategy)
     {
-        Debug.Log(newStrategy);
+        Debug.Log($"SetAttackStrategy called with {newStrategy.GetType().Name} from:\n{System.Environment.StackTrace}");
         attackStrategy = newStrategy;
-        Debug.Log(newStrategy);
+        
         if(states == null)
         {
             Debug.Log("비었다");

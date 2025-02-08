@@ -23,14 +23,14 @@ public class CombatDecisionNode : BTNode
 
 
        
-        Debug.Log(attackStrategy.CanAttack(distanceToPlayer, monster));
+     
         if (skillStrategy.CanUseSkill(distanceToPlayer, monster))
         {
             owner.ChangeState(MonsterStateType.Skill);
             return NodeStatus.Success;
         }
-        else if (attackStrategy.CanAttack(distanceToPlayer, monster))
-        {            
+        else if (!attackStrategy.IsAttacking && attackStrategy.CanAttack(distanceToPlayer, monster))
+        {
             owner.ChangeState(MonsterStateType.Attack);
             return NodeStatus.Success;
         }

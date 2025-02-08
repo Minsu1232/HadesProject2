@@ -7,14 +7,29 @@ public class BossMultiAttackStrategy : BasePhysicalAttackStrategy
     // 전략과 가중치를 저장하는 리스트
     private List<IAttackStrategy> strategies = new List<IAttackStrategy>();
     private List<float> weights = new List<float>();
-    private IAttackStrategy currentStrategy;
-
+    private IAttackStrategy _currentStrategy;
+    private IAttackStrategy currentStrategy
+    {
+        get => _currentStrategy;
+        set
+        {
+            _currentStrategy = value;
+            Debug.Log($"Current strategy changed to: {value?.GetType().Name}\nStack trace:\n{new System.Diagnostics.StackTrace(true)}");
+        }
+    }
+    private bool isFirstStrategy = true;
     public BossMultiAttackStrategy(List<IAttackStrategy> strategies, List<float> weights)
     {
         this.strategies = strategies;
         this.weights = weights;
+        Debug.Log($"BossMultiAttackStrategy initialized with strategies:");
+        foreach (var strategy in strategies)
+        {
+            Debug.Log($"- {strategy.GetType().Name}");
+        }
         ValidateWeights();
         SelectRandomStrategy();
+
     }
 
     // 가중치 검증 및 정규화
@@ -48,6 +63,8 @@ public class BossMultiAttackStrategy : BasePhysicalAttackStrategy
     // 가중치 기반 랜덤 전략 선택
     private void SelectRandomStrategy()
     {
+        var stackTrace = new System.Diagnostics.StackTrace(true);
+        Debug.Log($"SelectRandomStrategy called from:\n{stackTrace}");
         float totalWeight = weights.Sum();
         float random = UnityEngine.Random.Range(0f, totalWeight);
         float currentSum = 0f;
@@ -67,7 +84,11 @@ public class BossMultiAttackStrategy : BasePhysicalAttackStrategy
     // AttackState에서 호출하여 새로운 패턴 선택
     public void ChangePattern()
     {
-        SelectRandomStrategy();
+        if (!isFirstStrategy)  // 첫 전략이 아닐 때만 새로 선택
+        {
+            SelectRandomStrategy();
+        }
+        isFirstStrategy = false;  // 다음부터는 새로 선택하도록
     }
 
     public override bool CanAttack(float distanceToTarget, IMonsterClass monsterData)
@@ -78,11 +99,13 @@ public class BossMultiAttackStrategy : BasePhysicalAttackStrategy
     public override void StartAttack()
     {
         currentStrategy?.StartAttack();
+        
     }
 
     public override void StopAttack()
     {
         currentStrategy?.StopAttack();
+      
     }
 
     public override PhysicalAttackType AttackType =>
@@ -90,6 +113,8 @@ public class BossMultiAttackStrategy : BasePhysicalAttackStrategy
 
     public override string GetAnimationTriggerName()
     {
+        Debug.Log($"Current Strategy: {currentStrategy?.GetType().Name}");
+        Debug.Log($"Current Strategy Attack Type: {currentStrategy?.AttackType}");
         return currentStrategy?.GetAnimationTriggerName() ?? "DefaultAttack";
     }
 
@@ -98,5 +123,5 @@ public class BossMultiAttackStrategy : BasePhysicalAttackStrategy
         return strategies;
     }
 
-    public override bool IsAttacking => currentStrategy?.IsAttacking ?? false;
+    public override bool IsAttacking => currentStrategy.IsAttacking;
 }

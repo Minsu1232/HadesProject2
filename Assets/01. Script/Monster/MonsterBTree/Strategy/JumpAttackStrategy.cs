@@ -24,10 +24,17 @@ public class JumpAttackStrategy : BasePhysicalAttackStrategy
 
     public override bool CanAttack(float distanceToTarget, IMonsterClass monsterData)
     {
-        // 점프 공격은 좀 더 먼 거리에서 가능
-        return distanceToTarget <= monsterData.CurrentAttackRange * 1.45f &&
-               Time.time >= lastAttackTime + monsterData.CurrentAttackSpeed;
+        float timeCheck = Time.time - lastAttackTime;
+        bool isInRange = distanceToTarget <= monsterData.CurrentAttackRange * 10f;
+        bool isCooldownReady = Time.time >= lastAttackTime + monsterData.CurrentAttackSpeed;
+
+        //Debug.Log($"[JumpAttack] Distance: {distanceToTarget}, Required: {monsterData.CurrentAttackRange * 10f}, IsInRange: {isInRange}");
+        //Debug.Log($"[JumpAttack] TimeCheck: {timeCheck}, Required Cooldown: {monsterData.CurrentAttackSpeed}, IsCooldownReady: {isCooldownReady}");
+        //Debug.Log($"[JumpAttack] CanAttack Result: {isInRange && isCooldownReady}");
+        //Debug.Log(lastAttackTime)
+        return isInRange && isCooldownReady;
     }
+
 
     private void CreateShockwave(Vector3 position, IMonsterClass monsterData)
     {
@@ -74,7 +81,7 @@ public class JumpAttackStrategy : BasePhysicalAttackStrategy
         // 착지 지점 계산
         Vector3 startPos = transform.position;
         Vector3 endPos = target.position;  // 착지 지점을 타겟의 현재 위치로 삼을 수도 있고, Y좌표만 startPos.y를 쓰는 등 상황에 맞춰 조정
-        lastAttackTime = Time.time;
+        
 
         // 시퀀스 생성
         jumpSequence = DOTween.Sequence();
@@ -113,6 +120,7 @@ public class JumpAttackStrategy : BasePhysicalAttackStrategy
         // 완료 시점
         jumpSequence.OnComplete(() =>
         {
+            lastAttackTime = Time.time;
             OnAttackAnimationEnd();    // isAttackAnimation, isAttacking 해제
             isJumping = false;
             jumpSequence.Kill();

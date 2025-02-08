@@ -171,7 +171,7 @@ MonoBehaviour:
     - patternName: JumpCombo
       steps:
       - attackType: 3
-        stepDelay: 1.5
+        stepDelay: 2
         hasMiniGame: 0
         miniGameType: 0
         waitForMiniGame: 0
@@ -185,14 +185,14 @@ MonoBehaviour:
         hasMiniGame: 1
         miniGameType: 1
         waitForMiniGame: 1
-        miniGameDifficulty: 3
+        miniGameDifficulty: 1
         stepStartEffect: {fileID: 0}
         stepEndEffect: {fileID: 0}
         stepAnimationTrigger: 
         isTransitionAnim: 1
       patternWeight: 1
       phaseNumber: 2
-      patternCooldown: 8
+      patternCooldown: 5
       warningDuration: 1.5
       healthThresholdMin: 0
       healthThresholdMax: 0.9
@@ -208,9 +208,9 @@ MonoBehaviour:
       currentDifficulty: 0
     phaseAttackStrategies:
     - type: 3
-      weight: 1
+      weight: 0.5
     - type: 0
-      weight: 0
+      weight: 0.5
     patternStrategyWeight: 0.4
     moveType: 1
     attackType: 3
@@ -274,7 +274,7 @@ MonoBehaviour:
     - patternName: JumpCombo
       steps:
       - attackType: 3
-        stepDelay: 1.5
+        stepDelay: 2
         hasMiniGame: 0
         miniGameType: 0
         waitForMiniGame: 0
@@ -288,14 +288,14 @@ MonoBehaviour:
         hasMiniGame: 1
         miniGameType: 1
         waitForMiniGame: 1
-        miniGameDifficulty: 3
+        miniGameDifficulty: 1
         stepStartEffect: {fileID: 0}
         stepEndEffect: {fileID: 0}
         stepAnimationTrigger: 
         isTransitionAnim: 1
       patternWeight: 1
       phaseNumber: 2
-      patternCooldown: 8
+      patternCooldown: 5
       warningDuration: 1.5
       healthThresholdMin: 0
       healthThresholdMax: 0.9
@@ -311,9 +311,9 @@ MonoBehaviour:
       currentDifficulty: 0
     phaseAttackStrategies:
     - type: 3
-      weight: 1
+      weight: 0.5
     - type: 0
-      weight: 0
+      weight: 0.5
     patternStrategyWeight: 0.4
     moveType: 1
     attackType: 3

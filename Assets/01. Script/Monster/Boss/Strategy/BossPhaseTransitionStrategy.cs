@@ -44,7 +44,7 @@ public class BossPhaseTransitionStrategy : IPhaseTransitionStrategy
             // 새 페이즈의 공격 전략 설정
             Debug.Log(phaseData.phaseName);
             Debug.Log(phaseData.phaseAttackStrategies[0]);
-            bossAI.SetupPhaseAttackStrategies(phaseData, bossData);
+            //bossAI.SetupPhaseAttackStrategies(phaseData, bossData);
             if (boss.CurrentPhaseData.isInvulnerableDuringTransition)
             { 
                 boss.SetInvulnerable(false);

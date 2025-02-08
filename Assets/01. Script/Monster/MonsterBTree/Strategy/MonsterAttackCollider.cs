@@ -15,6 +15,11 @@ public class MonsterAttackCollider : MonoBehaviour
         CreatureAI = GetComponent<CreatureAI>();
         monsterClass = GetComponentInParent<MonsterStatus>().GetMonsterClass();
         player = GameInitializer.Instance.GetPlayerClass();
+
+        //if(monsterClass is BossMonster)
+        //{
+        //    monsterClass.Get
+        //}
     }
   
     private void OnTriggerEnter(Collider other)
@@ -41,7 +46,12 @@ public class MonsterAttackCollider : MonoBehaviour
 
     // 애니메이션에서 호출할 메서드
     public void EnableDamage()
-    {
+    {  //  현재 몬스터의 공격 전략을 가져와 lastAttackTime을 갱신
+    //    IAttackStrategy strategy = CreatureAI.GetAttackStrategy();
+    //    if (strategy is BasePhysicalAttackStrategy physicalAttackStrategy)
+    //    {
+    //        physicalAttackStrategy.UpdateLastAttackTime(); // 공격 시작 시 타이머 갱신
+    //    }
         canDealDamage = true;
         //currentAttackType = isSkill ? AttackData.AttackType.Charge : AttackData.AttackType.Normal;
     }
@@ -49,5 +59,6 @@ public class MonsterAttackCollider : MonoBehaviour
     public void DisableDamage()
     {
         canDealDamage = false;
+      
     }
 }

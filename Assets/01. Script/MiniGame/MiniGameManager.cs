@@ -100,6 +100,7 @@ public class MiniGameManager : MonoBehaviour
         }
 
         currentMiniGame = null;
+        Debug.Log("미니게임 끝");
     }
 
     public void RegisterUI(MiniGameType type, MonoBehaviour ui)
