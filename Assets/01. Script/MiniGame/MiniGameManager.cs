@@ -7,8 +7,9 @@ using System.Collections;
 public class MiniGameManager : MonoBehaviour
 {
     public DodgeMiniGameUI dodgeUI;  // Inspector에서 할당
+                                     
     public event Action<MiniGameType, MiniGameResult> OnMiniGameComplete;
-
+    [SerializeField] private MiniGameResultUI resultUI;  // 여기서 할당
     private IMiniGame currentMiniGame;
     private Dictionary<MiniGameType, IMiniGame> miniGameCache = new Dictionary<MiniGameType, IMiniGame>();
     public Dictionary<MiniGameType, MonoBehaviour> miniGameUIs = new Dictionary<MiniGameType, MonoBehaviour>();
@@ -30,7 +31,7 @@ public class MiniGameManager : MonoBehaviour
         {
             miniGameCache[type] = type switch
             {
-                MiniGameType.Dodge => new DodgeMiniGameWrapper(),
+                MiniGameType.Dodge => new DodgeMiniGameWrapper(this),
                 //MiniGameType.Parry => new ParryMiniGame(),
                 //MiniGameType.QuickTime => new QuickTimeMiniGame(),
                 _ => throw new ArgumentException($"Unknown mini game type: {type}")
@@ -112,12 +113,26 @@ public class MiniGameManager : MonoBehaviour
         Debug.Log($"Dictionary count after: {miniGameUIs.Count}");
         Debug.Log($"UI registered? {miniGameUIs.ContainsKey(type)}");
     }
-
+    public void ShowMiniGameResult(DodgeMiniGame.DodgeResult result)
+    {
+        switch (result)
+        {
+            case DodgeMiniGame.DodgeResult.Perfect:
+                resultUI.ShowResult("Perfect!", Color.magenta);
+                break;
+            case DodgeMiniGame.DodgeResult.Good:
+                resultUI.ShowResult("Good!", Color.green);
+                break;
+            default:
+                resultUI.ShowResult("Miss!", Color.red);
+                break;
+        }
+    }
     public void HandleDodgeReward(MiniGameResult result)
     {
         var player = GameInitializer.Instance.GetPlayerClass();
         float invincibleDuration = 2f; // 무적 시간을 위한 코루틴 필요
-
+       
         switch (result)
         {
             case MiniGameResult.Perfect:

@@ -21,7 +21,7 @@ public class ProjectileSkillEffect : ISkillEffect
         this.moveStrategy = moveStrategy;
         this.impactEffect = impactEffect;
         this.hitEffect = hitEffect;
-        Debug.Log("스킬이펙트 생성자 발동");
+       
     }
 
     public void Initialize(ICreatureStatus status, Transform target)
@@ -31,7 +31,7 @@ public class ProjectileSkillEffect : ISkillEffect
         this.skillDamage = status.GetMonsterClass().CurrentSkillDamage;
         this.spawnPoint = status.GetSkillSpawnPoint();
 
-        Debug.Log("스킬이펙트 이니셜라이즈");
+        
     }
 
     public void Execute()

@@ -53,7 +53,7 @@ public class BasicCreatureAI : CreatureAI
     {
         spawnStrategy = StrategyFactory.CreateSpawnStrategy(data.spawnStrategy);
         moveStrategy = StrategyFactory.CreateMovementStrategy(data.moveStrategy);
-        attackStrategy = StrategyFactory.CreateAttackStrategy(data.attackStrategy, data);
+        attackStrategy = StrategyFactory.CreateAttackStrategy(data.attackStrategy, data,this);
         idleStrategy = StrategyFactory.CreatIdleStrategy(data.idleStrategy);
         skillStrategy = StrategyFactory.CreateSkillStrategy(data.skillStrategy, this);
         dieStrategy = StrategyFactory.CreatDieStrategy(data.dieStrategy);

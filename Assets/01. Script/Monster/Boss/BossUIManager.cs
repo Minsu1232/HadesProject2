@@ -34,6 +34,15 @@ public class BossUIManager : MonsterUIManager
     [SerializeField] private Sprite poisonSprite;
     [SerializeField] private Sprite stunSprite;
 
+
+    // 새로운 Gimmick Warning UI 관련 필드 추가
+    [Header("Gimmick Warning UI")]
+    [SerializeField] private CanvasGroup gimmickWarningCanvasGroup; // CanvasGroup을 이용해 알파값 조절
+    [SerializeField] private TextMeshProUGUI gimmickWarningText;       // 경고 텍스트 UI
+    [SerializeField] private float warningFadeInDuration = 0.5f;
+    [SerializeField] private float warningDisplayDuration = 1.0f;
+    [SerializeField] private float warningFadeOutDuration = 0.5f;
+
     private BossMonster bossMonster;
     private BossData bossData;
     private int currentPhase = 0;
@@ -68,6 +77,7 @@ public class BossUIManager : MonsterUIManager
         }
 
         UpdatePhaseUI(0);
+        UpdatePhaseVisuals(0);
     }
 
     #region Phase Management
@@ -76,7 +86,7 @@ public class BossUIManager : MonsterUIManager
         if (bossMonster != null)
         {
             UpdateHealthUI(bossMonster.CurrentHealth);
-            UpdatePhaseUI(bossMonster.CurrentPhase);
+            UpdatePhaseUI(bossMonster.CurrentPhase-1);
         }
     }
 
@@ -91,6 +101,7 @@ public class BossUIManager : MonsterUIManager
 
     private void UpdatePhaseVisuals(int phaseIndex)
     {
+
         for (int i = 0; i < phaseImages.Length; i++)
         {
             if (i == phaseIndex)
@@ -105,8 +116,9 @@ public class BossUIManager : MonsterUIManager
             }
             else
             {
+                int capturedIndex = i; // 현재 인덱스를 캡처
                 phaseImages[i].DOFade(0f, 0.3f)
-                    .OnComplete(() => phaseImages[i].gameObject.SetActive(false));
+                    .OnComplete(() => phaseImages[capturedIndex].gameObject.SetActive(false));
             }
         }
     }
@@ -253,7 +265,29 @@ public class BossUIManager : MonsterUIManager
             // 크리티컬 히트 이펙트 추가 가능
         }
     }
+    #region Gimmick Warning Effect
+    /// <summary>
+    /// 기믹 시작 경고 효과를 실행합니다.
+    /// </summary>
+    /// <param name="message">표시할 경고 메시지 (기본: "GIMMICK START!")</param>
+    public void ShowGimmickWarning(string message = "Warning!!!")
+    {
+        // Canvas를 활성화
+        gimmickWarningCanvasGroup.gameObject.SetActive(true);
+        gimmickWarningText.text = message;
+        gimmickWarningCanvasGroup.alpha = 0f;
 
+        Sequence seq = DOTween.Sequence();
+        seq.Append(gimmickWarningCanvasGroup.DOFade(1f, warningFadeInDuration))
+           .AppendInterval(warningDisplayDuration)
+           .Append(gimmickWarningCanvasGroup.DOFade(0f, warningFadeOutDuration))
+           .OnComplete(() =>
+           {
+               // 페이드 아웃 완료 후 Canvas 비활성화
+               gimmickWarningCanvasGroup.gameObject.SetActive(false);
+           });
+    }
+    #endregion
     protected override void OnDestroy()
     {
         DOTween.Kill(transform);

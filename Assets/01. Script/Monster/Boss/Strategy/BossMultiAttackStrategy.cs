@@ -2,126 +2,150 @@ using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 
-public class BossMultiAttackStrategy : BasePhysicalAttackStrategy
+public class BossMultiAttackStrategy : IAttackStrategy
 {
-    // 전략과 가중치를 저장하는 리스트
     private List<IAttackStrategy> strategies = new List<IAttackStrategy>();
-    private List<float> weights = new List<float>();
-    private IAttackStrategy _currentStrategy;
-    private IAttackStrategy currentStrategy
-    {
-        get => _currentStrategy;
-        set
-        {
-            _currentStrategy = value;
-            Debug.Log($"Current strategy changed to: {value?.GetType().Name}\nStack trace:\n{new System.Diagnostics.StackTrace(true)}");
-        }
-    }
-    private bool isFirstStrategy = true;
-    public BossMultiAttackStrategy(List<IAttackStrategy> strategies, List<float> weights)
-    {
-        this.strategies = strategies;
-        this.weights = weights;
-        Debug.Log($"BossMultiAttackStrategy initialized with strategies:");
-        foreach (var strategy in strategies)
-        {
-            Debug.Log($"- {strategy.GetType().Name}");
-        }
-        ValidateWeights();
-        SelectRandomStrategy();
+    private Dictionary<IAttackStrategy, float> weights = new Dictionary<IAttackStrategy, float>();
+    private IAttackStrategy currentStrategy;
+    private readonly BasicAttackStrategy defaultStrategy;
 
+    // 통합 타이머: 페이즈 전환 후 초기화할 수 있도록 public 메서드 제공
+    private float unifiedLastAttackTime;
+
+    public BossMultiAttackStrategy()
+    {
+        defaultStrategy = new BasicAttackStrategy();
+        // 기본 생성 시 바로 공격 가능하도록 (개발 중에는 이렇게, 페이즈 전환 시에는 ResetTimer()로 재설정)
+       
     }
 
-    // 가중치 검증 및 정규화
-    private void ValidateWeights()
+    public bool IsAttacking => currentStrategy?.IsAttacking ?? false;
+    public float GetLastAttackTime => unifiedLastAttackTime;
+    public PhysicalAttackType AttackType => currentStrategy?.AttackType ?? defaultStrategy.AttackType;
+
+    public void AddStrategy(IAttackStrategy strategy, float weight)
     {
-        float totalWeight = weights.Sum();
-        if (totalWeight <= 0)
+        if (!strategies.Contains(strategy))
         {
-            // 가중치가 없거나 잘못된 경우 균등 분배
-            float equalWeight = 1f / weights.Count;
-            for (int i = 0; i < weights.Count; i++)
-            {
-                weights[i] = equalWeight;
-            }
-        }
-        else if (!Mathf.Approximately(totalWeight, 1f))
-        {
-            // 가중치 합이 1이 되도록 정규화
-            for (int i = 0; i < weights.Count; i++)
-            {
-                weights[i] /= totalWeight;
-            }
+            strategies.Add(strategy);
+            weights[strategy] = weight;
         }
     }
 
-    public override void Attack(Transform transform, Transform target, IMonsterClass monsterData)
+    public void Attack(Transform transform, Transform target, IMonsterClass monsterData)
     {
-        currentStrategy?.Attack(transform, target, monsterData);
-    }
 
-    // 가중치 기반 랜덤 전략 선택
-    private void SelectRandomStrategy()
-    {
-        var stackTrace = new System.Diagnostics.StackTrace(true);
-        Debug.Log($"SelectRandomStrategy called from:\n{stackTrace}");
-        float totalWeight = weights.Sum();
-        float random = UnityEngine.Random.Range(0f, totalWeight);
-        float currentSum = 0f;
+        float distanceToTarget = Vector3.Distance(transform.position, target.position);
 
-        for (int i = 0; i < strategies.Count; i++)
+        // 전체 쿨타임 체크
+        if (Time.time < unifiedLastAttackTime + monsterData.CurrentAttackSpeed)
         {
-            currentSum += weights[i];
-            if (random <= currentSum)
-            {
-                currentStrategy = strategies[i];
-                Debug.Log($"Selected new attack strategy: {currentStrategy}");
-                break;
-            }
+            return;
         }
-    }
 
-    // AttackState에서 호출하여 새로운 패턴 선택
-    public void ChangePattern()
-    {
-        if (!isFirstStrategy)  // 첫 전략이 아닐 때만 새로 선택
+        if (currentStrategy == null ||
+            (!currentStrategy.IsAttacking && !currentStrategy.CanAttack(distanceToTarget, monsterData)))
         {
-            SelectRandomStrategy();
+            if (currentStrategy?.IsAttacking ?? false)
+                return;  // 공격 중이면 새 전략 선택하지 않음
+
+            Debug.Log("바뀐다");
+            currentStrategy = SelectStrategy(distanceToTarget, monsterData);
+            Debug.Log("이걸로" + currentStrategy.ToString());
         }
-        isFirstStrategy = false;  // 다음부터는 새로 선택하도록
-    }
 
-    public override bool CanAttack(float distanceToTarget, IMonsterClass monsterData)
+        // 현재 전략으로 공격 실행
+        if (currentStrategy != null && currentStrategy.CanAttack(distanceToTarget, monsterData))
+        {
+            currentStrategy.Attack(transform, target, monsterData);
+        }
+    } 
+
+    public bool CanAttack(float distanceToTarget, IMonsterClass monsterData)
     {
-        return currentStrategy?.CanAttack(distanceToTarget, monsterData) ?? false;
+        if (Time.time < unifiedLastAttackTime + monsterData.CurrentAttackSpeed)
+            return false;
+
+        if (currentStrategy != null && currentStrategy.CanAttack(distanceToTarget, monsterData))
+            return true;
+
+        return defaultStrategy.CanAttack(distanceToTarget, monsterData);
     }
 
-    public override void StartAttack()
+    private IAttackStrategy SelectStrategy(float distanceToTarget, IMonsterClass monsterData)
     {
-        currentStrategy?.StartAttack();
-        
+        var availableStrategies = strategies.Where(s => s.CanAttack(distanceToTarget, monsterData)).ToList();
+        Debug.Log($"사용 가능한 전략 수: {availableStrategies.Count}");
+        foreach (var strat in availableStrategies)
+        {
+            Debug.Log($"가능한 전략: {strat.GetType().Name}");
+        }
+        if (availableStrategies.Count == 0)
+        {
+            Debug.Log("전략없음");
+            return defaultStrategy;
+        }
+
+        float totalWeight = availableStrategies.Sum(s => weights[s]);
+        float random = Random.Range(0f, totalWeight);
+        float cumulative = 0f;
+
+        foreach (var strat in availableStrategies)
+        {
+            cumulative += weights[strat];
+            if (random <= cumulative)
+                return strat;
+        }
+
+        // foreach 루프에서 선택되지 않았을 경우의 기본값
+        return availableStrategies[0];
     }
 
-    public override void StopAttack()
+    public void StopAttack()
     {
         currentStrategy?.StopAttack();
-      
+        currentStrategy = null;
+        UpdateLastAttackTime();
     }
 
-    public override PhysicalAttackType AttackType =>
-        currentStrategy.AttackType;
+    public string GetAnimationTriggerName() => currentStrategy?.GetAnimationTriggerName() ?? defaultStrategy.GetAnimationTriggerName();
+    public float GetAttackPowerMultiplier() => currentStrategy?.GetAttackPowerMultiplier() ?? defaultStrategy.GetAttackPowerMultiplier();
+    public void StartAttack() => currentStrategy?.StartAttack();
+    public void OnAttackAnimationEnd() => currentStrategy?.OnAttackAnimationEnd();
+    public void ApplyDamage(IDamageable target, IMonsterClass monsterData) => currentStrategy?.ApplyDamage(target, monsterData);
 
-    public override string GetAnimationTriggerName()
+    public void UpdateLastAttackTime()
     {
-        Debug.Log($"Current Strategy: {currentStrategy?.GetType().Name}");
-        Debug.Log($"Current Strategy Attack Type: {currentStrategy?.AttackType}");
-        return currentStrategy?.GetAnimationTriggerName() ?? "DefaultAttack";
+        
+        unifiedLastAttackTime = Time.time;
+       
+        if (currentStrategy is BasePhysicalAttackStrategy baseStrategy)
+        {
+            baseStrategy.UpdateLastAttackTime();
+        }
     }
 
-    public IEnumerable<IAttackStrategy> GetStrategies()
+    /// <summary>
+    /// 페이즈 전환 후 새 전략에 대해 공격이 바로 실행되지 않도록 unifiedLastAttackTime을 현재 시간으로 재설정
+    /// </summary>
+    public void ResetTimer(float bufferTime = 1f)
     {
-        return strategies;
+        unifiedLastAttackTime = Time.time + bufferTime;
+    }
+    /// <summary>
+    /// 내부 전략 리스트를 비우고, 타이머와 버퍼를 모두 초기화합니다.
+    /// </summary>
+    public void ResetAll()
+    {
+        // 내부 전략 리스트와 가중치 정보를 모두 비웁니다.
+        strategies.Clear();
+        weights.Clear();
+        currentStrategy = null;
+
+        // 타이머를 현재 시간으로 초기화합니다.
+        unifiedLastAttackTime = Time.time;
+
+        Debug.Log("ResetAll: Strategies cleared and timer reset to " + unifiedLastAttackTime);
     }
 
-    public override bool IsAttacking => currentStrategy.IsAttacking;
 }

@@ -27,6 +27,7 @@ MonoBehaviour:
     patternChangeTime: 5
     availablePatterns:
     - patternName: BasicCombo
+      patternType: 1
       steps:
       - attackType: 0
         stepDelay: 0.2
@@ -66,9 +67,9 @@ MonoBehaviour:
       currentDifficulty: 0
     phaseAttackStrategies:
     - type: 0
-      weight: 1
-    - type: 3
       weight: 0
+    - type: 3
+      weight: 1
     patternStrategyWeight: 0.4
     moveType: 0
     attackType: 0
@@ -98,6 +99,7 @@ MonoBehaviour:
     patternChangeTime: 5
     availablePatterns:
     - patternName: BasicCombo
+      patternType: 1
       steps:
       - attackType: 0
         stepDelay: 0.2
@@ -137,9 +139,9 @@ MonoBehaviour:
       currentDifficulty: 0
     phaseAttackStrategies:
     - type: 0
-      weight: 1
-    - type: 3
       weight: 0
+    - type: 3
+      weight: 1
     patternStrategyWeight: 0.4
     moveType: 0
     attackType: 0
@@ -169,6 +171,7 @@ MonoBehaviour:
     patternChangeTime: 4
     availablePatterns:
     - patternName: JumpCombo
+      patternType: 2
       steps:
       - attackType: 3
         stepDelay: 2
@@ -192,7 +195,7 @@ MonoBehaviour:
         isTransitionAnim: 1
       patternWeight: 1
       phaseNumber: 2
-      patternCooldown: 5
+      patternCooldown: 15
       warningDuration: 1.5
       healthThresholdMin: 0
       healthThresholdMax: 0.9
@@ -208,9 +211,9 @@ MonoBehaviour:
       currentDifficulty: 0
     phaseAttackStrategies:
     - type: 3
-      weight: 0.5
+      weight: 1
     - type: 0
-      weight: 0.5
+      weight: 0
     patternStrategyWeight: 0.4
     moveType: 1
     attackType: 3
@@ -255,7 +258,7 @@ MonoBehaviour:
       followTarget: 1
       collisionMask:
         serializedVersion: 2
-        m_Bits: 2147483648
+        m_Bits: 0
       preparationTime: 1
       repeatInterval: 0
       warningEffect: {fileID: 0}
@@ -272,6 +275,7 @@ MonoBehaviour:
     patternChangeTime: 4
     availablePatterns:
     - patternName: JumpCombo
+      patternType: 2
       steps:
       - attackType: 3
         stepDelay: 2
@@ -295,7 +299,7 @@ MonoBehaviour:
         isTransitionAnim: 1
       patternWeight: 1
       phaseNumber: 2
-      patternCooldown: 5
+      patternCooldown: 15
       warningDuration: 1.5
       healthThresholdMin: 0
       healthThresholdMax: 0.9
@@ -311,9 +315,9 @@ MonoBehaviour:
       currentDifficulty: 0
     phaseAttackStrategies:
     - type: 3
-      weight: 0.5
+      weight: 1
     - type: 0
-      weight: 0.5
+      weight: 0
     patternStrategyWeight: 0.4
     moveType: 1
     attackType: 3
@@ -358,7 +362,7 @@ MonoBehaviour:
       followTarget: 1
       collisionMask:
         serializedVersion: 2
-        m_Bits: 2147483648
+        m_Bits: 0
       preparationTime: 1
       repeatInterval: 0
       warningEffect: {fileID: 0}
@@ -452,3 +456,4 @@ MonoBehaviour:
   defaultCameraFOV: 0
   globalStunResistance: 0
   knockbackResistance: 0
+  roarSound: {fileID: 8300000, guid: 457e67cd378d39b4d95b7c63c8b553ad, type: 3}

@@ -11,6 +11,7 @@ public interface IMonsterState
         Groggy,
         PhaseTransition,
         Gimmick,
+        Pattern,
         Die
     }
     void Enter();

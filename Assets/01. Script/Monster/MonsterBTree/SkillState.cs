@@ -212,10 +212,10 @@ public class SkillState : MonsterBaseState
 
     private void LogStateTransition(string from, string to)
     {
-        if (Debug.isDebugBuild)
-        {
-            Debug.Log($"[SkillState] {owner.gameObject.name}: {from} -> {to} (Time: {skillTimer:F2})");
-        }
+        //if (Debug.isDebugBuild)
+        //{
+        //    Debug.Log($"[SkillState] {owner.gameObject.name}: {from} -> {to} (Time: {skillTimer:F2})");
+        //}
     }
 }
 

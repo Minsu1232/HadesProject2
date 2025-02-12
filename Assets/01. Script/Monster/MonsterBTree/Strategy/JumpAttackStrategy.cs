@@ -15,11 +15,13 @@ public class JumpAttackStrategy : BasePhysicalAttackStrategy
     private DG.Tweening.Sequence jumpSequence;
     private GameObject shockwaveEffect; // 충격파 이펙트 프리팹
     private float shockwaveRadius;
-    public JumpAttackStrategy(GameObject shockwaveEffectPrefab, float shockwaveRadius)
+    private CreatureAI owner;
+    public JumpAttackStrategy(GameObject shockwaveEffectPrefab, float shockwaveRadius, CreatureAI owner)
     {
         this.shockwaveEffect = shockwaveEffectPrefab;
         this.shockwaveRadius = shockwaveRadius;
         lastAttackTime = Time.time - 100f;  // 첫 공격이 바로 가능하도록
+        this.owner = owner;
     }
 
     public override bool CanAttack(float distanceToTarget, IMonsterClass monsterData)
@@ -65,7 +67,7 @@ public class JumpAttackStrategy : BasePhysicalAttackStrategy
     public override void Attack(Transform transform, Transform target, IMonsterClass monsterData)
     {
         // 이미 점프 중이거나 공격 조건을 만족하지 못하면 공격하지 않음
-        if (isJumping || !CanAttack(Vector3.Distance(transform.position, target.position), monsterData))
+        if (isAttacking || !CanAttack(Vector3.Distance(transform.position, target.position), monsterData))
         {   
             Debug.Log("안대용" + isJumping + CanAttack(Vector3.Distance(transform.position, target.position), monsterData));
             return;
@@ -73,18 +75,17 @@ public class JumpAttackStrategy : BasePhysicalAttackStrategy
         Debug.Log("Executing Jump Attack Strategy...");
         // 공격 준비
         StartAttack();
-        FaceTarget(transform, target);
-        isAttackAnimation = true;
-        isJumping = true;
+        FaceTarget(transform, target);       
         jumpStartPosition = transform.position;
 
         // 착지 지점 계산
         Vector3 startPos = transform.position;
         Vector3 endPos = target.position;  // 착지 지점을 타겟의 현재 위치로 삼을 수도 있고, Y좌표만 startPos.y를 쓰는 등 상황에 맞춰 조정
-        
+
 
         // 시퀀스 생성
-        jumpSequence = DOTween.Sequence();
+        jumpSequence = DOTween.Sequence().SetId("JumpAttack");
+        DOTween.logBehaviour = LogBehaviour.Verbose;
 
         // 0 ~ 1까지 t를 올리면서 X, Z는 선형 이동, Y는 포물선으로 계산
         jumpSequence.Append(
@@ -120,11 +121,21 @@ public class JumpAttackStrategy : BasePhysicalAttackStrategy
         // 완료 시점
         jumpSequence.OnComplete(() =>
         {
+            Debug.Log("JumpAttack OnComplete - Before StopAttack");
+            OnAttackAnimationEnd();  // 애니메이션 종료 처리 추가
+            StopAttack();
             lastAttackTime = Time.time;
-            OnAttackAnimationEnd();    // isAttackAnimation, isAttacking 해제
-            isJumping = false;
+
+            var strategy = owner.GetAttackStrategy();
+            if (strategy is BossMultiAttackStrategy physicalStrategy)
+            {
+                physicalStrategy.StopAttack();
+                physicalStrategy.UpdateLastAttackTime();
+                Debug.Log("쳐다보세요이" + physicalStrategy.IsAttacking);
+            }
+            UpdateLastAttackTime();
+            Debug.Log("JumpAttack OnComplete - After StopAttack - IsAttacking: " + IsAttacking);
             jumpSequence.Kill();
-            Debug.Log("킬~");
         });
 
         jumpSequence.Play();
@@ -132,7 +143,9 @@ public class JumpAttackStrategy : BasePhysicalAttackStrategy
 
     public override void StopAttack()
     {
+        Debug.Log("JumpAttackStrategy: Before StopAttack - IsAttacking: " + IsAttacking);
         base.StopAttack();
-        
+        Debug.Log("JumpAttackStrategy: After StopAttack - IsAttacking: " + IsAttacking);
+
     }
 }

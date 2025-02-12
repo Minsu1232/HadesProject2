@@ -130,7 +130,7 @@ public class MonsterStatus : MonoBehaviour,IDamageable, ICreatureStatus
         {
             CreatureAI.OnDamaged(damage);
         }
-
+ 
         if (monsterClass.CurrentHealth <= 0 && gameObject != null)
         {
             Die();

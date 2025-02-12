@@ -300,3 +300,4 @@ MonoBehaviour:
   defaultCameraFOV: 0
   globalStunResistance: 0
   knockbackResistance: 0
+  roarSound: {fileID: 8300000, guid: 457e67cd378d39b4d95b7c63c8b553ad, type: 3}

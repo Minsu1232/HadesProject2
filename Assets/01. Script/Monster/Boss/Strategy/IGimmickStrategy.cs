@@ -1,3 +1,5 @@
+using UnityEngine;
+
 public interface IGimmickStrategy
 {
     void StartGimmick();
@@ -6,4 +8,6 @@ public interface IGimmickStrategy
     string GetGimmickAnimationTrigger();
     IGimmickStrategy GetGimmickStrategy();
     void SucessTrigget();
+
+    AudioClip GetOptionalRoarSound();
 }

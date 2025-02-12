@@ -122,9 +122,9 @@ public class PlayerClass : ICreature, IDamageable
 
     public virtual void TakeDamage(int damage)
     {if (isInvicible) return;
-        Debug.Log(damage);
+       
         PlayerStats.Health -= damage;
-        Debug.Log($"맞은 후 체력 : {PlayerStats.Health}");
+       
         if (PlayerStats.Health <= 0)
         {
             PlayerStats.Health = 0;

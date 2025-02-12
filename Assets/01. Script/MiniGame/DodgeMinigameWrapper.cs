@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 
 public class DodgeMiniGameWrapper : IMiniGame
@@ -6,12 +7,14 @@ public class DodgeMiniGameWrapper : IMiniGame
     private MiniGameResult currentResult;
     private float currentDifficulty = 1f;  // 난이도 저장용 필드 추가
     public MiniGameType Type => MiniGameType.Dodge;
-    public bool IsComplete { get; private set; }
+    public bool IsComplete { get; private set; }   
 
-    public DodgeMiniGameWrapper()
+    private MiniGameManager miniGameManager;  // 매니저 참조 추가
+    public DodgeMiniGameWrapper(MiniGameManager manager)
     {
+        miniGameManager = manager;
         dodgeGame = new DodgeMiniGame();
-        dodgeGame.OnDodgeResultReceived += HandleDodgeResult;
+        dodgeGame.OnDodgeResultReceived += HandleDodgeResult;  // 결과 이벤트 구독 추가
         dodgeGame.OnMiniGameEnded += HandleMiniGameEnded;
     }
 
@@ -31,12 +34,14 @@ public class DodgeMiniGameWrapper : IMiniGame
     {
         if (IsComplete) return;
 
-        if (!dodgeGame.Update(Time.deltaTime))
+        // Time.deltaTime 대신 dodgeGame 내부에서 unscaledDeltaTime을 사용하므로 매개변수 없이 호출합니다.
+        if (!dodgeGame.Update())
         {
             IsComplete = true;
             return;
         }
 
+        // 입력 시점의 currentProgress 값을 기반으로 판정 처리
         if (Input.GetKeyDown(KeyCode.Space))
         {
             dodgeGame.ProcessInput(dodgeGame.GetCurrentProgress());
@@ -60,6 +65,9 @@ public class DodgeMiniGameWrapper : IMiniGame
             DodgeMiniGame.DodgeResult.Good => MiniGameResult.Good,
             _ => MiniGameResult.Miss
         };
+
+        // 결과 UI 표시
+        miniGameManager.ShowMiniGameResult(result);
     }
 
     private void HandleMiniGameEnded()

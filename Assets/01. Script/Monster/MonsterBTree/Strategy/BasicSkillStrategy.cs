@@ -24,7 +24,7 @@ public class BasicSkillStrategy : ISkillStrategy
     public void Initialize(ISkillEffect effect)
     {
         this.skillEffect = effect;
-        Debug.Log("스킬 이니셜라이즈");
+      
     }
 
     public void StartSkill(Transform transform, Transform target, IMonsterClass monsterData)
@@ -39,7 +39,7 @@ public class BasicSkillStrategy : ISkillStrategy
         hasExecutedSkill = false;
         skillTimer = 0f;
         lastSkillTime = Time.time;
-        Debug.Log("실행");
+       
     }
 
     public void UpdateSkill(Transform transform, Transform target, IMonsterClass monsterData)

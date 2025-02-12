@@ -14,7 +14,7 @@ public class CheckPatternDistance : BTNode
         );
 
         // 거리가 너무 멀어졌다면
-        if (distanceToPlayer > monster.CurrentAttackRange * 3f) 
+        if (distanceToPlayer > monster.CurrentAttackRange * 6f) 
         {
             Debug.Log("실패에");
             // 패턴 중단하고 이동 상태로

@@ -29,6 +29,7 @@ public class AttackPatternData
 {
     [Header("Pattern Settings")]
     public string patternName;
+    public BossPatternType patternType;  // 추가
     public List<AttackStepData> steps = new List<AttackStepData>();
     public float patternWeight = 1.0f;
     public int phaseNumber;
@@ -210,8 +211,10 @@ public class BossData : MonsterData
     public float globalStunResistance;
     public float knockbackResistance;
 
+    [Header("Audio Settings")]
+    public AudioClip roarSound;
 
-   
+
 }
 public enum PhaseTransitionType
 {
@@ -231,4 +234,13 @@ public enum GimmickType
     Summon,           // 소환
     DamageReflect,    // 데미지 반사
     RestrictArea      // 활동 영역 제한
+}
+public enum BossPatternType
+{
+    None,
+    BasicToJump,
+    JumpToBasic,
+    ChargeToJump,
+    SpinToJump,
+    // 필요한 패턴 타입들 추가
 }

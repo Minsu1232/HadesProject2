@@ -6,7 +6,8 @@ public class Stalactite : HazardObject
 {
     private float spawnAreaRadius;
     private float groundHeight = float.MinValue;
-
+    [SerializeField] private float oscillationFrequency =100f;   // 진동 주파수 (초당 반복 횟수)
+    [SerializeField] private float oscillationAmplitude = 1f;   // 진동 폭 (좌우 이동 거리)
     public override void Initialize(float radius, float dmg, float speed, HazardSpawnType type,
        TargetType targetType, float height, float areaRadius, IGimmickStrategy strategy)
     {
@@ -33,6 +34,10 @@ public class Stalactite : HazardObject
     {
         base.Update();
         transform.Translate(Vector3.down * moveSpeed * Time.deltaTime);
+
+        // 추가: 좌우 진동 효과 (예: X축)
+        float oscillation = Mathf.Sin(Time.time * oscillationFrequency) * oscillationAmplitude;
+        transform.Translate(new Vector3(oscillation, 0, 0) * Time.deltaTime, Space.World);
     }
 
     protected override void OnWarningUpdate()
@@ -71,6 +76,8 @@ public class Stalactite : HazardObject
 
     private void OnTriggerEnter(Collider other)
     {
+        if (other.CompareTag("Player")) return;
+        
         Collider[] hits = Physics.OverlapSphere(transform.position, damageRadius);
         HashSet<IDamageable> damagedEntities = new HashSet<IDamageable>();
         bool hasHitAnything = false;
@@ -122,10 +129,9 @@ public class Stalactite : HazardObject
             }
         }
 
-        if (hasHitAnything)
-        {
+       
             OnImpact();
-        }
+        
 
     }
 

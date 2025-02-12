@@ -15,7 +15,8 @@ public abstract class BossPattern : BasePhysicalAttackStrategy
     protected BossData bossData_;
     protected Animator animator;
     protected CreatureAI owner;
-    
+
+    private float patternLastAttackTime;  // 패턴만의 타이머
     protected virtual bool IsExecutingPattern { get; }
 
     protected BossPattern(
@@ -25,36 +26,47 @@ public abstract class BossPattern : BasePhysicalAttackStrategy
         BossData bossData, 
         Animator animator,
         CreatureAI owner,        
-        AttackPatternData patternData)
+        AttackPatternData patternData
+       )
     {
         bossStatus = owner.GetComponent<BossStatus>();
         basicAttack = new BasicAttackStrategy();
-        jumpAttack = new JumpAttackStrategy(shockwaveEffectPrefab, shockwaveRadius);
+        jumpAttack = new JumpAttackStrategy(shockwaveEffectPrefab, shockwaveRadius,owner);
         bossData_ = bossData;
         this.animator = animator;
         this.miniGameManager = miniGameManager;
         this.owner = owner;
         this.patternManager = new BossPatternManager(bossStatus);
-        this.patternData = patternData;
-        
+        this.patternData = patternData;        
         miniGameManager.OnMiniGameComplete += HandleMiniGameComplete;
+
+        patternLastAttackTime = Time.time; // 추가: 패턴 타이머를 현재 시간으로 초기화
     }
 
     public override void Attack(Transform transform, Transform target, IMonsterClass monsterData)
     {
         if (!isRunning)
         {
+            isAttacking = true;
             StartPattern(transform, target, monsterData);
             return;
         }
         ExecutePattern(transform, target, monsterData);
     }
-
+    public override bool CanAttack(float distanceToTarget, IMonsterClass monsterData)
+    {
+        float timeSinceLastPattern = Time.time - patternLastAttackTime;
+        return timeSinceLastPattern >= patternData.patternCooldown &&
+               distanceToTarget <= monsterData.CurrentAttackRange;
+    }
     protected abstract void StartPattern(Transform transform, Transform target, IMonsterClass monsterData);
     public abstract void ExecutePattern(Transform transform, Transform target, IMonsterClass monsterData);
 
     protected virtual void CompletePattern()
     {
+        //// 패턴 종료 시 이벤트 구독 해제
+        //miniGameManager.OnMiniGameComplete -= HandleMiniGameComplete;
+
         isRunning = false;
         if (patternSequence != null)
         {
@@ -64,7 +76,8 @@ public abstract class BossPattern : BasePhysicalAttackStrategy
             }
             patternSequence = null;
         }
-        lastAttackTime = Time.time;
+        patternLastAttackTime = Time.time;
+        isAttacking = false;
     }
 
     protected void StartMiniGame(MiniGameType type)
@@ -75,9 +88,7 @@ public abstract class BossPattern : BasePhysicalAttackStrategy
 
     protected virtual void HandleMiniGameComplete(MiniGameType type, MiniGameResult result)
     {
-        if (type == MiniGameType.Dodge)
-        {
-            CompletePattern();
+             
             StopAttack();
             bool enterGroggy = patternManager.HandleMiniGameSuccess(result, patternData);
             miniGameManager.HandleDodgeReward(result);
@@ -89,8 +100,8 @@ public abstract class BossPattern : BasePhysicalAttackStrategy
                 return;
             }
 
-           
-        }
+            CompletePattern();
+        
     }
 
     public override void StopAttack()
@@ -101,10 +112,17 @@ public abstract class BossPattern : BasePhysicalAttackStrategy
 
     public void Cleanup()
     {
+        //if (miniGameManager != null)
+        //{
+        //    miniGameManager.OnMiniGameComplete -= HandleMiniGameComplete;
+        //}
+        //CompletePattern();
+    }
+    public void CleanAll()
+    {
         if (miniGameManager != null)
         {
             miniGameManager.OnMiniGameComplete -= HandleMiniGameComplete;
         }
-        CompletePattern();
     }
 }

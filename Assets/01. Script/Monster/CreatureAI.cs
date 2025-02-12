@@ -2,12 +2,14 @@ using static AttackData;
 using static IMonsterState;
 using System.Collections.Generic;
 using UnityEngine;
+using System;
 
 public abstract class CreatureAI : MonoBehaviour, ICreatureAI
 {
+  
     public Animator animator;
     protected ICreatureStatus creatureStatus;  // 공통 인터페이스 사용
-
+    protected IMonsterClass monsterClass;
     protected Dictionary<IMonsterState.MonsterStateType, IMonsterState> states;
     protected IMonsterState currentState;
 
@@ -27,7 +29,8 @@ public abstract class CreatureAI : MonoBehaviour, ICreatureAI
         creatureStatus = GetComponent<ICreatureStatus>();
         InitializeStates();
         creatureStatus.GetMonsterClass();
-        IMonsterClass monsterClass = creatureStatus.GetMonsterClass();
+        monsterClass = creatureStatus.GetMonsterClass();
+        
         monsterClass.OnArmorBreak += HandleArmorBreak;
       
     }
@@ -52,24 +55,25 @@ public abstract class CreatureAI : MonoBehaviour, ICreatureAI
         //{
         //    behaviorTree.Execute();
         //}
-        Debug.Log(currentState);
+       
 
     }
 
     #region Core Methods
     public virtual void ChangeState(MonsterStateType newStateType)
     {
-       
-        
+
+        // 현재 상태와 같은 상태로 변경하려고 하면 무시
+        if (currentState != null && currentState == states[newStateType])
+            return;
+
         if (currentState != null)
         {
-            
             if (!currentState.CanTransition())
                 return;
-            Debug.Log("out");
+
             currentState.Exit();
         }
-
         currentState = states[newStateType];
         currentState.Enter();
     }
@@ -86,7 +90,9 @@ public abstract class CreatureAI : MonoBehaviour, ICreatureAI
         if (currentState.CanTransition())
         {
             ChangeState(MonsterStateType.Hit);
-        }
+        } 
+   
+       
     }
     #endregion
 
@@ -101,6 +107,10 @@ public abstract class CreatureAI : MonoBehaviour, ICreatureAI
     public abstract IGroggyStrategy GetGroggyStrategy();
     public abstract IPhaseTransitionStrategy GetPhaseTransitionStrategy();
     public abstract IGimmickStrategy GetGimmickStrategy();
+    public virtual BossPattern GetBossPatternStartegy()
+    {
+        return null;
+    }
     #endregion
 
     // 애니메이션 이벤트 수신용 메서드들
@@ -126,6 +136,10 @@ public abstract class CreatureAI : MonoBehaviour, ICreatureAI
     public abstract void SetAttackStrategy(IAttackStrategy newStrategy);
     public abstract void SetSkillStrategy(ISkillStrategy newStrategy);
     public abstract void SetIdleStrategy(IIdleStrategy newStrategy);
+
+
+
+
     // 필요한 다른 Setter들도 추가 가능
     #endregion
 }

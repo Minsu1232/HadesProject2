@@ -25,11 +25,11 @@ public static class StrategyFactory
         };
     }
 
-    public static IAttackStrategy CreateAttackStrategy(AttackStrategyType type, ICreatureData data)
+    public static IAttackStrategy CreateAttackStrategy(AttackStrategyType type, ICreatureData data, CreatureAI creatureAI)
     {
         return type switch
         {
-            AttackStrategyType.Jump => new JumpAttackStrategy(data.shorckEffectPrefab,data.shockwaveRadius),
+            AttackStrategyType.Jump => new JumpAttackStrategy(data.shorckEffectPrefab,data.shockwaveRadius, creatureAI),
             _ => new BasicAttackStrategy()
         };
     }

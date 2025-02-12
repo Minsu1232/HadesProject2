@@ -63,8 +63,7 @@ public class BossPatternManager
     public bool HandleMiniGameSuccess(MiniGameResult result, AttackPatternData currentPattern)
     {
         if (result == MiniGameResult.Miss)
-        {
-            ResetPattern(currentPattern);
+        {           
             // UI 업데이트
             bossStatus.GetBossUIManager()?.UpdatePatternSuccess(currentPattern, 0);
             return false;

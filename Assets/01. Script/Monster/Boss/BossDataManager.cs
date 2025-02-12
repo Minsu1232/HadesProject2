@@ -365,7 +365,7 @@ public class BossDataManager : Singleton<BossDataManager>
             AttackPatternData patternData = new AttackPatternData
             {
                 patternName = pattern["PatternName"],
-                patternWeight = float.Parse(pattern["PatternWeight"]),
+                patternType = (BossPatternType)Enum.Parse(typeof(BossPatternType), pattern["PatternType"]),
                 phaseNumber = int.Parse(pattern["PhaseNumber"]),
                 patternCooldown = float.Parse(pattern["PatternCooldown"]),
                 warningDuration = float.Parse(pattern["WarningDuration"]),
@@ -431,15 +431,30 @@ public class BossDataManager : Singleton<BossDataManager>
         bossData.dropChance = int.Parse(baseData["DropItemID"]);
         bossData.dropItem = int.Parse(baseData["DropRate"]);
         bossData.phaseCount = int.Parse(baseData["PhaseCount"]);
-        bossData.groggyTime = float.Parse(baseData["GroggyTime"]);
-        
-        //bossData.phaseTransitionDuration = float.Parse(baseData["PhaseTransitionDuration"]);
+        bossData.groggyTime = float.Parse(baseData["GroggyTime"]);     
+       
         bossData.rageModeThreshold = float.Parse(baseData["RageModeThreshold"]);    
         
         bossData.showPhaseNames = bool.Parse(baseData["ShowPhaseNames"]);
 
-       
 
+       //사운드
+        string roarSoundKey = baseData["RoarSound"];
+        if (!string.IsNullOrEmpty(roarSoundKey))
+        {
+            Addressables.LoadAssetAsync<AudioClip>(roarSoundKey).Completed += handle =>
+            {
+                if (handle.Status == AsyncOperationStatus.Succeeded)
+                {
+                    bossData.roarSound = handle.Result;
+                    Debug.Log($"RoarSound 로드 완료: {roarSoundKey}");
+                }
+                else
+                {
+                    Debug.LogError($"RoarSound 로드 실패: {roarSoundKey}");
+                }
+            };
+        }
 
     }
     private void UpdateBossPrefab(BossData bossData, List<Dictionary<string, string>> baseData)

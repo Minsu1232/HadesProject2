@@ -6,13 +6,23 @@ public class CombatDecisionNode : BTNode
 {
     private IAttackStrategy attackStrategy;
     private ISkillStrategy skillStrategy;
+    private BossPattern bossPatternStrategy;
 
     public CombatDecisionNode(CreatureAI owner) : base(owner)
     {
         attackStrategy = owner.GetAttackStrategy();
         skillStrategy = owner.GetSkillStrategy();
-    }
+        bossPatternStrategy = owner.GetBossPatternStartegy();
 
+        if (owner is BossAI bossAI)
+        {
+            bossAI.OnPatternChanged += UpdatePattern; // 추후 구독 해제 해줘야함
+        }
+    }
+    private void UpdatePattern(BossPattern newPattern)
+    {
+        bossPatternStrategy = newPattern;
+    }
     public override NodeStatus Execute()
     {
         IMonsterClass monster = owner.GetStatus().GetMonsterClass();
@@ -21,12 +31,16 @@ public class CombatDecisionNode : BTNode
             monster.GetPlayerPosition()
         );
 
-
        
-     
         if (skillStrategy.CanUseSkill(distanceToPlayer, monster))
         {
             owner.ChangeState(MonsterStateType.Skill);
+            return NodeStatus.Success;
+        }
+        else if (bossPatternStrategy != null && bossPatternStrategy.CanAttack(distanceToPlayer, monster))
+        {
+            Debug.Log("가능합니다");
+            owner.ChangeState(MonsterStateType.Pattern);
             return NodeStatus.Success;
         }
         else if (!attackStrategy.IsAttacking && attackStrategy.CanAttack(distanceToPlayer, monster))

@@ -9,72 +9,71 @@ public class DodgeMiniGame
         Good,
         Miss
     }
-
+     
     private float successWindowStart;
     private float successWindowEnd;
     private float currentProgress;
     private bool isMovingRight = true;
-    private float moveSpeed = 2f;
+    private float moveSpeed = 1f;
 
     private float totalTime = 3f;          // 미니게임 제한 시간
     private float remainingTime;
-    private float slowMotionScale = 0.3f;  // 슬로우 모션 비율
+    private float slowMotionScale = 0.3f;  // (UI 연출을 위한 슬로우 모션 비율 - 로직에는 사용하지 않음)
 
     public event Action<DodgeResult> OnDodgeResultReceived;
     public event Action OnMiniGameEnded;
 
     /// <summary>
     /// 미니게임 시작 시 성공 구간과 기본 상태를 초기화한다.
+    /// 성공 구간은 항상 중앙(0.5)를 기준으로 설정되며, 난이도에 따라 너비가 좁아진다.
     /// </summary>
-    public void StartDodgeMiniGame(float difficulty = 1f)  // 난이도 매개변수 추가
+    public void StartDodgeMiniGame(float difficulty = 1f)
     {
-        
+        // 난이도에 따라 성공 구간의 너비 범위를 결정
+        // 난이도 1에서는 너비가 상대적으로 넓고, 난이도 3에서는 좁게 설정됨
         float maxWidth = Mathf.Lerp(0.4f, 0.3f, (difficulty - 1f) / 2f);
         float minWidth = Mathf.Lerp(0.3f, 0.2f, (difficulty - 1f) / 2f);
-        float randomWidth = UnityEngine.Random.Range(minWidth, maxWidth);
+        // 랜덤하게 너비를 선택 (이 부분을 고정값으로도 설정할 수 있음)
+        float windowWidth = UnityEngine.Random.Range(minWidth, maxWidth);
 
-        // 시작 위치도 난이도에 따라 조절
-        float safeSpace = 1f - randomWidth;
-        successWindowStart = UnityEngine.Random.Range(0.2f, safeSpace - 0.2f);
-        successWindowEnd = successWindowStart + randomWidth;
+        // 성공 구간을 항상 중앙에 위치하도록 설정 (중앙 0.5 기준)
+        successWindowStart = 0.5f - windowWidth / 2f;
+        successWindowEnd = 0.5f + windowWidth / 2f;
 
-        // 화살표 이동 속도를 난이도에 따라 증가
-        moveSpeed = 2f + (difficulty - 1f);  // 난이도 1~3에 따라 2~4로 조절
+        // 화살표 이동 속도와 제한 시간 설정 (난이도에 따라 조정)
+        moveSpeed = 1f + (difficulty - 1f);  // 난이도 1~3에 따라 2~4로 조정
+        totalTime = Mathf.Lerp(3f, 1.5f, (difficulty - 1f) / 2f);  // 난이도 1~3에 따라 3~1.5초로 조정
 
-        // 제한 시간을 난이도에 따라 감소
-        totalTime = Mathf.Lerp(3f, 1.5f, (difficulty - 1f) / 2f);  // 난이도 1~3에 따라 3~1.5초로 조절
-
-        // 기본 초기화
+        // 기본 상태 초기화
         currentProgress = 0f;
         isMovingRight = true;
         remainingTime = totalTime;
 
-        // 슬로우 모션 적용
+        // 슬로우 모션 효과 적용 (UI 연출용, 로직 업데이트는 unscaledDeltaTime 사용)
         Time.timeScale = slowMotionScale;
         AudioListener.pause = true;
 
         Debug.Log($"DodgeMiniGame Started - Difficulty: {difficulty}, " +
-                  $"Window Size: {randomWidth}, " +
-                  $"Move Speed: {moveSpeed}, " +
-                  $"Total Time: {totalTime}");
+                  $"Window: {successWindowStart:F2} ~ {successWindowEnd:F2}, " +
+                  $"Move Speed: {moveSpeed}, Total Time: {totalTime}");
     }
 
     /// <summary>
-    /// 사용자가 입력을 했을 때, 화살표의 위치(currentProgress)를 바탕으로 판정한다.
+    /// 사용자가 입력을 했을 때, 현재 진행 상황과 성공 구간을 바탕으로 판정한다.
     /// </summary>
     public DodgeResult ProcessInput(float inputTiming)
     {
-        DodgeResult result;
+        // 입력 직전에 현재 상태를 로그로 출력해 UI와 로직이 일치하는지 확인
+        Debug.Log($"[Input Process] InputTiming: {inputTiming:F2}, CurrentProgress: {currentProgress:F2}, " +
+                  $"SuccessWindow: {successWindowStart:F2} ~ {successWindowEnd:F2}");
 
-        // inputTiming(0~1)이 성공 구간 내에 있는지 확인
+        DodgeResult result;
         bool isInSuccessWindow = inputTiming >= successWindowStart && inputTiming <= successWindowEnd;
 
         if (isInSuccessWindow)
         {
             float center = (successWindowStart + successWindowEnd) / 2f;
             float distanceFromCenter = Mathf.Abs(inputTiming - center);
-
-            // 중심에서 얼마나 가까운지에 따라 Perfect / Good 판정
             result = distanceFromCenter < 0.05f ? DodgeResult.Perfect : DodgeResult.Good;
         }
         else
@@ -82,7 +81,6 @@ public class DodgeMiniGame
             result = DodgeResult.Miss;
         }
 
-        // 결과 이벤트 및 미니게임 종료
         OnDodgeResultReceived?.Invoke(result);
         EndMiniGame(result != DodgeResult.Miss);
 
@@ -91,15 +89,17 @@ public class DodgeMiniGame
 
     /// <summary>
     /// 매 프레임마다 화살표를 이동시키고, 제한 시간을 체크한다.
+    /// 업데이트 시 Time.unscaledDeltaTime을 사용하여 timeScale 변경에 관계없이 일관된 시간 계산을 한다.
     /// </summary>
-    /// <param name="deltaTime">경과 시간(초)</param>
-    /// <returns>게임이 계속 진행 중이면 true, 종료되면 false</returns>
-    public bool Update(float deltaTime)
+    public bool Update()
     {
+        // 모든 로직 업데이트에 unscaledDeltaTime을 사용
+        float unscaledDeltaTime = Time.unscaledDeltaTime;
+
         // 화살표 이동
         if (isMovingRight)
         {
-            currentProgress += moveSpeed * deltaTime;
+            currentProgress += moveSpeed * unscaledDeltaTime;
             if (currentProgress >= 1f)
             {
                 currentProgress = 1f;
@@ -108,7 +108,7 @@ public class DodgeMiniGame
         }
         else
         {
-            currentProgress -= moveSpeed * deltaTime;
+            currentProgress -= moveSpeed * unscaledDeltaTime;
             if (currentProgress <= 0f)
             {
                 currentProgress = 0f;
@@ -116,10 +116,9 @@ public class DodgeMiniGame
             }
         }
 
-        // 제한 시간 감소(슬로우 모션 상태 고려)
-        remainingTime -= (deltaTime / slowMotionScale);
+        // 제한 시간 감소 (unscaledDeltaTime 사용)
+        remainingTime -= unscaledDeltaTime;
 
-        // 제한 시간 초과 시, 미니게임 실패 처리
         if (remainingTime <= 0)
         {
             EndMiniGame(false);
@@ -130,10 +129,11 @@ public class DodgeMiniGame
     }
 
     /// <summary>
-    /// 미니게임 종료 처리(타임스케일 복귀, 오디오 리스너 재개 등).
+    /// 미니게임 종료 처리 (타임스케일 복귀, 오디오 리스너 재개 등).
     /// </summary>
     public void EndMiniGame(bool success)
     {
+        // 연출이 끝났으므로 timeScale과 오디오 상태를 원복한다.
         Time.timeScale = 1f;
         AudioListener.pause = false;
         OnMiniGameEnded?.Invoke();
@@ -142,9 +142,9 @@ public class DodgeMiniGame
     // -------------------------------------------------
     // Getters
     // -------------------------------------------------
-    public float GetCurrentProgress() => currentProgress;          // 0~1
-    public float GetSuccessWindowStart() => successWindowStart;    // 0~1
-    public float GetSuccessWindowEnd() => successWindowEnd;        // 0~1
+    public float GetCurrentProgress() => currentProgress;          // 0 ~ 1
+    public float GetSuccessWindowStart() => successWindowStart;    // 0 ~ 1
+    public float GetSuccessWindowEnd() => successWindowEnd;        // 0 ~ 1
     public float GetRemainingTimeNormalized() => Mathf.Clamp01(remainingTime / totalTime);
     public float GetSlowMotionScale() => slowMotionScale;
 }
