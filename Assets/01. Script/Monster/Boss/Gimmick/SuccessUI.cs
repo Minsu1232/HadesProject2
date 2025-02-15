@@ -1,67 +1,74 @@
 using UnityEngine;
 using UnityEngine.UI;
 using DG.Tweening;
-using System.Collections.Generic;
+using TMPro;
 
 public class SuccessUI : MonoBehaviour, ISuccessUI
 {
-    [SerializeField] private GameObject iconPrefab;
-    [SerializeField] private Transform iconParent;
-    // 단일 스프라이트 사용
-    [SerializeField] private Sprite baseSprite;
+    [Header("UI Components")]
+    [SerializeField] private Image timeBarFill;
+    [SerializeField] private GameObject successUI;
+    [SerializeField] private TextMeshProUGUI countText;
 
-    // 빈 상태와 채워진 상태의 색상을 지정합니다.
-    [SerializeField] private Color emptyColor = Color.white;
-    [SerializeField] private Color filledColor = Color.green;
+    [Header("Animation Settings")]
+    [SerializeField] private float barUpdateDuration = 0.2f;
+    [SerializeField] private Color normalBarColor = Color.blue;
+    [SerializeField] private Color warningBarColor = Color.red;
+    [SerializeField] private float warningThreshold = 0.3f; // 30% 이하일 때 경고색상으로 변경
 
-    private List<Image> successIcons = new List<Image>();
+    private int maxCount;
+  
 
     public void InitializeSuccessUI(int maxSuccessCount)
     {
-        // 기존 아이콘 제거
-        foreach (Transform child in iconParent)
-        {
-            Destroy(child.gameObject);
-        }
-        successIcons.Clear();
+        maxCount = maxSuccessCount;
+        //successUI.gameObject.SetActive(true);
+        // 초기 UI 세팅
+        timeBarFill.fillAmount = 1f;
+        timeBarFill.color = normalBarColor;
+        UpdateSuccessCount(0);
 
-        // maxSuccessCount 만큼 동적 생성
-        for (int i = 0; i < maxSuccessCount; i++)
+  
+
+        // UI 활성화
+        successUI.gameObject.SetActive(true);
+    }
+
+    public void UpdateSuccessCount(int currentSuccessCount)
+    {
+        // 텍스트 업데이트
+        countText.text = $"{currentSuccessCount}/{maxCount}";
+
+    
+    }
+
+    public void UpdateTimeBar(float normalizedTime)
+    {
+        // 부드러운 바 업데이트
+        timeBarFill.DOFillAmount(normalizedTime, barUpdateDuration);
+
+        // 경고 임계값 이하일 때 색상 변경
+        if (normalizedTime <= warningThreshold)
         {
-            GameObject iconObj = Instantiate(iconPrefab, iconParent);
-            Image iconImage = iconObj.GetComponent<Image>();
-            if (iconImage != null)
-            {
-                iconImage.enabled = true;
-                iconImage.sprite = baseSprite;
-                // 초기 상태는 emptyColor로 설정
-                iconImage.color = emptyColor;
-                successIcons.Add(iconImage);
-            }
+            timeBarFill.DOColor(warningBarColor, barUpdateDuration);
+        }
+        else
+        {
+            timeBarFill.DOColor(normalBarColor, barUpdateDuration);
         }
     }
 
     public void UIOff()
     {
+        successUI.gameObject.SetActive(false);
+        // UI 비활성화 시 모든 트윈 정리
      
-        gameObject.SetActive(false);
+        timeBarFill.DOKill();
         
     }
 
-    public void UpdateSuccessCount(int currentSuccessCount)
-    {
-        for (int i = 0; i < successIcons.Count; i++)
-        {
-            if (i < currentSuccessCount)
-            {
-                // 성공한 아이콘은 filledColor로 변경 (Yoyo 루프 없이)
-                successIcons[i].DOColor(filledColor, 0.2f).SetEase(Ease.OutBack);
-            }
-            else
-            {
-                // 나머지는 emptyColor 유지
-                successIcons[i].DOColor(emptyColor, 0.2f).SetEase(Ease.OutBack);
-            }
-        }
+    private void OnDestroy()
+    {      
+        timeBarFill.DOKill();
     }
 }

@@ -38,8 +38,8 @@ public class HazardGimmickStrategy : IGimmickStrategy
 
     public void StartGimmick()
     {
-        // 카메라 쉐이크 효과 실행 (예: 1초 동안 흔들림)
-        HitStopManager.TriggerHitStop(1f, 1.5f);
+        //// 카메라 쉐이크 효과 실행 (예: 1초 동안 흔들림)
+        //HitStopManager.TriggerHitStop(1f, 1.5f);
         isInProgress = false;
 
         // HitStop 종료 후 1초 딜레이 후 기믹 초기화
@@ -73,6 +73,15 @@ public class HazardGimmickStrategy : IGimmickStrategy
             return;
 
         elapsedTime += Time.deltaTime;
+
+        // 남은 시간의 비율 계산 (1.0 -> 0.0)
+        float remainingTimeRatio = 1f - (elapsedTime / data.duration);
+
+        // UI 업데이트
+        if (successUI != null)
+        {
+            successUI.UpdateTimeBar(remainingTimeRatio);
+        }
 
         // 기믹 제한 시간 초과 시 실패 처리
         if (elapsedTime >= data.duration)
