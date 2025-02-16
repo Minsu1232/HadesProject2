@@ -1,0 +1,28 @@
+1. 기존 몬스터 애니메이터 컨트롤러 복사
+
+2. 각 스테이트 별 애니메이션 삽입 공격전략 
+
+	-Basic공격 채택시 EnableDamage,DisableDamage 이벤트추가
+	-Skill은 OnStartSkill,OnSkillEffect,OnSkillAnimationComplete 이벤트추가
+
+3. 몬스터 오브젝트의  Skinned Mesh Renderere 복사 후 통합 Body 삭제
+
+4. MonsterAttackCollider,MonsterUIManager,rigidbody(중력off, Costraints 관리) 추가
+
+5. 기존 몬스터의 캔버스 복사 및 MonsterUIManager에 할당
+
+6. EasyCollider를 이용해 피격 및 타격 콜라이더 생성 (생성 시 자동isTrigger 체크)
+
+7. 생성된 부위에 MonsterHitBox 스크립트 추가
+
+8. Scriptable 복사 > MonsterData_(번호는 ID값과 일치)
+
+9. 만들어둔 전략들 정해주기 
+
+10. CSV 추가 Monsters, MonsterSKills, MonsterStrategies, MonsterPrefabs
+
+11. Addressable에 기입한 Key값에 맞게 추가 및 수정 (프리팹류,몬스터오브젝트)
+
+12. MonsterFactory 상속 후 팩토리 스크립트 제작
+
+13. 2/16 기준 Test는 DungeonManager에 Enum 추가 후 인스펙터상에서 선택 소환 가능

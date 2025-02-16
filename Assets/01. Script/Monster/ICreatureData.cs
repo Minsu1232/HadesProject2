@@ -46,6 +46,10 @@ public interface ICreatureData
     float buffValue { get; }
     GameObject buffEffectPrefab { get; }
 
+    //multi Settings
+    int multiShotCount { get; }
+    float multiShotInterval {  get; }
+
     // Summon Settings
     GameObject summonPrefab { get; }
     int summonCount { get; }

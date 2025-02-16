@@ -19,7 +19,8 @@ public class DungeonManager : Singleton<DungeonManager>
         SpiderTest,
         SlimeTest,
         JumpTest,
-        BossDungeon  // 보스 던전 추가
+        BossDungeon, // 보스 던전 추가
+        RayTest
 
     }
 
@@ -28,9 +29,9 @@ public class DungeonManager : Singleton<DungeonManager>
     [SerializeField]
     private DungeonType selectedDungeonType;
 
-    private  void Awake()
+    private void Awake()
     {
-        
+
     }
 
     private async void Start()
@@ -61,6 +62,8 @@ public class DungeonManager : Singleton<DungeonManager>
                 return new SlimeMonsterFactory();
             case "bossdungeon":
                 return new BossFactory(1);  // 보스 ID 전달
+            case "raytest":
+                return new RayMonsterFactory();
             default:
                 Debug.LogError($"알 수 없는 던전 타입입니다: {dungeonType}");
                 return null;
@@ -71,9 +74,6 @@ public class DungeonManager : Singleton<DungeonManager>
     {
         monsterFactory.CreateMonster(spawnPosition, monster =>
         {
-               
-     
-
             currentMonster = monster; // 현재 생성된 몬스터를 필드에 저장
         });
     }

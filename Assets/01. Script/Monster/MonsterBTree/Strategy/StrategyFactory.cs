@@ -53,6 +53,7 @@ public static class StrategyFactory
             //SkillStrategyType.Debuff => new DebuffSkillStrategy(),
             //SkillStrategyType.Summon => new SummonSkillStrategy(),
             //SkillStrategyType.AreaControl => new AreaControlSkillStrategy(),
+            SkillStrategyType.MultiShot => new MultiShotSkillStrategy(owner),
             _ => new BasicSkillStrategy(owner)
         };
     }

@@ -163,6 +163,9 @@ public abstract class MonsterClass : ICreature,IMonsterClass, IDamageable
 
     public float CurrentShockwaveRadius { get; private set; }
 
+    public int CurrentMultiShotCount { get; private set; }
+     public float CurrentMultiShotInterval { get; private set; }
+
     protected bool isDashing = false;
     public GameObject hitEffect;
     public MonsterClass(ICreatureData data)
@@ -231,7 +234,8 @@ public abstract class MonsterClass : ICreature,IMonsterClass, IDamageable
         CurrentCameraShakeDuration = monsterData.cameraShakeDuration;        
         CurrentDeffense = monsterData.initialDeffense;
         CurrentShockwaveRadius = monsterData.shockwaveRadius;
-
+        CurrentMultiShotCount = monsterData.multiShotCount;
+        CurrentMultiShotInterval = monsterData.multiShotInterval;
         playerClass = GameInitializer.Instance.GetPlayerClass();
 
        

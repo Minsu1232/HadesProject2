@@ -1,0 +1,108 @@
+스킬 제작 매뉴얼
+1. 스킬 전략 설계
+
+SkillStrategyType enum에 새로운 스킬 타입 추가
+ISkillStrategy를 구현하는 새로운 전략 클래스 생성 및 구현
+
+StartSkill, UpdateSkill, CanUseSkill 등 필수 메서드 구현
+
+
+StrategyFactory의 CreateSkillStrategy에 새로운 스킬 전략 케이스 추가
+
+2. 스킬 이펙트 구현
+
+SkillEffectType enum에 새로운 이펙트 타입 추가 (필요시)
+ISkillEffect를 구현하는 새로운 이펙트 클래스 생성
+
+Initialize, Execute, OnComplete 메서드 구현
+
+
+발사체 타입 스킬의 경우:
+
+ProjectileMovementType 선택 (Straight, Homing, Parabolic 등)
+ProjectileImpactType 설정 (필요시 새로운 타입 추가)
+BaseProjectile을 상속받는 커스텀 프로젝타일 구현 (필요시)
+
+
+
+3. 애니메이션 설정
+
+스킬 애니메이션 클립에 이벤트 추가:
+
+OnSkillStart: 스킬 시작 시점
+OnSkillEffect: 실제 스킬 효과 발동 시점 (여러 번 가능)
+OnSkillAnimationComplete: 스킬 종료 시점
+
+
+애니메이션 상태 머신에 스킬 상태 추가
+
+트랜지션 조건 설정
+블렌딩 파라미터 조정
+
+
+
+4. 데이터 설정
+
+MonsterData 스크립터블 오브젝트에서 스킬 관련 설정:
+
+skillStrategy: 새로 만든 스킬 전략 타입 선택
+skillEffectType: 스킬 이펙트 타입 설정
+skillCooldown, skillRange, skillDuration 등 기본 수치 설정
+
+
+필요한 경우 추가 데이터 설정:
+
+projectileType, projectileSpeed (발사체 사용 시)
+areaRadius, areaDuration (범위 스킬 시)
+buffData (버프/디버프 스킬 시)
+
+
+
+5. 리소스 설정
+
+필요한 프리팹 생성:
+
+발사체 프리팹
+이펙트 프리팹
+히트 이펙트 프리팹
+
+
+프리팹에 필요한 컴포넌트 추가:
+
+Collider (트리거 설정)
+스킬 관련 스크립트
+VFX, 파티클 시스템 등
+
+
+
+6. CSV 데이터 업데이트
+
+MonsterSkills.csv 업데이트:
+
+새로운 스킬 정보 추가
+쿨다운, 범위, 데미지 등 수치 설정
+
+
+MonsterStrategies.csv 업데이트:
+
+해당 몬스터의 전략 설정에 새로운 스킬 추가
+
+
+
+7. Addressables 설정
+
+스킬 관련 에셋 등록:
+
+프리팹
+이펙트
+사운드
+
+
+키 값 설정 및 MonsterData에 참조 연결
+
+8. 테스트
+
+DungeonManager에서 테스트 몬스터 소환
+스킬 실행 로직 확인
+이펙트 및 데미지 처리 확인
+쿨다운 및 상태 전환 확인

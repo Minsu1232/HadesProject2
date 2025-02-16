@@ -166,7 +166,7 @@ MonoBehaviour:
     patternStrategyWeight: 0.4
     moveType: 1
     attackType: 1
-    skillType: 4
+    skillType: 5
     phaseTransitionType: 0
     damageMultiplier: 1.6
     speedMultiplier: 1.3
@@ -231,7 +231,7 @@ MonoBehaviour:
     patternStrategyWeight: 0.4
     moveType: 1
     attackType: 1
-    skillType: 4
+    skillType: 5
     phaseTransitionType: 0
     damageMultiplier: 1.6
     speedMultiplier: 1.3

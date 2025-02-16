@@ -10,5 +10,6 @@ public interface ISuccessUI
     /// </summary>
     void UpdateSuccessCount(int currentSuccessCount);
 
+    void UpdateTimeBar(float time);
     void UIOff();
 }
