@@ -95,7 +95,11 @@ public class MonsterData : ScriptableObject, ICreatureData
     [FoldoutGroup("Skill Settings"), ShowInInspector]
     public float areaDuration { get; set; }
 
-    
+    [FoldoutGroup("Skill Settings"), ShowInInspector]
+    public int multiShotCount { get; set; }  // 연속 발사 횟수
+
+    [FoldoutGroup("Skill Settings"), ShowInInspector]
+    public float multiShotInterval { get; set; }  // 발사 간격
     [FoldoutGroup("Buff Settings"), ShowInInspector]
     public BuffData buffData { get; set; } = new BuffData();
 
@@ -258,6 +262,7 @@ public enum SkillStrategyType
     Basic,
     Buff,          // 자신 강화
     Debuff,        // 적 약화
+    MultiShot,  // n발 발사 
     Summon,        // 소환
     AreaControl    // 영역 제어
 }

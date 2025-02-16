@@ -1,0 +1,99 @@
+전략 타입 (StrategyType)
+스폰 전략 (SpawnStrategyType)
+
+Basic: 기본 생성
+Portal: 포탈에서 생성
+Summon: 소환으로 생성
+
+이동 전략 (MovementStrategyType)
+
+Basic: 기본 이동
+Aggressive: 적극적 추적 이동
+Defensive: 거리 유지하며 방어적 이동
+Ranged: 원거리 유지 이동
+Patrol: 정찰 패턴 이동
+Retreat: 도주/후퇴 이동
+
+공격 전략 (AttackStrategyType)
+
+Basic: 기본 공격
+Charge: 돌진 공격
+Rush: 돌격 공격
+Jump: 점프 공격
+Melee: 근접 공격
+Ranged: 원거리 공격
+AoE: 범위 공격
+Combo: 연속 공격
+
+스킬 전략 (SkillStrategyType)
+
+Basic: 기본 스킬
+Buff: 강화 스킬
+Debuff: 약화 스킬
+Summon: 소환 스킬
+AreaControl: 영역 제어 스킬
+MultiShot: 다중 발사 스킬
+
+스킬 관련 타입
+스킬 이펙트 타입 (SkillEffectType)
+
+Projectile: 발사체 형태
+AreaEffect: 범위 효과
+Buff: 버프/강화 효과
+Summon: 소환 효과
+
+발사체 이동 타입 (ProjectileMovementType)
+
+None: 이동 없음
+Straight: 직선 이동
+Homing: 추적 이동
+Parabolic: 포물선 이동
+
+발사체 충돌 효과 타입 (ProjectileImpactType)
+
+Basic: 기본 충돌 - 바로 damage
+Poison: 독 효과 - 충돌시 독 영역
+(향후 추가 예정: Explosion, Freeze 등)
+
+상태 관련 타입
+사망 전략 (DieStrategyType)
+
+Basic: 기본 사망
+Explosion: 폭발하며 사망
+Split: 분열하며 사망
+Resurrection: 부활 가능
+DropItem: 특별 아이템 드롭
+
+피격 전략 (HitStrategyType)
+
+Basic: 기본 피격
+Elite: 정예몹 피격
+MiniBoss: 중간보스 피격
+Boss: 최종보스 피격
+
+그로기 전략 (GroggyStrategyType)
+
+Basic: 기본 그로기
+Elite: 정예몹 그로기
+Boss: 보스 그로기
+
+버프 타입 (BuffType)
+강화
+
+AttackUp: 공격력 증가
+DefenseUp: 방어력 증가
+SpeedUp: 이동속도 증가
+AttackSpeedUp: 공격속도 증가
+Heal: 체력 회복
+Rage: 분노(공격력 + 공격속도)
+Invincible: 무적
+
+디버프
+
+AttackDown: 공격력 감소
+DefenseDown: 방어력 감소
+SpeedDown: 이동속도 감소
+Stun: 기절
+Poison: 독
+Burn: 화상
+Freeze: 빙결

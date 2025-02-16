@@ -4,3 +4,4 @@ MonsterId,AreaEffectPrefab,ShockEffectPrefab,BuffEffectPrefab,SummonPrefab,Proje
 3,SpiderPoisonPrefab,,,,SpiderPosionProjectile,SpiderPosionProjectileHitEffect,PBRDefault
 4,,ShorkWavePrefab,BuffUpPrefab,,,,PBRDefault
 5,,,,,TurtleProjectile,BloodHitEffect,PBRDefault
+6,,,,,RayProjectile,RayHitEffect,PBRDefault

@@ -4,3 +4,4 @@ ID,Name,Health,AttackPower,AttackSpeed,Speed,AttackRange,DropChance,DropItemID,M
 3,Spider,2333,30,1,2,2,0,0,6,7,Monster_Spider,Normal,50,0,12,3
 4,Slime,3333,25,1,1,5,0,0,5,7,Monster_Slime,Normal,50,0,12,3
 5,Turtle,2222,25,1,2,2,0,0,5,7,Monster_Turtle,Normal,50,10,12,3
+6,Ray,4242,35,1,2,2,0,0,6,8,Monster_Ray,Normal,80,10,12,3

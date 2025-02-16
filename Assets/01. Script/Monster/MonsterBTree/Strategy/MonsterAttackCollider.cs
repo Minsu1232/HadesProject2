@@ -47,5 +47,10 @@ public class MonsterAttackCollider : MonoBehaviour
             physicalStrategy.UpdateLastAttackTime();
             Debug.Log("쳐다보세요" + physicalStrategy.IsAttacking);
         }
+        else
+        {
+            strategy.StopAttack();
+           
+        }
     }
 }

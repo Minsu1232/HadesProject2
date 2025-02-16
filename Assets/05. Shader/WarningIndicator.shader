@@ -3,7 +3,7 @@ Shader"Custom/WarningIndicator"
     Properties 
     {
         _FillAmount ("Fill Amount", Range(0, 1)) = 0
-        _OutlineColor ("Outline Color", Color) = (1,0,0,1)
+        _OutlineColor ("Outline Color", Color) = (1,1,1,1)
         _FillColor ("Fill Color", Color) = (1,0,0,0.5)
     }
     

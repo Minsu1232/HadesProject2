@@ -1,6 +1,7 @@
 MonsterID,SpawnStrategy,MoveStrategy,AttackStrategy,IdleStrategy,SkillStrategy,DieStrategy,HitStrategy,GroggyStrategy,UseHealthRetreat,HealthRetreatThreshold,IsPhaseChange
-1,Basic,Basic,Basic,Basic,Basic,Basic,Basic,Basic,True,0.3,True
-2,Basic,Basic,Basic,Basic,Basic,Basic,Basic,Basic,True,0.3,True
-3,Basic,Basic,Basic,Basic,Basic,Basic,Basic,Basic,True,0.3,True
-4,Basic,Basic,Jump,Basic,Buff,Basic,Basic,Basic,True,0.3,True
-5,Basic,Basic,Basic,Basic,Basic,Basic,Basic,Basic,True,0.3,True
+1,Basic,Basic,Basic,Basic,Basic,Basic,Basic,Basic,TRUE,0.3,TRUE
+2,Basic,Basic,Basic,Basic,Basic,Basic,Basic,Basic,TRUE,0.3,TRUE
+3,Basic,Basic,Basic,Basic,Basic,Basic,Basic,Basic,TRUE,0.3,TRUE
+4,Basic,Basic,Jump,Basic,Buff,Basic,Basic,Basic,TRUE,0.3,TRUE
+5,Basic,Basic,Basic,Basic,Basic,Basic,Basic,Basic,TRUE,0.3,TRUE
+6,Basic,Basic,Basic,Basic,MultiShot,Basic,Basic,Basic,TRUE,0.3,TRUE

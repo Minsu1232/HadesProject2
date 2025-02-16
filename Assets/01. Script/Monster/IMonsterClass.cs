@@ -62,7 +62,8 @@ public interface IMonsterClass
     bool isBasicAttack { get; }
     int CurrentArmor { get; }
     float CurrentShockwaveRadius { get; }
-
+    int CurrentMultiShotCount { get; }
+    float CurrentMultiShotInterval { get; }
     void TakeDamage(int damage);
 
     void ModifyStats(

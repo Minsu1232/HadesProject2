@@ -1,6 +1,8 @@
-// 실제 스킬 프로젝타일 구현
-using UnityEngine;
 
+using UnityEngine;
+/// <summary>
+/// 트리거 후 영향을 주는 발사체
+/// </summary>
 public class SkillProjectile : BaseProjectile
 {
     private bool hasDamageApplied = false;

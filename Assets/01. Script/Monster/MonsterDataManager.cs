@@ -125,7 +125,9 @@ public class MonsterDataManager : Singleton<MonsterDataManager>
     {
         if (string.IsNullOrEmpty(prefabKey)) return null;
 
+        
         var handle = Addressables.LoadAssetAsync<GameObject>(prefabKey);
+        Debug.Log(prefabKey + "로드완료");
         return await handle.Task;
     }
 
@@ -339,6 +341,8 @@ public class MonsterDataManager : Singleton<MonsterDataManager>
             monsterData.cameraShakeIntensity = float.Parse(skills["CameraShakeIntensity"]);
             monsterData.cameraShakeDuration = float.Parse(skills["CameraShakeDuration"]);
             monsterData.shockwaveRadius = float.Parse(skills["ShockwaveRadius"]);
+            monsterData.multiShotCount = int.Parse(skills["MultiShotCount"]);
+            monsterData.multiShotInterval = float.Parse(skills["MultiShotInterval"]);
         }
     }
 

@@ -10,15 +10,14 @@ public class SkillState : MonsterBaseState
     private float skillTimer;
     private bool isSkillAnimationComplete;
     private bool hasSkillStarted;
-    private bool hasSkillEffectApplied;
     private bool isInterrupted;
 
-    // 스킬 상태 관리를 위한 열거형
+    // 스킬 상태를 나타내는 열거형
     private enum SkillPhase
     {
         NotStarted,      // 스킬 시작 전
         Starting,        // 스킬 시작 애니메이션 재생 중
-        Executing,       // 스킬 효과 실행 중
+        Executing,       // 스킬 효과 실행 중 (여러 발)
         Finishing,       // 스킬 종료 애니메이션 재생 중
         Completed,       // 스킬 정상 종료
         Interrupted      // 스킬 강제 중단
@@ -38,7 +37,6 @@ public class SkillState : MonsterBaseState
         skillTimer = 0f;
         isSkillAnimationComplete = false;
         hasSkillStarted = false;
-        hasSkillEffectApplied = false;
         isInterrupted = false;
         currentPhase = SkillPhase.NotStarted;
     }
@@ -47,7 +45,7 @@ public class SkillState : MonsterBaseState
     {
         ResetSkillState();
 
-        // 현재 애니메이션 상태 확인 및 처리
+        // 애니메이션이 이미 재생 중이면 재시작, 아니면 트리거 설정
         var currentAnimState = animator.GetCurrentAnimatorStateInfo(0);
         if (currentAnimState.IsName("SkillAttack"))
         {
@@ -77,13 +75,14 @@ public class SkillState : MonsterBaseState
             return;
         }
 
-        // 플레이어 방향 추적 (실행 중일 때만)
+        // 스킬 실행 중일 때 플레이어 방향 추적
         if (player != null && currentPhase == SkillPhase.Executing)
         {
             UpdateRotation();
         }
 
-        // 스킬 완료 조건 체크
+        // 스킬 완료 조건 체크:
+        // 애니메이션이 완료되었고, 스킬 전략(내부에서 발사 횟수 관리)이 완료되었으면 종료
         if (IsSkillComplete() && currentPhase != SkillPhase.Completed)
         {
             CompleteSkill();
@@ -100,17 +99,18 @@ public class SkillState : MonsterBaseState
         }
     }
 
-    // 애니메이션 이벤트에서 호출될 메서드들
+    // 애니메이션 이벤트에 의해 호출: 스킬 발동 시작 (한 번만 호출)
     public void OnSkillStart()
     {
         if (isInterrupted || currentPhase != SkillPhase.Starting) return;
 
         try
         {
+            // 여기서 스킬 전략에서 내부적으로 발사 횟수를 관리하도록 시작
             skillStrategy.StartSkill(transform, player, monsterClass);
             hasSkillStarted = true;
             currentPhase = SkillPhase.Executing;
-            LogStateTransition("OnSkillStart", "Success");
+            LogStateTransition("OnSkillStart", "Skill started");
         }
         catch (Exception e)
         {
@@ -119,15 +119,23 @@ public class SkillState : MonsterBaseState
         }
     }
 
+    // 애니메이션 이벤트에 의해 호출: 다중 발사를 위해 매 프레임 혹은 원하는 프레임마다 호출
     public void OnSkillEffect()
     {
-        if (isInterrupted || currentPhase != SkillPhase.Executing) return;
+        if (isInterrupted || currentPhase != SkillPhase.Executing)
+        {
+            Debug.Log("돌아가요~");
+            return;
+        }
+        
 
         try
         {
+            // 스킬 전략 내부에서 발사 횟수를 카운팅하고,
+            // 최대 횟수 도달 시 내부적으로 CompleteSkill을 처리하도록 한다.
             skillStrategy.UpdateSkill(transform, player, monsterClass);
-            hasSkillEffectApplied = true;
-            LogStateTransition("OnSkillEffect", "Success");
+            Debug.Log("쏴요~");
+            LogStateTransition("OnSkillEffect", "Shot fired");
         }
         catch (Exception e)
         {
@@ -136,18 +144,20 @@ public class SkillState : MonsterBaseState
         }
     }
 
+    // 애니메이션 이벤트에 의해 호출: 스킬 애니메이션이 완료되었음을 알림
     public void OnSkillAnimationComplete()
     {
         if (isInterrupted) return;
 
         isSkillAnimationComplete = true;
         currentPhase = SkillPhase.Finishing;
-        LogStateTransition("OnSkillAnimationComplete", "Success");
+        LogStateTransition("OnSkillAnimationComplete", "Animation complete");
     }
 
+    // 스킬 완료 조건: 애니메이션 완료와 스킬 전략에서 발사 횟수 등 완료 여부가 모두 충족되면 완료
     private bool IsSkillComplete()
     {
-        return isSkillAnimationComplete && skillStrategy.IsSkillComplete && hasSkillEffectApplied;
+        return isSkillAnimationComplete && skillStrategy.IsSkillComplete;
     }
 
     private void CompleteSkill()
@@ -155,15 +165,16 @@ public class SkillState : MonsterBaseState
         currentPhase = SkillPhase.Completed;
         if (owner.GetAttackStrategy() is BasePhysicalAttackStrategy baseAttack)
         {
-            baseAttack.UpdateLastAttackTime();  // 직접 필드 접근 대신 메서드 사용
+            baseAttack.UpdateLastAttackTime();  // 공격 후 타이밍 업데이트
         }
         owner.ChangeState(MonsterStateType.Move);
         animator.ResetTrigger("SkillAttack");
+        LogStateTransition("CompleteSkill", "Skill completed");
     }
+
     private void ForceCompleteSkill()
     {
         isSkillAnimationComplete = true;
-        hasSkillEffectApplied = true;
         CompleteSkill();
         LogStateTransition("ForceCompleteSkill", "Forced completion");
     }
@@ -182,7 +193,7 @@ public class SkillState : MonsterBaseState
                 var bossMonster = monsterClass as BossMonster;
                 if (bossMonster != null && !bossMonster.CanBeInterrupted)
                 {
-                    return; // 보스이고 인터럽트가 불가능하면 여기서 종료
+                    return; // 보스면 인터럽트 불가능
                 }
                 animator.ResetTrigger("SkillAttack");
                 animator.Play("Hit");
@@ -212,10 +223,8 @@ public class SkillState : MonsterBaseState
 
     private void LogStateTransition(string from, string to)
     {
-        //if (Debug.isDebugBuild)
-        //{
-        //    Debug.Log($"[SkillState] {owner.gameObject.name}: {from} -> {to} (Time: {skillTimer:F2})");
-        //}
+        // 필요시 디버그 로그 활성화
+        // Debug.Log($"[SkillState] {owner.gameObject.name}: {from} -> {to} (Time: {skillTimer:F2})");
     }
 }
 
