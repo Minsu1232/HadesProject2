@@ -110,7 +110,7 @@ public class BossMonster : MonsterClass
 
         // 레이지 모드 초기화
         IsInRageMode = false;
-        RageModeThreshold = bossData.rageModeThreshold;
+        
         RageModeDuration = bossData.rageModeDuration;
         rageModeTimer = 0;
 

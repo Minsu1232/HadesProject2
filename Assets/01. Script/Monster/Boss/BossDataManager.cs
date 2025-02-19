@@ -433,7 +433,7 @@ public class BossDataManager : Singleton<BossDataManager>
         bossData.phaseCount = int.Parse(baseData["PhaseCount"]);
         bossData.groggyTime = float.Parse(baseData["GroggyTime"]);     
        
-        bossData.rageModeThreshold = float.Parse(baseData["RageModeThreshold"]);    
+       
         
         bossData.showPhaseNames = bool.Parse(baseData["ShowPhaseNames"]);
 
