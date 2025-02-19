@@ -20,7 +20,10 @@ public class DungeonManager : Singleton<DungeonManager>
         SlimeTest,
         JumpTest,
         BossDungeon, // 보스 던전 추가
-        RayTest
+        RayTest,
+        warmTest,
+        RatTest
+
 
     }
 
@@ -58,12 +61,16 @@ public class DungeonManager : Singleton<DungeonManager>
                     new SlimeMonsterFactory(),
                     new TurtleMonsterFactory()
                 );
-            case "JumpTest":
+            case "jumptest":
                 return new SlimeMonsterFactory();
             case "bossdungeon":
                 return new BossFactory(1);  // 보스 ID 전달
             case "raytest":
                 return new RayMonsterFactory();
+            case "warmtest":
+                return new WarmMonsterFactory();
+            case "rattest":
+                return new RatMonsterFactory();
             default:
                 Debug.LogError($"알 수 없는 던전 타입입니다: {dungeonType}");
                 return null;

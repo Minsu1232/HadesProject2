@@ -172,8 +172,7 @@ public class BossData : MonsterData
 {
     [Header("Boss Base Settings")]
     public bool canBeInterrupted;
-    public float phaseTransitionDuration;
-    public float rageModeThreshold;
+    public float phaseTransitionDuration;   
     public float rageModeDuration;
     public bool invincibleOnSpawn;
     public float aggroRange;

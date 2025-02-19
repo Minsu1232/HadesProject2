@@ -35,6 +35,8 @@ public abstract class BaseProjectile : MonoBehaviour
 
         isInitialized = false;
         elapsedTime = 0;
+
+        Destroy(gameObject,10f);
         
     }
 

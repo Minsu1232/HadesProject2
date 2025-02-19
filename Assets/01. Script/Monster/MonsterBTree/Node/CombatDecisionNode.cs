@@ -45,7 +45,9 @@ public class CombatDecisionNode : BTNode
         }
         else if (!attackStrategy.IsAttacking && attackStrategy.CanAttack(distanceToPlayer, monster))
         {
+            Debug.Log("공격!가능합니다");
             owner.ChangeState(MonsterStateType.Attack);
+            Debug.Log(owner.GetCurrentState()); 
             return NodeStatus.Success;
         }
         else if (distanceToPlayer <= monster.CurrentAttackRange)

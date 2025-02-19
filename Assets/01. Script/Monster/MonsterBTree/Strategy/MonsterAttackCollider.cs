@@ -50,6 +50,7 @@ public class MonsterAttackCollider : MonoBehaviour
         else
         {
             strategy.StopAttack();
+            strategy.ResetAttackTime();
            
         }
     }

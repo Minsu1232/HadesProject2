@@ -3,11 +3,11 @@
 2. 각 스테이트 별 애니메이션 삽입 공격전략 
 
 	-Basic공격 채택시 EnableDamage,DisableDamage 이벤트추가
-	-Skill은 OnStartSkill,OnSkillEffect,OnSkillAnimationComplete 이벤트추가
+	-Skill은 OnSkillStart,OnSkillEffect,OnSkillAnimationComplete 이벤트추가
 
-3. 몬스터 오브젝트의  Skinned Mesh Renderere 복사 후 통합 Body 삭제
+3. 몬스터 오브젝트의  Skinned Mesh Renderere 복사 후 통합 Body 삭제 
 
-4. MonsterAttackCollider,MonsterUIManager,rigidbody(중력off, Costraints 관리) 추가
+4. MonsterAttackCollider,MonsterUIManager,rigidbody(중력off, Costraints 관리),SkillSpawnPoint 추가
 
 5. 기존 몬스터의 캔버스 복사 및 MonsterUIManager에 할당
 

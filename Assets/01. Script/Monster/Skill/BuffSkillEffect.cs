@@ -9,13 +9,14 @@ public class BuffSkillEffect : ISkillEffect
     private Transform target;
     private GameObject buffPrefab;
     bool isNopr;
-
-    public BuffSkillEffect(BuffType[] buffTypes, float[] durations, float[] values, GameObject buffPrefab)
+    private Transform monsterTransform;  // 추가
+    public BuffSkillEffect(BuffType[] buffTypes, float[] durations, float[] values, GameObject buffPrefab, Transform monsterTransform)
     {
         this.buffTypes = buffTypes;
         this.durations = durations;
         this.values = values;
         this.buffPrefab = buffPrefab;
+        this.monsterTransform = monsterTransform;  // 몬스터의 Transform 저장
     }
 
     public void Initialize(ICreatureStatus status, Transform target)
@@ -150,10 +151,19 @@ public class BuffSkillEffect : ISkillEffect
     }
 
     private void SpawnBuffEffect()
-    {       
-        //GameObject effect = GameObject.Instantiate(buffPrefab, monsterStatus.transform.position, Quaternion.identity);
-        //GameObject.Destroy(effect, 2f); // 2초 후 이펙트 제거
+    {
 
+        if (buffPrefab != null && monsterTransform != null)
+        {
+            GameObject effect = GameObject.Instantiate(buffPrefab,
+                monsterTransform.transform);
+
+            GameObject.Destroy(effect, 2f);
+        }
+        else
+        {
+            Debug.LogWarning("BuffSkillEffect: buffPrefab or monsterTransform is null!");
+        }
     }
 
 

@@ -293,7 +293,7 @@ ModelImporter:
         intParameter: 0
         messageOptions: 0
       - time: 0.4885496
-        functionName: OnAttackAnimationEnd
+        functionName: DisableDamage
         data: 
         objectReferenceParameter: {instanceID: 0}
         floatParameter: 0

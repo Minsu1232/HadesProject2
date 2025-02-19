@@ -2,6 +2,7 @@ using DG.Tweening;
 using static IMonsterState;
 using System.Collections.Generic;
 using UnityEngine;
+using static UnityEngine.UI.GridLayoutGroup;
 
 public class BasicCreatureAI : CreatureAI
 {
@@ -80,33 +81,38 @@ public class BasicCreatureAI : CreatureAI
         }
     }
 
-    private void InitializeBehaviorTree()
+    public void InitializeBehaviorTree()
     {
         behaviorTree = new Selector(this,
-           // 1. 체력이 낮으면 도망
-           new BTSequence(this,
-               new CheckHealthCondition(this),
-               new ChangeStateAction(this, MonsterStateType.Move, MovementStrategyType.Retreat)
-           ),
+        
 
-           // 2. 전투 가능 거리면 전투
-           new BTSequence(this,
-               new CheckPlayerInAttackRange(this),
-               new CombatDecisionNode(this)
-           ),
+        // 기존 로직
+        new BTSequence(this,
+            new CheckHealthCondition(this),
+            new ChangeStateAction(this, MonsterStateType.Move, MovementStrategyType.Retreat)
+        ),
+        new TimeDelayDecorator(this,
+        new BTSequence(this,
+            new CheckPlayerInAttackRange(this),
+            new CheckPatternDistance(this),
+            new CombatDecisionNode(this)
+        ), 0.3f),
 
-           // 3. 감지 범위 안이면 추적
-           new BTSequence(this,
-               new CheckPlayerInRange(this),
-               new ChangeStateAction(this, MonsterStateType.Move, MovementStrategyType.Basic)
-           )
-       );
+     new TimeDelayDecorator(this,
+        new BTSequence(this,
+        new CheckPlayerInRange(this),
+            new ChangeStateAction(this, MonsterStateType.Move, MovementStrategyType.Basic)
+        ),
+        0.2f
+    )
+    );
     }
 
     protected override void Update()
     {
         base.Update();
         behaviorTree?.Execute();
+        Debug.Log(currentState.ToString());
     }
 
     #region Strategy Getters

@@ -81,14 +81,17 @@ public static class StrategyFactory
         };
     }
 
-    public static IProjectileMovement CreateProjectileMovement(ProjectileMovementType type)
+    public static IProjectileMovement CreateProjectileMovement(ProjectileMovementType type, ICreatureData data)
     {
         return type switch
         {
             ProjectileMovementType.Homing => new HomingMovement(),
             ProjectileMovementType.Parabolic => new ParabolicMovement(),
             ProjectileMovementType.Straight => new StraightMovement(),
-            _ => null
+            ProjectileMovementType.StraightRotation => new StraightRotationMovement(
+                data.projectileRotationAxis,  // MonsterData에서 설정한 회전축
+                data.projectileRotationSpeed  // MonsterData에서 설정한 회전 속도
+            ),
         };
     }
 
@@ -123,7 +126,7 @@ public static class StrategyFactory
                     Debug.LogError($"Projectile prefab is missing for monster: {data.MonsterName}");
                     return null;
                 }
-                var moveStrategy = CreateProjectileMovement(data.projectileType);
+                var moveStrategy = CreateProjectileMovement(data.projectileType,data);
                 var impactEffect = CreateProjectileImpact(data.projectileImpactType, data);
                 return new ProjectileSkillEffect(
                     data.projectilePrefab,
@@ -150,7 +153,8 @@ public static class StrategyFactory
                    data.buffData.buffTypes,    // 여러 버프 타입 배열
         data.buffData.durations,    // 각 버프의 지속시간 배열
         data.buffData.values,        // 각 버프의 수치값 배열
-        data.buffEffectPrefab
+        data.buffEffectPrefab,
+        owner.transform
                 );
 
             case SkillEffectType.Summon:

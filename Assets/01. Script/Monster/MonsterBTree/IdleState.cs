@@ -1,10 +1,11 @@
 using UnityEngine;
-using static IMonsterState;
 
 public class IdleState : MonsterBaseState
 {
     private readonly IIdleStrategy idleStrategy;
     private Animator animator;
+    private bool isTransitioning = false;
+
     public IdleState(CreatureAI owner, IIdleStrategy strategy) : base(owner)
     {
         idleStrategy = strategy;
@@ -13,26 +14,24 @@ public class IdleState : MonsterBaseState
 
     public override void Enter()
     {
+        isTransitioning = false;
         idleStrategy.OnIdle(transform, monsterClass);
         animator.SetTrigger("Idle");
-        
     }
 
     public override void Execute()
     {
-        float distanceToPlayer = GetDistanceToPlayer();
-
         idleStrategy.UpdateIdle();
+    }
 
-        if (idleStrategy.ShouldChangeState(distanceToPlayer, monsterClass))
-        {
-            owner.ChangeState(MonsterStateType.Move);
-        }
+    public override void Exit()
+    {
+        isTransitioning = true;
+        animator.ResetTrigger("Idle");
     }
 
     public override bool CanTransition()
     {
-        animator.ResetTrigger("Idle");
-        return true;  // Idle 상태는 언제든 전환 가능
+        return true;
     }
 }

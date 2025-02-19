@@ -5,3 +5,5 @@ MonsterId,AreaEffectPrefab,ShockEffectPrefab,BuffEffectPrefab,SummonPrefab,Proje
 4,,ShorkWavePrefab,BuffUpPrefab,,,,PBRDefault
 5,,,,,TurtleProjectile,BloodHitEffect,PBRDefault
 6,,,,,RayProjectile,RayHitEffect,PBRDefault
+7,,,,,WarmProjectile,BloodHitEffect,PBRDefault
+8,,,BuffUpPrefab,,,,PBRDefault

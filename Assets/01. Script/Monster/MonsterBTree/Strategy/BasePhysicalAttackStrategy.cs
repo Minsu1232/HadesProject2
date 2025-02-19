@@ -38,11 +38,11 @@ public abstract class BasePhysicalAttackStrategy : IAttackStrategy
     public virtual bool CanAttack(float distanceToTarget, IMonsterClass monsterData)
     {
         if (isAttacking) return false; //  공격 중이면 공격 불가
-        
 
-        //Debug.Log($"공격 할 수?? : {distanceToTarget <= monsterData.CurrentAttackRange} 공격속도가? {Time.time >= lastAttackTime + monsterData.CurrentAttackSpeed} "
-        //       );
-        
+
+        Debug.Log($"공격 할 수?? : {distanceToTarget <= monsterData.CurrentAttackRange} 공격속도가? {Time.time >= lastAttackTime + monsterData.CurrentAttackSpeed} "
+               );
+
         return distanceToTarget <= monsterData.CurrentAttackRange &&
                Time.time >= lastAttackTime + monsterData.CurrentAttackSpeed;
     }
@@ -80,6 +80,11 @@ public abstract class BasePhysicalAttackStrategy : IAttackStrategy
     public abstract void Attack(Transform transform, Transform target, IMonsterClass monsterData);
 
     internal void UpdateLastAttackTime()
+    {
+        lastAttackTime = Time.time;
+    }
+
+    public void ResetAttackTime()
     {
         lastAttackTime = Time.time;
     }

@@ -148,4 +148,8 @@ public class BossMultiAttackStrategy : IAttackStrategy
         Debug.Log("ResetAll: Strategies cleared and timer reset to " + unifiedLastAttackTime);
     }
 
+    public void ResetAttackTime()
+    {
+        throw new System.NotImplementedException();
+    }
 }

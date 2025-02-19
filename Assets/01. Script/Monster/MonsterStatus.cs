@@ -278,7 +278,7 @@ public class MonsterStatus : MonoBehaviour,IDamageable, ICreatureStatus
                 ModifyAttackPower((int)modifier);
                 break;
             case "attackspeed":
-                ModifyAttackSpeed(modifier);
+                ModifyAttackSpeed(-modifier);
                 break;
             case "speed":
                 ModifySpeed((int)modifier);

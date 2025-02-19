@@ -343,9 +343,23 @@ public class MonsterDataManager : Singleton<MonsterDataManager>
             monsterData.shockwaveRadius = float.Parse(skills["ShockwaveRadius"]);
             monsterData.multiShotCount = int.Parse(skills["MultiShotCount"]);
             monsterData.multiShotInterval = float.Parse(skills["MultiShotInterval"]);
+            monsterData.projectileRotationAxis = ParseVector3(skills["ProjectileRotationAxis"]);
+            monsterData.projectileRotationSpeed = float.Parse(skills["ProjectileRotationSpeed"]);
         }
     }
-
+    private Vector3 ParseVector3(string vectorString)
+    {
+        string[] components = vectorString.Split('|');
+        if (components.Length == 3)
+        {
+            return new Vector3(
+                float.Parse(components[0]),
+                float.Parse(components[1]),
+                float.Parse(components[2])
+            );
+        }
+        return Vector3.forward; // 기본값 반환
+    }
     public MonsterData GetMonsterData(int monsterId)
     {
         if (monsterDatabase.TryGetValue(monsterId, out MonsterData data))

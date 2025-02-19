@@ -39,6 +39,11 @@ public interface ICreatureData
     float areaRadius { get; }
     float areaDuration { get; }
 
+  
+    public Vector3 projectileRotationAxis { get; }
+
+   
+    public float projectileRotationSpeed { get; }
     // Buff Settings
     BuffData buffData { get; }
     BuffType buffType { get; }

@@ -66,12 +66,12 @@ public class JumpAttackStrategy : BasePhysicalAttackStrategy
 
     public override void Attack(Transform transform, Transform target, IMonsterClass monsterData)
     {
-        // 이미 점프 중이거나 공격 조건을 만족하지 못하면 공격하지 않음
-        if (isAttacking || !CanAttack(Vector3.Distance(transform.position, target.position), monsterData))
-        {   
-            Debug.Log("안대용" + isJumping + CanAttack(Vector3.Distance(transform.position, target.position), monsterData));
-            return;
-        }
+        //// 이미 점프 중이거나 공격 조건을 만족하지 못하면 공격하지 않음
+        //if (isAttacking || !CanAttack(Vector3.Distance(transform.position, target.position), monsterData))
+        //{   
+        //    Debug.Log("안대용" + isAttacking + CanAttack(Vector3.Distance(transform.position, target.position), monsterData));
+        //    return;
+        //}
         Debug.Log("Executing Jump Attack Strategy...");
         // 공격 준비
         StartAttack();
@@ -123,8 +123,7 @@ public class JumpAttackStrategy : BasePhysicalAttackStrategy
         {
             Debug.Log("JumpAttack OnComplete - Before StopAttack");
             OnAttackAnimationEnd();  // 애니메이션 종료 처리 추가
-            StopAttack();
-            lastAttackTime = Time.time;
+            StopAttack();            
 
             var strategy = owner.GetAttackStrategy();
             if (strategy is BossMultiAttackStrategy physicalStrategy)

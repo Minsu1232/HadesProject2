@@ -100,6 +100,12 @@ public class MonsterData : ScriptableObject, ICreatureData
 
     [FoldoutGroup("Skill Settings"), ShowInInspector]
     public float multiShotInterval { get; set; }  // 발사 간격
+
+    [FoldoutGroup("Skill Settings"), ShowInInspector]
+    public Vector3 projectileRotationAxis { get; set; }
+
+    [FoldoutGroup("Skill Settings"), ShowInInspector]
+    public float projectileRotationSpeed { get; set; }
     [FoldoutGroup("Buff Settings"), ShowInInspector]
     public BuffData buffData { get; set; } = new BuffData();
 
@@ -280,12 +286,14 @@ public enum ProjectileMovementType
 {
     None,
     Straight,
+    StraightRotation,
     Homing,
     Parabolic    // 추가
 }
 
 public enum SkillEffectType
 {
+    None,
     Projectile,
     AreaEffect,
     Buff,
@@ -295,6 +303,7 @@ public enum SkillEffectType
 
 public enum ProjectileImpactType
 {
+    None,
     Basic,
     Poison,
     //Explosion,

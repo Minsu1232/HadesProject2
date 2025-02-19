@@ -24,10 +24,33 @@ public class AttackState : MonsterBaseState
             currentAnimTrigger = attackStrategy.GetAnimationTriggerName();
             animator.SetTrigger(currentAnimTrigger);
         }
+  
     }
+    public override void Execute()
+    {
+        
+
+        // 공격이 완료되었거나 타임아웃된 경우
+        if (!attackStrategy.IsAttacking)
+        {
+            owner.ChangeState(MonsterStateType.Idle);
+            return;
+        }
+
+        //// 필요한 경우 공격 중 타겟 방향 업데이트
+        //if (player != null)
+        //{
+        //    Vector3 directionToPlayer = (player.position - transform.position).normalized;
+        //    transform.rotation = Quaternion.Lerp(transform.rotation,
+        //                                       Quaternion.LookRotation(directionToPlayer),
+        //                                       Time.deltaTime * 5f);
+        //}
+    }
+
 
     public override void Exit()
     {
+        Debug.Log("오긴했으?");
         isTransitioning = true;
         attackStrategy.StopAttack();
         animator.ResetTrigger(currentAnimTrigger);

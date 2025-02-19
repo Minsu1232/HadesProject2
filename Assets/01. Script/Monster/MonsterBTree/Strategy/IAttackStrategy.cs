@@ -21,7 +21,7 @@ public interface IAttackStrategy
     bool IsAttacking { get; }
     float GetLastAttackTime { get; }
     void OnAttackAnimationEnd();
-
+    void ResetAttackTime();
     // 새로 추가되는 속성들
     PhysicalAttackType AttackType { get; }
     string GetAnimationTriggerName();

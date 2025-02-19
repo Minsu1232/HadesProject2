@@ -5,3 +5,5 @@ MonsterID,SpawnStrategy,MoveStrategy,AttackStrategy,IdleStrategy,SkillStrategy,D
 4,Basic,Basic,Jump,Basic,Buff,Basic,Basic,Basic,TRUE,0.3,TRUE
 5,Basic,Basic,Basic,Basic,Basic,Basic,Basic,Basic,TRUE,0.3,TRUE
 6,Basic,Basic,Basic,Basic,MultiShot,Basic,Basic,Basic,TRUE,0.3,TRUE
+7,Basic,Basic,Basic,Basic,MultiShot,Basic,Basic,Basic,TRUE,0.3,TRUE
+8,Basic,Basic,Basic,Basic,Buff,Basic,Basic,Basic,TRUE,0.3,TRUE

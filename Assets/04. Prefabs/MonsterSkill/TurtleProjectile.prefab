@@ -117,7 +117,7 @@ GameObject:
   - component: {fileID: 3763375764787392024}
   - component: {fileID: 3464351326931142080}
   - component: {fileID: 1459765431836783584}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: TurtleProjectile
   m_TagString: Untagged
   m_Icon: {fileID: 0}
