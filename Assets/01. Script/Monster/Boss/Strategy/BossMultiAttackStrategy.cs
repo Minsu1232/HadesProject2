@@ -1,7 +1,9 @@
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
-
+/// <summary>
+/// 어택들을 넣을 컨테이너 가중치를 부여해 선택 후 공격
+/// </summary>
 public class BossMultiAttackStrategy : IAttackStrategy
 {
     private List<IAttackStrategy> strategies = new List<IAttackStrategy>();

@@ -1,0 +1,2 @@
+BossName,InitialEssence,MaxEssence,EssenceThreshold,PlayerAttackBuff,PlayerDamageBuff,MaxEssenceStunTime,EssenceName
+Alexander,0,100,70,0.3,0.2,2,Madness

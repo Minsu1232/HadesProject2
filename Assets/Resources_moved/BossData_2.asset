@@ -14,7 +14,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   canBeInterrupted: 0
   phaseTransitionDuration: 2
-  rageModeThreshold: 0.25
   rageModeDuration: 0
   invincibleOnSpawn: 0
   aggroRange: 0
@@ -183,39 +182,7 @@ MonoBehaviour:
     cutscenePath: 
     specialMechanicType: 
     specialMechanicValue: 0
-    gimmicks:
-    - gimmickName: DPSCheck
-      type: 0
-      triggerHealthThreshold: 0.3
-      duration: 20
-      isEnabled: 1
-      successCount: 0
-      moveSpeed: 10
-      hazardSpawnType: 1
-      targetType: 1
-      requirePlayerAction: 0
-      isInterruptible: 1
-      destroyAfterUse: 1
-      makeInvulnerable: 1
-      damageMultiplier: 2
-      failDamage: 2000
-      damage: 9999
-      affectStatusEffects: 0
-      useCustomPosition: 1
-      gimmickPosition: {x: 0, y: 0, z: 0}
-      areaRadius: 0
-      followTarget: 1
-      collisionMask:
-        serializedVersion: 2
-        m_Bits: 2147483648
-      preparationTime: 1.5
-      repeatInterval: 0
-      warningEffect: {fileID: 0}
-      activeEffect: {fileID: 0}
-      hazardPrefab: {fileID: 7489191758440052081, guid: 3e867b08564d97942b4eac4fdfa17926, type: 3}
-      hazardPrefabKey: Stalactite
-      warningSound: {fileID: 0}
-      activeSound: {fileID: 0}
+    gimmicks: []
   - phaseName: Unleashed
     isInvulnerable: 0
     phaseTransitionThreshold: 0.3
@@ -248,39 +215,7 @@ MonoBehaviour:
     cutscenePath: 
     specialMechanicType: 
     specialMechanicValue: 0
-    gimmicks:
-    - gimmickName: DPSCheck
-      type: 0
-      triggerHealthThreshold: 0.3
-      duration: 20
-      isEnabled: 1
-      successCount: 0
-      moveSpeed: 10
-      hazardSpawnType: 1
-      targetType: 1
-      requirePlayerAction: 0
-      isInterruptible: 1
-      destroyAfterUse: 1
-      makeInvulnerable: 1
-      damageMultiplier: 2
-      failDamage: 2000
-      damage: 9999
-      affectStatusEffects: 0
-      useCustomPosition: 1
-      gimmickPosition: {x: 0, y: 0, z: 0}
-      areaRadius: 0
-      followTarget: 1
-      collisionMask:
-        serializedVersion: 2
-        m_Bits: 2147483648
-      preparationTime: 1.5
-      repeatInterval: 0
-      warningEffect: {fileID: 0}
-      activeEffect: {fileID: 0}
-      hazardPrefab: {fileID: 7489191758440052081, guid: 3e867b08564d97942b4eac4fdfa17926, type: 3}
-      hazardPrefabKey: Stalactite
-      warningSound: {fileID: 0}
-      activeSound: {fileID: 0}
+    gimmicks: []
   phaseCount: 3
   canSummonMinions: 0
   minionPrefabs: []

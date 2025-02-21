@@ -1,7 +1,9 @@
 using DG.Tweening;
 using UnityEngine;
 using static IMonsterState;
-
+/// <summary>
+/// 보스패턴의 기반 클래스
+/// </summary>
 public abstract class BossPattern : BasePhysicalAttackStrategy
 {
     protected BasicAttackStrategy basicAttack;

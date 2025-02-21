@@ -20,6 +20,12 @@ public class BossDataManager : Singleton<BossDataManager>
     private Dictionary<int, List<Dictionary<string, string>>> bossSkillPrefabData = new Dictionary<int, List<Dictionary<string, string>>>();
     private Dictionary<int, List<Dictionary<string, string>>> bossGimmickData = new Dictionary<int, List<Dictionary<string, string>>>();
 
+
+    // 챕터보스고유데이터
+    private Dictionary<string, Dictionary<string, string>> alexanderBossData = new Dictionary<string, Dictionary<string, string>>();
+
+
+
     private string bossBasePath;
     private string bossPhasePath;
     private string bossSkillPath;
@@ -28,6 +34,7 @@ public class BossDataManager : Singleton<BossDataManager>
     private string bossPatternStepPath;
     private string bossPrefabPath;
     private string bossGimmickPath;
+    private string alexanderBossDataPath;
 
     private void Awake()
     {
@@ -39,6 +46,8 @@ public class BossDataManager : Singleton<BossDataManager>
         bossPatternStepPath = Path.Combine(Application.persistentDataPath, "BossPatternSteps.csv");
         bossPrefabPath = Path.Combine(Application.persistentDataPath, "BossPrefabs.csv");
         bossGimmickPath = Path.Combine(Application.persistentDataPath, "BossGimmicks.csv");
+        alexanderBossDataPath = Path.Combine(Application.persistentDataPath, "AlexanderBossData.csv");
+
 
         CopyCSVFromStreamingAssets();
     }
@@ -46,7 +55,7 @@ public class BossDataManager : Singleton<BossDataManager>
     private void CopyCSVFromStreamingAssets()
     {
         string[] csvFiles = new string[] { "BossBase.csv", "BossPhases.csv", "BossSkills.csv", "BossCutscenes.csv","BossPatterns.csv","BossPrefabs.csv",
-    "BossPatternSteps.csv","BossGimmicks.csv"  };
+    "BossPatternSteps.csv","BossGimmicks.csv","AlexanderBossData.csv"};
         foreach (string fileName in csvFiles)
         {
             string streamingPath = Path.Combine(Application.streamingAssetsPath, fileName);
@@ -80,8 +89,35 @@ public class BossDataManager : Singleton<BossDataManager>
         await LoadBossCutsceneData();
         await LoadBossPatternData();      // 추가
         await LoadBossPatternStepData();  // 추가
+        await LoadAlexanderBossData();    // 추가
         await LoadBossGimmickData();
         await InitializeBossData();
+    }
+    private async Task LoadAlexanderBossData()
+    {
+        if (!File.Exists(alexanderBossDataPath))
+        {
+            Debug.LogError($"알렉산더 보스 데이터 CSV 파일을 찾을 수 없습니다: {alexanderBossDataPath}");
+            return;
+        }
+
+        string[] lines = File.ReadAllLines(alexanderBossDataPath);
+        string[] headers = lines[0].Split(',');
+
+        for (int i = 1; i < lines.Length; i++)
+        {
+            string[] values = lines[i].Split(',');
+            string bossName = values[0];
+
+            var dataDict = new Dictionary<string, string>();
+            for (int j = 0; j < headers.Length; j++)
+            {
+                dataDict[headers[j]] = values[j];
+            }
+
+            alexanderBossData[bossName] = dataDict;
+            Debug.Log($"알렉산더 특수 데이터 로드: {bossName}");
+        }
     }
     private async Task LoadBossGimmickData()
     {
@@ -356,6 +392,17 @@ public class BossDataManager : Singleton<BossDataManager>
         {
             UpdateBossPrefab(bossData, skillsPrefab);
         }
+
+        // 챕터보스
+        // 알렉산더 데이터는 ID가 아닌 이름으로 찾아야 하므로 baseData에서 이름을 가져옴
+        if (bossBaseData.TryGetValue(bossId, out var bData))
+        {
+            string bossName = bData["Name"];
+            if (alexanderBossData.TryGetValue(bossName, out var alexanderData))
+            {
+                UpdateAlexanderBossData(bossData, alexanderData);
+            }
+        }
     }
     private void UpdateBossPatternData(BossData bossData, List<Dictionary<string, string>> patterns)
     {
@@ -455,6 +502,8 @@ public class BossDataManager : Singleton<BossDataManager>
                 }
             };
         }
+
+
 
     }
     private void UpdateBossPrefab(BossData bossData, List<Dictionary<string, string>> baseData)
@@ -637,7 +686,23 @@ public class BossDataManager : Singleton<BossDataManager>
             }
         }
     }
+    #region 챕터보스 데이터
+    private void UpdateAlexanderBossData(BossData bossData, Dictionary<string, string> alexanderData)
+    {
+        if (bossData is AlexanderBossData alexanderBossData)
+        {
+            alexanderBossData.initialEssence = float.Parse(alexanderData["InitialEssence"]);
+            alexanderBossData.essenceName = alexanderData["EssenceName"];  // 추가
+            alexanderBossData.maxEssence = float.Parse(alexanderData["MaxEssence"]);
+            alexanderBossData.essenceThreshold = float.Parse(alexanderData["EssenceThreshold"]);
+            alexanderBossData.playerAttackBuff = float.Parse(alexanderData["PlayerAttackBuff"]);
+            alexanderBossData.playerDamageBuff = float.Parse(alexanderData["PlayerDamageBuff"]);
+            alexanderBossData.maxEssenceStunTime = float.Parse(alexanderData["MaxEssenceStunTime"]);
 
+            Debug.Log($"알렉산더 특수 데이터 업데이트 완료: {bossData.MonsterName}");
+        }
+    }
+    #endregion
     //private void UpdateBossCutsceneData(BossData bossData, List<Dictionary<string, string>> cutscenes)
     //{
     //    foreach (var cutscene in cutscenes)

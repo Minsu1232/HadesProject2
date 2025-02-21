@@ -163,10 +163,10 @@ public class SkillState : MonsterBaseState
     private void CompleteSkill()
     {
         currentPhase = SkillPhase.Completed;
-        if (owner.GetAttackStrategy() is BasePhysicalAttackStrategy baseAttack)
-        {
-            baseAttack.UpdateLastAttackTime();  // 공격 후 타이밍 업데이트
-        }
+        //if (owner.GetAttackStrategy() is BasePhysicalAttackStrategy baseAttack)
+        //{
+        //    baseAttack.UpdateLastAttackTime();  // 공격 후 타이밍 업데이트
+        //}
         owner.ChangeState(MonsterStateType.Move);
         animator.ResetTrigger("SkillAttack");
         LogStateTransition("CompleteSkill", "Skill completed");

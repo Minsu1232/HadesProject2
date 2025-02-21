@@ -133,6 +133,14 @@ Attack은 Basic과 Jumpt를 Skill류엔 비행체 - 직선 및 포물선 이동 
 
 	기존 attackstate에서 기존에 보스만들 때 문제였던 Excute부분을 지워 공격상태에서 나오지 못하는 상황 => Excute에 이즈어택킹이 끝났다면 Movestate로 변경
 	
-	다음 할일 - 1챕터 보스 제작 - 
+	다음 할일 - 1챕터 보스 제작 -
+
+2/19~21 - Chapter1 보스 Alexander 기획 중간 완료 / 각 챕터 보스들만의 스크립터블과 데이터들 CSV제작 예정 
+
+	현재 1챕터보스만 AlexanderBossData 스크립터블과 csv 제작 완료 Essence게이지 UI및 madness게이지 스크립트 작성/BossMonster를 상속하는 AlexanderBoss 제작 >> 에센스 증가 및 감소 그리고 효과를 위해 
+
+	1-10 맵자체에 CanvasUI와 EssenceUIManager까지 넣어둔 상태. << 이부분은 차후 어떤식으로 관리 및 확장할지 고민중 
+
+	Commit = Alexander/EssenceUI
 
 	
