@@ -36,18 +36,22 @@ public class BossFactory : MonsterFactoryBase
     {
         if (data is BossData bossData)
         {
-            // 보스 스폰 이펙트 처리
             if (bossData.spawnEffect != null)
             {
                 GameObject.Instantiate(bossData.spawnEffect, bossObject.transform.position, Quaternion.identity);
             }
 
             IMonsterClass boss = new BossMonster(bossData);
-
             ICreatureStatus status = bossObject.AddComponent<BossStatus>();
-            
             status.Initialize(boss);
-           
+            Debug.Log(bossData + "소환");
+            // UI 연동
+            var essenceUI = GameObject.FindObjectOfType<BossEssenceUIManager>();
+            if (essenceUI != null && boss is AlexanderBoss alexanderBoss)
+            {
+                Debug.Log(bossData + "챕터보스소환");
+                essenceUI.Initialize(alexanderBoss.GetEssenceSystem());
+            }
 
             onMonsterCreated?.Invoke(boss);
         }

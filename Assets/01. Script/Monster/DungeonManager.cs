@@ -12,6 +12,8 @@ public class DungeonManager : Singleton<DungeonManager>
     private IMonsterClass currentMonster;
     [SerializeField] private Transform player;
 
+     
+
     // 던전 타입을 enum으로 정의
     public enum DungeonType
     {
@@ -19,7 +21,8 @@ public class DungeonManager : Singleton<DungeonManager>
         SpiderTest,
         SlimeTest,
         JumpTest,
-        BossDungeon, // 보스 던전 추가
+        CrabBoss, // 보스 던전 추가
+        AlexanderBoss,
         RayTest,
         warmTest,
         RatTest
@@ -63,14 +66,16 @@ public class DungeonManager : Singleton<DungeonManager>
                 );
             case "jumptest":
                 return new SlimeMonsterFactory();
-            case "bossdungeon":
-                return new BossFactory(1);  // 보스 ID 전달
+            case "crabboss":
+                return new CrabBossFactory();  // 보스 ID 전달 
             case "raytest":
                 return new RayMonsterFactory();
             case "warmtest":
                 return new WarmMonsterFactory();
             case "rattest":
                 return new RatMonsterFactory();
+            case "alexanderboss":
+                return new AlexanderBossFactory();
             default:
                 Debug.LogError($"알 수 없는 던전 타입입니다: {dungeonType}");
                 return null;
@@ -84,8 +89,9 @@ public class DungeonManager : Singleton<DungeonManager>
             currentMonster = monster; // 현재 생성된 몬스터를 필드에 저장
         });
     }
+  
     public IMonsterClass GetMonsterClass()
-    {
+    { 
         return currentMonster;
     }
     // Player Transform을 반환하는 메서드

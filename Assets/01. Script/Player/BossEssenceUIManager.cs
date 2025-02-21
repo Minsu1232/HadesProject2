@@ -6,18 +6,19 @@ using UnityEngine.UI;
 public class BossEssenceUIManager : MonoBehaviour
 {
     [Header("UI Components")]
-    [SerializeField] private Image essenceBarFill;  // Fill 이미지
-    [SerializeField] private TextMeshProUGUI percentageText;  // 퍼센트 텍스트
+    [SerializeField] private Image essenceBarFill;
+    [SerializeField] private TextMeshProUGUI percentageText;
+    [SerializeField] private TextMeshProUGUI essenceName;
 
-    [Header("Bar Settings")]
-    [SerializeField] private Color normalColor = Color.red;    // 기본 빨간색
-    [SerializeField] private Color highStateColor = Color.magenta;  // 75% 이상
+    [Header("Visual Settings")]
+    [SerializeField] private Color normalColor = Color.red;
+    [SerializeField] private Color highStateColor = Color.magenta;  // 70% 이상
     [SerializeField] private Color maxStateColor = Color.yellow;    // 100%
     [SerializeField] private float barUpdateDuration = 0.2f;
 
     private IBossEssenceSystem currentEssenceSystem;
 
-    public void Initialize(string bossName, IBossEssenceSystem essenceSystem)
+    public void Initialize(IBossEssenceSystem essenceSystem)
     {
         currentEssenceSystem = essenceSystem;
 
@@ -25,13 +26,27 @@ public class BossEssenceUIManager : MonoBehaviour
         essenceSystem.OnEssenceChanged += UpdateEssenceBar;
         essenceSystem.OnEssenceStateChanged += UpdateEssenceState;
         essenceSystem.OnMaxEssenceStateChanged += UpdateMaxEssenceState;
-
-        // UI 초기화
+        essenceName.text = currentEssenceSystem.BossEssenceName;
+        // 초기 상태 설정
         essenceBarFill.fillAmount = 0f;
         essenceBarFill.color = normalColor;
         UpdatePercentageText(0);
-    }
 
+        Debug.Log("시~작");
+    }
+    void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.T))  // 테스트용 키
+        {
+            // 게이지 증가 테스트
+            currentEssenceSystem.IncreaseEssence(10f);
+        }
+        if (Input.GetKeyDown(KeyCode.Y))
+        {
+            // 게이지 감소 테스트
+            currentEssenceSystem.DecreaseEssence(10f);
+        }
+    }
     private void UpdateEssenceBar(float value)
     {
         float fillAmount = value / 100f;

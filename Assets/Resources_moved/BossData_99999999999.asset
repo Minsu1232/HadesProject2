@@ -1,0 +1,238 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 81195776f1de1ac4693e323c7fc8e082, type: 3}
+  m_Name: BossData_99999999999
+  m_EditorClassIdentifier: 
+  canBeInterrupted: 0
+  phaseTransitionDuration: 2
+  rageModeDuration: 0
+  invincibleOnSpawn: 0
+  aggroRange: 0
+  phaseData:
+  - phaseName: Normal
+    isInvulnerable: 0
+    phaseTransitionThreshold: 1
+    transitionDuration: 2
+    isInvulnerableDuringTransition: 1
+    patternChangeTime: 6
+    availablePatterns: []
+    phaseAttackStrategies:
+    - type: 0
+      weight: 0.4
+    - type: 3
+      weight: 0.9
+    patternStrategyWeight: 0.4
+    moveType: 0
+    attackType: 0
+    skillType: 0
+    phaseTransitionType: 0
+    damageMultiplier: 1
+    speedMultiplier: 1
+    defenseMultiplier: 1
+    attackSpeedMultiplier: 0.1
+    canBeInterrupted: 1
+    stunResistance: 0
+    useHealthRetreat: 0
+    healthRetreatThreshold: 0
+    retreatDuration: 0
+    phaseStartEffect: {fileID: 0}
+    phaseLoopEffect: {fileID: 0}
+    exitEffect: {fileID: 0}
+    cutscenePath: 
+    specialMechanicType: 
+    specialMechanicValue: 0
+    gimmicks: []
+  - phaseName: Normal
+    isInvulnerable: 0
+    phaseTransitionThreshold: 1
+    transitionDuration: 2
+    isInvulnerableDuringTransition: 1
+    patternChangeTime: 6
+    availablePatterns: []
+    phaseAttackStrategies:
+    - type: 0
+      weight: 0.4
+    - type: 3
+      weight: 0.9
+    patternStrategyWeight: 0.4
+    moveType: 0
+    attackType: 0
+    skillType: 0
+    phaseTransitionType: 0
+    damageMultiplier: 1
+    speedMultiplier: 1
+    defenseMultiplier: 1
+    attackSpeedMultiplier: 0.1
+    canBeInterrupted: 1
+    stunResistance: 0
+    useHealthRetreat: 0
+    healthRetreatThreshold: 0
+    retreatDuration: 0
+    phaseStartEffect: {fileID: 0}
+    phaseLoopEffect: {fileID: 0}
+    exitEffect: {fileID: 0}
+    cutscenePath: 
+    specialMechanicType: 
+    specialMechanicValue: 0
+    gimmicks: []
+  - phaseName: Defensive
+    isInvulnerable: 0
+    phaseTransitionThreshold: 0.6
+    transitionDuration: 3
+    isInvulnerableDuringTransition: 1
+    patternChangeTime: 5
+    availablePatterns: []
+    phaseAttackStrategies:
+    - type: 0
+      weight: 0.4
+    - type: 3
+      weight: 0.1
+    patternStrategyWeight: 0.4
+    moveType: 5
+    attackType: 3
+    skillType: 1
+    phaseTransitionType: 0
+    damageMultiplier: 1.2
+    speedMultiplier: 0.8
+    defenseMultiplier: 1.5
+    attackSpeedMultiplier: 0.1
+    canBeInterrupted: 1
+    stunResistance: 50
+    useHealthRetreat: 1
+    healthRetreatThreshold: 0.4
+    retreatDuration: 0
+    phaseStartEffect: {fileID: 0}
+    phaseLoopEffect: {fileID: 0}
+    exitEffect: {fileID: 0}
+    cutscenePath: 
+    specialMechanicType: 
+    specialMechanicValue: 0
+    gimmicks: []
+  - phaseName: Defensive
+    isInvulnerable: 0
+    phaseTransitionThreshold: 0.6
+    transitionDuration: 3
+    isInvulnerableDuringTransition: 1
+    patternChangeTime: 5
+    availablePatterns: []
+    phaseAttackStrategies:
+    - type: 0
+      weight: 0.4
+    - type: 3
+      weight: 0.1
+    patternStrategyWeight: 0.4
+    moveType: 5
+    attackType: 3
+    skillType: 1
+    phaseTransitionType: 0
+    damageMultiplier: 1.2
+    speedMultiplier: 0.8
+    defenseMultiplier: 1.5
+    attackSpeedMultiplier: 0.1
+    canBeInterrupted: 1
+    stunResistance: 50
+    useHealthRetreat: 1
+    healthRetreatThreshold: 0.4
+    retreatDuration: 0
+    phaseStartEffect: {fileID: 0}
+    phaseLoopEffect: {fileID: 0}
+    exitEffect: {fileID: 0}
+    cutscenePath: 
+    specialMechanicType: 
+    specialMechanicValue: 0
+    gimmicks: []
+  - phaseName: Unleashed
+    isInvulnerable: 0
+    phaseTransitionThreshold: 0.3
+    transitionDuration: 3
+    isInvulnerableDuringTransition: 1
+    patternChangeTime: 4
+    availablePatterns: []
+    phaseAttackStrategies:
+    - type: 0
+      weight: 0.4
+    - type: 3
+      weight: 0.11
+    patternStrategyWeight: 0.4
+    moveType: 1
+    attackType: 1
+    skillType: 5
+    phaseTransitionType: 0
+    damageMultiplier: 1.6
+    speedMultiplier: 1.3
+    defenseMultiplier: 0.7
+    attackSpeedMultiplier: 0.1
+    canBeInterrupted: 0
+    stunResistance: 100
+    useHealthRetreat: 0
+    healthRetreatThreshold: 0
+    retreatDuration: 0
+    phaseStartEffect: {fileID: 0}
+    phaseLoopEffect: {fileID: 0}
+    exitEffect: {fileID: 0}
+    cutscenePath: 
+    specialMechanicType: 
+    specialMechanicValue: 0
+    gimmicks: []
+  - phaseName: Unleashed
+    isInvulnerable: 0
+    phaseTransitionThreshold: 0.3
+    transitionDuration: 3
+    isInvulnerableDuringTransition: 1
+    patternChangeTime: 4
+    availablePatterns: []
+    phaseAttackStrategies:
+    - type: 0
+      weight: 0.4
+    - type: 3
+      weight: 0.11
+    patternStrategyWeight: 0.4
+    moveType: 1
+    attackType: 1
+    skillType: 5
+    phaseTransitionType: 0
+    damageMultiplier: 1.6
+    speedMultiplier: 1.3
+    defenseMultiplier: 0.7
+    attackSpeedMultiplier: 0.1
+    canBeInterrupted: 0
+    stunResistance: 100
+    useHealthRetreat: 0
+    healthRetreatThreshold: 0
+    retreatDuration: 0
+    phaseStartEffect: {fileID: 0}
+    phaseLoopEffect: {fileID: 0}
+    exitEffect: {fileID: 0}
+    cutscenePath: 
+    specialMechanicType: 
+    specialMechanicValue: 0
+    gimmicks: []
+  phaseCount: 3
+  canSummonMinions: 0
+  minionPrefabs: []
+  maxMinionCount: 0
+  summonInterval: 0
+  phaseTransitionEffects: []
+  rageEffect: {fileID: 0}
+  spawnEffect: {fileID: 0}
+  showHealthBar: 0
+  showPhaseNames: 1
+  phaseColors: []
+  globalSkillCooldownModifier: 0
+  skillPreDelayDefault: 0
+  skillPostDelayDefault: 0
+  defaultCameraDistance: 0
+  defaultCameraHeight: 0
+  defaultCameraFOV: 0
+  globalStunResistance: 0
+  knockbackResistance: 0
+  roarSound: {fileID: 8300000, guid: 457e67cd378d39b4d95b7c63c8b553ad, type: 3}

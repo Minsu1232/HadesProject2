@@ -139,7 +139,13 @@ Attack은 Basic과 Jumpt를 Skill류엔 비행체 - 직선 및 포물선 이동 
 
 	현재 1챕터보스만 AlexanderBossData 스크립터블과 csv 제작 완료 Essence게이지 UI및 madness게이지 스크립트 작성/BossMonster를 상속하는 AlexanderBoss 제작 >> 에센스 증가 및 감소 그리고 효과를 위해 
 
-	1-10 맵자체에 CanvasUI와 EssenceUIManager까지 넣어둔 상태. << 이부분은 차후 어떤식으로 관리 및 확장할지 고민중 
+	1-10 맵자체에 CanvasUI와 EssenceUIManager까지 넣어둔 상태. << 이부분은 차후 어떤식으로 관리 및 확장할지 고민중
+
+	기존 BossFactory에 생성자에 bossId넣는 부분을 CrabBossFactory, AlexanderFactory로 분리 따로 관리 던전매니저도 열거형 수정 및 추가
+
+	생성 생성 후 1-10 BossEssenceUI 연동 확인
+	
+	Y를 누르면 10증가 T누르면 10감소 테스트 완료
 
 	Commit = Alexander/EssenceUI
 

@@ -104,7 +104,7 @@ MonoBehaviour:
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: d30fdc2a3ab50ab47bc74d27b13b2011
-    m_Address: BossData_2
+    m_Address: BossData_99999999
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
@@ -215,6 +215,16 @@ MonoBehaviour:
     FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 34986bfc2a5ac3e40afc619d5f3ef1c2
     m_Address: MonsterData_8
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 2df3d01ed5b176248803c80b36ba1783
+    m_Address: Boss_Alexander
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 3670d6f1989155f4b90817054a90e018
+    m_Address: BossData_2
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0

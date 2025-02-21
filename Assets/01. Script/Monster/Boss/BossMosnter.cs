@@ -85,7 +85,7 @@ public class BossMonster : MonsterClass
         InitializeRuntimeState();
         InitializeBoss();      
 
-
+         
     }
 
     private void InitializeRuntimeState()
@@ -215,6 +215,7 @@ public class BossMonster : MonsterClass
                 };
 
                 runtimeGimmickData.Add(newGimmick);
+                Debug.Log("hahareh" + newGimmick.gimmickName);
             }
         }
 
