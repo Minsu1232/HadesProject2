@@ -1,3 +1,4 @@
+using DG.Tweening;
 using Sirenix.OdinInspector;
 using System;
 using UnityEngine;
@@ -21,6 +22,8 @@ public class PlayerClass : ICreature, IDamageable
     public bool isInvicible = false;
     public PlayerClassData _playerClassData;
 
+    private bool isStunned = false;
+    public bool IsStunned => isStunned;
     public Transform playerTransform;
     [ShowInInspector]
     public Stats PlayerStats { get; private set; }
@@ -164,6 +167,22 @@ public class PlayerClass : ICreature, IDamageable
         return DamageType.Player;
         
     }
+    public void ApplyStun(float stunDuration)
+    {
+        if (!isStunned)
+        {
+            isStunned = true;
+            animator?.SetBool("IsStun", true);  // 먼저 bool 설정
+            animator?.SetTrigger("Stun");       // 그 다음 트리거
+
+            DOVirtual.DelayedCall(stunDuration, () =>
+            {
+                isStunned = false;
+                animator?.SetBool("IsStun", false);
+            });
+        }
+    }
+   
     #endregion
 
 }

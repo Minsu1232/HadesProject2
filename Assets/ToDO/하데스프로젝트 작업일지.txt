@@ -149,4 +149,17 @@ Attack은 Basic과 Jumpt를 Skill류엔 비행체 - 직선 및 포물선 이동 
 
 	Commit = Alexander/EssenceUI
 
+
+2/22 - 1챕터 Essence 효과 - 70%도달시 플레이어 공격력30%상승 but 받피뎀 20%증가, 100%도달시 2초간 경직 후 게이지0초기화 구현 완료
+
+	PlayerClass에 IsStuned bool타입과 AplyStun 매서드 작성 (Dotween 활용)
+
+	PlayerMoveMent와 PlayerAttack에 해당 변수를 추적 후 스턴시엔 조작 불가능하게 수정 완료
+
+	현재 움직임중 100퍼도달시 살짝 미끌어지며 앞으로가는데 수정하지 않고 뭔가 자연스러워서 보류
+
+	광기게이지용 VignetteEffect Shader 제작 (화면가장자리에 붉은색 띠가 흐르는듯한 느낌) 
 	
+	게이지가 트리거만큼 차면 발동 현재 두근거리는 소리도 넣을지 고민중
+
+	Commit = Alexander/EssenceUI/VignetteEffectShader

@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 
 public class AlexanderEssenceSystem : IBossEssenceSystem
@@ -120,11 +121,12 @@ public class AlexanderEssenceSystem : IBossEssenceSystem
     private void ApplyMaxEssenceEffects()
     {
         PlayerClass player = GameInitializer.Instance.GetPlayerClass();
-        // 2초 경직
-        // 여기에 경직 상태 적용 로직 (플레이어의 상태 시스템에 따라 구현)
-        // 예: player.ApplyStun(stunDuration);
 
-        // 시각 효과
-        // 예: VFXManager.Instance.PlayEffect("MaxEssenceEffect", player.transform.position);
+        // 2초 경직
+        player.ApplyStun(stunDuration);
+
+        // 게이지 초기화
+        currentEssence = 0f;
+        OnEssenceChanged?.Invoke(currentEssence);
     }
 }

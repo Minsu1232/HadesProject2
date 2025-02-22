@@ -51,6 +51,13 @@ public class PlayerMovement : MonoBehaviour
     {
         if (playerClass == null) return;
 
+        if (playerClass.IsStunned)
+        {
+            // 스턴 상태일 때 velocity 초기화
+            rb.velocity = Vector3.zero;
+            return;
+        }
+
         moveDirection = GetCameraRelativeMovement();
         SetAnimatorParameters(moveDirection);
         RotateTowardsMouse();

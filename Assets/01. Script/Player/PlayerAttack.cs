@@ -6,10 +6,12 @@ using static AttackData;
 public class PlayerAttack : MonoBehaviour
 {
     private CharacterAttackBase characterAttack;
+    private PlayerClass playerClass;
     public System.Action<AttackType> OnAttackInput; // 공격 타입을 전달하는 이벤트
 
     private void Start()
     {
+        playerClass = GameInitializer.Instance.GetPlayerClass();
         characterAttack = GetComponent<CharacterAttackBase>();
         if (characterAttack == null)
         {
@@ -27,6 +29,7 @@ public class PlayerAttack : MonoBehaviour
 
     private void HandleInput()
     {
+        if (playerClass.IsStunned) return;  // 스턴 상태면 공격 불가
         if (Input.GetButtonDown("Fire1"))
         {
             characterAttack?.BasicAttack();

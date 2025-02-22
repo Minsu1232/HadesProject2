@@ -2,6 +2,7 @@ using TMPro;
 using UnityEngine;
 using DG.Tweening;
 using UnityEngine.UI;
+using static UnityEngine.Rendering.DebugUI;
 
 public class BossEssenceUIManager : MonoBehaviour
 {
@@ -15,6 +16,10 @@ public class BossEssenceUIManager : MonoBehaviour
     [SerializeField] private Color highStateColor = Color.magenta;  // 70% 이상
     [SerializeField] private Color maxStateColor = Color.yellow;    // 100%
     [SerializeField] private float barUpdateDuration = 0.2f;
+
+    [Header("Vignette Effect")]
+    [SerializeField] private Material vignetteMaterial;
+    [SerializeField] private float transitionDuration = 0.5f;
 
     private IBossEssenceSystem currentEssenceSystem;
 
@@ -59,10 +64,20 @@ public class BossEssenceUIManager : MonoBehaviour
         if (currentEssenceSystem.IsInEssenceState)
         {
             essenceBarFill.DOColor(highStateColor, barUpdateDuration);
+            // 비네트 강도를 더 높게 설정
+            DOTween.To(() => vignetteMaterial.GetFloat("_VignetteIntensity"),
+                value => vignetteMaterial.SetFloat("_VignetteIntensity", value),
+                0.75f, transitionDuration)  // 0.7f로 강도 증가
+                .SetEase(Ease.InOutQuad);
         }
         else
         {
             essenceBarFill.DOColor(normalColor, barUpdateDuration);
+            // 페이드아웃은 그대로
+            DOTween.To(() => vignetteMaterial.GetFloat("_VignetteIntensity"),
+                value => vignetteMaterial.SetFloat("_VignetteIntensity", value),
+                0f, transitionDuration)
+                .SetEase(Ease.InOutQuad);
         }
     }
 
@@ -78,7 +93,7 @@ public class BossEssenceUIManager : MonoBehaviour
     {
         percentageText.text = $"{Mathf.Round(value)}%";
     }
-
+   
     private void OnDestroy()
     {
         if (currentEssenceSystem != null)
@@ -86,6 +101,8 @@ public class BossEssenceUIManager : MonoBehaviour
             currentEssenceSystem.OnEssenceChanged -= UpdateEssenceBar;
             currentEssenceSystem.OnEssenceStateChanged -= UpdateEssenceState;
             currentEssenceSystem.OnMaxEssenceStateChanged -= UpdateMaxEssenceState;
+            vignetteMaterial.SetFloat("_VignetteIntensity", 0);
+                
         }
     }
 }
