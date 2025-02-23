@@ -30,8 +30,10 @@ public static class StrategyFactory
         return type switch
         {
             AttackStrategyType.Jump => new JumpAttackStrategy(data.shorckEffectPrefab,data.shockwaveRadius, creatureAI),
+            AttackStrategyType.Combo => new ComboAttackStrategy(),
+            AttackStrategyType.Charge => new ChargeAttackStrategy(creatureAI,data),
             _ => new BasicAttackStrategy()
-        };
+        };;
     }
 
     public static IIdleStrategy CreatIdleStrategy(IdleStrategyType type)

@@ -5,7 +5,8 @@ public enum PhysicalAttackType
 {
     Basic,      // 기본 공격 (몸통 박치기 등)
     Jump,       // 점프 공격
-    Charge,     // 돌진 공격
+    Charge,
+    Combo,// 돌진 공격
     Spin,       // 회전 공격
     // 추가 가능
 }

@@ -9,7 +9,7 @@ using Sirenix.OdinInspector;
 /// </summary>
 [CreateAssetMenu(fileName = "MonsterData", menuName = "Monster/MonsterData")]
 
-public class MonsterData : ScriptableObject, ICreatureData
+public class MonsterData : ScriptableObject, ICreatureData 
 {
     public enum MonsterGrade
     {
@@ -52,6 +52,11 @@ public class MonsterData : ScriptableObject, ICreatureData
 
     [FoldoutGroup("Base Stats"), ShowInInspector]
     public int armorValue { get; set; }
+
+    [FoldoutGroup("Base Stats"), ShowInInspector]
+    public float chargeSpeed { get; set; }
+    [FoldoutGroup("Base Stats"), ShowInInspector]
+    public float chargeDuration { get; set; }
 
     [FoldoutGroup("Movement Settings"), ShowInInspector]
     public int moveRange { get; set; }

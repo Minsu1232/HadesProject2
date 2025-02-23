@@ -278,7 +278,8 @@ public class MonsterDataManager : Singleton<MonsterDataManager>
         monsterData.initialDeffense = int.Parse(baseValues[14]);
         monsterData.aggroDropRange = int.Parse(baseValues[15]);
         monsterData.groggyTime = float.Parse(baseValues[16]);
-
+        monsterData.chargeSpeed = float.Parse(baseValues[17]);
+        monsterData.chargeDuration = float.Parse(baseValues[18]);
         // 전략 데이터 업데이트
         if (strategyData.TryGetValue(monsterId, out var strategies))
         {

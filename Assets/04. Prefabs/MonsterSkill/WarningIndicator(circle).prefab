@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1064676126363211058}
   m_Layer: 11
-  m_Name: WarningIndicator
+  m_Name: WarningIndicator(circle)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

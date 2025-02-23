@@ -478,8 +478,9 @@ public class BossDataManager : Singleton<BossDataManager>
         bossData.dropChance = int.Parse(baseData["DropItemID"]);
         bossData.dropItem = int.Parse(baseData["DropRate"]);
         bossData.phaseCount = int.Parse(baseData["PhaseCount"]);
-        bossData.groggyTime = float.Parse(baseData["GroggyTime"]);     
-       
+        bossData.groggyTime = float.Parse(baseData["GroggyTime"]);
+        bossData.chargeSpeed = float.Parse(baseData["ChargeSpeed"]);
+        bossData.chargeDuration = float.Parse(baseData["ChargeDuration"]);
        
         
         bossData.showPhaseNames = bool.Parse(baseData["ShowPhaseNames"]);

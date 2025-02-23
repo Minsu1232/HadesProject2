@@ -18,7 +18,7 @@ MonoBehaviour:
   AutoIncludeChildSkinnedMeshes: 1
   AutoSkinnedForce256Triangles: 1
   AutoSkinnedMinBoneWeight: 0.746
-  AutoSkinnedMinRealignAngle: 4.5
+  AutoSkinnedMinRealignAngle: 0
   AutoSkinnedAllowRealign: 1
   AutoSkinnedColliderType: 3
   AutoSkinnedDepenetrate: 1
@@ -94,4 +94,4 @@ MonoBehaviour:
   VertexSnapMethod: 2
   VertSelectKeyCode: 118
   VHACDPreview: 1
-  CurrentWindowTab: 3
+  CurrentWindowTab: 0

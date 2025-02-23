@@ -31,6 +31,7 @@ public class BossMultiAttackStrategy : IAttackStrategy
         {
             strategies.Add(strategy);
             weights[strategy] = weight;
+            Debug.Log(strategies.ToString() + "추가");
         }
     }
 
@@ -60,6 +61,7 @@ public class BossMultiAttackStrategy : IAttackStrategy
         if (currentStrategy != null && currentStrategy.CanAttack(distanceToTarget, monsterData))
         {
             currentStrategy.Attack(transform, target, monsterData);
+            Debug.Log($"이거 {currentStrategy.ToString()} ATTack함");
         }
     } 
 
@@ -126,7 +128,14 @@ public class BossMultiAttackStrategy : IAttackStrategy
             baseStrategy.UpdateLastAttackTime();
         }
     }
-
+    // Execute 로직 추가
+    public void UpdateStrategy(Transform transform)
+    {
+        if (currentStrategy is ChargeAttackStrategy chargeStrategy)
+        {
+            chargeStrategy.UpdateCharge(transform);
+        }
+    }
     /// <summary>
     /// 페이즈 전환 후 새 전략에 대해 공격이 바로 실행되지 않도록 unifiedLastAttackTime을 현재 시간으로 재설정
     /// </summary>

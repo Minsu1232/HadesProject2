@@ -23,13 +23,24 @@ public class AttackState : MonsterBaseState
             attackStrategy.Attack(transform, player, monsterClass);
             currentAnimTrigger = attackStrategy.GetAnimationTriggerName();
             animator.SetTrigger(currentAnimTrigger);
+
+            Debug.Log(attackStrategy.ToString());
         }
   
     }
     public override void Execute()
     {
-        
-
+        // 디버그 로그 추가
+        Debug.Log($"AttackState Execute - IsAttacking: {attackStrategy.IsAttacking}");
+        if (attackStrategy is ChargeAttackStrategy chargeStrategy) // 일반몬스터옹
+        {
+            chargeStrategy.UpdateCharge(transform);
+        }
+        // BossMultiAttackStrategy를 통해 업데이트
+   else if (attackStrategy is BossMultiAttackStrategy multiStrategy) // 보스용
+        {
+            multiStrategy.UpdateStrategy(transform);
+        }
         // 공격이 완료되었거나 타임아웃된 경우
         if (!attackStrategy.IsAttacking)
         {
@@ -37,6 +48,7 @@ public class AttackState : MonsterBaseState
             return;
         }
 
+        
         //// 필요한 경우 공격 중 타겟 방향 업데이트
         //if (player != null)
         //{

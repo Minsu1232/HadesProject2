@@ -16,13 +16,27 @@ public class BossEssenceUIManager : MonoBehaviour
     [SerializeField] private Color highStateColor = Color.magenta;  // 70% 이상
     [SerializeField] private Color maxStateColor = Color.yellow;    // 100%
     [SerializeField] private float barUpdateDuration = 0.2f;
-
+ 
     [Header("Vignette Effect")]
     [SerializeField] private Material vignetteMaterial;
     [SerializeField] private float transitionDuration = 0.5f;
 
+    [Header("Sound Effects")]
+    [SerializeField] private AudioSource audioSource;
+    [SerializeField] private AudioClip heartbeatSound;
+    [SerializeField] private float heartbeatVolume = 0.5f;
     private IBossEssenceSystem currentEssenceSystem;
-
+    private void Awake()
+    {
+        // AudioSource가 없다면 추가
+        if (audioSource == null)
+        {
+            audioSource = gameObject.AddComponent<AudioSource>();
+            audioSource.loop = true;
+            audioSource.playOnAwake = false;
+            audioSource.volume = heartbeatVolume;
+        }
+    }
     public void Initialize(IBossEssenceSystem essenceSystem)
     {
         currentEssenceSystem = essenceSystem;
@@ -69,6 +83,19 @@ public class BossEssenceUIManager : MonoBehaviour
                 value => vignetteMaterial.SetFloat("_VignetteIntensity", value),
                 0.75f, transitionDuration)  // 0.7f로 강도 증가
                 .SetEase(Ease.InOutQuad);
+
+          
+
+            // 심장 박동 사운드 시작
+            if (!audioSource.isPlaying)
+            {
+                audioSource.clip = heartbeatSound;
+                audioSource.Play();
+                // 볼륨 페이드인
+                DOTween.To(() => audioSource.volume,
+                    value => audioSource.volume = value,
+                    heartbeatVolume, transitionDuration);
+            }
         }
         else
         {
@@ -78,6 +105,12 @@ public class BossEssenceUIManager : MonoBehaviour
                 value => vignetteMaterial.SetFloat("_VignetteIntensity", value),
                 0f, transitionDuration)
                 .SetEase(Ease.InOutQuad);
+
+            //소리off
+            DOTween.To(() => audioSource.volume,
+               value => audioSource.volume = value,
+               0f, transitionDuration)
+               .OnComplete(() => audioSource.Stop());
         }
     }
 
@@ -104,5 +137,7 @@ public class BossEssenceUIManager : MonoBehaviour
             vignetteMaterial.SetFloat("_VignetteIntensity", 0);
                 
         }
+
+      
     }
 }

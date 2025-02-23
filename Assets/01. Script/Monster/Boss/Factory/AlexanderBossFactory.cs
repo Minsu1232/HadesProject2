@@ -47,6 +47,11 @@ public class AlexanderBossFactory : MonsterFactoryBase
                 Debug.Log($"{bossData.MonsterName} 챕터보스 소환");
                 essenceUI.Initialize(alexanderBoss.GetEssenceSystem());
             }
+            var soulStones = GameObject.FindObjectsOfType<SoulStone>();
+            foreach (var stone in soulStones)
+            {
+                stone.InitializeWithBoss(boss as AlexanderBoss);
+            }
 
             onMonsterCreated?.Invoke(boss);
         }

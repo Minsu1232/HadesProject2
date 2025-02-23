@@ -21,6 +21,9 @@ public interface ICreatureData
     int dropItem { get; }
     int armorValue { get; }
 
+    float chargeSpeed {  get; }
+    float chargeDuration { get; }
+
     // Movement Settings
     int moveRange { get; }
     int chaseRange { get; }
