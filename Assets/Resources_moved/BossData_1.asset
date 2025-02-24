@@ -14,7 +14,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   canBeInterrupted: 0
   phaseTransitionDuration: 2
-  rageModeThreshold: 0.3
   rageModeDuration: 0
   invincibleOnSpawn: 0
   aggroRange: 0
@@ -258,7 +257,7 @@ MonoBehaviour:
       followTarget: 1
       collisionMask:
         serializedVersion: 2
-        m_Bits: 0
+        m_Bits: 2147483648
       preparationTime: 1
       repeatInterval: 0
       warningEffect: {fileID: 0}
@@ -362,7 +361,7 @@ MonoBehaviour:
       followTarget: 1
       collisionMask:
         serializedVersion: 2
-        m_Bits: 0
+        m_Bits: 2147483648
       preparationTime: 1
       repeatInterval: 0
       warningEffect: {fileID: 0}

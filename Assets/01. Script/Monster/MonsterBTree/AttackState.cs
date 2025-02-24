@@ -12,6 +12,27 @@ public class AttackState : MonsterBaseState
     {
         attackStrategy = strategy;
         animator = owner.GetComponent<Animator>();
+
+        // BossMultiAttackStrategy 이벤트 구독
+        if (strategy is BossMultiAttackStrategy multiStrategy) // 보스몬스터 or 멀티전략컨테이너용
+        {
+            multiStrategy.OnStrategyStateChanged += () =>
+            {
+                string triggerName = attackStrategy.GetAnimationTriggerName();
+                animator.SetTrigger(triggerName);
+                Debug.Log("구독" + triggerName) ;
+                // 차지 준비 상태 파라미터 설정             
+            };
+        }
+        else if(strategy is ChargeAttackStrategy chargeStrategy) // 일반몬스터용
+        {
+            chargeStrategy.OnChargeStateChanged += () =>
+            {
+
+                string triggerName = attackStrategy.GetAnimationTriggerName();
+                animator.SetTrigger(triggerName);
+            };
+        }
     }
 
     public override void Enter()

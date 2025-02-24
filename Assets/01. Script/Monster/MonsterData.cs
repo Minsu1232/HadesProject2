@@ -9,7 +9,7 @@ using Sirenix.OdinInspector;
 /// </summary>
 [CreateAssetMenu(fileName = "MonsterData", menuName = "Monster/MonsterData")]
 
-public class MonsterData : ScriptableObject, ICreatureData 
+public class MonsterData : ScriptableObject, ICreatureData
 {
     public enum MonsterGrade
     {
@@ -57,6 +57,21 @@ public class MonsterData : ScriptableObject, ICreatureData
     public float chargeSpeed { get; set; }
     [FoldoutGroup("Base Stats"), ShowInInspector]
     public float chargeDuration { get; set; }
+    [FoldoutGroup("Base Stats"), ShowInInspector]
+    public float prepareTime { get; set; }
+    [FoldoutGroup("Base Stats"), ShowInInspector]
+    public GameObject chargeIndicatorPrefab { get; set; }
+
+    [FoldoutGroup("Base Stats"), ShowInInspector]
+    public GameObject ChargePrepareDustEffect { get; set; }
+    [FoldoutGroup("Base Stats"), ShowInInspector]
+    public GameObject ChargeStartEffect { get; set; }
+    [FoldoutGroup("Base Stats"), ShowInInspector]
+    public GameObject ChargeTrailEffect { get; set; }
+    [FoldoutGroup("Base Stats"), ShowInInspector]
+    public GameObject WallImpactEffect { get; set; }
+    [FoldoutGroup("Base Stats"), ShowInInspector]
+    public GameObject PlayerImpactEffect { get; set; }
 
     [FoldoutGroup("Movement Settings"), ShowInInspector]
     public int moveRange { get; set; }
@@ -219,7 +234,7 @@ public class MonsterData : ScriptableObject, ICreatureData
     [FoldoutGroup("Visual"), ShowInInspector]
     public float groggyTime { get; set; }
 
- }
+}
     #endregion
 
 

@@ -31,7 +31,7 @@ public static class StrategyFactory
         {
             AttackStrategyType.Jump => new JumpAttackStrategy(data.shorckEffectPrefab,data.shockwaveRadius, creatureAI),
             AttackStrategyType.Combo => new ComboAttackStrategy(),
-            AttackStrategyType.Charge => new ChargeAttackStrategy(creatureAI,data),
+            AttackStrategyType.Charge => new ChargeAttackStrategy(creatureAI,data,creatureAI.animator),
             _ => new BasicAttackStrategy()
         };;
     }

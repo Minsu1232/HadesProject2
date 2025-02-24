@@ -68,11 +68,11 @@ fixed4 frag(v2f i) : SV_Target
                 // Calculate horizontal fill
     float horizontalFill = step(centeredUV.x, _FillAmount);
                 
-                // Outline logic
-    float outlineX = step(0.95, centeredUV.x) * step(centeredUV.x, 1.0);
-    float outlineY = step(0.95, centeredUV.y) * step(centeredUV.y, 1.0);
+// 아웃라인 로직 수정
+    float outlineThickness = 0.01; // 고정 두께
+    float outlineX = step(1.0 - outlineThickness, centeredUV.x) * step(centeredUV.x, 1.0);
+    float outlineY = step(1.0 - outlineThickness, centeredUV.y) * step(centeredUV.y, 1.0);
     float outline = max(outlineX, outlineY);
-                
                 // Combine base fill and fill color
     float4 col = outline * _OutlineColor +
                              (1.0 - horizontalFill) * _BaseFillColor +

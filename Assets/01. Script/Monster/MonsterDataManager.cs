@@ -5,6 +5,7 @@ using System.IO;
 using System.Threading.Tasks;
 using UnityEngine;
 using UnityEngine.AddressableAssets;
+using UnityEngine.ResourceManagement.AsyncOperations;
 using static MonsterData;
 
 public class MonsterDataManager : Singleton<MonsterDataManager>
@@ -280,6 +281,108 @@ public class MonsterDataManager : Singleton<MonsterDataManager>
         monsterData.groggyTime = float.Parse(baseValues[16]);
         monsterData.chargeSpeed = float.Parse(baseValues[17]);
         monsterData.chargeDuration = float.Parse(baseValues[18]);
+        monsterData.prepareTime = float.Parse(baseValues[19]);
+
+        string squreIndicator = baseValues[20];
+        if (!string.IsNullOrEmpty(squreIndicator))
+        {
+            Addressables.LoadAssetAsync<GameObject>(squreIndicator).Completed += handle =>
+            {
+                if (handle.Status == AsyncOperationStatus.Succeeded)
+                {
+                    monsterData.chargeIndicatorPrefab = handle.Result;
+                    Debug.Log($"RoarSound 로드 완료: {squreIndicator}");
+                }
+                else
+                {
+                    Debug.LogError($"RoarSound 로드 실패: {squreIndicator}");
+                }
+            };
+        }
+        string prepareDustEffect = baseValues[21];
+        if (!string.IsNullOrEmpty(prepareDustEffect))
+        {
+            Addressables.LoadAssetAsync<GameObject>(prepareDustEffect).Completed += handle =>
+            {
+                if (handle.Status == AsyncOperationStatus.Succeeded)
+                {
+                    monsterData.ChargePrepareDustEffect = handle.Result;
+                    Debug.Log($"PrepareDustEffect 로드 완료: {prepareDustEffect}");
+                }
+                else
+                {
+                    Debug.LogError($"PrepareDustEffect 로드 실패: {prepareDustEffect}");
+                }
+            };
+        }
+
+        string startEffect = baseValues[22];
+        if (!string.IsNullOrEmpty(startEffect))
+        {
+            Addressables.LoadAssetAsync<GameObject>(startEffect).Completed += handle =>
+            {
+                if (handle.Status == AsyncOperationStatus.Succeeded)
+                {
+                    monsterData.ChargeStartEffect = handle.Result;
+                    Debug.Log($"StartEffect 로드 완료: {startEffect}");
+                }
+                else
+                {
+                    Debug.LogError($"StartEffect 로드 실패: {startEffect}");
+                }
+            };
+        }
+
+        string trailEffect = baseValues[23];
+        if (!string.IsNullOrEmpty(trailEffect))
+        {
+            Addressables.LoadAssetAsync<GameObject>(trailEffect).Completed += handle =>
+            {
+                if (handle.Status == AsyncOperationStatus.Succeeded)
+                {
+                    monsterData.ChargeTrailEffect = handle.Result;
+                    Debug.Log($"TrailEffect 로드 완료: {trailEffect}");
+                }
+                else
+                {
+                    Debug.LogError($"TrailEffect 로드 실패: {trailEffect}");
+                }
+            };
+        }
+
+        string wallImpactEffect = baseValues[24];
+        if (!string.IsNullOrEmpty(wallImpactEffect))
+        {
+            Addressables.LoadAssetAsync<GameObject>(wallImpactEffect).Completed += handle =>
+            {
+                if (handle.Status == AsyncOperationStatus.Succeeded)
+                {
+                    monsterData.WallImpactEffect = handle.Result;
+                    Debug.Log($"WallImpactEffect 로드 완료: {wallImpactEffect}");
+                }
+                else
+                {
+                    Debug.LogError($"WallImpactEffect 로드 실패: {wallImpactEffect}");
+                }
+            };
+        }
+
+        string playerImpactEffect = baseValues[25];
+        if (!string.IsNullOrEmpty(playerImpactEffect))
+        {
+            Addressables.LoadAssetAsync<GameObject>(playerImpactEffect).Completed += handle =>
+            {
+                if (handle.Status == AsyncOperationStatus.Succeeded)
+                {
+                    monsterData.PlayerImpactEffect = handle.Result;
+                    Debug.Log($"PlayerImpactEffect 로드 완료: {playerImpactEffect}");
+                }
+                else
+                {
+                    Debug.LogError($"PlayerImpactEffect 로드 실패: {playerImpactEffect}");
+                }
+            };
+        }
         // 전략 데이터 업데이트
         if (strategyData.TryGetValue(monsterId, out var strategies))
         {

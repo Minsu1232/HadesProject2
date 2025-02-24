@@ -14,6 +14,7 @@ public class BossMultiAttackStrategy : IAttackStrategy
     // 통합 타이머: 페이즈 전환 후 초기화할 수 있도록 public 메서드 제공
     private float unifiedLastAttackTime;
 
+    public event System.Action OnStrategyStateChanged;  // 상태 변경 이벤트 추가
     public BossMultiAttackStrategy()
     {
         defaultStrategy = new BasicAttackStrategy();
@@ -40,28 +41,30 @@ public class BossMultiAttackStrategy : IAttackStrategy
 
         float distanceToTarget = Vector3.Distance(transform.position, target.position);
 
-        // 전체 쿨타임 체크
         if (Time.time < unifiedLastAttackTime + monsterData.CurrentAttackSpeed)
-        {
             return;
-        }
 
         if (currentStrategy == null ||
             (!currentStrategy.IsAttacking && !currentStrategy.CanAttack(distanceToTarget, monsterData)))
         {
             if (currentStrategy?.IsAttacking ?? false)
-                return;  // 공격 중이면 새 전략 선택하지 않음
+                return;
 
-            Debug.Log("바뀐다");
             currentStrategy = SelectStrategy(distanceToTarget, monsterData);
-            Debug.Log("이걸로" + currentStrategy.ToString());
+            
+            // 새로운 전략이 ChargeAttackStrategy인 경우 이벤트 구독
+            if (currentStrategy is ChargeAttackStrategy chargeStrategy)
+            {
+                chargeStrategy.OnChargeStateChanged += () => 
+                {
+                    OnStrategyStateChanged?.Invoke();
+                };
+            }
         }
 
-        // 현재 전략으로 공격 실행
         if (currentStrategy != null && currentStrategy.CanAttack(distanceToTarget, monsterData))
         {
             currentStrategy.Attack(transform, target, monsterData);
-            Debug.Log($"이거 {currentStrategy.ToString()} ATTack함");
         }
     } 
 

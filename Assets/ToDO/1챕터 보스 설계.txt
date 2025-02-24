@@ -91,7 +91,7 @@
 
 ComboAttackStrategy 구현 완료
 JumpAttackStrategy 구현 완료
-ChargeAttackStrategy 구현 (벽 충돌 시 그로기)
+ChargeAttackStrategy 구현 (벽 충돌 시 그로기) 완료
 
 
 스킬 구현

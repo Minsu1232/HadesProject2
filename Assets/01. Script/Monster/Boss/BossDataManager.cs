@@ -481,8 +481,15 @@ public class BossDataManager : Singleton<BossDataManager>
         bossData.groggyTime = float.Parse(baseData["GroggyTime"]);
         bossData.chargeSpeed = float.Parse(baseData["ChargeSpeed"]);
         bossData.chargeDuration = float.Parse(baseData["ChargeDuration"]);
-       
-        
+        bossData.prepareTime = float.Parse(baseData["ChargePrepareTime"]);
+
+        // 이펙트 프리팹 로드
+        LoadEffectPrefab(baseData, "ChargePrepareDustEffect", result => bossData.ChargePrepareDustEffect = result);
+        LoadEffectPrefab(baseData, "ChargeStartEffect", result => bossData.ChargeStartEffect = result);
+        LoadEffectPrefab(baseData, "ChargeTrailEffect", result => bossData.ChargeTrailEffect = result);
+        LoadEffectPrefab(baseData, "WallImpactEffect", result => bossData.WallImpactEffect = result);
+        LoadEffectPrefab(baseData, "PlayerImpactEffect", result => bossData.PlayerImpactEffect = result);
+
         bossData.showPhaseNames = bool.Parse(baseData["ShowPhaseNames"]);
 
 
@@ -504,8 +511,43 @@ public class BossDataManager : Singleton<BossDataManager>
             };
         }
 
+        string squreIndicator = baseData["ChargeIndicatorPrefab"];
+        if(!string.IsNullOrEmpty(squreIndicator))
+        {
+            Addressables.LoadAssetAsync<GameObject>(squreIndicator).Completed += handle =>
+            {
+                if (handle.Status == AsyncOperationStatus.Succeeded)
+                {
+                    bossData.chargeIndicatorPrefab = handle.Result;
+                    Debug.Log($"RoarSound 로드 완료: {roarSoundKey}");
+                }
+                else
+                {
+                    Debug.LogError($"RoarSound 로드 실패: {roarSoundKey}");
+                }
+            };
+        }
 
 
+    }
+    // 이펙트 프리팹 로드 헬퍼 메서드
+    private void LoadEffectPrefab(Dictionary<string, string> data, string key, System.Action<GameObject> onLoaded)
+    {
+        if (data.TryGetValue(key, out string prefabPath) && !string.IsNullOrEmpty(prefabPath))
+        {
+            Addressables.LoadAssetAsync<GameObject>(prefabPath).Completed += handle =>
+            {
+                if (handle.Status == AsyncOperationStatus.Succeeded)
+                {
+                    onLoaded?.Invoke(handle.Result);
+                    Debug.Log($"{key} 로드 완료: {prefabPath}");
+                }
+                else
+                {
+                    Debug.LogError($"{key} 로드 실패: {prefabPath}");
+                }
+            };
+        }
     }
     private void UpdateBossPrefab(BossData bossData, List<Dictionary<string, string>> baseData)
     {foreach(var baseDataes in baseData)

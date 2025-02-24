@@ -24,6 +24,7 @@ public interface ICreatureData
     float chargeSpeed {  get; }
     float chargeDuration { get; }
 
+    float prepareTime { get; }
     // Movement Settings
     int moveRange { get; }
     int chaseRange { get; }
@@ -68,6 +69,8 @@ public interface ICreatureData
     float deathDuration { get; }
     float spawnDuration { get; }
 
+
+
     // Hit Settings
     float superArmorThreshold { get; }
     float hitStunMultiplier { get; }
@@ -93,6 +96,7 @@ public interface ICreatureData
     GameObject projectilePrefab { get; }
     GameObject hitEffect { get; }
 
+
     // Behavior Conditions
     bool useHealthRetreat { get; }
     float healthRetreatThreshold { get; }
@@ -102,4 +106,15 @@ public interface ICreatureData
     Material eliteOutlineMaterial { get; }
     float shockwaveRadius { get; }
     float groggyTime { get; }
+
+  
+
+    // 차지 공격 이펙트 관련 필드들
+    GameObject ChargePrepareDustEffect { get; }  // 준비 단계 먼지 이펙트
+    GameObject ChargeStartEffect { get; }        // 차징 시작 이펙트
+    GameObject ChargeTrailEffect { get; }        // 트레일 이펙트
+    GameObject WallImpactEffect { get; }         // 벽 충돌 이펙트
+    GameObject PlayerImpactEffect { get; }       // 플레이어 충돌 이펙트
+
+    GameObject chargeIndicatorPrefab { get; }
 }

@@ -228,6 +228,36 @@ MonoBehaviour:
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 3b1ce44580900344ca0e60db8c76f396
+    m_Address: ChargeIndicatorPrefab
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: e314d8c646d0d7f4eb8d7b18810425e5
+    m_Address: ChargeStartEffect
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 3ee24f5b1ab91e542aca479f27b11661
+    m_Address: PlayerImpactEffect
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 252a8d05ee63408468edf74a4ad727d9
+    m_Address: WallImpactEffect
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 303c5a7d254eb434c97f1a0e9e0fd827
+    m_Address: ChargePrepareDustEffect
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 18fc55b84d6f12b45a515bc2f0ee8f09
+    m_Address: ChargeTrailEffect
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
   m_ReadOnly: 0
   m_Settings: {fileID: 11400000, guid: b00a60bada955e740bf4855b507f44d8, type: 2}
   m_SchemaSet:
