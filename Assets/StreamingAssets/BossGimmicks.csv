@@ -1,3 +1,4 @@
 GimmickID,BossID,PhaseNumber,GimmickName,Type,TriggerHealth,Duration,RequireAction,Interruptible,preparationTime,SuccessCount,Invulnerable,DamageMultiplier,FailDamage,UseCustomPos,PosX,PosY,PosZ,Radius,MakeInvulnerable,Damage,UseCustomPosition,affectStatusEffects,FollowTarget,RepeatInterval,CollisionMask,PreparationTime,MoveSpeed,HazardSpawnType,TargetType,hazardPrefabKey
 1,1,1,StalactiteFallGimmick,FieldHazard,0.6,30,TRUE,TRUE,10,3,TRUE,2,1000,TRUE,10,0,10,5,TRUE,10,TRUE,FALSE,TRUE,0,TRUE,1,10,AbovePlayer,Player,Stalactite
+2,1,2,StalactiteFallGimmick,FieldHazard,0.6,30,TRUE,TRUE,10,3,TRUE,2,1000,TRUE,10,0,10,5,TRUE,10,TRUE,FALSE,TRUE,0,TRUE,1,10,AbovePlayer,Player,Stalactite
 3,2,1,StalactiteFallGimmick,FieldHazard,0.6,30,TRUE,TRUE,10,3,TRUE,2,1000,TRUE,10,0,10,5,TRUE,11,TRUE,FALSE,TRUE,1,TRUE,1,10,AbovePlayer,Player,Stalactite
