@@ -105,8 +105,27 @@ public class BossMonster : MonsterClass
         IsInPhaseTransition = false;
         InitializePhaseData();
         InitializeGimmickData();
-        CurrentPhaseData = runtimePhaseData[CurrentPhase];
-        CurrentPhaseGimmickData = runtimeGimmickData[CurrentPhase-1];
+        int phaseIndex = CurrentPhase - 1;
+        if (phaseIndex >= 0 && phaseIndex < runtimePhaseData.Count)
+        {
+            CurrentPhaseData = runtimePhaseData[phaseIndex];
+        }
+        else
+        {
+            Debug.LogError($"유효하지 않은 페이즈 인덱스: {phaseIndex}, 데이터 수: {runtimePhaseData.Count}");
+            CurrentPhaseData = runtimePhaseData.Count > 0 ? runtimePhaseData[0] : null;
+        }
+
+        // 기믹 데이터도 동일하게 처리
+        if (phaseIndex >= 0 && phaseIndex < runtimeGimmickData.Count)
+        {
+            CurrentPhaseGimmickData = runtimeGimmickData[phaseIndex];
+        }
+        else
+        {
+            Debug.LogError($"유효하지 않은 기믹 인덱스: {phaseIndex}, 데이터 수: {runtimeGimmickData.Count}");
+            CurrentPhaseGimmickData = runtimeGimmickData.Count > 0 ? runtimeGimmickData[0] : null;
+        }
 
         // 레이지 모드 초기화
         IsInRageMode = false;
@@ -170,8 +189,12 @@ public class BossMonster : MonsterClass
                 useHealthRetreat = phaseData.useHealthRetreat,
                 healthRetreatThreshold = phaseData.healthRetreatThreshold,
                 retreatDuration = phaseData.retreatDuration,
-                phaseAttackStrategies = new List<AttackStrategyWeight>(phaseData.phaseAttackStrategies) // 이 부분 추가
-               
+                phaseAttackStrategies = new List<AttackStrategyWeight>(phaseData.phaseAttackStrategies), // 이 부분 추가
+                skillConfigIds = new List<int>(phaseData.skillConfigIds)
+
+
+
+
             };
            
             runtimePhaseData.Add(newPhaseData);

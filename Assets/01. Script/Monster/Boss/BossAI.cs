@@ -222,6 +222,8 @@ public class BossAI : CreatureAI
             // 현재 페이즈의 스킬 구성 추가
             PhaseData currentPhaseData = bossMonster.CurrentPhaseData;
             Debug.Log("@@@@@@@@@@@@@@@" + currentPhaseData.phaseName);
+            
+            Debug.Log("@@@@@@@@@@@@@@@" + currentPhaseData.skillConfigIds.Count);
             for (int i = 0; i < currentPhaseData.skillConfigIds.Count; i++)
             {
                 int configId = currentPhaseData.skillConfigIds[i];
@@ -237,6 +239,7 @@ public class BossAI : CreatureAI
             // 전략 설정
             skillStrategy = multiSkillStrategy;
 
+            Debug.Log(skillStrategy.ToString());
             // 페이즈 및 기믹 전략 초기화
             currentPhaseStrategy = BossStrategyFactory.CreatePhaseTransitionStrategy(
                 bossMonster.CurrentPhaseData.phaseTransitionType,

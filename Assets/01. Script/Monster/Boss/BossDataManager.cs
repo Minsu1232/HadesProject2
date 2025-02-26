@@ -629,12 +629,12 @@ public class BossDataManager : Singleton<BossDataManager>
           
                 string[] configIds = phase["SkillConfigIds"].Split('|');
                 string[] configWeights = phase["SkillConfigWeights"].Split('|');
-                Debug.Log(configIds.Length);
+                
                 for (int i = 0; i < configIds.Length; i++)
                 {
                     if (!string.IsNullOrEmpty(configIds[i]) && int.TryParse(configIds[i], out int configId))
                     {
-                    Debug.Log("猿促たたたたたたたたたたたたたた" + configId);
+                    Debug.Log("猿促たたたたたたたたたたたたたた" + configId + phaseData.phaseName);
                         phaseData.skillConfigIds.Add(configId);
                     Debug.Log(phaseData.skillConfigIds.Count);
                     float weight = 1.0f; // 奄沙 亜掻帖

@@ -240,3 +240,39 @@ ChargeAttackStrategy를 BossMultiAttackStrategy에 추가
 충돌 처리 및 상태 전환 확인
 
 Commit = Alexander/AttackStrategy/Charge
+
+
+2/25 기존 스킬들은 한몬스터당 하나의 스킬만 가질수 있는 구조임. 이를 해결 할 방법을 몰색함
+
+	 스킬컨피그를 제작하여 BossMuttiSkillStrategy 컨테이너 생성 후 완성된 스킬을 ID값으로 관리하려 시도 [ex) 현재 스킬구조가 스킬전략,이펙트,임팩트,무브먼트,버프종류가 있음
+	 
+	 이를 Config로 합쳐서 ID값을 부여하고 각 전략들을 합쳐서 하나의 스킬을 완성 => 다양한 조합이 가능해짐]
+	 
+	 => 작업 중간에 에디터 실행시 멈추는 에러발생 => 찾다가 좀 헤맸던 부분들이많았음
+
+	 => 하루만 작업했기에 전날 커밋으로 돌아가서 기존 방법을 좀더 개선해서 하기로 결정
+
+	 => Alexander/AttackStrategy/Charge버전으로 돌아감
+
+
+2/26 전날 작업을 다시 시작. 
+
+구조 -	SkillConfig 스크립트 제작 => 스킬타입 데이터 주입용
+
+		SkillConfigManager SkillConfig에 맞는 데이터를 CSV에서 가져와 주입해줌 
+
+		BossDataManager에선 PhaseData.CSV 에 ID값과 가중치를 작성된 값을 스크립터블에 로드 => BossMonster에 phase이니셔라이즈에 추가(가중치도 해줘야함) => BossAI에서 BossMultiSkill생성자로 생성
+
+		=> 로드된 Id값을 통해 BossMultiSkill스크립트의 AddSkillStrategyFromConfig매서드를 통해 Id값으로 생성되어있는 스킬을 주입해줌
+
+		이 과정에 있어서 기존에 BossMonster에서 CurrentPhase값이 1이고 시작시에 기믹데이터와 페이즈데이터에 CurrentPhase-1이 아닌 그대로 사용 했는데 문제없이되었던 문제를 해결함
+
+		BossDatamanager에서 데이터들으 2번 Add했었음 => 시작하자마자 CurrentPhase값(1)을 그대로 받아와도 이상이 없던 이유.
+
+		수정 후 스킬들이 들어오는것까지 확인함
+
+		다음날 할것 => 좀더 테스트를 해봐야함. 먼저 가중치데이터도 BossMonster에 일단 추가해줄수있도록함 또한 페이즈 변환할때 잘 되는지도 체크 => 트랜지션전략에 추가해야함
+
+Commit = Alenxader/SkillConfig/ing
+		
+		
