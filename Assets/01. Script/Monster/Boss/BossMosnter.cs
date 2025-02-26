@@ -167,7 +167,7 @@ public class BossMonster : MonsterClass
             };
            
             runtimePhaseData.Add(newPhaseData);
-            Debug.Log(runtimePhaseData[a].phaseTransitionThreshold);
+            Debug.Log(runtimePhaseData[a].phaseName);
             a++;
         }
         

@@ -115,6 +115,8 @@ public class BossAI : CreatureAI
         }
         // 5. 초기 상태 설정
         ChangeState(MonsterStateType.Spawn);
+
+        Debug.Log(bossMonster.CurrentPhaseData.phaseName);
     }
     public void UpdatePhaseStrategies()
     {

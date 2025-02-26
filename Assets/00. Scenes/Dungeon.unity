@@ -1209,7 +1209,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   player: {fileID: 0}
-  selectedDungeonType: 8
+  selectedDungeonType: 4
 --- !u!4 &400737765
 Transform:
   m_ObjectHideFlags: 0
