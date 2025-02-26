@@ -134,6 +134,10 @@ public class PhaseData
     public List<AttackPatternData> availablePatterns = new List<AttackPatternData>();  // patternWeights 대체
     public List<AttackStrategyWeight> phaseAttackStrategies = new List<AttackStrategyWeight>();
     public float patternStrategyWeight = 0.4f;  // 기본값 0.4
+    [Header("Skill Config Settings")]
+    public List<int> skillConfigIds = new List<int>();          // 스킬 구성 ID 리스트
+    public List<float> skillConfigWeights = new List<float>();  // 각 스킬 구성의 선택 가중치
+    public float skillStrategyWeight = 0.4f;                    // 스킬 전략의 전체 가중치 (기본값 0.4)
     [Header("Strategy Settings")]
     public MovementStrategyType moveType;
     public AttackStrategyType attackType;

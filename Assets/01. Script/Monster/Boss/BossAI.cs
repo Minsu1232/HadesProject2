@@ -42,6 +42,13 @@ public class BossAI : CreatureAI
         InitializeBehaviorTree();
         //InitializePhases();
 
+        Debug.Log($"SkillConfigManager 인스턴스: {SkillConfigManager.Instance != null}");
+        if (SkillConfigManager.Instance != null)
+        {
+            var config = SkillConfigManager.Instance.GetSkillConfig(1); // 예시 ID
+            Debug.Log($"구성 1:");
+        }
+
 
     }
 
@@ -121,7 +128,6 @@ public class BossAI : CreatureAI
         if (bossMonster == null) return;
 
         var currentPhase = bossMonster.CurrentPhaseData;
-      
 
         // 전역 BossMultiAttackStrategy 인스턴스의 내부 상태(전략 리스트, 타이머 등)를 완전히 초기화합니다.
         globalMultiAttackStrategy.ResetAll();
@@ -129,24 +135,43 @@ public class BossAI : CreatureAI
         // 현재 페이즈의 공격 전략 데이터를 globalMultiAttackStrategy에 추가합니다.
         foreach (var strategyData in currentPhase.phaseAttackStrategies)
         {
-            var strategy = StrategyFactory.CreateAttackStrategy(strategyData.type, bossMonster.GetBossData(),this);
+            var strategy = StrategyFactory.CreateAttackStrategy(strategyData.type, bossMonster.GetBossData(), this);
             if (strategy != null)
             {
                 globalMultiAttackStrategy.AddStrategy(strategy, strategyData.weight);
             }
         }
 
-        // 패턴 업데이트: 현재 페이즈에 해당하는 패턴이 있다면 패턴 전략을 생성하여 상태에 할당합니다.
+        // 스킬 전략 업데이트
+        if (skillStrategy is BossMultiSkillStrategy multiSkillStrategy)
+        {
+            // 기존 스킬 전략 리셋
+            multiSkillStrategy.ResetAll();
+
+            // 현재 페이즈의 스킬 구성 추가
+            for (int i = 0; i < currentPhase.skillConfigIds.Count; i++)
+            {
+                int configId = currentPhase.skillConfigIds[i];
+                float weight = i < currentPhase.skillConfigWeights.Count ?
+                              currentPhase.skillConfigWeights[i] : 1.0f;
+
+                multiSkillStrategy.AddSkillStrategyFromConfig(configId, weight, this, bossMonster.GetBossData());
+            }
+
+            // 스킬 사용 방지를 위한 타이머 리셋 (페이즈 전환 후 바로 스킬 사용 방지)
+            multiSkillStrategy.ResetTimer(1.5f);
+        }
+
+        // 패턴 업데이트: 현재 페이즈에 해당하는 패턴이 있다면 패턴 전략을 새로 생성하여 상태에 할당합니다.
         if (currentPhase.availablePatterns.Count > 0)
         {
             var phasePattern = currentPhase.availablePatterns.Find(p => p.phaseNumber == bossMonster.CurrentPhase);
 
             if (phasePattern != null)
             {
-                bossPatternStartaegy.CleanAll();
-                bossPatternStartaegy = null;
-              
-                
+                //bossPatternStartaegy.CleanAll();
+                //bossPatternStartaegy = null;
+
                 bossPatternStartaegy = BossStrategyFactory.CreatePatternStrategy(
                     phasePattern,
                     this,
@@ -155,8 +180,6 @@ public class BossAI : CreatureAI
                 );
                 Debug.Log($"New Pattern Type: {bossPatternStartaegy.GetType().Name}");
 
-                //// PatternState 업데이트 전후 검증
-                //Debug.Log($"Current Pattern State Type before update: {states[MonsterStateType.Pattern].GetType().Name}");
                 states[MonsterStateType.Pattern] = new PatternState(this, bossPatternStartaegy);
                 OnPatternChanged?.Invoke(bossPatternStartaegy);
             }
@@ -165,23 +188,55 @@ public class BossAI : CreatureAI
                 Debug.LogWarning($"No pattern found for phase {bossMonster.CurrentPhase}");
             }
         }
+
     }
 
 
     private void InitializeStrategies(ICreatureData data)
     {
-        // 1. 기본 전략들 초기화
+        // 1. 기존 전략들 초기화
         spawnStrategy = StrategyFactory.CreateSpawnStrategy(data.spawnStrategy);
         moveStrategy = StrategyFactory.CreateMovementStrategy(data.moveStrategy);
         idleStrategy = StrategyFactory.CreatIdleStrategy(data.idleStrategy);
-        skillStrategy = StrategyFactory.CreateSkillStrategy(data.skillStrategy, this);
         dieStrategy = StrategyFactory.CreatDieStrategy(data.dieStrategy);
         hitStrategy = StrategyFactory.CreatHitStrategy(data.hitStrategy);
         groggyStrategy = StrategyFactory.CreateGroggyStrategy(data.groggyStrategy, data);
 
-        // 2. 보스 특수 전략들 초기화
+        // 2. 보스 전용 전략 초기화
         if (data is BossData bossData)
         {
+            // 공격 전략 초기화 (globalMultiAttackStrategy 사용)
+            foreach (var strategyData in bossMonster.CurrentPhaseData.phaseAttackStrategies)
+            {
+                var strategy = StrategyFactory.CreateAttackStrategy(strategyData.type, bossData, this);
+                if (strategy != null)
+                {
+                    globalMultiAttackStrategy.AddStrategy(strategy, strategyData.weight);
+                }
+            }
+            attackStrategy = globalMultiAttackStrategy;
+
+            // 멀티 스킬 전략 초기화
+            BossMultiSkillStrategy multiSkillStrategy = new BossMultiSkillStrategy(this);
+
+            // 현재 페이즈의 스킬 구성 추가
+            PhaseData currentPhaseData = bossMonster.CurrentPhaseData;
+            Debug.Log("@@@@@@@@@@@@@@@" + currentPhaseData.phaseName);
+            for (int i = 0; i < currentPhaseData.skillConfigIds.Count; i++)
+            {
+                int configId = currentPhaseData.skillConfigIds[i];
+                float weight = i < currentPhaseData.skillConfigWeights.Count ?
+                              currentPhaseData.skillConfigWeights[i] : 1.0f;
+
+                multiSkillStrategy.AddSkillStrategyFromConfig(configId, weight, this, bossData);
+            }
+
+            // 범위 설정
+            multiSkillStrategy.SkillRange = data.skillRange;
+
+            // 전략 설정
+            skillStrategy = multiSkillStrategy;
+
             // 페이즈 및 기믹 전략 초기화
             currentPhaseStrategy = BossStrategyFactory.CreatePhaseTransitionStrategy(
                 bossMonster.CurrentPhaseData.phaseTransitionType,
@@ -198,30 +253,15 @@ public class BossAI : CreatureAI
                 bossData,
                 successUI
             );
-
-            if (miniGameManager != null)
-            {
-                // 기존에 전역으로 생성된 globalMultiAttackStrategy를 사용
-                // 초기 페이즈의 전략들을 추가
-                foreach (var strategyData in bossMonster.CurrentPhaseData.phaseAttackStrategies)
-                {
-                    var strategy = StrategyFactory.CreateAttackStrategy(strategyData.type, bossData, this);
-                    if (strategy != null)
-                    {
-                        globalMultiAttackStrategy.AddStrategy(strategy, strategyData.weight);
-                    }
-                }
-                attackStrategy = globalMultiAttackStrategy;
-            }
-            else
-            {
-                Debug.LogError("MiniGameManager is null!");
-            }
+        }
+        else
+        {
+            // 일반 몬스터의 경우 기본 스킬 전략 사용
+            skillStrategy = StrategyFactory.CreateSkillStrategy(data.skillStrategy, this);
         }
 
-        // 3. 스킬 이펙트 초기화
+        // 기존의 스킬 이펙트 초기화
         InitializeSkillEffect(data);
-
     }
 
     private void InitializeSkillEffect(ICreatureData data)

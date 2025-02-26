@@ -29,6 +29,11 @@ MonoBehaviour:
     - type: 1
       weight: 1
     patternStrategyWeight: 0.4
+    skillConfigIds: 0100000003000000
+    skillConfigWeights:
+    - 0.5
+    - 0.5
+    skillStrategyWeight: 0.4
     moveType: 0
     attackType: 0
     skillType: 0
@@ -81,70 +86,7 @@ MonoBehaviour:
       hazardPrefabKey: Stalactite
       warningSound: {fileID: 0}
       activeSound: {fileID: 0}
-  - phaseName: Berserk
-    isInvulnerable: 0
-    phaseTransitionThreshold: 0
-    transitionDuration: 2
-    isInvulnerableDuringTransition: 0
-    patternChangeTime: 6
-    availablePatterns: []
-    phaseAttackStrategies:
-    - type: 1
-      weight: 1
-    patternStrategyWeight: 0.4
-    moveType: 0
-    attackType: 0
-    skillType: 0
-    phaseTransitionType: 0
-    damageMultiplier: 1
-    speedMultiplier: 1
-    defenseMultiplier: 1
-    attackSpeedMultiplier: 0.1
-    canBeInterrupted: 1
-    stunResistance: 0
-    useHealthRetreat: 0
-    healthRetreatThreshold: 0
-    retreatDuration: 0
-    phaseStartEffect: {fileID: 0}
-    phaseLoopEffect: {fileID: 0}
-    exitEffect: {fileID: 0}
-    cutscenePath: 
-    specialMechanicType: 
-    specialMechanicValue: 0
-    gimmicks:
-    - gimmickName: StalactiteFallGimmick
-      type: 1
-      triggerHealthThreshold: 0.6
-      duration: 30
-      isEnabled: 1
-      successCount: 3
-      moveSpeed: 10
-      hazardSpawnType: 1
-      targetType: 1
-      requirePlayerAction: 1
-      isInterruptible: 1
-      destroyAfterUse: 1
-      makeInvulnerable: 1
-      damageMultiplier: 2
-      failDamage: 1000
-      damage: 10
-      affectStatusEffects: 0
-      useCustomPosition: 1
-      gimmickPosition: {x: 10, y: 0, z: 10}
-      areaRadius: 5
-      followTarget: 1
-      collisionMask:
-        serializedVersion: 2
-        m_Bits: 2147483648
-      preparationTime: 1
-      repeatInterval: 0
-      warningEffect: {fileID: 0}
-      activeEffect: {fileID: 0}
-      hazardPrefab: {fileID: 7489191758440052081, guid: 3e867b08564d97942b4eac4fdfa17926, type: 3}
-      hazardPrefabKey: Stalactite
-      warningSound: {fileID: 0}
-      activeSound: {fileID: 0}
-  phaseCount: 3
+  phaseCount: 1
   canSummonMinions: 0
   minionPrefabs: []
   maxMinionCount: 0

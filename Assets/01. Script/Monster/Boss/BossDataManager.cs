@@ -581,7 +581,7 @@ public class BossDataManager : Singleton<BossDataManager>
                 phaseName = phase["PhaseName"],
                 phaseTransitionThreshold = float.Parse(phase["HealthThreshold"]),
                 transitionDuration = float.Parse(phase["TransitionDuration"]),
-                isInvulnerableDuringTransition = bool.Parse(phase["IsInvulnerableDuringTransition"]),                
+                isInvulnerableDuringTransition = bool.Parse(phase["IsInvulnerableDuringTransition"]),
                 patternChangeTime = float.Parse(phase["PatternChangeTime"]),
 
                 moveType = (MovementStrategyType)Enum.Parse(typeof(MovementStrategyType), phase["MoveStrategy"]),
@@ -597,12 +597,16 @@ public class BossDataManager : Singleton<BossDataManager>
                 canBeInterrupted = bool.Parse(phase["CanBeInterrupted"]),
                 stunResistance = float.Parse(phase["StunResistance"]),
                 useHealthRetreat = bool.Parse(phase["UseHealthRetreat"]),
-                healthRetreatThreshold = float.Parse(phase["HealthRetreatThreshold"])     ,
+                healthRetreatThreshold = float.Parse(phase["HealthRetreatThreshold"]),
 
-                phaseAttackStrategies = new List<AttackStrategyWeight>()
+                phaseAttackStrategies = new List<AttackStrategyWeight>(),
 
+                // 스킬 구성 ID 및 가중치 리스트 초기화
+                skillConfigIds = new List<int>(),
+                skillConfigWeights = new List<float>()
             };
-            // 콤마로 구분된 전략 타입과 가중치 파싱
+
+            // 캐릭터로 구분된 전략 타입과 가중치 파싱
             string[] strategyTypes = phase["AttackStrategies"].Split('|');
             string[] strategyWeights = phase["StrategyWeights"].Split('|');
 
@@ -619,8 +623,30 @@ public class BossDataManager : Singleton<BossDataManager>
                 }
             }
 
-            // 나머지 기존 코드...
-            bossData.phaseData.Add(phaseData);
+            // 스킬 구성 ID와 가중치 파싱 (BossPhases.csv에 새 컬럼 추가 필요)
+            //if (phase.ContainsKey("SkillConfigIds") && phase.ContainsKey("SkillConfigWeights"))
+            //{
+          
+                string[] configIds = phase["SkillConfigIds"].Split('|');
+                string[] configWeights = phase["SkillConfigWeights"].Split('|');
+                Debug.Log(configIds.Length);
+                for (int i = 0; i < configIds.Length; i++)
+                {
+                    if (!string.IsNullOrEmpty(configIds[i]) && int.TryParse(configIds[i], out int configId))
+                    {
+                    Debug.Log("까짜ㅏㅏㅏㅏㅏㅏㅏㅏㅏㅏㅏㅏㅏㅏ" + configId);
+                        phaseData.skillConfigIds.Add(configId);
+                    Debug.Log(phaseData.skillConfigIds.Count);
+                    float weight = 1.0f; // 기본 가중치
+                        if (i < configWeights.Length && float.TryParse(configWeights[i], out float parsedWeight))
+                        {
+                            weight = parsedWeight;
+                        }
+                        phaseData.skillConfigWeights.Add(weight);
+                    }
+                }
+            //}
+
             // 해당 페이즈의 기믹 데이터 찾기
             if (bossGimmickData.TryGetValue(int.Parse(phase["BossID"]), out var gimmickList))
             {
@@ -636,7 +662,7 @@ public class BossDataManager : Singleton<BossDataManager>
                             triggerHealthThreshold = float.Parse(gimmickData["TriggerHealth"]),
                             duration = float.Parse(gimmickData["Duration"]),
                             requirePlayerAction = bool.Parse(gimmickData["RequireAction"]),
-                            isInterruptible = bool.Parse(gimmickData["Interruptible"]),                           
+                            isInterruptible = bool.Parse(gimmickData["Interruptible"]),
                             makeInvulnerable = bool.Parse(gimmickData["MakeInvulnerable"]),
                             damageMultiplier = float.Parse(gimmickData["DamageMultiplier"]),
                             failDamage = float.Parse(gimmickData["FailDamage"]),
@@ -680,7 +706,6 @@ public class BossDataManager : Singleton<BossDataManager>
 
             bossData.phaseData.Add(phaseData);
         }
-       
     }
     // LayerMask 파싱 함수
     private LayerMask ParseLayerMask(string layerString)

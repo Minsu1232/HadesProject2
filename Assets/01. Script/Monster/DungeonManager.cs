@@ -42,6 +42,7 @@ public class DungeonManager : Singleton<DungeonManager>
 
     private async void Start()
     {
+        await SkillConfigManager.Instance.Initialize();
         await MonsterDataManager.Instance.InitializeMonsters();
         await BossDataManager.Instance.InitializeBosses();
         // enum 값을 문자열로 변환하여 팩토리 생성

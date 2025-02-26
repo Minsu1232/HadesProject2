@@ -1209,7 +1209,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   player: {fileID: 0}
-  selectedDungeonType: 8
+  selectedDungeonType: 4
 --- !u!4 &400737765
 Transform:
   m_ObjectHideFlags: 0
@@ -5987,6 +5987,7 @@ GameObject:
   - component: {fileID: 1916686754}
   - component: {fileID: 1916686753}
   - component: {fileID: 1916686755}
+  - component: {fileID: 1916686756}
   m_Layer: 0
   m_Name: GameObject
   m_TagString: Untagged
@@ -6031,6 +6032,18 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 2d466c4e54c1b244a9d3c289203e610f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &1916686756
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1916686752}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8263f02b1e7ac944e89489e981ebf66c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1 &1925859751
@@ -29346,7 +29359,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0.5}
   m_AnchorMax: {x: 0, y: 0.5}
-  m_AnchoredPosition: {x: 44.92, y: 131.98}
+  m_AnchoredPosition: {x: 44.920044, y: 131.98}
   m_SizeDelta: {x: 200, y: 250}
   m_Pivot: {x: 0, y: 0.5}
 --- !u!23 &7895320461267830983

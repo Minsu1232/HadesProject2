@@ -101,12 +101,12 @@ public class BossMonster : MonsterClass
         AggroRange = bossData.aggroRange;
 
         // 페이즈 상태 초기화
-       
+        Debug.Log($"phaseData count: {bossData.phaseData.Count}, Current Phase: {CurrentPhase}");
         IsInPhaseTransition = false;
         InitializePhaseData();
         InitializeGimmickData();
         CurrentPhaseData = runtimePhaseData[CurrentPhase];
-        CurrentPhaseGimmickData = runtimeGimmickData[CurrentPhase];
+        CurrentPhaseGimmickData = runtimeGimmickData[CurrentPhase-1];
 
         // 레이지 모드 초기화
         IsInRageMode = false;
@@ -134,10 +134,18 @@ public class BossMonster : MonsterClass
         patternSuccessCounts = new Dictionary<AttackPatternData, int>();
         disabledPatterns = new HashSet<AttackPatternData>();
         InitializePatternStates();
+
+       
     }
 
     private void InitializePhaseData()
     {
+        if (bossData.phaseData.Count == 0)
+        {
+            Debug.LogError("페이즈 데이터가 없습니다.");
+            return;
+        }
+
         runtimePhaseData = new List<PhaseData>();
         foreach (var phaseData in bossData.phaseData)
         {           
