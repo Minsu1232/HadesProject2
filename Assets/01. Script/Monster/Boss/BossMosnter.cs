@@ -190,8 +190,8 @@ public class BossMonster : MonsterClass
                 healthRetreatThreshold = phaseData.healthRetreatThreshold,
                 retreatDuration = phaseData.retreatDuration,
                 phaseAttackStrategies = new List<AttackStrategyWeight>(phaseData.phaseAttackStrategies), // 이 부분 추가
-                skillConfigIds = new List<int>(phaseData.skillConfigIds)
-
+                skillConfigIds = new List<int>(phaseData.skillConfigIds),
+                skillConfigWeights = new List<float>(phaseData.skillConfigWeights) // 가중치도 추가!
 
 
 
@@ -215,7 +215,7 @@ public class BossMonster : MonsterClass
                 var newGimmick = new GimmickData
                 {
                     gimmickName = gimmick.gimmickName,
-                    type = gimmick.type,
+                    type = gimmick.type,                   
                     triggerHealthThreshold = gimmick.triggerHealthThreshold,
                     duration = gimmick.duration,
                     isEnabled = gimmick.isEnabled,
@@ -344,7 +344,7 @@ public class BossMonster : MonsterClass
         Debug.Log($"[Phase Change] Call Stack:\n{System.Environment.StackTrace}");
 
         CurrentPhase = phase;
-        CurrentPhaseData = runtimePhaseData[phase];
+        CurrentPhaseData = runtimePhaseData[phase-1];
         
         OnPhaseChanged?.Invoke(phase);
     }

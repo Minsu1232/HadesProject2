@@ -60,8 +60,9 @@ public class BossMultiSkillStrategy : ISkillStrategy
         CreatureAI owner,
         ICreatureData data)
     {
-        // 스킬 구성 데이터 가져오기
-        SkillConfig config = SkillConfigManager.Instance.GetSkillConfig(configId);
+        Debug.Log($"[AddSkillStrategyFromConfig] 구성 ID: {configId}, 가중치: {weight}");
+        var config = SkillConfigManager.Instance.GetSkillConfig(configId);
+        Debug.Log($"[AddSkillStrategyFromConfig] 구성 로드: {config != null}");
         Debug.Log("스킬컨피그 시작");
         if (config == null)
         {
@@ -73,9 +74,10 @@ public class BossMultiSkillStrategy : ISkillStrategy
         ISkillEffect skillEffect = StrategyFactory.CreateSkillEffect(config.effectType, data, owner);
         IProjectileMovement moveStrategy = StrategyFactory.CreateProjectileMovement(config.moveType, data);
         IProjectileImpact impactEffect = StrategyFactory.CreateProjectileImpact(config.impactType, data);
-
-        // 스킬 전략 생성
+             
+            // 스킬 전략 생성
         ISkillStrategy skillStrategy = StrategyFactory.CreateSkillStrategy(config.strategyType, owner);
+
 
         // 전략에 컴포넌트 주입
         if (skillStrategy is ISkillStrategyComponentInjection injectionStrategy)
@@ -84,6 +86,7 @@ public class BossMultiSkillStrategy : ISkillStrategy
             injectionStrategy.SetProjectileMovement(moveStrategy);
             injectionStrategy.SetProjectileImpact(impactEffect);
         }
+
 
         // 버프 스킬인 경우 BuffData 설정
         if (config.strategyType == SkillStrategyType.Buff && data is BossData bossData)
@@ -99,8 +102,8 @@ public class BossMultiSkillStrategy : ISkillStrategy
             // 보스 데이터에 버프 데이터 업데이트
             bossData.buffData = buffData;
         }
-
-       
+        skillStrategy.Initialize(skillEffect);
+        skillStrategy.SkillRange = data.skillRange;
         AddStrategy(skillStrategy, weight);
     }
 
@@ -164,6 +167,8 @@ public class BossMultiSkillStrategy : ISkillStrategy
 
         if (currentStrategy != null)
         {
+            Debug.Log(currentStrategy.ToString());
+            
             currentStrategy.StartSkill(transform, target, monsterData);
         }
     }
@@ -186,13 +191,13 @@ public class BossMultiSkillStrategy : ISkillStrategy
 
     public bool CanUseSkill(float distanceToTarget, IMonsterClass monsterData)
     {
-        Debug.Log($"전략 개수: {strategies.Count}, 거리: {distanceToTarget}, 범위: {SkillRange}");
+      
 
         float cooldownTime = monsterData.CurrentSkillCooldown;
         float timeSinceLastSkill = Time.time - unifiedLastSkillTime;
         bool cooldownReady = Time.time >= unifiedLastSkillTime + cooldownTime;
 
-        Debug.Log($"쿨다운: {cooldownTime}, 경과시간: {timeSinceLastSkill}, 준비됨: {cooldownReady}");
+       
 
         // 통합된 쿨타임 체크
         if (!cooldownReady)

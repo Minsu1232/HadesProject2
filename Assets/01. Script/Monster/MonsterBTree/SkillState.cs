@@ -1,4 +1,5 @@
 using System;
+using UnityEditor.Rendering;
 using UnityEngine;
 using static IMonsterState;
 
@@ -34,6 +35,7 @@ public class SkillState : MonsterBaseState
 
     private void ResetSkillState()
     {
+        Debug.Log("스킬시간초기화");
         skillTimer = 0f;
         isSkillAnimationComplete = false;
         hasSkillStarted = false;

@@ -55,6 +55,7 @@ MonoBehaviour:
     specialMechanicValue: 0
     gimmicks:
     - gimmickName: StalactiteFallGimmick
+      gimmickNumber: 0
       type: 1
       triggerHealthThreshold: 0.6
       duration: 30
@@ -69,7 +70,7 @@ MonoBehaviour:
       makeInvulnerable: 1
       damageMultiplier: 2
       failDamage: 1000
-      damage: 10
+      damage: 11
       affectStatusEffects: 0
       useCustomPosition: 1
       gimmickPosition: {x: 10, y: 0, z: 10}
@@ -79,7 +80,7 @@ MonoBehaviour:
         serializedVersion: 2
         m_Bits: 2147483648
       preparationTime: 1
-      repeatInterval: 0
+      repeatInterval: 1
       warningEffect: {fileID: 0}
       activeEffect: {fileID: 0}
       hazardPrefab: {fileID: 7489191758440052081, guid: 3e867b08564d97942b4eac4fdfa17926, type: 3}

@@ -91,9 +91,12 @@ public static class StrategyFactory
             ProjectileMovementType.Parabolic => new ParabolicMovement(),
             ProjectileMovementType.Straight => new StraightMovement(),
             ProjectileMovementType.StraightRotation => new StraightRotationMovement(
-                data.projectileRotationAxis,  // MonsterData에서 설정한 회전축
-                data.projectileRotationSpeed  // MonsterData에서 설정한 회전 속도
+                data.projectileRotationAxis,  // ICreatureData 설정한 회전축
+                data.projectileRotationSpeed  // ICreatureData 설정한 회전 속도
             ),
+            ProjectileMovementType.None => null
+            //_=>null
+
         };
     }
 

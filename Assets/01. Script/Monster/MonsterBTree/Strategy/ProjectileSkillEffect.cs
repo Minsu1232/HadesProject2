@@ -31,7 +31,10 @@ public class ProjectileSkillEffect : ISkillEffect
         this.skillDamage = status.GetMonsterClass().CurrentSkillDamage;
         this.spawnPoint = status.GetSkillSpawnPoint();
 
-        
+        Debug.Log("FEFWFEF" + moveStrategy.ToString());
+
+
+
     }
 
     public void Execute()

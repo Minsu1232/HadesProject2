@@ -29,6 +29,7 @@ public class AttackPatternData
 {
     [Header("Pattern Settings")]
     public string patternName;
+    public int patternIndex;
     public BossPatternType patternType;  // Ãß°¡
     public List<AttackStepData> steps = new List<AttackStepData>();
     public float patternWeight = 1.0f;
@@ -66,6 +67,7 @@ public class GimmickData
 {
     [Header("Gimmick Base Settings")]
     public string gimmickName;//
+    public int gimmickNumber;
     public GimmickType type;//
     public float triggerHealthThreshold;//
     public float duration;//

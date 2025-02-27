@@ -408,10 +408,11 @@ public class BossDataManager : Singleton<BossDataManager>
     {
         foreach (var pattern in patterns)
         {
-            int patternId = int.Parse(pattern["PatternID"]);
+          
             AttackPatternData patternData = new AttackPatternData
             {
                 patternName = pattern["PatternName"],
+                patternIndex = int.Parse(pattern["PatternIndex"]),
                 patternType = (BossPatternType)Enum.Parse(typeof(BossPatternType), pattern["PatternType"]),
                 phaseNumber = int.Parse(pattern["PhaseNumber"]),
                 patternCooldown = float.Parse(pattern["PatternCooldown"]),
@@ -428,31 +429,15 @@ public class BossDataManager : Singleton<BossDataManager>
                 difficultyIncreaseStep = float.Parse(pattern["difficultyIncreaseStep"])
             };
 
-            if (bossPatternStepData.TryGetValue(patternId, out var steps))
-            {
-                foreach (var step in steps)
-                {
-                    AttackStepData stepData = new AttackStepData
-                    {   
-                        
-                        attackType = (AttackStrategyType)Enum.Parse(typeof(AttackStrategyType), step["AttackType"]),
-                        stepDelay = float.Parse(step["StepDelay"]),
-                        hasMiniGame = bool.Parse(step["HasMiniGame"]),
-                        miniGameType = (MiniGameType)Enum.Parse(typeof(MiniGameType), step["MiniGameType"]),
-                        waitForMiniGame = bool.Parse(step["WaitForMiniGame"]),
-                        miniGameDifficulty = float.Parse(step["MiniGameDifficulty"]),
-                        isTransitionAnim = bool.Parse(step["IsAnim"])
-                    };
+           
 
-                    patternData.steps.Add(stepData);
-                }
+            // BossDataManager에서 패턴 로드 시
+            int phaseIndex = patternData.patternIndex; // 이미 0부터 시작하므로 변환 불필요
+            if (phaseIndex >= 0 && phaseIndex < bossData.phaseData.Count)
+            {
+                bossData.phaseData[phaseIndex].availablePatterns.Add(patternData);
             }
 
-            // PhaseData에 패턴 추가
-            if (patternData.phaseNumber <= bossData.phaseData.Count)
-            {
-                bossData.phaseData[patternData.phaseNumber].availablePatterns.Add(patternData);
-            }
 
             Debug.Log($"[UpdateBossPatternData] Boss ID: {bossData.MonsterName}, Total Patterns: {patterns.Count}");
             Debug.Log($"[UpdateBossPatternData] Pattern '{patternData.patternName}' added to Phase {patternData.phaseNumber}");
@@ -482,7 +467,7 @@ public class BossDataManager : Singleton<BossDataManager>
         bossData.chargeSpeed = float.Parse(baseData["ChargeSpeed"]);
         bossData.chargeDuration = float.Parse(baseData["ChargeDuration"]);
         bossData.prepareTime = float.Parse(baseData["ChargePrepareTime"]);
-
+        bossData.multiShotCount = int.Parse(baseData["MultiShotCount"]);
         // 이펙트 프리팹 로드
         LoadEffectPrefab(baseData, "ChargePrepareDustEffect", result => bossData.ChargePrepareDustEffect = result);
         LoadEffectPrefab(baseData, "ChargeStartEffect", result => bossData.ChargeStartEffect = result);
@@ -573,9 +558,24 @@ public class BossDataManager : Singleton<BossDataManager>
     }
     private void UpdateBossPhaseData(BossData bossData, List<Dictionary<string, string>> phases)
     {
+        foreach (var gimmickSet in bossGimmickData)
+        {
+            Debug.Log($"[Gimmick Debug] Boss ID: {gimmickSet.Key}, Gimmick Count: {gimmickSet.Value.Count}");
+
+            foreach (var gimmickData in gimmickSet.Value)
+            {
+                string bossId = gimmickData["BossID"];
+                string phaseNumber = gimmickData["PhaseNumber"];
+
+                Debug.Log($"[Gimmick Detail] Boss ID: {bossId}, Phase Number: {phaseNumber}");
+            }
+        }
         bossData.phaseData = new List<PhaseData>();
         foreach (var phase in phases)
         {
+            int bossId = int.Parse(phase["BossID"]);
+            int phaseNumber = int.Parse(phase["PhaseNumber"]);
+
             PhaseData phaseData = new PhaseData
             {
                 phaseName = phase["PhaseName"],
@@ -585,8 +585,7 @@ public class BossDataManager : Singleton<BossDataManager>
                 patternChangeTime = float.Parse(phase["PatternChangeTime"]),
 
                 moveType = (MovementStrategyType)Enum.Parse(typeof(MovementStrategyType), phase["MoveStrategy"]),
-                attackType = (AttackStrategyType)Enum.Parse(typeof(AttackStrategyType), phase["AttackStrategy"]),
-                skillType = (SkillStrategyType)Enum.Parse(typeof(SkillStrategyType), phase["SkillStrategy"]),
+                attackType = (AttackStrategyType)Enum.Parse(typeof(AttackStrategyType), phase["AttackStrategy"]),                
                 phaseTransitionType = (PhaseTransitionType)Enum.Parse(typeof(PhaseTransitionType), phase["PhaseTransitionType"]),
 
                 damageMultiplier = float.Parse(phase["DamageMultiplier"]),
@@ -600,13 +599,12 @@ public class BossDataManager : Singleton<BossDataManager>
                 healthRetreatThreshold = float.Parse(phase["HealthRetreatThreshold"]),
 
                 phaseAttackStrategies = new List<AttackStrategyWeight>(),
-
-                // 스킬 구성 ID 및 가중치 리스트 초기화
                 skillConfigIds = new List<int>(),
-                skillConfigWeights = new List<float>()
+                skillConfigWeights = new List<float>(),
+                gimmicks = new List<GimmickData>() // 명시적으로 초기화
             };
 
-            // 캐릭터로 구분된 전략 타입과 가중치 파싱
+            // 공격 전략 및 가중치 파싱
             string[] strategyTypes = phase["AttackStrategies"].Split('|');
             string[] strategyWeights = phase["StrategyWeights"].Split('|');
 
@@ -623,37 +621,33 @@ public class BossDataManager : Singleton<BossDataManager>
                 }
             }
 
-            // 스킬 구성 ID와 가중치 파싱 (BossPhases.csv에 새 컬럼 추가 필요)
-            //if (phase.ContainsKey("SkillConfigIds") && phase.ContainsKey("SkillConfigWeights"))
-            //{
-          
-                string[] configIds = phase["SkillConfigIds"].Split('|');
-                string[] configWeights = phase["SkillConfigWeights"].Split('|');
-                
-                for (int i = 0; i < configIds.Length; i++)
-                {
-                    if (!string.IsNullOrEmpty(configIds[i]) && int.TryParse(configIds[i], out int configId))
-                    {
-                    Debug.Log("까짜ㅏㅏㅏㅏㅏㅏㅏㅏㅏㅏㅏㅏㅏㅏ" + configId + phaseData.phaseName);
-                        phaseData.skillConfigIds.Add(configId);
-                    Debug.Log(phaseData.skillConfigIds.Count);
-                    float weight = 1.0f; // 기본 가중치
-                        if (i < configWeights.Length && float.TryParse(configWeights[i], out float parsedWeight))
-                        {
-                            weight = parsedWeight;
-                        }
-                        phaseData.skillConfigWeights.Add(weight);
-                    }
-                }
-            //}
+            // 스킬 구성 ID와 가중치 파싱
+            string[] configIds = phase["SkillConfigIds"].Split('|');
+            string[] configWeights = phase["SkillConfigWeights"].Split('|');
 
-            // 해당 페이즈의 기믹 데이터 찾기
-            if (bossGimmickData.TryGetValue(int.Parse(phase["BossID"]), out var gimmickList))
+            for (int i = 0; i < configIds.Length; i++)
+            {
+                if (!string.IsNullOrEmpty(configIds[i]) && int.TryParse(configIds[i], out int configId))
+                {
+                    phaseData.skillConfigIds.Add(configId);
+
+                    // 가중치 설정 (기본값 1.0f)
+                    float weight = 1.0f;
+                    if (i < configWeights.Length && float.TryParse(configWeights[i], out float parsedWeight))
+                    {
+                        weight = parsedWeight;
+                    }
+                    phaseData.skillConfigWeights.Add(weight);
+                }
+            }
+
+            // 해당 페이즈의 기믹 데이터 처리
+            if (bossGimmickData.TryGetValue(bossId, out var gimmickList))
             {
                 foreach (var gimmickData in gimmickList)
                 {
-                    // 페이즈 번호가 일치하는 기믹만 추가
-                    if (int.Parse(gimmickData["PhaseNumber"]) == int.Parse(phase["PhaseNumber"]))
+                    // 현재 보스의 현재 페이즈에 해당하는 기믹만 추가
+                    if (int.Parse(gimmickData["PhaseNumber"]) == phaseNumber)
                     {
                         GimmickData gimmick = new GimmickData
                         {
@@ -686,12 +680,12 @@ public class BossDataManager : Singleton<BossDataManager>
                             hazardPrefabKey = gimmickData["hazardPrefabKey"]
                         };
 
+                        // 비동기적으로 해저드 프리팹 로드
                         Addressables.LoadAssetAsync<GameObject>(gimmick.hazardPrefabKey).Completed += handle =>
                         {
                             if (handle.Status == AsyncOperationStatus.Succeeded)
                             {
-                                gimmick.hazardPrefab = handle.Result;  // GetComponent 제거하고 직접 저장
-
+                                gimmick.hazardPrefab = handle.Result;
                                 Debug.Log($"[GimmickData] {gimmick.gimmickName}의 Prefab 로드 완료: {gimmick.hazardPrefabKey}");
                             }
                             else
@@ -699,12 +693,21 @@ public class BossDataManager : Singleton<BossDataManager>
                                 Debug.LogError($"[GimmickData] {gimmick.gimmickName}의 Prefab 로드 실패: {gimmick.hazardPrefabKey}");
                             }
                         };
+
+                        // 디버그 로그 추가
+                        Debug.Log($"Adding Gimmick: {gimmick.gimmickName} to Boss {bossId}, Phase {phaseNumber}");
+
+                        // 현재 페이즈 데이터에 기믹 추가
                         phaseData.gimmicks.Add(gimmick);
                     }
                 }
             }
 
+            // 페이즈 데이터를 보스 데이터에 추가
             bossData.phaseData.Add(phaseData);
+
+            // 디버그 로그로 페이즈 정보 확인
+            Debug.Log($"Completed Phase {phaseNumber} for Boss {bossId}: {phaseData.phaseName}, Gimmicks: {phaseData.gimmicks.Count}");
         }
     }
     // LayerMask 파싱 함수
@@ -740,9 +743,7 @@ public class BossDataManager : Singleton<BossDataManager>
                 bossData.skillRange = float.Parse(skill["SkillRange"]);
                 bossData.skillDuration = float.Parse(skill["SkillDuration"]);
                 bossData.skillDamage = int.Parse(skill["SkillDamage"]);
-                bossData.projectileType = (ProjectileMovementType)Enum.Parse(typeof(ProjectileMovementType), skill["ProjectileType"]);
-                
-                bossData.skillEffectType = (SkillEffectType)Enum.Parse(typeof(SkillEffectType), skill["SkillEffectType"]);
+              
                 bossData.projectileSpeed = float.Parse(skill["ProjectileSpeed"]);
                 bossData.areaRadius = float.Parse(skill["AreaRadius"]);
                
@@ -751,8 +752,23 @@ public class BossDataManager : Singleton<BossDataManager>
                 bossData.cameraShakeIntensity = float.Parse(skill["CameraShakeIntensity"]);
                 bossData.cameraShakeDuration = float.Parse(skill["CameraShakeDuration"]);
                 bossData.shockwaveRadius = float.Parse(skill["ShockwaveRadius"]);
+                bossData.projectileRotationAxis = ParseVector3(skill["ProjectileRotationAxis"]);
+                bossData.projectileRotationSpeed = float.Parse(skill["ProjectileRotationSpeed"]);
             }
         }
+    }
+    private Vector3 ParseVector3(string vectorString)
+    {
+        string[] components = vectorString.Split('|');
+        if (components.Length == 3)
+        {
+            return new Vector3(
+                float.Parse(components[0]),
+                float.Parse(components[1]),
+                float.Parse(components[2])
+            );
+        }
+        return Vector3.forward; // 기본값 반환
     }
     #region 챕터보스 데이터
     private void UpdateAlexanderBossData(BossData bossData, Dictionary<string, string> alexanderData)

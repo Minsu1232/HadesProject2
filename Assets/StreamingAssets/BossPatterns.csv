@@ -1,3 +1,3 @@
-BossID,PatternID,PatternName,PatternType,PhaseNumber,PatternCooldown,WarningDuration,HealthThresholdMin,HealthThresholdMax,WarningMessage,RequiredSuccessCount,CurrentSuccessCount,IsDisabled,baseDifficulty,maxDifficulty,difficultyIncreaseStep
+BossID,PatternIndex,PatternName,PatternType,PhaseNumber,PatternCooldown,WarningDuration,HealthThresholdMin,HealthThresholdMax,WarningMessage,RequiredSuccessCount,CurrentSuccessCount,IsDisabled,baseDifficulty,maxDifficulty,difficultyIncreaseStep
 1,0,BasicCombo,BasicToJump,1,5,1,0,1,Normal Attack Pattern,3,0,FALSE,1,3,0.5
 1,1,JumpCombo,JumpToBasic,2,15,1.5,0,0.9,Rush Attack Incoming!,3,0,FALSE,1,3,0.5

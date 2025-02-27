@@ -67,14 +67,15 @@ public abstract class BasePhysicalAttackStrategy : IAttackStrategy
 
     protected void FaceTarget(Transform transform, Transform target)
     {
-        if (!isAttackAnimation)
-        {
+        //if (!isAttackAnimation)
+        //{
+         
             Vector3 directionToTarget = (target.position - transform.position).normalized;
             if (directionToTarget != Vector3.zero)
             {
                 transform.rotation = Quaternion.LookRotation(directionToTarget);
             }
-        }
+        //}
     }
 
     public abstract void Attack(Transform transform, Transform target, IMonsterClass monsterData);

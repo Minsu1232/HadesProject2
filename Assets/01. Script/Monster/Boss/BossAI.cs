@@ -26,6 +26,7 @@ public class BossAI : CreatureAI
     private BossMonster bossMonster;
 
 
+
     private IPhaseTransitionStrategy currentPhaseStrategy;
     private IGimmickStrategy gimmickStrategy;
     private ISuccessUI successUI;
@@ -110,15 +111,23 @@ public class BossAI : CreatureAI
         states[MonsterStateType.Die] = new DieState(this, dieStrategy);
         states[MonsterStateType.PhaseTransition] = new PhaseTransitionState(this, currentPhaseStrategy, bossMonster);
         states[MonsterStateType.Gimmick] = new GimmickState(this, gimmickStrategy, bossUIManager);
-        if (bossMonster.CurrentPhaseData.availablePatterns.Count > 0)
+        if (bossMonster.CurrentPhaseData.availablePatterns.Count > 0) // 페이즈 넘버와 커레트 페이즈가 같은 패턴을 주입
         {
-            bossPatternStartaegy = BossStrategyFactory.CreatePatternStrategy(
-                bossMonster.CurrentPhaseData.availablePatterns[0],
-                this,
-                miniGameManager,
-                bossData
-            );
-            states[MonsterStateType.Pattern] = new PatternState(this, bossPatternStartaegy);
+            var phasePattern = bossMonster.CurrentPhaseData.availablePatterns.Find(p => p.phaseNumber == bossMonster.CurrentPhase);
+            if (phasePattern != null)
+            {
+                bossPatternStartaegy = BossStrategyFactory.CreatePatternStrategy(
+                    phasePattern,
+                    this,
+                    miniGameManager,
+                    bossData
+                );
+                states[MonsterStateType.Pattern] = new PatternState(this, bossPatternStartaegy);
+            }
+            else
+            {
+                Debug.LogWarning($"No pattern found for initial phase {bossMonster.CurrentPhase}");
+            }
         }
         // 5. 초기 상태 설정
         ChangeState(MonsterStateType.Spawn);
@@ -126,7 +135,8 @@ public class BossAI : CreatureAI
     public void UpdatePhaseStrategies()
     {
         if (bossMonster == null) return;
-
+        IMonsterClass monsterClass = creatureStatus.GetMonsterClass();
+        ICreatureData data = monsterClass.GetMonsterData();
         var currentPhase = bossMonster.CurrentPhaseData;
 
         // 전역 BossMultiAttackStrategy 인스턴스의 내부 상태(전략 리스트, 타이머 등)를 완전히 초기화합니다.
@@ -157,7 +167,7 @@ public class BossAI : CreatureAI
 
                 multiSkillStrategy.AddSkillStrategyFromConfig(configId, weight, this, bossMonster.GetBossData());
             }
-
+            //InitializeSkillEffect(data);
             // 스킬 사용 방지를 위한 타이머 리셋 (페이즈 전환 후 바로 스킬 사용 방지)
             multiSkillStrategy.ResetTimer(1.5f);
         }
@@ -169,8 +179,8 @@ public class BossAI : CreatureAI
 
             if (phasePattern != null)
             {
-                //bossPatternStartaegy.CleanAll();
-                //bossPatternStartaegy = null;
+                bossPatternStartaegy.CleanAll();
+                bossPatternStartaegy = null;
 
                 bossPatternStartaegy = BossStrategyFactory.CreatePatternStrategy(
                     phasePattern,
@@ -182,6 +192,7 @@ public class BossAI : CreatureAI
 
                 states[MonsterStateType.Pattern] = new PatternState(this, bossPatternStartaegy);
                 OnPatternChanged?.Invoke(bossPatternStartaegy);
+                Debug.Log(bossPatternStartaegy.ToString());
             }
             else
             {
@@ -238,7 +249,8 @@ public class BossAI : CreatureAI
 
             // 전략 설정
             skillStrategy = multiSkillStrategy;
-
+            Debug.Log($"[InitializeStrategies] 보스: {data.MonsterName}, 페이즈: {bossMonster.CurrentPhase}");
+            Debug.Log($"[InitializeStrategies] 스킬 구성 ID 개수: {currentPhaseData.skillConfigIds.Count}");
             Debug.Log(skillStrategy.ToString());
             // 페이즈 및 기믹 전략 초기화
             currentPhaseStrategy = BossStrategyFactory.CreatePhaseTransitionStrategy(
@@ -264,10 +276,10 @@ public class BossAI : CreatureAI
         }
 
         // 기존의 스킬 이펙트 초기화
-        InitializeSkillEffect(data);
+        //InitializeSkillEffect(data);
     }
 
-    private void InitializeSkillEffect(ICreatureData data)
+    public void InitializeSkillEffect(ICreatureData data)
     {
         ISkillEffect skillEffect = StrategyFactory.CreateSkillEffect(
             data.skillEffectType,

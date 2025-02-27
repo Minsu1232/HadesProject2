@@ -24,14 +24,34 @@ MonoBehaviour:
     transitionDuration: 2
     isInvulnerableDuringTransition: 0
     patternChangeTime: 5
-    availablePatterns: []
+    availablePatterns:
+    - patternName: BasicCombo
+      patternIndex: 0
+      patternType: 1
+      steps: []
+      patternWeight: 1
+      phaseNumber: 1
+      patternCooldown: 5
+      warningDuration: 1
+      healthThresholdMin: 0
+      healthThresholdMax: 1
+      patternStartEffect: {fileID: 0}
+      patternEndEffect: {fileID: 0}
+      warningMessage: Normal Attack Pattern
+      isDisabled: 0
+      requiredSuccessCount: 3
+      currentSuccessCount: 0
+      baseDifficulty: 1
+      maxDifficulty: 3
+      difficultyIncreaseStep: 0.5
+      currentDifficulty: 0
     phaseAttackStrategies:
     - type: 0
       weight: 0.5
     - type: 3
       weight: 0.5
     patternStrategyWeight: 0.4
-    skillConfigIds: 0100000002000000
+    skillConfigIds: 0100000004000000
     skillConfigWeights:
     - 1
     - 0
@@ -57,6 +77,7 @@ MonoBehaviour:
     specialMechanicValue: 0
     gimmicks:
     - gimmickName: StalactiteFallGimmick
+      gimmickNumber: 0
       type: 1
       triggerHealthThreshold: 0.6
       duration: 30
@@ -95,18 +116,19 @@ MonoBehaviour:
     isInvulnerableDuringTransition: 1
     patternChangeTime: 4
     availablePatterns:
-    - patternName: BasicCombo
-      patternType: 1
+    - patternName: JumpCombo
+      patternIndex: 1
+      patternType: 2
       steps: []
       patternWeight: 1
-      phaseNumber: 1
-      patternCooldown: 5
-      warningDuration: 1
+      phaseNumber: 2
+      patternCooldown: 15
+      warningDuration: 1.5
       healthThresholdMin: 0
-      healthThresholdMax: 1
+      healthThresholdMax: 0.9
       patternStartEffect: {fileID: 0}
       patternEndEffect: {fileID: 0}
-      warningMessage: Normal Attack Pattern
+      warningMessage: Rush Attack Incoming!
       isDisabled: 0
       requiredSuccessCount: 3
       currentSuccessCount: 0
@@ -143,53 +165,47 @@ MonoBehaviour:
     cutscenePath: 
     specialMechanicType: 
     specialMechanicValue: 0
-    gimmicks: []
+    gimmicks:
+    - gimmickName: StalactiteFallGimmick
+      gimmickNumber: 0
+      type: 1
+      triggerHealthThreshold: 0.6
+      duration: 30
+      isEnabled: 1
+      successCount: 3
+      moveSpeed: 10
+      hazardSpawnType: 1
+      targetType: 1
+      requirePlayerAction: 1
+      isInterruptible: 1
+      destroyAfterUse: 1
+      makeInvulnerable: 1
+      damageMultiplier: 2
+      failDamage: 1000
+      damage: 10
+      affectStatusEffects: 0
+      useCustomPosition: 1
+      gimmickPosition: {x: 10, y: 0, z: 10}
+      areaRadius: 5
+      followTarget: 1
+      collisionMask:
+        serializedVersion: 2
+        m_Bits: 2147483648
+      preparationTime: 1
+      repeatInterval: 0
+      warningEffect: {fileID: 0}
+      activeEffect: {fileID: 0}
+      hazardPrefab: {fileID: 7489191758440052081, guid: 3e867b08564d97942b4eac4fdfa17926, type: 3}
+      hazardPrefabKey: Stalactite
+      warningSound: {fileID: 0}
+      activeSound: {fileID: 0}
   - phaseName: Berserk
     isInvulnerable: 0
     phaseTransitionThreshold: 0
     transitionDuration: 2
     isInvulnerableDuringTransition: 1
     patternChangeTime: 3
-    availablePatterns:
-    - patternName: JumpCombo
-      patternType: 2
-      steps:
-      - attackType: 0
-        stepDelay: 0.2
-        hasMiniGame: 0
-        miniGameType: 0
-        waitForMiniGame: 0
-        miniGameDifficulty: 0
-        stepStartEffect: {fileID: 0}
-        stepEndEffect: {fileID: 0}
-        stepAnimationTrigger: 
-        isTransitionAnim: 0
-      - attackType: 3
-        stepDelay: 1
-        hasMiniGame: 1
-        miniGameType: 1
-        waitForMiniGame: 1
-        miniGameDifficulty: 1
-        stepStartEffect: {fileID: 0}
-        stepEndEffect: {fileID: 0}
-        stepAnimationTrigger: 
-        isTransitionAnim: 1
-      patternWeight: 1
-      phaseNumber: 2
-      patternCooldown: 15
-      warningDuration: 1.5
-      healthThresholdMin: 0
-      healthThresholdMax: 0.9
-      patternStartEffect: {fileID: 0}
-      patternEndEffect: {fileID: 0}
-      warningMessage: Rush Attack Incoming!
-      isDisabled: 0
-      requiredSuccessCount: 3
-      currentSuccessCount: 0
-      baseDifficulty: 1
-      maxDifficulty: 3
-      difficultyIncreaseStep: 0.5
-      currentDifficulty: 0
+    availablePatterns: []
     phaseAttackStrategies:
     - type: 0
       weight: 0.4
