@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
@@ -46,7 +47,6 @@ public class BossMultiSkillStrategy : ISkillStrategy
             Debug.Log($"스킬 전략 추가됨: {strategy.GetType().Name}, 가중치: {weight}");
         }
     }
-
     /// <summary>
     /// 설정 ID를 기반으로 미리 구성된 스킬 전략을 추가합니다.
     /// </summary>
@@ -60,52 +60,48 @@ public class BossMultiSkillStrategy : ISkillStrategy
         CreatureAI owner,
         ICreatureData data)
     {
-        Debug.Log($"[AddSkillStrategyFromConfig] 구성 ID: {configId}, 가중치: {weight}");
-        var config = SkillConfigManager.Instance.GetSkillConfig(configId);
-        Debug.Log($"[AddSkillStrategyFromConfig] 구성 로드: {config != null}");
-        Debug.Log("스킬컨피그 시작");
-        if (config == null)
+        try
         {
-            Debug.LogError($"스킬 구성을 찾을 수 없음: ID {configId}");
-            return;
+            Debug.Log($"[AddSkillStrategyFromConfig] 구성 ID: {configId}, 가중치: {weight}");
+
+            if (owner == null)
+            {
+                Debug.LogError("[AddSkillStrategyFromConfig] owner는 null일 수 없습니다.");
+                return;
+            }
+
+            if (data == null)
+            {
+                Debug.LogError("[AddSkillStrategyFromConfig] data는 null일 수 없습니다.");
+                return;
+            }
+
+            // SkillStrategyFactory를 통해 스킬 전략 생성
+            ISkillStrategy skillStrategy = SkillStrategyFactory.CreateFromConfig(configId, owner, data);
+
+            if (skillStrategy != null)
+            {
+                // 이미 동일한 전략이 있는지 확인
+                if (strategies.Contains(skillStrategy))
+                {
+                    Debug.LogWarning($"[AddSkillStrategyFromConfig] 해당 스킬 전략이 이미 존재합니다: {skillStrategy.GetType().Name}");
+                    return;
+                }
+
+                AddStrategy(skillStrategy, weight);
+                Debug.Log($"[AddSkillStrategyFromConfig] 스킬 전략 추가 완료: {skillStrategy.GetType().Name}, 가중치: {weight}");
+            }
+            else
+            {
+                Debug.LogError($"[AddSkillStrategyFromConfig] 스킬 전략 생성 실패: ID {configId}");
+            }
         }
-
-        // 각 구성 요소 생성
-        ISkillEffect skillEffect = StrategyFactory.CreateSkillEffect(config.effectType, data, owner);
-        IProjectileMovement moveStrategy = StrategyFactory.CreateProjectileMovement(config.moveType, data);
-        IProjectileImpact impactEffect = StrategyFactory.CreateProjectileImpact(config.impactType, data);
-             
-            // 스킬 전략 생성
-        ISkillStrategy skillStrategy = StrategyFactory.CreateSkillStrategy(config.strategyType, owner);
-
-
-        // 전략에 컴포넌트 주입
-        if (skillStrategy is ISkillStrategyComponentInjection injectionStrategy)
+        catch (Exception e)
         {
-            injectionStrategy.SetSkillEffect(skillEffect);
-            injectionStrategy.SetProjectileMovement(moveStrategy);
-            injectionStrategy.SetProjectileImpact(impactEffect);
+            Debug.LogError($"[AddSkillStrategyFromConfig] 오류 발생: {e.Message}\n{e.StackTrace}");
         }
-
-
-        // 버프 스킬인 경우 BuffData 설정
-        if (config.strategyType == SkillStrategyType.Buff && data is BossData bossData)
-        {
-            // 커스텀 버프 데이터 생성
-            BuffData buffData = new BuffData();
-
-            // 버프 타입, 지속시간, 수치값 파싱 및 설정
-            buffData.buffTypes = ParseBuffTypes(config.buffTypes);
-            buffData.durations = ParseFloatArray(config.buffDurations);
-            buffData.values = ParseFloatArray(config.buffValues);
-
-            // 보스 데이터에 버프 데이터 업데이트
-            bossData.buffData = buffData;
-        }
-        skillStrategy.Initialize(skillEffect);
-        skillStrategy.SkillRange = data.skillRange;
-        AddStrategy(skillStrategy, weight);
     }
+
 
     // 버프 타입 문자열을 BuffType 배열로 변환
     private BuffType[] ParseBuffTypes(string buffTypesString)
@@ -234,7 +230,7 @@ public class BossMultiSkillStrategy : ISkillStrategy
             return defaultStrategy;
 
         float totalWeight = availableStrategies.Sum(s => weights[s]);
-        float random = Random.Range(0f, totalWeight);
+        float random = UnityEngine.Random.Range(0f, totalWeight);
         float cumulative = 0f;
 
         foreach (var strategy in availableStrategies)

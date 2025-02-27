@@ -276,3 +276,16 @@ Commit = Alexander/AttackStrategy/Charge
 Commit = Alenxader/SkillConfig/ing
 		
 		
+2/27 - 스킬전략시스템 리팩토링 개선 => 현재 알고보니 스킬전략의 skillEffect전략(여기서 무브나 각종 전략도 추가됨)이 전략공장에서 스크립터블데이터 통해 주입됨.
+
+		따라서 SkillStrategyFactory를 새로 만들어 BossMultiSkillStrategy에서 스킬 생성 로직을 분리하여 새로운 팩토리 클래스로 이동
+
+		여기서 이미 구성된 스킬 ID값을 통해 스킬 전략을 생성하는 책임 부여
+
+		BossMultiSkillStrategy: 스킬 전략 컨테이너 역할(관리, 선택, 실행)에 집중
+
+		SkillStrategyFactory: 스킬 ID로부터 스킬 전략 객체 생성 담당 => StrategyFactory의 매서드와 config에 담긴 타입들 이용함
+
+		StrategyFactory: 개별 전략 컴포넌트 생성 담당
+
+Commit = SkillStrategyRefactorin/SkillStrategyFactory
