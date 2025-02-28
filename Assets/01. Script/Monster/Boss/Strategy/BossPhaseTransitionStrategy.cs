@@ -45,7 +45,7 @@ public class BossPhaseTransitionStrategy : IPhaseTransitionStrategy
             isComplete = true;
             // 새 페이즈의 공격 전략 설정
             Debug.Log(phaseData.phaseName);
-            Debug.Log(phaseData.phaseAttackStrategies[0]);
+          
 
             // 페이즈 전환 시 모든 전략 업데이트
             bossAI.UpdatePhaseStrategies();
@@ -57,7 +57,7 @@ public class BossPhaseTransitionStrategy : IPhaseTransitionStrategy
                 boss.CurrentPhaseData.isInvulnerableDuringTransition = false;  // 이 부분은 필요했던 거네요!
                 Debug.Log("변화완료");
 
-                Debug.Log(boss.CurrentAttackSpeed);
+                Debug.Log(boss.CurrentPhase);
             }
         }
     }

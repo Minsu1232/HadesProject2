@@ -1,7 +1,7 @@
 ConfigID,StrategyType,EffectType,MoveType,ImpactType,ConfigName,BuffTypes,BuffDurations,BuffValues
 1,Basic,Projectile,Straight,Basic,BasicStraightShot,None,0,0
 2,Basic,Projectile,Parabolic,Poison,PoisonAreaParabolicShot,None,0,0
-3,Buff,Buff,Straight,None,BuffAura,AttackUp|SpeedUp|AttackSpeedUp,5|5|5,10|1|0.3
+3,Basic,Buff,None,None,BuffAura,AttackUp|SpeedUp|AttackSpeedUp,5|5|5,10|1|0.3
 4,MultiShot,Projectile,Parabolic,Basic,MultiParabolicShot,None,0,0
 5,MultiShot,Projectile,StraightRotation,Basic,,None,,
-6,Buff,Buff,Straight,None,,AttackUp|SpeedUp|AttackSpeedUp,7|7|7,15|1|0.5
+6,Buff,Buff,None,None,,AttackUp|SpeedUp|AttackSpeedUp,7|7|7,15|1|0.5

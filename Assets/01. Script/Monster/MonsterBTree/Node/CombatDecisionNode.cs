@@ -31,9 +31,11 @@ public class CombatDecisionNode : BTNode
             monster.GetPlayerPosition()
         );
 
-       
+        Debug.Log(skillStrategy.ToString());
+        Debug.Log(skillStrategy.CanUseSkill(distanceToPlayer, monster));
         if (skillStrategy.CanUseSkill(distanceToPlayer, monster))
         {
+            Debug.Log("스킬 가능합니다");
             owner.ChangeState(MonsterStateType.Skill);
             return NodeStatus.Success;
         }

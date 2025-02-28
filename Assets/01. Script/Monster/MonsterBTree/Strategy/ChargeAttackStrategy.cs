@@ -215,6 +215,7 @@ public class ChargeAttackStrategy : BasePhysicalAttackStrategy
             // 보스가 플레이어를 정확히 바라보도록 회전
             transform.rotation = Quaternion.LookRotation(chargeDirection);
             currentChargeState = ChargeState.Charging;
+            Debug.Log("똘징");
             currentChargeTime = 0f;
 
             OnChargeStateChanged?.Invoke();  // 차지 상태로 변경 시 이벤트 발생

@@ -24,11 +24,14 @@ public class BasicSkillStrategy : ISkillStrategy
     public void Initialize(ISkillEffect effect)
     {
         this.skillEffect = effect;
-      
+        Debug.Log("Initialize 호출됨: " + new System.Diagnostics.StackTrace());
     }
 
+
     public void StartSkill(Transform transform, Transform target, IMonsterClass monsterData)
-    {
+    {// StartSkill 메서드 시작 부분에
+        Debug.Log($"StartSkill: 보스={monsterData.MONSTERNAME}, 스킬쿨={monsterData.CurrentSkillCooldown}, 스킬지속시간={monsterData.CurrentSKillDuration}");
+        Debug.Log("!!!!!!!!!!!" + "시ㅏ작했으");
         skillCoolTime = monsterData.CurrentSkillCooldown;
         skillDuration = monsterData.CurrentSKillDuration;
         skillEffect.Initialize(monsterStatus, target);
@@ -44,14 +47,16 @@ public class BasicSkillStrategy : ISkillStrategy
 
     public void UpdateSkill(Transform transform, Transform target, IMonsterClass monsterData)
     {
+        Debug.Log("@@@@@#@#!" + "들어왔으?");
         if (!isUsingSkill) return;
-       
+        Debug.Log("@@@@@#@#!" + "들어왔으!");
         skillTimer += Time.deltaTime;
-
+        // UpdateSkill 메서드 안에서 조건 직전에
+        Debug.Log($"조건 검사: skillTimer={skillTimer}, skillDuration={skillDuration}, hasExecutedSkill={hasExecutedSkill}");
         // 스킬 시전 시간이 되었고, 아직 실행되지 않았다면 실행
         if (skillTimer >= skillDuration && !hasExecutedSkill)
         {
-           
+            Debug.Log("실행됐으");
             skillEffect.Execute();  // 실제 스킬 실행
             hasExecutedSkill = true;
         }
@@ -65,6 +70,7 @@ public class BasicSkillStrategy : ISkillStrategy
 
     private void CompleteSkill()
     {
+        Debug.Log("실행됐으22222222");
         isUsingSkill = false;
         skillComplete = true;
         hasExecutedSkill = false;

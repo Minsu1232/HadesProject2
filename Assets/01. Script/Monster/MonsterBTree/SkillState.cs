@@ -1,4 +1,5 @@
 using System;
+using UnityEditor.Rendering;
 using UnityEngine;
 using static IMonsterState;
 
@@ -34,6 +35,7 @@ public class SkillState : MonsterBaseState
 
     private void ResetSkillState()
     {
+        Debug.Log("스킬시간초기화");
         skillTimer = 0f;
         isSkillAnimationComplete = false;
         hasSkillStarted = false;
@@ -106,6 +108,20 @@ public class SkillState : MonsterBaseState
 
         try
         {
+            // 널 참조 디버깅
+            if (skillStrategy == null) Debug.LogError("skillStrategy is null");
+            if (transform == null) Debug.LogError("transform is null");
+            if (player == null) Debug.LogError("player is null");
+            if (monsterClass == null) Debug.LogError("monsterClass is null");
+
+            // 조건 검사 추가
+            if (player == null || monsterClass == null)
+            {
+                Debug.LogError("필수 참조가 없습니다: player 또는 monsterClass가 null입니다.");
+                ForceCompleteSkill();
+                return;
+            }
+
             // 여기서 스킬 전략에서 내부적으로 발사 횟수를 관리하도록 시작
             skillStrategy.StartSkill(transform, player, monsterClass);
             hasSkillStarted = true;
@@ -114,7 +130,7 @@ public class SkillState : MonsterBaseState
         }
         catch (Exception e)
         {
-            Debug.LogError($"Error in OnSkillStart: {e.Message}");
+            Debug.LogError($"Error in OnSkillStart: {e.Message}\nStackTrace: {e.StackTrace}");
             ForceCompleteSkill();
         }
     }
@@ -127,10 +143,16 @@ public class SkillState : MonsterBaseState
             Debug.Log("돌아가요~");
             return;
         }
-        
 
         try
         {
+            // 널 참조 검사
+            if (player == null || monsterClass == null)
+            {
+                Debug.LogError("OnSkillEffect: player 또는 monsterClass가 null입니다.");
+                return;
+            }
+
             // 스킬 전략 내부에서 발사 횟수를 카운팅하고,
             // 최대 횟수 도달 시 내부적으로 CompleteSkill을 처리하도록 한다.
             skillStrategy.UpdateSkill(transform, player, monsterClass);
@@ -139,7 +161,7 @@ public class SkillState : MonsterBaseState
         }
         catch (Exception e)
         {
-            Debug.LogError($"Error in OnSkillEffect: {e.Message}");
+            Debug.LogError($"Error in OnSkillEffect: {e.Message}\nStackTrace: {e.StackTrace}");
             ForceCompleteSkill();
         }
     }

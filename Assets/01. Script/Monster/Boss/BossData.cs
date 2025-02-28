@@ -29,6 +29,7 @@ public class AttackPatternData
 {
     [Header("Pattern Settings")]
     public string patternName;
+    public int patternIndex;
     public BossPatternType patternType;  // 추가
     public List<AttackStepData> steps = new List<AttackStepData>();
     public float patternWeight = 1.0f;
@@ -66,6 +67,7 @@ public class GimmickData
 {
     [Header("Gimmick Base Settings")]
     public string gimmickName;//
+    public int gimmickNumber;
     public GimmickType type;//
     public float triggerHealthThreshold;//
     public float duration;//
@@ -134,6 +136,10 @@ public class PhaseData
     public List<AttackPatternData> availablePatterns = new List<AttackPatternData>();  // patternWeights 대체
     public List<AttackStrategyWeight> phaseAttackStrategies = new List<AttackStrategyWeight>();
     public float patternStrategyWeight = 0.4f;  // 기본값 0.4
+    [Header("Skill Config Settings")]
+    public List<int> skillConfigIds = new List<int>();          // 스킬 구성 ID 리스트
+    public List<float> skillConfigWeights = new List<float>();  // 각 스킬 구성의 선택 가중치
+    public float skillStrategyWeight = 0.4f;                    // 스킬 전략의 전체 가중치 (기본값 0.4)
     [Header("Strategy Settings")]
     public MovementStrategyType moveType;
     public AttackStrategyType attackType;
@@ -176,7 +182,7 @@ public class BossData : MonsterData
     public float rageModeDuration;
     public bool invincibleOnSpawn;
     public float aggroRange;
-
+    public int BossID { get; set; }
     [Header("Phase Settings")]
     public List<PhaseData> phaseData;
     public int phaseCount;

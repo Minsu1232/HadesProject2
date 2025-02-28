@@ -117,6 +117,7 @@ public abstract class CreatureAI : MonoBehaviour, ICreatureAI
     public void OnSkillStart()
     {
         (currentState as SkillState)?.OnSkillStart();
+        
     }
 
     public void OnSkillEffect()
