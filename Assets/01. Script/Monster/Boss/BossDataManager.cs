@@ -24,7 +24,8 @@ public class BossDataManager : Singleton<BossDataManager>
     // 챕터보스고유데이터
     private Dictionary<string, Dictionary<string, string>> alexanderBossData = new Dictionary<string, Dictionary<string, string>>();
 
-
+    // 보스별 스킬 프리팹 매핑을 위한 딕셔너리 추가
+    private Dictionary<int, Dictionary<int, GameObject>> bossSkillPrefabMap = new Dictionary<int, Dictionary<int, GameObject>>();
 
     private string bossBasePath;
     private string bossPhasePath;
@@ -308,10 +309,45 @@ public class BossDataManager : Singleton<BossDataManager>
             }
 
             bossSkillPrefabData[bossId].Add(prefabDict);
+
+            // 스킬별 프리팹 매핑 처리 추가
+            if (prefabDict.ContainsKey("SkillConfigID") &&
+                !string.IsNullOrEmpty(prefabDict["SkillConfigID"]) &&
+                int.TryParse(prefabDict["SkillConfigID"], out int skillConfigId))
+            {
+                string projectilePrefabPath = prefabDict["ProjectilePrefab"];
+                if (!string.IsNullOrEmpty(projectilePrefabPath))
+                {
+                    // 프리팹 로드
+                    var handle = Addressables.LoadAssetAsync<GameObject>(projectilePrefabPath);
+                    GameObject prefab = await handle.Task;
+
+                    // 매핑 저장
+                    if (!bossSkillPrefabMap.ContainsKey(bossId))
+                        bossSkillPrefabMap[bossId] = new Dictionary<int, GameObject>();
+
+                    bossSkillPrefabMap[bossId][skillConfigId] = prefab;
+                    Debug.Log($"보스 {bossId}의 스킬 {skillConfigId}에 프리팹 {projectilePrefabPath} 매핑됨");
+                }
+            }
         }
 
         Debug.Log($"bossSkillPrefabData 로드 완료: {bossSkillPrefabData.Count}개의 보스 프리팹 데이터 로드됨");
     }
+    // 스킬별 프리팹 가져오는 메서드
+    public GameObject GetSkillPrefab(int bossId, int skillConfigId)
+    {
+        if (bossSkillPrefabMap.TryGetValue(bossId, out var prefabMap) &&
+            prefabMap.TryGetValue(skillConfigId, out var prefab))
+        {
+            return prefab;
+        }
+
+        // 매핑이 없으면 보스의 기본 프로젝타일 프리팹 반환
+        var bossData = GetBossData(bossId);
+        return bossData?.projectilePrefab;
+    }
+
     private async Task LoadBossCutsceneData()
     {
         if (!File.Exists(bossCutscenePath)) return;
@@ -364,7 +400,8 @@ public class BossDataManager : Singleton<BossDataManager>
     }
 
     private void UpdateBossData(BossData bossData, int bossId)
-    {
+    { // 보스 ID 설정
+        bossData.BossID = bossId;
         if (bossBaseData.TryGetValue(bossId, out var baseData))
         {
             UpdateBossBaseData(bossData, baseData);

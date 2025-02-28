@@ -182,7 +182,7 @@ public class BossData : MonsterData
     public float rageModeDuration;
     public bool invincibleOnSpawn;
     public float aggroRange;
-
+    public int BossID { get; set; }
     [Header("Phase Settings")]
     public List<PhaseData> phaseData;
     public int phaseCount;

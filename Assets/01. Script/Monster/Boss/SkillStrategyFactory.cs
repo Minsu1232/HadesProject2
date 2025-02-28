@@ -38,13 +38,36 @@ public static class SkillStrategyFactory
             IProjectileMovement moveStrategy = StrategyFactory.CreateProjectileMovement(config.moveType, data);
             IProjectileImpact impactEffect = StrategyFactory.CreateProjectileImpact(config.impactType, data);
 
-            // 커스텀 SkillEffect 생성 - 중요 수정: 직접 ProjectileSkillEffect 생성
+            // 커스텀 SkillEffect 생성
             ISkillEffect skillEffect = null;
 
+            // 프로젝타일 이펙트인 경우 커스텀 프리팹 확인
+            if (config.effectType == SkillEffectType.Projectile && data is BossData bossData)
+            {
+                // 보스 데이터인 경우 스킬별 커스텀 프리팹 확인
+                int bossId = bossData.BossID;
+                GameObject customPrefab = BossDataManager.Instance.GetSkillPrefab(bossId, configId);
 
-                // 다른 이펙트 타입은 기존 StrategyFactory 활용
+                if (customPrefab != null)
+                {
+                    // 커스텀 프리팹으로 ProjectileSkillEffect 생성
+                    skillEffect = new ProjectileSkillEffect(
+                        customPrefab,      // 커스텀 프리팹 사용
+                        data.projectileSpeed,
+                        moveStrategy,
+                        impactEffect,
+                        data.hitEffect
+                    );
+
+                    Debug.Log($"[SkillStrategyFactory] 보스 {bossId}의 스킬 {configId}에 커스텀 프리팹 사용");
+                }
+            }
+
+            // 커스텀 프리팹이 없거나 다른 이펙트 타입인 경우 기본 생성
+            if (skillEffect == null)
+            {
                 skillEffect = StrategyFactory.CreateSkillEffect(config.effectType, data, owner);
-            
+            }
 
             if (skillEffect == null)
             {
@@ -62,9 +85,9 @@ public static class SkillStrategyFactory
             }
 
             // 버프 스킬 처리
-            if (config.strategyType == SkillStrategyType.Buff && data is BossData bossData)
+            if (config.strategyType == SkillStrategyType.Buff && data is BossData bossBuffData)
             {
-                SetupBuffData(config, bossData);
+                SetupBuffData(config, bossBuffData);
             }
 
             // 스킬 초기화 (컴포넌트 주입 후)

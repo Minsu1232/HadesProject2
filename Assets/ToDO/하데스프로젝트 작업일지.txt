@@ -289,3 +289,28 @@ Commit = Alenxader/SkillConfig/ing
 		StrategyFactory: 개별 전략 컴포넌트 생성 담당
 
 Commit = SkillStrategyRefactorin/SkillStrategyFactory
+
+2/28 = 전날 리팩토링에서 추가적으로 Boss별 skillConfigid마다 다른 프리팹 사용을 위한 개선 (ex) bossid : 1 configid : 1 prefabkey : A , bossid : 1 configid : 2 prefabkey : b)
+
+	흐름 - BossPrefabs.csv에 SkillConfigID 추가 CSV 파일에서 데이터 로드 → BossDataManager의 딕셔너리에 저장
+		   bossSkillPrefabMap이라는 이중 딕셔너리
+		   키1: 보스ID, 키2: 스킬컨피그ID, 값: 프리팹 GameObject
+	
+		스킬 생성 시 SkillStrategyFactory가 스킬 컨피그ID와 보스 ID를 기반으로 매핑된 프리팹 요청
+
+		BossDataManager가 적절한 프리팹 제공 (없으면 기본 프리팹 반환)
+
+		해당 프리팹으로 ProjectileSkillEffect 생성하여 스킬 구현
+
+		BossDataManager: 데이터 로드, 저장 및 제공
+		SkillStrategyFactory: 스킬 생성 및 맞춤형 프리팹 적용
+		ProjectileSkillEffect: 실제 스킬 효과 실행
+
+		리팩토링한 스킬전략 시스템 매뉴얼
+
+		다음 진행할 리팩토링 - 스킬에 계수를추가하여 기존 스킬데미지 하나를 이용해 다양한 데미지 구현
+
+Commit = SkillStrategyRefactorin/SkillStrategyFactory/PrefabAdd
+
+		
+		   
