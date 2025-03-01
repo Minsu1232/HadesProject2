@@ -312,5 +312,15 @@ Commit = SkillStrategyRefactorin/SkillStrategyFactory
 
 Commit = SkillStrategyRefactorin/SkillStrategyFactory/PrefabAdd
 
-		
+3/1 = 스킬계수 추가 완료 => skillConfig에 계수를 추가 csv에도 추가하여 작성 => ISkillEffect를 받은 스크립트(현잰ProjectileEffect)에서 스킬데미지를 관리
+
+	
+	기존구조는 스킬데미지를 바로받아서 할당 => 이제 skill전략팩토리에서 제작된 스킬의 계수를 받아 ISkillEffect의 Initialize해줌(기존 Initialize를 유지한채 오버로딩(데미지계수 추가))
+	SkillEffect는 실제 스킬의 사실상 모든걸 담당함
+	=> 현재 보스만 skillConfig로 스킬을 할당중
+
+	기존 ProjectileParabolicMovement의 이동이 이상했는데, 이유는 skillProjectileSpeed가 높으면 너무 멀리가는게 문제임 => 바꿔야함
+	
+
+Commit = Notebook/SKillDamageDamagemutiplerAdd
 		   
