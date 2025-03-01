@@ -58,7 +58,12 @@ public static class SkillStrategyFactory
                         impactEffect,
                         data.hitEffect
                     );
-
+                    // 중요: 여기서 ProjectileSkillEffect의 Initialize 직접 호출하여 데미지 계수 전달
+                    (skillEffect as ProjectileSkillEffect)?.Initialize(
+                        owner.GetStatus(),
+                        null, // target은 스킬 시작 시 설정됨
+                        config.damageMultiplier // 데미지 계수 적용
+                    );
                     Debug.Log($"[SkillStrategyFactory] 보스 {bossId}의 스킬 {configId}에 커스텀 프리팹 사용");
                 }
             }
@@ -67,6 +72,16 @@ public static class SkillStrategyFactory
             if (skillEffect == null)
             {
                 skillEffect = StrategyFactory.CreateSkillEffect(config.effectType, data, owner);
+
+                // 프로젝타일 이펙트인 경우 Initialize 호출
+                if (config.effectType == SkillEffectType.Projectile)
+                {
+                    (skillEffect as ProjectileSkillEffect)?.Initialize(
+                        owner.GetStatus(),
+                        null, // target은 스킬 시작 시 설정됨
+                        config.damageMultiplier
+                    );
+                }
             }
 
             if (skillEffect == null)

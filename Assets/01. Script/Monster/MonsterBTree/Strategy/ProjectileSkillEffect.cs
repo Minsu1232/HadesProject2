@@ -13,6 +13,7 @@ public class ProjectileSkillEffect : ISkillEffect
     private IProjectileMovement moveStrategy;
     private IProjectileImpact impactEffect;
     private Transform spawnPoint;  // 스킬 발사 위치
+    private float damageMultiplier = 1.0f; // 데미지 계수 기본값
 
     public ProjectileSkillEffect(GameObject prefab, float speed,
         IProjectileMovement moveStrategy, IProjectileImpact impactEffect, GameObject hitEffect)
@@ -25,7 +26,23 @@ public class ProjectileSkillEffect : ISkillEffect
        
     }
 
+    // 기존 Initialize 메서드 유지 (호환성)
     public void Initialize(ICreatureStatus status, Transform target)
+    {
+        // 기본 데미지 계수 1.0으로 내부 메서드 호출
+        InitializeInternal(status, target, this.damageMultiplier);
+    }
+
+    // 새로운 Initialize 메서드 (데미지 계수 추가)
+    public void Initialize(ICreatureStatus status, Transform target, float damageMultiplier)
+    {
+        // 데미지 계수를 저장하고 내부 메서드 호출
+        this.damageMultiplier = damageMultiplier;
+        InitializeInternal(status, target, damageMultiplier);
+    }
+
+    // 실제 초기화 로직을 담당하는 내부 메서드
+    private void InitializeInternal(ICreatureStatus status, Transform target, float damageMultiplier)
     {
         try
         {
@@ -37,7 +54,11 @@ public class ProjectileSkillEffect : ISkillEffect
 
             this.monsterStatus = status;
             this.target = target;
-            this.skillDamage = status.GetMonsterClass().CurrentSkillDamage;
+
+            // 기본 스킬 데미지에 계수 적용
+            float baseSkillDamage = status.GetMonsterClass().CurrentSkillDamage;
+            this.skillDamage = Mathf.RoundToInt(baseSkillDamage * damageMultiplier);
+
             this.spawnPoint = status.GetSkillSpawnPoint();
 
             // moveStrategy가 null이면 로그만 남기고 계속 진행
@@ -47,19 +68,21 @@ public class ProjectileSkillEffect : ISkillEffect
                 // 필요시 여기서 기본 이동 전략으로 설정할 수 있음
                 moveStrategy = new StraightMovement();
             }
+
+            Debug.Log($"ProjectileSkillEffect 초기화 완료: 데미지={skillDamage} (기본값 x{damageMultiplier})");
         }
         catch (Exception e)
         {
             Debug.LogError($"ProjectileSkillEffect.Initialize 오류: {e.Message}\n{e.StackTrace}");
         }
-
-
-
-
-
     }
 
-    public void Execute()
+
+
+
+
+
+public void Execute()
     {
         try
         {

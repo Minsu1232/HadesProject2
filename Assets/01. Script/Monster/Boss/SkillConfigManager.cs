@@ -79,7 +79,8 @@ public class SkillConfigManager : Singleton<SkillConfigManager>
                     buffDurations,
                     buffValues
                 );
-
+                string damageMultiplier = values.Length > 9 ? values[9] : "1.0";
+                config.damageMultiplier = float.Parse(damageMultiplier);
                 skillConfigs[configId] = config;
                 Debug.Log($"스킬 구성 로드: ID {configId}, 이름 {configName}");
             }
