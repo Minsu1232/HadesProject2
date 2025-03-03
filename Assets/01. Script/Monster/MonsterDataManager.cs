@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.IO;
+using System.Runtime.InteropServices;
 using System.Threading.Tasks;
 using UnityEngine;
 using UnityEngine.AddressableAssets;
@@ -109,7 +110,7 @@ public class MonsterDataManager : Singleton<MonsterDataManager>
                 prefabData.projectilePrefab = await LoadPrefab(values[5]);
                 prefabData.hitEffect = await LoadPrefab(values[6]);
                 prefabData.eliteOutlineMaterial = await LoadMaterial(values[7]);
-
+                prefabData.howlEffectPrefab = await LoadPrefab(values[8]);
                 // 프리팹 데이터를 별도 딕셔너리에 저장
                 monsterPrefabData[monsterId] = prefabData;
                 Debug.Log($"몬스터 프리팹 로드 완료: ID {monsterId}");
@@ -449,6 +450,10 @@ public class MonsterDataManager : Singleton<MonsterDataManager>
             monsterData.multiShotInterval = float.Parse(skills["MultiShotInterval"]);
             monsterData.projectileRotationAxis = ParseVector3(skills["ProjectileRotationAxis"]);
             monsterData.projectileRotationSpeed = float.Parse(skills["ProjectileRotationSpeed"]);
+            monsterData.heightFactor = float.Parse(skills["HeightFactor"]);
+            monsterData.howlRadius = float.Parse(skills["HowlRadius"]);
+            monsterData.howlEssenceAmount = float.Parse(skills["HowlEssenceAmount"]);
+            monsterData.howlDuration = float.Parse(skills["howlDuration"]);
         }
     }
     private Vector3 ParseVector3(string vectorString)

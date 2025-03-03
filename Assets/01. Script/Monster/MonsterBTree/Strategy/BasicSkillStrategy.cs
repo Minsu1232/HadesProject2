@@ -15,10 +15,11 @@ public class BasicSkillStrategy : ISkillStrategy
     public bool IsSkillComplete => skillComplete;
     public bool IsUsingSkill => isUsingSkill;
     public float GetLastSkillTime => lastSkillTime;
-
+    public Transform Target { get; set; } // 鸥百 加己 备泅
     public BasicSkillStrategy(CreatureAI owner)
     {
         monsterStatus = owner.GetStatus();
+        Target = null;
     }
 
     public void Initialize(ISkillEffect effect)
@@ -83,4 +84,5 @@ public class BasicSkillStrategy : ISkillStrategy
                Time.time > lastSkillTime + skillCoolTime &&
                distanceToTarget <= SkillRange;
     }
+
 }

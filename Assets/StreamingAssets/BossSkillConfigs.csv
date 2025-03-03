@@ -1,7 +1,8 @@
-ConfigID,StrategyType,EffectType,MoveType,ImpactType,ConfigName,BuffTypes,BuffDurations,BuffValues,DamageMultiplier
-1,Basic,Projectile,Straight,Basic,BasicStraightShot,None,0,0,5
-2,Basic,Projectile,Parabolic,Poison,PoisonAreaParabolicShot,None,0,0,0.3
-3,Buff,Buff,Straight,None,BuffAura,AttackUp|SpeedUp|AttackSpeedUp,5|5|5,10|1|0.3,0
-4,MultiShot,Projectile,Parabolic,Basic,MultiParabolicShot,None,0,0,10
-5,MultiShot,Projectile,StraightRotation,Basic,,None,,,0.25
-6,Buff,Buff,Straight,None,,AttackUp|SpeedUp|AttackSpeedUp,7|7|7,15|1|0.5,0
+ConfigID,StrategyType,EffectType,MoveType,ImpactType,ConfigName,BuffTypes,BuffDurations,BuffValues,DamageMultiplier,SpeedMultiplier
+1,Basic,Projectile,Straight,Basic,BasicStraightShot,None,0,0,5,1
+2,Basic,Projectile,Parabolic,Poison,PoisonAreaParabolicShot,None,0,0,0.3,0.5
+3,Buff,Buff,Straight,None,BuffAura,AttackUp|SpeedUp|AttackSpeedUp,5|5|5,10|1|0.3,0,1
+4,MultiShot,Projectile,Parabolic,Basic,MultiParabolicShot,None,0,0,10,0.5
+5,MultiShot,Projectile,StraightRotation,Basic,,None,,,0.25,1
+6,Buff,Buff,Straight,None,,AttackUp|SpeedUp|AttackSpeedUp,7|7|7,15|1|0.5,0,1
+7,Area,Howl,Straight,Damage,HowlSkill,None,0,0,2,0

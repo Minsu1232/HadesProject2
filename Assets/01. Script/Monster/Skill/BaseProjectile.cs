@@ -12,6 +12,7 @@ public abstract class BaseProjectile : MonoBehaviour
     public bool isInitialized = false;
 
     public float speed;
+    public float heightFactor;
     public float damage;
     public bool isLaunched = false;
 
@@ -19,7 +20,7 @@ public abstract class BaseProjectile : MonoBehaviour
     public IProjectileImpact impactEffect;
 
     public virtual void Initialize(Vector3 startPos, Transform target, float speed, float damage,
-        IProjectileMovement moveStrategy, IProjectileImpact impactEffect, GameObject hitEffect)
+        IProjectileMovement moveStrategy, IProjectileImpact impactEffect, GameObject hitEffect,float heightFactor)
     {
         this.startPos = startPos;
         this.target = target;
@@ -29,7 +30,7 @@ public abstract class BaseProjectile : MonoBehaviour
         this.moveStrategy = moveStrategy;
         this.impactEffect = impactEffect;
         this.hitEffect = hitEffect;
-
+        this.heightFactor = heightFactor;
         transform.position = startPos;
         SetInitialDirection(startPos);
 

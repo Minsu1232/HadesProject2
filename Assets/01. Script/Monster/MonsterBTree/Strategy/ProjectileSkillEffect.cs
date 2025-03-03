@@ -8,41 +8,45 @@ public class ProjectileSkillEffect : ISkillEffect
     private Transform target;
     private GameObject projectilePrefab;
     private GameObject hitEffect;
-    private float projectileSpeed;
+    private float projectileSpeed; // 계수가 계산된 속도값
+    private float defaultProjectileSpeed; // 데이터에서 받은 디폴트값
     private float skillDamage;
     private IProjectileMovement moveStrategy;
     private IProjectileImpact impactEffect;
     private Transform spawnPoint;  // 스킬 발사 위치
     private float damageMultiplier = 1.0f; // 데미지 계수 기본값
+    private float speedMultiplier = 1.0f; // 스피드 계수 기본값
+    private float heightFactor; // 포물선 이동 높이
 
     public ProjectileSkillEffect(GameObject prefab, float speed,
-        IProjectileMovement moveStrategy, IProjectileImpact impactEffect, GameObject hitEffect)
+        IProjectileMovement moveStrategy, IProjectileImpact impactEffect, GameObject hitEffect, float heightFactor)
     {
         this.projectilePrefab = prefab;
-        this.projectileSpeed = speed;
+        this.defaultProjectileSpeed = speed;
         this.moveStrategy = moveStrategy;
         this.impactEffect = impactEffect;
         this.hitEffect = hitEffect;
-       
+        this.heightFactor = heightFactor;
     }
 
     // 기존 Initialize 메서드 유지 (호환성)
     public void Initialize(ICreatureStatus status, Transform target)
     {
         // 기본 데미지 계수 1.0으로 내부 메서드 호출
-        InitializeInternal(status, target, this.damageMultiplier);
+        InitializeInternal(status, target, this.damageMultiplier, this.speedMultiplier);
     }
 
     // 새로운 Initialize 메서드 (데미지 계수 추가)
-    public void Initialize(ICreatureStatus status, Transform target, float damageMultiplier)
+    public void Initialize(ICreatureStatus status, Transform target, float damageMultiplier, float speedMultiplier)
     {
         // 데미지 계수를 저장하고 내부 메서드 호출
         this.damageMultiplier = damageMultiplier;
-        InitializeInternal(status, target, damageMultiplier);
+        this.speedMultiplier = speedMultiplier;
+        InitializeInternal(status, target, damageMultiplier,speedMultiplier);
     }
 
     // 실제 초기화 로직을 담당하는 내부 메서드
-    private void InitializeInternal(ICreatureStatus status, Transform target, float damageMultiplier)
+    private void InitializeInternal(ICreatureStatus status, Transform target, float damageMultiplier, float speedMultiplier)
     {
         try
         {
@@ -57,8 +61,8 @@ public class ProjectileSkillEffect : ISkillEffect
 
             // 기본 스킬 데미지에 계수 적용
             float baseSkillDamage = status.GetMonsterClass().CurrentSkillDamage;
-            this.skillDamage = Mathf.RoundToInt(baseSkillDamage * damageMultiplier);
-
+            this.skillDamage = Mathf.RoundToInt(baseSkillDamage * damageMultiplier); // 계산된 데미지
+            this.projectileSpeed = Mathf.RoundToInt(defaultProjectileSpeed * speedMultiplier); // 계산된 속도
             this.spawnPoint = status.GetSkillSpawnPoint();
 
             // moveStrategy가 null이면 로그만 남기고 계속 진행
@@ -121,7 +125,7 @@ public void Execute()
                 IProjectileMovement actualMoveStrategy = moveStrategy ?? new StraightMovement();
 
                 skillProjectile.Initialize(spawnPoint.position, target,
-                    projectileSpeed, skillDamage, actualMoveStrategy, impactEffect, hitEffect);
+                    projectileSpeed, skillDamage, actualMoveStrategy, impactEffect, hitEffect, heightFactor);
                 skillProjectile.Launch();
             }
             else

@@ -47,40 +47,117 @@ public static class SkillStrategyFactory
                 // 보스 데이터인 경우 스킬별 커스텀 프리팹 확인
                 int bossId = bossData.BossID;
                 GameObject customPrefab = BossDataManager.Instance.GetSkillPrefab(bossId, configId);
+                GameObject customHitPrefab = BossDataManager.Instance.GetSkillImpactPrefab(bossId, configId);
+
 
                 if (customPrefab != null)
                 {
-                    // 커스텀 프리팹으로 ProjectileSkillEffect 생성
-                    skillEffect = new ProjectileSkillEffect(
-                        customPrefab,      // 커스텀 프리팹 사용
-                        data.projectileSpeed,
-                        moveStrategy,
-                        impactEffect,
-                        data.hitEffect
-                    );
-                    // 중요: 여기서 ProjectileSkillEffect의 Initialize 직접 호출하여 데미지 계수 전달
-                    (skillEffect as ProjectileSkillEffect)?.Initialize(
-                        owner.GetStatus(),
-                        null, // target은 스킬 시작 시 설정됨
-                        config.damageMultiplier // 데미지 계수 적용
-                    );
-                    Debug.Log($"[SkillStrategyFactory] 보스 {bossId}의 스킬 {configId}에 커스텀 프리팹 사용");
+                    try
+                    {
+                        // 커스텀 프리팹으로 ProjectileSkillEffect 생성
+                        skillEffect = new ProjectileSkillEffect(
+                            customPrefab,      // 커스텀 프리팹 사용
+                            data.projectileSpeed,
+                            moveStrategy,
+                            impactEffect,
+                            customHitPrefab,
+                            data.heightFactor
+                        );
+                        // 중요: 여기서 ProjectileSkillEffect의 Initialize 직접 호출하여 데미지 계수 전달
+                        (skillEffect as ProjectileSkillEffect)?.Initialize(
+                            owner.GetStatus(),
+                            null, // target은 스킬 시작 시 설정됨
+                            config.damageMultiplier,// 데미지 계수 적용
+                            config.speedMultiplier //발사체 스피드 계수 적용
+                        );
+                        Debug.Log($"[SkillStrategyFactory] 보스 {bossId}의 스킬 {configId}에 커스텀 프리팹 사용");
+                    }
+                    catch (Exception e)
+                    {
+                        Debug.LogError($"[SkillStrategyFactory] ProjectileSkillEffect 생성 중 오류: {e.Message}");
+                    }
+                }
+            }
+            // Howl 이펙트인 경우 커스텀 프리팹 확인
+            else if (config.effectType == SkillEffectType.Howl && data is BossData howlBossData)
+            {
+                try
+                {
+                    int bossId = howlBossData.BossID;
+                    // 안전하게 리소스 가져오기
+                    // SkillStrategyFactory나 스킬 생성 담당 코드에서
+                    GameObject howlEffectPrefab = BossDataManager.Instance.GetHowlEffectPrefab(bossId, configId);
+                    GameObject idicatorPrefab = BossDataManager.Instance.GetIndicatorPrefab(bossId, configId);
+
+                    // 커스텀 프리팹으로 HowlSkillEffect 생성
+                    float radius = howlBossData.howlRadius > 0 ? howlBossData.howlRadius : howlBossData.skillRange; // 기본값 처리
+                        float essenceAmount = howlBossData.howlEssenceAmount; // 에센스 증가량
+                        float duration = howlBossData.howlDuration; // 지속시간
+                        float damage = howlBossData.skillDamage * config.damageMultiplier; // 스킬 데미지에 계수 적용
+
+                        skillEffect = new HowlSkillEffect(
+                            howlEffectPrefab, // 하울링 프리팹
+                            howlBossData.areaEffectPrefab, // 임팩트 프리팹
+                            howlBossData.howlSound, // 울음소리
+                            radius,
+                            essenceAmount,
+                            duration,
+                            damage,
+                            owner.transform,
+                             "여기임22222222222",
+                             idicatorPrefab
+                        ); ;
+                   
+                            
+
+                        // HowlSkillEffect 초기화 호출
+                        (skillEffect as HowlSkillEffect)?.Initialize(
+                            owner.GetStatus(),
+                            owner.transform, // target은 스킬 시작 시 설정됨
+                            config.damageMultiplier,
+                            config.speedMultiplier > 0 ? config.speedMultiplier : 1.0f // 기본값 처리
+                        );
+
+                        Debug.Log($"[SkillStrategyFactory] 보스 {bossId}의 Howl 스킬 {configId}에 커스텀 프리팹 사용");
+                    
+                }
+                catch (Exception e)
+                {
+                    Debug.LogError($"[SkillStrategyFactory] HowlSkillEffect 생성 중 오류: {e.Message}\n{e.StackTrace}");
                 }
             }
 
             // 커스텀 프리팹이 없거나 다른 이펙트 타입인 경우 기본 생성
             if (skillEffect == null)
             {
-                skillEffect = StrategyFactory.CreateSkillEffect(config.effectType, data, owner);
-
-                // 프로젝타일 이펙트인 경우 Initialize 호출
-                if (config.effectType == SkillEffectType.Projectile)
+                try
                 {
-                    (skillEffect as ProjectileSkillEffect)?.Initialize(
-                        owner.GetStatus(),
-                        null, // target은 스킬 시작 시 설정됨
-                        config.damageMultiplier
-                    );
+                    skillEffect = StrategyFactory.CreateSkillEffect(config.effectType, data, owner);
+
+                    // 프로젝타일 이펙트인 경우 Initialize 호출
+                    if (config.effectType == SkillEffectType.Projectile)
+                    {
+                        (skillEffect as ProjectileSkillEffect)?.Initialize(
+                            owner.GetStatus(),
+                            null, // target은 스킬 시작 시 설정됨
+                            config.damageMultiplier,
+                            config.speedMultiplier
+                        );
+                    }
+                    // Howl 이펙트인 경우 Initialize 호출
+                    else if (config.effectType == SkillEffectType.Howl)
+                    {
+                        (skillEffect as HowlSkillEffect)?.Initialize(
+                            owner.GetStatus(),
+                            owner.transform, // target은 스킬 시작 시 설정됨
+                            config.damageMultiplier,
+                            config.speedMultiplier > 0 ? config.speedMultiplier : 1.0f
+                        );
+                    }
+                }
+                catch (Exception e)
+                {
+                    Debug.LogError($"[SkillStrategyFactory] 기본 스킬 이펙트 생성 중 오류: {e.Message}");
                 }
             }
 

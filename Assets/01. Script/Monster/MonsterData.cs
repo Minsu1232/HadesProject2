@@ -126,6 +126,29 @@ public class MonsterData : ScriptableObject, ICreatureData
 
     [FoldoutGroup("Skill Settings"), ShowInInspector]
     public float projectileRotationSpeed { get; set; }
+
+    [FoldoutGroup("Skill Settings"), ShowInInspector]
+    public float heightFactor { get; set; }
+
+    [FoldoutGroup("Skill Settings"), ShowInInspector]
+    public GameObject howlEffectPrefab { get; set; }
+
+    [FoldoutGroup("Skill Settings"), ShowInInspector]
+    public AudioClip howlSound { get; set; }
+
+    [FoldoutGroup("Skill Settings"), ShowInInspector]
+    public float howlRadius { get; set; }
+
+    [FoldoutGroup("Skill Settings"), ShowInInspector]
+    public float howlDuration { get; set; }
+
+    [FoldoutGroup("Skill Settings"), ShowInInspector]
+    public float howlEssenceAmount { get; set; }
+
+    [FoldoutGroup("Skill Settings"), ShowInInspector]
+    public GameObject circleIndicatorPrefab { get; set; }
+
+
     [FoldoutGroup("Buff Settings"), ShowInInspector]
     public BuffData buffData { get; set; } = new BuffData();
 
@@ -234,6 +257,7 @@ public class MonsterData : ScriptableObject, ICreatureData
     [FoldoutGroup("Visual"), ShowInInspector]
     public float groggyTime { get; set; }
 
+
 }
     #endregion
 
@@ -289,7 +313,8 @@ public enum SkillStrategyType
     Buff,          // 자신 강화
     Debuff,        // 적 약화
     MultiShot,  // n발 발사 
-    Summon,        // 소환
+    Summon,
+    Area,// 소환
     AreaControl    // 영역 제어
 }
 
@@ -318,6 +343,7 @@ public enum SkillEffectType
     AreaEffect,
     Buff,
     Summon,
+    Howl
     // ... 다른 이펙트 타입들
 }
 
@@ -326,6 +352,8 @@ public enum ProjectileImpactType
     None,
     Basic,
     Poison,
+    Damage
+
     //Explosion,
     //Freeze
     // 추가 가능

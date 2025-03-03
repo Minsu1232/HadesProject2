@@ -4,8 +4,9 @@ using UnityEngine;
 
 public interface ICreatureStatus
 {
-    IMonsterClass GetMonsterClass();   
-    
+    IMonsterClass GetMonsterClass();
+
+    Transform GetMonsterTransform();
     void Initialize(IMonsterClass monster);
 
     // Stats Modification 메서드들

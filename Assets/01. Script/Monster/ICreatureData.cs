@@ -43,7 +43,7 @@ public interface ICreatureData
     float areaRadius { get; }
     float areaDuration { get; }
 
-  
+    float heightFactor { get; } // 포물선 이동 높이 관련
     public Vector3 projectileRotationAxis { get; }
 
    
@@ -68,7 +68,14 @@ public interface ICreatureData
     float hitStunDuration { get; }
     float deathDuration { get; }
     float spawnDuration { get; }
+    // Howl Settings
 
+
+    GameObject howlEffectPrefab { get; }
+    AudioClip howlSound { get; }
+    float howlRadius { get; }
+    float howlDuration { get; }
+    float howlEssenceAmount { get; }
 
 
     // Hit Settings
@@ -106,8 +113,10 @@ public interface ICreatureData
     Material eliteOutlineMaterial { get; }
     float shockwaveRadius { get; }
     float groggyTime { get; }
+    //indicatorPrefab
+    GameObject chargeIndicatorPrefab { get; }
 
-  
+    GameObject circleIndicatorPrefab { get; }
 
     // 차지 공격 이펙트 관련 필드들
     GameObject ChargePrepareDustEffect { get; }  // 준비 단계 먼지 이펙트
@@ -115,6 +124,5 @@ public interface ICreatureData
     GameObject ChargeTrailEffect { get; }        // 트레일 이펙트
     GameObject WallImpactEffect { get; }         // 벽 충돌 이펙트
     GameObject PlayerImpactEffect { get; }       // 플레이어 충돌 이펙트
-
-    GameObject chargeIndicatorPrefab { get; }
+  
 }

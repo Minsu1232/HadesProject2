@@ -14,15 +14,15 @@ TagManager:
   - Water
   - UI
   - Wall
-  - Monster
+  - 
   - Projectile
   - CameraIgnore
   - Ground
   - WarningEffect
   - 
-  - 
-  - 
-  - 
+  - ForegroundParticles
+  - Monster
+  - Player
   - 
   - 
   - 

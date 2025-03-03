@@ -56,6 +56,7 @@ public static class StrategyFactory
             //SkillStrategyType.Summon => new SummonSkillStrategy(),
             //SkillStrategyType.AreaControl => new AreaControlSkillStrategy(),
             SkillStrategyType.MultiShot => new MultiShotSkillStrategy(owner),
+            SkillStrategyType.Area => new AreaSkillStrategy(owner),
             _ => new BasicSkillStrategy(owner)
         };
     }
@@ -88,7 +89,7 @@ public static class StrategyFactory
         return type switch
         {
             ProjectileMovementType.Homing => new HomingMovement(),
-            ProjectileMovementType.Parabolic => new ParabolicMovement(),
+            ProjectileMovementType.Parabolic => new ParabolicMovement(data.heightFactor),
             ProjectileMovementType.Straight => new StraightMovement(),
             ProjectileMovementType.StraightRotation => new StraightRotationMovement(
                 data.projectileRotationAxis,  // ICreatureData 설정한 회전축
@@ -109,6 +110,7 @@ public static class StrategyFactory
                 data.areaDuration,
                 data.areaRadius
             ),
+          
             _ => null
         };
     }
@@ -138,7 +140,8 @@ public static class StrategyFactory
                     data.projectileSpeed,
                     moveStrategy,
                     impactEffect,
-                    data.hitEffect
+                    data.hitEffect,
+                    data.heightFactor
                 );
 
             case SkillEffectType.AreaEffect:
@@ -152,6 +155,20 @@ public static class StrategyFactory
                     data.areaRadius,
                     data.skillDamage
                 );
+            case SkillEffectType.Howl:
+                return new HowlSkillEffect(
+                    data.howlEffectPrefab,
+                    data.areaEffectPrefab,
+                    data.howlSound,
+                    data.howlRadius,
+                    data.howlEssenceAmount,
+                    data.howlDuration,
+                    data.skillDamage,
+                    owner.transform,
+                    "@@@@@@@@@여기임",
+                    data.circleIndicatorPrefab
+                );
+                
 
             case SkillEffectType.Buff:
                 return new BuffSkillEffect(

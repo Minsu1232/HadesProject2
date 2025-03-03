@@ -8,6 +8,8 @@ public class AreaSkillEffect : ISkillEffect
     private Transform target;
     private float damage;
 
+    public Transform transform { get => throw new System.NotImplementedException(); set => throw new System.NotImplementedException(); }
+
     public AreaSkillEffect(GameObject prefab, float radius, float damage)
     {
         this.areaEffectPrefab = prefab;

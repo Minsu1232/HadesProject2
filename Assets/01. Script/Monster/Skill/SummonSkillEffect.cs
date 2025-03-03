@@ -8,6 +8,8 @@ public class SummonSkillEffect : ISkillEffect
     private ICreatureStatus monsterStatus;
     private Transform target;
 
+    public Transform transform { get => throw new System.NotImplementedException(); set => throw new System.NotImplementedException(); }
+
     public SummonSkillEffect(GameObject prefab, int count, float summonRadius)
     {
         this.summonPrefab = prefab;

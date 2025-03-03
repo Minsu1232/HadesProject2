@@ -323,4 +323,16 @@ Commit = SkillStrategyRefactorin/SkillStrategyFactory/PrefabAdd
 	
 
 Commit = Notebook/SKillDamageDamagemutiplerAdd
+
+3/2 = '야수의 울부짖음' 제작중 HowlPrefab 로드하는 과정에서 에디터가 계속 멈췄는데 다른 프리팹으로 하니 이상이 없어짐. 
+
+	일단 당장 스킬발동은 하나 되는게 없는 상태 다음날 고쳐야할듯 함 => 아마 현재 스킬타입이 Basic이라 바로 끝나는거로 예상 타입 추가 예정(HowlStrategy)
+
+
+
+3/3 = '야수의 울부짖음' 제작 완료 CSV에서 Prefab로드하는 과정에 특정 행과열에 에러가 났는데 이유는 찾지못함. 다른행으로 이동 후 작성해서 해결
+
+	=> 구조 스킬발동 시 먼저 Howl이펙트가 나오고 지정한 duration값동안 indicator가 Fill됨. 이후 차면 OnImpact로 효과(현잰 데미지 및 에센스 증가)
+
+Commit = Main/Alexander/HowlSkillStrategy
 		   

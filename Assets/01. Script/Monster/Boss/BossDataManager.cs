@@ -26,6 +26,12 @@ public class BossDataManager : Singleton<BossDataManager>
 
     // 보스별 스킬 프리팹 매핑을 위한 딕셔너리 추가
     private Dictionary<int, Dictionary<int, GameObject>> bossSkillPrefabMap = new Dictionary<int, Dictionary<int, GameObject>>();
+    private Dictionary<int, Dictionary<int, GameObject>> bossSkillImpactPrefabMap = new Dictionary<int, Dictionary<int, GameObject>>();
+    private Dictionary<int, Dictionary<int, GameObject>> howlEffectPrefabMap = new Dictionary<int, Dictionary<int, GameObject>>();
+    private Dictionary<int, Dictionary<int, AudioClip>> bossSkillSoundMap = new Dictionary<int, Dictionary<int, AudioClip>>();
+    // 인디케이터 프리팹 맵 추가
+    private Dictionary<int, Dictionary<int, GameObject>> indicatorPrefabMap = new Dictionary<int, Dictionary<int, GameObject>>();
+
 
     private string bossBasePath;
     private string bossPhasePath;
@@ -283,56 +289,224 @@ public class BossDataManager : Singleton<BossDataManager>
     }
     private async Task LoadBossPrefabs()
     {
-        if (!File.Exists(bossPrefabPath))
+        try
         {
-            Debug.LogError($"BossPrefab 파일이 존재하지 않습니다: {bossPrefabPath}");
-            return;
-        }
-
-        string[] lines = File.ReadAllLines(bossPrefabPath);
-        string[] headers = lines[0].Split(',');
-
-        for (int i = 1; i < lines.Length; i++)
-        {
-            string[] values = lines[i].Split(',');
-            int bossId = int.Parse(values[0]);
-
-            if (!bossSkillPrefabData.ContainsKey(bossId))
+            if (!File.Exists(bossPrefabPath))
             {
-                bossSkillPrefabData[bossId] = new List<Dictionary<string, string>>();
+                Debug.LogError($"BossPrefab 파일이 존재하지 않습니다: {bossPrefabPath}");
+                return;
             }
 
-            var prefabDict = new Dictionary<string, string>();
-            for (int j = 0; j < headers.Length; j++)
+            string[] lines = File.ReadAllLines(bossPrefabPath);
+            if (lines.Length <= 1)
             {
-                prefabDict[headers[j]] = values[j];
+                Debug.LogWarning("BossPrefabs.csv 파일에 데이터가 없습니다.");
+                return;
             }
 
-            bossSkillPrefabData[bossId].Add(prefabDict);
+            string[] headers = lines[0].Split(',');
+            Debug.Log($"BossPrefabs.csv 헤더: {string.Join(", ", headers)}");
 
-            // 스킬별 프리팹 매핑 처리 추가
-            if (prefabDict.ContainsKey("SkillConfigID") &&
-                !string.IsNullOrEmpty(prefabDict["SkillConfigID"]) &&
-                int.TryParse(prefabDict["SkillConfigID"], out int skillConfigId))
+            for (int i = 1; i < lines.Length; i++)
             {
-                string projectilePrefabPath = prefabDict["ProjectilePrefab"];
-                if (!string.IsNullOrEmpty(projectilePrefabPath))
+                try
                 {
-                    // 프리팹 로드
+                    string[] values = lines[i].Split(',');
+                    Debug.Log($"분석 중인 행 {i}: {lines[i]}");
+
+                    // 값의 개수가 헤더 개수와 다른 경우 처리
+                    if (values.Length != headers.Length)
+                    {
+                        Debug.LogWarning($"행 {i}의 값 개수({values.Length})가 헤더 개수({headers.Length})와 다릅니다. 이 행은 건너뜁니다.");
+                        continue;
+                    }
+
+                    // BossId 파싱에 실패하면 건너뛰기
+                    if (!int.TryParse(values[0], out int bossId))
+                    {
+                        Debug.LogWarning($"행 {i}의 BossId 파싱 실패: {values[0]}");
+                        continue;
+                    }
+
+                    // 딕셔너리 초기화
+                    if (!bossSkillPrefabData.ContainsKey(bossId))
+                    {
+                        bossSkillPrefabData[bossId] = new List<Dictionary<string, string>>();
+                    }
+
+                    var prefabDict = new Dictionary<string, string>();
+                    for (int j = 0; j < headers.Length; j++)
+                    {
+                        if (j < values.Length)
+                        {
+                            prefabDict[headers[j]] = values[j];
+                        }
+                        else
+                        {
+                            prefabDict[headers[j]] = ""; // 값이 없으면 빈 문자열로 설정
+                        }
+                    }
+
+                    bossSkillPrefabData[bossId].Add(prefabDict);
+
+                    // 스킬별 프리팹 매핑 처리 추가
+                    await ProcessSkillPrefabMapping(bossId, prefabDict);
+                }
+                catch (Exception lineEx)
+                {
+                    Debug.LogError($"행 {i} 처리 중 오류: {lineEx.Message}\n{lineEx.StackTrace}");
+                    // 특정 행의 오류가 전체 로드를 중단하지 않도록 합니다
+                    continue;
+                }
+            }
+
+            Debug.Log($"bossSkillPrefabData 로드 완료: {bossSkillPrefabData.Count}개의 보스 프리팹 데이터 로드됨");
+        }
+        catch (Exception e)
+        {
+            Debug.LogError($"LoadBossPrefabs 전체 오류: {e.Message}\n{e.StackTrace}");
+            File.WriteAllText(Path.Combine(Application.persistentDataPath, "prefab_load_error.log"),
+                $"Error: {e.Message}\n{e.StackTrace}");
+        }
+    }
+
+    private async Task ProcessSkillPrefabMapping(int bossId, Dictionary<string, string> prefabDict)
+    {
+        try
+        {
+            // SkillConfigID 유효성 검사
+            string skillConfigIdStr = prefabDict.ContainsKey("SkillConfigID") ? prefabDict["SkillConfigID"] : "";
+
+            if (string.IsNullOrEmpty(skillConfigIdStr) || !int.TryParse(skillConfigIdStr, out int skillConfigId))
+            {
+                // SkillConfigID가 유효하지 않으면 건너뜁니다
+                return;
+            }
+
+            // 프로젝타일 프리팹 처리
+            string projectilePrefabPath = prefabDict.ContainsKey("ProjectilePrefab") ? prefabDict["ProjectilePrefab"] : "";
+            if (!string.IsNullOrEmpty(projectilePrefabPath))
+            {
+                try
+                {
                     var handle = Addressables.LoadAssetAsync<GameObject>(projectilePrefabPath);
-                    GameObject prefab = await handle.Task;
+                    // 코루틴 대신 콜백 사용
+                    handle.Completed += op =>
+                    {
+                        if (op.Status == AsyncOperationStatus.Succeeded)
+                        {
+                            if (!bossSkillPrefabMap.ContainsKey(bossId))
+                                bossSkillPrefabMap[bossId] = new Dictionary<int, GameObject>();
 
-                    // 매핑 저장
-                    if (!bossSkillPrefabMap.ContainsKey(bossId))
-                        bossSkillPrefabMap[bossId] = new Dictionary<int, GameObject>();
+                            bossSkillPrefabMap[bossId][skillConfigId] = op.Result;
+                            Debug.Log($"보스 {bossId}의 스킬 {skillConfigId}에 프리팹 {projectilePrefabPath} 매핑됨");
+                        }
+                        else
+                        {
+                            Debug.LogWarning($"보스 {bossId}의 스킬 {skillConfigId}에 대한 프리팹 로드 실패: {projectilePrefabPath}");
+                        }
+                    };
+                }
+                catch (Exception e)
+                {
+                    Debug.LogError($"프리팹 로드 중 오류: {e.Message}");
+                    // 로드 오류가 있더라도 계속 진행
+                }
+            }
 
-                    bossSkillPrefabMap[bossId][skillConfigId] = prefab;
-                    Debug.Log($"보스 {bossId}의 스킬 {skillConfigId}에 프리팹 {projectilePrefabPath} 매핑됨");
+            // 히트 이펙트 프리팹 처리
+            string hitEffectPath = prefabDict.ContainsKey("HitEffect") ? prefabDict["HitEffect"] : "";
+            if (!string.IsNullOrEmpty(hitEffectPath))
+            {
+                try
+                {
+                    var handle = Addressables.LoadAssetAsync<GameObject>(hitEffectPath);
+                    // 코루틴 대신 콜백 사용
+                    handle.Completed += op =>
+                    {
+                        if (op.Status == AsyncOperationStatus.Succeeded)
+                        {
+                            if (!bossSkillImpactPrefabMap.ContainsKey(bossId))
+                                bossSkillImpactPrefabMap[bossId] = new Dictionary<int, GameObject>();
+
+                            bossSkillImpactPrefabMap[bossId][skillConfigId] = op.Result;
+                            Debug.Log($"보스 {bossId}의 스킬 {skillConfigId}에 히트 이펙트 {hitEffectPath} 매핑됨");
+                        }
+                        else
+                        {
+                            Debug.LogWarning($"보스 {bossId}의 스킬 {skillConfigId}에 대한 히트 이펙트 로드 실패: {hitEffectPath}");
+                        }
+                    };
+                }
+                catch (Exception e)
+                {
+                    Debug.LogError($"히트 이펙트 로드 중 오류: {e.Message}");
+                    // 로드 오류가 있더라도 계속 진행
+                }
+            }
+            // 하울 이펙트 프리팹 처리
+            string howlEffectPrefabPath = prefabDict.ContainsKey("HowlEffectPrefabKey") ? prefabDict["HowlEffectPrefabKey"] : "";
+            if (!string.IsNullOrEmpty(howlEffectPrefabPath))
+            {
+                try
+                {
+                    var handle = Addressables.LoadAssetAsync<GameObject>(howlEffectPrefabPath);
+                    // 코루틴 대신 콜백 사용
+                    handle.Completed += op =>
+                    {
+                        if (op.Status == AsyncOperationStatus.Succeeded)
+                        {
+                            if (!howlEffectPrefabMap.ContainsKey(bossId))
+                                howlEffectPrefabMap[bossId] = new Dictionary<int, GameObject>();
+
+                            howlEffectPrefabMap[bossId][skillConfigId] = op.Result;
+                            Debug.Log($"보스 {bossId}의 스킬 {skillConfigId}에 하울 이펙트 {howlEffectPrefabPath} 매핑됨");
+                        }
+                        else
+                        {
+                            Debug.LogWarning($"보스 {bossId}의 스킬 {skillConfigId}에 대한 하울 이펙트 로드 실패: {howlEffectPrefabPath}");
+                        }
+                    };
+                }
+                catch (Exception e)
+                {
+                    Debug.LogError($"하울 이펙트 프리팹 로드 중 오류: {e.Message}");
+                    // 로드 오류가 있더라도 계속 진행
+                }
+            }
+            // ProcessSkillPrefabMapping에 인디케이터 처리 로직 추가
+            string indicatorPrefabPath = prefabDict.ContainsKey("CircleIndicatorPrefab") ? prefabDict["CircleIndicatorPrefab"] : "";
+            if (!string.IsNullOrEmpty(indicatorPrefabPath))
+            {
+                try
+                {
+                    var handle = Addressables.LoadAssetAsync<GameObject>(indicatorPrefabPath);
+                    handle.Completed += op =>
+                    {
+                        if (op.Status == AsyncOperationStatus.Succeeded)
+                        {
+                            if (!indicatorPrefabMap.ContainsKey(bossId))
+                                indicatorPrefabMap[bossId] = new Dictionary<int, GameObject>();
+
+                            indicatorPrefabMap[bossId][skillConfigId] = op.Result;
+                            Debug.Log($"보스 {bossId}의 스킬 {skillConfigId}에 인디케이터 {indicatorPrefabPath} 매핑됨");
+                        }
+                        else
+                        {
+                            Debug.LogWarning($"보스 {bossId}의 스킬 {skillConfigId}에 대한 인디케이터 로드 실패: {indicatorPrefabPath}");
+                        }
+                    };
+                }
+                catch (Exception e)
+                {
+                    Debug.LogError($"인디케이터 프리팹 로드 중 오류: {e.Message}");
                 }
             }
         }
-
-        Debug.Log($"bossSkillPrefabData 로드 완료: {bossSkillPrefabData.Count}개의 보스 프리팹 데이터 로드됨");
+        catch (Exception e)
+        {
+            Debug.LogError($"스킬 프리팹 매핑 처리 중 오류: {e.Message}");
+        }
     }
     // 스킬별 프리팹 가져오는 메서드
     public GameObject GetSkillPrefab(int bossId, int skillConfigId)
@@ -347,7 +521,114 @@ public class BossDataManager : Singleton<BossDataManager>
         var bossData = GetBossData(bossId);
         return bossData?.projectilePrefab;
     }
+    public GameObject GetSkillImpactPrefab(int bossId, int skillConfigId)
+    {
+        try
+        {
+            // 우선 매핑된 스킬별 히트 이펙트가 있는지 확인
+            if (bossSkillImpactPrefabMap.TryGetValue(bossId, out var prefabMap) &&
+                prefabMap.TryGetValue(skillConfigId, out var prefab) &&
+                prefab != null)
+            {
+                return prefab;
+            }
 
+            // 매핑이 없으면 보스의 기본 임팩트 프리팹 반환
+            var bossData = GetBossData(bossId);
+            if (bossData?.hitEffect != null)
+            {
+                return bossData.hitEffect;
+            }
+            else
+            {
+                Debug.LogWarning($"보스 {bossId}의 스킬 {skillConfigId}에 대한 히트 이펙트가 없습니다. 기본 이펙트도 없음.");
+                return null;
+            }
+        }
+        catch (Exception e)
+        {
+            Debug.LogError($"GetSkillImpactPrefab 오류: {e.Message}\n{e.StackTrace}");
+            return null;
+        }
+    }
+    public GameObject GetHowlEffectPrefab(int bossId, int skillConfigId)
+    {
+        try
+        {
+            // 우선 매핑된 스킬별 하울 이펙트가 있는지 확인
+            if (howlEffectPrefabMap.TryGetValue(bossId, out var prefabMap) &&
+                prefabMap.TryGetValue(skillConfigId, out var prefab) &&
+                prefab != null)
+            {
+                return prefab;
+            }
+
+            // 매핑이 없으면 보스의 기본 하울 이펙트 프리팹 반환
+            var bossData = GetBossData(bossId);
+            if (bossData?.howlEffectPrefab != null)
+            {
+                return bossData.howlEffectPrefab;
+            }
+            else
+            {
+                Debug.LogWarning($"보스 {bossId}의 스킬 {skillConfigId}에 대한 하울 이펙트가 없습니다. 기본 이펙트도 없음.");
+                return null;
+            }
+        }
+        catch (Exception e)
+        {
+            Debug.LogError($"GetHowlEffectPrefab 오류: {e.Message}\n{e.StackTrace}");
+            return null;
+        }
+    }
+    // GetIndicatorPrefab 메서드 추가
+    public GameObject GetIndicatorPrefab(int bossId, int skillConfigId)
+    {
+        try
+        {
+            if (indicatorPrefabMap.TryGetValue(bossId, out var prefabMap) &&
+                prefabMap.TryGetValue(skillConfigId, out var prefab) &&
+                prefab != null)
+            {
+                return prefab;
+            }
+
+            var bossData = GetBossData(bossId);
+            if (bossData?.circleIndicatorPrefab != null) // 적절한 기본 인디케이터로 변경
+            {
+                return bossData.circleIndicatorPrefab;
+            }
+
+            Debug.LogWarning($"보스 {bossId}의 스킬 {skillConfigId}에 대한 인디케이터가 없습니다.");
+            return null;
+        }
+        catch (Exception e)
+        {
+            Debug.LogError($"GetIndicatorPrefab 오류: {e.Message}");
+            return null;
+        }
+    }
+    // 스킬별 사운드 가져오는 메서드
+    public AudioClip GetSkillSound(int bossId, int skillConfigId)
+    {
+        try
+        {
+            if (bossSkillSoundMap.TryGetValue(bossId, out var soundMap) &&
+                soundMap.TryGetValue(skillConfigId, out var sound))
+            {
+                return sound;
+            }
+
+            // 매핑이 없으면 보스의 기본 울음소리 반환
+            var bossData = GetBossData(bossId);
+            return bossData?.howlSound;
+        }
+        catch (Exception e)
+        {
+            Debug.LogError($"GetSkillSound 오류: {e.Message}");
+            return null;
+        }
+    }
     private async Task LoadBossCutsceneData()
     {
         if (!File.Exists(bossCutscenePath)) return;
@@ -513,6 +794,7 @@ public class BossDataManager : Singleton<BossDataManager>
         LoadEffectPrefab(baseData, "PlayerImpactEffect", result => bossData.PlayerImpactEffect = result);
 
         bossData.showPhaseNames = bool.Parse(baseData["ShowPhaseNames"]);
+        
 
 
        //사운드
@@ -532,7 +814,22 @@ public class BossDataManager : Singleton<BossDataManager>
                 }
             };
         }
-
+        string HowlSoundKey = baseData["HowlSound"];
+        if (!string.IsNullOrEmpty(HowlSoundKey))
+        {
+            Addressables.LoadAssetAsync<AudioClip>(HowlSoundKey).Completed += handle =>
+            {
+                if (handle.Status == AsyncOperationStatus.Succeeded)
+                {
+                    bossData.howlSound = handle.Result;
+                    Debug.Log($"RoarSound 로드 완료: {HowlSoundKey}");
+                }
+                else
+                {
+                    Debug.LogError($"RoarSound 로드 실패: {HowlSoundKey}");
+                }
+            };
+        }
         string squreIndicator = baseData["ChargeIndicatorPrefab"];
         if(!string.IsNullOrEmpty(squreIndicator))
         {
@@ -571,28 +868,45 @@ public class BossDataManager : Singleton<BossDataManager>
             };
         }
     }
-    private void UpdateBossPrefab(BossData bossData, List<Dictionary<string, string>> baseData)
-    {foreach(var baseDataes in baseData)
+    private async Task UpdateBossPrefab(BossData bossData, List<Dictionary<string, string>> baseData)
+    {
+        foreach(var baseDataes in baseData)
         {
-            bossData.areaEffectPrefab = LoadPrefab(baseDataes["AreaEffectPrefab"]);
-            bossData.shorckEffectPrefab = LoadPrefab(baseDataes["ShockEffectPrefab"]);
-            bossData.buffEffectPrefab = LoadPrefab(baseDataes["BuffEffectPrefab"]);
-            bossData.summonPrefab = LoadPrefab(baseDataes["SummonPrefab"]);
-            bossData.projectilePrefab = LoadPrefab(baseDataes["ProjectilePrefab"]);
-            bossData.hitEffect = LoadPrefab(baseDataes["HitEffect"]);
+            bossData.areaEffectPrefab = await LoadPrefabAsync(baseDataes["AreaEffectPrefab"]);
+            bossData.shorckEffectPrefab = await LoadPrefabAsync(baseDataes["ShockEffectPrefab"]);
+            bossData.buffEffectPrefab = await LoadPrefabAsync(baseDataes["BuffEffectPrefab"]);
+            bossData.summonPrefab = await LoadPrefabAsync(baseDataes["SummonPrefab"]);
+            bossData.projectilePrefab = await LoadPrefabAsync(baseDataes["ProjectilePrefab"]);
+            bossData.hitEffect = await LoadPrefabAsync(baseDataes["HitEffect"]);
+            bossData.circleIndicatorPrefab = await LoadPrefabAsync(baseDataes["CircleIndicatorPrefab"]);
+            Debug.Log($"@@@@@@@@@@@@@@@@@@@@HowlEffectPrefabKey 값: {baseDataes["HowlEffectPrefabKey"]}");
+            var howlPrefab = await LoadPrefabAsync(baseDataes["HowlEffectPrefabKey"]);
+            Debug.Log($"로드된 howlPrefab: {(howlPrefab != null ? howlPrefab.name : "null")}");
+            bossData.howlEffectPrefab = howlPrefab;
+
         }
      
        
 
     }
-    private GameObject LoadPrefab(string prefabKey)
+    private async Task<GameObject> LoadPrefabAsync(string prefabKey)
     {
         if (string.IsNullOrEmpty(prefabKey)) return null;
 
         var handle = Addressables.LoadAssetAsync<GameObject>(prefabKey);
+        await handle.Task;  //  비동기 로드 완료를 기다림
 
-        return handle.Task.Result;
+        if (handle.Status == AsyncOperationStatus.Succeeded)
+        {
+            return handle.Result;
+        }
+        else
+        {
+            Debug.LogError($"Prefab 로드 실패: {prefabKey}");
+            return null;
+        }
     }
+
     private void UpdateBossPhaseData(BossData bossData, List<Dictionary<string, string>> phases)
     {
         foreach (var gimmickSet in bossGimmickData)
@@ -791,8 +1105,13 @@ public class BossDataManager : Singleton<BossDataManager>
                 bossData.shockwaveRadius = float.Parse(skill["ShockwaveRadius"]);
                 bossData.projectileRotationAxis = ParseVector3(skill["ProjectileRotationAxis"]);
                 bossData.projectileRotationSpeed = float.Parse(skill["ProjectileRotationSpeed"]);
+                bossData.heightFactor = float.Parse(skill["HeightFactor"]);
+                bossData.howlRadius = float.Parse(skill["HowlRadius"]);
+                bossData.howlEssenceAmount = float.Parse(skill["HowlEssenceAmount"]);
+                bossData.howlDuration = float.Parse(skill["howlDuration"]);
+                
             }
-        }
+        } 
     }
     private Vector3 ParseVector3(string vectorString)
     {

@@ -29,10 +29,11 @@ MonoBehaviour:
     - type: 1
       weight: 1
     patternStrategyWeight: 0.4
-    skillConfigIds: 0100000003000000
+    skillConfigIds: 010000000400000007000000
     skillConfigWeights:
-    - 0.5
-    - 0.5
+    - 0
+    - 0
+    - 1
     skillStrategyWeight: 0.4
     moveType: 0
     attackType: 0

@@ -1,5 +1,6 @@
-BossId,AreaEffectPrefab,ShockEffectPrefab,BuffEffectPrefab,SummonPrefab,ProjectilePrefab,HitEffect,EliteOutlineMaterial,SkillConfigID
-1,,ShorkWavePrefab,,,BatPrefab,BloodHitEffect,,1
-1,,ShorkWavePrefab,,,RayProjectile,BloodHitEffect,,4
-2,,,BuffUpPrefab,,RayProjectile,BloodHitEffect,,1
-2,,,BuffUpPrefab,,BatPrefab,BloodHitEffect,,4
+BossId,AreaEffectPrefab,ShockEffectPrefab,BuffEffectPrefab,SummonPrefab,ProjectilePrefab,HitEffect,EliteOutlineMaterial,,SkillConfigID,HowlEffectPrefabKey,CircleIndicatorPrefab
+1,,ShorkWavePrefab,,,BatPrefab,BloodHitEffect,,,1,,
+1,,ShorkWavePrefab,,,RayProjectile,BloodHitEffect,,,4,,
+2,,,BuffUpPrefab,,BatPrefab,BloodHitEffect,,,1,,
+2,,,BuffUpPrefab,,RayProjectile,BloodHitEffect,,,4,,
+2,AreaEffect(Howl),,,,,,,,7,ShorkWavePrefab,CircleIndicatorPrefab

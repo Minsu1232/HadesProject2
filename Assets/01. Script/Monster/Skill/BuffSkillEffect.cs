@@ -8,8 +8,12 @@ public class BuffSkillEffect : ISkillEffect
     private ICreatureStatus monsterStatus;
     private Transform target;
     private GameObject buffPrefab;
+  
     bool isNopr;
     private Transform monsterTransform;  // 추가
+
+    public Transform transform { get; set; }
+
     public BuffSkillEffect(BuffType[] buffTypes, float[] durations, float[] values, GameObject buffPrefab, Transform monsterTransform)
     {
         this.buffTypes = buffTypes;
@@ -17,6 +21,7 @@ public class BuffSkillEffect : ISkillEffect
         this.values = values;
         this.buffPrefab = buffPrefab;
         this.monsterTransform = monsterTransform;  // 몬스터의 Transform 저장
+        transform = monsterTransform;
     }
 
     public void Initialize(ICreatureStatus status, Transform target)

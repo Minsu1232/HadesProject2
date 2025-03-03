@@ -81,6 +81,8 @@ public class SkillConfigManager : Singleton<SkillConfigManager>
                 );
                 string damageMultiplier = values.Length > 9 ? values[9] : "1.0";
                 config.damageMultiplier = float.Parse(damageMultiplier);
+                string speedMultiplier  = values.Length > 9 ? values[10] : "1.0";
+                config.speedMultiplier = float.Parse(speedMultiplier);
                 skillConfigs[configId] = config;
                 Debug.Log($"스킬 구성 로드: ID {configId}, 이름 {configName}");
             }
