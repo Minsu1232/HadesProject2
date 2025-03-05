@@ -273,6 +273,21 @@ MonoBehaviour:
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 1405358f952373b49bb18995d7a00533
+    m_Address: HowlEffectPrefab(Real)
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 96a9e34fedd730c458a5e084c68a11cb
+    m_Address: ClawPrefab
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 87f96b1e68e029a47b6824b8ab06b3fc
+    m_Address: IndicatorPrefab(Donut)
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
   m_ReadOnly: 0
   m_Settings: {fileID: 11400000, guid: b00a60bada955e740bf4855b507f44d8, type: 2}
   m_SchemaSet:

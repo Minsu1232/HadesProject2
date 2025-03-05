@@ -6,3 +6,4 @@ ConfigID,StrategyType,EffectType,MoveType,ImpactType,ConfigName,BuffTypes,BuffDu
 5,MultiShot,Projectile,StraightRotation,Basic,,None,,,0.25,1
 6,Buff,Buff,Straight,None,,AttackUp|SpeedUp|AttackSpeedUp,7|7|7,15|1|0.5,0,1
 7,Area,Howl,Straight,Damage,HowlSkill,None,0,0,2,0
+8,Area,CircularProjectile,Straight,DelayedExplosion,BeastClaw,None,0,0,2,1

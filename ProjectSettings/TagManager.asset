@@ -6,6 +6,8 @@ TagManager:
   tags:
   - Monster
   - CrashWall
+  - FxTemporaire
+  - Ground
   layers:
   - Default
   - TransparentFX

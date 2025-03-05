@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 
 public class BuffSkillEffect : ISkillEffect
@@ -11,6 +12,8 @@ public class BuffSkillEffect : ISkillEffect
   
     bool isNopr;
     private Transform monsterTransform;  // Ãß°¡
+
+    public event Action OnEffectCompleted;
 
     public Transform transform { get; set; }
 

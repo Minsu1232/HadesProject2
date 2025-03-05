@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 
 public class AreaSkillEffect : ISkillEffect
@@ -7,6 +8,8 @@ public class AreaSkillEffect : ISkillEffect
     private ICreatureStatus monsterStatus;
     private Transform target;
     private float damage;
+
+    public event Action OnEffectCompleted;
 
     public Transform transform { get => throw new System.NotImplementedException(); set => throw new System.NotImplementedException(); }
 

@@ -45,8 +45,9 @@ public interface ICreatureData
 
     float heightFactor { get; } // 포물선 이동 높이 관련
     public Vector3 projectileRotationAxis { get; }
-
-   
+    float safeZoneRadius { get; }
+    float dangerRadiusMultiplier { get; }
+    GameObject ExplosionEffect { get; }
     public float projectileRotationSpeed { get; }
     // Buff Settings
     BuffData buffData { get; }
@@ -75,7 +76,7 @@ public interface ICreatureData
     AudioClip howlSound { get; }
     float howlRadius { get; }
     float howlDuration { get; }
-    float howlEssenceAmount { get; }
+    float EssenceAmount { get; }
 
 
     // Hit Settings

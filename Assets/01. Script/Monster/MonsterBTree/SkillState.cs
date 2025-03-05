@@ -29,7 +29,24 @@ public class SkillState : MonsterBaseState
     {
         skillStrategy = strategy ?? throw new ArgumentNullException(nameof(strategy));
         animator = owner.GetComponent<Animator>();
-        skillTimeoutDuration = timeout;
+        // 애니메이션 길이에 따라 타임아웃 설정
+        var animController = animator.runtimeAnimatorController;
+        foreach (var clip in animController.animationClips)
+        {
+            if (clip.name.Contains("Skill"))
+            {
+                // 애니메이션 길이 + 약간의 여유 시간으로 타임아웃 설정
+                skillTimeoutDuration = clip.length + 0.5f;
+                Debug.Log($"스킬 애니메이션 길이 기반 타임아웃 설정: {skillTimeoutDuration}초");
+                break;
+            }
+        }
+
+        // 애니메이션 길이를 찾지 못했다면 기본값 사용
+        if (skillTimeoutDuration <= 0)
+        {
+            skillTimeoutDuration = timeout;
+        }
         ResetSkillState();
     }
 
@@ -173,29 +190,59 @@ public class SkillState : MonsterBaseState
 
         isSkillAnimationComplete = true;
         currentPhase = SkillPhase.Finishing;
+
+        Debug.Log("애니메이션 완료: 스킬 종료 처리 시작");
+
+        // 모든 스킬 종류에 대해 애니메이션 완료 시 스킬 종료
+        if (hasSkillStarted)
+        {
+            // 스킬 효과 종료를 위한 정리 작업
+            if (skillStrategy != null)
+            {
+                // UpdateSkill 최종 호출 (효과 정리를 위해)
+                skillStrategy.UpdateSkill(transform, player, monsterClass);
+            }
+
+            //스킬 완료 처리
+            CompleteSkill();
+        }
+
         LogStateTransition("OnSkillAnimationComplete", "Animation complete");
     }
 
     // 스킬 완료 조건: 애니메이션 완료와 스킬 전략에서 발사 횟수 등 완료 여부가 모두 충족되면 완료
     private bool IsSkillComplete()
     {
-        return isSkillAnimationComplete && skillStrategy.IsSkillComplete;
+        return isSkillAnimationComplete;
     }
 
     private void CompleteSkill()
     {
+        // 중복 호출 방지
+        if (currentPhase == SkillPhase.Completed)
+        {
+            Debug.Log("이미 완료된 스킬을 다시 완료하려고 시도함");
+            return;
+        }
+
+        Debug.Log("스킬완료함 - 시작");
         currentPhase = SkillPhase.Completed;
-        //if (owner.GetAttackStrategy() is BasePhysicalAttackStrategy baseAttack)
-        //{
-        //    baseAttack.UpdateLastAttackTime();  // 공격 후 타이밍 업데이트
-        //}
+
+        // CanTransition 상태 확인
+        Debug.Log($"상태 전환 가능 여부: {CanTransition()}");
+
+        // 상태 전환 요청
+        Debug.Log("Move 상태로 전환 요청");
         owner.ChangeState(MonsterStateType.Move);
+
         animator.ResetTrigger("SkillAttack");
+        Debug.Log("스킬완료함 - 종료");
         LogStateTransition("CompleteSkill", "Skill completed");
     }
 
     private void ForceCompleteSkill()
     {
+        Debug.Log("아이고 여기서 돼버렸네");
         isSkillAnimationComplete = true;
         CompleteSkill();
         LogStateTransition("ForceCompleteSkill", "Forced completion");

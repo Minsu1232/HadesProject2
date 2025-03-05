@@ -3,20 +3,22 @@ using System.Linq;
 using UnityEngine;
 
 public class ProjectileSkillEffect : ISkillEffect
-{
-    private ICreatureStatus monsterStatus;
-    private Transform target;
-    private GameObject projectilePrefab;
-    private GameObject hitEffect;
-    private float projectileSpeed; // 계수가 계산된 속도값
-    private float defaultProjectileSpeed; // 데이터에서 받은 디폴트값
-    private float skillDamage;
-    private IProjectileMovement moveStrategy;
-    private IProjectileImpact impactEffect;
-    private Transform spawnPoint;  // 스킬 발사 위치
-    private float damageMultiplier = 1.0f; // 데미지 계수 기본값
-    private float speedMultiplier = 1.0f; // 스피드 계수 기본값
-    private float heightFactor; // 포물선 이동 높이
+{// 이벤트 구현
+    public event Action OnEffectCompleted;
+    // 상속 클래스에서 접근할 수 있도록 protected로 변경
+    protected ICreatureStatus monsterStatus;
+    protected Transform target;
+    protected GameObject projectilePrefab;
+    protected GameObject hitEffect;
+    protected float projectileSpeed; // 계수가 계산된 속도값
+    protected float defaultProjectileSpeed; // 데이터에서 받은 디폴트값
+    protected float skillDamage;
+    protected IProjectileMovement moveStrategy;
+    protected IProjectileImpact impactEffect;
+    protected Transform spawnPoint;  // 스킬 발사 위치
+    protected float damageMultiplier = 1.0f; // 데미지 계수 기본값
+    protected float speedMultiplier = 1.0f; // 스피드 계수 기본값
+    protected float heightFactor; // 포물선 이동 높이
 
     public ProjectileSkillEffect(GameObject prefab, float speed,
         IProjectileMovement moveStrategy, IProjectileImpact impactEffect, GameObject hitEffect, float heightFactor)
@@ -29,24 +31,24 @@ public class ProjectileSkillEffect : ISkillEffect
         this.heightFactor = heightFactor;
     }
 
-    // 기존 Initialize 메서드 유지 (호환성)
-    public void Initialize(ICreatureStatus status, Transform target)
+    // 기존 Initialize 메서드에 virtual 추가
+    public virtual void Initialize(ICreatureStatus status, Transform target)
     {
         // 기본 데미지 계수 1.0으로 내부 메서드 호출
         InitializeInternal(status, target, this.damageMultiplier, this.speedMultiplier);
     }
 
-    // 새로운 Initialize 메서드 (데미지 계수 추가)
-    public void Initialize(ICreatureStatus status, Transform target, float damageMultiplier, float speedMultiplier)
+    // 새로운 Initialize 메서드에 virtual 추가 (데미지 계수 추가)
+    public virtual void Initialize(ICreatureStatus status, Transform target, float damageMultiplier, float speedMultiplier)
     {
         // 데미지 계수를 저장하고 내부 메서드 호출
         this.damageMultiplier = damageMultiplier;
         this.speedMultiplier = speedMultiplier;
-        InitializeInternal(status, target, damageMultiplier,speedMultiplier);
+        InitializeInternal(status, target, damageMultiplier, speedMultiplier);
     }
 
-    // 실제 초기화 로직을 담당하는 내부 메서드
-    private void InitializeInternal(ICreatureStatus status, Transform target, float damageMultiplier, float speedMultiplier)
+    // 내부 초기화 메서드를 protected로 변경하여 상속 클래스에서 접근 가능하게 함
+    protected virtual void InitializeInternal(ICreatureStatus status, Transform target, float damageMultiplier, float speedMultiplier)
     {
         try
         {
@@ -81,12 +83,8 @@ public class ProjectileSkillEffect : ISkillEffect
         }
     }
 
-
-
-
-
-
-public void Execute()
+    // Execute 메서드에도 virtual 추가
+    public virtual void Execute()
     {
         try
         {
@@ -138,8 +136,14 @@ public void Execute()
             Debug.LogError($"ProjectileSkillEffect.Execute 오류: {e.Message}\n{e.StackTrace}");
         }
     }
-    public void OnComplete()
+    // 발사체 생성 완료 후 이벤트 호출
+    protected void InvokeEffectCompleted()
     {
-       
+        OnEffectCompleted?.Invoke();
+    }
+    // OnComplete 메서드에도 virtual 추가
+    public virtual void OnComplete()
+    {
+        // 구현이 필요한 경우 여기에 추가
     }
 }

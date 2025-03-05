@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 
 public class SummonSkillEffect : ISkillEffect
@@ -7,6 +8,8 @@ public class SummonSkillEffect : ISkillEffect
     private float summonRadius;  // 소환 범위
     private ICreatureStatus monsterStatus;
     private Transform target;
+
+    public event Action OnEffectCompleted;
 
     public Transform transform { get => throw new System.NotImplementedException(); set => throw new System.NotImplementedException(); }
 

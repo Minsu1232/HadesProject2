@@ -3,7 +3,9 @@ using UnityEngine;
 using DG.Tweening;
 
 public class HowlSkillEffect : ISkillEffect
-{
+{    // 추가: 효과 완료 콜백
+    public event Action OnEffectCompleted;
+
     private GameObject howlEffectPrefab;
     private GameObject impactPrefab;
     private AudioClip howlSound;
@@ -25,8 +27,8 @@ public class HowlSkillEffect : ISkillEffect
     public HowlSkillEffect(GameObject effectPrefab, GameObject impactPrefab, AudioClip sound, float radius,
                       float essenceAmount, float duration, float damage, Transform transform, string eu, GameObject indicatorPrefab)
     {
-        Debug.Log($"HowlSkillEffect 생성자: howlEffectPrefab={effectPrefab != null}, impactPrefab={impactPrefab != null}, transform={transform != null}");
-        this.howlEffectPrefab = effectPrefab;
+     Debug.Log($"HowlSkillEffect 생성자: howlEffectPrefab={effectPrefab != null}, impactPrefab={impactPrefab != null}, transform={transform != null}");
+     this.howlEffectPrefab = effectPrefab;
     this.impactPrefab = impactPrefab;
     this.howlSound = sound;
     this.radius = radius;
@@ -131,14 +133,16 @@ public class HowlSkillEffect : ISkillEffect
                     ).SetEase(Ease.Linear);
                 }
             }
-         
+            Vector3 howlTransform = bossTransform.position;
+            howlTransform.y += 5f;  // y축을 5만큼 올림
+            
             // 하울링 이펙트 생성 (즉시 표시)
             if (howlEffectPrefab != null && bossTransform != null)
             {
                 Debug.Log(bossTransform.gameObject.ToString());
                 effectInstance = GameObject.Instantiate(
                     howlEffectPrefab,
-                    bossTransform.position,
+                    howlTransform,
                     Quaternion.identity
                 );
 
@@ -202,7 +206,9 @@ public class HowlSkillEffect : ISkillEffect
                     impactPrefab,
                     impact,
                     Quaternion.identity
+                    
                 );
+                Debug.Log("프리팹소환");
                 // 임팩트 이펙트 크기를 radius에 맞게 조정
                 // 기본 크기를 1이라고 가정할 때 radius에 비례하여 조정
                 float scaleMultiplier = radius / 3.0f; // 5는 기본 반경 값으로 가정, 필요에 따라 조정
@@ -222,14 +228,14 @@ public class HowlSkillEffect : ISkillEffect
                     })
                     .SetLink(impactInstance);
             }
-
+           
             // 범위 내 플레이어 감지
             Collider[] hitColliders = Physics.OverlapSphere(
                 bossTransform.position,
                 radius,
                 LayerMask.GetMask("Player")
             );
-
+            OnEffectCompleted?.Invoke();
             // 플레이어에게 Essence 증가 및 데미지 적용
             foreach (var hitCollider in hitColliders)
             {
@@ -244,6 +250,7 @@ public class HowlSkillEffect : ISkillEffect
                         // PlayerManager 같은 중앙 관리자를 통해 PlayerClass 인스턴스 접근
                         var playerClass = GameInitializer.Instance.GetPlayerClass();
                         playerClass.TakeDamage((int)damage);
+                        
                         return;
                     }
                    
@@ -274,10 +281,10 @@ public class HowlSkillEffect : ISkillEffect
             GameObject.Destroy(effectInstance);
         }
 
-        if (impactInstance != null)
-        {
-            GameObject.Destroy(impactInstance);
-        }
+        //if (impactInstance != null)
+        //{
+        //    GameObject.Destroy(impactInstance);
+        //}
         if(howlIndicator != null)
         {
             GameObject.Destroy(howlIndicator);

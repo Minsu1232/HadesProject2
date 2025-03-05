@@ -5,7 +5,9 @@ Shader"Custom/WarningIndicator"
         _FillAmount ("Fill Amount", Range(0, 1)) = 0
         _OutlineColor ("Outline Color", Color) = (1,1,1,1)
         _FillColor ("Fill Color", Color) = (1,0,0,0.5)
-        _BaseColor ("Base Color", Color) = (1,1,1,0.2)  // New base color property
+        _BaseColor ("Base Color", Color) = (1,1,1,0.2)
+        _InnerRadius ("Inner Radius", Range(0, 1)) = 0  // 내부 원 반경 비율 (0=없음, 1=전체)
+        _InnerColor ("Inner Color", Color) = (0,1,0,0.5)  // 내부 색상 (안전 구역)
     }
     
     SubShader 
@@ -22,7 +24,8 @@ OneMinusSrcAlpha
 {
     Ref 1
 
-    Comp Always
+    Comp
+    Always
             Pass
     Replace
 
@@ -38,7 +41,9 @@ OneMinusSrcAlpha
 float _FillAmount;
 float4 _OutlineColor;
 float4 _FillColor;
-float4 _BaseColor; // New base color variable
+float4 _BaseColor;
+float _InnerRadius;
+float4 _InnerColor;
             
 struct appdata
 {
@@ -69,15 +74,22 @@ fixed4 frag(v2f i) : SV_Target
     float fill = step(dist, _FillAmount);
     float baseArea = step(dist, 1.0);
                 
-                // Combine base color, fill color, and outline
-    float4 col = _BaseColor * baseArea + // Base color with fixed transparency
-                             outline * _OutlineColor +
-                             fill * _FillColor;
+                // 내부 원 (안전 구역)
+   // 내부 원 (안전 구역)
+    float innerArea = step(dist, _InnerRadius * 2.0); // 직경을 고려하여 2를 곱함
+    float donutArea = baseArea - innerArea; // 외부원 - 내부원 = 도넛 영역
                 
-                // Ensure proper alpha blending
+                // 조합: 기본 배경 + 외곽선 + 채우기 (도넛 영역만) + 내부 원
+    float4 col = _BaseColor * baseArea +
+                             outline * _OutlineColor +
+                             (fill * donutArea) * _FillColor +
+                             (fill * innerArea) * _InnerColor;
+                
+                // 알파 블렌딩
     col.a = _BaseColor.a * baseArea +
                         outline * _OutlineColor.a +
-                        fill * _FillColor.a;
+                        (fill * donutArea) * _FillColor.a +
+                        (fill * innerArea) * _InnerColor.a;
                 
     return col;
 }

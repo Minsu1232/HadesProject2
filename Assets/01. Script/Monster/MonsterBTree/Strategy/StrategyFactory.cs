@@ -110,7 +110,14 @@ public static class StrategyFactory
                 data.areaDuration,
                 data.areaRadius
             ),
-          
+            ProjectileImpactType.DelayedExplosion => new DelayedExplosionImpact(
+            data.safeZoneRadius,             // 안전 영역 반경
+            data.dangerRadiusMultiplier,     // 위험 영역 배수
+            data.skillDuration,              // 폭발 지연 시간
+            true,                            // 기본값으로 링형(빨간색) 설정
+            data.ExplosionEffect                   // 폭발 이펙트
+        ),
+            
             _ => null
         };
     }
@@ -161,14 +168,30 @@ public static class StrategyFactory
                     data.areaEffectPrefab,
                     data.howlSound,
                     data.howlRadius,
-                    data.howlEssenceAmount,
+                    data.EssenceAmount,
                     data.howlDuration,
                     data.skillDamage,
                     owner.transform,
                     "@@@@@@@@@여기임",
                     data.circleIndicatorPrefab
                 );
-                
+            case SkillEffectType.CircularProjectile:
+                if (data.projectilePrefab == null)
+                {
+                    Debug.LogError($"Projectile prefab is missing for monster: {data.MonsterName}");
+                    return null;
+                }
+                var moveStrategy_ = CreateProjectileMovement(data.projectileType, data);
+                var impactEffect_ = CreateProjectileImpact(data.projectileImpactType, data);
+                return new CircularProjectileSkillEffect(
+                    data.projectilePrefab,
+                    data.circleIndicatorPrefab,
+                    data.projectileSpeed,
+                    moveStrategy_,
+                    impactEffect_,
+                    data.hitEffect,
+                    data.heightFactor
+                );
 
             case SkillEffectType.Buff:
                 return new BuffSkillEffect(

@@ -39,6 +39,14 @@ public class AreaSkillStrategy : ISkillStrategy
     public void Initialize(ISkillEffect effect)
     {
         this.skillEffect = effect;
+
+        // 모든 스킬 이펙트에 대해 동일한 방식으로 이벤트 구독
+        effect.OnEffectCompleted += () => {
+            Debug.Log("[AreaSkillStrategy] 효과 완료 콜백 수신");
+            // 효과가 완료되면 스킬도 완료 처리
+            CompleteSkill();
+        };
+
         Debug.Log($"[AreaSkillStrategy] 초기화됨: {effect.GetType().Name}");
     }
 
@@ -72,7 +80,7 @@ public class AreaSkillStrategy : ISkillStrategy
                 // 다른 영역 효과 스킬은 skillDuration 또는 다른 값 사용
                 effectDuration = monsterData.CurrentSKillDuration;
             }
-
+            Debug.Log("!@#!@#!@#" + effectDuration);
             // 총 지속 시간은 효과 지속 시간 + 약간의 여유 시간
             totalDuration = effectDuration + 1.0f;
 
@@ -138,7 +146,7 @@ public class AreaSkillStrategy : ISkillStrategy
         skillExecuted = false;
         effectApplied = false;
         skillExecutionTimer = 0f;
-
+        lastSkillTime = Time.time;
         // 스킬 이펙트의 OnComplete 호출
         if (skillEffect != null)
         {

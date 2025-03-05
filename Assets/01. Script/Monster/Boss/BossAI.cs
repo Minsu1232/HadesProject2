@@ -307,6 +307,7 @@ public class BossAI : CreatureAI
 
         behaviorTree?.Execute();
 
+        Debug.Log(currentState.ToString());
        
 
     }

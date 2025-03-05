@@ -111,6 +111,7 @@ public class MonsterDataManager : Singleton<MonsterDataManager>
                 prefabData.hitEffect = await LoadPrefab(values[6]);
                 prefabData.eliteOutlineMaterial = await LoadMaterial(values[7]);
                 prefabData.howlEffectPrefab = await LoadPrefab(values[8]);
+                prefabData.ExplosionEffect = await LoadPrefab(values[9]);
                 // 프리팹 데이터를 별도 딕셔너리에 저장
                 monsterPrefabData[monsterId] = prefabData;
                 Debug.Log($"몬스터 프리팹 로드 완료: ID {monsterId}");
@@ -452,8 +453,10 @@ public class MonsterDataManager : Singleton<MonsterDataManager>
             monsterData.projectileRotationSpeed = float.Parse(skills["ProjectileRotationSpeed"]);
             monsterData.heightFactor = float.Parse(skills["HeightFactor"]);
             monsterData.howlRadius = float.Parse(skills["HowlRadius"]);
-            monsterData.howlEssenceAmount = float.Parse(skills["HowlEssenceAmount"]);
+            monsterData.EssenceAmount = float.Parse(skills["EssenceAmount"]);
             monsterData.howlDuration = float.Parse(skills["howlDuration"]);
+            monsterData.safeZoneRadius = float.Parse(skills["safeZoneRadius"]);
+            monsterData.dangerRadiusMultiplier = float.Parse(skills["dangerRadiusMultiplier"]);
         }
     }
     private Vector3 ParseVector3(string vectorString)

@@ -2,6 +2,7 @@ using GSpawn_Pro;
 using System;
 using System.Collections.Generic;
 using System.IO;
+using System.Runtime.InteropServices;
 using System.Threading.Tasks;
 using UnityEngine;
 using UnityEngine.AddressableAssets;
@@ -708,7 +709,7 @@ public class BossDataManager : Singleton<BossDataManager>
         }
         if(bossSkillPrefabData.TryGetValue(bossId, out var skillsPrefab))
         {
-            UpdateBossPrefab(bossData, skillsPrefab);
+            _ = UpdateBossPrefab(bossData, skillsPrefab);
         }
 
         // 챕터보스
@@ -883,6 +884,7 @@ public class BossDataManager : Singleton<BossDataManager>
             var howlPrefab = await LoadPrefabAsync(baseDataes["HowlEffectPrefabKey"]);
             Debug.Log($"로드된 howlPrefab: {(howlPrefab != null ? howlPrefab.name : "null")}");
             bossData.howlEffectPrefab = howlPrefab;
+            bossData.ExplosionEffect = await LoadPrefabAsync($"{baseDataes["ExplosionPrefab"]}");
 
         }
      
@@ -1107,8 +1109,10 @@ public class BossDataManager : Singleton<BossDataManager>
                 bossData.projectileRotationSpeed = float.Parse(skill["ProjectileRotationSpeed"]);
                 bossData.heightFactor = float.Parse(skill["HeightFactor"]);
                 bossData.howlRadius = float.Parse(skill["HowlRadius"]);
-                bossData.howlEssenceAmount = float.Parse(skill["HowlEssenceAmount"]);
+                bossData.EssenceAmount = float.Parse(skill["EssenceAmount"]); 
                 bossData.howlDuration = float.Parse(skill["howlDuration"]);
+                bossData.safeZoneRadius = float.Parse(skill["safeZoneRadius"]);
+                bossData.dangerRadiusMultiplier = float.Parse(skill["dangerRadiusMultiplier"]);
                 
             }
         } 

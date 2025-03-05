@@ -332,7 +332,32 @@ Commit = Notebook/SKillDamageDamagemutiplerAdd
 
 3/3 = '야수의 울부짖음' 제작 완료 CSV에서 Prefab로드하는 과정에 특정 행과열에 에러가 났는데 이유는 찾지못함. 다른행으로 이동 후 작성해서 해결
 
-	=> 구조 스킬발동 시 먼저 Howl이펙트가 나오고 지정한 duration값동안 indicator가 Fill됨. 이후 차면 OnImpact로 효과(현잰 데미지 및 에센스 증가)
+	=> AreaSkillStrategy추가 구조는 스킬발동 시 먼저 Howl이펙트가 나오고 지정한 duration값동안 indicator가 Fill됨. 이후 차면 OnImpact로 효과(현잰 데미지 및 에센스 증가)
+	
+	=> howlDuration이 애니메이션보다 짧고 Strategy의Update가 프레임별로 안되기에 이벤트호출로 AreaStrategy완료 호출
+	
+	=> SkillState에서 완료 후 상태에서 나가는게 스킬효과의 충돌떄문인지 제대로 안나가짐
+	
+		따라서 임시 해결로 애니메이션클립을 가져와 해당 클립의 길이의 조금더를 해서 나가게끔 함
 
 Commit = Main/Alexander/HowlSkillStrategy
+
+3/4 = '야수의 발톱' 제작 중..
+
+	=> BaseProjectile에서 파생되는 GroundExplosionProjectile생성 폭발형 프로젝타일에 할당 할 스크립트임
+	=> ISkillEffect의 ProjectileSkillEffect를 받는 CircularProjectileSkillEffect 생성 원형에 데미지를 줄 스킬타입 스크립트
+
+	현재 안밖으로 바뀌는지 테스트 하려했으나, 도넛모양의 인디케이터가 없어 다음날 확인해볼 예정. 일단 데미지가 들어오는거까진 확인함
+
+	Essece게이지가 오르게도 해야함 수정 예정 GroundExplosionProjectile에서 관리할듯 함
 		   
+
+3/5 = '야수의 발톱' 제작 완료 및 도넛모양 인디케이터 제작 완료
+
+	=> 이제 ISkillEffect에서 이벤트를 선언해 스킬의 완료를 알리도록 변경
+	=> 다음으로는 기믹제작 및 미니게임 패턴(베이직차징공격예상)하면 보스는 어느정도 완성
+
+	=> ★현재 에센스를 증가함에 있어 특정 몬스터클래스의 보스몬스터 스크립트를 갖는데, 이를 보스의 인터페이스나 이쪽으로 빼야할 듯 함★
+	=> 에센스 증가는 보스들이 공유해야하기 때문
+
+Commit = Main/Alexander/ClawSkill

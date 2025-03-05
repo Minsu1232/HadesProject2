@@ -143,11 +143,16 @@ public class MonsterData : ScriptableObject, ICreatureData
     public float howlDuration { get; set; }
 
     [FoldoutGroup("Skill Settings"), ShowInInspector]
-    public float howlEssenceAmount { get; set; }
+    public float EssenceAmount { get; set; }
 
     [FoldoutGroup("Skill Settings"), ShowInInspector]
     public GameObject circleIndicatorPrefab { get; set; }
-
+    [FoldoutGroup("Skill Settings"), ShowInInspector]
+    public float safeZoneRadius { get; set; }
+    [FoldoutGroup("Skill Settings"), ShowInInspector]
+    public float dangerRadiusMultiplier { get; set; }
+    [FoldoutGroup("Skill Settings"), ShowInInspector]
+    public GameObject ExplosionEffect { get; set; }
 
     [FoldoutGroup("Buff Settings"), ShowInInspector]
     public BuffData buffData { get; set; } = new BuffData();
@@ -259,7 +264,7 @@ public class MonsterData : ScriptableObject, ICreatureData
 
 
 }
-    #endregion
+#endregion
 
 
 public enum SpawnStrategyType
@@ -342,6 +347,7 @@ public enum SkillEffectType
     Projectile,
     AreaEffect,
     Buff,
+    CircularProjectile,
     Summon,
     Howl
     // ... 다른 이펙트 타입들
@@ -352,6 +358,7 @@ public enum ProjectileImpactType
     None,
     Basic,
     Poison,
+    DelayedExplosion,
     Damage
 
     //Explosion,

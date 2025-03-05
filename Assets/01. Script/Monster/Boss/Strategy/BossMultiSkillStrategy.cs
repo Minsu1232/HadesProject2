@@ -11,7 +11,7 @@ public class BossMultiSkillStrategy : ISkillStrategy
 {
     private List<ISkillStrategy> strategies = new List<ISkillStrategy>();
     private Dictionary<ISkillStrategy, float> weights = new Dictionary<ISkillStrategy, float>();
-    private ISkillStrategy currentStrategy;
+    public ISkillStrategy currentStrategy;
     private readonly BasicSkillStrategy defaultStrategy;
 
     // 통합 타이머 - BossMultiSkillStrategy 자체 쿨타임 관리용
@@ -208,7 +208,7 @@ public class BossMultiSkillStrategy : ISkillStrategy
         foreach (var strategy in strategies)
         {
             bool canUse = strategy.CanUseSkill(distanceToTarget, monsterData);
-            Debug.Log($"Strategy {strategy.GetType().Name}: CanUse={canUse}, Distance={distanceToTarget}");
+            
             if (canUse)
             {
                 anyStrategyReady = true;
