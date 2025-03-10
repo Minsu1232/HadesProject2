@@ -238,7 +238,8 @@ public enum GimmickType
     EnvironmentChange, // 환경 변화
     Summon,           // 소환
     DamageReflect,    // 데미지 반사
-    RestrictArea      // 활동 영역 제한
+    RestrictArea,      // 활동 영역 제한
+    SoulEntity        // 영혼 형체 기믹 추가
 }
 public enum BossPatternType
 {

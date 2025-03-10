@@ -292,7 +292,7 @@ public static class SkillStrategyFactory
             // 필요한 프리팹 가져오기
             GameObject howlEffectPrefab = BossDataManager.Instance.GetHowlEffectPrefab(bossId, configId);
             GameObject indicatorPrefab = BossDataManager.Instance.GetIndicatorPrefab(bossId, configId);
-
+            GameObject areaExplosionPrefab = BossDataManager.Instance.GetSkillAreaPrefab(bossId, configId); 
             if (howlEffectPrefab == null)
             {
                 Debug.LogWarning($"[SkillStrategyFactory] 보스 {bossId}의 스킬 {configId}에 하울 이펙트 프리팹이 없습니다.");
@@ -308,7 +308,7 @@ public static class SkillStrategyFactory
             // HowlSkillEffect 생성
             HowlSkillEffect howlEffect = new HowlSkillEffect(
                 howlEffectPrefab, // 하울링 프리팹
-                bossData.areaEffectPrefab, // 임팩트 프리팹
+                areaExplosionPrefab, // 임팩트 프리팹
                 bossData.howlSound, // 울음소리
                 radius,
                 essenceAmount,

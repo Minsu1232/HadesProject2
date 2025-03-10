@@ -4,7 +4,9 @@ using System;
 public class CircularProjectileSkillEffect : ProjectileSkillEffect
 {
     // 원형 배치 관련 파라미터
-    private int projectileCount;  // 생성할 프로젝타일 수
+    private int projectileCount;        // 실제 사용될 변수
+    private int baseProjectileCount;    // 원본값 보관용 
+
     private float radius;        // 원의 반지름
     private float safeZoneRadius;  // 안전 구역 반경
     private float dangerRadiusMultiplier; // 위험 영역 배수
@@ -27,6 +29,7 @@ public class CircularProjectileSkillEffect : ProjectileSkillEffect
     public void SetCircleParameters(int count, float radius, float safeZoneRadius,
                                    float dangerRadiusMultiplier, float explosionDelay, float essenceAmount = 0)
     {
+        baseProjectileCount = count;
         this.projectileCount = count;
         this.radius = radius;
         this.safeZoneRadius = safeZoneRadius;
@@ -40,29 +43,35 @@ public class CircularProjectileSkillEffect : ProjectileSkillEffect
     {
         base.Initialize(status, target);
 
-        // Essence 시스템과 연동 (Alexander 보스인 경우)
-        if (status.GetMonsterClass() is AlexanderBoss alexBoss)
+        // 항상 원본값에서 시작 (이 부분이 핵심 해결 코드)
+        projectileCount = baseProjectileCount;
+
+        if (status.GetMonsterClass() is IBossWithEssenceSystem alexBoss)
         {
             IBossEssenceSystem essenceSystem = alexBoss.GetEssenceSystem();
             if (essenceSystem != null)
             {
                 float essenceRatio = essenceSystem.CurrentEssence / essenceSystem.MaxEssence;
 
-                // 광기 수치에 따라 발사체 개수 증가 (최소 projectileCount개, 최대 projectileCount + 5개)
-                int additionalProjectiles = Mathf.RoundToInt(5 * essenceRatio);
+                int additionalProjectiles = Mathf.RoundToInt(3 * essenceRatio);
                 projectileCount += additionalProjectiles;
 
-                Debug.Log($"[CircularProjectileSkillEffect] Essence 수치: {essenceRatio:P0}, 발톱 수: {projectileCount}개");
+                Debug.Log($"Essence 수치: {essenceRatio:P0}, 총 발사체 수: {projectileCount}개");
 
-                // 광기가 최대치(100%)에 가까울 경우 폭발 대기 시간을 더 짧게 설정
                 if (essenceRatio > 0.9f)
                 {
-                    explosionDelay *= 0.7f; // 30% 더 빠른 폭발
-                    Debug.Log($"[CircularProjectileSkillEffect] 광기 최대치 접근! 폭발 대기 시간: {explosionDelay}초");
+                    explosionDelay *= 0.7f;
+                    Debug.Log($"광기 최대치 접근! 폭발 대기 시간: {explosionDelay}초");
                 }
+            }
+            else
+            {
+                // 에센스 시스템 없을 때 원본값 유지
+                projectileCount = baseProjectileCount;
             }
         }
     }
+
 
     // Execute 메서드 오버라이드
     public override void Execute()
@@ -94,7 +103,7 @@ public class CircularProjectileSkillEffect : ProjectileSkillEffect
 
                 // Alexander 보스의 에센스 시스템 연동
                 bool isRingShaped = true; // 기본값: 링형(빨간색)
-                if (monsterStatus.GetMonsterClass() is AlexanderBoss alexBoss)
+                if (monsterStatus.GetMonsterClass() is IBossWithEssenceSystem alexBoss)
                 {
                     IBossEssenceSystem essenceSystem = alexBoss.GetEssenceSystem();
                     if (essenceSystem != null)

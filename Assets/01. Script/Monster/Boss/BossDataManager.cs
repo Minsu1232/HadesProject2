@@ -28,6 +28,7 @@ public class BossDataManager : Singleton<BossDataManager>
     // 보스별 스킬 프리팹 매핑을 위한 딕셔너리 추가
     private Dictionary<int, Dictionary<int, GameObject>> bossSkillPrefabMap = new Dictionary<int, Dictionary<int, GameObject>>();
     private Dictionary<int, Dictionary<int, GameObject>> bossSkillImpactPrefabMap = new Dictionary<int, Dictionary<int, GameObject>>();
+    private Dictionary<int, Dictionary<int, GameObject>> bossSkillAreaPrefabMap = new Dictionary<int, Dictionary<int, GameObject>>();
     private Dictionary<int, Dictionary<int, GameObject>> howlEffectPrefabMap = new Dictionary<int, Dictionary<int, GameObject>>();
     private Dictionary<int, Dictionary<int, AudioClip>> bossSkillSoundMap = new Dictionary<int, Dictionary<int, AudioClip>>();
     // 인디케이터 프리팹 맵 추가
@@ -445,6 +446,35 @@ public class BossDataManager : Singleton<BossDataManager>
                     // 로드 오류가 있더라도 계속 진행
                 }
             }
+            string areaEffectPath = prefabDict.ContainsKey("AreaEffectPrefab") ? prefabDict["AreaEffectPrefab"] : "";
+            if (!string.IsNullOrEmpty(areaEffectPath))
+            {
+                try
+                {
+                    var handle = Addressables.LoadAssetAsync<GameObject>(areaEffectPath);
+                    // 코루틴 대신 콜백 사용
+                    handle.Completed += op =>
+                    {
+                        if (op.Status == AsyncOperationStatus.Succeeded)
+                        {
+                            if (!bossSkillAreaPrefabMap.ContainsKey(bossId))
+                                bossSkillAreaPrefabMap[bossId] = new Dictionary<int, GameObject>();
+
+                            bossSkillAreaPrefabMap[bossId][skillConfigId] = op.Result;
+                            Debug.Log($"보스 {bossId}의 스킬 {skillConfigId}에 에어리어 이펙트 {areaEffectPath} 매핑됨");
+                        }
+                        else
+                        {
+                            Debug.LogWarning($"보스 {bossId}의 스킬 {skillConfigId}에 대한 히트 이펙트 로드 실패: {hitEffectPath}");
+                        }
+                    };
+                }
+                catch (Exception e)
+                {
+                    Debug.LogError($"히트 이펙트 로드 중 오류: {e.Message}");
+                    // 로드 오류가 있더라도 계속 진행
+                }
+            }
             // 하울 이펙트 프리팹 처리
             string howlEffectPrefabPath = prefabDict.ContainsKey("HowlEffectPrefabKey") ? prefabDict["HowlEffectPrefabKey"] : "";
             if (!string.IsNullOrEmpty(howlEffectPrefabPath))
@@ -543,6 +573,36 @@ public class BossDataManager : Singleton<BossDataManager>
             else
             {
                 Debug.LogWarning($"보스 {bossId}의 스킬 {skillConfigId}에 대한 히트 이펙트가 없습니다. 기본 이펙트도 없음.");
+                return null;
+            }
+        }
+        catch (Exception e)
+        {
+            Debug.LogError($"GetSkillImpactPrefab 오류: {e.Message}\n{e.StackTrace}");
+            return null;
+        }
+    }
+    public GameObject GetSkillAreaPrefab(int bossId, int skillConfigId)
+    {
+        try
+        {
+            // 우선 매핑된 스킬별 히트 이펙트가 있는지 확인
+            if (bossSkillAreaPrefabMap.TryGetValue(bossId, out var prefabMap) &&
+                prefabMap.TryGetValue(skillConfigId, out var prefab) &&
+                prefab != null)
+            {
+                return prefab;
+            }
+
+            // 매핑이 없으면 보스의 기본 임팩트 프리팹 반환
+            var bossData = GetBossData(bossId);
+            if (bossData?.areaEffectPrefab != null)
+            {
+                return bossData.areaEffectPrefab;
+            }
+            else
+            {
+                Debug.LogWarning($"보스 {bossId}의 스킬 {skillConfigId}에 대한 에어리어 이펙트가 없습니다. 기본 이펙트도 없음.");
                 return null;
             }
         }
@@ -1142,6 +1202,87 @@ public class BossDataManager : Singleton<BossDataManager>
             alexanderBossData.playerAttackBuff = float.Parse(alexanderData["PlayerAttackBuff"]);
             alexanderBossData.playerDamageBuff = float.Parse(alexanderData["PlayerDamageBuff"]);
             alexanderBossData.maxEssenceStunTime = float.Parse(alexanderData["MaxEssenceStunTime"]);
+            // 광기 균열 설정 추가
+            if (alexanderData.ContainsKey("EnableMadnessCrack"))
+            {
+                alexanderBossData.enableMadnessCrack = bool.Parse(alexanderData["EnableMadnessCrack"]);
+            }
+
+            if (alexanderData.ContainsKey("CrackWarningDuration"))
+            {
+                alexanderBossData.crackWarningDuration = float.Parse(alexanderData["CrackWarningDuration"]);
+            }
+
+            if (alexanderData.ContainsKey("CrackRadius"))
+            {
+                alexanderBossData.crackRadius = float.Parse(alexanderData["CrackRadius"]);
+            }
+
+            if (alexanderData.ContainsKey("CrackDamage"))
+            {
+                alexanderBossData.crackDamage = float.Parse(alexanderData["CrackDamage"]);
+            }
+
+            if (alexanderData.ContainsKey("CrackDamageMultiplier"))
+            {
+                alexanderBossData.crackDamageMultiplier = float.Parse(alexanderData["CrackDamageMultiplier"]);
+            }
+
+            if (alexanderData.ContainsKey("CrackCooldownMin"))
+            {
+                alexanderBossData.crackCooldownMin = float.Parse(alexanderData["CrackCooldownMin"]);
+            }
+
+            if (alexanderData.ContainsKey("CrackCooldownMax"))
+            {
+                alexanderBossData.crackCooldownMax = float.Parse(alexanderData["CrackCooldownMax"]);
+            }
+            // 프리팹 경로가 있으면 프리팹 로드
+            if (alexanderData.ContainsKey("CrackPrefabPath") && !string.IsNullOrEmpty(alexanderData["CrackPrefabPath"]))
+            {
+                Addressables.LoadAssetAsync<GameObject>(alexanderData["CrackPrefabPath"]).Completed += op => {
+                    if (op.Status == AsyncOperationStatus.Succeeded)
+                    {
+                        alexanderBossData.crackPrefab = op.Result;
+                        Debug.Log($"광기 균열 프리팹 로드 완료: {alexanderData["CrackPrefabPath"]}");
+                    }
+                    else
+                    {
+                        Debug.LogError($"광기 균열 프리팹 로드 실패: {alexanderData["CrackPrefabPath"]}");
+                    }
+                };
+            }
+
+            if (alexanderData.ContainsKey("CrackIndicatorPath") && !string.IsNullOrEmpty(alexanderData["CrackIndicatorPath"]))
+            {
+                Addressables.LoadAssetAsync<GameObject>(alexanderData["CrackIndicatorPath"]).Completed += op => {
+                    if (op.Status == AsyncOperationStatus.Succeeded)
+                    {
+                        alexanderBossData.crackIndicatorPrefab = op.Result;
+                        Debug.Log($"광기 균열 인디케이터 프리팹 로드 완료: {alexanderData["CrackIndicatorPath"]}");
+                    }
+                    else
+                    {
+                        Debug.LogError($"광기 균열 인디케이터 프리팹 로드 실패: {alexanderData["CrackIndicatorPath"]}");
+                    }
+                };
+            }
+
+            if (alexanderData.ContainsKey("CrackExplosionPath") && !string.IsNullOrEmpty(alexanderData["CrackExplosionPath"]))
+            {
+                Addressables.LoadAssetAsync<GameObject>(alexanderData["CrackExplosionPath"]).Completed += op => {
+                    if (op.Status == AsyncOperationStatus.Succeeded)
+                    {
+                        alexanderBossData.crackExplosionPrefab = op.Result;
+                        Debug.Log($"광기 균열 폭발 이펙트 프리팹 로드 완료: {alexanderData["CrackExplosionPath"]}");
+                    }
+                    else
+                    {
+                        Debug.LogError($"광기 균열 폭발 이펙트 프리팹 로드 실패: {alexanderData["CrackExplosionPath"]}");
+                    }
+                };
+            }
+
 
             Debug.Log($"알렉산더 특수 데이터 업데이트 완료: {bossData.MonsterName}");
         }

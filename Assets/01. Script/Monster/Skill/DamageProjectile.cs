@@ -8,9 +8,11 @@ public class DamageProjectile : BaseProjectile
 
     private void OnTriggerEnter(Collider other)
     {
+        GameObject effect = Instantiate(hitEffect, transform.position, transform.rotation);
         Debug.Log("´ê¾Ñ´Âµð");
-        if (hasDamageApplied) return;
         OnImpact(other);
+        if (hasDamageApplied) return;
+       
     }
 
     protected override void OnImpact(Collider other)
@@ -23,7 +25,7 @@ public class DamageProjectile : BaseProjectile
             GameObject effect = Instantiate(hitEffect, transform.position, transform.rotation);
             ApplyDamageToPlayer(other);
            
-        }
+        }     
         Destroy(gameObject);
     }
 

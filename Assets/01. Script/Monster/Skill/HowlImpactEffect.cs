@@ -30,7 +30,7 @@ public class HowlImpactEffect : IProjectileImpact
         {
             if (hitCollider.CompareTag("Player"))
             {
-                var bossMonster = monsterStatus.GetMonsterClass() as AlexanderBoss;
+                var bossMonster = monsterStatus.GetMonsterClass() as IBossWithEssenceSystem;
                 if (bossMonster != null)
                 {
                     bossMonster.InflictEssence(essenceAmount);

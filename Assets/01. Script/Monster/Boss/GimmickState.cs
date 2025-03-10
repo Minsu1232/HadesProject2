@@ -29,13 +29,20 @@ public class GimmickState : MonsterBaseState
 
     public override void Execute()
     {
+        Debug.Log("µé¾î¿È@@@@@@@@@@@@@@@@@@@" + gimmickStrategy.IsGimmickComplete);
         gimmickStrategy.UpdateGimmick();
         if (gimmickStrategy.IsGimmickComplete)
-        {   
-            animator.SetBool(gimmickStrategy.GetGimmickAnimationTrigger(), false);
-            owner.ChangeState(MonsterStateType.Groggy);
+        {
+            Debug.Log("µé¾î¿È@@@@@@@@@@@@@@@@@@@");
+            animator.SetBool(gimmickStrategy.GetGimmickAnimationTrigger(), false);            
+
+
         }
     }
 
-    public override bool CanTransition() => gimmickStrategy.IsGimmickComplete;
+    public override bool CanTransition()
+    {
+        animator.SetBool(gimmickStrategy.GetGimmickAnimationTrigger(), !gimmickStrategy.IsGimmickComplete);
+        return gimmickStrategy.IsGimmickComplete;
+    } 
 }

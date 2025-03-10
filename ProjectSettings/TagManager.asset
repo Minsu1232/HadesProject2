@@ -8,6 +8,7 @@ TagManager:
   - CrashWall
   - FxTemporaire
   - Ground
+  - Weapon
   layers:
   - Default
   - TransparentFX

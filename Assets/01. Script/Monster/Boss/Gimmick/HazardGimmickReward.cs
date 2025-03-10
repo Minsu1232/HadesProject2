@@ -1,4 +1,6 @@
 using UnityEngine;
+using static IMonsterState;
+using static UnityEngine.UI.GridLayoutGroup;
 
 public class HazardGimmickReward : IGimmickReward
 {
@@ -18,7 +20,7 @@ public class HazardGimmickReward : IGimmickReward
         // 1. 플레이어 버프
         int attackBuff = (int)(player.PlayerStats.AttackPower * ATTACK_BUFF_MULTIPLIER);
         player.ModifyPower(attackAmount: attackBuff);
-
+      
         // 2. 보스 디버프 (방어력과 속도 20% 감소)
         int defenseDebuff = -(int)(bossMonster.CurrentDeffense * BOSS_DEBUFF_PERCENT);
         int speedDebuff = -(int)(bossMonster.CurrentSpeed * BOSS_DEBUFF_PERCENT);
@@ -27,8 +29,8 @@ public class HazardGimmickReward : IGimmickReward
             defenseAmount: defenseDebuff,
             speedAmount: speedDebuff
         );
-        
 
+        boss.ChangeState(MonsterStateType.Groggy);
         Debug.Log($"기믹 성공 보상 적용: 플레이어 공격력 {attackBuff} 증가, 보스 방어/속도 {BOSS_DEBUFF_PERCENT * 100}% 감소");
     }
 

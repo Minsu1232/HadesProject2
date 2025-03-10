@@ -259,27 +259,24 @@ public class GroundExplosionProjectile : BaseProjectile
                     // 도넛 영역에만 데미지 적용 (안전 구역 밖 && 위험 구역 안)
                     if (distance > safeZoneRadius && distance <= dangerRadius)
                     {
-                        if (monsterStatus.GetMonsterClass() is AlexanderBoss alexBoss)
+                        // IBossWithEssenceSystem 인터페이스를 통해 보스 접근
+                        if (monsterStatus.GetMonsterClass() is IBossWithEssenceSystem chapterBoss)
                         {
-                            
-                            IBossEssenceSystem essenceSystem = alexBoss.GetEssenceSystem();
-                            if (essenceSystem != null)
-                            {
-                                
-                                essenceSystem.IncreaseEssence(essenceAmount);
-                            }
+                            // InflictEssence 메서드 호출
+                            chapterBoss.InflictEssence(essenceAmount);
+
                             player.TakeDamage((int)damage);
                             damageApplied = true; // 데미지 적용 표시
-                            Debug.Log($"링형 데미지 적용: {damage}");
+                            Debug.Log($"링형 데미지 적용: {damage}, Essence 증가: {essenceAmount}");
                         }
-                        else
-                        {
-                            Debug.Log("플레이어가 도넛 영역 밖에 있어 데미지 없음");
-                        }
+                    }
+                    else
+                    {
+                        Debug.Log("플레이어가 도넛 영역 밖에 있어 데미지 없음");
                     }
                 }
             }
-        } 
+        }
     }
 
     // 전체 영역 폭발 데미지 (안전 구역 없음)
@@ -297,24 +294,22 @@ public class GroundExplosionProjectile : BaseProjectile
                 PlayerClass player = GameInitializer.Instance.GetPlayerClass();
                 if (player != null)
                 {
-                    if (monsterStatus.GetMonsterClass() is AlexanderBoss alexBoss)
+                    // IBossWithEssenceSystem 인터페이스를 통해 보스 접근
+                    if (monsterStatus.GetMonsterClass() is IBossWithEssenceSystem chapterBoss)
                     {
-
-                        IBossEssenceSystem essenceSystem = alexBoss.GetEssenceSystem();
-                        if (essenceSystem != null)
-                        {
-
-                            essenceSystem.IncreaseEssence(essenceAmount);
-                        }
+                        // InflictEssence 메서드 호출
+                        chapterBoss.InflictEssence(essenceAmount);
+                        Debug.Log($"폭발로 Essence {essenceAmount} 증가!");
                     }
-                        player.TakeDamage((int)damage);
+
+                    player.TakeDamage((int)damage);
                     damageApplied = true;
                     Debug.Log($"전체 영역 데미지 적용: {damage}");
                 }
             }
         }
     }
- 
+
     // 디버그용 기즈모 그리기
     private void OnDrawGizmos()
     {

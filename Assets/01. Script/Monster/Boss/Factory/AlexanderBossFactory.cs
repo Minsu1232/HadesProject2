@@ -42,11 +42,43 @@ public class AlexanderBossFactory : MonsterFactoryBase
 
             // AlexanderBoss의 UI 연동 처리
             var essenceUI = GameObject.FindObjectOfType<BossEssenceUIManager>();
-            if (essenceUI != null && boss is AlexanderBoss alexanderBoss)
+            if (essenceUI != null && boss is AlexanderBoss alexanderBoss && boss is IBossWithEssenceSystem bossWithEssence)
             {
                 Debug.Log($"{bossData.MonsterName} 챕터보스 소환");
                 essenceUI.Initialize(alexanderBoss.GetEssenceSystem());
+
+                // 광기 균열 시스템 초기화
+                if (data is AlexanderBossData alexanderBossData && alexanderBossData.enableMadnessCrack)
+                {
+                    // 광기 균열 시스템 추가
+                    var hazardManager = bossObject.AddComponent<BossEssenceHazardManager>();
+                    hazardManager.Initialize(
+                        bossWithEssence.GetEssenceSystem(),
+                        alexanderBossData.crackCooldownMin,
+                        alexanderBossData.crackCooldownMax
+                    );
+
+
+
+
+                    // 광기 균열 위험요소 생성 및 등록
+                    var madnessCrack = new MadnessCrackHazard(
+                 alexanderBossData.crackPrefab,
+    alexanderBossData.crackIndicatorPrefab,
+    alexanderBossData.crackExplosionPrefab,
+    status,
+    alexanderBossData.essenceThreshold,
+    alexanderBossData.crackWarningDuration,
+    alexanderBossData.crackRadius,
+    alexanderBossData.crackDamage,
+    alexanderBossData.crackDamageMultiplier
+                    );
+
+                    hazardManager.RegisterHazard(madnessCrack);
+                    Debug.Log($"{bossData.MonsterName}의 광기 균열 시스템 초기화 완료");
+                }
             }
+
             var soulStones = GameObject.FindObjectsOfType<SoulStone>();
             foreach (var stone in soulStones)
             {

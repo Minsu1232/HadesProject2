@@ -33,9 +33,10 @@ public abstract class HazardObject : MonoBehaviour
     protected TargetType targetType;     // 타겟 타입 추가
     protected IGimmickStrategy gimmickStrategy;
 
-      protected Transform currentTarget;  // 현재 타겟 캐싱
+    protected Transform currentTarget;  // 현재 타겟 캐싱
 
     protected float spawnHeight;
+    protected float spawnAreaRadius;
     // Fill 효과를 위한 변수 추가
     private Material warningMaterial;
     protected float warningTimer;

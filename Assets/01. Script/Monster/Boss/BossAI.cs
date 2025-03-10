@@ -5,10 +5,12 @@ using UnityEngine;
 using static BossMultiAttackStrategy;
 
 public class BossAI : CreatureAI
+
+
 {  // 전역 변수로 BossMultiAttackStrategy 인스턴스를 선언
     private BossMultiAttackStrategy globalMultiAttackStrategy;
 
-
+    
     private Dictionary<int, Action> phasePatterns;
     // 패턴 변경 이벤트 추가
     public event Action<BossPattern> OnPatternChanged;
@@ -25,6 +27,7 @@ public class BossAI : CreatureAI
 
     private BossMonster bossMonster;
 
+    
 
 
     private IPhaseTransitionStrategy currentPhaseStrategy;

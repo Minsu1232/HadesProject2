@@ -31,6 +31,7 @@ public static class BossStrategyFactory
         return type switch
         {
             GimmickType.FieldHazard => new HazardGimmickStrategy(boss, data, prefab, successUI,soundData.roarSound),
+            GimmickType.SoulEntity => new SoulGimmickStrategy(boss, data, prefab, successUI, soundData.roarSound), // Ãß°¡
             //GimmickType.WavePattern => new WavePatternGimmickStrategy(boss),
             //GimmickType.EnvironmentChange => new EnvironmentGimmickStrategy(boss),
             //_ => new BasicGimmickStrategy(boss)

@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Stalactite : HazardObject
 {
-    private float spawnAreaRadius;
+   
     private float groundHeight = float.MinValue;
     [SerializeField] private float oscillationFrequency =100f;   // 진동 주파수 (초당 반복 횟수)
     [SerializeField] private float oscillationAmplitude = 1f;   // 진동 폭 (좌우 이동 거리)

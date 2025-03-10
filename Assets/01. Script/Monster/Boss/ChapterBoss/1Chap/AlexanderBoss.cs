@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class AlexanderBoss : BossMonster
+public class AlexanderBoss : BossMonster, IBossWithEssenceSystem
 {
     private IBossEssenceSystem essenceSystem;
 
@@ -34,7 +34,14 @@ public class AlexanderBoss : BossMonster
     // 보스의 특정 공격(스킬이나 패턴)에서 플레이어의 광기 증가
     public void InflictEssence(float amount)
     {
-        essenceSystem.IncreaseEssence(amount);
+        if (amount > 0)
+        {
+            essenceSystem.IncreaseEssence(amount);
+        }
+        else if (amount < 0)
+        {
+            essenceSystem.DecreaseEssence(-amount); // 음수를 양수로 변환
+        }
     }
 
     private void HandleEssenceStateChanged()
@@ -64,5 +71,8 @@ public class AlexanderBoss : BossMonster
         Debug.Log($"[Alexander] Player Essence Level: {newValue}");
     }
 
+    // IBossWithEssenceSystem 구현
     public IBossEssenceSystem GetEssenceSystem() => essenceSystem;
+
+    public EssenceType GetEssenceType() => EssenceType.Madness;
 }
