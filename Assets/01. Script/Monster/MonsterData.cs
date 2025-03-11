@@ -21,6 +21,8 @@ public class MonsterData : ScriptableObject, ICreatureData
 
     #region ICreatureData Implementation
     [FoldoutGroup("Basic Info"), ShowInInspector]
+    public int MonsterID { get; set; }
+    [FoldoutGroup("Basic Info"), ShowInInspector]
     public string MonsterName { get; set; }
 
     [FoldoutGroup("Basic Info"), ShowInInspector]

@@ -265,6 +265,7 @@ public class MonsterDataManager : Singleton<MonsterDataManager>
     private void UpdateMonsterData(MonsterData monsterData, string[] baseValues, int monsterId)
     {
         // 기본 데이터 업데이트
+        monsterData.MonsterID = monsterId;
         monsterData.MonsterName = baseValues[1];
         monsterData.initialHp = int.Parse(baseValues[2]);
         monsterData.initialAttackPower = int.Parse(baseValues[3]);

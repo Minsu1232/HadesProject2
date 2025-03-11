@@ -8,6 +8,7 @@ public interface ICreatureData
     string MonsterName { get; }
     MonsterData.MonsterGrade Grade { get; }
 
+    int MonsterID { get; }
 
 
     // Base Stats

@@ -1,0 +1,6 @@
+﻿ItemID,ItemName,ItemType,Rarity,Description,IsStackable,MaxStackSize,Icon
+1001,야수왕의 슬픔,Fragment,Legendary,알렉산더의 슬픔과 분노가 담긴 공명 파편,FALSE,1,BeastKing
+1002,광포한 늑대 전사,Fragment,Rare,야수족 엘리트 전사의 파편,FALSE,1,BeastWarrior
+2001,소형 체력 포션,Potion,Common,체력을 30 회복합니다,TRUE,10,HealthSmall
+3001,야수의 송곳니,Material,Common,야수족 몬스터에서 얻은 송곳니,TRUE,99,BeastFang
+3002,야수의 털뭉치,Material,Uncommon,야수족 몬스터에게 얻은 털뭉치,TRUE,99,BeastFang

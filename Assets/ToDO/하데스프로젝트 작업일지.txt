@@ -412,6 +412,24 @@ Commit = Main/Alexander/ClawSkill
 
 3/10 = 보스제작임시완료 => 보스의 드랍아이템 제작 겸 item프레임워크 작업 돌입
 
+3/11 = 인벤토리UI 및 Item프레임워크 기반 다짐 // Branch = Item
+
+	=> Item클래스에 아이템 관련 변수들과 타입을 정리. ItemBase CSV로 아이템 정보들 제작 이를 ItemDataManager를 통해 로드 후 각 타입별로 아이템을 만듦. (현재는 파편,재료,물약으로 구성)
+
+	=> 각 타입별 특수 능력들은 따로 CSV로 빼서 Creat매서드에서 부여
+
+	=> 기존 MonsterData에 존재했던 DropChace와 DropItemID로는 하나의 아이템만 부여가 가능하여 Droptables를 제작
+
+	=> DropTableManager와 ItemDropSystem을 통해 몬스터가 죽을때 드랍테이블로 아이템 스폰을 정함
+
+	=> 이때 등급별 스폰 이펙트를 다르게 함으로써 유저들에게 파밍의 재미를 선사
+
+	=> 기반은 어느정도 다져졌으며 UI 디자인 및 스폰 파티클 크기 조정, 토클 I로 인벤토리 여닫이 등 테스트 예정
+
+Commit = Item/framework
+
+
+
 	
 
 	

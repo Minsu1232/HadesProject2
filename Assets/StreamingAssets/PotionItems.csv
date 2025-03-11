@@ -1,0 +1,5 @@
+﻿ItemID,PotionValue,Duration,PotionType
+2001,30,0,Health
+2002,70,0,Health
+2003,150,0,Health
+2004,10,30,Buff

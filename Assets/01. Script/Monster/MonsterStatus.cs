@@ -158,7 +158,30 @@ public class MonsterStatus : MonoBehaviour,IDamageable, ICreatureStatus
     {
         if (!isDie)
         {
+            Debug.Log("쭉었다");
             isDie = true;
+
+            if (ItemDropSystem.Instance != null)
+            {
+                // 몬스터 데이터 확인
+                ICreatureData monData = monsterClass.GetMonsterData();
+                Debug.Log($"[Monster] Die - 몬스터 ID: {monData.MonsterID}, 드롭 아이템: {monData.dropItem}, 드롭 확률: {monData.dropChance}");
+
+                // 드롭 테이블 확인
+                if (DropTableManager.Instance != null)
+                {
+                    var dropTable = DropTableManager.Instance.GetMonsterDropTable(monData.MonsterID);
+                    Debug.Log($"[Monster] 드롭 테이블 검색 결과: {(dropTable != null ? dropTable.Count + "개 항목" : "없음")}");
+                }
+                else
+                {
+                    Debug.LogError("[Monster] DropTableManager 인스턴스가 null입니다!");
+                }
+
+                // 아이템 드롭 실행
+                ItemDropSystem.Instance.DropItemFromMonster(monData, transform.position);
+            }
+
             Destroy(gameObject); // 몬스터 오브젝트 삭제
         }
 
