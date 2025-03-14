@@ -47,7 +47,7 @@ Material:
         m_Offset: {x: 0, y: 0}
     m_Ints: []
     m_Floats:
-    - _DistanceFogIntensity: 0
+    - _DistanceFogIntensity: 0.2
     - _DistanceHeightBlend: 0.5
     - _Far: 178.01
     - _HeightFogIntensity: 0.422
@@ -101,7 +101,7 @@ MonoBehaviour:
     m_NumAlphaKeys: 2
   near: 217.1
   far: 178.01
-  distanceFogIntensity: 0
+  distanceFogIntensity: 0.2
   useHeight: 1
   heightGradient:
     serializedVersion: 2

@@ -192,4 +192,26 @@ public class Stats
         // 기본 스탯 저장
         SaveDefaultStats();
     }
+
+    public void UpdateFromPlayerClassData(PlayerClassData playerClassData)
+    {
+        if (playerClassData == null) return;
+
+        // 계산된 최종 스탯값 적용
+        MaxHealth = playerClassData.characterStats.GetCalculatedHP();
+        Health = MaxHealth; // 또는 기존 비율 유지
+
+        MaxMana = playerClassData.characterStats.GetCalculatedGage();
+        Mana = MaxMana; // 또는 기존 비율 유지
+
+        AttackPower = playerClassData.characterStats.GetCalculatedAttackPower();
+        AttackSpeed = (int)playerClassData.characterStats.GetCalculatedAttackSpeed();
+        CriticalChance = playerClassData.characterStats.GetCalculatedCriticalChance();
+        Speed = playerClassData.characterStats.GetCalculatedSpeed();
+        DamageReceiveRate = playerClassData.characterStats.GetCalculatedDamageReceiveRate();
+
+        // 기본 스탯 저장
+        SaveDefaultStats();
+    }
 }
+

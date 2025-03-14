@@ -168,7 +168,7 @@ public class InventorySystem : MonoBehaviour
     }
 
     // 아이템 제거
-    public bool RemoveItem(string itemID, int quantity = 1)
+    public bool RemoveItem(int itemID, int quantity = 1)
     {
         for (int i = 0; i < itemSlots.Count; i++)
         {
@@ -197,7 +197,7 @@ public class InventorySystem : MonoBehaviour
     }
 
     // 아이템 사용
-    public bool UseItem(string itemID)
+    public bool UseItem(int itemID)
     {
         for (int i = 0; i < itemSlots.Count; i++)
         {
@@ -308,7 +308,7 @@ public class InventorySystem : MonoBehaviour
     }
 
     // 아이템 소유 여부 확인
-    public bool HasItem(string itemID, int quantity = 1)
+    public bool HasItem(int itemID, int quantity = 1)
     {
         foreach (ItemSlot slot in itemSlots)
         {
@@ -348,7 +348,7 @@ public class InventorySystem : MonoBehaviour
     }
 
     // 인벤토리에서 아이템 슬롯 찾기
-    public ItemSlot FindItemSlot(string itemID)
+    public ItemSlot FindItemSlot(int itemID)
     {
         return itemSlots.Find(slot => slot.item.itemID == itemID);
     }

@@ -6,7 +6,7 @@ using UnityEngine;
 [System.Serializable]
 public class InventoryData
 {
-    public List<InventoryItem> items = new List<InventoryItem>();
+    public List<InventoryItemData> items = new List<InventoryItemData>();
 }
 
 public class InventoryManager : Singleton<InventoryManager>
@@ -18,8 +18,8 @@ public class InventoryManager : Singleton<InventoryManager>
         {
             InventoryData newData = new InventoryData();
             // 초기 아이템 설정
-            newData.items.Add(new InventoryItem { itemID = 101, quantity = 3 });
-            newData.items.Add(new InventoryItem { itemID = 102, quantity = 1 });
+            newData.items.Add(new InventoryItemData { itemID = 3001, quantity = 3 }); 
+            newData.items.Add(new InventoryItemData { itemID = 3002, quantity = 1 });
 
             string json = JsonUtility.ToJson(newData, true);
             File.WriteAllText(path, json);

@@ -50,6 +50,10 @@ public class MonsterUIManager : MonoBehaviour
             mainCamera = Camera.main;
             // MonsterStatus로 GetComponent 후 GetMonsterClass 호출
             MonsterStatus status = GetComponent<MonsterStatus>();
+            if(status == null)
+            {
+                Debug.LogWarning("널인디용");
+            }
             Initialize(status.GetMonsterClass());
         }
     }

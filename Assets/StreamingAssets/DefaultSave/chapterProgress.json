@@ -1,0 +1,28 @@
+{
+    "chapters": [
+        {
+            "chapterId": "YasuoChapter",
+            "isUnlocked": true,
+            "bestRecord": "",
+            "attemptCount": 0
+        },
+        {
+            "chapterId": "YongzokChapter",
+            "isUnlocked": false,
+            "bestRecord": "",
+            "attemptCount": 0
+        },
+        {
+            "chapterId": "DeathChapter",
+            "isUnlocked": false,
+            "bestRecord": "",
+            "attemptCount": 0
+        },
+        {
+            "chapterId": "HeartChapter",
+            "isUnlocked": false,
+            "bestRecord": "",
+            "attemptCount": 0
+        }
+    ]
+}

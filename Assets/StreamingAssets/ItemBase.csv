@@ -4,3 +4,6 @@
 2001,소형 체력 포션,Potion,Common,체력을 30 회복합니다,TRUE,10,HealthSmall
 3001,야수의 송곳니,Material,Common,야수족 몬스터에서 얻은 송곳니,TRUE,99,BeastFang
 3002,야수의 털뭉치,Material,Uncommon,야수족 몬스터에게 얻은 털뭉치,TRUE,99,BeastFang
+3003,야수의 뿔,Material,Rare,야수족 몬스터에게 얻은 털뭉치,TRUE,99,BeastFang
+3004,야수의 눈,Material,Epic,야수족 몬스터에게 얻은 털뭉치,TRUE,99,BeastFang
+3005,야수의 커,Material,Legendary,야수족 몬스터에게 얻은 털뭉치,TRUE,99,BeastFang

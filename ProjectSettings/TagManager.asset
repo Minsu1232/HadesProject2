@@ -9,6 +9,7 @@ TagManager:
   - FxTemporaire
   - Ground
   - Weapon
+  - NotificationBackground
   layers:
   - Default
   - TransparentFX
@@ -17,7 +18,7 @@ TagManager:
   - Water
   - UI
   - Wall
-  - 
+  - Road
   - Projectile
   - CameraIgnore
   - Ground

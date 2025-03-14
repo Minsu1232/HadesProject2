@@ -1,4 +1,4 @@
-// ItemDropSystem.cs - 몬스터/보스 처치시 아이템 드롭 처리 시스템 (CSV 드롭 테이블 지원)
+// ItemDropSystem.cs - 몬스터/보스 처치시 아이템 드롭 처리 시스템
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -8,8 +8,6 @@ public class ItemDropSystem : MonoBehaviour
 
     [Header("드롭 설정")]
     [SerializeField] private GameObject itemPickupPrefab; // 아이템 드롭 프리팹
-    [SerializeField] private float dropForce = 3.0f;      // 드롭시 튕기는 힘
-    [SerializeField] private float dropUpForce = 2.0f;    // 위로 튕기는 힘
     [SerializeField] private float dropRadius = 1.0f;     // 드롭 반경
     [SerializeField] private LayerMask groundLayer;       // 바닥 레이어
 
@@ -46,7 +44,7 @@ public class ItemDropSystem : MonoBehaviour
     {
         if (monsterData == null) return;
 
-        int monsterId = monsterData.MonsterID; // 몬스터 ID 필드 - BossID로 통합 가정
+        int monsterId = monsterData.MonsterID;
 
         // DropTableManager에서 드롭 테이블 가져오기
         List<ItemDropEntry> dropTable = DropTableManager.Instance.GetMonsterDropTable(monsterId);
@@ -58,7 +56,7 @@ public class ItemDropSystem : MonoBehaviour
         }
         else
         {
-            // 기존 방식으로 fallback (기존 코드 유지)
+            // 기존 방식으로 fallback
             float dropChance = monsterData.dropChance / 100f;
 
             if (Random.value <= dropChance)
@@ -66,7 +64,6 @@ public class ItemDropSystem : MonoBehaviour
                 Item itemToDrop = ItemDataManager.Instance.GetItem(monsterData.dropItem);
                 if (itemToDrop != null)
                 {
-                    
                     SpawnItemDrop(itemToDrop, 1, dropPosition);
                 }
             }
@@ -138,6 +135,7 @@ public class ItemDropSystem : MonoBehaviour
                             Random.Range(-dropRadius, dropRadius)
                         );
                         Debug.Log(itemToDrop.itemID + "드랍");
+
                         // 아이템 드롭 (보스 아이템 여부 적용)
                         SpawnItemDrop(itemToDrop, quantity, basePosition + offset, isBoss && itemToDrop.rarity >= Item.ItemRarity.Rare);
                     }
@@ -255,7 +253,7 @@ public class ItemDropSystem : MonoBehaviour
         }
     }
 
-    // 아이템 드롭 월드 오브젝트 생성
+    // 아이템 드롭 월드 오브젝트 생성 (간소화된 버전)
     private void SpawnItemDrop(Item item, int quantity, Vector3 position, bool isBossItem = false)
     {
         if (itemPickupPrefab == null)
@@ -279,22 +277,8 @@ public class ItemDropSystem : MonoBehaviour
             return;
         }
 
-        // 아이템 정보 설정
+        // 아이템 정보 설정 - 이제 ItemPickupObject가 팝업 애니메이션 처리
         itemPickup.Initialize(item, quantity, isBossItem);
-
-        // 물리 컴포넌트 접근
-        Rigidbody rb = itemObj.GetComponent<Rigidbody>();
-        if (rb != null)
-        {
-            // 랜덤한 방향으로 튕기는 효과
-            Vector3 randomDir = new Vector3(
-                Random.Range(-1f, 1f),
-                1,
-                Random.Range(-1f, 1f)
-            ).normalized;
-
-            rb.AddForce(randomDir * dropForce + Vector3.up * dropUpForce, ForceMode.Impulse);
-        }
 
         // 이벤트 발생
         OnItemDropped?.Invoke(itemObj, item, quantity);

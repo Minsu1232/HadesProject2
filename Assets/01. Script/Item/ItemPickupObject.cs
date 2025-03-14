@@ -1,4 +1,4 @@
-// ItemPickupObject.cs - 월드에 생성된 아이템 획득 처리 컴포넌트 (최종 버전)
+// ItemPickupObject.cs - 월드에 생성된 아이템 획득 처리 컴포넌트 (수정 버전)
 using System.Collections;
 using UnityEngine;
 using TMPro;
@@ -18,7 +18,7 @@ public class ItemPickupObject : MonoBehaviour
     [Header("희귀도 설정")]
     [SerializeField]
     private Color[] rarityColors = new Color[] {
-        new Color(0.7f, 0.7f, 0.7f), // Common - 회색
+        new Color(1f, 1f, 1f), // Common - 흰색
         new Color(0.3f, 0.7f, 0.3f), // Uncommon - 녹색
         new Color(0.3f, 0.3f, 0.9f), // Rare - 파란색
         new Color(0.7f, 0.3f, 0.9f), // Epic - 보라색
@@ -31,6 +31,8 @@ public class ItemPickupObject : MonoBehaviour
     [SerializeField] private float floatHeight = 0.2f;    // 둥둥 떠다니는 높이
     [SerializeField] private float floatSpeed = 1.0f;     // 둥둥 떠다니는 속도
     [SerializeField] private float rotateSpeed = 30f;     // 회전 속도
+    [SerializeField] private float popUpHeight = 2.0f;    // 팝업 높이
+    [SerializeField] private float popUpDuration = 0.4f;  // 팝업 지속 시간
 
     [Header("자동 획득 설정")]
     [SerializeField] private bool enableAutoPickup = true;    // 자동 획득 활성화
@@ -55,6 +57,7 @@ public class ItemPickupObject : MonoBehaviour
     private Vector3 startPosition;
     private Coroutine attractionRoutine;
     private bool isPickedUp = false;
+    private bool isInitialized = false;
 
     private void Awake()
     {
@@ -160,13 +163,20 @@ public class ItemPickupObject : MonoBehaviour
             transform.localScale *= 1.2f;
         }
 
-        // 시작 위치 저장
-        startPosition = transform.position;
+        // 리지드바디 설정
+        if (rb != null)
+        {
+            rb.isKinematic = true; // 물리 비활성화 (애니메이션으로 처리)
+            rb.useGravity = false;
+        }
 
         // 시작 이펙트 및 사운드 재생
         PlaySpawnEffects();
 
-        // 자동 획득 설정
+        // 팝업 애니메이션 시작 (코루틴)
+        StartCoroutine(PopUpAnimation());
+
+        // 자동 획득 설정 (팝업 애니메이션 후에 활성화)
         if (enableAutoPickup)
         {
             StartCoroutine(EnableAutoPickupAfterDelay());
@@ -174,6 +184,8 @@ public class ItemPickupObject : MonoBehaviour
 
         // 게임 오브젝트 이름 설정
         gameObject.name = $"Item_{item.itemName}_{item.rarity}";
+
+        isInitialized = true;
     }
 
     // 등급별 색상 반환
@@ -205,6 +217,45 @@ public class ItemPickupObject : MonoBehaviour
         }
     }
 
+    // 아이템 팝업 애니메이션 (바닥에서 튀어오르는 효과)
+    private IEnumerator PopUpAnimation()
+    {
+        // 현재 위치 (바닥)
+        Vector3 groundPosition = transform.position;
+
+        // 시작 위치 (바닥 아래)
+        Vector3 startPos = groundPosition - Vector3.up * popUpHeight;
+        transform.position = startPos;
+
+        // 최종 목표 위치 (바닥 위)
+        Vector3 targetPos = groundPosition + Vector3.up * 0.5f;
+
+        float elapsed = 0f;
+
+        // 물리 비활성화
+        if (rb != null)
+        {
+            rb.isKinematic = true;
+        }
+
+        while (elapsed < popUpDuration)
+        {
+            float t = elapsed / popUpDuration;
+
+            // 부드러운 이징 적용 (빠르게 올라갔다가 천천히 감속)
+            t = 1f - Mathf.Pow(1f - t, 3f);
+
+            transform.position = Vector3.Lerp(startPos, targetPos, t);
+
+            elapsed += Time.deltaTime;
+            yield return null;
+        }
+
+        // 최종 위치 설정
+        transform.position = targetPos;
+        startPosition = targetPos;
+    }
+
     // 자동 획득 딜레이 후 활성화
     private IEnumerator EnableAutoPickupAfterDelay()
     {
@@ -225,8 +276,8 @@ public class ItemPickupObject : MonoBehaviour
     private Transform FindPlayerTransform()
     {
         // 플레이어 태그로 찾기
-        GameObject player = GameObject.FindGameObjectWithTag("Player");
-        return player?.transform;
+        Transform player = GameInitializer.Instance.GetPlayerClass().playerTransform;
+        return player;
     }
 
     // 플레이어 근접 감지
@@ -258,12 +309,6 @@ public class ItemPickupObject : MonoBehaviour
     // 플레이어 방향으로 이동
     private IEnumerator MoveTowardsPlayer()
     {
-        // 물리 시뮬레이션 비활성화
-        if (rb != null)
-        {
-            rb.isKinematic = true;
-        }
-
         float startTime = Time.time;
 
         while (!isPickedUp && playerTransform != null)
@@ -292,7 +337,7 @@ public class ItemPickupObject : MonoBehaviour
 
     private void Update()
     {
-        if (!isPickedUp)
+        if (!isPickedUp && isInitialized)
         {
             // 둥둥 떠다니는 효과
             float newY = startPosition.y + Mathf.Sin(Time.time * floatSpeed) * floatHeight;
@@ -334,6 +379,12 @@ public class ItemPickupObject : MonoBehaviour
             {
                 // 획득 이펙트 및 사운드 재생
                 PlayPickupEffects();
+
+                // 획득 알림 표시
+                if (ItemPickupNotification.Instance != null)
+                {
+                    ItemPickupNotification.Instance.ShowNotification(item, quantity);
+                }
 
                 // 오브젝트 제거
                 StartCoroutine(DestroyAfterEffects());
@@ -417,4 +468,35 @@ public class ItemPickupObject : MonoBehaviour
         Gizmos.color = Color.blue;
         Gizmos.DrawWireSphere(transform.position, attractionRadius);
     }
+
+    // DOTween을 사용한 버전의 팝업 애니메이션 (추가적인 옵션)
+    /* 
+    private void PlayPopUpAnimationWithDOTween()
+    {
+        // 현재 위치 (바닥)
+        Vector3 groundPosition = transform.position;
+        
+        // 시작 위치 (바닥 아래)
+        Vector3 startPos = groundPosition - Vector3.up * popUpHeight;
+        transform.position = startPos;
+        
+        // 최종 목표 위치 (바닥 위)
+        Vector3 targetPos = groundPosition + Vector3.up * 0.5f;
+        
+        // DOTween 시퀀스 생성
+        Sequence popUpSequence = DOTween.Sequence();
+        
+        // 위로 튀어오르는 애니메이션
+        popUpSequence.Append(transform.DOMove(targetPos, popUpDuration)
+            .SetEase(Ease.OutCubic));
+            
+        // 시퀀스 완료 후 콜백
+        popUpSequence.OnComplete(() => {
+            startPosition = transform.position;
+        });
+        
+        // 시퀀스 실행
+        popUpSequence.Play();
+    }
+    */
 }

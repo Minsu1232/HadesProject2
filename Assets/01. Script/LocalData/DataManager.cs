@@ -1,83 +1,77 @@
-using System.Collections;
-using System.Collections.Generic;
+// 기존 DataManager 클래스 (호환성 유지)
 using System.IO;
 using UnityEngine;
-[System.Serializable]
-public class CharacterStats
-{
-    public float baseHp = 100;
-    public float baseGage = 0;
-    public float baseAttackPower = 10;
-    public float baseAttackSpeed = 1f;
-    public float baseCriticalCance = 0.3f;
-    public float baseSpeed = 3f;
-    public int upgradeCount = 3;
-}
-
-[System.Serializable]
-public class InventoryItem
-{
-    public int itemID;
-    public int quantity;
-}
-
-[System.Serializable]
-public class PlayerSaveData
-{
-    public string userID = "Player";
-    public int currentChapter = 1;
-    public List<string> completedQuests = new List<string>();
-    public CharacterStats characterStats = new CharacterStats();
-    public List<InventoryItem> inventory = new List<InventoryItem>();
-}
 
 public class DataManager : Singleton<DataManager>
 {
+    // 레거시 저장 경로 메서드
+    private string GetLegacyFilePath(string fileName) =>
+        Path.Combine(Application.persistentDataPath, "SaveFiles", fileName);
+
+    // 기존 세이브 초기화 메서드
     public void InitializeNewSave(string filePath)
     {
-        // 폴더가 없다면 생성
+        Debug.Log("SaveManager로 저장 기능이 이전되었습니다.");
+
+        // 파일 경로 확인 및 디렉토리 생성
         string directoryPath = Path.GetDirectoryName(filePath);
         if (!Directory.Exists(directoryPath))
         {
             Directory.CreateDirectory(directoryPath);
         }
 
-        // 파일이 없을 경우에만 새로 생성
-        if (!File.Exists(filePath))
-        {
-            PlayerSaveData newSaveData = new PlayerSaveData();
-
-            // 기본 인벤토리 아이템 추가
-            newSaveData.inventory.Add(new InventoryItem { itemID = 101, quantity = 3 });
-            newSaveData.inventory.Add(new InventoryItem { itemID = 102, quantity = 1 });
-
-            // JSON으로 변환 및 저장
-            string jsonData = JsonUtility.ToJson(newSaveData, true); // true는 보기 좋게 포맷팅
-            File.WriteAllText(filePath, jsonData);
-            Debug.Log($"새 세이브 파일이 생성되었습니다: {filePath}");
-        }
+        // SaveManager를 통해 저장
+        SaveManager.Instance.SavePlayerData();
     }
 
+    // 기존 로드 메서드 (호환성 유지)
     public void LoadPlayerDataFromJson(string filePath, PlayerClassData playerData)
     {
-        // 파일이 없으면 새로 생성
-        if (!File.Exists(filePath))
-        {
-            Debug.Log("세이브 파일이 없어 새로 생성합니다.");
-            InitializeNewSave(filePath);
-        }
+        Debug.Log("SaveManager로 로드 기능이 이전되었습니다.");
 
-        string json = File.ReadAllText(filePath);
-        Debug.Log("JSON 내용: " + json);
-        JsonUtility.FromJsonOverwrite(json, playerData);
-        Debug.Log("로드 후 데이터: " + JsonUtility.ToJson(playerData));
+        // SaveManager에서 데이터 가져오기
+        SaveManager.Instance.ApplyStatsToPlayerClassData(playerData);
     }
 
-    // 선택적: 현재 데이터를 저장하는 메서드
+    // 기존 저장 메서드 (호환성 유지)
     public void SavePlayerDataToJson(string filePath, PlayerClassData playerData)
     {
-        string jsonData = JsonUtility.ToJson(playerData, true);
-        File.WriteAllText(filePath, jsonData);
-        Debug.Log($"데이터가 저장되었습니다: {filePath}");
+        Debug.Log("SaveManager로 저장 기능이 이전되었습니다.");
+
+        // SaveManager로 데이터 전달
+        UpdatePlayerDataFromClassData(playerData);
+        SaveManager.Instance.SavePlayerData();
+    }
+
+    // PlayerClassData에서 저장 데이터로 업데이트
+    private void UpdatePlayerDataFromClassData(PlayerClassData playerClassData)
+    {
+        PlayerSaveData playerData = SaveManager.Instance.GetPlayerData();
+
+        // 기본 정보 업데이트
+        playerData.userID = playerClassData.userID;
+        playerData.currentChapter = playerClassData.currentChapter;
+
+        // 업그레이드 카운트만 저장 (베이스 스탯은 변경하지 않음)
+        playerData.characterStats.hpUpgradeCount = playerClassData.characterStats.hpUpgradeCount;
+        playerData.characterStats.gageUpgradeCount = playerClassData.characterStats.gageUpgradeCount;
+        playerData.characterStats.attackPowerUpgradeCount = playerClassData.characterStats.attackPowerUpgradeCount;
+        playerData.characterStats.attackSpeedUpgradeCount = playerClassData.characterStats.attackSpeedUpgradeCount;
+        playerData.characterStats.criticalChanceUpgradeCount = playerClassData.characterStats.criticalChanceUpgradeCount;
+        playerData.characterStats.speedUpgradeCount = playerClassData.characterStats.speedUpgradeCount;
+        playerData.characterStats.damageReduceUpgradeCount = playerClassData.characterStats.damageReduceUpgradeCount;
+
+        // 총 업그레이드 카운트 업데이트
+        playerData.characterStats.UpdateTotalUpgradeCount();
+
+        // 인벤토리 업데이트
+        playerData.inventory.Clear();
+        foreach (var item in playerClassData.inventory)
+        {
+            playerData.inventory.Add(new InventoryItemData(
+                item.itemID,
+                item.quantity
+            ));
+        }
     }
 }

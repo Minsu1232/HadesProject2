@@ -16,6 +16,8 @@ public class ChargeAttackStrategy : BasePhysicalAttackStrategy
     private GameObject prepareDustEffect;
     private GameObject trailEffect;
 
+    private float targetChargeDistance; // 목표 이동 거리
+    private float currentChargeDistance; // 현재까지 이동한 거리
     private enum ChargeState
     {
         None,
@@ -217,7 +219,9 @@ public class ChargeAttackStrategy : BasePhysicalAttackStrategy
             currentChargeState = ChargeState.Charging;
             Debug.Log("똘징");
             currentChargeTime = 0f;
-
+            float distanceToPlayer = directionXZ.magnitude;
+            targetChargeDistance = distanceToPlayer + 2f; // 예: 플레이어 거리 + 2미터
+            currentChargeDistance = 0f; // 이동 거리 초기화
             OnChargeStateChanged?.Invoke();  // 차지 상태로 변경 시 이벤트 발생
 
             if (chargeIndicator != null)
@@ -232,7 +236,8 @@ public class ChargeAttackStrategy : BasePhysicalAttackStrategy
     {
         currentChargeTime += Time.deltaTime;
 
-        if (currentChargeTime >= chargeDuration)
+        // 목표 거리 도달 체크 추가
+        if (currentChargeDistance >= targetChargeDistance)
         {
             StopAttack();
             return;
@@ -328,9 +333,11 @@ public class ChargeAttackStrategy : BasePhysicalAttackStrategy
                 return;
             }
         }
-
+    
         // 돌진 이동
-        transform.position += chargeDirection * chargeSpeed * Time.deltaTime;
+        float moveDistance = chargeSpeed * Time.deltaTime;
+        transform.position += chargeDirection * moveDistance;
+        currentChargeDistance += moveDistance; // 이동 거리 누적
     }
 
     public override string GetAnimationTriggerName()

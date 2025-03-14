@@ -1,0 +1,40 @@
+{
+    "userID": "Player",
+    "currentChapter": 1,
+    "completedQuests": [],
+    "characterStats": {
+        "baseHp": 100,
+        "baseGage": 0,
+        "baseAttackPower": 10,
+        "baseAttackSpeed": 1.0,
+        "baseCriticalCance": 0.30000001192092898,
+        "baseSpeed": 10.0,
+        "damageReceiveRate": 1.0,
+        "hpUpgradeCount": 15,
+        "gageUpgradeCount": 0,
+        "attackPowerUpgradeCount": 0,
+        "attackSpeedUpgradeCount": 0,
+        "criticalChanceUpgradeCount": 0,
+        "speedUpgradeCount": 0,
+        "damageReduceUpgradeCount": 0,
+        "upgradeCount": 15,
+        "hpPerUpgrade": 5,
+        "gagePerUpgrade": 2,
+        "attackPowerPerUpgrade": 2,
+        "attackSpeedPerUpgrade": 0.10000000149011612,
+        "criticalChancePerUpgrade": 0.05000000074505806,
+        "speedPerUpgrade": 0.10000000149011612,
+        "damageReducePerUpgrade": 0.05000000074505806
+    },
+    "inventory": [
+        {
+            "itemID": 101,
+            "quantity": 3
+        },
+        {
+            "itemID": 102,
+            "quantity": 1
+        }
+    ],
+    "equippedFragments": []
+}

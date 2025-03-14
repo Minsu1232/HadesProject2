@@ -1,0 +1,160 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &-8010538672344032582
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f0750c66fc0ea4447a0b55440c7445c4, type: 3}
+  m_Name: Tree
+  m_EditorClassIdentifier: 
+  _guid:
+    _guidString: 0d3e4f31-5818-4c1f-a052-1a8ab962bc52
+  _pluginPrefab: {fileID: 5585388866024668305, guid: 62e7e15fba166bc4f97c3147363240ed, type: 2}
+  _used: 1
+  _probability: 1
+  _preview:
+    _prefabAsset: {fileID: 4138693356899537879, guid: 94d43cd3785471340aa315bbbd100eab, type: 3}
+    _texture: {fileID: 0}
+    _yaw: 0
+    _pitch: 0
+  _uiSelected: 0
+--- !u!114 &-7449582987899600247
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f0750c66fc0ea4447a0b55440c7445c4, type: 3}
+  m_Name: Tree4
+  m_EditorClassIdentifier: 
+  _guid:
+    _guidString: 71db3409-a850-4ca8-8f13-459d5f0ee358
+  _pluginPrefab: {fileID: 6550080759803995893, guid: 62e7e15fba166bc4f97c3147363240ed, type: 2}
+  _used: 1
+  _probability: 1
+  _preview:
+    _prefabAsset: {fileID: 491110466265269255, guid: 9d48c081c2a600a479ba221f16f12b3a, type: 3}
+    _texture: {fileID: 0}
+    _yaw: 0
+    _pitch: 0
+  _uiSelected: 0
+--- !u!114 &-1605732055180346369
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f0750c66fc0ea4447a0b55440c7445c4, type: 3}
+  m_Name: Tree3
+  m_EditorClassIdentifier: 
+  _guid:
+    _guidString: 8737676f-fe53-4018-9f99-ca57f577f361
+  _pluginPrefab: {fileID: 493951687191901633, guid: 62e7e15fba166bc4f97c3147363240ed, type: 2}
+  _used: 1
+  _probability: 1
+  _preview:
+    _prefabAsset: {fileID: 4829379904865708375, guid: 40f978a930c930f4881e5ef011be10fe, type: 3}
+    _texture: {fileID: 0}
+    _yaw: 0
+    _pitch: 0
+  _uiSelected: 0
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0a32c2b03d2a6e142869731b9ec60e82, type: 3}
+  m_Name: VillTree
+  m_EditorClassIdentifier: 
+  _profileName: VillTree
+  _prefabs:
+  - {fileID: -8010538672344032582}
+  - {fileID: 1180440835860735955}
+  - {fileID: -1605732055180346369}
+  - {fileID: -7449582987899600247}
+  - {fileID: 892608103732503085}
+  - {fileID: 4772491525031480875}
+--- !u!114 &892608103732503085
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f0750c66fc0ea4447a0b55440c7445c4, type: 3}
+  m_Name: Tree6
+  m_EditorClassIdentifier: 
+  _guid:
+    _guidString: 63825008-b9e8-4f4e-92a6-df9cdd82663f
+  _pluginPrefab: {fileID: 3093538344827053051, guid: 62e7e15fba166bc4f97c3147363240ed, type: 2}
+  _used: 1
+  _probability: 1
+  _preview:
+    _prefabAsset: {fileID: 6011073767888041218, guid: ac496d22d9f56174c9a41e5c0074b2f2, type: 3}
+    _texture: {fileID: 0}
+    _yaw: 0
+    _pitch: 0
+  _uiSelected: 0
+--- !u!114 &1180440835860735955
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f0750c66fc0ea4447a0b55440c7445c4, type: 3}
+  m_Name: Tree2
+  m_EditorClassIdentifier: 
+  _guid:
+    _guidString: 7f38a702-cf13-48b2-b10d-150e579a6e50
+  _pluginPrefab: {fileID: 3996500666031401136, guid: 62e7e15fba166bc4f97c3147363240ed, type: 2}
+  _used: 1
+  _probability: 1
+  _preview:
+    _prefabAsset: {fileID: 2673940053547421248, guid: 7198502739f6cae4baaae18513c40df2, type: 3}
+    _texture: {fileID: 0}
+    _yaw: 0
+    _pitch: 0
+  _uiSelected: 0
+--- !u!114 &4772491525031480875
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f0750c66fc0ea4447a0b55440c7445c4, type: 3}
+  m_Name: Grass
+  m_EditorClassIdentifier: 
+  _guid:
+    _guidString: 20d80cf4-1e03-4869-82df-db204503a123
+  _pluginPrefab: {fileID: 8674905250275557782, guid: 62e7e15fba166bc4f97c3147363240ed, type: 2}
+  _used: 1
+  _probability: 1
+  _preview:
+    _prefabAsset: {fileID: 5754281076389560133, guid: 8a160d698dae60e4facf6e79e7ce6ca5, type: 3}
+    _texture: {fileID: 0}
+    _yaw: 0
+    _pitch: 0
+  _uiSelected: 0

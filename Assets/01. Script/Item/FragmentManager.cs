@@ -96,7 +96,7 @@ public class FragmentManager : MonoBehaviour
     }
 
     // 파편 해제
-    public bool UnequipFragment(string fragmentID)
+    public bool UnequipFragment(int fragmentID)
     {
         FragmentItem fragmentToRemove = null;
 

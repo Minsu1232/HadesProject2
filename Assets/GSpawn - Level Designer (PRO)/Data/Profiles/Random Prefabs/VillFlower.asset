@@ -1,0 +1,112 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &-8628401569945742046
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f0750c66fc0ea4447a0b55440c7445c4, type: 3}
+  m_Name: Flower3
+  m_EditorClassIdentifier: 
+  _guid:
+    _guidString: c0990ff6-897c-4476-9411-392d425313a2
+  _pluginPrefab: {fileID: 2595115787138282930, guid: 62e7e15fba166bc4f97c3147363240ed, type: 2}
+  _used: 1
+  _probability: 1
+  _preview:
+    _prefabAsset: {fileID: 7471907596289420637, guid: b913678717447184eb957b6d5eaf3d7a, type: 3}
+    _texture: {fileID: 0}
+    _yaw: 0
+    _pitch: 0
+  _uiSelected: 0
+--- !u!114 &-5690468800258696338
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f0750c66fc0ea4447a0b55440c7445c4, type: 3}
+  m_Name: Flower
+  m_EditorClassIdentifier: 
+  _guid:
+    _guidString: 878e1700-716f-43fd-b7b5-367b0c4c5ef6
+  _pluginPrefab: {fileID: -3540296536936739983, guid: 62e7e15fba166bc4f97c3147363240ed, type: 2}
+  _used: 1
+  _probability: 1
+  _preview:
+    _prefabAsset: {fileID: 4908194430560389741, guid: 383d041b1bd080240af749226964eae8, type: 3}
+    _texture: {fileID: 0}
+    _yaw: 0
+    _pitch: 0
+  _uiSelected: 0
+--- !u!114 &-821248239790143414
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f0750c66fc0ea4447a0b55440c7445c4, type: 3}
+  m_Name: Flower2
+  m_EditorClassIdentifier: 
+  _guid:
+    _guidString: 6973f458-6d84-4e68-b79e-f0fbb6101fed
+  _pluginPrefab: {fileID: 4072984906461520623, guid: 62e7e15fba166bc4f97c3147363240ed, type: 2}
+  _used: 1
+  _probability: 1
+  _preview:
+    _prefabAsset: {fileID: 6513778148138650771, guid: ea898230af995224383f1f522a2083c2, type: 3}
+    _texture: {fileID: 0}
+    _yaw: 0
+    _pitch: 0
+  _uiSelected: 0
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0a32c2b03d2a6e142869731b9ec60e82, type: 3}
+  m_Name: VillFlower
+  m_EditorClassIdentifier: 
+  _profileName: VillFlower
+  _prefabs:
+  - {fileID: -5690468800258696338}
+  - {fileID: -821248239790143414}
+  - {fileID: -8628401569945742046}
+  - {fileID: 5459104202141280898}
+--- !u!114 &5459104202141280898
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f0750c66fc0ea4447a0b55440c7445c4, type: 3}
+  m_Name: Flower4
+  m_EditorClassIdentifier: 
+  _guid:
+    _guidString: 6cd05882-a0cb-48cb-b665-182973301566
+  _pluginPrefab: {fileID: 2079419556121555176, guid: 62e7e15fba166bc4f97c3147363240ed, type: 2}
+  _used: 1
+  _probability: 1
+  _preview:
+    _prefabAsset: {fileID: 4898430931367840730, guid: 8695f69b4cb551a4aa0a0ddb711bf658, type: 3}
+    _texture: {fileID: 0}
+    _yaw: 0
+    _pitch: 0
+  _uiSelected: 0

@@ -1,0 +1,64 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &-4427459655113688397
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f0750c66fc0ea4447a0b55440c7445c4, type: 3}
+  m_Name: Boulders
+  m_EditorClassIdentifier: 
+  _guid:
+    _guidString: a6f111bf-9cb9-4ea8-84af-872f706b8eca
+  _pluginPrefab: {fileID: -2897847348596116329, guid: 62e7e15fba166bc4f97c3147363240ed, type: 2}
+  _used: 1
+  _probability: 1
+  _preview:
+    _prefabAsset: {fileID: 8656618766492877437, guid: 49012f33f4c093f458a3ffa1b306251a, type: 3}
+    _texture: {fileID: 0}
+    _yaw: 0
+    _pitch: 0
+  _uiSelected: 0
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0a32c2b03d2a6e142869731b9ec60e82, type: 3}
+  m_Name: VillPlants
+  m_EditorClassIdentifier: 
+  _profileName: VillPlants
+  _prefabs:
+  - {fileID: 8651795262647701760}
+  - {fileID: -4427459655113688397}
+--- !u!114 &8651795262647701760
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f0750c66fc0ea4447a0b55440c7445c4, type: 3}
+  m_Name: Plants
+  m_EditorClassIdentifier: 
+  _guid:
+    _guidString: ae52e268-4165-4bcf-b933-5f483c25d0fd
+  _pluginPrefab: {fileID: -230983958241021575, guid: 62e7e15fba166bc4f97c3147363240ed, type: 2}
+  _used: 1
+  _probability: 1
+  _preview:
+    _prefabAsset: {fileID: 3406682139361316735, guid: 7187eb6ab7edcaa489c26bb9cd8b6ff7, type: 3}
+    _texture: {fileID: 0}
+    _yaw: 0
+    _pitch: 0
+  _uiSelected: 0

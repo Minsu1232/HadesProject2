@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 653191365635360884}
   - component: {fileID: 5176941197881460715}
   - component: {fileID: 5729323708405259234}
+  - component: {fileID: 8289385974082929457}
   m_Layer: 0
   m_Name: ItemManager
   m_TagString: Untagged
@@ -67,6 +68,7 @@ MonoBehaviour:
     isInvicible: 0
     _playerClassData: {fileID: 0}
     playerTransform: {fileID: 0}
+  inventoryPanel: {fileID: 0}
 --- !u!114 &5729323708405259234
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -87,3 +89,15 @@ MonoBehaviour:
     _playerClassData: {fileID: 0}
     playerTransform: {fileID: 0}
   fragmentTabButton: {fileID: 0}
+--- !u!114 &8289385974082929457
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1503703996736362897}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 61c62cb126cb93e4d81c12e069e301bf, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

@@ -8,7 +8,7 @@ public class ItemDatabase : ScriptableObject
     [SerializeField] private List<Item> allItems = new List<Item>();
 
     // ID로 아이템 찾기
-    public Item GetItemByID(string itemID)
+    public Item GetItemByID(int itemID)
     {
         return allItems.Find(item => item.itemID == itemID);
     }

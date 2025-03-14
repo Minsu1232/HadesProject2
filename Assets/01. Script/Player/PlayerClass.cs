@@ -50,14 +50,14 @@ public class PlayerClass : ICreature, IDamageable
     private void InitializeStats()
     {
         PlayerStats = new Stats(
-            _playerClassData.characterStats.baseHp,
-            _playerClassData.characterStats.baseGage,
-            _playerClassData.characterStats.baseAttackPower,
-            (int)_playerClassData.characterStats.baseAttackSpeed,
-            _playerClassData.characterStats.baseSpeed,
-            _playerClassData.characterStats.baseCriticalCance,
-            _playerClassData.characterStats.damageReceiveRate
-        );
+     _playerClassData.characterStats.GetCalculatedHP(),
+     _playerClassData.characterStats.GetCalculatedGage(),
+     _playerClassData.characterStats.GetCalculatedAttackPower(),
+     (int)_playerClassData.characterStats.GetCalculatedAttackSpeed(),
+     _playerClassData.characterStats.GetCalculatedSpeed(),
+     _playerClassData.characterStats.GetCalculatedCriticalChance(),
+     _playerClassData.characterStats.GetCalculatedDamageReceiveRate()
+ );
     }
     #endregion
     public Stats GetStats() { return PlayerStats; }
@@ -115,7 +115,73 @@ public class PlayerClass : ICreature, IDamageable
         PlayerStats.ResetStats(health,maxHealth,mana,attackPw,attackSp,speed,critical, damageReceive);
     }
     #endregion
+    // PlayerClass에 추가
+    public void UpgradeHP(int count = 1)
+    {
+        _playerClassData.characterStats.hpUpgradeCount += count;
+        // 스탯 재계산
+        RefreshStats();
+        // 저장
+        SaveManager.Instance.UpdatePlayerStats(PlayerStats);
+    }
 
+    public void UpgradeAttackPower(int count = 1)
+    {
+        _playerClassData.characterStats.attackPowerUpgradeCount += count;
+        RefreshStats();
+        SaveManager.Instance.UpdatePlayerStats(PlayerStats);
+    }
+
+    public void UpgradeGage(int count = 1)
+    {
+        _playerClassData.characterStats.gageUpgradeCount += count;
+        RefreshStats();
+        SaveManager.Instance.UpdatePlayerStats(PlayerStats);
+    }
+
+    public void UpgradeAttackSpeed(int count = 1)
+    {
+        _playerClassData.characterStats.attackSpeedUpgradeCount += count;
+        RefreshStats();
+        SaveManager.Instance.UpdatePlayerStats(PlayerStats);
+    }
+
+    public void UpgradeSpeed(int count = 1)
+    {
+        _playerClassData.characterStats.speedUpgradeCount += count;
+        RefreshStats();
+        SaveManager.Instance.UpdatePlayerStats(PlayerStats);
+    }
+
+    public void UpgradeCriticalChance(int count = 1)
+    {
+        _playerClassData.characterStats.criticalChanceUpgradeCount += count;
+        RefreshStats();
+        SaveManager.Instance.UpdatePlayerStats(PlayerStats);
+    }
+
+    public void UpgradeDamageReduce(int count = 1)
+    {
+        _playerClassData.characterStats.damageReduceUpgradeCount += count;
+        RefreshStats();
+        SaveManager.Instance.UpdatePlayerStats(PlayerStats);
+    }
+
+    // 스탯 새로고침 메서드
+    private void RefreshStats()
+    {
+        PlayerStats.MaxHealth = _playerClassData.characterStats.GetCalculatedHP();
+        PlayerStats.Health = PlayerStats.MaxHealth;
+
+        //PlayerStats.MaxMana = _playerClassData.characterStats.GetCalculatedGage();
+        PlayerStats.Mana = PlayerStats.MaxMana;
+
+        PlayerStats.AttackPower = _playerClassData.characterStats.GetCalculatedAttackPower();
+        PlayerStats.AttackSpeed = (int)_playerClassData.characterStats.GetCalculatedAttackSpeed();
+        PlayerStats.Speed = _playerClassData.characterStats.GetCalculatedSpeed();
+        PlayerStats.CriticalChance = _playerClassData.characterStats.GetCalculatedCriticalChance();
+        PlayerStats.DamageReceiveRate = _playerClassData.characterStats.GetCalculatedDamageReceiveRate();
+    }
 
     #region 공격 및 피격 관리 매서드
     public virtual void Attack()

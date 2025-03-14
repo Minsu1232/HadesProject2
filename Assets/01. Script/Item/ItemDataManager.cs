@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Threading.Tasks;
+using Unity.Burst.CompilerServices;
 using UnityEngine;
 using UnityEngine.AddressableAssets;
 using UnityEngine.ResourceManagement.AsyncOperations;
@@ -274,7 +275,7 @@ public class ItemDataManager : MonoBehaviour
         Item item = new Item();
 
         // 기본 속성 설정
-        item.itemID = itemId.ToString();
+        item.itemID = int.Parse(baseData["ItemID"]);
         item.itemName = baseData["ItemName"];
         item.description = baseData["Description"];
 
@@ -309,7 +310,7 @@ public class ItemDataManager : MonoBehaviour
         FragmentItem item = new FragmentItem();
 
         // 기본 속성 설정
-        item.itemID = itemId.ToString();
+        item.itemID = int.Parse(baseData["ItemID"]);
         item.itemName = baseData["ItemName"];
         item.description = baseData["Description"];
         item.isStackable = bool.Parse(baseData["IsStackable"]);
@@ -372,7 +373,7 @@ public class ItemDataManager : MonoBehaviour
         PotionItem item = new PotionItem();
 
         // 기본 속성 설정
-        item.itemID = itemId.ToString();
+        item.itemID = int.Parse(baseData["ItemID"]);
         item.itemName = baseData["ItemName"];
         item.description = baseData["Description"];
         item.isStackable = bool.Parse(baseData["IsStackable"]);
@@ -422,7 +423,7 @@ public class ItemDataManager : MonoBehaviour
         MaterialItem item = new MaterialItem();
 
         // 기본 속성 설정
-        item.itemID = itemId.ToString();
+        item.itemID = int.Parse(baseData["ItemID"]);
         item.itemName = baseData["ItemName"];
         item.description = baseData["Description"];
         item.isStackable = bool.Parse(baseData["IsStackable"]);
