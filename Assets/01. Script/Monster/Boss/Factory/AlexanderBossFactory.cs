@@ -16,7 +16,7 @@ public class AlexanderBossFactory : MonsterFactoryBase
         return null;
     }
 
-    protected override string GetMonsterDataKey() => $"BossData_2";
+    protected override string GetMonsterDataKey() => $"BossData_1002";
     protected override bool IsEliteAvailable() => false;
 
     protected override void FinalizeMonsterCreation(GameObject bossObject, ICreatureData data, Action<IMonsterClass> onMonsterCreated)

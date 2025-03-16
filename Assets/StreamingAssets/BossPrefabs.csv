@@ -1,7 +1,7 @@
 BossId,AreaEffectPrefab,ShockEffectPrefab,BuffEffectPrefab,SummonPrefab,ProjectilePrefab,HitEffect,EliteOutlineMaterial,,SkillConfigID,HowlEffectPrefabKey,CircleIndicatorPrefab,ExplosionPrefab
-1,,ShorkWavePrefab,,,BatPrefab,BloodHitEffect,,,1,,,
-1,,ShorkWavePrefab,,,RayProjectile,BloodHitEffect,,,4,,,
-2,,,BuffUpPrefab,,LightGlowPrefab,LightGlowHitPrefab,,,1,,,
-2,,,BuffUpPrefab,,LightGlowPrefab,LightGlowHitPrefab,,,4,,,
-2,AreaEffect(Howl),,,,,,,,7,HowlEffectPrefab(Real),CircleIndicatorPrefab,
-2,,,,,ClawPrefab,AreaEffect(Howl),,,8,,IndicatorPrefab(Donut),AreaEffect(Howl)
+1001,,ShorkWavePrefab,,,BatPrefab,BloodHitEffect,,,1,,,
+1001,,ShorkWavePrefab,,,RayProjectile,BloodHitEffect,,,4,,,
+1002,,,BuffUpPrefab,,LightGlowPrefab,LightGlowHitPrefab,,,1,,,
+1002,,,BuffUpPrefab,,LightGlowPrefab,LightGlowHitPrefab,,,4,,,
+1002,AreaEffect(Howl),,,,,,,,7,HowlEffectPrefab(Real),CircleIndicatorPrefab,
+1002,,,,,ClawPrefab,AreaEffect(Howl),,,8,,IndicatorPrefab(Donut),AreaEffect(Howl)

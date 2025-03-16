@@ -99,7 +99,7 @@ MonoBehaviour:
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: e6d8a5818693ab04891ac19270249296
-    m_Address: BossData_1
+    m_Address: BossData_1001
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
@@ -224,7 +224,7 @@ MonoBehaviour:
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 3670d6f1989155f4b90817054a90e018
-    m_Address: BossData_2
+    m_Address: BossData_1002
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0

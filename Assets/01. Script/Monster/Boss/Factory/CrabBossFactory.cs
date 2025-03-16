@@ -16,7 +16,7 @@ public class CrabBossFactory : MonsterFactoryBase
         return null;
     }
 
-    protected override string GetMonsterDataKey() => "BossData_1";
+    protected override string GetMonsterDataKey() => "BossData_1001"; 
     protected override bool IsEliteAvailable() => false;
 
     protected override void FinalizeMonsterCreation(GameObject monsterObject, ICreatureData data, Action<IMonsterClass> onMonsterCreated)
