@@ -158,9 +158,11 @@ public class MonsterStatus : MonoBehaviour,IDamageable, ICreatureStatus
     {
         if (!isDie)
         {
+           Debug.Log(monsterClass.MONSTERNAME);
             Debug.Log("쭉었다");
+            monsterClass.Die();
             isDie = true;
-
+            Debug.Log(monsterClass.IsAlive);
             if (ItemDropSystem.Instance != null)
             {
                 // 몬스터 데이터 확인
@@ -180,6 +182,7 @@ public class MonsterStatus : MonoBehaviour,IDamageable, ICreatureStatus
 
                 // 아이템 드롭 실행
                 ItemDropSystem.Instance.DropItemFromMonster(monData, transform.position);
+                DungeonManager.Instance.OnMonsterDefeated(monsterClass);
             }
 
             Destroy(gameObject); // 몬스터 오브젝트 삭제

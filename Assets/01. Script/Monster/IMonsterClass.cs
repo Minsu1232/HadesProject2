@@ -10,7 +10,7 @@ public interface IMonsterClass
     
     public event Action OnArmorBreak;
     ICreatureData GetMonsterData();  // MonsterData 대신 인터페이스 반환
-   
+    public void Die();
     string MONSTERNAME { get; }
     int CurrentHealth { get; }
     int MaxHealth { get; }
@@ -64,6 +64,8 @@ public interface IMonsterClass
     float CurrentShockwaveRadius { get; }
     int CurrentMultiShotCount { get; }
     float CurrentMultiShotInterval { get; }
+    bool IsAlive { get; }
+
     void TakeDamage(int damage);
 
     void ModifyStats(

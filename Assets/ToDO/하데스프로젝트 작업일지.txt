@@ -541,7 +541,34 @@ Commit = Item/framework
 		모듈식 구조로 새로운 데이터 타입 추가 용이
 	
 
-	
+3/16 = 저장 및 로드 임시 완료 후 Dungeon과 Village 씬을 잇는 기능 시작 (DungeonManager Branch)
+
+	=> StageDataLoader를 Stage,StageMonsters.CSV 룰통해 각 챕터 맵별 데이터와 몬스터 스폰위치, 종류, 플레이어의 위치 저장
+	=> GameManager를 제작해 일단 DungeonManager와 StageDataLoader를 초기화
+
+	DungeonManager가 핵심기능을 수행(몬스터 스폰 및 던전 진행)
+
+	=> 현재 문제 :	1. 씬이동시 플레이어가 원하는 위치로 가지만 순간 다시 이상한곳으로 감(임시로 Rigidbody isKine를 false 후 true로 바꾸는 식으로 해결)
+					2. 씬이동시 로딩창 제작해야함 => 제작완료 Shader를 이용해 시계바늘이 돌아가는 듯한 느낌의 Material제작
+					3. 이때 로딩창은 플레이어가 원하는 위치에 딱 제대로 도착 했을때 로딩이 다된판정이 되어야함
+					4. 맵은 미리 오픈을 해두고 맵간의 이동은 페이드아웃을 해야함(맵이동시 몬스터가 소환되는 형태)
+					5. 현재 중구난방하게 소환되는데 그냥 내가 직접 스폰포인트를 잡아서 소환해주는게 마음 편할듯 함(에디터를 통해 잡을지는 모르겠음)
+					6. 현재 1-1에서 몬스터가 전부 죽으면 바로 1-2가 되는 구조기에 이는 고쳐야함(1-1 몬스터가 다 죽고 아이템이 안먹은 아이템이 없으면 포탈이 열리게끔)
+
+
+3/17 = 전날 작업 문제 해결 현황
+
+	=>	1 임시해결로 유지
+		2 제작 완료
+		3 DungeonManager에서 데이터 초기화를 비동기 실행을 통해 한걸 DungeonDataManager에 옮겨 초기화 SceneTransitionManager(페이드 전환 효과 및 점멸효과) ,LoadingScreen(씬 전환 로딩) 
+		=> DungeonManager는 던전관련된 관리 시스템. 시작시 로드스테이지 매서드를 통해 위치로 이동
+		4  해결 (맵간이동중 페이드인아웃이 두번더 발생 하는중)
+		5. 해결 (SpawnPointMarker(점을 찍어 SCene에서 볼 수 있게 해주는 역할),SpawnPointContatiner(Tool로 생성 후 맵프리팹에 넣음),SpawnPointEditorWindow(에디터
+								=> 마우스로 정해서 각 타입위치를 정해서 CSV로 뺌)  통해 해결) 시작시 StageDataLoader가 알아서 StageData생성
+		6. 해결(해결)
+
+
+					
 
 
 

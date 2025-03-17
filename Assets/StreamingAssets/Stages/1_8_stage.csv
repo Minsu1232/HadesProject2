@@ -1,0 +1,2 @@
+StageID,ChapterID,StageName,NextStageID,IsBossStage,IsMidBossStage,SpawnPosX,SpawnPosY,SpawnPosZ,PortalPosX,PortalPosY,PortalPosZ
+1_8,1,Stage 1-8,1_9,False,False,186.22,1.09205,-256.391,183.599,0.7796057,-225.13

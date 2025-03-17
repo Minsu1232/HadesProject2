@@ -723,7 +723,7 @@ public class BossDataManager : Singleton<BossDataManager>
         {
             int bossId = kvp.Key;
             var baseData = kvp.Value;
-
+            Debug.Log(bossId);
             string bossDataPath = $"BossData_{bossId}";
             var bossDataHandle = Addressables.LoadAssetAsync<BossData>(bossDataPath);
             BossData bossData = await bossDataHandle.Task;

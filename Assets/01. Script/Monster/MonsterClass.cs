@@ -123,6 +123,7 @@ public abstract class MonsterClass : ICreature,IMonsterClass, IDamageable
     public float CurrentDeathDuration { get; private set; }
     public float CurrentSpawnDuration { get; private set; }
 
+    public bool IsAlive {  get; private set; }
     public MonsterGrade grade { get; private set; }
     public SpawnStrategyType CurrentSpawnStrategy { get; private set; }
     public MovementStrategyType CurrentMoveStrategy { get; private set; }
@@ -170,6 +171,7 @@ public abstract class MonsterClass : ICreature,IMonsterClass, IDamageable
     public GameObject hitEffect;
     public MonsterClass(ICreatureData data)
     {
+       
         monsterData = data;
 
         // 체력 초기화
@@ -179,6 +181,8 @@ public abstract class MonsterClass : ICreature,IMonsterClass, IDamageable
         OnHealthChanged?.Invoke(CurrentHealth, MaxHealth); // 초기화 시 이벤트 호출
         InitializeStats();
         SaveDefaultStats();
+
+        Debug.Log(MONSTERNAME);
     }
     public bool IsBasicAttack()
     {
@@ -236,6 +240,7 @@ public abstract class MonsterClass : ICreature,IMonsterClass, IDamageable
         CurrentShockwaveRadius = monsterData.shockwaveRadius;
         CurrentMultiShotCount = monsterData.multiShotCount;
         CurrentMultiShotInterval = monsterData.multiShotInterval;
+        IsAlive = true;
         playerClass = GameInitializer.Instance.GetPlayerClass();
 
        
@@ -324,7 +329,8 @@ public abstract class MonsterClass : ICreature,IMonsterClass, IDamageable
     }
     public virtual void Die()
     {
-
+        Debug.Log("죽었습니다 몬스터가@@@@@@@@@@@@@@@@@@@@@@@@!!!!!!!!");
+        IsAlive = false;
     }
 
 

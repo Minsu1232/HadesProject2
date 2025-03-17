@@ -16,6 +16,7 @@ public class GameInitializer : Singleton<GameInitializer>
 
     private void Awake()
     {
+        DontDestroyOnLoad(gameObject);
         InitializeComponents();
         LoadGameData();
     }

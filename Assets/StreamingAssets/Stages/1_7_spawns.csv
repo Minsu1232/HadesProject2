@@ -1,0 +1,4 @@
+StageID,MonsterID,IsFixedPosition,PositionX,PositionY,PositionZ,SpawnWeight
+1_7,6,true,20.79797,0.146669,-248.4958,1
+1_7,6,true,29.46138,0.146669,-247.6663,1
+1_7,6,true,37.45932,0.146669,-247.7255,1

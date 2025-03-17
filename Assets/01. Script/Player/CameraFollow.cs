@@ -7,6 +7,13 @@ public class CameraFollow : MonoBehaviour
     [SerializeField] private Transform playerTransform; // 따라갈 플레이어
     [SerializeField] private Vector3 offset = new Vector3(0, 10, -10); // 기본 오프셋
 
+    //private void OnEnable()
+    //{
+    //    if(playerTransform == null)
+    //    {
+    //        playerTransform = GameInitializer.Instance.GetPlayerClass().playerTransform;
+    //    }
+    //}
     void LateUpdate()
     {
         if (playerTransform == null) return;

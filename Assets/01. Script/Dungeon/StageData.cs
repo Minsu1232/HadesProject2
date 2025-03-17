@@ -10,7 +10,8 @@ public class StageData : ScriptableObject
     public string nextStageID;     // 다음 스테이지 ID
     public bool isBossStage;       // 최종 보스 스테이지
     public bool isMidBossStage;    // 중간 보스 스테이지
-
+    public Vector3 playerSpawnPosition; // 스폰위치
+    public Vector3 portalSpawnPosition; // 포탈 생성 위치
     [Header("몬스터 설정")]
     public List<MonsterSpawnInfo> fixedSpawns = new List<MonsterSpawnInfo>();  // 보스나 특정 위치에 고정된 몬스터 
     public List<MonsterSpawnInfo> randomMonsters = new List<MonsterSpawnInfo>(); // 랜덤 위치에 스폰될 몬스터 풀

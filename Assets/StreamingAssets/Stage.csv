@@ -1,11 +1,11 @@
-﻿StageID,ChapterID,StageName,NextStageID,IsBossStage,IsMidBossStage
-1-1,1,야수의 숲 입구,1-2,FALSE,FALSE
-1-2,1,우거진 덤불,1-3,FALSE,FALSE
-1-3,1,광기의 샘,1-4,FALSE,FALSE
-1-4,1,야수의 둥지,1-5,FALSE,FALSE
-1-5,1,우두머리의 영역,1-6,FALSE,TRUE
-1-6,1,무너진 성벽,1-7,FALSE,FALSE
-1-7,1,피의 숲,1-8,FALSE,FALSE
-1-8,1,슬픔의 골짜기,1-9,FALSE,FALSE
-1-9,1,왕의 회랑,1-10,FALSE,FALSE
-1-10,1,야수왕의 왕좌,Villiege,TRUE,FALSE
+﻿StageID,ChapterID,StageName,NextStageID,IsBossStage,IsMidBossStage,SpawnPosX,SpawnPosY,SpawnPosZ,PortalPosX,PortalPosY,PortalPosZ
+1_1,1,야수의 숲 입구,1_2,FALSE,FALSE,-9.5,0.5,50,,,
+1_2,1,우거진 덤불,1_3,FALSE,FALSE,-9.5,0,52,,,
+1_3,1,광기의 샘,1_4,FALSE,FALSE,-9.5,0,52,,,
+1_4,1,야수의 둥지,1_5,FALSE,FALSE,-9.5,0,52,,,
+1_5,1,우두머리의 영역,1_6,FALSE,TRUE,-9.5,0,52,,,
+1_6,1,무너진 성벽,1_7,FALSE,FALSE,-9.5,0,52,,,
+1_7,1,피의 숲,1_8,FALSE,FALSE,-9.5,0,52,,,
+1_8,1,슬픔의 골짜기,1_9,FALSE,FALSE,-9.5,0,52,,,
+1_9,1,왕의 회랑,1_10,FALSE,FALSE,-9.5,0,52,,,
+1_10,1,야수왕의 왕좌,Villiege,TRUE,FALSE,-9.5,0,52,,,

@@ -26,16 +26,25 @@ public class PlayerMovement : MonoBehaviour
 
     void Awake()
     {
-        rb = GetComponent<Rigidbody>();
+    
+    }
+    private void OnEnable()
+    {
+        // 씬 변경 시 카메라 참조 업데이트
         mainCamera = Camera.main;
         if (mainCamera == null)
         {
             Debug.LogError("카메라를 찾을 수 없습니다.");
         }
     }
-
     private void Start()
     {
+        rb = GetComponent<Rigidbody>();
+        mainCamera = Camera.main;
+        if (mainCamera == null)
+        {
+            Debug.LogError("카메라를 찾을 수 없습니다.");
+        }
         playerClass = GameInitializer.Instance.GetPlayerClass();
         animator = GetComponent<Animator>();
 
@@ -51,9 +60,15 @@ public class PlayerMovement : MonoBehaviour
     {
         if (playerClass == null) return;
 
+        // 카메라 참조 확인
+        if (mainCamera == null)
+        {
+            mainCamera = Camera.main;
+            if (mainCamera == null) return; // 카메라가 없으면 이동 처리 건너뛰기
+        }
+
         if (playerClass.IsStunned)
         {
-            // 스턴 상태일 때 velocity 초기화
             rb.velocity = Vector3.zero;
             return;
         }
@@ -68,6 +83,7 @@ public class PlayerMovement : MonoBehaviour
         }
     }
 
+
     private void FixedUpdate()
     {
         if (playerClass == null) return;
@@ -77,18 +93,54 @@ public class PlayerMovement : MonoBehaviour
             SmoothMove(moveDirection);
         }
     }
+    // PlayerMovement 클래스에 추가
+    public void TeleportTo(Vector3 position)
+    {
+        // 물리 계산 일시 중지
+        bool wasKinematic = rb.isKinematic;
+        rb.isKinematic = true;
 
+        // 속도 및 가속도 초기화
+        rb.velocity = Vector3.zero;
+        rb.angularVelocity = Vector3.zero;
+
+        // 위치 설정
+        transform.position = position;
+
+        // PlayerClass의 위치도 동기화 (필요한 경우)
+        if (playerClass != null && playerClass.playerTransform != null)
+        {
+            playerClass.playerTransform.position = position;
+        }
+
+        // 물리 상태 복원
+        rb.isKinematic = wasKinematic;
+
+        // 이동 관련 변수 초기화
+        moveDirection = Vector3.zero;
+        smoothVelocity = Vector3.zero;
+
+        Debug.Log($"플레이어 텔레포트 완료: {position}");
+    }
     private Vector3 GetCameraRelativeMovement()
     {
-        float horizontal = Input.GetAxisRaw("Horizontal");
-        float vertical = Input.GetAxisRaw("Vertical");
+        // 안전 체크
+        if (mainCamera == null)
+        {
+            float horizontal = Input.GetAxisRaw("Horizontal");
+            float vertical = Input.GetAxisRaw("Vertical");
+            return new Vector3(horizontal, 0, vertical).normalized;
+        }
+
+        float h = Input.GetAxisRaw("Horizontal");
+        float v = Input.GetAxisRaw("Vertical");
 
         Vector3 cameraForward = mainCamera.transform.forward;
         cameraForward.y = 0;
         Vector3 cameraRight = mainCamera.transform.right;
         cameraRight.y = 0;
 
-        return (cameraForward * vertical + cameraRight * horizontal).normalized;
+        return (cameraForward * v + cameraRight * h).normalized;
     }
 
     public void SmoothMove(Vector3 direction)
