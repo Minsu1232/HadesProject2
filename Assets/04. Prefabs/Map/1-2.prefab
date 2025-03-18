@@ -119,7 +119,7 @@ GameObject:
   - component: {fileID: 3473010613706101527}
   - component: {fileID: 6680720674978374021}
   - component: {fileID: 8629446294034174955}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: FirstStraight
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -225,7 +225,7 @@ GameObject:
   - component: {fileID: 1268011257036505837}
   - component: {fileID: 5246479513024019437}
   - component: {fileID: 4137536218002446958}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: FirstStraight
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -426,6 +426,56 @@ MeshCollider:
   m_Convex: 0
   m_CookingOptions: 30
   m_Mesh: {fileID: 1730550017730380366, guid: 5e13681d2f731b644a8a669aad59f889, type: 3}
+--- !u!1 &195289475531246881
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 7834321097639625090}
+  - component: {fileID: 7873531467501006635}
+  m_Layer: 0
+  m_Name: Fixed_2
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &7834321097639625090
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 195289475531246881}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 142.35706, y: 0.08, z: 77.46285}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 4142910934426051031}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &7873531467501006635
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 195289475531246881}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7f33a70538714cb49acd6c6fcbe23b08, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  spawnType: 0
+  monsterID: 2
+  spawnWeight: 1
+  isBoss: 0
+  gizmoColor: {r: 1, g: 0, b: 0, a: 1}
+  gizmoSize: 0.5
 --- !u!1 &196527729928344220
 GameObject:
   m_ObjectHideFlags: 0
@@ -438,7 +488,7 @@ GameObject:
   - component: {fileID: 2491481809508733757}
   - component: {fileID: 4644225611393506705}
   - component: {fileID: 7016788959473981195}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: FirstStraight
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -544,7 +594,7 @@ GameObject:
   - component: {fileID: 616847303430844436}
   - component: {fileID: 6193074159662370708}
   - component: {fileID: 4140329984346212485}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: MiddleStraight
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -755,7 +805,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4492416226378410606}
   - component: {fileID: 3485568101511077937}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Plane
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1024,7 +1074,7 @@ GameObject:
   - component: {fileID: 2690159633457938522}
   - component: {fileID: 5406422121660328857}
   - component: {fileID: 8995151039756350502}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: FirstStraight
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1118,6 +1168,37 @@ MeshCollider:
   m_Convex: 0
   m_CookingOptions: 30
   m_Mesh: {fileID: -621965084226893023, guid: bf12970a7a00e38449f102921c7e31ce, type: 3}
+--- !u!1 &974346805539986999
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 703456051533666832}
+  m_Layer: 0
+  m_Name: PlayerSpawn
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &703456051533666832
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 974346805539986999}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 129.09044, y: 1.13, z: 65.670456}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 9211816730534865604}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &986218627700214188
 GameObject:
   m_ObjectHideFlags: 0
@@ -1130,7 +1211,7 @@ GameObject:
   - component: {fileID: 4184217326934901050}
   - component: {fileID: 7047484841982195974}
   - component: {fileID: 6230259535735569260}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: FirstStraight
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1236,7 +1317,7 @@ GameObject:
   - component: {fileID: 5428166292022589704}
   - component: {fileID: 6909088634085872869}
   - component: {fileID: 5915887622675910144}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: MiddleStraight
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1342,7 +1423,7 @@ GameObject:
   - component: {fileID: 9027371055721330585}
   - component: {fileID: 698632181005856251}
   - component: {fileID: 2401603241602911136}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: FirstStraight
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1448,7 +1529,7 @@ GameObject:
   - component: {fileID: 3585661843951482902}
   - component: {fileID: 5546109969439414096}
   - component: {fileID: 5978076442518229081}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: FirstStraight
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1554,7 +1635,7 @@ GameObject:
   - component: {fileID: 9063165738246096916}
   - component: {fileID: 8960652566608676909}
   - component: {fileID: 8053393311181268360}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Cave_Lair_Wooden_Timber_Fence_Small_04
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1768,7 +1849,7 @@ GameObject:
   - component: {fileID: 5224290521276656009}
   - component: {fileID: 2588699109315268345}
   - component: {fileID: 1302834824240370804}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Cave_Lair_Wooden_Timber_Spike_Roped_Large_01
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1874,7 +1955,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7859585335792202258}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Chapter1Wall1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2103,7 +2184,7 @@ GameObject:
   - component: {fileID: 2817735699475514592}
   - component: {fileID: 5568867092526950033}
   - component: {fileID: 6979075664317610856}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: FirstStraight
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2209,7 +2290,7 @@ GameObject:
   - component: {fileID: 5483840442923062056}
   - component: {fileID: 987975131933973235}
   - component: {fileID: 8738145734430113260}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: FirstStraight
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2527,7 +2608,7 @@ GameObject:
   - component: {fileID: 4304001677201145856}
   - component: {fileID: 8411703943645689740}
   - component: {fileID: 37004675297289502}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: FirstStraight
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2633,7 +2714,7 @@ GameObject:
   - component: {fileID: 3501710046508143085}
   - component: {fileID: 8622947738858387847}
   - component: {fileID: 5733083582152681090}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Cave_Lair_Cave_Stone_Block_Eroded_06
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2739,7 +2820,7 @@ GameObject:
   - component: {fileID: 7093756445548477690}
   - component: {fileID: 3454401960921518450}
   - component: {fileID: 8254009309360154939}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Cave_Lair_Wooden_Timber_Spike_Roped_Large_01
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2943,6 +3024,56 @@ MeshCollider:
   m_Convex: 0
   m_CookingOptions: 30
   m_Mesh: {fileID: -8529326844950850038, guid: c19b98e0459134440b8acdc3f3b787a5, type: 3}
+--- !u!1 &2601967479806021750
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 6619161055269960733}
+  - component: {fileID: 3923322345765564731}
+  m_Layer: 0
+  m_Name: Fixed_2
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &6619161055269960733
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2601967479806021750}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 125.4219, y: 0.08, z: 80.60537}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 4142910934426051031}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &3923322345765564731
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2601967479806021750}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7f33a70538714cb49acd6c6fcbe23b08, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  spawnType: 0
+  monsterID: 2
+  spawnWeight: 1
+  isBoss: 0
+  gizmoColor: {r: 1, g: 0, b: 0, a: 1}
+  gizmoSize: 0.5
 --- !u!1 &2626828593726857858
 GameObject:
   m_ObjectHideFlags: 0
@@ -2955,7 +3086,7 @@ GameObject:
   - component: {fileID: 5313782793733675851}
   - component: {fileID: 6402500766125931391}
   - component: {fileID: 7265852015100685435}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: FirstStraight
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3380,7 +3511,7 @@ GameObject:
   - component: {fileID: 2948657735526895916}
   - component: {fileID: 2400667025702532889}
   - component: {fileID: 4540804747412659105}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Cave_Lair_Wooden_Timber_Fence_Small_01 (2)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3594,7 +3725,7 @@ GameObject:
   - component: {fileID: 2349091452701072010}
   - component: {fileID: 1147340190718450708}
   - component: {fileID: 8433132487683499632}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: MiddleStraight
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3700,7 +3831,7 @@ GameObject:
   - component: {fileID: 737037421592948307}
   - component: {fileID: 1080305474208494375}
   - component: {fileID: 4478261479746408375}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: MiddleStraight
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3912,7 +4043,7 @@ GameObject:
   - component: {fileID: 6241845583215275811}
   - component: {fileID: 954664715959699327}
   - component: {fileID: 7474119209379714609}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: FirstStraight
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4186,7 +4317,7 @@ GameObject:
   - component: {fileID: 4330786051618914874}
   - component: {fileID: 5091936242459212262}
   - component: {fileID: 3068673688056331919}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Cave_Lair_Cave_Stone_Block_Eroded_06
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4802,7 +4933,7 @@ GameObject:
   - component: {fileID: 4254113930123590350}
   - component: {fileID: 4417923705391702305}
   - component: {fileID: 461970977128141550}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Cave_Lair_Vegetation_Swamp_Tree_Foliage_Willow_01
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5132,7 +5263,7 @@ GameObject:
   - component: {fileID: 5961486689911977678}
   - component: {fileID: 5125718663502293362}
   - component: {fileID: 1527539845003245387}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Prop_Jungle_Temple_Bridge_01
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5148,7 +5279,7 @@ Transform:
   m_GameObject: {fileID: 3682900000010557616}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: 0.7071068, z: -0, w: 0.7071068}
-  m_LocalPosition: {x: -17.517742, y: 0.62907577, z: 28.584595}
+  m_LocalPosition: {x: -17.5, y: 0.62907577, z: 28.54}
   m_LocalScale: {x: 1.4484495, y: 1, z: 1.1570814}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -5901,7 +6032,7 @@ GameObject:
   - component: {fileID: 8916816776723209571}
   - component: {fileID: 871881692010746224}
   - component: {fileID: 497964067412358549}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: FirstStraight
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -6007,7 +6138,7 @@ GameObject:
   - component: {fileID: 432947125693715125}
   - component: {fileID: 7655798166470514353}
   - component: {fileID: 6846067878645906073}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Cave_Lair_Vegetation_Swamp_Tree_Roots_04
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -6327,7 +6458,7 @@ GameObject:
   - component: {fileID: 1569283944424526090}
   - component: {fileID: 9027028249396211890}
   - component: {fileID: 4214623021306311306}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: FirstStraight
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -6433,7 +6564,7 @@ GameObject:
   - component: {fileID: 6229169460853777044}
   - component: {fileID: 6136478074350093823}
   - component: {fileID: 1481418018938945489}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: OutterCorner
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -6540,7 +6671,7 @@ GameObject:
   - component: {fileID: 8457833127003562981}
   - component: {fileID: 5754597104350230852}
   - component: {fileID: 3588525532230682146}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: FirstStraight
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -6646,7 +6777,7 @@ GameObject:
   - component: {fileID: 7648290389899796568}
   - component: {fileID: 2200902669362575245}
   - component: {fileID: 7711135177421965710}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: OutterCorner
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -7381,6 +7512,41 @@ MeshCollider:
   m_Convex: 0
   m_CookingOptions: 30
   m_Mesh: {fileID: 1730550017730380366, guid: 5e13681d2f731b644a8a669aad59f889, type: 3}
+--- !u!1 &4489386258110647747
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 4142910934426051031}
+  m_Layer: 0
+  m_Name: FixedSpawns
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &4142910934426051031
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4489386258110647747}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 6619161055269960733}
+  - {fileID: 7834321097639625090}
+  - {fileID: 505020372452490790}
+  - {fileID: 6518775835891614931}
+  m_Father: {fileID: 9211816730534865604}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &4526541841758431379
 GameObject:
   m_ObjectHideFlags: 0
@@ -7500,7 +7666,7 @@ GameObject:
   - component: {fileID: 4661967310155742106}
   - component: {fileID: 4302866230403477794}
   - component: {fileID: 3371686485752615062}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: FirstStraight
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -7606,7 +7772,7 @@ GameObject:
   - component: {fileID: 7711378638663245744}
   - component: {fileID: 6867172850247545748}
   - component: {fileID: 534789380108736537}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Cave_Lair_Cave_Stone_Block_Eroded_06
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -7819,7 +7985,7 @@ GameObject:
   - component: {fileID: 377859086976475420}
   - component: {fileID: 302393643991102032}
   - component: {fileID: 3657607718347277202}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: OutterCorner
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -8031,7 +8197,7 @@ GameObject:
   - component: {fileID: 2782912908030591510}
   - component: {fileID: 279922744381579838}
   - component: {fileID: 7926814614884736960}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Cave_Lair_Cave_Stone_Pillar_Damaged_01
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -8320,6 +8486,7 @@ Transform:
   - {fileID: 237366254503816992}
   - {fileID: 930230143899142905}
   - {fileID: 9202690691108176079}
+  - {fileID: 9211816730534865604}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &5291457556594405661
@@ -8428,6 +8595,58 @@ MeshCollider:
   m_Convex: 0
   m_CookingOptions: 30
   m_Mesh: {fileID: -6401319749799306696, guid: 81f9abff97393004b8969fe20e04a44b, type: 3}
+--- !u!1 &5302129816155941669
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 9211816730534865604}
+  - component: {fileID: 8749018494714458044}
+  m_Layer: 0
+  m_Name: SpawnPointContainer
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &9211816730534865604
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5302129816155941669}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -146, y: -0.08, z: -71.7}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 4142910934426051031}
+  - {fileID: 6307223416921648392}
+  - {fileID: 703456051533666832}
+  - {fileID: 7608294807741256489}
+  m_Father: {fileID: 8527397434873473379}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &8749018494714458044
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5302129816155941669}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: efa332d53a424e44ca1999386c46cf0a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  stageID: 1_2
+  stageName: Stage 1-2
+  playerSpawnPoint: {fileID: 703456051533666832}
+  portalSpawnPoint: {fileID: 7608294807741256489}
 --- !u!1 &5302429884446621881
 GameObject:
   m_ObjectHideFlags: 0
@@ -8440,7 +8659,7 @@ GameObject:
   - component: {fileID: 45976017349316820}
   - component: {fileID: 7983444798623653967}
   - component: {fileID: 1398907941746803797}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Cave_Lair_Cave_Stone_Block_Eroded_06
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -8653,7 +8872,7 @@ GameObject:
   - component: {fileID: 8834148849682485491}
   - component: {fileID: 4639168315028083569}
   - component: {fileID: 9027936659081067613}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: FirstStraight
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -9065,6 +9284,56 @@ MeshCollider:
   m_Convex: 0
   m_CookingOptions: 30
   m_Mesh: {fileID: -2768662396911539574, guid: 7ff23f790b8b0d541b1c84c3f3adc3d6, type: 3}
+--- !u!1 &5517110227103717892
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 505020372452490790}
+  - component: {fileID: 2967881186351830574}
+  m_Layer: 0
+  m_Name: Fixed_3
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &505020372452490790
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5517110227103717892}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 147.09593, y: 0.08, z: 89.635124}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 4142910934426051031}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &2967881186351830574
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5517110227103717892}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7f33a70538714cb49acd6c6fcbe23b08, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  spawnType: 0
+  monsterID: 3
+  spawnWeight: 1
+  isBoss: 0
+  gizmoColor: {r: 1, g: 0, b: 0, a: 1}
+  gizmoSize: 0.5
 --- !u!1 &5566366998723496713
 GameObject:
   m_ObjectHideFlags: 0
@@ -9268,7 +9537,7 @@ GameObject:
   - component: {fileID: 281448448145109155}
   - component: {fileID: 3034261020630442703}
   - component: {fileID: 5663322986476521496}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: MiddleStraight
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -9362,6 +9631,37 @@ MeshCollider:
   m_Convex: 0
   m_CookingOptions: 30
   m_Mesh: {fileID: -621965084226893023, guid: bf12970a7a00e38449f102921c7e31ce, type: 3}
+--- !u!1 &5773944327319937997
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 6307223416921648392}
+  m_Layer: 0
+  m_Name: RandomSpawns
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &6307223416921648392
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5773944327319937997}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 9211816730534865604}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &5810415870977659674
 GameObject:
   m_ObjectHideFlags: 0
@@ -9480,7 +9780,7 @@ GameObject:
   - component: {fileID: 1894415476189307590}
   - component: {fileID: 3167896152518956025}
   - component: {fileID: 8123430263715034635}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: InnerCorner
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -9692,7 +9992,7 @@ GameObject:
   - component: {fileID: 6354984955806343093}
   - component: {fileID: 7648315697624151753}
   - component: {fileID: 7891855108488875546}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: FirstStraight
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -9798,7 +10098,7 @@ GameObject:
   - component: {fileID: 4187528883205322852}
   - component: {fileID: 6713471789862634935}
   - component: {fileID: 3326826237671749743}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: FirstStraight
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -10010,7 +10310,7 @@ GameObject:
   - component: {fileID: 5942359002114809706}
   - component: {fileID: 3891739003585621463}
   - component: {fileID: 5573527796013186638}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: FirstStraight
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -10223,7 +10523,7 @@ GameObject:
   - component: {fileID: 6068374310190008073}
   - component: {fileID: 1676604398318477388}
   - component: {fileID: 6586991239682488009}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: MiddleStraight
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -10329,7 +10629,7 @@ GameObject:
   - component: {fileID: 4600886413209433047}
   - component: {fileID: 5590862720389029275}
   - component: {fileID: 3956117547273446578}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: FirstStraight
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -10648,7 +10948,7 @@ GameObject:
   - component: {fileID: 5052829003880461410}
   - component: {fileID: 327951786981393830}
   - component: {fileID: 1896559379431796601}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: FirstStraight
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -10860,7 +11160,7 @@ GameObject:
   - component: {fileID: 6239621934502039061}
   - component: {fileID: 8516841912960967689}
   - component: {fileID: 1510794910364718362}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: MiddleStraight
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -10966,7 +11266,7 @@ GameObject:
   - component: {fileID: 3817449955805009494}
   - component: {fileID: 4470804493545916399}
   - component: {fileID: 355374748310280606}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: OutterCorner
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -11494,7 +11794,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6637542513869425937}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: OutterCorner
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -11530,7 +11830,7 @@ GameObject:
   - component: {fileID: 4432588787648771053}
   - component: {fileID: 6421019887501507275}
   - component: {fileID: 8240790242772111085}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Cave_Lair_Cave_Stone_Block_Eroded_06
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -11624,6 +11924,37 @@ MeshCollider:
   m_Convex: 0
   m_CookingOptions: 30
   m_Mesh: {fileID: -5651044187736933754, guid: b291f8b07462a3f41aae19ce1a403bf3, type: 3}
+--- !u!1 &7169122108585927212
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 7608294807741256489}
+  m_Layer: 0
+  m_Name: PortalSpawn
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &7608294807741256489
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7169122108585927212}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 128.2, y: 1.0664071, z: 91.86667}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 9211816730534865604}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &7208601656858339744
 GameObject:
   m_ObjectHideFlags: 0
@@ -11636,7 +11967,7 @@ GameObject:
   - component: {fileID: 6937050430709577565}
   - component: {fileID: 3021633335451292276}
   - component: {fileID: 3122882897908903835}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: LastStraight
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -11933,7 +12264,7 @@ GameObject:
   - component: {fileID: 8131361872384896663}
   - component: {fileID: 7960366534372245502}
   - component: {fileID: 6410302491538204984}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: FirstStraight
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -12039,7 +12370,7 @@ GameObject:
   - component: {fileID: 3961052367804915033}
   - component: {fileID: 7911652126306486670}
   - component: {fileID: 1988921049307596439}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Cave_Lair_Wooden_Timber_Fence_Small_01 (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -12253,7 +12584,7 @@ GameObject:
   - component: {fileID: 407000057445431747}
   - component: {fileID: 8344921247958486479}
   - component: {fileID: 5584493857510880449}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: MiddleStraight
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -12572,7 +12903,7 @@ GameObject:
   - component: {fileID: 8130669519285304613}
   - component: {fileID: 6020958649920343910}
   - component: {fileID: 62275779285371862}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: FirstStraight
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -12784,7 +13115,7 @@ GameObject:
   - component: {fileID: 370507996223206641}
   - component: {fileID: 1222702125617887027}
   - component: {fileID: 4641734545500586233}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Cave_Lair_Metal_Chest_Damaged_Open_Junk_01
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -12998,7 +13329,7 @@ GameObject:
   - component: {fileID: 6761171789974666591}
   - component: {fileID: 226406656739457910}
   - component: {fileID: 7214532355349810474}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: FirstStraight
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -13526,7 +13857,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1190484872200107596}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Chapter1Wall
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -13777,7 +14108,7 @@ GameObject:
   - component: {fileID: 5589227396614911927}
   - component: {fileID: 7969067074998499485}
   - component: {fileID: 3329371737069102794}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: InnerCorner
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -13884,7 +14215,7 @@ GameObject:
   - component: {fileID: 2814516967478768747}
   - component: {fileID: 6494727379706332640}
   - component: {fileID: 8274565167430670832}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: FirstStraight
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -14096,7 +14427,7 @@ GameObject:
   - component: {fileID: 7125405843537380106}
   - component: {fileID: 7596924424633127743}
   - component: {fileID: 7322206425224756696}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Cave_Lair_Cave_Stone_Pillar_Damaged_01
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -14416,7 +14747,7 @@ GameObject:
   - component: {fileID: 1071766342276010379}
   - component: {fileID: 3929529750600766217}
   - component: {fileID: 7323193632562788473}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: LastStraight
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -14949,7 +15280,7 @@ GameObject:
   - component: {fileID: 1369921258671247666}
   - component: {fileID: 5495069587181801478}
   - component: {fileID: 7818669887255097589}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: FirstStraight
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -15043,6 +15374,56 @@ MeshCollider:
   m_Convex: 0
   m_CookingOptions: 30
   m_Mesh: {fileID: -621965084226893023, guid: bf12970a7a00e38449f102921c7e31ce, type: 3}
+--- !u!1 &9119405066836484078
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 6518775835891614931}
+  - component: {fileID: 4587429457005275709}
+  m_Layer: 0
+  m_Name: Fixed_3
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &6518775835891614931
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9119405066836484078}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 115.056984, y: 0.08, z: 75.74643}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 4142910934426051031}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &4587429457005275709
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9119405066836484078}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7f33a70538714cb49acd6c6fcbe23b08, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  spawnType: 0
+  monsterID: 3
+  spawnWeight: 1
+  isBoss: 0
+  gizmoColor: {r: 1, g: 0, b: 0, a: 1}
+  gizmoSize: 0.5
 --- !u!1001 &61826358467068525
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -15850,6 +16231,10 @@ PrefabInstance:
     - target: {fileID: 8039665812648609213, guid: d322d570ba8efd04d96f5909c85f9975, type: 3}
       propertyPath: m_Name
       value: Cave_Lair_Cave_Stone_Block_Eroded_03_Atlased (2)
+      objectReference: {fileID: 0}
+    - target: {fileID: 8039665812648609213, guid: d322d570ba8efd04d96f5909c85f9975, type: 3}
+      propertyPath: m_Layer
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 8393687935158695869, guid: d322d570ba8efd04d96f5909c85f9975, type: 3}
       propertyPath: m_LocalPosition.x
@@ -17315,6 +17700,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: OutterCorner
       objectReference: {fileID: 0}
+    - target: {fileID: 233110380634861666, guid: 2dac19feaaabf724a863df8aa4a53614, type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
     - target: {fileID: 1788724439448945250, guid: 2dac19feaaabf724a863df8aa4a53614, type: 3}
       propertyPath: m_LocalPosition.x
       value: 3.11
@@ -17354,6 +17743,10 @@ PrefabInstance:
     - target: {fileID: 1788724439448945250, guid: 2dac19feaaabf724a863df8aa4a53614, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5568714071719024439, guid: 2dac19feaaabf724a863df8aa4a53614, type: 3}
+      propertyPath: m_Layer
+      value: 6
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -17420,6 +17813,10 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: 623f94cd0b6d88644ba4c8696bcf6af1, type: 3}
       propertyPath: m_Name
       value: Cave_Lair_Wooden_Timber_Fence_Small_04
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 623f94cd0b6d88644ba4c8696bcf6af1, type: 3}
+      propertyPath: m_Layer
+      value: 6
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -17512,6 +17909,14 @@ PrefabInstance:
     - target: {fileID: 1374754107407172895, guid: 8f94d83842275a54aa51a1baac3d4f8b, type: 3}
       propertyPath: m_Name
       value: InnerCorner
+      objectReference: {fileID: 0}
+    - target: {fileID: 1374754107407172895, guid: 8f94d83842275a54aa51a1baac3d4f8b, type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 5677660254885877089, guid: 8f94d83842275a54aa51a1baac3d4f8b, type: 3}
+      propertyPath: m_Layer
+      value: 6
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -17855,6 +18260,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: MiddleStraight
       objectReference: {fileID: 0}
+    - target: {fileID: 5696692938443149393, guid: 9bc3b8550e068454f8dd4c13d31a418a, type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
     - target: {fileID: 6115967231025816145, guid: 9bc3b8550e068454f8dd4c13d31a418a, type: 3}
       propertyPath: m_LocalPosition.x
       value: 3.82
@@ -17957,6 +18366,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: FirstStraight
       objectReference: {fileID: 0}
+    - target: {fileID: 2148358057769544106, guid: 0f0cd2e8ed65c0b4498d6c932ac52162, type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -17978,6 +18391,10 @@ PrefabInstance:
     - target: {fileID: 8039665812648609213, guid: d322d570ba8efd04d96f5909c85f9975, type: 3}
       propertyPath: m_Name
       value: Cave_Lair_Cave_Stone_Block_Eroded_03_Atlased (2)
+      objectReference: {fileID: 0}
+    - target: {fileID: 8039665812648609213, guid: d322d570ba8efd04d96f5909c85f9975, type: 3}
+      propertyPath: m_Layer
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 8393687935158695869, guid: d322d570ba8efd04d96f5909c85f9975, type: 3}
       propertyPath: m_LocalPosition.x

@@ -45,7 +45,7 @@ public class BossEssenceUIManager : MonoBehaviour
         essenceSystem.OnEssenceChanged += UpdateEssenceBar;
         essenceSystem.OnEssenceStateChanged += UpdateEssenceState;
         essenceSystem.OnMaxEssenceStateChanged += UpdateMaxEssenceState;
-        essenceName.text = currentEssenceSystem.BossEssenceName;
+        essenceName.text = currentEssenceSystem.BossEssenceName; 
         // 초기 상태 설정
         essenceBarFill.fillAmount = 0f;
         essenceBarFill.color = normalColor;

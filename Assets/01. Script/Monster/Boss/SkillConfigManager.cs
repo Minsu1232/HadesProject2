@@ -12,10 +12,11 @@ public class SkillConfigManager : Singleton<SkillConfigManager>
     private Dictionary<int, SkillConfig> skillConfigs = new Dictionary<int, SkillConfig>();
     private string skillConfigPath;
 
-    private void Awake()
+   protected override void Awake()
     {
-        skillConfigPath = Path.Combine(Application.persistentDataPath, "BossSkillConfigs.csv");
-        CopyCSVFromStreamingAssets();
+        //skillConfigPath = Path.Combine(Application.persistentDataPath, "BossSkillConfigs.csv");
+        //CopyCSVFromStreamingAssets();
+        Debug.Log("#@$@#($@#)($@#)($@#)$!)@#");
     }
 
     private void CopyCSVFromStreamingAssets()
@@ -41,6 +42,7 @@ public class SkillConfigManager : Singleton<SkillConfigManager>
 
     private async Task LoadSkillConfigs()
     {
+        skillConfigPath = Path.Combine(Application.persistentDataPath, "BossSkillConfigs.csv");
         if (!File.Exists(skillConfigPath))
         {
             Debug.LogError($"스킬 구성 CSV 파일을 찾을 수 없습니다: {skillConfigPath}");

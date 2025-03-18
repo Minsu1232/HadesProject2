@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 5483174011215822029}
   - component: {fileID: 6803524008199781993}
   - component: {fileID: 8984189194302243188}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Dungeon_Tiles_Modular_1x2_Stone_01 (30)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -94,7 +94,7 @@ GameObject:
   - component: {fileID: 5282763158722204311}
   - component: {fileID: 2237498929419474693}
   - component: {fileID: 2444829808360134017}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Dungeon_Tiles_Modular_1x1_Stone_01 (17)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -177,7 +177,7 @@ GameObject:
   - component: {fileID: 883312568951982972}
   - component: {fileID: 4255545784916389525}
   - component: {fileID: 3370322029689121288}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Dungeon_Tiles_Modular_1x2_Stone_01 (28)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -260,7 +260,7 @@ GameObject:
   - component: {fileID: 7729696301764529019}
   - component: {fileID: 8673685228578698838}
   - component: {fileID: 6834145989049533347}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Prop_Handrail_Stone_05 (3)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -344,7 +344,7 @@ GameObject:
   - component: {fileID: 1703760897112635907}
   - component: {fileID: 3826239255315488057}
   - component: {fileID: 2766492775739859240}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Prop_Statue_Aphrodite_01
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -427,7 +427,7 @@ GameObject:
   - component: {fileID: 1286790187833873097}
   - component: {fileID: 4030465724366831872}
   - component: {fileID: 1807498243386954338}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Prop_Ruins_Bridge_Stone_Piece_02
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -512,9 +512,9 @@ GameObject:
   - component: {fileID: 5404370760746828630}
   - component: {fileID: 8728718236376039255}
   - component: {fileID: 8472452385079084889}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Prop_Furniture_Fantasy_Dungeon_Chair_Throne_Stone_Velvet_01_Atlased
-  m_TagString: Untagged
+  m_TagString: CrashWall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -617,7 +617,7 @@ GameObject:
   - component: {fileID: 3306623147428662536}
   - component: {fileID: 7218491145957651089}
   - component: {fileID: 1130125524331689565}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Dungeon_Tiles_Modular_1x2_Stone_01 (37)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -700,7 +700,7 @@ GameObject:
   - component: {fileID: 6498675809258788115}
   - component: {fileID: 2924336747083957196}
   - component: {fileID: 3529837074219051228}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Prop_Bucket_02
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -785,7 +785,7 @@ GameObject:
   - component: {fileID: 3622752228583064893}
   - component: {fileID: 4233257876307369303}
   - component: {fileID: 1288987641215419202}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Dungeon_Tiles_Modular_1x2_Stone_01 (14)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -868,7 +868,7 @@ GameObject:
   - component: {fileID: 7250905386949091383}
   - component: {fileID: 3255599342016924936}
   - component: {fileID: 2309680141464579447}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Prop_Fence_Steel_Spiked_01 (7)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -951,7 +951,7 @@ GameObject:
   - component: {fileID: 2909168229413049206}
   - component: {fileID: 2678114456616143065}
   - component: {fileID: 7310891171378819314}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Rock_Chunks_Large_01
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1034,7 +1034,7 @@ GameObject:
   - component: {fileID: 5531331046136516657}
   - component: {fileID: 8162737892788245749}
   - component: {fileID: 6608927443697810465}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Dungeon_Tiles_Modular_1x1_Stone_01 (8)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1117,7 +1117,7 @@ GameObject:
   - component: {fileID: 5997412654289295051}
   - component: {fileID: 8825718130348557276}
   - component: {fileID: 8371708365596419815}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Rock_Shard_11
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1200,7 +1200,7 @@ GameObject:
   - component: {fileID: 3534297387148327699}
   - component: {fileID: 6857882517289107368}
   - component: {fileID: 5330720425313400436}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Dungeon_Tiles_Modular_1x2_Stone_01 (19)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1272,6 +1272,89 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!1 &675591712761575691
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 8443712002046616460}
+  - component: {fileID: 5449483542644542902}
+  - component: {fileID: 6177659134542041592}
+  m_Layer: 6
+  m_Name: Prop_Gothic_Pillar_Marble_04_Atlased (2)
+  m_TagString: CrashWall
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &8443712002046616460
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 675591712761575691}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -1, z: -0, w: 0}
+  m_LocalPosition: {x: 3.76, y: -0.99, z: -1.27}
+  m_LocalScale: {x: 0.25, y: 1, z: 0.25}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 2322156886368544319}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!33 &5449483542644542902
+MeshFilter:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 675591712761575691}
+  m_Mesh: {fileID: -4875855891238993581, guid: 2c3a4df47b40eb34695631db6a0dc7a9, type: 3}
+--- !u!23 &6177659134542041592
+MeshRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 675591712761575691}
+  m_Enabled: 1
+  m_CastShadows: 1
+  m_ReceiveShadows: 1
+  m_DynamicOccludee: 1
+  m_StaticShadowCaster: 0
+  m_MotionVectors: 1
+  m_LightProbeUsage: 1
+  m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 2
+  m_RayTraceProcedural: 0
+  m_RenderingLayerMask: 1
+  m_RendererPriority: 0
+  m_Materials:
+  - {fileID: 2100000, guid: e7feb3f9b41fa204f9032ab171d5b3df, type: 2}
+  m_StaticBatchInfo:
+    firstSubMesh: 0
+    subMeshCount: 0
+  m_StaticBatchRoot: {fileID: 0}
+  m_ProbeAnchor: {fileID: 0}
+  m_LightProbeVolumeOverride: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_ReceiveGI: 1
+  m_PreserveUVs: 0
+  m_IgnoreNormalsForChartDetection: 0
+  m_ImportantGI: 0
+  m_StitchLightmapSeams: 1
+  m_SelectedEditorRenderState: 3
+  m_MinimumChartSize: 4
+  m_AutoUVMaxDistance: 0.5
+  m_AutoUVMaxAngle: 89
+  m_LightmapParameters: {fileID: 0}
+  m_SortingLayerID: 0
+  m_SortingLayer: 0
+  m_SortingOrder: 0
+  m_AdditionalVertexStreams: {fileID: 0}
 --- !u!1 &735087535610522057
 GameObject:
   m_ObjectHideFlags: 0
@@ -1283,7 +1366,7 @@ GameObject:
   - component: {fileID: 2359481848941965565}
   - component: {fileID: 215871576112947257}
   - component: {fileID: 6321830215225247748}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Prop_Gothic_Pillar_Marble_04_Atlased
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1366,7 +1449,7 @@ GameObject:
   - component: {fileID: 2519038325113053923}
   - component: {fileID: 4678877559343915891}
   - component: {fileID: 3540213079721100215}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Prop_Gothic_Pillar_Marble_04_Atlased
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1449,7 +1532,7 @@ GameObject:
   - component: {fileID: 1590890617959576891}
   - component: {fileID: 2417554124495274690}
   - component: {fileID: 6241097259389952417}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Prop_Aqueduct_Castle_Dungeon_01
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1533,7 +1616,7 @@ GameObject:
   - component: {fileID: 3504165059762805393}
   - component: {fileID: 6109435341039183466}
   - component: {fileID: 7682150049934479060}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Prop_Gothic_Goblet_01_Atlased
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1638,7 +1721,7 @@ GameObject:
   - component: {fileID: 2725814650853375950}
   - component: {fileID: 7483471407138472934}
   - component: {fileID: 8671195532271403886}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Prop_Candle_02 (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1722,7 +1805,7 @@ GameObject:
   - component: {fileID: 8002834378640268334}
   - component: {fileID: 1328171212498714344}
   - component: {fileID: 6397359818322106758}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Prop_Lantern_01
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1806,7 +1889,7 @@ GameObject:
   - component: {fileID: 1610106322463735528}
   - component: {fileID: 3051884105775194342}
   - component: {fileID: 7175061206506334786}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Prop_Handrail_Stone_Pole_01
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1889,9 +1972,9 @@ GameObject:
   m_Component:
   - component: {fileID: 709996310043178031}
   - component: {fileID: 2102237514399289893}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: BoundaryCollider(Clone)
-  m_TagString: Untagged
+  m_TagString: CrashWall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1943,7 +2026,7 @@ GameObject:
   - component: {fileID: 2786488652054595195}
   - component: {fileID: 631371905001267276}
   - component: {fileID: 8995807175576599497}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Rock_Shard_05
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2026,7 +2109,7 @@ GameObject:
   - component: {fileID: 1008852372363616079}
   - component: {fileID: 4844366207458255240}
   - component: {fileID: 2464835638913452186}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: RocksSmall1 (1) 1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2109,7 +2192,7 @@ GameObject:
   - component: {fileID: 6709765832403934662}
   - component: {fileID: 3207679586220299511}
   - component: {fileID: 271047878166518344}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Dungeon_Tiles_Modular_1x1_Stone_01 (18)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2192,7 +2275,7 @@ GameObject:
   - component: {fileID: 6587546390796978143}
   - component: {fileID: 6500869407611795600}
   - component: {fileID: 9069812717595533383}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Rock_Shard_01
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2275,7 +2358,7 @@ GameObject:
   - component: {fileID: 2184414488222059926}
   - component: {fileID: 4050276820608987258}
   - component: {fileID: 316528989067786647}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Dungeon_Tiles_Modular_1x1_Stone_01 (15)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2358,7 +2441,7 @@ GameObject:
   - component: {fileID: 2869220581839802259}
   - component: {fileID: 5671473637881693554}
   - component: {fileID: 4121766800036742195}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Dungeon_Tiles_Modular_2x2_Wall_1_Stone_01 (2)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2441,7 +2524,7 @@ GameObject:
   - component: {fileID: 7849723445625584280}
   - component: {fileID: 1383777779458040356}
   - component: {fileID: 170645382807268987}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Prop_Candle_01 (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2524,9 +2607,9 @@ GameObject:
   m_Component:
   - component: {fileID: 6065542372453275040}
   - component: {fileID: 1458068475731515991}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: BoundaryCollider(Clone)
-  m_TagString: Untagged
+  m_TagString: CrashWall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -2577,10 +2660,9 @@ GameObject:
   m_Component:
   - component: {fileID: 3991064762775092616}
   - component: {fileID: 7361523374184201193}
-  - component: {fileID: 6990150251946379598}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: 1-10
-  m_TagString: Untagged
+  m_TagString: Ground
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -2602,6 +2684,7 @@ Transform:
   - {fileID: 8447033901327373157}
   - {fileID: 6242053307293364373}
   - {fileID: 6938480221662383809}
+  - {fileID: 386613886055175226}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 180, z: 0}
 --- !u!65 &7361523374184201193
@@ -2623,21 +2706,8 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 10.2, y: 1, z: 10.96}
-  m_Center: {x: 0.69975966, y: 0, z: -0.002565384}
---- !u!114 &6990150251946379598
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1417551754787877479}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3c389708474ca9b47ad9d7a73e35406a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  essenceUIPrefab: {fileID: 1983751349367387857}
+  m_Size: {x: 10.2, y: 1.5212755, z: 10.96}
+  m_Center: {x: 0.6997595, y: 0.26063776, z: -0.002565384}
 --- !u!1 &1422380087228250378
 GameObject:
   m_ObjectHideFlags: 0
@@ -2649,7 +2719,7 @@ GameObject:
   - component: {fileID: 3925434432576652118}
   - component: {fileID: 8641319017760119362}
   - component: {fileID: 1541859892060238766}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Dungeon_Tiles_Modular_1x2_Stone_01 (27)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2732,7 +2802,7 @@ GameObject:
   - component: {fileID: 5767277586862329098}
   - component: {fileID: 2865389993708864813}
   - component: {fileID: 1623550718219416832}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Prop_Stairs_Grand_Stone_01 (2)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2815,7 +2885,7 @@ GameObject:
   - component: {fileID: 8423748302362367078}
   - component: {fileID: 6394263332608904382}
   - component: {fileID: 2381427773351481170}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Prop_Bones_Beast_Hip_01
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2898,7 +2968,7 @@ GameObject:
   - component: {fileID: 4757192947314357958}
   - component: {fileID: 1833848749302958929}
   - component: {fileID: 5480913046672465506}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Rock_Shard_07
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2981,7 +3051,7 @@ GameObject:
   - component: {fileID: 7517815806827795557}
   - component: {fileID: 587084594268526239}
   - component: {fileID: 4309448381073518040}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Prop_Spider_Web_01
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3063,9 +3133,9 @@ GameObject:
   m_Component:
   - component: {fileID: 5633562826849623122}
   - component: {fileID: 1927170121344400038}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: BoundaryCollider(Clone)
-  m_TagString: Untagged
+  m_TagString: CrashWall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -3117,7 +3187,7 @@ GameObject:
   - component: {fileID: 2400246986485365610}
   - component: {fileID: 2422190949644953400}
   - component: {fileID: 129091018816083681}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Dungeon_Tiles_Modular_1x2_Stone_01 (11)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3201,7 +3271,7 @@ GameObject:
   - component: {fileID: 8209138275087793330}
   - component: {fileID: 1936345144684776975}
   - component: {fileID: 5457167252694940506}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Prop_Fantasy_Treasure_Chest_Fancy_01_Atlased
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3306,7 +3376,7 @@ GameObject:
   - component: {fileID: 1100678200796101219}
   - component: {fileID: 3647784697157093091}
   - component: {fileID: 5763048372597521096}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Rock_Shard_04 (2)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3378,6 +3448,58 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!1 &1760718426787608851
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 386613886055175226}
+  - component: {fileID: 981910251275940589}
+  m_Layer: 10
+  m_Name: SpawnPointContainer
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &386613886055175226
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1760718426787608851}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -1, z: -0, w: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 0.25, y: 1, z: 0.25}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 3604448756750091579}
+  - {fileID: 17018686312101462}
+  - {fileID: 1252074914654341244}
+  - {fileID: 5521671561519513415}
+  m_Father: {fileID: 3991064762775092616}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &981910251275940589
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1760718426787608851}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: efa332d53a424e44ca1999386c46cf0a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  stageID: 1_10
+  stageName: Stage 1-10
+  playerSpawnPoint: {fileID: 1252074914654341244}
+  portalSpawnPoint: {fileID: 5521671561519513415}
 --- !u!1 &1784605862719801842
 GameObject:
   m_ObjectHideFlags: 0
@@ -3390,7 +3512,7 @@ GameObject:
   - component: {fileID: 5653483486612935842}
   - component: {fileID: 291852430881930259}
   - component: {fileID: 3654078359640771288}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Prop_Gothic_Cross_03_Atlased
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3495,7 +3617,7 @@ GameObject:
   - component: {fileID: 5712869960898404509}
   - component: {fileID: 8386210182440276502}
   - component: {fileID: 1611319325880310205}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: RocksSmall1 (1) 1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3578,7 +3700,7 @@ GameObject:
   - component: {fileID: 1262478038255662823}
   - component: {fileID: 3070223918406055442}
   - component: {fileID: 3311817248941177258}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: RocksSmall1 (1) 1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3661,7 +3783,7 @@ GameObject:
   - component: {fileID: 1613892303374255652}
   - component: {fileID: 6635918976503534693}
   - component: {fileID: 3677744660963173419}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Dungeon_Tiles_Modular_1x1_Stone_01 (10)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3744,7 +3866,7 @@ GameObject:
   - component: {fileID: 7890949450573177832}
   - component: {fileID: 629735241190864753}
   - component: {fileID: 8539336171638626586}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: BossEssencePanel
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3823,7 +3945,7 @@ GameObject:
   - component: {fileID: 6226597217763940855}
   - component: {fileID: 1607973478047673587}
   - component: {fileID: 4880545264047446382}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Rock_Shard_06 (4)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3906,7 +4028,7 @@ GameObject:
   - component: {fileID: 101656851117873921}
   - component: {fileID: 8599941053648278996}
   - component: {fileID: 2333703888141056460}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Rock_Shard_06 (8)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3989,7 +4111,7 @@ GameObject:
   - component: {fileID: 7118894564007229653}
   - component: {fileID: 8499792953789484249}
   - component: {fileID: 7181015003928084777}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Prop_Fence_Steel_Pole_01 (2)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4072,7 +4194,7 @@ GameObject:
   - component: {fileID: 5815701002625842320}
   - component: {fileID: 5686924036899588467}
   - component: {fileID: 1218001258668907201}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Rock_Stalagmite_01
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4156,9 +4278,9 @@ GameObject:
   - component: {fileID: 8320016851863408475}
   - component: {fileID: 2321968609102188104}
   - component: {fileID: 832580447415227004}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Rock_Stalagmite_03
-  m_TagString: Untagged
+  m_TagString: CrashWall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -4261,7 +4383,7 @@ GameObject:
   - component: {fileID: 5620198457424457120}
   - component: {fileID: 2119713668083201699}
   - component: {fileID: 703352482004526446}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: 25%
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4336,7 +4458,7 @@ GameObject:
   - component: {fileID: 8760606463659994260}
   - component: {fileID: 8946869765475477323}
   - component: {fileID: 5207706105423343052}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: RocksSmall1 (1) 1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4419,7 +4541,7 @@ GameObject:
   - component: {fileID: 1338731322840488983}
   - component: {fileID: 7550762696002180715}
   - component: {fileID: 2690023188606990671}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Prop_Gothic_Hanging_Chandelier_Candelabra_01_Atlased
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4504,8 +4626,8 @@ GameObject:
   - component: {fileID: 4590483544453220807}
   - component: {fileID: 6708159377109051412}
   - component: {fileID: 1983751349367387857}
-  m_Layer: 0
-  m_Name: Canvas
+  m_Layer: 10
+  m_Name: BossEssenceUI
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -4608,10 +4730,16 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   essenceBarFill: {fileID: 6891967533909202274}
   percentageText: {fileID: 7259087922402767005}
+  essenceName: {fileID: 9051725182890382980}
   normalColor: {r: 1, g: 0, b: 0, a: 1}
   highStateColor: {r: 1, g: 0, b: 1, a: 1}
   maxStateColor: {r: 1, g: 0.92156863, b: 0.015686275, a: 1}
   barUpdateDuration: 0.2
+  vignetteMaterial: {fileID: 0}
+  transitionDuration: 0.5
+  audioSource: {fileID: 0}
+  heartbeatSound: {fileID: 0}
+  heartbeatVolume: 0.5
 --- !u!1 &2296887101982986870
 GameObject:
   m_ObjectHideFlags: 0
@@ -4623,7 +4751,7 @@ GameObject:
   - component: {fileID: 4353272569702273754}
   - component: {fileID: 8756639879328785463}
   - component: {fileID: 3062775481600091418}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Dungeon_Tiles_Modular_2x2_Wall_2_Stone_01 (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4706,7 +4834,7 @@ GameObject:
   - component: {fileID: 8102937086789065816}
   - component: {fileID: 6728480868098110818}
   - component: {fileID: 4554682967341052900}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Dungeon_Tiles_Modular_1x2_Stone_01 (43)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4789,7 +4917,7 @@ GameObject:
   - component: {fileID: 6368702738020298915}
   - component: {fileID: 8197354769211296921}
   - component: {fileID: 7309770383354312074}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: 'IconFrame '
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4865,7 +4993,7 @@ GameObject:
   - component: {fileID: 1553280553603402155}
   - component: {fileID: 5689771888128475821}
   - component: {fileID: 1435686736432862845}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Dungeon_Tiles_Modular_2x2_Wall_1_Stone_01 (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4948,7 +5076,7 @@ GameObject:
   - component: {fileID: 2181672582888236105}
   - component: {fileID: 3730975575805865409}
   - component: {fileID: 7899961598258531750}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Dungeon_Tiles_Modular_1x2_Stone_01 (22)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5031,7 +5159,7 @@ GameObject:
   - component: {fileID: 8913216382883227937}
   - component: {fileID: 6731281913229346439}
   - component: {fileID: 1300942393978533943}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Rock_Chunks_Large_01 (3)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5114,7 +5242,7 @@ GameObject:
   - component: {fileID: 5527552350095158085}
   - component: {fileID: 7762810758080280853}
   - component: {fileID: 4566417406157176514}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Rock_Shard_08 (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5197,7 +5325,7 @@ GameObject:
   - component: {fileID: 1528915864481506121}
   - component: {fileID: 5354545243476000120}
   - component: {fileID: 2909168337164235801}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Prop_Timber_Fire_01 (3)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5280,7 +5408,7 @@ GameObject:
   - component: {fileID: 4911170190692703290}
   - component: {fileID: 5553955444149224367}
   - component: {fileID: 1826976471292051062}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Rock_Large_19
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5363,7 +5491,7 @@ GameObject:
   - component: {fileID: 9105979193340058621}
   - component: {fileID: 2444571801868792466}
   - component: {fileID: 2304189082783564274}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Prop_Fence_Steel_Spiked_Gate_02
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5446,7 +5574,7 @@ GameObject:
   - component: {fileID: 142543269607878144}
   - component: {fileID: 4751419166092941260}
   - component: {fileID: 7460718049605910742}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Prop_Fence_Steel_Spiked_01 (2)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5529,7 +5657,7 @@ GameObject:
   - component: {fileID: 3640417342195451143}
   - component: {fileID: 4463540795076258842}
   - component: {fileID: 5909670567370926635}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Rock_Shard_08 (3)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5612,7 +5740,7 @@ GameObject:
   - component: {fileID: 2602080823607096977}
   - component: {fileID: 420298093196440172}
   - component: {fileID: 6336946691843387232}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Prop_Timber_Fire_01 (2)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5695,7 +5823,7 @@ GameObject:
   - component: {fileID: 7929123061168533699}
   - component: {fileID: 8771233665213647254}
   - component: {fileID: 5193294067011448921}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Dungeon_Tiles_Modular_1x1_Stone_01 (12)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5778,7 +5906,7 @@ GameObject:
   - component: {fileID: 7604035708063482528}
   - component: {fileID: 7672533786645745818}
   - component: {fileID: 6834935752327929635}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Prop_Ruins_Column_Square_Stone_01
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5861,7 +5989,7 @@ GameObject:
   - component: {fileID: 6442479670541896117}
   - component: {fileID: 8809652645003791752}
   - component: {fileID: 3436936325521836482}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Dungeon_Tiles_Modular_1x2_Wall_1_Stone_01 (2)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5945,7 +6073,7 @@ GameObject:
   - component: {fileID: 3286186180294941179}
   - component: {fileID: 6325003168876834964}
   - component: {fileID: 1655222689382454177}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Prop_Doorway_Wall_Dressing_Castle_Dungeon_Stone_01
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -6030,7 +6158,7 @@ GameObject:
   - component: {fileID: 6686705497697733094}
   - component: {fileID: 357733474256037353}
   - component: {fileID: 1341306101847232135}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Rock_Shard_06 (5)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -6113,7 +6241,7 @@ GameObject:
   - component: {fileID: 8608990055358039564}
   - component: {fileID: 4291046409354006099}
   - component: {fileID: 5598099075117662766}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: 'EssenceBarBackground '
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -6192,7 +6320,7 @@ GameObject:
   - component: {fileID: 1295484408777603285}
   - component: {fileID: 2118742569044251840}
   - component: {fileID: 6068690538088559590}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Prop_Timber_Fire_02 (2)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -6276,7 +6404,7 @@ GameObject:
   - component: {fileID: 7517899695423762720}
   - component: {fileID: 7754645073796988355}
   - component: {fileID: 1833604515722964648}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Prop_Hammer_02
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -6382,9 +6510,9 @@ GameObject:
   - component: {fileID: 4289854521658211311}
   - component: {fileID: 945491866668271410}
   - component: {fileID: 3894419279104684227}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Rock_Stalagmite_02
-  m_TagString: Untagged
+  m_TagString: CrashWall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -6487,7 +6615,7 @@ GameObject:
   - component: {fileID: 7673480881688634566}
   - component: {fileID: 8223253848164475090}
   - component: {fileID: 7079146646440873355}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Prop_Mining_Pick_Hoe_01 (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -6571,7 +6699,7 @@ GameObject:
   - component: {fileID: 7721870558827744216}
   - component: {fileID: 4684636226066403169}
   - component: {fileID: 7769208358515942463}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Prop_Stairs_Grand_Stone_01 (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -6652,7 +6780,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3471726517821608683}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: DungeonLight (3)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -6685,7 +6813,7 @@ GameObject:
   - component: {fileID: 4175696087886723177}
   - component: {fileID: 2058024959617062829}
   - component: {fileID: 2406604952941687937}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Prop_Fence_Steel_Spiked_01
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -6768,7 +6896,7 @@ GameObject:
   - component: {fileID: 1912157315036546579}
   - component: {fileID: 2552172779116093802}
   - component: {fileID: 3511817343675312350}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Dungeon_Tiles_Modular_1x1_Stone_01 (5)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -6851,7 +6979,7 @@ GameObject:
   - component: {fileID: 1604475948789497792}
   - component: {fileID: 5792758305362034111}
   - component: {fileID: 8344419966008400761}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Rock_Shard_03 (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -6934,7 +7062,7 @@ GameObject:
   - component: {fileID: 3762879015584690069}
   - component: {fileID: 4332394861560720785}
   - component: {fileID: 6428592158182994165}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Dungeon_Tiles_Modular_1x2_Stone_01 (6)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -7017,7 +7145,7 @@ GameObject:
   - component: {fileID: 1725647200657996432}
   - component: {fileID: 8584707549569118888}
   - component: {fileID: 6523752251597356704}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Prop_Timber_Fire_02 (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -7100,7 +7228,7 @@ GameObject:
   - component: {fileID: 411358800247896275}
   - component: {fileID: 5203690165965802390}
   - component: {fileID: 1804726850237057360}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Rock_Large_15
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -7183,7 +7311,7 @@ GameObject:
   - component: {fileID: 4217311375578369485}
   - component: {fileID: 4076236390201004273}
   - component: {fileID: 7478825126455445634}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Rock_Shard_04 (5)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -7266,7 +7394,7 @@ GameObject:
   - component: {fileID: 6818224227209885904}
   - component: {fileID: 2494487141135600162}
   - component: {fileID: 1082162032743857578}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Prop_Gothic_Pillar_Marble_04_Atlased
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -7349,7 +7477,7 @@ GameObject:
   - component: {fileID: 2537004684917153012}
   - component: {fileID: 8397552245841985681}
   - component: {fileID: 940389819006277735}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Dungeon_Tiles_Modular_1x2_Stone_01 (40)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -7432,7 +7560,7 @@ GameObject:
   - component: {fileID: 5922346048689020286}
   - component: {fileID: 592162499671322633}
   - component: {fileID: 2586432480539497548}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Dungeon_Tiles_Modular_1x2_Stone_01 (29)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -7515,7 +7643,7 @@ GameObject:
   - component: {fileID: 5328418689961952894}
   - component: {fileID: 1799932098017159058}
   - component: {fileID: 3589118866872951590}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Dungeon_Tiles_Modular_2x2_Wall_1_Stone_01
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -7598,7 +7726,7 @@ GameObject:
   - component: {fileID: 6640644118191984562}
   - component: {fileID: 6694817391394803103}
   - component: {fileID: 8967495975127433584}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: RocksSmall1 (1) 1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -7681,7 +7809,7 @@ GameObject:
   - component: {fileID: 8506195224907704988}
   - component: {fileID: 4360460716670469781}
   - component: {fileID: 6679158574203226581}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Dungeon_Tiles_Modular_1x1_Stone_01 (2)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -7764,7 +7892,7 @@ GameObject:
   - component: {fileID: 3258908448525582606}
   - component: {fileID: 9172358522453776737}
   - component: {fileID: 8720802545290188522}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Rock_Chunks_Large_Tall_01 (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -7847,7 +7975,7 @@ GameObject:
   - component: {fileID: 868873382748894282}
   - component: {fileID: 4737430994164669826}
   - component: {fileID: 6464250301719901822}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Dungeon_Tiles_Modular_1x2_Wall_1_Stone_01
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -7931,7 +8059,7 @@ GameObject:
   - component: {fileID: 5791988446364217644}
   - component: {fileID: 4200171209935796367}
   - component: {fileID: 2199676323501059803}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Dungeon_Tiles_Modular_1x2_Stone_01 (34)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -8014,7 +8142,7 @@ GameObject:
   - component: {fileID: 2535261030838410774}
   - component: {fileID: 3153321457041669743}
   - component: {fileID: 2743373192182211224}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Rock_Large_16
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -8097,7 +8225,7 @@ GameObject:
   - component: {fileID: 270551863946127445}
   - component: {fileID: 7324896275592906131}
   - component: {fileID: 111621695661709747}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Rock_Shard_05 (2)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -8180,7 +8308,7 @@ GameObject:
   - component: {fileID: 2318284261661755105}
   - component: {fileID: 4043583547423376349}
   - component: {fileID: 4809640819511303471}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Prop_Ruins_Column_Square_Stone_02
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -8263,7 +8391,7 @@ GameObject:
   - component: {fileID: 2625617890440007806}
   - component: {fileID: 6465392071563018088}
   - component: {fileID: 6591973985573391323}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Prop_Crate_Grain_01
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -8346,7 +8474,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5801275682052509006}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: DungeonLight (4)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -8379,7 +8507,7 @@ GameObject:
   - component: {fileID: 3084786448409745909}
   - component: {fileID: 2556962529595411614}
   - component: {fileID: 4646828936157858503}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Rock_Shard_06
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -8462,7 +8590,7 @@ GameObject:
   - component: {fileID: 4344668412262982366}
   - component: {fileID: 641263025792277534}
   - component: {fileID: 7906664988068646865}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Rock_Shard_06 (6)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -8545,7 +8673,7 @@ GameObject:
   - component: {fileID: 4889814335881367965}
   - component: {fileID: 6095159868132746353}
   - component: {fileID: 7375230596479319753}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Prop_Chest_Plain_01
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -8630,7 +8758,7 @@ GameObject:
   - component: {fileID: 5791713037141427895}
   - component: {fileID: 3313005730587969360}
   - component: {fileID: 8959713609734904013}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: RocksSmall1 (1) 1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -8713,7 +8841,7 @@ GameObject:
   - component: {fileID: 9012488175434817479}
   - component: {fileID: 5122595179096519331}
   - component: {fileID: 5838174619913022562}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Dungeon_Tiles_Modular_1x2_Wall_2_Stone_01
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -8796,7 +8924,7 @@ GameObject:
   - component: {fileID: 6780767713821382939}
   - component: {fileID: 3213917256306690367}
   - component: {fileID: 6935478407600133056}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: RocksSmall1 (1) 1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -8879,7 +9007,7 @@ GameObject:
   - component: {fileID: 9202833445930295131}
   - component: {fileID: 1791544876232542772}
   - component: {fileID: 7832307370414592068}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: BossIcon
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -8954,7 +9082,7 @@ GameObject:
   - component: {fileID: 7494947906960206133}
   - component: {fileID: 6389884471092920783}
   - component: {fileID: 3786505160598449092}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Prop_Candle_02
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -9038,7 +9166,7 @@ GameObject:
   - component: {fileID: 1187030701761846193}
   - component: {fileID: 4592148652540299558}
   - component: {fileID: 6891967533909202274}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: 'EssenceBarFill '
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -9113,7 +9241,7 @@ GameObject:
   - component: {fileID: 1728000839500595657}
   - component: {fileID: 3462945385100385629}
   - component: {fileID: 4356119272739494376}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Dungeon_Tiles_Modular_1x2_Stone_01 (7)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -9196,7 +9324,7 @@ GameObject:
   - component: {fileID: 3854837056239034730}
   - component: {fileID: 6358979264132280313}
   - component: {fileID: 4652710642541276772}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Prop_Window_Wall_Dressing_Castle_Dungeon_Stone_01
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -9269,6 +9397,38 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!1 &4148712485076766602
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 3604448756750091579}
+  m_Layer: 10
+  m_Name: FixedSpawns
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &3604448756750091579
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4148712485076766602}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 6145781446169453673}
+  m_Father: {fileID: 386613886055175226}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &4202598718209134689
 GameObject:
   m_ObjectHideFlags: 0
@@ -9280,7 +9440,7 @@ GameObject:
   - component: {fileID: 5828667307827347305}
   - component: {fileID: 4867541496547845691}
   - component: {fileID: 7758214533199416680}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Dungeon_Tiles_Modular_1x2_Stone_01 (25)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -9362,9 +9522,9 @@ GameObject:
   m_Component:
   - component: {fileID: 2512584174596945010}
   - component: {fileID: 2294016388469129147}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: BoundaryCollider(Clone)
-  m_TagString: Untagged
+  m_TagString: CrashWall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -9416,7 +9576,7 @@ GameObject:
   - component: {fileID: 5723114614392815297}
   - component: {fileID: 4500713830637333573}
   - component: {fileID: 4442659445404848825}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Prop_Crystal_Singular_Purple_09
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -9499,7 +9659,7 @@ GameObject:
   - component: {fileID: 3513717889655542605}
   - component: {fileID: 1806239729590232440}
   - component: {fileID: 8959965660957480310}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Prop_Candle_01 (3)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -9583,7 +9743,7 @@ GameObject:
   - component: {fileID: 6775146711174796540}
   - component: {fileID: 59302612396150722}
   - component: {fileID: 398890654402223510}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Prop_Gothic_Pillar_Marble_04_Atlased
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -9666,7 +9826,7 @@ GameObject:
   - component: {fileID: 8411017578099204388}
   - component: {fileID: 246086589653008115}
   - component: {fileID: 3115494340315251610}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Rock_Shard_02
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -9749,7 +9909,7 @@ GameObject:
   - component: {fileID: 4035516219897524882}
   - component: {fileID: 8283911404856305374}
   - component: {fileID: 7904327590633875990}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: RocksSmall1 (1) 1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -9832,7 +9992,7 @@ GameObject:
   - component: {fileID: 7682044550935292992}
   - component: {fileID: 1574917695560491560}
   - component: {fileID: 5232305497894394975}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Dungeon_Tiles_Modular_1x1_Stone_01 (14)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -9915,7 +10075,7 @@ GameObject:
   - component: {fileID: 549854171393151089}
   - component: {fileID: 7606159293965043202}
   - component: {fileID: 3005080820639254538}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Prop_Timber_Fire_02
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -9998,7 +10158,7 @@ GameObject:
   - component: {fileID: 2484930927473724637}
   - component: {fileID: 3860609666441199514}
   - component: {fileID: 5433884506435937919}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Prop_Bones_Beast_Skull_01
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -10082,7 +10242,7 @@ GameObject:
   - component: {fileID: 2618227588234035896}
   - component: {fileID: 3232878175234360623}
   - component: {fileID: 7938434986418222960}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Prop_Crystal_Singular_Purple_03
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -10165,7 +10325,7 @@ GameObject:
   - component: {fileID: 4469216960413462431}
   - component: {fileID: 6059469551163987229}
   - component: {fileID: 6643074725177362890}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Dungeon_Tiles_Modular_2x2_Wall_2_Stone_01 (5)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -10248,7 +10408,7 @@ GameObject:
   - component: {fileID: 1046822183790775981}
   - component: {fileID: 4831531377072692962}
   - component: {fileID: 7879738545826018069}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: RocksSmall1 (1) 1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -10331,7 +10491,7 @@ GameObject:
   - component: {fileID: 3169361455097544651}
   - component: {fileID: 4769354759451430109}
   - component: {fileID: 130287174542418347}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Prop_Flooring_Cobble_Stone_04
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -10415,7 +10575,7 @@ GameObject:
   - component: {fileID: 5177517607804651935}
   - component: {fileID: 8196237678611867566}
   - component: {fileID: 6268878627281331860}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: RocksSmall1 (1) 1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -10498,7 +10658,7 @@ GameObject:
   - component: {fileID: 171851878141152321}
   - component: {fileID: 7615112429789873545}
   - component: {fileID: 1220430890494027125}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: RocksSmall1 (1) 1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -10581,7 +10741,7 @@ GameObject:
   - component: {fileID: 7406072345262292088}
   - component: {fileID: 4810946552897789172}
   - component: {fileID: 2737334798948962180}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Dungeon_Tiles_Modular_1x3_Wall_3_Alcove_Stone_01
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -10664,7 +10824,7 @@ GameObject:
   - component: {fileID: 223595509148366487}
   - component: {fileID: 5356007590431012550}
   - component: {fileID: 6941000559953931304}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Rock_Shard_04 (7)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -10747,7 +10907,7 @@ GameObject:
   - component: {fileID: 6626001819334088950}
   - component: {fileID: 8744230932498910617}
   - component: {fileID: 4347403616728972378}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Dungeon_Tiles_Modular_1x2_Stone_01 (32)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -10830,7 +10990,7 @@ GameObject:
   - component: {fileID: 6866464482665218764}
   - component: {fileID: 2365838190015302947}
   - component: {fileID: 325283724237934380}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Dungeon_Tiles_Modular_1x1_Stone_01 (3)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -10913,7 +11073,7 @@ GameObject:
   - component: {fileID: 3763376009650492456}
   - component: {fileID: 5142375400234610816}
   - component: {fileID: 4466224472189723773}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Prop_Timber_Fire_01 (4)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -10996,7 +11156,7 @@ GameObject:
   - component: {fileID: 6028163304058166204}
   - component: {fileID: 8299848700391767746}
   - component: {fileID: 3880766116984692292}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Dungeon_Tiles_Modular_1x1_Wall_1_Stone_01 (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -11079,7 +11239,7 @@ GameObject:
   - component: {fileID: 4167880080935350635}
   - component: {fileID: 499238244998437680}
   - component: {fileID: 7528284664794213321}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Prop_Barrel_Empty_01
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -11165,7 +11325,7 @@ GameObject:
   - component: {fileID: 214840138854993938}
   - component: {fileID: 1089866299370898654}
   - component: {fileID: 2490495573845177031}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Dungeon_Tiles_Modular_1x2_Stone_01 (18)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -11248,7 +11408,7 @@ GameObject:
   - component: {fileID: 4684295857629303921}
   - component: {fileID: 9176421149575000022}
   - component: {fileID: 9201386487021437017}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Dungeon_Tiles_Modular_1x2_Stone_01 (9)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -11331,7 +11491,7 @@ GameObject:
   - component: {fileID: 8945569011058851000}
   - component: {fileID: 2134833202995359822}
   - component: {fileID: 7715481777713481322}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: RocksSmall1 (1) 1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -11414,7 +11574,7 @@ GameObject:
   - component: {fileID: 859326765135390756}
   - component: {fileID: 7964357936157449191}
   - component: {fileID: 8949713740137046736}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Prop_Fence_Steel_Pole_01
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -11497,7 +11657,7 @@ GameObject:
   - component: {fileID: 8904458456522264416}
   - component: {fileID: 3660682703218793707}
   - component: {fileID: 7806169236834600938}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Dungeon_Tiles_Modular_1x2_Stone_01 (24)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -11580,7 +11740,7 @@ GameObject:
   - component: {fileID: 6184570836325832610}
   - component: {fileID: 2359745593472539225}
   - component: {fileID: 1588595378943691376}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: 75%
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -11655,7 +11815,7 @@ GameObject:
   - component: {fileID: 5233625994130569226}
   - component: {fileID: 3678975489502427010}
   - component: {fileID: 8166287575964826112}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: RocksSmall1 (1) 1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -11727,6 +11887,37 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!1 &5274402561880743725
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 5521671561519513415}
+  m_Layer: 10
+  m_Name: PortalSpawn
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &5521671561519513415
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5274402561880743725}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -156.23553, y: 2.0900002, z: 60.60595}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 386613886055175226}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &5275003945278449490
 GameObject:
   m_ObjectHideFlags: 0
@@ -11738,7 +11929,7 @@ GameObject:
   - component: {fileID: 2155595859590953283}
   - component: {fileID: 2251991865788410790}
   - component: {fileID: 5871925520387017963}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: RocksSmall1 (1) 1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -11821,7 +12012,7 @@ GameObject:
   - component: {fileID: 8947414481669134829}
   - component: {fileID: 543423455887461031}
   - component: {fileID: 2455143444542702122}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Dungeon_Tiles_Modular_1x2_Wall_1_Stone_01 (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -11905,7 +12096,7 @@ GameObject:
   - component: {fileID: 8255351510638215112}
   - component: {fileID: 9179756042078698297}
   - component: {fileID: 2994416123915885087}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Prop_Mining_Pick_Hoe_01
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -11989,7 +12180,7 @@ GameObject:
   - component: {fileID: 2935857921828608980}
   - component: {fileID: 7652097340779731030}
   - component: {fileID: 9051725182890382980}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: StateText
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -12123,7 +12314,7 @@ GameObject:
   - component: {fileID: 8447033901327373157}
   - component: {fileID: 5917490386995890331}
   - component: {fileID: 2597031752204397185}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Plane (5)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -12206,7 +12397,7 @@ GameObject:
   - component: {fileID: 2882707976439685240}
   - component: {fileID: 4363863014809849588}
   - component: {fileID: 3308954904698207633}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Rock_Shard_10
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -12289,7 +12480,7 @@ GameObject:
   - component: {fileID: 2790011898768528923}
   - component: {fileID: 5964467899569841498}
   - component: {fileID: 8800802917623135246}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: RocksSmall1 (1) 1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -12372,7 +12563,7 @@ GameObject:
   - component: {fileID: 6745185941498851280}
   - component: {fileID: 6035031980034605661}
   - component: {fileID: 7077780965305693745}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: RocksSmall1 (1) 1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -12455,7 +12646,7 @@ GameObject:
   - component: {fileID: 4785022476267002084}
   - component: {fileID: 5539703274250895624}
   - component: {fileID: 203951908778724648}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Dungeon_Tiles_Modular_1x2_Stone_01 (12)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -12538,7 +12729,7 @@ GameObject:
   - component: {fileID: 1433932553273805465}
   - component: {fileID: 1701592203839595623}
   - component: {fileID: 3421030956011725619}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Prop_Handrail_Stone_06
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -12622,7 +12813,7 @@ GameObject:
   - component: {fileID: 1803963347767650429}
   - component: {fileID: 1590280690200905735}
   - component: {fileID: 7960113585085275283}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Prop_Gothic_Pillar_Marble_04_Atlased
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -12704,9 +12895,9 @@ GameObject:
   m_Component:
   - component: {fileID: 6902976052271233475}
   - component: {fileID: 8797079313708880725}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: BoundaryCollider(Clone)
-  m_TagString: Untagged
+  m_TagString: CrashWall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -12758,7 +12949,7 @@ GameObject:
   - component: {fileID: 5324226906419374740}
   - component: {fileID: 1710548010747797369}
   - component: {fileID: 382783530085290272}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: RocksSmall1 (1) 1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -12841,7 +13032,7 @@ GameObject:
   - component: {fileID: 8667848345595630911}
   - component: {fileID: 1534623301699483604}
   - component: {fileID: 3613476252435847255}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: RocksSmall1 (1) 1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -12924,7 +13115,7 @@ GameObject:
   - component: {fileID: 5653990041149378019}
   - component: {fileID: 7746309127826857031}
   - component: {fileID: 6553512432409374589}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Dungeon_Tiles_Modular_2x2_Wall_2_Stone_01 (4)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -13007,7 +13198,7 @@ GameObject:
   - component: {fileID: 2130480789834171069}
   - component: {fileID: 8068752429502234843}
   - component: {fileID: 4602810293647528760}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Rock_Shard_04 (3)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -13090,7 +13281,7 @@ GameObject:
   - component: {fileID: 3779376177507780404}
   - component: {fileID: 6150194766265371295}
   - component: {fileID: 3043596893701185579}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Dungeon_Tiles_Modular_1x1_Wall_1_Stone_01 (4)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -13172,9 +13363,9 @@ GameObject:
   m_Component:
   - component: {fileID: 6124155891279731874}
   - component: {fileID: 5407864734538157306}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: BoundaryCollider(Clone)
-  m_TagString: Untagged
+  m_TagString: CrashWall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -13226,7 +13417,7 @@ GameObject:
   - component: {fileID: 2201248894635735380}
   - component: {fileID: 7492106944311902677}
   - component: {fileID: 6323829547701023618}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: RocksSmall1 (1) 1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -13309,7 +13500,7 @@ GameObject:
   - component: {fileID: 5631439204731579230}
   - component: {fileID: 5776732631716018325}
   - component: {fileID: 2497300856243380213}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: RocksSmall1 (1) 1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -13392,7 +13583,7 @@ GameObject:
   - component: {fileID: 9174196672517862063}
   - component: {fileID: 8359507562761199474}
   - component: {fileID: 210809019675808087}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: RocksSmall1 (1) 1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -13475,7 +13666,7 @@ GameObject:
   - component: {fileID: 4776605684441895760}
   - component: {fileID: 3918655667777188432}
   - component: {fileID: 8063319184537201516}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Dungeon_Tiles_Modular_1x1_Stone_01 (16)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -13558,7 +13749,7 @@ GameObject:
   - component: {fileID: 6925156261936397845}
   - component: {fileID: 3417370605606437718}
   - component: {fileID: 1003239944432108564}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: 50%
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -13633,7 +13824,7 @@ GameObject:
   - component: {fileID: 6972343657988894632}
   - component: {fileID: 6152310415565291756}
   - component: {fileID: 8570344949228865352}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Dungeon_Tiles_Modular_1x2_Stone_01 (36)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -13715,9 +13906,9 @@ GameObject:
   m_Component:
   - component: {fileID: 4514672090703407338}
   - component: {fileID: 5748113817459976991}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: BoundaryCollider(Clone)
-  m_TagString: Untagged
+  m_TagString: CrashWall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -13769,7 +13960,7 @@ GameObject:
   - component: {fileID: 7128832076529741878}
   - component: {fileID: 3414473801101756517}
   - component: {fileID: 5687367825866520972}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Dungeon_Tiles_Modular_1x2_Stone_01 (5)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -13852,7 +14043,7 @@ GameObject:
   - component: {fileID: 8984271683731976017}
   - component: {fileID: 7853673026581059822}
   - component: {fileID: 6562813958820309970}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: RocksSmall1 (1) 1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -13935,7 +14126,7 @@ GameObject:
   - component: {fileID: 2328713135567349659}
   - component: {fileID: 4941250623432843190}
   - component: {fileID: 3575119061423676815}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Dungeon_Tiles_Modular_1x2_Stone_01 (2)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -14016,7 +14207,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2322156886368544319}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: 1-10
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -14237,6 +14428,7 @@ Transform:
   - {fileID: 2519038325113053923}
   - {fileID: 6818224227209885904}
   - {fileID: 1803963347767650429}
+  - {fileID: 8443712002046616460}
   - {fileID: 2359481848941965565}
   - {fileID: 8066764440250046294}
   - {fileID: 2702181363381938800}
@@ -14296,7 +14488,7 @@ GameObject:
   - component: {fileID: 5262937523925642086}
   - component: {fileID: 6443505230382002930}
   - component: {fileID: 2983983838795170157}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: RocksSmall1 (1) 1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -14379,7 +14571,7 @@ GameObject:
   - component: {fileID: 4507601346372022310}
   - component: {fileID: 1240735766383591106}
   - component: {fileID: 6383616912350748790}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Prop_Fence_Steel_Spiked_01 (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -14462,7 +14654,7 @@ GameObject:
   - component: {fileID: 3285604548956260649}
   - component: {fileID: 5039242915090082401}
   - component: {fileID: 1861504457029881122}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Dungeon_Tiles_Modular_1x1_Column_Small_Broken_Stone_01
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -14545,7 +14737,7 @@ GameObject:
   - component: {fileID: 6835922923242716874}
   - component: {fileID: 2703679752887519652}
   - component: {fileID: 4011557459054391504}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Dungeon_Tiles_Modular_1x1_Stone_01
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -14628,7 +14820,7 @@ GameObject:
   - component: {fileID: 2007634817180696271}
   - component: {fileID: 8344441506145809103}
   - component: {fileID: 3571991618108389128}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Prop_Gothic_Handrail_01_Atlased
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -14711,7 +14903,7 @@ GameObject:
   - component: {fileID: 1216603047237459727}
   - component: {fileID: 4707470995395621841}
   - component: {fileID: 6201937420995334035}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Dungeon_Tiles_Modular_1x2_Stone_01 (31)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -14794,7 +14986,7 @@ GameObject:
   - component: {fileID: 3370182104272549138}
   - component: {fileID: 4242702192119345294}
   - component: {fileID: 4403550672586743573}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: RocksSmall1 (1) 1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -14877,7 +15069,7 @@ GameObject:
   - component: {fileID: 6176779751984540224}
   - component: {fileID: 9222535799486267034}
   - component: {fileID: 5133913383078588040}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: RocksSmall1 (1) 1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -14961,7 +15153,7 @@ GameObject:
   - component: {fileID: 3395024785342030719}
   - component: {fileID: 4512569454548198717}
   - component: {fileID: 7001163956065753159}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Prop_Rubble_Stone_02_Atlased
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -15055,6 +15247,56 @@ MeshCollider:
   m_Convex: 0
   m_CookingOptions: 30
   m_Mesh: {fileID: 3730724726260348548, guid: 260658b707d1b134fbea27674bf75b44, type: 3}
+--- !u!1 &6456038289330492902
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 6145781446169453673}
+  - component: {fileID: 4916602241424050356}
+  m_Layer: 0
+  m_Name: Boss_1002
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &6145781446169453673
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6456038289330492902}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -148.01297, y: 1.49, z: 56.69444}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 3604448756750091579}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &4916602241424050356
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6456038289330492902}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7f33a70538714cb49acd6c6fcbe23b08, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  spawnType: 0
+  monsterID: 1002
+  spawnWeight: 1
+  isBoss: 1
+  gizmoColor: {r: 1, g: 0, b: 0, a: 1}
+  gizmoSize: 0.5
 --- !u!1 &6484786289537072919
 GameObject:
   m_ObjectHideFlags: 0
@@ -15066,7 +15308,7 @@ GameObject:
   - component: {fileID: 292167921746613045}
   - component: {fileID: 7718445740866548082}
   - component: {fileID: 3563855309926991781}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Rock_Large_15 (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -15149,7 +15391,7 @@ GameObject:
   - component: {fileID: 3331535809076312868}
   - component: {fileID: 4921123519882340332}
   - component: {fileID: 6004238546768716784}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Prop_Timber_Fire_01
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -15232,7 +15474,7 @@ GameObject:
   - component: {fileID: 7234624266445830959}
   - component: {fileID: 5744318810123371334}
   - component: {fileID: 4119270860420179660}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: 'Background '
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -15308,7 +15550,7 @@ GameObject:
   - component: {fileID: 1924510742526198381}
   - component: {fileID: 6701352253609249711}
   - component: {fileID: 4341577474267889082}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Prop_Fence_Steel_Spiked_01 (4)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -15391,7 +15633,7 @@ GameObject:
   - component: {fileID: 8950047513335391350}
   - component: {fileID: 847815414008336170}
   - component: {fileID: 5789483079601661062}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: RocksSmall1 (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -15474,7 +15716,7 @@ GameObject:
   - component: {fileID: 126264794386144801}
   - component: {fileID: 589484612531932754}
   - component: {fileID: 5182203870359853884}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Prop_Crate_Empty_01
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -15558,7 +15800,7 @@ GameObject:
   - component: {fileID: 8129448385456294225}
   - component: {fileID: 4277825164241227554}
   - component: {fileID: 1238270949846933483}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: RocksSmall1 (1) 1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -15641,7 +15883,7 @@ GameObject:
   - component: {fileID: 2894274272286062349}
   - component: {fileID: 1424240247824272891}
   - component: {fileID: 7101933919161377222}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Dungeon_Tiles_Modular_1x1_Stone_01 (9)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -15724,7 +15966,7 @@ GameObject:
   - component: {fileID: 1102546982240889944}
   - component: {fileID: 6861507523978792544}
   - component: {fileID: 6449736438989758746}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Dungeon_Tiles_Modular_1x1_Stone_01 (19)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -15807,7 +16049,7 @@ GameObject:
   - component: {fileID: 6338807983216687817}
   - component: {fileID: 5716567105396430858}
   - component: {fileID: 5407611484807059044}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Dungeon_Tiles_Modular_1x2_Stone_01 (8)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -15890,7 +16132,7 @@ GameObject:
   - component: {fileID: 2060449532791802244}
   - component: {fileID: 2209036851868508200}
   - component: {fileID: 5648669460505889363}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: RocksSmall1 (1) 1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -15971,7 +16213,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1754129033903277460}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: DungeonLight (2)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -16004,7 +16246,7 @@ GameObject:
   - component: {fileID: 3721939239181959630}
   - component: {fileID: 5083143759996044652}
   - component: {fileID: 7497457834528634835}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Dungeon_Tiles_Modular_1x2_Stone_01 (16)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -16087,7 +16329,7 @@ GameObject:
   - component: {fileID: 6352388106878629416}
   - component: {fileID: 4759252578229647832}
   - component: {fileID: 51306594772843227}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: RocksSmall1 (1) 1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -16170,7 +16412,7 @@ GameObject:
   - component: {fileID: 586745183998587094}
   - component: {fileID: 6911813377423372072}
   - component: {fileID: 6330108825796863197}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Dungeon_Tiles_Modular_2x2_Wall_2_Stone_01 (3)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -16253,7 +16495,7 @@ GameObject:
   - component: {fileID: 6649319489472992822}
   - component: {fileID: 3080382230886423075}
   - component: {fileID: 7047477652857171647}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Prop_Fence_Steel_Spiked_01 (3)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -16336,7 +16578,7 @@ GameObject:
   - component: {fileID: 1028126650718832188}
   - component: {fileID: 2011654240931819367}
   - component: {fileID: 1320727480497244789}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Rock_Shard_03
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -16418,9 +16660,9 @@ GameObject:
   m_Component:
   - component: {fileID: 6080327022509759572}
   - component: {fileID: 8062100994444782254}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: BoundaryCollider(Clone)
-  m_TagString: Untagged
+  m_TagString: CrashWall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -16472,7 +16714,7 @@ GameObject:
   - component: {fileID: 8893512328406318210}
   - component: {fileID: 5899497192018831343}
   - component: {fileID: 7500592811490248640}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: RocksSmall1 (1) 1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -16555,7 +16797,7 @@ GameObject:
   - component: {fileID: 2501404000167602392}
   - component: {fileID: 5571297598585768192}
   - component: {fileID: 5313742493450184867}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: RocksSmall1 (1) 1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -16638,7 +16880,7 @@ GameObject:
   - component: {fileID: 5343370459792951624}
   - component: {fileID: 641109932234797285}
   - component: {fileID: 6753822670529985305}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Prop_Timber_Fire_01 (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -16721,7 +16963,7 @@ GameObject:
   - component: {fileID: 7986738668824194536}
   - component: {fileID: 6931937656176846100}
   - component: {fileID: 2007381947097465472}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Rock_Shard_05 (3)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -16804,7 +17046,7 @@ GameObject:
   - component: {fileID: 3907233368817996062}
   - component: {fileID: 526343262950530961}
   - component: {fileID: 5625938179490765770}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Rock_Shard_06 (9)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -16887,7 +17129,7 @@ GameObject:
   - component: {fileID: 8066764440250046294}
   - component: {fileID: 4770536079588129802}
   - component: {fileID: 305939969645899006}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Prop_Gothic_Pillar_Marble_04_Atlased
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -16970,7 +17212,7 @@ GameObject:
   - component: {fileID: 7347447299562320080}
   - component: {fileID: 5098196874920405996}
   - component: {fileID: 146855600542862018}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Prop_Candle_01 (2)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -17054,7 +17296,7 @@ GameObject:
   - component: {fileID: 8903249722532115561}
   - component: {fileID: 5498089317159337505}
   - component: {fileID: 1888657427053811903}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Dungeon_Tiles_Modular_1x1_Stone_01 (20)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -17136,9 +17378,9 @@ GameObject:
   m_Component:
   - component: {fileID: 7426690245056233531}
   - component: {fileID: 4000691003271703715}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: BoundaryCollider(Clone)
-  m_TagString: Untagged
+  m_TagString: CrashWall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -17190,7 +17432,7 @@ GameObject:
   - component: {fileID: 8062572800242057617}
   - component: {fileID: 2309148135523216104}
   - component: {fileID: 6967053053382811483}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Prop_Candle_01 (4)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -17274,7 +17516,7 @@ GameObject:
   - component: {fileID: 1532452123498283160}
   - component: {fileID: 645577572919569680}
   - component: {fileID: 7155998195887048384}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: RocksSmall1 (1) 1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -17357,7 +17599,7 @@ GameObject:
   - component: {fileID: 6221201189642411645}
   - component: {fileID: 9194419505606955517}
   - component: {fileID: 7259087922402767005}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: PercentageText
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -17491,7 +17733,7 @@ GameObject:
   - component: {fileID: 3907219494741457661}
   - component: {fileID: 2441719124193621948}
   - component: {fileID: 3551949604823042014}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Prop_Ruins_Bridge_Stone_Piece_01
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -17575,7 +17817,7 @@ GameObject:
   - component: {fileID: 2438299537240303892}
   - component: {fileID: 5375883670185801137}
   - component: {fileID: 3916029204262647174}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Rock_Large_08
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -17658,7 +17900,7 @@ GameObject:
   - component: {fileID: 8497252014223234535}
   - component: {fileID: 3703574740966387128}
   - component: {fileID: 6196813929982797466}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Rock_Shard_06 (2)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -17730,6 +17972,37 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!1 &7351099876801569566
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 17018686312101462}
+  m_Layer: 10
+  m_Name: RandomSpawns
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &17018686312101462
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7351099876801569566}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 386613886055175226}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &7451278915190433797
 GameObject:
   m_ObjectHideFlags: 0
@@ -17741,7 +18014,7 @@ GameObject:
   - component: {fileID: 427929423671321631}
   - component: {fileID: 217676635260243802}
   - component: {fileID: 2278073556017980708}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Dungeon_Tiles_Modular_1x2_Stone_01 (3)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -17824,7 +18097,7 @@ GameObject:
   - component: {fileID: 1870028617034550490}
   - component: {fileID: 6257890738627207252}
   - component: {fileID: 1408277536882652226}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Dungeon_Tiles_Modular_1x1_Wall_1_Stone_01 (3)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -17907,7 +18180,7 @@ GameObject:
   - component: {fileID: 6438506158325293433}
   - component: {fileID: 9014337656908667626}
   - component: {fileID: 5583340639836642629}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Dungeon_Tiles_Modular_2x2_Wall_2_Stone_01 (2)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -17990,7 +18263,7 @@ GameObject:
   - component: {fileID: 3114897822503549127}
   - component: {fileID: 1863240957841333689}
   - component: {fileID: 462753231966054294}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Dungeon_Tiles_Modular_2x2_Wall_2_Stone_01
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -18073,7 +18346,7 @@ GameObject:
   - component: {fileID: 1773355155025657766}
   - component: {fileID: 1184110847637954828}
   - component: {fileID: 2956655897968666647}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Rock_Shard_04 (4)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -18156,7 +18429,7 @@ GameObject:
   - component: {fileID: 1391055636746351363}
   - component: {fileID: 1953954104677995121}
   - component: {fileID: 4557422374800560463}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: RocksSmall1 (1) 1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -18239,7 +18512,7 @@ GameObject:
   - component: {fileID: 6225422656215399690}
   - component: {fileID: 4186332848102098141}
   - component: {fileID: 7895320461441182709}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Rock_Shard_04
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -18322,7 +18595,7 @@ GameObject:
   - component: {fileID: 6501295149618923247}
   - component: {fileID: 5730206961563334845}
   - component: {fileID: 3653231976406396263}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Rock_Shard_06 (7)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -18405,7 +18678,7 @@ GameObject:
   - component: {fileID: 3442942902633734895}
   - component: {fileID: 1422890930704369491}
   - component: {fileID: 3442649752634001528}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Dungeon_Tiles_Modular_1x1_Stone_01 (4)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -18488,7 +18761,7 @@ GameObject:
   - component: {fileID: 4900153929607731891}
   - component: {fileID: 271288061980806621}
   - component: {fileID: 6064624121555538677}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Dungeon_Tiles_Modular_1x2_Stone_01 (42)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -18571,7 +18844,7 @@ GameObject:
   - component: {fileID: 1707878584575365793}
   - component: {fileID: 8939899530637501918}
   - component: {fileID: 6969520090579774132}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Dungeon_Tiles_Modular_1x2_Stone_01 (15)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -18654,7 +18927,7 @@ GameObject:
   - component: {fileID: 2263436647837606364}
   - component: {fileID: 996212874428417440}
   - component: {fileID: 1259748764624072161}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Rock_Chunks_Large_01 (2)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -18737,7 +19010,7 @@ GameObject:
   - component: {fileID: 3424623527366388971}
   - component: {fileID: 2110641856321391544}
   - component: {fileID: 8403896793490579664}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Dungeon_Tiles_Modular_2x2_Wall_1_Stone_01 (3)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -18820,7 +19093,7 @@ GameObject:
   - component: {fileID: 8722679043912413718}
   - component: {fileID: 3072816197397778480}
   - component: {fileID: 114914633313678439}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Prop_Fence_Steel_Spiked_01 (6)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -18903,7 +19176,7 @@ GameObject:
   - component: {fileID: 2702181363381938800}
   - component: {fileID: 3674396332903433568}
   - component: {fileID: 2237476028919806252}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Prop_Gothic_Pillar_Marble_04_Atlased (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -18986,7 +19259,7 @@ GameObject:
   - component: {fileID: 7920259660199009150}
   - component: {fileID: 8492679333097677496}
   - component: {fileID: 5049639516982169781}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Prop_Crate_Closed_01
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -19071,7 +19344,7 @@ GameObject:
   - component: {fileID: 2630267370662248062}
   - component: {fileID: 8810216013306940193}
   - component: {fileID: 4255636771367959113}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Prop_Rail_Mine_Cart_01
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -19178,7 +19451,7 @@ GameObject:
   - component: {fileID: 5999952913663879014}
   - component: {fileID: 8646437721744197962}
   - component: {fileID: 7117210263324723311}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Rock_Shard_08 (2)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -19260,9 +19533,9 @@ GameObject:
   m_Component:
   - component: {fileID: 3530136344955415262}
   - component: {fileID: 4075934943178749071}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: BoundaryCollider(Clone)
-  m_TagString: Untagged
+  m_TagString: CrashWall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -19314,7 +19587,7 @@ GameObject:
   - component: {fileID: 6979958535021730409}
   - component: {fileID: 4323185903330934434}
   - component: {fileID: 868370193250353069}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Dungeon_Tiles_Modular_1x2_Stone_01 (17)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -19397,7 +19670,7 @@ GameObject:
   - component: {fileID: 3396055725536029166}
   - component: {fileID: 9025555548171151782}
   - component: {fileID: 4286890323315755089}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Rock_Shard_05 (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -19480,7 +19753,7 @@ GameObject:
   - component: {fileID: 6126989366591770220}
   - component: {fileID: 445721514085765346}
   - component: {fileID: 7872236476967211448}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Dungeon_Tiles_Modular_1x2_Stone_01 (10)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -19564,7 +19837,7 @@ GameObject:
   - component: {fileID: 5194737450941143498}
   - component: {fileID: 1739142073193643187}
   - component: {fileID: 4400326614539471452}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Dungeon_Tiles_Modular_2x2_Well_Hole_Stone_01
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -19669,7 +19942,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1012151564069502905}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: DungeonLight (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -19702,7 +19975,7 @@ GameObject:
   - component: {fileID: 7015230649153387810}
   - component: {fileID: 6781132532102586629}
   - component: {fileID: 2264084690121333413}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: RocksSmall1 (1) 1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -19785,7 +20058,7 @@ GameObject:
   - component: {fileID: 1901539201665993514}
   - component: {fileID: 1087203144430802284}
   - component: {fileID: 6982808445514104101}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Prop_Crate_Closed_01 (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -19869,7 +20142,7 @@ GameObject:
   - component: {fileID: 6118650248378792980}
   - component: {fileID: 6736548872105286494}
   - component: {fileID: 9180664869184560235}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Prop_Fence_Steel_Pole_01 (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -19952,7 +20225,7 @@ GameObject:
   - component: {fileID: 7621477110438347725}
   - component: {fileID: 2623958252438686971}
   - component: {fileID: 1761540436813413337}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Prop_Handrail_Stone_05 (4)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -20025,6 +20298,37 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!1 &8412360657118989544
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1252074914654341244}
+  m_Layer: 10
+  m_Name: PlayerSpawn
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1252074914654341244
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8412360657118989544}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -139.48361, y: 2.0900002, z: 29.70839}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 386613886055175226}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &8450687042811668714
 GameObject:
   m_ObjectHideFlags: 0
@@ -20036,7 +20340,7 @@ GameObject:
   - component: {fileID: 6274687069890753323}
   - component: {fileID: 8570047629647873190}
   - component: {fileID: 4026322707762526359}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Rock_Shard_06 (3)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -20119,7 +20423,7 @@ GameObject:
   - component: {fileID: 7297685397821383542}
   - component: {fileID: 2281083329426149077}
   - component: {fileID: 46185981497438166}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Prop_Barrel_Grain_01
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -20205,7 +20509,7 @@ GameObject:
   - component: {fileID: 8994010812111313598}
   - component: {fileID: 9177896538625282381}
   - component: {fileID: 1117371507060877075}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Prop_Crystal_Light_Blue_01
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -20288,7 +20592,7 @@ GameObject:
   - component: {fileID: 3117177241432662613}
   - component: {fileID: 5287082925459765932}
   - component: {fileID: 3383368021246781643}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Prop_Gravestone_Plate_Stone_01
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -20372,7 +20676,7 @@ GameObject:
   - component: {fileID: 8258567028115842090}
   - component: {fileID: 8598172552195160876}
   - component: {fileID: 252430591522315367}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Prop_Bones_Beast_Ribs_01
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -20456,9 +20760,9 @@ GameObject:
   - component: {fileID: 4427440544345591837}
   - component: {fileID: 8985006580535307848}
   - component: {fileID: 6336682329732311194}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Building_Prop_Platform_Trim_Stone_Straight_01_Atlased
-  m_TagString: Untagged
+  m_TagString: CrashWall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -20559,7 +20863,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8225182485186962579}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: DungeonLight (5)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -20592,7 +20896,7 @@ GameObject:
   - component: {fileID: 7536870040412442721}
   - component: {fileID: 2062603176858931737}
   - component: {fileID: 8055918599529924744}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Rock_Shard_08
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -20675,7 +20979,7 @@ GameObject:
   - component: {fileID: 6023926497025362291}
   - component: {fileID: 4820799799478184686}
   - component: {fileID: 2657876814891823135}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Prop_Rail_Road_Cart_Train_01
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -20759,7 +21063,7 @@ GameObject:
   - component: {fileID: 4280662839437100259}
   - component: {fileID: 7209517461381144479}
   - component: {fileID: 8303370904482776896}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Prop_Fire_Static_01
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -20844,7 +21148,7 @@ GameObject:
   - component: {fileID: 4683795215460097906}
   - component: {fileID: 8229905914552867186}
   - component: {fileID: 862573175585595513}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: RocksSmall1 (1) 1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -20927,7 +21231,7 @@ GameObject:
   - component: {fileID: 4914838314008826234}
   - component: {fileID: 5515492997560774226}
   - component: {fileID: 6629814741347315098}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Prop_Candle_01
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -21011,7 +21315,7 @@ GameObject:
   - component: {fileID: 8739016458467460775}
   - component: {fileID: 6722904970061571058}
   - component: {fileID: 2843047170886887905}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Dungeon_Tiles_Modular_1x2_Stone_01 (13)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -21094,7 +21398,7 @@ GameObject:
   - component: {fileID: 5155770881699451996}
   - component: {fileID: 4187645986203372184}
   - component: {fileID: 8989402393817637737}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Dungeon_Tiles_Modular_1x1_Stone_01 (13)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -21177,7 +21481,7 @@ GameObject:
   - component: {fileID: 5352728557789173487}
   - component: {fileID: 7455879535261860974}
   - component: {fileID: 4329673308324824108}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Dungeon_Tiles_Modular_1x2_Stone_01 (26)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -21260,7 +21564,7 @@ GameObject:
   - component: {fileID: 1084375925841708479}
   - component: {fileID: 4521186302617908496}
   - component: {fileID: 492879584896079878}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Dungeon_Tiles_Modular_1x2_Stone_01 (33)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -21343,7 +21647,7 @@ GameObject:
   - component: {fileID: 3776022343314701832}
   - component: {fileID: 240006060949997325}
   - component: {fileID: 3149518238333417702}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Dungeon_Tiles_Modular_1x1_Stone_01 (7)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -21426,7 +21730,7 @@ GameObject:
   - component: {fileID: 3305721705044102155}
   - component: {fileID: 4174139766639424511}
   - component: {fileID: 4490945334952692393}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Dungeon_Tiles_Modular_1x1_Stone_01 (11)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -21509,7 +21813,7 @@ GameObject:
   - component: {fileID: 6011841417246884121}
   - component: {fileID: 2306626794430700337}
   - component: {fileID: 1616850802148728162}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Dungeon_Tiles_Modular_1x2_Wall_2_Stone_Barricade_Timber_01
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -21594,7 +21898,7 @@ GameObject:
   - component: {fileID: 6093468032566772951}
   - component: {fileID: 755265993282210546}
   - component: {fileID: 1010475917150352021}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Building_Modular_Jetty_Walkway_Timber_Support_Joint_01
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -21678,7 +21982,7 @@ GameObject:
   - component: {fileID: 3809575130356425917}
   - component: {fileID: 6330613159538752756}
   - component: {fileID: 7963323990103757531}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Prop_Bones_Beast_Ribs_Half_01
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -21761,7 +22065,7 @@ GameObject:
   - component: {fileID: 2554798276636440670}
   - component: {fileID: 3421803619597396896}
   - component: {fileID: 3886868126170320927}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Cube
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -21844,7 +22148,7 @@ GameObject:
   - component: {fileID: 8961268625174303100}
   - component: {fileID: 3120865866303824670}
   - component: {fileID: 8249145517627142374}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Dungeon_Tiles_Modular_1x2_Stone_01 (20)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -21927,7 +22231,7 @@ GameObject:
   - component: {fileID: 4846672582218077407}
   - component: {fileID: 2843195587577640427}
   - component: {fileID: 7289795510725813042}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: RocksSmall1 (1) 1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -22010,7 +22314,7 @@ GameObject:
   - component: {fileID: 152974555636140488}
   - component: {fileID: 427662646527063594}
   - component: {fileID: 4060052795228154251}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Dungeon_Tiles_Modular_1x2_Stone_01 (41)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -22093,7 +22397,7 @@ GameObject:
   - component: {fileID: 1867354524427889025}
   - component: {fileID: 8362581712785812512}
   - component: {fileID: 255652010514518519}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Rock_Chunks_Large_Tall_01
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -22174,7 +22478,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2331241333873530265}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: DungeonLight
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -22207,7 +22511,7 @@ GameObject:
   - component: {fileID: 1458923278221031311}
   - component: {fileID: 2787479648570404071}
   - component: {fileID: 5975882141758527800}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Prop_Stairs_Grand_Stone_01
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -22290,7 +22594,7 @@ GameObject:
   - component: {fileID: 2642639154327292795}
   - component: {fileID: 392450663246321661}
   - component: {fileID: 5050729349103807615}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Dungeon_Tiles_Modular_1x2_Stone_01 (4)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -22373,7 +22677,7 @@ GameObject:
   - component: {fileID: 6607949461244141814}
   - component: {fileID: 5479055476883750966}
   - component: {fileID: 3901826663463085007}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Dungeon_Tiles_Modular_1x1_Stone_01 (6)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -22456,7 +22760,7 @@ GameObject:
   - component: {fileID: 2684248188154388866}
   - component: {fileID: 1354860266299269290}
   - component: {fileID: 8828395435947691452}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Dungeon_Tiles_Modular_1x3_Wall_3_Alcove_Stone_01 (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -22539,6 +22843,10 @@ PrefabInstance:
     - target: {fileID: 906159822744579058, guid: 3d6466aa21d847d42ba47a46a9eed772, type: 3}
       propertyPath: m_Name
       value: ColliderSystem
+      objectReference: {fileID: 0}
+    - target: {fileID: 906159822744579058, guid: 3d6466aa21d847d42ba47a46a9eed772, type: 3}
+      propertyPath: m_Layer
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 3538109121821325866, guid: 3d6466aa21d847d42ba47a46a9eed772, type: 3}
       propertyPath: points.Array.size

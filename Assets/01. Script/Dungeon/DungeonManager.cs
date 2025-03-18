@@ -24,6 +24,8 @@ public class DungeonManager : Singleton<DungeonManager>
     [Header("전환 효과")]
     [SerializeField] private float transitionDelay = 0.5f;
     [SerializeField] private Color bossRoomColor = new Color(0.5f, 0, 0, 0.3f);
+    public event System.Action<StageData> OnStageLoaded; // 챕터 보스방 도달 이벤트
+    [SerializeField] private GameObject bossEssenceUI; // 챕터 보스별 EssenceUI
 
     private string currentStageID;
     private StageData currentStage;
@@ -38,11 +40,15 @@ public class DungeonManager : Singleton<DungeonManager>
 {
     "Chapter1Dungeon", "Chapter2Dungeon", "Chapter3Dungeon", "Chapter4Dungeon"
 };
-    private void Awake()
+    protected override void Awake()
     {
-        // 씬 전환 이벤트 등록
+        base.Awake();
         SceneManager.sceneLoaded += OnSceneLoaded;
     }
+         
+
+
+    
 
     private void OnDestroy()
     {
@@ -60,6 +66,12 @@ public class DungeonManager : Singleton<DungeonManager>
             if (DungeonDataManager.Instance.IsInitialized())
             {
                 string stageID = PlayerPrefs.GetString("CurrentStageID", "1_1");
+             
+                Debug.Log($"씬 전환 후 스킬 구성 개수: {SkillConfigManager.Instance.GetAllSkillConfigs().Count}");
+
+                // 특정 ID 확인
+                var config = SkillConfigManager.Instance.GetSkillConfig(1);
+                Debug.Log($"스킬 구성 ID 1: {(config != null ? "존재함" : "없음")}");
                 LoadStage(stageID, false);
             }
             else
@@ -122,9 +134,10 @@ public class DungeonManager : Singleton<DungeonManager>
             Debug.LogError($"스테이지 데이터를 찾을 수 없음: {stageID}");
             return;
         }
-
+        // 보스 스테이지인지 확인 및 UI 처리
+        HandleBossStageUI(currentStage);
         // 플레이어 위치 설정
-        GameObject player = GameObject.FindGameObjectWithTag("PlayerObj");
+        GameObject player = GameInitializer.Instance.gameObject;
         if (player != null && currentStage.playerSpawnPosition != Vector3.zero)
         {
           
@@ -149,8 +162,38 @@ public class DungeonManager : Singleton<DungeonManager>
         StartCoroutine(SpawnMonstersWithDelay());
 
         Debug.Log($"스테이지 로드 완료: {currentStage.stageName} (ID: {stageID})");
-    }
 
+        // 스테이지 로드 완료 이벤트 발생
+        OnStageLoaded?.Invoke(currentStage);
+    }
+    private void HandleBossStageUI(StageData stageData)
+    {
+        if (stageData.isBossStage)
+        {
+            
+        
+
+            if (bossEssenceUI != null)
+            {
+                // UI 활성화
+                bossEssenceUI.SetActive(true);
+                Debug.Log("보스 에센스 UI 활성화");
+            }
+            else
+            {
+                Debug.LogWarning("보스 에센스 UI를 찾을 수 없습니다.");
+            }
+        }
+        else
+        {
+            // 일반 스테이지인 경우 UI 비활성화
+           
+            if (bossEssenceUI != null)
+            {
+                bossEssenceUI.SetActive(false);
+            }
+        }
+    }
     // 몬스터 스폰 (딜레이로 순차적 등장)
     private IEnumerator SpawnMonstersWithDelay()
     {

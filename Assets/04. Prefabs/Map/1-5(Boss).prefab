@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4761613802070850867}
   - component: {fileID: 6174815715087442913}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: BoundaryCollider(Clone)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -168,7 +168,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4088227086983132797}
   - component: {fileID: 7093785019857951311}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: BoundaryCollider(Clone)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -536,7 +536,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8288551384447426044}
   - component: {fileID: 3776212639676511527}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: BoundaryCollider(Clone)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -589,7 +589,7 @@ GameObject:
   m_Component:
   - component: {fileID: 267690991130838378}
   - component: {fileID: 8304354707015340406}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: BoundaryCollider(Clone)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -645,7 +645,7 @@ GameObject:
   - component: {fileID: 6143637238293989090}
   - component: {fileID: 8663119671858832005}
   - component: {fileID: 9148920047659458661}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Prop_Jungle_Temple_Pillar_Column_Markings_01
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -982,7 +982,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1845267873469824768}
   - component: {fileID: 1149224951480338484}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: BoundaryCollider(Clone)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1035,7 +1035,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4160232817488018056}
   - component: {fileID: 8656218094925012880}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: BoundaryCollider(Clone)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1194,7 +1194,7 @@ GameObject:
   - component: {fileID: 3658276206058910734}
   - component: {fileID: 1208914170329915953}
   - component: {fileID: 8274672151107700714}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: mesh_circle
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -6101,6 +6101,37 @@ ParticleSystemRenderer:
   m_MeshWeighting2: 1
   m_MeshWeighting3: 1
   m_MaskInteraction: 0
+--- !u!1 &1583750144101706128
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 3592820186163921643}
+  m_Layer: 0
+  m_Name: PlayerSpawn
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &3592820186163921643
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1583750144101706128}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 184.17862, y: 1.2, z: -136.72377}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 7910408251437200835}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1721171127108116781
 GameObject:
   m_ObjectHideFlags: 0
@@ -6321,7 +6352,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6266430241361917662}
   - component: {fileID: 5950640280917979951}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: BoundaryCollider(Clone)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -6562,6 +6593,7 @@ Transform:
   - {fileID: 1879451766222057310}
   - {fileID: 3445259027428538375}
   - {fileID: 3138224942783898202}
+  - {fileID: 7910408251437200835}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!65 &5137385967701142360
@@ -6700,7 +6732,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3672397284478261112}
   - component: {fileID: 3665959975378810175}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: BoundaryCollider(Clone)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -6753,7 +6785,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8506491953642263289}
   - component: {fileID: 7258397376016692356}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: BoundaryCollider(Clone)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -6806,7 +6838,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7740241753050615405}
   - component: {fileID: 7392499131236017929}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: BoundaryCollider(Clone)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -7069,7 +7101,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1810755238590873437}
   - component: {fileID: 8472203186365204405}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: BoundaryCollider(Clone)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -7228,7 +7260,7 @@ GameObject:
   m_Component:
   - component: {fileID: 319101709416200458}
   - component: {fileID: 4167581270276049759}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: BoundaryCollider(Clone)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -7491,7 +7523,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5240447232371470878}
   - component: {fileID: 6967979807601711952}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: BoundaryCollider(Clone)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -7649,7 +7681,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4444131417545859619}
   - component: {fileID: 1618048501100745797}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: BoundaryCollider(Clone)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -7702,7 +7734,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2722203065308974791}
   - component: {fileID: 8537732552543478152}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: BoundaryCollider(Clone)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -7860,7 +7892,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1433756425718819029}
   - component: {fileID: 551743300346583102}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: BoundaryCollider(Clone)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -8008,6 +8040,37 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!1 &4322929555839529984
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2829038289660607820}
+  m_Layer: 0
+  m_Name: PortalSpawn
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2829038289660607820
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4322929555839529984}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 184.30437, y: 1.2, z: -106.44406}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 7910408251437200835}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &4421482181330597425
 GameObject:
   m_ObjectHideFlags: 0
@@ -8123,7 +8186,7 @@ GameObject:
   m_Component:
   - component: {fileID: 548159058563667227}
   - component: {fileID: 4506840911919465707}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: BoundaryCollider(Clone)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -8376,6 +8439,58 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!1 &4840742322059045770
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 7910408251437200835}
+  - component: {fileID: 1301700199083369372}
+  m_Layer: 0
+  m_Name: SpawnPointContainer
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &7910408251437200835
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4840742322059045770}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -167, y: -0.08, z: 105.2}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 1212591216710716236}
+  - {fileID: 7783812144990058010}
+  - {fileID: 3592820186163921643}
+  - {fileID: 2829038289660607820}
+  m_Father: {fileID: 6276629414279359161}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1301700199083369372
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4840742322059045770}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: efa332d53a424e44ca1999386c46cf0a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  stageID: 1_5
+  stageName: Stage 1-5
+  playerSpawnPoint: {fileID: 3592820186163921643}
+  portalSpawnPoint: {fileID: 2829038289660607820}
 --- !u!1 &4971297007971730692
 GameObject:
   m_ObjectHideFlags: 0
@@ -8491,7 +8606,7 @@ GameObject:
   m_Component:
   - component: {fileID: 81993428365521020}
   - component: {fileID: 7445717227252171484}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: BoundaryCollider(Clone)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -8534,6 +8649,37 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 3.7917774, y: 2.6690474, z: 1}
   m_Center: {x: 0, y: -0.15432018, z: 0}
+--- !u!1 &5108181520414484413
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 7783812144990058010}
+  m_Layer: 0
+  m_Name: RandomSpawns
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &7783812144990058010
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5108181520414484413}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 7910408251437200835}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &5160929806798141760
 GameObject:
   m_ObjectHideFlags: 0
@@ -8544,7 +8690,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4004723947532999465}
   - component: {fileID: 7053889574022078964}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: BoundaryCollider(Clone)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -8702,7 +8848,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7028772235801457286}
   - component: {fileID: 8722641041229472151}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: BoundaryCollider(Clone)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -9281,7 +9427,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6144952211418729127}
   - component: {fileID: 5113661614893943668}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: BoundaryCollider(Clone)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -9534,6 +9680,56 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!1 &5805757611714720368
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 3310192748433691485}
+  - component: {fileID: 9055526516312066452}
+  m_Layer: 0
+  m_Name: Boss_1001
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &3310192748433691485
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5805757611714720368}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 184.4939, y: 0.30755383, z: -113.7336}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1212591216710716236}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &9055526516312066452
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5805757611714720368}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7f33a70538714cb49acd6c6fcbe23b08, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  spawnType: 0
+  monsterID: 1001
+  spawnWeight: 1
+  isBoss: 1
+  gizmoColor: {r: 1, g: 0, b: 0, a: 1}
+  gizmoSize: 0.5
 --- !u!1 &5809250708796545141
 GameObject:
   m_ObjectHideFlags: 0
@@ -9545,7 +9741,7 @@ GameObject:
   - component: {fileID: 8311905438437908643}
   - component: {fileID: 2041712258160197428}
   - component: {fileID: 313377986957754382}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: particle
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -14648,7 +14844,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4414130401095057464}
   - component: {fileID: 966982458018670467}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: BoundaryCollider(Clone)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -14806,7 +15002,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6529334494793411949}
   - component: {fileID: 3105353721351954589}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: BoundaryCollider(Clone)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -14965,7 +15161,7 @@ GameObject:
   - component: {fileID: 4130766833125638808}
   - component: {fileID: 4479564277559497751}
   - component: {fileID: 3058995950029391055}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: glow
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -20165,7 +20361,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6838160706720508295}
   - component: {fileID: 8100134020290823472}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: BoundaryCollider(Clone)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -20313,6 +20509,38 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!1 &7253535378854809348
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1212591216710716236}
+  m_Layer: 0
+  m_Name: FixedSpawns
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1212591216710716236
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7253535378854809348}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 3310192748433691485}
+  m_Father: {fileID: 7910408251437200835}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &7430823366985948556
 GameObject:
   m_ObjectHideFlags: 0
@@ -20324,7 +20552,7 @@ GameObject:
   - component: {fileID: 3362182514235622500}
   - component: {fileID: 4953042255307041366}
   - component: {fileID: 3542819934524921296}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: HCFX_ElementOrb_04
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -25533,7 +25761,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2037576763011056733}
   - component: {fileID: 4992127762182310869}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: BoundaryCollider(Clone)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -25586,7 +25814,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2009551987448276546}
   - component: {fileID: 8498728151278182693}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: BoundaryCollider(Clone)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -26167,7 +26395,7 @@ GameObject:
   - component: {fileID: 1261134484449209592}
   - component: {fileID: 3568187781757614156}
   - component: {fileID: 8432505312194352211}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Prop_Jungle_Temple_Fire_Pit_Cauldron_Gold_01
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -26612,7 +26840,7 @@ GameObject:
   - component: {fileID: 8803453119986016838}
   - component: {fileID: 3295501381123102778}
   - component: {fileID: 2431426424836632336}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Prop_Jungle_Temple_Pillar_Column_Markings_01
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -26948,7 +27176,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8264283024020851231}
   - component: {fileID: 7468233478589734888}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: BoundaryCollider(Clone)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -27106,7 +27334,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8605710057677910545}
   - component: {fileID: 7619445160758604913}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: BoundaryCollider(Clone)
   m_TagString: Untagged
   m_Icon: {fileID: 0}

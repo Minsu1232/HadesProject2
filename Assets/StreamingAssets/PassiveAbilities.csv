@@ -1,0 +1,5 @@
+﻿ID,Type,Name,Description,Rarity,BaseValue,LevelMultiplier,IconPath
+damage_reduction,DamageReduction,견고한 방어,받는 피해가 10% 감소합니다.,0,10,0.3,Icons/passive_damage_reduction
+life_steal,LifeSteal,생명력 흡수,공격 시 데미지의 5%만큼 체력을 회복합니다.,1,5,0.3,Icons/passive_life_steal
+counterattack,Counterattack,가시 갑옷,피격 시 받은 데미지의 15%를 공격자에게 반사합니다.,2,15,0.3,Icons/passive_counterattack
+item_find,ItemFind,행운의 손길,아이템 드롭 확률이 20% 증가합니다.,1,20,0.3,Icons/passive_item_find

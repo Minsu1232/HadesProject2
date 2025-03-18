@@ -95,7 +95,7 @@ GameObject:
   - component: {fileID: 3922405880108758112}
   - component: {fileID: 1022485743229296953}
   - component: {fileID: 8561242292815459340}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Cave_Lair_Mining_Cart_Base_Metal_01_Atlased
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -507,6 +507,56 @@ MeshCollider:
   m_Convex: 0
   m_CookingOptions: 30
   m_Mesh: {fileID: 2079870604648855689, guid: 89918199f3cbb2b4dbbd62a3894c364a, type: 3}
+--- !u!1 &335678248424883065
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 8047708302554932456}
+  - component: {fileID: 4997766233183131953}
+  m_Layer: 0
+  m_Name: Fixed_2
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &8047708302554932456
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 335678248424883065}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -16.553738, y: 0.08, z: 78.66976}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 2047721491566536570}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &4997766233183131953
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 335678248424883065}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7f33a70538714cb49acd6c6fcbe23b08, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  spawnType: 0
+  monsterID: 2
+  spawnWeight: 1
+  isBoss: 0
+  gizmoColor: {r: 1, g: 0, b: 0, a: 1}
+  gizmoSize: 0.5
 --- !u!1 &379465149522708680
 GameObject:
   m_ObjectHideFlags: 0
@@ -519,7 +569,7 @@ GameObject:
   - component: {fileID: 1184928490379500449}
   - component: {fileID: 6357076318545715715}
   - component: {fileID: 2101541639093481131}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: InnerCorner
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -625,7 +675,7 @@ GameObject:
   - component: {fileID: 7345545303059459308}
   - component: {fileID: 209170063563180558}
   - component: {fileID: 7616010636739871236}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: LastStraight
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -731,7 +781,7 @@ GameObject:
   - component: {fileID: 8070317408080540902}
   - component: {fileID: 5582363373675739234}
   - component: {fileID: 8416342093058391409}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: WD_Vegetation_Tree_Trunk_Fallen_11
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -944,7 +994,7 @@ GameObject:
   - component: {fileID: 8415338840550772210}
   - component: {fileID: 6138947836671188684}
   - component: {fileID: 1537759708767111947}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: InnerCorner
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1051,7 +1101,7 @@ GameObject:
   - component: {fileID: 2568817461305299788}
   - component: {fileID: 4165883974419817800}
   - component: {fileID: 4021746327916728191}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Cave_Lair_Cave_Stone_Block_Eroded_03_Atlased
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1157,7 +1207,7 @@ GameObject:
   - component: {fileID: 7514916590844658306}
   - component: {fileID: 4639441940407781848}
   - component: {fileID: 1456993660127928404}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: MiddleStraight
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1581,7 +1631,7 @@ GameObject:
   - component: {fileID: 1772012504596714499}
   - component: {fileID: 1703019719907423840}
   - component: {fileID: 3006922812722875621}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Cave_Lair_Cave_Stone_Block_Eroded_02_Atlased
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1687,7 +1737,7 @@ GameObject:
   - component: {fileID: 4621699048220302517}
   - component: {fileID: 5061477260196936186}
   - component: {fileID: 623806121756072648}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: InnerCorner
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1900,7 +1950,7 @@ GameObject:
   - component: {fileID: 99506916989680334}
   - component: {fileID: 7090271263094752162}
   - component: {fileID: 5812049808001455888}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: WD_Vegetation_Tree_Trunk_Fallen_11
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2431,7 +2481,7 @@ GameObject:
   - component: {fileID: 3834942141155823345}
   - component: {fileID: 6313339804760819767}
   - component: {fileID: 3443262018617089246}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: InnerCorner
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2538,7 +2588,7 @@ GameObject:
   - component: {fileID: 2362322693094128407}
   - component: {fileID: 8349507928007583234}
   - component: {fileID: 8620378774311424434}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Cave_Lair_Cave_Stone_Block_Eroded_02_Atlased
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2644,7 +2694,7 @@ GameObject:
   - component: {fileID: 1208891652269654050}
   - component: {fileID: 118802276078650397}
   - component: {fileID: 5659260178411815942}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Cave_Lair_Cave_Stone_Block_Eroded_02_Atlased
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2959,7 +3009,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6174162095193806117}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Chapter1Wall1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2998,7 +3048,7 @@ GameObject:
   - component: {fileID: 7362464394098282930}
   - component: {fileID: 6248350274913804392}
   - component: {fileID: 5444347681926676637}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Cave_Lair_Cave_Stone_Block_Eroded_03_Atlased
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3104,7 +3154,7 @@ GameObject:
   - component: {fileID: 4378875389005644050}
   - component: {fileID: 6828207783780120258}
   - component: {fileID: 6270699488548998485}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: InnerCorner
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3316,7 +3366,7 @@ GameObject:
   - component: {fileID: 6069162605869832952}
   - component: {fileID: 4045308182148437471}
   - component: {fileID: 5236464521901168650}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Cave_Lair_Cave_Stone_Block_Eroded_02_Atlased
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3740,7 +3790,7 @@ GameObject:
   - component: {fileID: 5902924207414429391}
   - component: {fileID: 7550011291885336688}
   - component: {fileID: 2688792929506685751}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Cave_Lair_Cave_Stone_Block_Eroded_02_Atlased
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3929,7 +3979,7 @@ GameObject:
   - component: {fileID: 8734046909936544568}
   - component: {fileID: 245364796297603101}
   - component: {fileID: 2801047111859710473}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Cave_Lair_Cave_Stone_Pillar_Damaged_03_Atlased
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4035,7 +4085,7 @@ GameObject:
   - component: {fileID: 4429154647594749942}
   - component: {fileID: 8348835120323050535}
   - component: {fileID: 5943212267505825239}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: InnerCorner
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4247,7 +4297,7 @@ GameObject:
   - component: {fileID: 1004242901984395696}
   - component: {fileID: 5472931915634240118}
   - component: {fileID: 7212050838355830389}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Cave_Lair_Cave_Stone_Block_Eroded_02_Atlased
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4447,6 +4497,37 @@ MeshCollider:
   m_Convex: 0
   m_CookingOptions: 30
   m_Mesh: {fileID: 9139606290831371702, guid: ed4871017fee98d489d2866ff8db106d, type: 3}
+--- !u!1 &3451754605112112709
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 429381268540523671}
+  m_Layer: 0
+  m_Name: RandomSpawns
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &429381268540523671
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3451754605112112709}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 7803735575970634295}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &3507459913051402315
 GameObject:
   m_ObjectHideFlags: 0
@@ -4989,7 +5070,7 @@ GameObject:
   - component: {fileID: 2111311212407413040}
   - component: {fileID: 8309025329851965781}
   - component: {fileID: 6136410654376043830}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: InnerCorner
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5096,7 +5177,7 @@ GameObject:
   - component: {fileID: 8423596770706239145}
   - component: {fileID: 2508478199206161895}
   - component: {fileID: 8637033522859571086}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: LastStraight
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5308,7 +5389,7 @@ GameObject:
   - component: {fileID: 80094531051464588}
   - component: {fileID: 5164832358412109815}
   - component: {fileID: 4219126747321459702}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: WD_Vegetation_Tree_Trunk_Fallen_11
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5415,7 +5496,7 @@ GameObject:
   - component: {fileID: 2159879075355016623}
   - component: {fileID: 7547253333520635866}
   - component: {fileID: 2322206436680747806}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Cave_Lair_Cave_Stone_Pillar_Damaged_03_Atlased
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5686,6 +5767,7 @@ Transform:
   - {fileID: 7490102783598002421}
   - {fileID: 1789941909242391584}
   - {fileID: 8206003280017530025}
+  - {fileID: 7803735575970634295}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &3938371180290711254
@@ -5700,7 +5782,7 @@ GameObject:
   - component: {fileID: 5148502171564288740}
   - component: {fileID: 4881581067675186883}
   - component: {fileID: 6312859376671942074}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Cave_Lair_Cave_Stone_Block_Eroded_02_Atlased
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5794,6 +5876,87 @@ MeshCollider:
   m_Convex: 0
   m_CookingOptions: 30
   m_Mesh: {fileID: 832534200434908561, guid: 4db5e5208eeb37b4b939960c78e27ff7, type: 3}
+--- !u!1 &3967567407292750626
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1776555090336088964}
+  - component: {fileID: 7038260387062560916}
+  m_Layer: 0
+  m_Name: Fixed_3
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1776555090336088964
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3967567407292750626}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 7.349552, y: 0.08, z: 68.39403}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 2047721491566536570}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &7038260387062560916
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3967567407292750626}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7f33a70538714cb49acd6c6fcbe23b08, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  spawnType: 0
+  monsterID: 3
+  spawnWeight: 1
+  isBoss: 0
+  gizmoColor: {r: 1, g: 0, b: 0, a: 1}
+  gizmoSize: 0.5
+--- !u!1 &3973453792129857300
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 6751173042805702401}
+  m_Layer: 0
+  m_Name: PlayerSpawn
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &6751173042805702401
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3973453792129857300}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -9.008022, y: 0.08, z: 51.763596}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 7803735575970634295}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &4052094342217303169
 GameObject:
   m_ObjectHideFlags: 0
@@ -6227,7 +6390,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6976367050015425646}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Chapter1Wall1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -6337,6 +6500,56 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!1 &4299028927266121178
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 4511769978694720571}
+  - component: {fileID: 6504825418189343591}
+  m_Layer: 0
+  m_Name: Fixed_3
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &4511769978694720571
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4299028927266121178}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -9.921919, y: 0.08, z: 68.71812}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 2047721491566536570}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &6504825418189343591
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4299028927266121178}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7f33a70538714cb49acd6c6fcbe23b08, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  spawnType: 0
+  monsterID: 3
+  spawnWeight: 1
+  isBoss: 0
+  gizmoColor: {r: 1, g: 0, b: 0, a: 1}
+  gizmoSize: 0.5
 --- !u!1 &4345234770431743227
 GameObject:
   m_ObjectHideFlags: 0
@@ -6349,7 +6562,7 @@ GameObject:
   - component: {fileID: 7166794732938011663}
   - component: {fileID: 3124500591798861209}
   - component: {fileID: 3251593688920718283}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Cave_Lair_Cave_Stone_Block_Eroded_02_Atlased
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -6561,7 +6774,7 @@ GameObject:
   - component: {fileID: 422145252986848506}
   - component: {fileID: 4739326356920522504}
   - component: {fileID: 8174646544989173432}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Cave_Lair_Wooden_Timber_Beam_02_Atlased
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -6667,7 +6880,7 @@ GameObject:
   - component: {fileID: 992563373157650839}
   - component: {fileID: 1495757316384467812}
   - component: {fileID: 498034991134897612}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: MiddleStraight
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -6773,7 +6986,7 @@ GameObject:
   - component: {fileID: 4814577752144516710}
   - component: {fileID: 7938535949707222733}
   - component: {fileID: 1361392860370679307}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: MiddleStraight
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -6985,7 +7198,7 @@ GameObject:
   - component: {fileID: 1603630524969789605}
   - component: {fileID: 149372114194249459}
   - component: {fileID: 7084327953638036306}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Cave_Lair_Cave_Stone_Block_Eroded_02_Atlased
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -7088,7 +7301,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7917134355813942925}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Chapter1Wall1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -7114,6 +7327,41 @@ Transform:
   - {fileID: 8301137443427067892}
   - {fileID: 1574971717432145608}
   m_Father: {fileID: 20842275310912865}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &4542865611158256256
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2047721491566536570}
+  m_Layer: 0
+  m_Name: FixedSpawns
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2047721491566536570
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4542865611158256256}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 8047708302554932456}
+  - {fileID: 1290255415561384042}
+  - {fileID: 1776555090336088964}
+  - {fileID: 4511769978694720571}
+  m_Father: {fileID: 7803735575970634295}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &4598650773715725474
 GameObject:
@@ -7233,7 +7481,7 @@ GameObject:
   - component: {fileID: 5280449160693546064}
   - component: {fileID: 6076573162494577259}
   - component: {fileID: 6087970637828714665}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Cave_Lair_Cave_Stone_Block_Eroded_02_Atlased
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -7339,7 +7587,7 @@ GameObject:
   - component: {fileID: 2911424521595831660}
   - component: {fileID: 7195194449972173854}
   - component: {fileID: 1416891297978931100}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Cave_Lair_Metal_Chest_Damaged_Open_Junk_01_Atlased
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -7445,7 +7693,7 @@ GameObject:
   - component: {fileID: 1708827291860191755}
   - component: {fileID: 107589110141816415}
   - component: {fileID: 7163084603038006410}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Cave_Lair_Cave_Stone_Block_Eroded_02_Atlased
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -7551,7 +7799,7 @@ GameObject:
   - component: {fileID: 5009924091264638934}
   - component: {fileID: 6138758743280101600}
   - component: {fileID: 2082417746654263565}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Cave_Lair_Cave_Stone_Block_Eroded_02_Atlased
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -7657,7 +7905,7 @@ GameObject:
   - component: {fileID: 6583658565844114713}
   - component: {fileID: 1143981736058057239}
   - component: {fileID: 6555715040089319947}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: FirstStraight
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -8082,7 +8330,7 @@ GameObject:
   - component: {fileID: 1852742694628825386}
   - component: {fileID: 3746989724686045307}
   - component: {fileID: 8643502096324423873}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: LastStraight
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -8188,7 +8436,7 @@ GameObject:
   - component: {fileID: 5342372891402351612}
   - component: {fileID: 149768586917096350}
   - component: {fileID: 2890328710013119753}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: InnerCorner
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -8401,7 +8649,7 @@ GameObject:
   - component: {fileID: 4166445146150878356}
   - component: {fileID: 4982291388718788543}
   - component: {fileID: 4618152330756550681}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Cave_Lair_Cave_Stone_Block_Eroded_02_Atlased
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -8507,7 +8755,7 @@ GameObject:
   - component: {fileID: 5450984503667787018}
   - component: {fileID: 8369350029227148562}
   - component: {fileID: 2445839366873904019}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: FirstStraight
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -8613,7 +8861,7 @@ GameObject:
   - component: {fileID: 6832766650770140399}
   - component: {fileID: 790075744120877336}
   - component: {fileID: 4686100293975817977}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: MiddleStraight
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -8719,7 +8967,7 @@ GameObject:
   - component: {fileID: 7325360536498570921}
   - component: {fileID: 6913202839921343325}
   - component: {fileID: 5761619440039901635}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Cave_Lair_Cave_Stone_Block_Eroded_03_Atlased
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -8825,7 +9073,7 @@ GameObject:
   - component: {fileID: 2108747185176820560}
   - component: {fileID: 2979081412301928864}
   - component: {fileID: 4236259997285175095}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Cave_Lair_Cave_Stone_Pillar_Damaged_02_Atlased
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -8931,7 +9179,7 @@ GameObject:
   - component: {fileID: 7881883393218018535}
   - component: {fileID: 8421824322146813724}
   - component: {fileID: 6289490260204102747}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Cave_Lair_Cave_Stone_Block_Eroded_02_Atlased
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -9037,7 +9285,7 @@ GameObject:
   - component: {fileID: 166098496401404781}
   - component: {fileID: 541132582474423799}
   - component: {fileID: 627707466718526205}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: OutterCorner
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -9144,7 +9392,7 @@ GameObject:
   - component: {fileID: 5544299778344613400}
   - component: {fileID: 7536639745014147361}
   - component: {fileID: 1685831896675341039}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Cave_Lair_Cave_Stone_Pillar_Damaged_03_Atlased
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -9250,7 +9498,7 @@ GameObject:
   - component: {fileID: 4034196045677519944}
   - component: {fileID: 6020799683734332831}
   - component: {fileID: 8778233470939033859}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: MiddleStraight
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -9356,7 +9604,7 @@ GameObject:
   - component: {fileID: 8528640497409719965}
   - component: {fileID: 3650617416703911843}
   - component: {fileID: 8468029837758668158}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Cave_Lair_Cave_Stone_Block_Eroded_02_Atlased
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -9462,7 +9710,7 @@ GameObject:
   - component: {fileID: 5911474155629227517}
   - component: {fileID: 7250310217681214936}
   - component: {fileID: 3521978301445674558}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Cave_Lair_Cave_Stone_Pillar_Damaged_02_Atlased
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -9568,7 +9816,7 @@ GameObject:
   - component: {fileID: 8459441025659563153}
   - component: {fileID: 1625348499883041142}
   - component: {fileID: 4127309792877604030}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Cave_Lair_Cave_Stone_Pillar_Damaged_01_Atlased
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -9671,7 +9919,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6925511746028174343}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Chapter1Wall1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -9710,7 +9958,7 @@ GameObject:
   - component: {fileID: 2518154048337086829}
   - component: {fileID: 4852652046096766893}
   - component: {fileID: 7122177228269482018}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: InnerCorner
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -9816,7 +10064,7 @@ GameObject:
   - component: {fileID: 3342671092962041039}
   - component: {fileID: 3400380138728278190}
   - component: {fileID: 7786143710538598233}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Cave_Lair_Cave_Stone_Block_Eroded_02_Atlased
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -9922,7 +10170,7 @@ GameObject:
   - component: {fileID: 3392343282687572379}
   - component: {fileID: 5371246494073936531}
   - component: {fileID: 9186225385682346884}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: FirstStraight
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -10028,7 +10276,7 @@ GameObject:
   - component: {fileID: 4287194461932696439}
   - component: {fileID: 7686961692797925175}
   - component: {fileID: 8005539926129306682}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: OutterCorner
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -10559,7 +10807,7 @@ GameObject:
   - component: {fileID: 920099203119879941}
   - component: {fileID: 4148734393627964543}
   - component: {fileID: 2127930770885443017}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Cave_Lair_Cave_Stone_Pillar_Damaged_03_Atlased
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -10865,6 +11113,58 @@ MeshCollider:
   m_Convex: 0
   m_CookingOptions: 30
   m_Mesh: {fileID: 1033485833604015480, guid: 9279fd785e98a7d449ffe0599632230c, type: 3}
+--- !u!1 &6434442619546395505
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 7803735575970634295}
+  - component: {fileID: 781991282725184300}
+  m_Layer: 0
+  m_Name: SpawnPointContainer
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &7803735575970634295
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6434442619546395505}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 2.6378746, y: -0.08, z: -9}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 2047721491566536570}
+  - {fileID: 429381268540523671}
+  - {fileID: 6751173042805702401}
+  - {fileID: 7096251451992227872}
+  m_Father: {fileID: 20842275310912865}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &781991282725184300
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6434442619546395505}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: efa332d53a424e44ca1999386c46cf0a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  stageID: 1_1
+  stageName: Stage 1-1
+  playerSpawnPoint: {fileID: 6751173042805702401}
+  portalSpawnPoint: {fileID: 7096251451992227872}
 --- !u!1 &6494044029782422294
 GameObject:
   m_ObjectHideFlags: 0
@@ -11195,7 +11495,7 @@ GameObject:
   - component: {fileID: 2107620683662971454}
   - component: {fileID: 7427299496507651074}
   - component: {fileID: 194970794747125805}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Cave_Lair_Cave_Stone_Block_Eroded_02_Atlased
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -11301,7 +11601,7 @@ GameObject:
   - component: {fileID: 8472606139100981679}
   - component: {fileID: 5350449821292364721}
   - component: {fileID: 7645121084378076387}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Cave_Lair_Cave_Stone_Block_Eroded_02_Atlased
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -11725,7 +12025,7 @@ GameObject:
   - component: {fileID: 6310094711162849768}
   - component: {fileID: 5967916406722915319}
   - component: {fileID: 7427999160288131426}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Cave_Lair_Cave_Stone_Block_Eroded_02_Atlased
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -12255,7 +12555,7 @@ GameObject:
   - component: {fileID: 8155112839227915876}
   - component: {fileID: 2077929489443427879}
   - component: {fileID: 7570856095697505753}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: LastStraight
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -12361,7 +12661,7 @@ GameObject:
   - component: {fileID: 8479039335210725447}
   - component: {fileID: 3871419251307796741}
   - component: {fileID: 830752866323376875}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: LastStraight
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -12467,7 +12767,7 @@ GameObject:
   - component: {fileID: 9027168960295661974}
   - component: {fileID: 363040995908000521}
   - component: {fileID: 765221696872029072}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: FirstStraight
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -12676,7 +12976,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2144995741334311866}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Chapter1Wall1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -13139,7 +13439,7 @@ GameObject:
   - component: {fileID: 1052806788462206639}
   - component: {fileID: 6430710327848419912}
   - component: {fileID: 2645465258145004349}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Cave_Lair_Cave_Stone_Block_Eroded_02_Atlased
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -13445,6 +13745,37 @@ MeshCollider:
   m_Convex: 0
   m_CookingOptions: 30
   m_Mesh: {fileID: 1033485833604015480, guid: 9279fd785e98a7d449ffe0599632230c, type: 3}
+--- !u!1 &7660287397022709767
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 7096251451992227872}
+  m_Layer: 0
+  m_Name: PortalSpawn
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &7096251451992227872
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7660287397022709767}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -9.772961, y: 0.81, z: 89.784004}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 7803735575970634295}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &7668705031904528520
 GameObject:
   m_ObjectHideFlags: 0
@@ -13563,7 +13894,7 @@ GameObject:
   - component: {fileID: 5142358248123046183}
   - component: {fileID: 4843644067841366880}
   - component: {fileID: 6913297301402200124}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Cave_Lair_Cave_Stone_Block_Eroded_02_Atlased
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -13669,7 +14000,7 @@ GameObject:
   - component: {fileID: 1358578752896483854}
   - component: {fileID: 4352017264338686287}
   - component: {fileID: 2232234582698100197}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: OutterCorner
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -13776,7 +14107,7 @@ GameObject:
   - component: {fileID: 4668851578188909076}
   - component: {fileID: 2166100978756215021}
   - component: {fileID: 148250729783653247}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: MiddleStraight
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -13882,7 +14213,7 @@ GameObject:
   - component: {fileID: 1763506868445651167}
   - component: {fileID: 6187922388544965788}
   - component: {fileID: 5449711663615327889}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Cave_Lair_Cave_Stone_Block_Eroded_03_Atlased
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -13988,7 +14319,7 @@ GameObject:
   - component: {fileID: 7418371517200720480}
   - component: {fileID: 1800697750573892042}
   - component: {fileID: 3895216640149417638}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Cave_Lair_Cave_Stone_Block_Eroded_03_Atlased
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -14094,7 +14425,7 @@ GameObject:
   - component: {fileID: 1825716073211029309}
   - component: {fileID: 7046652796153306594}
   - component: {fileID: 737825363500013879}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: InnerCorner
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -14727,7 +15058,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1788050548922556291}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Chapter1Wall1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -14861,6 +15192,56 @@ MeshCollider:
   m_Convex: 0
   m_CookingOptions: 30
   m_Mesh: {fileID: -3459036509546959915, guid: 65a24ddb4f1dda14188ae8370e996cd8, type: 3}
+--- !u!1 &8199716264049593418
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1290255415561384042}
+  - component: {fileID: 5341148839267360391}
+  m_Layer: 0
+  m_Name: Fixed_2
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1290255415561384042
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8199716264049593418}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -0.77096784, y: 0.08, z: 78.249435}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 2047721491566536570}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &5341148839267360391
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8199716264049593418}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7f33a70538714cb49acd6c6fcbe23b08, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  spawnType: 0
+  monsterID: 2
+  spawnWeight: 1
+  isBoss: 0
+  gizmoColor: {r: 1, g: 0, b: 0, a: 1}
+  gizmoSize: 0.5
 --- !u!1 &8324495323231557966
 GameObject:
   m_ObjectHideFlags: 0
@@ -14873,7 +15254,7 @@ GameObject:
   - component: {fileID: 7421577999908703270}
   - component: {fileID: 6530318875768849562}
   - component: {fileID: 1132754873932709859}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: OutterCorner
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -15086,7 +15467,7 @@ GameObject:
   - component: {fileID: 4666520687024596467}
   - component: {fileID: 9099083346240261042}
   - component: {fileID: 8950910135799338065}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Cave_Lair_Cave_Stone_Block_Eroded_03_Atlased
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -15192,7 +15573,7 @@ GameObject:
   - component: {fileID: 4985323339895506067}
   - component: {fileID: 6207624231198823655}
   - component: {fileID: 8200744884956905392}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: FirstStraight
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -15404,7 +15785,7 @@ GameObject:
   - component: {fileID: 4859634135592026488}
   - component: {fileID: 1126349949661431870}
   - component: {fileID: 465594871718275366}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Cave_Lair_Cave_Stone_Block_Eroded_02_Atlased
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -15616,7 +15997,7 @@ GameObject:
   - component: {fileID: 5683108064078012957}
   - component: {fileID: 658757643572285895}
   - component: {fileID: 1726421517678949392}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: OutterCorner
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -15723,7 +16104,7 @@ GameObject:
   - component: {fileID: 3113164804751291379}
   - component: {fileID: 7773271403860638173}
   - component: {fileID: 5447653524826061807}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: FirstStraight
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -15829,7 +16210,7 @@ GameObject:
   - component: {fileID: 8055056866709939109}
   - component: {fileID: 2726019954571241864}
   - component: {fileID: 560934851394146321}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Cave_Lair_Cave_Stone_Block_Eroded_02_Atlased
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -15935,7 +16316,7 @@ GameObject:
   - component: {fileID: 6997457564404123869}
   - component: {fileID: 5113145640531132531}
   - component: {fileID: 3036529128385672670}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: InnerCorner
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -16042,7 +16423,7 @@ GameObject:
   - component: {fileID: 2990866861482057117}
   - component: {fileID: 2719618970071269832}
   - component: {fileID: 8046300966734463108}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Cave_Lair_Cave_Stone_Block_Eroded_02_Atlased
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -16148,7 +16529,7 @@ GameObject:
   - component: {fileID: 5713183312513231413}
   - component: {fileID: 2614774558409105990}
   - component: {fileID: 8365400394681571363}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: OutterCorner
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -16255,7 +16636,7 @@ GameObject:
   - component: {fileID: 5475529015655896584}
   - component: {fileID: 1631008704798974275}
   - component: {fileID: 2821819032893254734}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Cave_Lair_Cave_Stone_Block_Eroded_02_Atlased
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -16361,7 +16742,7 @@ GameObject:
   - component: {fileID: 9202985979587867132}
   - component: {fileID: 7353893616728756091}
   - component: {fileID: 7404499807772503981}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: LastStraight
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -16467,7 +16848,7 @@ GameObject:
   - component: {fileID: 5839438332592296672}
   - component: {fileID: 452811741896320853}
   - component: {fileID: 5628627919845989876}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: InnerCorner
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -16679,7 +17060,7 @@ GameObject:
   - component: {fileID: 6264674670842806829}
   - component: {fileID: 1104943746171366916}
   - component: {fileID: 5563227870503900580}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Cave_Lair_Cave_Stone_Block_Eroded_02_Atlased
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -16854,6 +17235,10 @@ PrefabInstance:
     - target: {fileID: 8039665812648609213, guid: d322d570ba8efd04d96f5909c85f9975, type: 3}
       propertyPath: m_Name
       value: Cave_Lair_Cave_Stone_Block_Eroded_03_Atlased (2)
+      objectReference: {fileID: 0}
+    - target: {fileID: 8039665812648609213, guid: d322d570ba8efd04d96f5909c85f9975, type: 3}
+      propertyPath: m_Layer
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 8393687935158695869, guid: d322d570ba8efd04d96f5909c85f9975, type: 3}
       propertyPath: m_LocalPosition.x
@@ -17103,6 +17488,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Cave_Lair_Cave_Stone_Block_Eroded_03_Atlased (2)
       objectReference: {fileID: 0}
+    - target: {fileID: 8039665812648609213, guid: d322d570ba8efd04d96f5909c85f9975, type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
     - target: {fileID: 8393687935158695869, guid: d322d570ba8efd04d96f5909c85f9975, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0.71000004
@@ -17289,6 +17678,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Cave_Lair_Cave_Stone_Block_Eroded_03_Atlased (2)
       objectReference: {fileID: 0}
+    - target: {fileID: 8039665812648609213, guid: d322d570ba8efd04d96f5909c85f9975, type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
     - target: {fileID: 8393687935158695869, guid: d322d570ba8efd04d96f5909c85f9975, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0.71000004
@@ -17350,6 +17743,10 @@ PrefabInstance:
     - target: {fileID: 8039665812648609213, guid: d322d570ba8efd04d96f5909c85f9975, type: 3}
       propertyPath: m_Name
       value: Cave_Lair_Cave_Stone_Block_Eroded_03_Atlased (2)
+      objectReference: {fileID: 0}
+    - target: {fileID: 8039665812648609213, guid: d322d570ba8efd04d96f5909c85f9975, type: 3}
+      propertyPath: m_Layer
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 8393687935158695869, guid: d322d570ba8efd04d96f5909c85f9975, type: 3}
       propertyPath: m_LocalPosition.x
@@ -17570,6 +17967,10 @@ PrefabInstance:
     - target: {fileID: 8039665812648609213, guid: d322d570ba8efd04d96f5909c85f9975, type: 3}
       propertyPath: m_Name
       value: Cave_Lair_Cave_Stone_Block_Eroded_03_Atlased (2)
+      objectReference: {fileID: 0}
+    - target: {fileID: 8039665812648609213, guid: d322d570ba8efd04d96f5909c85f9975, type: 3}
+      propertyPath: m_Layer
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 8393687935158695869, guid: d322d570ba8efd04d96f5909c85f9975, type: 3}
       propertyPath: m_LocalPosition.x
@@ -18144,6 +18545,10 @@ PrefabInstance:
     - target: {fileID: 8039665812648609213, guid: d322d570ba8efd04d96f5909c85f9975, type: 3}
       propertyPath: m_Name
       value: Cave_Lair_Cave_Stone_Block_Eroded_03_Atlased (2)
+      objectReference: {fileID: 0}
+    - target: {fileID: 8039665812648609213, guid: d322d570ba8efd04d96f5909c85f9975, type: 3}
+      propertyPath: m_Layer
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 8393687935158695869, guid: d322d570ba8efd04d96f5909c85f9975, type: 3}
       propertyPath: m_LocalPosition.x

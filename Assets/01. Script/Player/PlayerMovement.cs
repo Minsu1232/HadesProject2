@@ -145,10 +145,10 @@ public class PlayerMovement : MonoBehaviour
 
     public void SmoothMove(Vector3 direction)
     {
-        if (playerClass == null) return;
+        if (playerClass == null || rb.isKinematic) return;
 
-        // 목표 속도 계산
-        Vector3 targetVelocity = direction * playerClass.PlayerStats.Speed;
+            // 목표 속도 계산
+            Vector3 targetVelocity = direction * playerClass.PlayerStats.Speed;
         targetVelocity.y = rb.velocity.y; // 수직 속도는 유지
 
         // 현재 속도에서 목표 속도로 부드럽게 전환

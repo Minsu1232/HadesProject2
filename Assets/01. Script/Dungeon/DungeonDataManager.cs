@@ -13,6 +13,7 @@ public class DungeonDataManager : Singleton<DungeonDataManager>
     private async void Start()
     {
        await Initialize();
+       
     }
 
     public async Task Initialize()
@@ -93,6 +94,7 @@ public class DungeonDataManager : Singleton<DungeonDataManager>
         {
             await SkillConfigManager.Instance.Initialize();
             Debug.Log("스킬 데이터 초기화 완료");
+            Debug.Log($" 스킬 구성 개수: {SkillConfigManager.Instance.GetAllSkillConfigs().Count}");
         }
         else
         {

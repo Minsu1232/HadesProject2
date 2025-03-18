@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4106271535178208340}
   - component: {fileID: -6318019482572442505}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: BoundaryCollider
   m_TagString: Untagged
   m_Icon: {fileID: 0}

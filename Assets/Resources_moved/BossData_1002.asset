@@ -82,7 +82,7 @@ MonoBehaviour:
       followTarget: 0
       collisionMask:
         serializedVersion: 2
-        m_Bits: 0
+        m_Bits: 2147483648
       preparationTime: 0.5
       repeatInterval: 0
       warningEffect: {fileID: 0}
