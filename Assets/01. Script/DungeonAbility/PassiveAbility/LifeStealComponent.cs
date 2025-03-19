@@ -1,67 +1,66 @@
 ﻿// 흡혈 처리 컴포넌트
+using System;
 using UnityEngine;
 
 public class LifeStealComponent : MonoBehaviour
 {
     private float lifeStealAmount = 0f;
     private PlayerClass playerClass;
-    private CharacterAttackBase attackComponent;
+    private IWeaponDamageDealer damageDealer;
 
     private void Awake()
     {
-        playerClass = GetComponent<PlayerClass>();
-        attackComponent = GetComponent<CharacterAttackBase>();
+        playerClass = GameInitializer.Instance.GetPlayerClass();
+        // 자식 오브젝트 중에서 IWeaponDamageDealer 찾기
+        damageDealer = GetComponentInChildren<IWeaponDamageDealer>();
 
-        if (playerClass == null || attackComponent == null)
+        if (playerClass == null || damageDealer == null)
         {
             Debug.LogError("LifeStealComponent: 필요한 컴포넌트가 없습니다.");
             Destroy(this);
             return;
         }
 
-        // 공격에 리스너 추가
-        PlayerAttack playerAttack = GetComponent<PlayerAttack>();
-        if (playerAttack != null)
+        // 무기 데미지 딜러의 최종 데미지 계산 이벤트 구독
+        if (damageDealer != null)
         {
-            playerAttack.OnAttackInput += OnPlayerAttack;
+            // MeleeDamageDealer에서 발생하는 이벤트 구독
+            damageDealer.OnFinalDamageCalculated += HandleFinalDamageCalculated;
+            Debug.Log("흡혈 컴포넌트: 데미지 이벤트 구독 완료");
         }
     }
 
-    private void OnDestroy()
-    {
-        // 리스너 제거
-        PlayerAttack playerAttack = GetComponent<PlayerAttack>();
-        if (playerAttack != null)
-        {
-            playerAttack.OnAttackInput -= OnPlayerAttack;
-        }
-    }
-
-    // 플레이어 공격 이벤트 핸들러
-    private void OnPlayerAttack(AttackData.AttackType attackType)
+    // 최종 데미지 계산 시 호출되는 이벤트 핸들러
+    private void HandleFinalDamageCalculated(int finalDamage, ICreatureStatus targetMonster)
     {
         // 능력이 활성화되어 있고 플레이어가 유효한 상태일 때만 처리
-        if (lifeStealAmount > 0f && playerClass != null && playerClass.GetCurrentWeapon() != null)
+        if (lifeStealAmount > 0f && playerClass != null)
         {
-            // 기본 무기 데미지 기반으로 계산
-            int weaponDamage = playerClass.PlayerStats.AttackPower;
+            // 흡혈 효과로 회복될 체력 계산 (최종 데미지 기준)
+            int healthToRestore = Mathf.RoundToInt(finalDamage * lifeStealAmount);
 
-            // 치명타 확률 고려 (선택 사항)
-            bool isCritical = UnityEngine.Random.value < playerClass.PlayerStats.CriticalChance / 100f;
-            int damageDealt = isCritical ? weaponDamage * 2 : weaponDamage;
-
-            // 흡혈 효과로 회복될 체력 계산
-            int healthToRestore = Mathf.RoundToInt(damageDealt * lifeStealAmount);
-
-            // 최소 회복량 설정 (1)
-            healthToRestore = Mathf.Max(1, healthToRestore);
+            // 최소 회복량 설정 (0 이상)
+            healthToRestore = Mathf.Max(0, healthToRestore);
 
             // 플레이어 체력 회복
             if (healthToRestore > 0)
             {
                 playerClass.ModifyPower(healthToRestore);
-                Debug.Log($"흡혈 발동: {healthToRestore} 체력 회복");
+                Debug.Log($"흡혈 발동: 데미지 {finalDamage}에서 {healthToRestore} 체력 회복");
+
+                // 필요하다면 여기에 흡혈 이펙트 추가
+                // PlayLifeStealEffect();
             }
+        }
+    }
+
+    private void OnDestroy()
+    {
+        // 이벤트 구독 해제
+        if (damageDealer != null)
+        {
+            damageDealer.OnFinalDamageCalculated -= HandleFinalDamageCalculated;
+            Debug.Log("흡혈 컴포넌트: 이벤트 구독 해제");
         }
     }
 
@@ -69,6 +68,7 @@ public class LifeStealComponent : MonoBehaviour
     public void AddLifeSteal(float amount)
     {
         lifeStealAmount += amount;
+        Debug.Log($"흡혈 능력 추가: 현재 {lifeStealAmount * 100f}%");
     }
 
     // 흡혈량 감소
@@ -76,11 +76,19 @@ public class LifeStealComponent : MonoBehaviour
     {
         lifeStealAmount -= amount;
         lifeStealAmount = Mathf.Max(0f, lifeStealAmount);
+        Debug.Log($"흡혈 능력 감소: 현재 {lifeStealAmount * 100f}%");
     }
 
     // 현재 흡혈량 반환
     public float GetLifeStealAmount()
     {
         return lifeStealAmount;
+    }
+
+    // 흡혈량 설정
+    public void SetLifeStealAmount(float amount)
+    {
+        lifeStealAmount = Mathf.Max(0f, amount);
+        Debug.Log($"흡혈 능력 설정: {lifeStealAmount * 100f}%");
     }
 }

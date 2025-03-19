@@ -8,7 +8,7 @@ public abstract class CreatureAI : MonoBehaviour, ICreatureAI
 {
   
     public Animator animator;
-    protected ICreatureStatus creatureStatus;  // 공통 인터페이스 사용
+    public ICreatureStatus creatureStatus;  // 공통 인터페이스 사용
     protected IMonsterClass monsterClass;
     protected Dictionary<IMonsterState.MonsterStateType, IMonsterState> states;
     protected IMonsterState currentState;

@@ -54,6 +54,7 @@ public abstract class BasePhysicalAttackStrategy : IAttackStrategy
 
         if (target is PlayerClass playerTarget)
         {
+            Debug.Log("@@@@@@@@@@@@@@!@#!@#!@#)()$)$($($($(@*#*&@*&@#!@*");
             float damageReceiveRate = playerTarget.GetStats().DamageReceiveRate;
             int finalDamage = Mathf.RoundToInt(baseDamage * multiplier * damageReceiveRate);
             target.TakeDamage(finalDamage);

@@ -580,9 +580,22 @@ Commit = Item/framework
 
 		2번 임시 완료
 		3번 미뤄둠
-
 		
 		이제 로그라이크적 요소(DungeonAbility)제작 시작 기반은 Passive류로 제작
+
+3/19 = 로그라이크 요소	DungeonAbility(기반클래스).DungeonAbilityManager(관리)
+
+						PassiveAbility(패시브류),PassiveAbilityLoader(CSV로드),PassiveAbilityFactory(데이터생성)
+
+						CounterAttack(반사),ItemFind(아이템등장확률),LifeSteal(흡혈),RemoveDamageReduction(주는데미지증가) 구현
+
+						AbilityCardUI(종류별 카드),AbilitySelectionPanel(로그라이크 요소 패널), 카드프리팹 제작 DungeonManager에 연동 완료 (몬스터 전부 처치시 등장)
+
+						현재 카드 등장 밑 선택까진 완료. 이후 선택시 AddComponent는 되지만 실제 효과엔 다소 문제가 많음
+
+						반사는 적용 X(이벤트기반), 아이템등장확률은 확인예정, 흡혈은 공격성공시 판정이 아닌 공격시라 수정해야함,
+
+						주는 데미지 증가 적용 O
 
 
 					

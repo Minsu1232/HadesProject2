@@ -1,9 +1,10 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using static AttackData;
 
-public class MeleeDamageDealer : MonoBehaviour, IDamageDealer
+public class MeleeDamageDealer : MonoBehaviour, IDamageDealer, IWeaponDamageDealer
 {
     private WeaponManager weapon;
     private int comboStep;
@@ -12,6 +13,9 @@ public class MeleeDamageDealer : MonoBehaviour, IDamageDealer
     // Clear 후 일정 시간 동안 OnTriggerEnter를 무시하기 위한 플래그
     private bool isClearingDamaged = false;
 
+    // 데미지 계산 시 발생하는 이벤트 정의
+    // 최종 데미지 계산 시 발생하는 이벤트 정의
+    public event Action<int, ICreatureStatus> OnFinalDamageCalculated;
     public void Initialize(WeaponManager weapon, int comboStep)
     {
         this.weapon = weapon;
@@ -23,6 +27,8 @@ public class MeleeDamageDealer : MonoBehaviour, IDamageDealer
         return weapon.IsChargeAttack
             ? weapon.GetChargeDamage()
             : weapon.GetDamage(weapon.BaseDamage, comboStep);
+
+
     }
 
     public void DealDamage(IDamageable target)
@@ -74,7 +80,8 @@ public class MeleeDamageDealer : MonoBehaviour, IDamageDealer
 
         float damageMultiplier = hitBox.GetDamageMultiplier(transform.position);
         int finalDamage = Mathf.RoundToInt(GetDamage() * damageMultiplier);
-
+        // 최종 데미지가 계산된 후 이벤트 발동
+        OnFinalDamageCalculated?.Invoke(finalDamage, monster);
         // 보스와 일반 몬스터 모두 처리
         if (monster is IDamageable damageable)
         {

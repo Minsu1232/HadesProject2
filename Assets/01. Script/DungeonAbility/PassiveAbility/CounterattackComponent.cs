@@ -30,21 +30,26 @@ public class CounterattackComponent : MonoBehaviour
     }
 
     // 데미지 이벤트 핸들러
-    private void OnPlayerDamageReceived(int damage, MonoBehaviour attacker)
+    private void OnPlayerDamageReceived(int damage, ICreatureStatus attacker)
     {
+        Debug.Log("@#@##@# 들어옴");
         if (counterDamageAmount <= 0f || attacker == null)
             return;
-
+       
         // 입은 데미지의 일정 비율로 반격
         int counterDamage = Mathf.RoundToInt(damage * counterDamageAmount);
         counterDamage = Mathf.Max(1, counterDamage); // 최소 1 데미지
-
+        Debug.Log("@#@##@# 들어옴111111111" + counterDamage);
         // 공격자에게 데미지 적용
-        IDamageable damageable = attacker as IDamageable;
-        if (damageable != null)
+        if (attacker is ICreatureStatus)
         {
-            damageable.TakeDamage(counterDamage);
-            Debug.Log($"반격 발동: {counterDamage} 데미지");
+            // MonsterClass를 가진 GameObject 찾기
+            
+            if (attacker != null)
+            {
+                attacker.TakeDamage(counterDamage);
+                Debug.Log($"반격 발동: {counterDamage} 데미지");
+            }
         }
     }
 

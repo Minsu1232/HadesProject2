@@ -11,9 +11,8 @@ public class DungeonAbilityManager : MonoBehaviour
     // 현재 보유 중인 능력들
     private List<DungeonAbility> currentAbilities = new List<DungeonAbility>();
 
-    // 희귀도별 가중치
-    [SerializeField]
-    private float[] rarityWeights = { 0.5f, 0.3f, 0.15f, 0.04f, 0.01f }; // 희귀도별 가중치
+  
+    private float[] rarityWeights = { 0.01f, 0.3f, 0.15f, 0.04f, 0.5f }; // 희귀도별 가중치
 
     [SerializeField]
     private int abilitiesPerSelection = 3; // 한 번에 제공할 선택지 수
@@ -173,10 +172,16 @@ public class DungeonAbilityManager : MonoBehaviour
     {
         // 이미 있는 능력인지 확인
         DungeonAbility existingAbility = currentAbilities.Find(a => a.id == selectedAbility.id);
-
+        Debug.Log($"능력치 획득 시작: ID={selectedAbility.id}, 이름={selectedAbility.name}, 레벨={selectedAbility.level}");
+        Debug.Log($"현재 보유 능력 수: {currentAbilities.Count}");
+        foreach (var ability in currentAbilities)
+        {
+            Debug.Log($"- 보유 중: ID={ability.id}, 이름={ability.name}, 레벨={ability.level}");
+        }
         if (existingAbility != null)
         {
             // 레벨업
+            Debug.Log("왜 레벨 올라");
             existingAbility.OnLevelUp(playerClass);
         }
         else

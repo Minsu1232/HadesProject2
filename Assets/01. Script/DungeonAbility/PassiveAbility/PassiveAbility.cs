@@ -134,8 +134,7 @@ public class PassiveAbility : DungeonAbility
 
     // 피해 감소 효과 제거
     private void RemoveDamageReduction(PlayerClass player, float reductionPercent)
-    {
-       
+    {       
         player.ResetPower(false, false, false, false, false, false, false, true); // 리셋
 
         Debug.Log($"피해 감소 효과 제거: {reductionPercent}%, 현재 피해 계수: {player.PlayerStats.DamageReceiveRate}");

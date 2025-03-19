@@ -9,7 +9,7 @@ using UnityEngine;
 using static AttackData;
 using static IMonsterState;
 
-public class MonsterStatus : MonoBehaviour,IDamageable, ICreatureStatus
+public class MonsterStatus : MonoBehaviour, IDamageable, ICreatureStatus
 {
     [SerializeField] CreatureAI creatureAI;
     [SerializeField] private Transform skillSpawnPoint;
@@ -112,6 +112,14 @@ public class MonsterStatus : MonoBehaviour,IDamageable, ICreatureStatus
     public virtual void TakeDamage(int damage)
     {
         if (isDie) return;
+        //리지드바디의 속도와 회전 속도를 0으로 초기화
+        Rigidbody rb = GetComponent<Rigidbody>();
+        if (rb != null)
+        {
+            // 속도 초기화
+            rb.velocity = Vector3.zero;
+            rb.angularVelocity = Vector3.zero;
+        }
         Debug.Log($"{monsterClass.CurrentArmor}");
         monsterClass.TakeDamage(damage);
         Debug.Log($"{monsterClass.CurrentArmor}");

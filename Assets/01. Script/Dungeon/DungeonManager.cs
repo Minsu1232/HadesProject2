@@ -25,7 +25,10 @@ public class DungeonManager : Singleton<DungeonManager>
     [SerializeField] private float transitionDelay = 0.5f;
     [SerializeField] private Color bossRoomColor = new Color(0.5f, 0, 0, 0.3f);
     public event System.Action<StageData> OnStageLoaded; // 챕터 보스방 도달 이벤트
-    [SerializeField] private GameObject bossEssenceUI; // 챕터 보스별 EssenceUI
+    [SerializeField] private GameObject bossEssenceUI; // 챕터 보스방 EssenceUI
+
+    [Header("패시브 어빌리티 설정")]
+    [SerializeField] private AbilitySelectionPanel abilitySelectionPanel;
 
     private string currentStageID;
     private StageData currentStage;
@@ -37,18 +40,15 @@ public class DungeonManager : Singleton<DungeonManager>
 
     [SerializeField]
     private List<string> dungeonSceneNames = new List<string>
-{
-    "Chapter1Dungeon", "Chapter2Dungeon", "Chapter3Dungeon", "Chapter4Dungeon"
-};
+    {
+        "Chapter1Dungeon", "Chapter2Dungeon", "Chapter3Dungeon", "Chapter4Dungeon"
+    };
+
     protected override void Awake()
     {
         base.Awake();
         SceneManager.sceneLoaded += OnSceneLoaded;
     }
-         
-
-
-    
 
     private void OnDestroy()
     {
@@ -66,12 +66,24 @@ public class DungeonManager : Singleton<DungeonManager>
             if (DungeonDataManager.Instance.IsInitialized())
             {
                 string stageID = PlayerPrefs.GetString("CurrentStageID", "1_1");
-             
+
                 Debug.Log($"씬 전환 후 스킬 구성 개수: {SkillConfigManager.Instance.GetAllSkillConfigs().Count}");
 
                 // 특정 ID 확인
                 var config = SkillConfigManager.Instance.GetSkillConfig(1);
                 Debug.Log($"스킬 구성 ID 1: {(config != null ? "존재함" : "없음")}");
+
+                // 던전 입장 시 패시브 어빌리티 매니저 초기화
+                if (DungeonAbilityManager.Instance != null)
+                {
+                    DungeonAbilityManager.Instance.InitializeDungeon();
+                    Debug.Log("던전 입장: 패시브 어빌리티 매니저 초기화 완료");
+                }
+                else
+                {
+                    Debug.LogWarning("DungeonAbilityManager를 찾을 수 없습니다.");
+                }
+
                 LoadStage(stageID, false);
             }
             else
@@ -140,22 +152,22 @@ public class DungeonManager : Singleton<DungeonManager>
         GameObject player = GameInitializer.Instance.gameObject;
         if (player != null && currentStage.playerSpawnPosition != Vector3.zero)
         {
-          
-                // 대체 이동 방식
-                Rigidbody rb = player.GetComponent<Rigidbody>();
-                if (rb != null)
-                {
-                    rb.isKinematic = true;
-                    player.transform.position = currentStage.playerSpawnPosition;
-                    DOVirtual.DelayedCall(0.2f, () => {
-                        rb.isKinematic = false;
-                    });
-                }
-                else
-                {
-                    player.transform.position = currentStage.playerSpawnPosition;
-                }
-            
+
+            // 대체 이동 방식
+            Rigidbody rb = player.GetComponent<Rigidbody>();
+            if (rb != null)
+            {
+                rb.isKinematic = true;
+                player.transform.position = currentStage.playerSpawnPosition;
+                DOVirtual.DelayedCall(0.2f, () => {
+                    rb.isKinematic = false;
+                });
+            }
+            else
+            {
+                player.transform.position = currentStage.playerSpawnPosition;
+            }
+
         }
 
         // 몬스터 스폰
@@ -166,13 +178,11 @@ public class DungeonManager : Singleton<DungeonManager>
         // 스테이지 로드 완료 이벤트 발생
         OnStageLoaded?.Invoke(currentStage);
     }
+
     private void HandleBossStageUI(StageData stageData)
     {
         if (stageData.isBossStage)
         {
-            
-        
-
             if (bossEssenceUI != null)
             {
                 // UI 활성화
@@ -187,13 +197,14 @@ public class DungeonManager : Singleton<DungeonManager>
         else
         {
             // 일반 스테이지인 경우 UI 비활성화
-           
+
             if (bossEssenceUI != null)
             {
                 bossEssenceUI.SetActive(false);
             }
         }
     }
+
     // 몬스터 스폰 (딜레이로 순차적 등장)
     private IEnumerator SpawnMonstersWithDelay()
     {
@@ -431,6 +442,9 @@ public class DungeonManager : Singleton<DungeonManager>
         }
         else
         {
+            // 패시브 어빌리티 선택 UI 표시
+            ShowAbilitySelection();
+
             // 다음 스테이지 ID
             string nextStageID = currentStage.nextStageID;
 
@@ -441,15 +455,53 @@ public class DungeonManager : Singleton<DungeonManager>
                     await ReturnToVillage();
                 });
             }
-            else
-            {
-                // 잠시 대기 후 포탈 생성
-                DOVirtual.DelayedCall(portalSpawnDelay, () => {
-                    // 모든 아이템을 획득했는지 확인
-                    CheckItemsAndSpawnPortal(nextStageID);
-                });
-            }
         }
+    }
+
+    // 패시브 어빌리티 선택 UI 표시 메서드 추가
+    private void ShowAbilitySelection()
+    {
+        // AbilitySelectionPanel 컴포넌트를 찾거나 생성
+        if (abilitySelectionPanel == null)
+        {
+            abilitySelectionPanel = FindObjectOfType<AbilitySelectionPanel>();
+        }
+
+        if (abilitySelectionPanel == null)
+        {
+            Debug.LogError("AbilitySelectionPanel을 찾을 수 없습니다.");
+
+            // 포탈 바로 생성 (폴백 메커니즘)
+            DOVirtual.DelayedCall(portalSpawnDelay, () => {
+                CheckItemsAndSpawnPortal(currentStage.nextStageID);
+            });
+            return;
+        }
+
+        // 던전 어빌리티 매니저에서 선택 가능한 능력 목록 가져오기
+        List<DungeonAbility> abilitySelection = DungeonAbilityManager.Instance.GetAbilitySelection();
+
+        if (abilitySelection.Count == 0)
+        {
+            Debug.LogWarning("선택 가능한 패시브 능력이 없습니다. 패널을 건너뛰고 포탈을 생성합니다.");
+
+            // 포탈 바로 생성
+            DOVirtual.DelayedCall(portalSpawnDelay, () => {
+                CheckItemsAndSpawnPortal(currentStage.nextStageID);
+            });
+            return;
+        }
+
+        // 선택 완료 콜백 정의 (포탈 생성)
+        System.Action onSelectionCompleted = () => {
+            DOVirtual.DelayedCall(1f, () => {
+                CheckItemsAndSpawnPortal(currentStage.nextStageID);
+            });
+        };
+
+        // 패널 제목 설정 및 표시
+        abilitySelectionPanel.SetTitle("패시브 능력 선택");
+        abilitySelectionPanel.ShowSelectionPanel(abilitySelection, onSelectionCompleted);
     }
 
     // 아이템 확인 후 포탈 생성

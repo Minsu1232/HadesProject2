@@ -6,7 +6,7 @@ using static AttackData;
 [System.Serializable]
 public class PlayerClass : ICreature, IDamageable
 { // 데미지 이벤트 선언 (데미지량과 공격자 정보 포함)
-    public event System.Action<int, MonoBehaviour> OnDamageReceived;
+    public event System.Action<int, ICreatureStatus> OnDamageReceived;
     #region 변수
     public event Action<IWeapon> OnWeaponSelected;
     public enum WeaponType
@@ -194,7 +194,7 @@ public class PlayerClass : ICreature, IDamageable
     {if (isInvicible) return;
         // 반격 처리 (데미지 적용 전)
         // 데미지 적용 전 이벤트 발생
-        OnDamageReceived?.Invoke(damage, null); // 현재는 공격자 정보가 없으므로 null 전달
+       
         PlayerStats.Health -= damage;
        
         if (PlayerStats.Health <= 0)
@@ -208,21 +208,13 @@ public class PlayerClass : ICreature, IDamageable
         }
     }
     // 공격자 정보가 있는 오버로드 메서드 추가
-    public void TakeDamage(int damage, MonoBehaviour attacker)
+    public void PlayerGetAttacker(int damage, ICreatureStatus attacker)
     {
         if (isInvicible) return;
-
+       
         // 데미지 적용 전 이벤트 발생 (공격자 정보 포함)
         OnDamageReceived?.Invoke(damage, attacker);
 
-        // 기존 데미지 처리 로직
-        PlayerStats.Health -= damage;
-
-        if (PlayerStats.Health <= 0)
-        {
-            PlayerStats.Health = 0;
-            Die();
-        }
     }
     public virtual void TakeDotDamage(int dotDamage)
     {

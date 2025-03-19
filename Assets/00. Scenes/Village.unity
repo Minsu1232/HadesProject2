@@ -1179,6 +1179,21 @@ MeshCollider:
   m_Convex: 1
   m_CookingOptions: 30
   m_Mesh: {fileID: 7326347035673414068, guid: 03dd95a962b8c8644866fad2fba346ca, type: 3}
+--- !u!114 &101321133
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 38a40404d9721ed4f984030fbce11d53, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _snapMode: 0
+  _snapHalfSpace: 0
+  _projectionSettings: {fileID: 0}
 --- !u!114 &102053180
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5701,7 +5716,7 @@ MonoBehaviour:
   _extensionPlane:
     _refOBBFace: 4
   _heightPatternDirection: 0
-  _modularSnapSession: {fileID: 2105987905}
+  _modularSnapSession: {fileID: 1547106790}
   _mirrorGizmo: {fileID: 1118604797}
 --- !u!114 &438852328
 MonoBehaviour:
@@ -20479,6 +20494,26 @@ MeshCollider:
   m_Convex: 1
   m_CookingOptions: 30
   m_Mesh: {fileID: -8235450068236345901, guid: 03dd95a962b8c8644866fad2fba346ca, type: 3}
+--- !u!114 &1414140006
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 49490255aaf1a2641a4c5771511bd253, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _halfSpace: 1
+  _alignAxis: 0
+  _alignmentAxis: 1
+  _invertAlignmentAxis: 0
+  _projectAsUnit: 0
+  _embedInSurface: 1
+  _inFrontOffset: 0
+  _behindOffset: 0
 --- !u!1 &1416430518
 GameObject:
   m_ObjectHideFlags: 0
@@ -21424,6 +21459,8 @@ GameObject:
   - component: {fileID: 1465207500}
   - component: {fileID: 1465207499}
   - component: {fileID: 1465207498}
+  - component: {fileID: 1465207502}
+  - component: {fileID: 1465207501}
   m_Layer: 0
   m_Name: DungeonDataManager
   m_TagString: Untagged
@@ -21505,6 +21542,31 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 97100727788b17443ac64c8a00a96ca4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &1465207501
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1465207493}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d89112c0141261448b60d19d49c12db2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  abilitiesPerSelection: 3
+--- !u!114 &1465207502
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1465207493}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9fd82fbfa188ef54583372727cd0d807, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1 &1468028544 stripped
@@ -22265,6 +22327,21 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 17.11132, y: 2.6690474, z: 1}
   m_Center: {x: 0, y: -0.15432018, z: 0}
+--- !u!114 &1547106790
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 38a40404d9721ed4f984030fbce11d53, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _snapMode: 0
+  _snapHalfSpace: 0
+  _projectionSettings: {fileID: 0}
 --- !u!1 &1550052507 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 4103686498995478640, guid: 7198502739f6cae4baaae18513c40df2, type: 3}
@@ -22934,7 +23011,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c8725edae6a1fd4408036dedaf0199f0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _projectionSettings: {fileID: 1867924505}
+  _projectionSettings: {fileID: 1414140006}
   _dragAndDropGuide: {fileID: 0}
 --- !u!114 &1644050454
 MonoBehaviour:
@@ -26060,7 +26137,7 @@ MonoBehaviour:
   _spawnGuide: {fileID: 1454016087}
   _extensionPlane:
     _refOBBFace: 4
-  _modularSnapSession: {fileID: 2052157548}
+  _modularSnapSession: {fileID: 101321133}
   _mirrorGizmo: {fileID: 1262915059}
 --- !u!1 &1839720524 stripped
 GameObject:
@@ -26474,26 +26551,6 @@ PrefabInstance:
       insertIndex: -1
       addedObject: {fileID: 1912763460}
   m_SourcePrefab: {fileID: 100100000, guid: 94d43cd3785471340aa315bbbd100eab, type: 3}
---- !u!114 &1867924505
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 49490255aaf1a2641a4c5771511bd253, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _halfSpace: 1
-  _alignAxis: 0
-  _alignmentAxis: 1
-  _invertAlignmentAxis: 0
-  _projectAsUnit: 0
-  _embedInSurface: 1
-  _inFrontOffset: 0
-  _behindOffset: 0
 --- !u!1001 &1869887631
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -29200,21 +29257,6 @@ MeshCollider:
   m_Convex: 1
   m_CookingOptions: 30
   m_Mesh: {fileID: 1631805608805969027, guid: 03dd95a962b8c8644866fad2fba346ca, type: 3}
---- !u!114 &2052157548
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 38a40404d9721ed4f984030fbce11d53, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _snapMode: 0
-  _snapHalfSpace: 0
-  _projectionSettings: {fileID: 0}
 --- !u!114 &2055838449
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -29863,21 +29905,6 @@ MeshCollider:
   m_Convex: 1
   m_CookingOptions: 30
   m_Mesh: {fileID: -980207394979086508, guid: 03dd95a962b8c8644866fad2fba346ca, type: 3}
---- !u!114 &2105987905
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 38a40404d9721ed4f984030fbce11d53, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _snapMode: 0
-  _snapHalfSpace: 0
-  _projectionSettings: {fileID: 0}
 --- !u!1001 &2116746160
 PrefabInstance:
   m_ObjectHideFlags: 0

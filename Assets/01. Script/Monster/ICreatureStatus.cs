@@ -23,6 +23,7 @@ public interface ICreatureStatus
     void ModifyAttackRange(float modifier);
     void ModifyArmor(int modifier);
 
+    void TakeDamage(int a);
     // Buff ฐüทร
     void ApplyBuff(BuffType buffType, float value, float duration);
     void ApplyTemporaryModifier(string statType, float modifier, float duration);
