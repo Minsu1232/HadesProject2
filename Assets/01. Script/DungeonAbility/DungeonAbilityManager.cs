@@ -11,7 +11,8 @@ public class DungeonAbilityManager : MonoBehaviour
     // 현재 보유 중인 능력들
     private List<DungeonAbility> currentAbilities = new List<DungeonAbility>();
 
-  
+    public event System.Action OnAbilityAcquired; // 능력 선택 호출 이벤트
+    public event System.Action OnAbilityLevelUp; // 능력 중복 선택 레벨업 호출 이벤트
     private float[] rarityWeights = { 0.01f, 0.3f, 0.15f, 0.04f, 0.5f }; // 희귀도별 가중치
 
     [SerializeField]
@@ -181,14 +182,20 @@ public class DungeonAbilityManager : MonoBehaviour
         if (existingAbility != null)
         {
             // 레벨업
-            Debug.Log("왜 레벨 올라");
+            
             existingAbility.OnLevelUp(playerClass);
+
+            // 이벤트 발생
+            OnAbilityLevelUp?.Invoke();
         }
         else
         {
             // 새 능력 추가
             selectedAbility.OnAcquire(playerClass);
             currentAbilities.Add(selectedAbility);
+
+            // 이벤트 발생
+            OnAbilityAcquired?.Invoke();
         }
     }
 

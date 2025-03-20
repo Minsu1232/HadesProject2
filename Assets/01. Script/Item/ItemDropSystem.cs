@@ -109,37 +109,58 @@ public class ItemDropSystem : MonoBehaviour
 
         foreach (var entry in dropTable)
         {
-            // 각 아이템별 드롭 확률 계산
-            float dropChance = entry.dropChance / 100f;
+            // 기본 드롭 확률 계산
+            float baseDropChance = entry.dropChance / 100f;
+            float finalDropChance = baseDropChance;
 
-            // 확률 체크
-            if (Random.value <= dropChance)
+            // 아이템 찾기 보너스 적용
+            float itemFindBonus = 0f;
+            if (GlobalItemFindManager.Instance != null)
             {
-                // 아이템 획득
-                Item itemToDrop = ItemDataManager.Instance.GetItem(entry.itemId);
-                if (itemToDrop != null)
-                {
-                    // 희귀도 보정 적용
-                    float rateMultiplier = GetRarityDropRateMultiplier(itemToDrop.rarity);
+                itemFindBonus = GlobalItemFindManager.Instance.GetGlobalItemFindBonus();
+                finalDropChance *= (1f + itemFindBonus);
+            }
 
-                    // 보정된 확률로 다시 체크
-                    if (Random.value <= dropChance * rateMultiplier)
-                    {
-                        // 랜덤 수량 결정
-                        int quantity = Random.Range(entry.minQuantity, entry.maxQuantity + 1);
+            // 아이템 정보 가져오기
+            Item itemToDrop = ItemDataManager.Instance.GetItem(entry.itemId);
+            if (itemToDrop == null) continue;
 
-                        // 약간의 위치 오프셋 적용
-                        Vector3 offset = new Vector3(
-                            Random.Range(-dropRadius, dropRadius),
-                            0.1f,
-                            Random.Range(-dropRadius, dropRadius)
-                        );
-                        Debug.Log(itemToDrop.itemID + "드랍");
+            // 희귀도 보정 적용
+            float rateMultiplier = GetRarityDropRateMultiplier(itemToDrop.rarity);
+            float finalAdjustedChance = finalDropChance * rateMultiplier;
 
-                        // 아이템 드롭 (보스 아이템 여부 적용)
-                        SpawnItemDrop(itemToDrop, quantity, basePosition + offset, isBoss && itemToDrop.rarity >= Item.ItemRarity.Rare);
-                    }
-                }
+            // 디버그 로그로 드롭 확률 표시
+            Debug.Log($"[아이템 드롭] {itemToDrop.itemName} - " +
+                      $"기본 확률: {baseDropChance * 100:F2}%, " +
+                      $"찾기 보너스: +{itemFindBonus * 100:F2}%, " +
+                      $"희귀도 보정: x{rateMultiplier:F2}, " +
+                      $"최종 확률: {finalAdjustedChance * 100:F2}%");
+
+            // 실제 확률 계산
+            float randomValue = Random.value;
+            bool willDrop = randomValue <= finalAdjustedChance;
+
+            Debug.Log($"[아이템 드롭 판정] {itemToDrop.itemName} - " +
+                      $"랜덤 값: {randomValue:F4}, " +
+                      $"판정 결과: {(willDrop ? "드롭됨" : "드롭 실패")}");
+
+            // 확률에 따라 아이템 드롭
+            if (willDrop)
+            {
+                // 랜덤 수량 결정
+                int quantity = Random.Range(entry.minQuantity, entry.maxQuantity + 1);
+
+                // 약간의 위치 오프셋 적용
+                Vector3 offset = new Vector3(
+                    Random.Range(-dropRadius, dropRadius),
+                    0.1f,
+                    Random.Range(-dropRadius, dropRadius)
+                );
+
+                Debug.Log($"[아이템 드롭 성공] {itemToDrop.itemName} x{quantity}개 드롭!");
+
+                // 아이템 드롭 (보스 아이템 여부 적용)
+                SpawnItemDrop(itemToDrop, quantity, basePosition + offset, isBoss && itemToDrop.rarity >= Item.ItemRarity.Rare);
             }
         }
     }

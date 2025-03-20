@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using static AttackData;
 
-public class MeleeDamageDealer : MonoBehaviour, IDamageDealer, IWeaponDamageDealer
+public class MeleeDamageDealer : MonoBehaviour, IDamageDealer
 {
     private WeaponManager weapon;
     private int comboStep;
@@ -81,7 +81,7 @@ public class MeleeDamageDealer : MonoBehaviour, IDamageDealer, IWeaponDamageDeal
         float damageMultiplier = hitBox.GetDamageMultiplier(transform.position);
         int finalDamage = Mathf.RoundToInt(GetDamage() * damageMultiplier);
         // 최종 데미지가 계산된 후 이벤트 발동
-        OnFinalDamageCalculated?.Invoke(finalDamage, monster);
+        
         // 보스와 일반 몬스터 모두 처리
         if (monster is IDamageable damageable)
         {
@@ -91,7 +91,7 @@ public class MeleeDamageDealer : MonoBehaviour, IDamageDealer, IWeaponDamageDeal
             }
 
             damageable.TakeDamage(finalDamage);
-
+            OnFinalDamageCalculated?.Invoke(finalDamage, monster);
             string monsterType = monster is BossStatus ? "보스" : "일반몹";
             Debug.Log($"{monsterType} : {monster.GetMonsterClass().CurrentHealth}");
 

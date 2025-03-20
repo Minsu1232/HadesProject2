@@ -6,13 +6,13 @@ public class LifeStealComponent : MonoBehaviour
 {
     private float lifeStealAmount = 0f;
     private PlayerClass playerClass;
-    private IWeaponDamageDealer damageDealer;
+    private IDamageDealer damageDealer;
 
     private void Awake()
     {
         playerClass = GameInitializer.Instance.GetPlayerClass();
         // 자식 오브젝트 중에서 IWeaponDamageDealer 찾기
-        damageDealer = GetComponentInChildren<IWeaponDamageDealer>();
+        damageDealer = GetComponentInChildren<IDamageDealer>();
 
         if (playerClass == null || damageDealer == null)
         {

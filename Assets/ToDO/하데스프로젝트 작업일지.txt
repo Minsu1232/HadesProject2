@@ -587,7 +587,7 @@ Commit = Item/framework
 
 						PassiveAbility(패시브류),PassiveAbilityLoader(CSV로드),PassiveAbilityFactory(데이터생성)
 
-						CounterAttack(반사),ItemFind(아이템등장확률),LifeSteal(흡혈),RemoveDamageReduction(주는데미지증가) 구현
+						CounterAttack(반사),ItemFind(아이템등장확률),LifeSteal(흡혈),RemoveDamageReduction(받는피해감소) 구현
 
 						AbilityCardUI(종류별 카드),AbilitySelectionPanel(로그라이크 요소 패널), 카드프리팹 제작 DungeonManager에 연동 완료 (몬스터 전부 처치시 등장)
 
@@ -595,7 +595,22 @@ Commit = Item/framework
 
 						반사는 적용 X(이벤트기반), 아이템등장확률은 확인예정, 흡혈은 공격성공시 판정이 아닌 공격시라 수정해야함,
 
-						주는 데미지 증가 적용 O
+						받는피해감소 O
+
+
+3/20 = 패시브류 효과적용 완료	CounterAttack =>	PlayerClass에서 콜라이더 판정 피격당할때 이벤트를 호출(MonsterAttackCollider에서 발생)하여 Status컴포넌트를 찾아 해당
+													몬스터의 정보를 얻어와 데미지를 받아와 그걸 반사함.
+
+								ItemFind =>		GlobalItemFindManager를 생성 => 아이템테이블에서의 값을 전해주기 위한 중간다리 역할
+												패시브 획득 => 글로벌파인트매니저에서 등록 => ItemDropSystem에서 해당값을 얻어 최종 확률 계산
+
+								LifeSteal =>	IDamageDealer에  Action<int, ICreatureStatus> OnFinalDamageCalculated이벤트 추가 무기로 데미지를 줄때 이벤트 발생
+												=> LifeSteal컴포넌트가 플레이어에 붙을때 무기의 IDamageDealer컴포넌트를 찾아 겟컴포넌트해줌 => 생성한 이벤트를 체력회복매서드에 연결해줌
+
+						Ability패널을 제작하여 선택시 보유중인 능력을 플레이어에게 시각적 제공 던전어빌리티매니저에서 이벤트를 통해 호출
+
+						Commit = DungeonManager/Passive/AbilityPanel
+												
 
 
 					
