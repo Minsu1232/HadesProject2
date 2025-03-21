@@ -113,13 +113,7 @@ public class MonsterStatus : MonoBehaviour, IDamageable, ICreatureStatus
     {
         if (isDie) return;
         //리지드바디의 속도와 회전 속도를 0으로 초기화
-        Rigidbody rb = GetComponent<Rigidbody>();
-        if (rb != null)
-        {
-            // 속도 초기화
-            rb.velocity = Vector3.zero;
-            rb.angularVelocity = Vector3.zero;
-        }
+   
         Debug.Log($"{monsterClass.CurrentArmor}");
         monsterClass.TakeDamage(damage);
         Debug.Log($"{monsterClass.CurrentArmor}");
@@ -138,7 +132,13 @@ public class MonsterStatus : MonoBehaviour, IDamageable, ICreatureStatus
         {
             CreatureAI.OnDamaged(damage);
         }
- 
+        Rigidbody rb = GetComponent<Rigidbody>();
+        if (rb != null)
+        {
+            // 속도 초기화
+            rb.velocity = Vector3.zero;
+            rb.angularVelocity = Vector3.zero;
+        }
         if (monsterClass.CurrentHealth <= 0 && gameObject != null)
         {
             Die();

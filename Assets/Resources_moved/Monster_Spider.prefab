@@ -1811,8 +1811,8 @@ GameObject:
   - component: {fileID: 5411588482951235072}
   - component: {fileID: 3958155139467074105}
   - component: {fileID: 1853139621167967799}
-  - component: {fileID: 8684329004863450246}
   - component: {fileID: 4361914683621853054}
+  - component: {fileID: 2514112347399297827}
   m_Layer: 7
   m_Name: Monster_Spider
   m_TagString: Monster
@@ -1870,7 +1870,23 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1fed11478b6146c4687492950b14dc61, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!54 &8684329004863450246
+--- !u!114 &4361914683621853054
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8276800062681565950}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2d351407aeca44643a80e3bb0d6bf17f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  worldSpaceCanvas: {fileID: 2336974670711565180}
+  healthBar: {fileID: 1779507159069217058}
+  armorBar: {fileID: 2002363504544389693}
+  damageTextPrefab: {fileID: 8342705067347850425, guid: de4cd1e0557f17146b9e848d367d117a, type: 3}
+--- !u!54 &2514112347399297827
 Rigidbody:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -1896,23 +1912,7 @@ Rigidbody:
   m_IsKinematic: 0
   m_Interpolate: 0
   m_Constraints: 84
-  m_CollisionDetection: 0
---- !u!114 &4361914683621853054
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8276800062681565950}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2d351407aeca44643a80e3bb0d6bf17f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  worldSpaceCanvas: {fileID: 2336974670711565180}
-  healthBar: {fileID: 1779507159069217058}
-  armorBar: {fileID: 2002363504544389693}
-  damageTextPrefab: {fileID: 8342705067347850425, guid: de4cd1e0557f17146b9e848d367d117a, type: 3}
+  m_CollisionDetection: 1
 --- !u!1 &8737521057812998296
 GameObject:
   m_ObjectHideFlags: 0

@@ -10,8 +10,11 @@ public class BasicMovementStrategy : IMovementStrategy
     private Vector3 randomDirection;
 
     public void Move(Transform transform, Transform target, IMonsterClass monsterData)
-    {
+    {   
+
         float distanceToTarget = Vector3.Distance(transform.position, target.position);
+ 
+
         if (distanceToTarget <= monsterData.CurrentChaseRange)
         {
             if (!isChasing)
@@ -22,6 +25,7 @@ public class BasicMovementStrategy : IMovementStrategy
         }
         else
         {
+            
             if (isChasing)
             {
                 StopMoving();
@@ -45,7 +49,8 @@ public class BasicMovementStrategy : IMovementStrategy
     private void ChaseMove(Transform transform, Transform target, IMonsterClass monsterData)
     {
         Vector3 direction = (target.position - transform.position).normalized;
-
+        Debug.Log("추적이동");
+        
         // 회전
         Quaternion targetRotation = Quaternion.LookRotation(direction);
         transform.rotation = Quaternion.Lerp(transform.rotation, targetRotation, Time.deltaTime * 5f);
@@ -116,6 +121,7 @@ public class BasicMovementStrategy : IMovementStrategy
 
     private void RandomMove(Transform transform, IMonsterClass monsterData)
     {
+        Debug.Log("랜덤이동");
         if (currentMoveTime > 0)
         {
             // 회전

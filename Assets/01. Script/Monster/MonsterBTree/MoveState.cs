@@ -15,8 +15,7 @@ public class MoveState : MonsterBaseState
     }
 
     public override void Enter()
-    {
-        
+    {        
         animator.SetTrigger("Move"); // 진입할 때만 트리거 설정
     }
 
@@ -24,6 +23,7 @@ public class MoveState : MonsterBaseState
     {
         // 이동 처리만 담당하고, 상태 전환은 BehaviorTree에 맡김
         currentStrategy.Move(transform, player, monsterClass);
+      
     }
 
     public override void Exit()

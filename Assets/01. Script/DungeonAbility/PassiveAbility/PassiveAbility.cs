@@ -1,6 +1,8 @@
 // PassiveAbility 완성본
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.AddressableAssets;
+using UnityEngine.ResourceManagement.AsyncOperations;
 
 [System.Serializable]
 public class PassiveAbility : DungeonAbility
@@ -47,6 +49,29 @@ public class PassiveAbility : DungeonAbility
         // 능력 초기화
         ability.Initialize(type, baseValue, name, description, rarity);
         ability.id = id; // ID 값 덮어쓰기 (유니크한 ID 사용)
+                         // 아이콘 경로가 있다면 애드레서블로 로드
+        if (csvData.ContainsKey("IconPath") && !string.IsNullOrEmpty(csvData["IconPath"]))
+        {
+            string iconAddress = csvData["IconPath"];
+            Debug.Log(iconAddress);
+            // 애드레서블 비동기 로드
+            Addressables.LoadAssetAsync<Sprite>(iconAddress).Completed += handle =>
+            {
+                if (handle.Status == AsyncOperationStatus.Succeeded)
+                {
+                    ability.icon = handle.Result;
+                    Debug.Log($"아이콘 로드 성공: {iconAddress}");
+                }
+                else
+                {
+                    Debug.LogWarning($"아이콘을 로드할 수 없습니다: {iconAddress}");
+                }
+            };
+        }
+        else
+        {
+            Debug.LogWarning($"아이콘을 로드할 수 없습니다");
+        }
 
         return ability;
     }

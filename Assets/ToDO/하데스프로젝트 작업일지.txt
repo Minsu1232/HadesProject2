@@ -610,6 +610,14 @@ Commit = Item/framework
 						Ability패널을 제작하여 선택시 보유중인 능력을 플레이어에게 시각적 제공 던전어빌리티매니저에서 이벤트를 통해 호출
 
 						Commit = DungeonManager/Passive/AbilityPanel
+
+3/20 = 어택류 Ability제작 ArmorCrushComponent(방깍),ChainStrikeComponent(연속공격),ComboEnhancementComponent,GaugeBoostComponent,WeakPreyComponent
+							
+							ArmorCrushComponent,WeakPreyComponent,ChainStrikeComponent 기존 이벤트(OnFinalDamageCalculated)를 이용해 연동
+
+							ComboEnhancementComponent => 기존 WeaponBase에 comboDamageMultiplier(콤보의 데미지 계수),SetComboDamageMultiplier를 추가해서 제작
+
+							GaugeBoostComponent =>기존 WeaponBase에 SetGaugeChargeMultiplier,gageChargeMultiplier(게이지 획득 계수)제작
 												
 
 

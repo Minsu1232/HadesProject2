@@ -667,8 +667,8 @@ GameObject:
   - component: {fileID: 7435603784182322201}
   - component: {fileID: 5377804114737902452}
   - component: {fileID: 5162169000348315039}
-  - component: {fileID: -3799540230228966089}
   - component: {fileID: 932920876197638158}
+  - component: {fileID: 5033184145659526898}
   m_Layer: 7
   m_Name: Monster_Bat
   m_TagString: Monster
@@ -726,7 +726,23 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1fed11478b6146c4687492950b14dc61, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!54 &-3799540230228966089
+--- !u!114 &932920876197638158
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3575780994127212936}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2d351407aeca44643a80e3bb0d6bf17f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  worldSpaceCanvas: {fileID: 4457126424972968756}
+  healthBar: {fileID: 4487088314548209491}
+  armorBar: {fileID: 6862170151170275353}
+  damageTextPrefab: {fileID: 8342705067347850425, guid: de4cd1e0557f17146b9e848d367d117a, type: 3}
+--- !u!54 &5033184145659526898
 Rigidbody:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -752,23 +768,7 @@ Rigidbody:
   m_IsKinematic: 0
   m_Interpolate: 0
   m_Constraints: 84
-  m_CollisionDetection: 0
---- !u!114 &932920876197638158
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3575780994127212936}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2d351407aeca44643a80e3bb0d6bf17f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  worldSpaceCanvas: {fileID: 4457126424972968756}
-  healthBar: {fileID: 4487088314548209491}
-  armorBar: {fileID: 6862170151170275353}
-  damageTextPrefab: {fileID: 8342705067347850425, guid: de4cd1e0557f17146b9e848d367d117a, type: 3}
+  m_CollisionDetection: 1
 --- !u!1 &4229964476476442274
 GameObject:
   m_ObjectHideFlags: 0
