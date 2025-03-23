@@ -5,19 +5,20 @@ using DG.Tweening;
 using UnityEngine;
 
 public class PlayerMovement : MonoBehaviour
-{/// <summary>
-/// 물리기반을 이용(다른 물체와의 자연스러운 충돌과 이동을 위해)
-/// </summary>
+{
+    /// <summary>
+    /// 물리기반을 이용(다른 물체와의 자연스러운 충돌과 이동을 위해)
+    /// </summary>
     private PlayerClass playerClass;
     private Camera mainCamera;
     private Animator animator;
     private float smoothTime = 0.1f;
     private Vector2 currentAnimatorParameters;
-    protected bool isDashing = false;
+    // isDashing 제거하고 대시 컴포넌트 참조 추가
+    private PlayerDashComponent dashComponent;
     public Rigidbody rb;
 
-    [SerializeField] private float dashForce;
-    [SerializeField] private float dashDuration = 0.2f;
+    // 대시 관련 변수 제거
     [SerializeField] private float movementSmoothing = 0.1f; // 이동 스무딩 값
 
     private Vector3 moveDirection;
@@ -26,8 +27,14 @@ public class PlayerMovement : MonoBehaviour
 
     void Awake()
     {
-    
+        // 대시 컴포넌트 참조 설정
+        dashComponent = GetComponent<PlayerDashComponent>();
+        if (dashComponent == null)
+        {
+            dashComponent = gameObject.AddComponent<PlayerDashComponent>();
+        }
     }
+
     private void OnEnable()
     {
         // 씬 변경 시 카메라 참조 업데이트
@@ -37,6 +44,7 @@ public class PlayerMovement : MonoBehaviour
             Debug.LogError("카메라를 찾을 수 없습니다.");
         }
     }
+
     private void Start()
     {
         rb = GetComponent<Rigidbody>();
@@ -52,8 +60,6 @@ public class PlayerMovement : MonoBehaviour
         rb.constraints = RigidbodyConstraints.FreezeRotationX | RigidbodyConstraints.FreezeRotationY | RigidbodyConstraints.FreezeRotationZ;
         rb.interpolation = RigidbodyInterpolation.Interpolate;
         rb.collisionDetectionMode = CollisionDetectionMode.Continuous;
-
-        
     }
 
     private void Update()
@@ -77,22 +83,20 @@ public class PlayerMovement : MonoBehaviour
         SetAnimatorParameters(moveDirection);
         RotateTowardsMouse();
 
-        if (Input.GetKeyDown(KeyCode.Space))
-        {
-            StartCoroutine(DashCoroutine());
-        }
+        // 대시 처리는 PlayerDashComponent에서 관리하므로 제거
     }
-
 
     private void FixedUpdate()
     {
         if (playerClass == null) return;
 
-        if (!isDashing)
+        // 대시 중이 아닐 때만 이동 처리
+        if (dashComponent == null || !dashComponent.IsDashing())
         {
             SmoothMove(moveDirection);
         }
     }
+
     // PlayerMovement 클래스에 추가
     public void TeleportTo(Vector3 position)
     {
@@ -122,7 +126,9 @@ public class PlayerMovement : MonoBehaviour
 
         Debug.Log($"플레이어 텔레포트 완료: {position}");
     }
-    private Vector3 GetCameraRelativeMovement()
+
+    // 카메라 기준 이동 방향 얻기 - public으로 변경하여 DashComponent에서 참조할 수 있게 함
+    public Vector3 GetCameraRelativeMovement()
     {
         // 안전 체크
         if (mainCamera == null)
@@ -147,8 +153,8 @@ public class PlayerMovement : MonoBehaviour
     {
         if (playerClass == null || rb.isKinematic) return;
 
-            // 목표 속도 계산
-            Vector3 targetVelocity = direction * playerClass.PlayerStats.Speed;
+        // 목표 속도 계산
+        Vector3 targetVelocity = direction * playerClass.PlayerStats.Speed;
         targetVelocity.y = rb.velocity.y; // 수직 속도는 유지
 
         // 현재 속도에서 목표 속도로 부드럽게 전환
@@ -172,7 +178,6 @@ public class PlayerMovement : MonoBehaviour
                 rb.velocity = new Vector3(0, rb.velocity.y, 0);
             }
         }
-
     }
 
     private void SetAnimatorParameters(Vector3 moveDirection)
@@ -203,21 +208,5 @@ public class PlayerMovement : MonoBehaviour
         }
     }
 
-    private IEnumerator DashCoroutine()
-    {
-        if (isDashing) yield break;
-        
-        isDashing = true;
-        float originalDrag = rb.drag;
-        rb.drag = 0; // 대시 중에는 드래그를 0으로 설정
-
-        Vector3 dashDirection = moveDirection.normalized;
-        rb.AddForce(dashDirection * dashForce, ForceMode.Impulse);
-        
-        yield return new WaitForSeconds(dashDuration);
-        
-        rb.drag = originalDrag; // 원래 드래그 값으로 복구
-        rb.velocity = rb.velocity * 0.3f; // 대시 후 속도 감소
-        isDashing = false;
-    }
+    // DashCoroutine 메서드 제거 (PlayerDashComponent로 이동)
 }

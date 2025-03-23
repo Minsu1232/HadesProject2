@@ -63,6 +63,12 @@ public class DungeonAbilityManager : MonoBehaviour
             loaderObj.AddComponent<AttackAbilityLoader>();
             Debug.Log("AttackAbilityLoader 생성됨");
         }
+        if (MovementAbilityLoader.Instance == null)
+        {
+            GameObject loaderObj = new GameObject("MovementAbilityLoader");
+            loaderObj.AddComponent<MovementAbilityLoader>();
+            Debug.Log("MovementAbilityLoader 생성됨");
+        }
 
         // 필요한 다른 로더 초기화...
     }
@@ -150,7 +156,9 @@ public class DungeonAbilityManager : MonoBehaviour
         // 공격 능력 추가
         var attackAbilities = AttackAbilityFactory.CreateAllAttackAbilities();
         allAbilities.AddRange(attackAbilities.Cast<DungeonAbility>());
-
+        // 이동 능력 추가
+        var movementAbilities = MovementAbilityFactory.CreateAllMovementAbilities();
+        allAbilities.AddRange(movementAbilities.Cast<DungeonAbility>());
         // 다른 타입의 능력 추가...
 
         return allAbilities;
@@ -181,6 +189,21 @@ public class DungeonAbilityManager : MonoBehaviour
             upgraded.Initialize(
                 ((AttackAbility)attackTemplate).attackType,
                 ((AttackAbility)attackTemplate).effectValue,
+                templateAbility.name,
+                $"{templateAbility.description} (현재 Lv.{existingAbility.level})",
+                templateAbility.rarity
+            );
+            upgraded.id = templateAbility.id;
+            upgraded.level = existingAbility.level;
+            return upgraded;
+        }
+        // 이동 능력인 경우
+        else if (templateAbility is MovementAbility movementTemplate)
+        {
+            MovementAbility upgraded = new MovementAbility();
+            upgraded.Initialize(
+                ((MovementAbility)movementTemplate).movementType,
+                ((MovementAbility)movementTemplate).effectValue,
                 templateAbility.name,
                 $"{templateAbility.description} (현재 Lv.{existingAbility.level})",
                 templateAbility.rarity

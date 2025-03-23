@@ -2351,26 +2351,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _isContentVisible: 1
---- !u!114 &201261460
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 49490255aaf1a2641a4c5771511bd253, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _halfSpace: 1
-  _alignAxis: 0
-  _alignmentAxis: 1
-  _invertAlignmentAxis: 0
-  _projectAsUnit: 0
-  _embedInSurface: 1
-  _inFrontOffset: 0
-  _behindOffset: 0
 --- !u!1 &201727849 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 4103686498995478640, guid: 7198502739f6cae4baaae18513c40df2, type: 3}
@@ -5721,7 +5701,7 @@ MonoBehaviour:
   _extensionPlane:
     _refOBBFace: 4
   _heightPatternDirection: 0
-  _modularSnapSession: {fileID: 2142503273}
+  _modularSnapSession: {fileID: 916659913}
   _mirrorGizmo: {fileID: 1118604797}
 --- !u!114 &438852328
 MonoBehaviour:
@@ -5989,63 +5969,6 @@ MeshCollider:
   m_Convex: 1
   m_CookingOptions: 30
   m_Mesh: {fileID: 5304787786472004496, guid: 03dd95a962b8c8644866fad2fba346ca, type: 3}
---- !u!1 &457753107
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 457753109}
-  - component: {fileID: 457753108}
-  - component: {fileID: 457753110}
-  m_Layer: 0
-  m_Name: GameObject (1)
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!114 &457753108
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 457753107}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d517e2f547a754a489d7bc2b5b207831, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!4 &457753109
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 457753107}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 1670, y: 167.20001, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &457753110
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 457753107}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: be656539b5a3a194a8ac7893079f9aa6, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1001 &457860831
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -8643,6 +8566,21 @@ PrefabInstance:
       insertIndex: -1
       addedObject: {fileID: 12923319}
   m_SourcePrefab: {fileID: 100100000, guid: 383d041b1bd080240af749226964eae8, type: 3}
+--- !u!114 &638936227
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 38a40404d9721ed4f984030fbce11d53, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _snapMode: 0
+  _snapHalfSpace: 0
+  _projectionSettings: {fileID: 0}
 --- !u!1 &639023511 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 7390648393522352529, guid: 94d43cd3785471340aa315bbbd100eab, type: 3}
@@ -13716,6 +13654,21 @@ MeshCollider:
   m_Convex: 1
   m_CookingOptions: 30
   m_Mesh: {fileID: -6727460243939354053, guid: 03dd95a962b8c8644866fad2fba346ca, type: 3}
+--- !u!114 &916659913
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 38a40404d9721ed4f984030fbce11d53, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _snapMode: 0
+  _snapHalfSpace: 0
+  _projectionSettings: {fileID: 0}
 --- !u!1001 &920040407
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -16746,10 +16699,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 422216220227662352, guid: 8c4d273ccf351e74a8376ac12acc2ff8, type: 3}
-      propertyPath: m_ApplyRootMotion
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 1190189760348602278, guid: 8c4d273ccf351e74a8376ac12acc2ff8, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -16790,29 +16739,13 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 1347347992227021881, guid: 8c4d273ccf351e74a8376ac12acc2ff8, type: 3}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
+    - target: {fileID: 5132769150286342164, guid: 8c4d273ccf351e74a8376ac12acc2ff8, type: 3}
+      propertyPath: flameWall
+      value: 
+      objectReference: {fileID: 8088238897108349300, guid: 2678a8ffef5a1c94fb2c40322c8ecc41, type: 3}
     - target: {fileID: 5388241051335930539, guid: 8c4d273ccf351e74a8376ac12acc2ff8, type: 3}
       propertyPath: m_Name
       value: Juingong
-      objectReference: {fileID: 0}
-    - target: {fileID: 5388241051335930539, guid: 8c4d273ccf351e74a8376ac12acc2ff8, type: 3}
-      propertyPath: m_TagString
-      value: PlayerObj
-      objectReference: {fileID: 0}
-    - target: {fileID: 8725537167669334154, guid: 8c4d273ccf351e74a8376ac12acc2ff8, type: 3}
-      propertyPath: m_UseGravity
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 8725537167669334154, guid: 8c4d273ccf351e74a8376ac12acc2ff8, type: 3}
-      propertyPath: m_Constraints
-      value: 112
-      objectReference: {fileID: 0}
-    - target: {fileID: 8725537167669334154, guid: 8c4d273ccf351e74a8376ac12acc2ff8, type: 3}
-      propertyPath: m_IsKinematic
-      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -17486,21 +17419,6 @@ MeshCollider:
   m_Convex: 1
   m_CookingOptions: 30
   m_Mesh: {fileID: 7163544684638238907, guid: 03dd95a962b8c8644866fad2fba346ca, type: 3}
---- !u!114 &1214084269
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 38a40404d9721ed4f984030fbce11d53, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _snapMode: 0
-  _snapHalfSpace: 0
-  _projectionSettings: {fileID: 0}
 --- !u!114 &1215072987 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 2005956078727709032, guid: 365ea86209ba7514fb124bfa1838e392, type: 3}
@@ -17565,6 +17483,26 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 15.366021, y: 2.6690474, z: 1}
   m_Center: {x: 0, y: -0.15432018, z: 0}
+--- !u!114 &1217536671
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 49490255aaf1a2641a4c5771511bd253, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _halfSpace: 1
+  _alignAxis: 0
+  _alignmentAxis: 1
+  _invertAlignmentAxis: 0
+  _projectAsUnit: 0
+  _embedInSurface: 1
+  _inFrontOffset: 0
+  _behindOffset: 0
 --- !u!1 &1219592623 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 5754281076389560133, guid: 8a160d698dae60e4facf6e79e7ce6ca5, type: 3}
@@ -21461,6 +21399,7 @@ GameObject:
   - component: {fileID: 1465207498}
   - component: {fileID: 1465207502}
   - component: {fileID: 1465207503}
+  - component: {fileID: 1465207504}
   - component: {fileID: 1465207501}
   m_Layer: 0
   m_Name: DungeonDataManager
@@ -21557,7 +21496,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d89112c0141261448b60d19d49c12db2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  abilitiesPerSelection: 12
+  abilitiesPerSelection: 65
 --- !u!114 &1465207502
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -21580,6 +21519,18 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: d729c37ebbf0b5b478cac083049700cb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &1465207504
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1465207493}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 465f98f364c6f4448b084ff0c09398e5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1 &1468028544 stripped
@@ -23009,7 +22960,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c8725edae6a1fd4408036dedaf0199f0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _projectionSettings: {fileID: 201261460}
+  _projectionSettings: {fileID: 1217536671}
   _dragAndDropGuide: {fileID: 0}
 --- !u!114 &1644050454
 MonoBehaviour:
@@ -26135,7 +26086,7 @@ MonoBehaviour:
   _spawnGuide: {fileID: 1454016087}
   _extensionPlane:
     _refOBBFace: 4
-  _modularSnapSession: {fileID: 1214084269}
+  _modularSnapSession: {fileID: 638936227}
   _mirrorGizmo: {fileID: 1262915059}
 --- !u!1 &1839720524 stripped
 GameObject:
@@ -30182,21 +30133,6 @@ MeshCollider:
   m_Convex: 1
   m_CookingOptions: 30
   m_Mesh: {fileID: -1537373508570212854, guid: 03dd95a962b8c8644866fad2fba346ca, type: 3}
---- !u!114 &2142503273
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 38a40404d9721ed4f984030fbce11d53, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _snapMode: 0
-  _snapHalfSpace: 0
-  _projectionSettings: {fileID: 0}
 --- !u!1001 &1957578570119807302
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -30549,4 +30485,3 @@ SceneRoots:
   - {fileID: 145618442}
   - {fileID: 3658165601136072885}
   - {fileID: 2122317878}
-  - {fileID: 457753109}

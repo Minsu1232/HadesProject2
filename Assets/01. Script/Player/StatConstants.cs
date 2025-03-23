@@ -18,4 +18,15 @@ public static class StatConstants
     public const float CRITICAL_CHANCE_PER_UPGRADE = 0.05f;
     public const float SPEED_PER_UPGRADE = 0.1f;
     public const float DAMAGE_REDUCE_PER_UPGRADE = 0.05f;
+
+    // 대시 관련 상수
+    public const float BASE_DASH_FORCE = 20f;      // 기본 대시 힘
+    public const float BASE_DASH_DURATION = 0.2f;  // 기본 대시 지속시간
+    public const float BASE_DASH_COOLDOWN = 1.5f;  // 기본 대시 쿨타임
+
+    // 대시 제한 상수
+    public const float MIN_DASH_COOLDOWN = 0.2f;   // 최소 대시 쿨타임
+    public const float MAX_DASH_FORCE = 40f;       // 최대 대시 힘
+    public const float MAX_DASH_DURATION = 0.5f;   // 최대 대시 지속시간
+
 }

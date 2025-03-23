@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1362524893226891365}
   - component: {fileID: 2341321938470522808}
-  m_Layer: 7
+  m_Layer: 14
   m_Name: Body
   m_TagString: Monster
   m_Icon: {fileID: 0}
@@ -129,7 +129,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1668799864764409898}
-  m_Layer: 7
+  m_Layer: 14
   m_Name: Wing04_L
   m_TagString: Monster
   m_Icon: {fileID: 0}
@@ -161,7 +161,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 66525762230754897}
-  m_Layer: 7
+  m_Layer: 14
   m_Name: Wing01_L
   m_TagString: Monster
   m_Icon: {fileID: 0}
@@ -193,7 +193,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2187220263078465160}
-  m_Layer: 7
+  m_Layer: 14
   m_Name: Eye01_R_RotatedCollider
   m_TagString: Monster
   m_Icon: {fileID: 0}
@@ -224,7 +224,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 492302490692077844}
-  m_Layer: 7
+  m_Layer: 14
   m_Name: Eye02_L
   m_TagString: Monster
   m_Icon: {fileID: 0}
@@ -256,7 +256,7 @@ GameObject:
   m_Component:
   - component: {fileID: 453779674337386286}
   - component: {fileID: 6878925607231511331}
-  m_Layer: 7
+  m_Layer: 14
   m_Name: Wing05_L
   m_TagString: Monster
   m_Icon: {fileID: 0}
@@ -310,7 +310,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6890516730068544193}
-  m_Layer: 7
+  m_Layer: 14
   m_Name: Ear03_R
   m_TagString: Monster
   m_Icon: {fileID: 0}
@@ -341,7 +341,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7505318551944268510}
-  m_Layer: 7
+  m_Layer: 14
   m_Name: Wing02_R
   m_TagString: Monster
   m_Icon: {fileID: 0}
@@ -373,7 +373,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8992460768235452520}
-  m_Layer: 7
+  m_Layer: 14
   m_Name: Crown
   m_TagString: Monster
   m_Icon: {fileID: 0}
@@ -404,7 +404,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8225900027980095479}
-  m_Layer: 7
+  m_Layer: 14
   m_Name: Eye02_R
   m_TagString: Monster
   m_Icon: {fileID: 0}
@@ -435,7 +435,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1363380960066741155}
-  m_Layer: 7
+  m_Layer: 14
   m_Name: Wing07_L
   m_TagString: Monster
   m_Icon: {fileID: 0}
@@ -467,7 +467,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4577825157744537417}
-  m_Layer: 7
+  m_Layer: 14
   m_Name: Wing01_R
   m_TagString: Monster
   m_Icon: {fileID: 0}
@@ -501,7 +501,7 @@ GameObject:
   - component: {fileID: 865683008986002712}
   - component: {fileID: 4248832072459105753}
   - component: {fileID: 6910361825266006246}
-  m_Layer: 7
+  m_Layer: 14
   m_Name: Wing03_L
   m_TagString: Monster
   m_Icon: {fileID: 0}
@@ -570,7 +570,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1078415575428248838}
-  m_Layer: 7
+  m_Layer: 14
   m_Name: Wing08_L
   m_TagString: Monster
   m_Icon: {fileID: 0}
@@ -601,7 +601,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 460186559372153291}
-  m_Layer: 7
+  m_Layer: 14
   m_Name: Ear02_L
   m_TagString: Monster
   m_Icon: {fileID: 0}
@@ -633,7 +633,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6006057009634047574}
-  m_Layer: 7
+  m_Layer: 14
   m_Name: Wing07_R
   m_TagString: Monster
   m_Icon: {fileID: 0}
@@ -669,7 +669,7 @@ GameObject:
   - component: {fileID: 5162169000348315039}
   - component: {fileID: 932920876197638158}
   - component: {fileID: 5033184145659526898}
-  m_Layer: 7
+  m_Layer: 14
   m_Name: Monster_Bat
   m_TagString: Monster
   m_Icon: {fileID: 0}
@@ -778,7 +778,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2664047177589008309}
-  m_Layer: 7
+  m_Layer: 14
   m_Name: Wing06_R
   m_TagString: Monster
   m_Icon: {fileID: 0}
@@ -809,7 +809,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 45562669356030653}
-  m_Layer: 7
+  m_Layer: 14
   m_Name: Eye01_L
   m_TagString: Monster
   m_Icon: {fileID: 0}
@@ -842,7 +842,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6642477839143895076}
-  m_Layer: 7
+  m_Layer: 14
   m_Name: Wing02_L
   m_TagString: Monster
   m_Icon: {fileID: 0}
@@ -875,7 +875,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8061296784998297872}
   - component: {fileID: 2875125331862073053}
-  m_Layer: 7
+  m_Layer: 14
   m_Name: Wing05_R
   m_TagString: Monster
   m_Icon: {fileID: 0}
@@ -929,7 +929,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 9114502192557139221}
-  m_Layer: 7
+  m_Layer: 14
   m_Name: UpperJaw02
   m_TagString: Monster
   m_Icon: {fileID: 0}
@@ -960,7 +960,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8907030282939442135}
-  m_Layer: 7
+  m_Layer: 14
   m_Name: Eye01_R
   m_TagString: Monster
   m_Icon: {fileID: 0}
@@ -993,7 +993,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1190435972731764432}
-  m_Layer: 7
+  m_Layer: 14
   m_Name: UpperJaw01
   m_TagString: Monster
   m_Icon: {fileID: 0}
@@ -1025,7 +1025,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 551229044113583959}
-  m_Layer: 7
+  m_Layer: 14
   m_Name: Ear02_R
   m_TagString: Monster
   m_Icon: {fileID: 0}
@@ -1059,7 +1059,7 @@ GameObject:
   - component: {fileID: 8147108783214284477}
   - component: {fileID: 5040261108923561155}
   - component: {fileID: 6862170151170275353}
-  m_Layer: 7
+  m_Layer: 14
   m_Name: Armor
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1132,7 +1132,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4536066640333936908}
-  m_Layer: 7
+  m_Layer: 14
   m_Name: Jaw02
   m_TagString: Monster
   m_Icon: {fileID: 0}
@@ -1165,7 +1165,7 @@ GameObject:
   - component: {fileID: 1534285683011553214}
   - component: {fileID: 5347555584892352794}
   - component: {fileID: 9182621609847947378}
-  m_Layer: 7
+  m_Layer: 14
   m_Name: Wing03_R
   m_TagString: Monster
   m_Icon: {fileID: 0}
@@ -1236,7 +1236,7 @@ GameObject:
   - component: {fileID: 584932265703150596}
   - component: {fileID: 6915403069717044947}
   - component: {fileID: 2378425607162244076}
-  m_Layer: 7
+  m_Layer: 14
   m_Name: HpBarBg
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1313,7 +1313,7 @@ GameObject:
   - component: {fileID: 224698468901368209}
   - component: {fileID: 7976019355494890242}
   - component: {fileID: 1079094801077602829}
-  m_Layer: 7
+  m_Layer: 14
   m_Name: Head
   m_TagString: Monster
   m_Icon: {fileID: 0}
@@ -1384,7 +1384,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5518761820256146080}
-  m_Layer: 7
+  m_Layer: 14
   m_Name: Wing08_R
   m_TagString: Monster
   m_Icon: {fileID: 0}
@@ -1417,7 +1417,7 @@ GameObject:
   - component: {fileID: 7073864678970199810}
   - component: {fileID: 65543630248530145}
   - component: {fileID: 6051629455379382923}
-  m_Layer: 7
+  m_Layer: 14
   m_Name: UpperBody
   m_TagString: Monster
   m_Icon: {fileID: 0}
@@ -1491,7 +1491,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6173870586855378530}
-  m_Layer: 7
+  m_Layer: 14
   m_Name: Wing06_L
   m_TagString: Monster
   m_Icon: {fileID: 0}
@@ -1524,7 +1524,7 @@ GameObject:
   - component: {fileID: 2247130953008801776}
   - component: {fileID: 4542766193718843151}
   - component: {fileID: 4487088314548209491}
-  m_Layer: 7
+  m_Layer: 14
   m_Name: Hp
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1597,7 +1597,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6766219654111875983}
-  m_Layer: 7
+  m_Layer: 14
   m_Name: Eye01_L_RotatedCollider
   m_TagString: Monster
   m_Icon: {fileID: 0}
@@ -1628,7 +1628,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8385873474072811880}
-  m_Layer: 7
+  m_Layer: 14
   m_Name: SkillSpawnPoint
   m_TagString: Monster
   m_Icon: {fileID: 0}
@@ -1659,7 +1659,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7537974115994417094}
-  m_Layer: 7
+  m_Layer: 14
   m_Name: Jaw01
   m_TagString: Monster
   m_Icon: {fileID: 0}
@@ -1693,7 +1693,7 @@ GameObject:
   - component: {fileID: 5106959330597092607}
   - component: {fileID: 2017192649133166555}
   - component: {fileID: 416387611552088895}
-  m_Layer: 7
+  m_Layer: 14
   m_Name: Ear01_L
   m_TagString: Monster
   m_Icon: {fileID: 0}
@@ -1761,7 +1761,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1076784848761554570}
-  m_Layer: 7
+  m_Layer: 14
   m_Name: Wing04_R
   m_TagString: Monster
   m_Icon: {fileID: 0}
@@ -1795,7 +1795,7 @@ GameObject:
   - component: {fileID: 4053490563044785635}
   - component: {fileID: 1868663848017448922}
   - component: {fileID: 5533094833438127766}
-  m_Layer: 7
+  m_Layer: 14
   m_Name: Ear01_R
   m_TagString: Monster
   m_Icon: {fileID: 0}
@@ -1866,7 +1866,7 @@ GameObject:
   - component: {fileID: 4457126424972968756}
   - component: {fileID: 7578311663827272964}
   - component: {fileID: 1551809195758604123}
-  m_Layer: 7
+  m_Layer: 14
   m_Name: Canvas (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1965,7 +1965,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8533237291059013141}
-  m_Layer: 7
+  m_Layer: 14
   m_Name: Ear03_L
   m_TagString: Monster
   m_Icon: {fileID: 0}

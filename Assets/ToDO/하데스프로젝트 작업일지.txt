@@ -611,13 +611,34 @@ Commit = Item/framework
 
 						Commit = DungeonManager/Passive/AbilityPanel
 
-3/20 = 어택류 Ability제작 ArmorCrushComponent(방깍),ChainStrikeComponent(연속공격),ComboEnhancementComponent,GaugeBoostComponent,WeakPreyComponent
+3/21 = 어택류 Ability제작 ArmorCrushComponent(방깍),ChainStrikeComponent(연속공격),ComboEnhancementComponent,GaugeBoostComponent,WeakPreyComponent
 							
 							ArmorCrushComponent,WeakPreyComponent,ChainStrikeComponent 기존 이벤트(OnFinalDamageCalculated)를 이용해 연동
 
 							ComboEnhancementComponent => 기존 WeaponBase에 comboDamageMultiplier(콤보의 데미지 계수),SetComboDamageMultiplier를 추가해서 제작
 
 							GaugeBoostComponent =>기존 WeaponBase에 SetGaugeChargeMultiplier,gageChargeMultiplier(게이지 획득 계수)제작
+
+3/22-3 = 기존 브런치 Merge 후 다시 나눔
+
+			Move Ability 제작		=> 무브 관련해 작업 하기 전 PlayerMovement컴포넌트에 있는 Dash기능을 PlayerDashComponent을 만들어 나눔 ConstantStats에 대쉬 관련 변수도 추가해줌
+
+					
+									=> DashImpact(몸통박치기),DashFlame(대쉬시 불장판), DashInvincible(대시시 0.n초 무적),대시거리증가
+									
+									4개 제작
+
+									DashFlame => [BaseAreaEffect를 상속받아 제작 (초당 데미지)]
+
+									제작 이후 DungeonAbility추상 클래스에 레벨관련 배율 변수 추가 및 CSV들 정리 및 각 Ability 및 희귀도에 따른 Icon 배정 => 밸런싱은 추후 생각해야 할듯 함
+
+									=> Icon에 Outline 지정 및 아웃라인을 따라 빛나는 Patrol 셰이더(shader) 제작
+
+									이후엔 SpecialAbility까지만 제작 후 로그라이크 종류는 끝
+									
+									현재 너무 많아서 원하는걸 뽑기 극악인듯 함 카드의 출몰을 잘 조율해야할듯함 (종류별로 하나 뜬다던지)
+
+
 												
 
 

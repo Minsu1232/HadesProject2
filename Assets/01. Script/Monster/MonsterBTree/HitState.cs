@@ -33,10 +33,10 @@ public class HitState : MonsterBaseState
 
         //공격 타입에 따라 카메라 히트 스톱을 다르게 처리
       
-            HitStopManager.TriggerHitStop(
-                monsterClass.CurrentCameraShakeDuration,
-                monsterClass.CurrentCameraShakeIntensity
-            );
+            //HitStopManager.TriggerHitStop(
+            //    monsterClass.CurrentCameraShakeDuration,
+            //    monsterClass.CurrentCameraShakeIntensity
+            //);
         
        
         // 아머가 없으면 피격 처리 및 애니메이션 재생

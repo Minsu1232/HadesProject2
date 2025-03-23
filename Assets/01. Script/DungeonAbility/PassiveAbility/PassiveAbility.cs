@@ -15,8 +15,7 @@ public class PassiveAbility : DungeonAbility
         ItemFind          // 아이템 찾기 확률 증가
     }
 
-    public PassiveType passiveType;
-    public float effectValue;            // 효과 수치
+    public PassiveType passiveType;       
 
     private float originalValue;         // 원래 효과값 (레벨업 시 사용)
 
@@ -45,6 +44,11 @@ public class PassiveAbility : DungeonAbility
         string description = csvData["Description"];
         Rarity rarity = (Rarity)int.Parse(csvData["Rarity"]);
         float baseValue = float.Parse(csvData["BaseValue"]);
+        // 레벨업 배율 파싱 추가
+        if (csvData.ContainsKey("LevelMultiplier") && !string.IsNullOrEmpty(csvData["LevelMultiplier"]))
+        {
+            ability.levelMultiplier = float.Parse(csvData["LevelMultiplier"]);
+        }
 
         // 능력 초기화
         ability.Initialize(type, baseValue, name, description, rarity);
@@ -92,7 +96,7 @@ public class PassiveAbility : DungeonAbility
 
         // 레벨업 및 효과 증가
         level++;
-        effectValue = originalValue * (1 + (level - 1) * 0.3f); // 레벨당 30% 증가
+        effectValue = originalValue * (1 + (level - 1) * levelMultiplier);
 
         // 새 효과 적용
         OnAcquire(player);

@@ -16,8 +16,7 @@ public class AttackAbility : DungeonAbility
         ArmorCrush         // 방어력 파괴 (적 방어력 감소)
     }
 
-    public AttackAbilityType attackType;
-    public float effectValue;            // 효과 수치
+    public AttackAbilityType attackType;         
     private float originalValue;         // 원래 효과값 (레벨업 시 사용)
 
     // 생성자로 초기화
@@ -45,6 +44,11 @@ public class AttackAbility : DungeonAbility
         string description = csvData["Description"];
         Rarity rarity = (Rarity)int.Parse(csvData["Rarity"]);
         float baseValue = float.Parse(csvData["BaseValue"]);
+        // 레벨업 배율 파싱 추가
+        if (csvData.ContainsKey("LevelMultiplier") && !string.IsNullOrEmpty(csvData["LevelMultiplier"]))
+        {
+            ability.levelMultiplier = float.Parse(csvData["LevelMultiplier"]);
+        }
 
         // 능력 초기화
         ability.Initialize(type, baseValue, name, description, rarity);
@@ -92,7 +96,7 @@ public class AttackAbility : DungeonAbility
 
         // 레벨업 및 효과 증가
         level++;
-        effectValue = originalValue * (1 + (level - 1) * 0.3f); // 레벨당 30% 증가
+        effectValue = originalValue * (1 + (level - 1) * levelMultiplier);
 
         // 새 효과 적용
         OnAcquire(player);

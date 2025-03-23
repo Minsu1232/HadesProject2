@@ -144,7 +144,7 @@ public class InventorySystem : MonoBehaviour
                         int remainingSpace = itemToAdd.maxStackSize - itemSlots[i].quantity;
                         itemSlots[i].quantity = itemToAdd.maxStackSize;
 
-                        Debug.Log($"{itemToAdd.itemName} x{remainingSpace}개를 기존 슬롯에 추가하고, 나머지를 새 슬롯에 추가합니다.");
+                        //Debug.Log($"{itemToAdd.itemName} x{remainingSpace}개를 기존 슬롯에 추가하고, 나머지를 새 슬롯에 추가합니다.");
 
                         // 나머지 수량으로 재귀 호출
                         return AddItem(itemToAdd, quantity - remainingSpace);

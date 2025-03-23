@@ -14,9 +14,12 @@ public class GameInitializer : Singleton<GameInitializer>
     [SerializeField] private InventorySystem inventorySystem;
     [SerializeField] private FragmentManager fragmentManager;
 
-    private void Awake()
+
+    public GameObject flameWall;
+
+    protected override void Awake()
     {
-        DontDestroyOnLoad(gameObject);
+        base.Awake();
         InitializeComponents();
         LoadGameData();
     }

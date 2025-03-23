@@ -99,7 +99,7 @@ public class PlayerClass : ICreature, IDamageable
     #endregion
 
     #region 스탯 변동 매서드
-    public void ModifyPower(int healthAmount = 0,int maxHealth = 0, int manaAmount = 0, int attackAmount = 0, int attackSpeedAmount = 0, float speedAmount = 0, float criticalChanceAmount = 0, float damageReceive = 0)
+    public void ModifyPower(int healthAmount = 0, int maxHealth = 0, int manaAmount = 0, int attackAmount = 0, int attackSpeedAmount = 0, float speedAmount = 0, float criticalChanceAmount = 0, float damageReceive = 0)
     {
         PlayerStats.Health = Mathf.Clamp(PlayerStats.Health + healthAmount, 0, PlayerStats.MaxHealth);
         PlayerStats.MaxHealth = Mathf.Max(PlayerStats.MaxHealth + maxHealth, 1);
@@ -111,9 +111,9 @@ public class PlayerClass : ICreature, IDamageable
         PlayerStats.DamageReceiveRate = Mathf.Max(PlayerStats.DamageReceiveRate + damageReceive, 0);
     }
 
-    public void ResetPower(bool health,bool maxHealth ,bool mana,bool attackPw,bool attackSp,bool speed,bool critical,bool damageReceive)
+    public void ResetPower(bool health, bool maxHealth, bool mana, bool attackPw, bool attackSp, bool speed, bool critical, bool damageReceive)
     {
-        PlayerStats.ResetStats(health,maxHealth,mana,attackPw,attackSp,speed,critical, damageReceive);
+        PlayerStats.ResetStats(health, maxHealth, mana, attackPw, attackSp, speed, critical, damageReceive);
     }
     #endregion
     // PlayerClass에 추가
@@ -191,12 +191,18 @@ public class PlayerClass : ICreature, IDamageable
     }
 
     public virtual void TakeDamage(int damage)
-    {if (isInvicible) return;
+    {
+        if (isInvicible)
+        {
+            damage = 0;
+            return;
+        }
+
         // 반격 처리 (데미지 적용 전)
         // 데미지 적용 전 이벤트 발생
-       
+
         PlayerStats.Health -= damage;
-       
+
         if (PlayerStats.Health <= 0)
         {
             PlayerStats.Health = 0;
@@ -211,7 +217,7 @@ public class PlayerClass : ICreature, IDamageable
     public void PlayerGetAttacker(int damage, ICreatureStatus attacker)
     {
         if (isInvicible) return;
-       
+
         // 데미지 적용 전 이벤트 발생 (공격자 정보 포함)
         OnDamageReceived?.Invoke(damage, attacker);
 
@@ -242,7 +248,7 @@ public class PlayerClass : ICreature, IDamageable
     {
         Debug.Log("호출");
         return DamageType.Player;
-        
+
     }
     public void ApplyStun(float stunDuration)
     {
@@ -259,7 +265,7 @@ public class PlayerClass : ICreature, IDamageable
             });
         }
     }
-   
+
     #endregion
 
 }

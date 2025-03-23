@@ -1,21 +1,21 @@
 ﻿ID,Type,Name,Description,Rarity,BaseValue,LevelMultiplier,IconPath
-damage_reduction_common,DamageReduction,기본 방어,받는 피해가 3% 감소합니다. (레벨당 +1%),0,3,0.3,PassiveIcon
-damage_reduction_uncommon,DamageReduction,강건한 방어,받는 피해가 5% 감소합니다. (레벨당 +1.5%),1,5,0.3,PassiveIcon
-damage_reduction_rare,DamageReduction,철벽 방어,받는 피해가 7% 감소합니다. (레벨당 +1.8%),2,7,0.3,PassiveIcon
-damage_reduction_epic,DamageReduction,불가침 방어,받는 피해가 8.5% 감소합니다. (레벨당 +2%),3,8.5,0.3,PassiveIcon
-damage_reduction_legendary,DamageReduction,신의 방패,받는 피해가 10% 감소합니다. (레벨당 +2%),4,10,0.3,PassiveIcon
-life_steal_common,LifeSteal,피의 갈증,공격 시 데미지의 3%만큼 체력을 회복합니다. (레벨당 +0.5%),0,3,0.3,PassiveIcon
-life_steal_uncommon,LifeSteal,생명력 흡수,공격 시 데미지의 4%만큼 체력을 회복합니다. (레벨당 +1%),1,4,0.3,PassiveIcon
-life_steal_rare,LifeSteal,피의 계약,공격 시 데미지의 6%만큼 체력을 회복합니다. (레벨당 +1.5%),2,6,0.3,PassiveIcon
-life_steal_epic,LifeSteal,피의 의식,공격 시 데미지의 8%만큼 체력을 회복합니다. (레벨당 +1.8%),3,8,0.3,PassiveIcon
-life_steal_legendary,LifeSteal,불멸의 흡혈,공격 시 데미지의 10%만큼 체력을 회복합니다. (레벨당 +2%),4,10,0.3,PassiveIcon
-counterattack_common,Counterattack,기본 반격,피격 시 받은 데미지의 10%를 공격자에게 반사합니다. (레벨당 +3%),0,10,0.3,PassiveIcon
-counterattack_uncommon,Counterattack,가시 갑옷,피격 시 받은 데미지의 15%를 공격자에게 반사합니다. (레벨당 +4.5%),1,15,0.3,PassiveIcon
-counterattack_rare,Counterattack,복수의 갑옷,피격 시 받은 데미지의 20%를 공격자에게 반사합니다. (레벨당 +6%),2,20,0.3,PassiveIcon
-counterattack_epic,Counterattack,원한의 껍질,피격 시 받은 데미지의 25%를 공격자에게 반사합니다. (레벨당 +7.5%),3,25,0.3,PassiveIcon
-counterattack_legendary,Counterattack,심판의 반사,피격 시 받은 데미지의 30%를 공격자에게 반사합니다. (레벨당 +9%),4,30,0.3,PassiveIcon
-item_find_common,ItemFind,행운의 기운,아이템 드롭 확률이 1% 증가합니다. (레벨당 +0.5%),0,1,0.3,ItemFind1
-item_find_uncommon,ItemFind,행운의 손길,아이템 드롭 확률이 2% 증가합니다. (레벨당 +0.5%),1,2,0.3,ItemFind2
-item_find_rare,ItemFind,보물 사냥꾼,아이템 드롭 확률이 3% 증가합니다. (레벨당 +0.8%),2,3,0.3,ItemFind3
-item_find_epic,ItemFind,황금의 손,아이템 드롭 확률이 4% 증가합니다. (레벨당 +0.9%),3,4,0.3,ItemFind4
-item_find_legendary,ItemFind,만물의 발견자,아이템 드롭 확률이 5% 증가합니다. (레벨당 +1%),4,5,0.3,ItemFind5
+damage_reduction_common,DamageReduction,기본 방어,받는 피해가 3% 감소합니다. ,0,3,0.3,DamageReduction1
+damage_reduction_uncommon,DamageReduction,강건한 방어,받는 피해가 5% 감소합니다. ,1,5,0.3,DamageReduction2
+damage_reduction_rare,DamageReduction,철벽 방어,받는 피해가 7% 감소합니다. ,2,7,0.3,DamageReduction3
+damage_reduction_epic,DamageReduction,불가침 방어,받는 피해가 8.5% 감소합니다. ,3,8.5,0.3,DamageReduction4
+damage_reduction_legendary,DamageReduction,신의 방패,받는 피해가 10% 감소합니다. ,4,10,0.3,DamageReduction5
+life_steal_common,LifeSteal,피의 갈증,공격 시 데미지의 3%만큼 체력을 회복합니다. ,0,3,0.3,LifeSteal1
+life_steal_uncommon,LifeSteal,생명력 흡수,공격 시 데미지의 4%만큼 체력을 회복합니다. ,1,4,0.3,LifeSteal2
+life_steal_rare,LifeSteal,피의 계약,공격 시 데미지의 6%만큼 체력을 회복합니다. ,2,6,0.3,LifeSteal3
+life_steal_epic,LifeSteal,피의 의식,공격 시 데미지의 8%만큼 체력을 회복합니다. ,3,8,0.3,LifeSteal4
+life_steal_legendary,LifeSteal,불멸의 흡혈,공격 시 데미지의 10%만큼 체력을 회복합니다. ,4,10,0.3,LifeSteal5
+counterattack_common,Counterattack,기본 반격,피격 시 받은 데미지의 100%를 공격자에게 반사합니다. ,0,100,0.3,Counterattack1
+counterattack_uncommon,Counterattack,가시 갑옷,피격 시 받은 데미지의 150%를 공격자에게 반사합니다. ,1,150,0.3,Counterattack2
+counterattack_rare,Counterattack,복수의 갑옷,피격 시 받은 데미지의 200%를 공격자에게 반사합니다. ,2,200,0.3,Counterattack3
+counterattack_epic,Counterattack,원한의 껍질,피격 시 받은 데미지의 250%를 공격자에게 반사합니다. ,3,250,0.3,Counterattack4
+counterattack_legendary,Counterattack,심판의 반사,피격 시 받은 데미지의 300%를 공격자에게 반사합니다. ,4,300,0.3,Counterattack5
+item_find_common,ItemFind,행운의 기운,아이템 드롭 확률이 1% 증가합니다. ,0,1,0.3,ItemFind1
+item_find_uncommon,ItemFind,행운의 손길,아이템 드롭 확률이 2% 증가합니다. ,1,2,0.3,ItemFind2
+item_find_rare,ItemFind,보물 사냥꾼,아이템 드롭 확률이 3% 증가합니다. ,2,3,0.3,ItemFind3
+item_find_epic,ItemFind,황금의 손,아이템 드롭 확률이 4% 증가합니다. ,3,4,0.3,ItemFind4
+item_find_legendary,ItemFind,만물의 발견자,아이템 드롭 확률이 5% 증가합니다. ,4,5,0.3,ItemFind5

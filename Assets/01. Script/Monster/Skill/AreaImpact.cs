@@ -20,8 +20,7 @@ public class AreaImpact : IProjectileImpact
 
         GameObject areaEffect = Object.Instantiate(areaEffectPrefab, impactPosition, Quaternion.identity);
         if (areaEffect.TryGetComponent<IDamageArea>(out var damageArea))
-        {
-            Debug.Log("µ¶µ¶µ¶");
+        {            
             damageArea.Initialize(damage, duration, radius);
         }
     }

@@ -9,9 +9,9 @@ public abstract class DungeonAbility
     public string description;    // 설명
     public Sprite icon;           // 아이콘
     public Rarity rarity;         // 희귀도
-
+    public float effectValue;     // 효과
     public int level = 1;         // 능력 레벨
-
+    public float levelMultiplier = 0.3f; // 레벨업 증가 계수 (기본값 30%)
     // 이 능력이 처음 획득될 때 호출
     public abstract void OnAcquire(PlayerClass player);
 

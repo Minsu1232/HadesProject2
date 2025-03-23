@@ -116,7 +116,8 @@ public class AbilitySelectionPanel : MonoBehaviour
 
     // 카드 생성 및 애니메이션
     private System.Collections.IEnumerator CreateCardsWithAnimation(List<DungeonAbility> abilities)
-    {
+    { // 첫 번째 카드 로드 전에 약간의 지연 추가 (모든 아이콘 로드 완료 대기)
+        yield return new WaitForSeconds(0.2f);
         for (int i = 0; i < abilities.Count; i++)
         {
             // 카드 생성

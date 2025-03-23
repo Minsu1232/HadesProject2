@@ -139,6 +139,7 @@ public class MonsterStatus : MonoBehaviour, IDamageable, ICreatureStatus
             rb.velocity = Vector3.zero;
             rb.angularVelocity = Vector3.zero;
         }
+        CameraShakeManager.TriggerShake(0.5f, 0.05f);
         if (monsterClass.CurrentHealth <= 0 && gameObject != null)
         {
             Die();

@@ -1,26 +1,26 @@
 ﻿ID,Type,Name,Description,Rarity,BaseValue,LevelMultiplier,IconPath
-combo_enhancement_common,ComboEnhancement,기본 콤보,연속 공격 시 콤보 데미지가 15% 증가합니다. (레벨당 +4.5%),0,15,0.3,AttackAbilityIcon
-combo_enhancement_uncommon,ComboEnhancement,향상된 콤보,연속 공격 시 콤보 데미지가 25% 증가합니다. (레벨당 +7.5%),1,25,0.3,AttackAbilityIcon
-combo_enhancement_rare,ComboEnhancement,강력한 콤보,연속 공격 시 콤보 데미지가 35% 증가합니다. (레벨당 +10.5%),2,35,0.3,AttackAbilityIcon
-combo_enhancement_epic,ComboEnhancement,파괴적 콤보,연속 공격 시 콤보 데미지가 45% 증가합니다. (레벨당 +13.5%),3,45,0.3,AttackAbilityIcon
-combo_enhancement_legendary,ComboEnhancement,무한 연속타,연속 공격 시 콤보 데미지가 60% 증가합니다. (레벨당 +18%),4,60,0.3,AttackAbilityIcon
-weak_prey_common,WeakPrey,약점 타격,체력이 30% 이하인 적에게 15% 추가 피해를 줍니다. (레벨당 +4.5%),0,15,0.3,AttackAbilityIcon
-weak_prey_uncommon,WeakPrey,치명적 약점,체력이 30% 이하인 적에게 25% 추가 피해를 줍니다. (레벨당 +7.5%),1,25,0.3,AttackAbilityIcon
-weak_prey_rare,WeakPrey,약자 포착,체력이 35% 이하인 적에게 35% 추가 피해를 줍니다. (레벨당 +10.5%),2,35,0.3,AttackAbilityIcon
-weak_prey_epic,WeakPrey,사냥꾼의 눈,체력이 40% 이하인 적에게 45% 추가 피해를 줍니다. (레벨당 +13.5%),3,45,0.3,AttackAbilityIcon
-weak_prey_legendary,WeakPrey,약자 멸시,체력이 50% 이하인 적에게 60% 추가 피해를 줍니다. (레벨당 +18%),4,60,0.3,AttackAbilityIcon
-chain_strike_common,ChainStrike,이중 타격,공격 시 10% 확률로 추가 타격을 가합니다. (레벨당 +3%),0,10,0.3,AttackAbilityIcon
-chain_strike_uncommon,ChainStrike,연속 타격,공격 시 15% 확률로 추가 타격을 가합니다. (레벨당 +4.5%),1,15,0.3,AttackAbilityIcon
-chain_strike_rare,ChainStrike,연쇄 공격,공격 시 20% 확률로 추가 타격을 가합니다. (레벨당 +6%),2,20,0.3,AttackAbilityIcon
-chain_strike_epic,ChainStrike,공격의 폭풍,공격 시 25% 확률로 추가 타격을 가합니다. (레벨당 +7.5%),3,25,0.3,AttackAbilityIcon
-chain_strike_legendary,ChainStrike,무한 연쇄,공격 시 30% 확률로 추가 타격을 가합니다. (레벨당 +9%),4,30,0.3,AttackAbilityIcon
-gauge_boost_common,GaugeBoost,기본 충전,무기 게이지 충전량이 15% 증가합니다. (레벨당 +4.5%),0,15,0.3,AttackAbilityIcon
-gauge_boost_uncommon,GaugeBoost,빠른 충전,무기 게이지 충전량이 25% 증가합니다. (레벨당 +7.5%),1,25,0.3,AttackAbilityIcon
-gauge_boost_rare,GaugeBoost,향상된 충전,무기 게이지 충전량이 35% 증가합니다. (레벨당 +10.5%),2,35,0.3,AttackAbilityIcon
-gauge_boost_epic,GaugeBoost,급속 충전,무기 게이지 충전량이 45% 증가합니다. (레벨당 +13.5%),3,45,0.3,AttackAbilityIcon
-gauge_boost_legendary,GaugeBoost,초충전,무기 게이지 충전량이 60% 증가합니다. (레벨당 +18%),4,60,0.3,AttackAbilityIcon
-armor_crush_common,ArmorCrush,방어력 감소,공격 시 적의 방어력을 5% 감소시킵니다. (레벨당 +1.5%),0,5,0.3,AttackAbilityIcon
-armor_crush_uncommon,ArmorCrush,방어구 파괴,공격 시 적의 방어력을 10% 감소시킵니다. (레벨당 +3%),1,10,0.3,AttackAbilityIcon
-armor_crush_rare,ArmorCrush,방어구 분쇄,공격 시 적의 방어력을 15% 감소시킵니다. (레벨당 +4.5%),2,15,0.3,AttackAbilityIcon
-armor_crush_epic,ArmorCrush,관통 공격,공격 시 적의 방어력을 20% 감소시킵니다. (레벨당 +6%),3,20,0.3,AttackAbilityIcon
-armor_crush_legendary,ArmorCrush,완전 관통,공격 시 적의 방어력을 25% 감소시킵니다. (레벨당 +7.5%),4,25,0.3,AttackAbilityIcon
+combo_enhancement_common,ComboEnhancement,기본 콤보,연속 공격 시 콤보 데미지가 15% 증가합니다. ,0,15,0.3,ComboEnhancement1
+combo_enhancement_uncommon,ComboEnhancement,향상된 콤보,연속 공격 시 콤보 데미지가 25% 증가합니다. ,1,25,0.3,ComboEnhancement2
+combo_enhancement_rare,ComboEnhancement,강력한 콤보,연속 공격 시 콤보 데미지가 35% 증가합니다. ,2,35,0.3,ComboEnhancement3
+combo_enhancement_epic,ComboEnhancement,파괴적 콤보,연속 공격 시 콤보 데미지가 45% 증가합니다. ,3,45,0.3,ComboEnhancement4
+combo_enhancement_legendary,ComboEnhancement,무한 연속타,연속 공격 시 콤보 데미지가 60% 증가합니다. ,4,60,0.3,ComboEnhancement5
+weak_prey_common,WeakPrey,약점 타격,체력이 30% 이하인 적에게 15% 추가 피해를 줍니다. ,0,15,0.3,WeakPrey1
+weak_prey_uncommon,WeakPrey,치명적 약점,체력이 30% 이하인 적에게 25% 추가 피해를 줍니다. ,1,25,0.3,WeakPrey2
+weak_prey_rare,WeakPrey,약자 포착,체력이 35% 이하인 적에게 35% 추가 피해를 줍니다. ,2,35,0.3,WeakPrey3
+weak_prey_epic,WeakPrey,사냥꾼의 눈,체력이 40% 이하인 적에게 45% 추가 피해를 줍니다. ,3,45,0.3,WeakPrey4
+weak_prey_legendary,WeakPrey,약자 멸시,체력이 50% 이하인 적에게 60% 추가 피해를 줍니다. ,4,60,0.3,WeakPrey5
+chain_strike_common,ChainStrike,이중 타격,공격 시 10% 확률로 추가 타격을 가합니다. ,0,10,0.3,ChainStrike1
+chain_strike_uncommon,ChainStrike,연속 타격,공격 시 15% 확률로 추가 타격을 가합니다. ,1,15,0.3,ChainStrike2
+chain_strike_rare,ChainStrike,연쇄 공격,공격 시 20% 확률로 추가 타격을 가합니다. ,2,20,0.3,ChainStrike3
+chain_strike_epic,ChainStrike,공격의 폭풍,공격 시 25% 확률로 추가 타격을 가합니다. ,3,25,0.3,ChainStrike4
+chain_strike_legendary,ChainStrike,무한 연쇄,공격 시 30% 확률로 추가 타격을 가합니다. ,4,30,0.3,ChainStrike5
+gauge_boost_common,GaugeBoost,기본 충전,무기 게이지 충전량이 15% 증가합니다. ,0,15,0.3,GaugeBoost1
+gauge_boost_uncommon,GaugeBoost,빠른 충전,무기 게이지 충전량이 25% 증가합니다. ,1,25,0.3,GaugeBoost2
+gauge_boost_rare,GaugeBoost,향상된 충전,무기 게이지 충전량이 35% 증가합니다. ,2,35,0.3,GaugeBoost3
+gauge_boost_epic,GaugeBoost,급속 충전,무기 게이지 충전량이 45% 증가합니다. ,3,45,0.3,GaugeBoost4
+gauge_boost_legendary,GaugeBoost,초충전,무기 게이지 충전량이 60% 증가합니다. ,4,60,0.3,GaugeBoost5
+armor_crush_common,ArmorCrush,방어력 감소,공격 시 적의 방어력을 5% 감소시킵니다. ,0,5,0.3,ArmorCrush1
+armor_crush_uncommon,ArmorCrush,방어구 파괴,공격 시 적의 방어력을 10% 감소시킵니다. ,1,10,0.3,ArmorCrush2
+armor_crush_rare,ArmorCrush,방어구 분쇄,공격 시 적의 방어력을 15% 감소시킵니다. ,2,15,0.3,ArmorCrush3
+armor_crush_epic,ArmorCrush,관통 공격,공격 시 적의 방어력을 20% 감소시킵니다. ,3,20,0.3,ArmorCrush4
+armor_crush_legendary,ArmorCrush,완전 관통,공격 시 적의 방어력을 25% 감소시킵니다. ,4,25,0.3,ArmorCrush5

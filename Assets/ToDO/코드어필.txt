@@ -33,4 +33,8 @@ Behavior Tree
 새로운 행동 패턴 구현
 구체적인 몬스터 타입별 AI 구현
 
-툴을 이용한 작업소요시간 단축
+툴을 이용한 작업소요시간 단축 (던전 내 몬스터 및 플레이어, 포탈 스폰지정, 맵의 콜라이더 생성 툴)
+
+제작한 Shader
+	-각종 indicator
+	-AbilityCard 외각 이미지의 Shader 및 Icon의 Patrol과 Outline Shader
