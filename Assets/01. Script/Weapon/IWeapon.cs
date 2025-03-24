@@ -17,5 +17,8 @@ public interface IWeapon
     void UpdateCharge(float deltaTime);
     void ReleaseCharge();
 
+    //Ability 관련 매서드
+    void SetGageRetentionRate(float rate);
+
 
 }

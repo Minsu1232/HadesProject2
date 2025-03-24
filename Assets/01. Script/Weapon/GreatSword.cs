@@ -46,8 +46,9 @@ public class GreatSword : WeaponBase
         Debug.Log("대검의 특수 스킬 발동!");
         if (specialAttackComponent != null)
         {
+            
             specialAttackComponent.Execute();
-            CurrentGage = 0;
+           
         }
         else
         {

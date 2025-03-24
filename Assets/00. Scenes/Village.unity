@@ -3680,6 +3680,26 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 290023929}
   m_Mesh: {fileID: 10209, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!114 &291231414
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 49490255aaf1a2641a4c5771511bd253, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _halfSpace: 1
+  _alignAxis: 0
+  _alignmentAxis: 1
+  _invertAlignmentAxis: 0
+  _projectAsUnit: 0
+  _embedInSurface: 1
+  _inFrontOffset: 0
+  _behindOffset: 0
 --- !u!1 &293272282 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 2926639509079320399, guid: 94d43cd3785471340aa315bbbd100eab, type: 3}
@@ -5701,7 +5721,7 @@ MonoBehaviour:
   _extensionPlane:
     _refOBBFace: 4
   _heightPatternDirection: 0
-  _modularSnapSession: {fileID: 916659913}
+  _modularSnapSession: {fileID: 1234887881}
   _mirrorGizmo: {fileID: 1118604797}
 --- !u!114 &438852328
 MonoBehaviour:
@@ -8566,21 +8586,6 @@ PrefabInstance:
       insertIndex: -1
       addedObject: {fileID: 12923319}
   m_SourcePrefab: {fileID: 100100000, guid: 383d041b1bd080240af749226964eae8, type: 3}
---- !u!114 &638936227
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 38a40404d9721ed4f984030fbce11d53, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _snapMode: 0
-  _snapHalfSpace: 0
-  _projectionSettings: {fileID: 0}
 --- !u!1 &639023511 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 7390648393522352529, guid: 94d43cd3785471340aa315bbbd100eab, type: 3}
@@ -13654,21 +13659,6 @@ MeshCollider:
   m_Convex: 1
   m_CookingOptions: 30
   m_Mesh: {fileID: -6727460243939354053, guid: 03dd95a962b8c8644866fad2fba346ca, type: 3}
---- !u!114 &916659913
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 38a40404d9721ed4f984030fbce11d53, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _snapMode: 0
-  _snapHalfSpace: 0
-  _projectionSettings: {fileID: 0}
 --- !u!1001 &920040407
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -17483,26 +17473,6 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 15.366021, y: 2.6690474, z: 1}
   m_Center: {x: 0, y: -0.15432018, z: 0}
---- !u!114 &1217536671
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 49490255aaf1a2641a4c5771511bd253, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _halfSpace: 1
-  _alignAxis: 0
-  _alignmentAxis: 1
-  _invertAlignmentAxis: 0
-  _projectAsUnit: 0
-  _embedInSurface: 1
-  _inFrontOffset: 0
-  _behindOffset: 0
 --- !u!1 &1219592623 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 5754281076389560133, guid: 8a160d698dae60e4facf6e79e7ce6ca5, type: 3}
@@ -17661,6 +17631,21 @@ PrefabInstance:
       insertIndex: -1
       addedObject: {fileID: 36805484}
   m_SourcePrefab: {fileID: 100100000, guid: 9d48c081c2a600a479ba221f16f12b3a, type: 3}
+--- !u!114 &1234887881
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 38a40404d9721ed4f984030fbce11d53, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _snapMode: 0
+  _snapHalfSpace: 0
+  _projectionSettings: {fileID: 0}
 --- !u!1 &1235249778 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 4138693356899537879, guid: 94d43cd3785471340aa315bbbd100eab, type: 3}
@@ -21400,6 +21385,7 @@ GameObject:
   - component: {fileID: 1465207502}
   - component: {fileID: 1465207503}
   - component: {fileID: 1465207504}
+  - component: {fileID: 1465207505}
   - component: {fileID: 1465207501}
   m_Layer: 0
   m_Name: DungeonDataManager
@@ -21531,6 +21517,18 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 465f98f364c6f4448b084ff0c09398e5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &1465207505
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1465207493}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 062d3e452467d3f4fb91f896644cb3c2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1 &1468028544 stripped
@@ -22960,7 +22958,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c8725edae6a1fd4408036dedaf0199f0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _projectionSettings: {fileID: 1217536671}
+  _projectionSettings: {fileID: 291231414}
   _dragAndDropGuide: {fileID: 0}
 --- !u!114 &1644050454
 MonoBehaviour:
@@ -26086,7 +26084,7 @@ MonoBehaviour:
   _spawnGuide: {fileID: 1454016087}
   _extensionPlane:
     _refOBBFace: 4
-  _modularSnapSession: {fileID: 638936227}
+  _modularSnapSession: {fileID: 2073296358}
   _mirrorGizmo: {fileID: 1262915059}
 --- !u!1 &1839720524 stripped
 GameObject:
@@ -29465,6 +29463,21 @@ MonoBehaviour:
   _boxSnapSettingsSection: {fileID: 595344783}
   _selectionGrowSettingsSection: {fileID: 672944507}
   _measureToolsSection: {fileID: 942858467}
+--- !u!114 &2073296358
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 38a40404d9721ed4f984030fbce11d53, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _snapMode: 0
+  _snapHalfSpace: 0
+  _projectionSettings: {fileID: 0}
 --- !u!1001 &2074190585
 PrefabInstance:
   m_ObjectHideFlags: 0

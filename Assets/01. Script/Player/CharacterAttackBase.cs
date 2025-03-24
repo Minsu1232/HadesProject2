@@ -6,12 +6,12 @@ using UnityEngine;
 
 public class CharacterAttackBase : MonoBehaviour, ICharacterAttack
 {
-    protected IWeapon currentWeapon;
-    protected Animator animator;
+    public IWeapon currentWeapon;
+    private Animator animator;
     public int comboStep;
 
     public bool isCharging = false;
-    protected float currentChargeTime = 0f;
+    private float currentChargeTime = 0f;
     public event Action<float> OnChargeTimeUpdated;
 
     private static readonly int HashAttackCount = Animator.StringToHash("AttackCount");
@@ -85,8 +85,15 @@ public class CharacterAttackBase : MonoBehaviour, ICharacterAttack
     {
         if (currentWeapon is WeaponManager weaponManager && weaponManager.CurrentGage == 100)
         {
+
             animator?.SetTrigger(HashSpecialAttack);
             currentWeapon.SpecialAttack();
+            LightningJudgmentComponent lightningComp = GetComponent<LightningJudgmentComponent>();
+            if (lightningComp != null)
+            {
+                lightningComp.ExecuteLightningJudgment();
+                Debug.Log("번개 심판 발동!");
+            }
         }
         else
         {

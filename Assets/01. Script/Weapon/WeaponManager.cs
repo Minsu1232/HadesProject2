@@ -23,7 +23,8 @@ public abstract class WeaponManager : MonoBehaviour, IWeapon
 
 
     public event Action<int> OnGageChanged; // 게이지 변경 이벤트
-    
+
+    protected float gageRetentionRate = 0f;  // 게이지 보존율 (0.0 ~ 1.0)
     private int currentGage;
 
     public int CurrentGage
@@ -156,9 +157,34 @@ public abstract class WeaponManager : MonoBehaviour, IWeapon
 
     public abstract int GetChargeDamage(); // 차지 데미지 게산 매서드
 
-    public void ResetGage(int currentGage_) // 스페셜어택 후 반환받을 게이지
+  
+
+    /// <summary>
+    /// Ability
+    /// </summary>
+    /// <param name="rate"></param>
+    // 게이지 보존율 설정 메서드 구현
+    public virtual void SetGageRetentionRate(float rate)
     {
-        currentGage = currentGage_;
+        gageRetentionRate = Mathf.Clamp01(rate);  // 0.0-1.0 범위로 제한
+        Debug.Log($"{WeaponName}의 게이지 보존율 설정: {gageRetentionRate * 100}%");
+    }
+    // ResetGage 메서드 수정 (게이지 리셋 시 보존 로직 적용)
+    public virtual void ResetGage(int currentGage_)
+    {
+        // 스킬 사용 시 게이지 보존 효과 적용
+        if (currentGage_ == 0 && gageRetentionRate > 0f)
+        {
+            // 특수 스킬 사용 후 게이지 보존
+            int retainedGage = Mathf.RoundToInt(100 * gageRetentionRate);
+            CurrentGage = retainedGage;
+            Debug.Log($"게이지 보존 효과 적용: {retainedGage}/100 게이지 보존됨");
+        }
+        else
+        {
+            // 일반적인 경우 (지정된 값으로 게이지 설정)
+            CurrentGage = currentGage_;
+        }
     }
 
 }

@@ -38,3 +38,10 @@ Behavior Tree
 제작한 Shader
 	-각종 indicator
 	-AbilityCard 외각 이미지의 Shader 및 Icon의 Patrol과 Outline Shader
+
+
+나의 설계에 대한 장,단점 적기 
+
+(Ex/ 중간 Resistry패턴을 사용하면 최종 관리자에선 수정없이 계속 추가되어도 수정없이 유지가능 (AbilityFactoryRegistry => AbilityManager스크립트) 추가수정없음
+
+but 지금은 단순하고 직관적이며 빠르게 구현 가능함 )

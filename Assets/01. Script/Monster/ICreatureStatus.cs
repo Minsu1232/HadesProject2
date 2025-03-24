@@ -6,6 +6,7 @@ public interface ICreatureStatus
 {
     IMonsterClass GetMonsterClass();
 
+   
     Transform GetMonsterTransform();
     void Initialize(IMonsterClass monster);
 

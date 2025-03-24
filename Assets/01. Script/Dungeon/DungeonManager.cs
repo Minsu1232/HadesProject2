@@ -636,7 +636,12 @@ public class DungeonManager : Singleton<DungeonManager>
 
         activeMonsters.Clear();
     }
-
+    // DungeonManager 클래스에 추가
+    public List<IMonsterClass> GetActiveMonsters()
+    {
+        // 살아있는 몬스터만 반환하거나, 전체 리스트 반환
+        return new List<IMonsterClass>(activeMonsters);
+    }
     // 몬스터 처치 이벤트 처리
     public void OnMonsterDefeated(IMonsterClass monster)
     {

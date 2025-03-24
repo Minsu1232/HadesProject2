@@ -1,0 +1,11 @@
+﻿ID,Type,Name,Description,Rarity,BaseValue,LevelMultiplier,IconPath
+resource_retention_common,ResourceRetention,기본 보존,특수 스킬 사용 후 게이지가 10% 보존됩니다.,0,10,0.3,ComboEnhancement1
+resource_retention_uncommon,ResourceRetention,에너지 보존,특수 스킬 사용 후 게이지가 20% 보존됩니다.,1,20,0.3,ComboEnhancement1
+resource_retention_rare,ResourceRetention,효율적 사용,특수 스킬 사용 후 게이지가 30% 보존됩니다.,2,30,0.3,ComboEnhancement1
+resource_retention_epic,ResourceRetention,에너지 순환,특수 스킬 사용 후 게이지가 40% 보존됩니다.,3,40,0.3,ComboEnhancement1
+resource_retention_legendary,ResourceRetention,영구 에너지,특수 스킬 사용 후 게이지가 50% 보존됩니다.,4,50,0.3,ComboEnhancement1
+lightning_judgment_common,LightningJudgment,번개 심판,특수 스킬 사용 시 모든 적에게 공격력의 50%에 데미지를 주는 번개를 내립니다.,0,50,0.3,ComboEnhancement1
+lightning_judgment_uncommon,LightningJudgment,번개의 분노,특수 스킬 사용 시 모든 적에게 공격력의 75%에 데미지를 주는 번개를 내립니다.,1,75,0.3,ComboEnhancement1
+lightning_judgment_rare,LightningJudgment,천벌,특수 스킬 사용 시 모든 적에게 공격력의 100에 데미지를 주는 번개를 내립니다.,2,100,0.3,ComboEnhancement1
+lightning_judgment_epic,LightningJudgment,천둥의 분노,특수 스킬 사용 시 모든 적에게 공격력의 125%에 데미지를 주는 번개를 내립니다.,3,125,0.3,ComboEnhancement1
+lightning_judgment_legendary,LightningJudgment,신의 심판,특수 스킬 사용 시 모든 적에게 공격력의 150%에 데미지를 주는 번개를 내립니다.,4,150,0.3,ComboEnhancement1

@@ -69,7 +69,12 @@ public class DungeonAbilityManager : MonoBehaviour
             loaderObj.AddComponent<MovementAbilityLoader>();
             Debug.Log("MovementAbilityLoader 생성됨");
         }
-
+        if (SpecialAbilityLoader.Instance == null)
+        {
+            GameObject loaderObj = new GameObject("SpecialAbilityLoader");
+            loaderObj.AddComponent<SpecialAbilityLoader>();
+            Debug.Log("SpecialAbilityLoader 생성됨");
+        }
         // 필요한 다른 로더 초기화...
     }
 
@@ -156,10 +161,14 @@ public class DungeonAbilityManager : MonoBehaviour
         // 공격 능력 추가
         var attackAbilities = AttackAbilityFactory.CreateAllAttackAbilities();
         allAbilities.AddRange(attackAbilities.Cast<DungeonAbility>());
+
         // 이동 능력 추가
         var movementAbilities = MovementAbilityFactory.CreateAllMovementAbilities();
         allAbilities.AddRange(movementAbilities.Cast<DungeonAbility>());
-        // 다른 타입의 능력 추가...
+
+        // 특수 능력 추가 (새로 추가된 부분)
+        var specialAbilities = SpecialAbilityFactory.CreateAllSpecialAbilities();
+        allAbilities.AddRange(specialAbilities.Cast<DungeonAbility>());
 
         return allAbilities;
     }
