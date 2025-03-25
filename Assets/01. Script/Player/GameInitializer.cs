@@ -16,6 +16,7 @@ public class GameInitializer : Singleton<GameInitializer>
 
 
     public GameObject flameWall;
+    public GameObject lightningEffect;
 
     protected override void Awake()
     {

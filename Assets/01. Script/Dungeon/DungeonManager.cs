@@ -32,7 +32,7 @@ public class DungeonManager : Singleton<DungeonManager>
 
     private string currentStageID;
     private StageData currentStage;
-    private List<IMonsterClass> activeMonsters = new List<IMonsterClass>();
+    private List<ICreatureStatus> activeMonsters = new List<ICreatureStatus>();
     private bool isStageClear = false;
     private Vector3 stageCenter = Vector3.zero;
     private GameObject currentPortal;
@@ -345,7 +345,7 @@ public class DungeonManager : Singleton<DungeonManager>
     }
 
     // 몬스터 생성 콜백
-    private void OnMonsterCreated(IMonsterClass monster)
+    private void OnMonsterCreated(ICreatureStatus monster)
     {
         if (monster != null)
         {
@@ -405,7 +405,7 @@ public class DungeonManager : Singleton<DungeonManager>
         bool allDefeated = true;
         foreach (var monster in activeMonsters)
         {
-            if (monster != null && monster.IsAlive)
+            if (monster != null && monster.GetMonsterClass().IsAlive)
             {
                 allDefeated = false;
                 break;
@@ -479,7 +479,7 @@ public class DungeonManager : Singleton<DungeonManager>
         }
 
         // 던전 어빌리티 매니저에서 선택 가능한 능력 목록 가져오기
-        List<DungeonAbility> abilitySelection = DungeonAbilityManager.Instance.GetAbilitySelection();
+        List<DungeonAbility> abilitySelection = DungeonAbilityManager.Instance.GetSmartAbilitySelection();
 
         if (abilitySelection.Count == 0)
         {
@@ -637,13 +637,13 @@ public class DungeonManager : Singleton<DungeonManager>
         activeMonsters.Clear();
     }
     // DungeonManager 클래스에 추가
-    public List<IMonsterClass> GetActiveMonsters()
+    public List<ICreatureStatus> GetActiveMonsters()
     {
         // 살아있는 몬스터만 반환하거나, 전체 리스트 반환
-        return new List<IMonsterClass>(activeMonsters);
+        return new List<ICreatureStatus>(activeMonsters);
     }
     // 몬스터 처치 이벤트 처리
-    public void OnMonsterDefeated(IMonsterClass monster)
+    public void OnMonsterDefeated(ICreatureStatus monster)
     {
         if (monster != null && activeMonsters.Contains(monster))
         {
@@ -659,5 +659,45 @@ public class DungeonManager : Singleton<DungeonManager>
             // 스테이지 클리어 체크
             CheckStageClear();
         }
+    }
+    public float GetDungeonProgress()
+    {
+        // 현재 스테이지 ID에서 번호 추출 (예: "1-5"에서 5 추출)
+        if (currentStage != null)
+        {
+            int stageNumber = ExtractStageNumber(currentStage.stageID);
+            int maxStageNumber = 10; // 각 챕터당 최대 스테이지 수
+            float progress = Mathf.Clamp01((float)stageNumber / maxStageNumber);
+            Debug.Log($"던전 진행도 계산: 스테이지 ID={currentStage.stageID}, 스테이지 번호={stageNumber}, 진행도={progress:F2}");
+            return progress;
+        }
+        Debug.LogWarning("던전 진행도 계산 실패: currentStage가 null");
+        return 0f;
+    }
+
+    public int GetCurrentStageNumber()
+    {
+        // 현재 스테이지 ID에서 번호만 추출 (예: "1-5"에서 5 추출)
+        if (currentStage != null)
+        {
+            return ExtractStageNumber(currentStage.stageID);
+        }
+        return 1; // 기본값
+    }
+
+    private int ExtractStageNumber(string stageID)
+    {
+        // 스테이지 ID 형식: "1-5" (챕터-스테이지)
+        if (!string.IsNullOrEmpty(stageID) && stageID.Contains("_"))
+        {
+            string[] parts = stageID.Split('_');
+            if (parts.Length >= 2 && int.TryParse(parts[1], out int stageNumber))
+            {
+                Debug.Log($"스테이지 번호 추출: {stageID} -> {stageNumber}");
+                return stageNumber;
+            }
+        }
+        Debug.LogWarning($"스테이지 번호 추출 실패: {stageID}, 기본값 1 사용");
+        return 1; // 파싱 실패 시 기본값
     }
 }

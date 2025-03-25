@@ -19,7 +19,7 @@ public class CrabBossFactory : MonsterFactoryBase
     protected override string GetMonsterDataKey() => "BossData_1001"; 
     protected override bool IsEliteAvailable() => false;
 
-    protected override void FinalizeMonsterCreation(GameObject monsterObject, ICreatureData data, Action<IMonsterClass> onMonsterCreated)
+    protected override void FinalizeMonsterCreation(GameObject monsterObject, ICreatureData data, Action<ICreatureStatus> onMonsterCreated)
     {
         if (data is BossData bossData)
         {
@@ -27,7 +27,7 @@ public class CrabBossFactory : MonsterFactoryBase
             {
                 GameObject.Instantiate(bossData.spawnEffect, monsterObject.transform.position, Quaternion.identity);
             }
-
+            ICreatureStatus status = monsterObject.AddComponent<BossStatus>();
             IMonsterClass boss = CreateMonsterInstance(data);
             if (boss == null)
             {
@@ -35,11 +35,11 @@ public class CrabBossFactory : MonsterFactoryBase
                 return;
             }
 
-            ICreatureStatus status = monsterObject.AddComponent<BossStatus>();
+            
             status.Initialize(boss);
             Debug.Log($"{bossData.MonsterName} º“»Ø (CrabBoss)");
 
-            onMonsterCreated?.Invoke(boss);
+            onMonsterCreated?.Invoke(status);
         }
     }
 }

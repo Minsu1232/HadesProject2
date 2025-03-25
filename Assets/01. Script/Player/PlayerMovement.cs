@@ -193,18 +193,35 @@ public class PlayerMovement : MonoBehaviour
 
     public void RotateTowardsMouse()
     {
+        if (mainCamera == null) return;
+
         Ray ray = mainCamera.ScreenPointToRay(Input.mousePosition);
         if (Physics.Raycast(ray, out RaycastHit hitInfo))
         {
-            Vector3 targetDirection = (hitInfo.point - playerClass.playerTransform.position).normalized;
-            targetDirection.y = 0;
+            Vector3 targetDirection = (hitInfo.point - playerClass.playerTransform.position);
+            targetDirection.y = 0; // y축 회전만 고려
 
-            Quaternion targetRotation = Quaternion.LookRotation(targetDirection);
-            playerClass.playerTransform.rotation = Quaternion.Slerp(
-                playerClass.playerTransform.rotation,
-                targetRotation,
-                15f * Time.deltaTime
-            );
+            // 방향 벡터의 크기가 충분히 클 때만 회전 적용 (가까운 거리는 무시)
+            if (targetDirection.sqrMagnitude > 0.25f)
+            {
+                targetDirection.Normalize();
+
+                // 현재 각도와 목표 각도 사이의 차이 계산
+                float currentAngle = playerClass.playerTransform.eulerAngles.y;
+                float targetAngle = Quaternion.LookRotation(targetDirection).eulerAngles.y;
+                float angleDifference = Mathf.Abs(Mathf.DeltaAngle(currentAngle, targetAngle));
+
+                // 각도 차이가 충분히 클 때만 회전 (미세한 변화 무시)
+                if (angleDifference > 2.0f)
+                {
+                    Quaternion targetRotation = Quaternion.LookRotation(targetDirection);
+                    playerClass.playerTransform.rotation = Quaternion.Slerp(
+                        playerClass.playerTransform.rotation,
+                        targetRotation,
+                        15f * Time.deltaTime
+                    );
+                }
+            }
         }
     }
 

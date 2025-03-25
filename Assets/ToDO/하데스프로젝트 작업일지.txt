@@ -638,8 +638,35 @@ Commit = Item/framework
 									
 									현재 너무 많아서 원하는걸 뽑기 극악인듯 함 카드의 출몰을 잘 조율해야할듯함 (종류별로 하나 뜬다던지)
 
+3/24 = SpecialAbility제작		=>	LightningJudgmentComponent(스페셜공격시 전역에 번개), SpecialResourceRetentionComponent(스페셜공격 사용시 게이지 잔여)
 
-												
+									2개 제작
+
+									LightningJudgmentComponent => DungeonManager의 현재 소환된 몬스터를 받기위해 애초에 Factory류에 Action 매개변수들을 IMonster>ICreature로 전체 변경
+																  이후 생성된 몬스터를 IMonsterClass 리스트가 아닌 ICretaureStatus를 받음 => 이로써 ICretureStatus의 GetTrasform매서드를 통해
+																  현재 몬스터들의 위치가 찾아짐
+																  CharacterAttackBase에 GetComponent후 있으면 Execute실행
+
+									SpecialResourceRetentionComponent => IWeapon에 SetGageRetentionRate매서드 추가 WeaponManager에 구현 및 gageRetentionRate변수 추가 및 ResetGage개선
+
+
+									이제 DungeonAbility는 임시 완성
+									
+									이후 UI개선 및 현재 어빌리티선택에서 나오는 랜덤성이 강해 조정 필요
+								
+
+3/25 = DungeonManager.cs 중 매서드GetSmartAbilitySelection제작
+
+먼저 시스템이 40:60 확률로 두 가지 방식 중 하나를 선택합니다:
+
+30% 확률: 다양한 희귀도가 섞인 풀 사용 (Common부터 Legendary까지)
+70% 확률: 진행도에 따라 조정된 확률로 단일 희귀도 선택 후 해당 희귀도만으로 풀 구성
+
+20% 확률로 레벨업 가능한 기존 능력 중 하나를 선택지에 추가합니다.
+남은 선택 슬롯을 1번에서 결정된 희귀도 풀에서 선택합니다:
+
+다양한 희귀도 풀이 선택된 경우: 풀에서 랜덤하게 희귀도 선택
+단일 희귀도 풀이 선택된 경우: 모두 같은 희귀도의 능력으로 채움 												
 
 
 					

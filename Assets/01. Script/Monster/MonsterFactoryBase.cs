@@ -15,7 +15,7 @@ public abstract class MonsterFactoryBase
     // 구체적인 데이터 타입을 얻기 위한 추상 메서드 추가
     protected abstract Type GetDataType();
 
-    public virtual IMonsterClass CreateMonster(Vector3 spawnPosition, Action<IMonsterClass> onMonsterCreated)
+    public virtual ICreatureStatus CreateMonster(Vector3 spawnPosition, Action<ICreatureStatus> onMonsterCreated)
     {
         string key = GetMonsterDataKey();
 
@@ -42,7 +42,7 @@ public abstract class MonsterFactoryBase
         return null;
     }
 
-    private void LoadMonsterData(Vector3 spawnPosition, Action<IMonsterClass> onMonsterCreated)
+    private void LoadMonsterData(Vector3 spawnPosition, Action<ICreatureStatus> onMonsterCreated)
     {
         string key = GetMonsterDataKey();
         bool isSecondSpawn = spawnCounts.ContainsKey(key) && spawnCounts[key] >= 2;
@@ -80,7 +80,7 @@ public abstract class MonsterFactoryBase
         };
     }
 
-    private void InstantiatePrefab(ICreatureData data, Vector3 position, Action<IMonsterClass> onMonsterCreated, bool isSecondSpawn)
+    private void InstantiatePrefab(ICreatureData data, Vector3 position, Action<ICreatureStatus> onMonsterCreated, bool isSecondSpawn)
     {
         if (data == null || string.IsNullOrEmpty(data.monsterPrefabKey))  // 대문자로 수정
         {
@@ -105,20 +105,20 @@ public abstract class MonsterFactoryBase
             };
     }
 
-    protected virtual void FinalizeMonsterCreation(GameObject monsterObject, ICreatureData data, Action<IMonsterClass> onMonsterCreated)
+    protected virtual void FinalizeMonsterCreation(GameObject monsterObject, ICreatureData data, Action<ICreatureStatus> onMonsterCreated)
     {
-     
-        
 
-        IMonsterClass monster = CreateMonsterInstance(data);
+
         ICreatureStatus status = monsterObject.AddComponent<MonsterStatus>();
+        IMonsterClass monster = CreateMonsterInstance(data);
+       
         Debug.Log("@@@@@@@@@@@@@@@" + "추가가 되었다");
         status.Initialize(monster);
         if (monster is EliteMonster)
         {
             monsterObject.AddComponent<EliteMonsterController>();
         }
-        onMonsterCreated?.Invoke(monster);
+        onMonsterCreated?.Invoke(status);
     }
 
    

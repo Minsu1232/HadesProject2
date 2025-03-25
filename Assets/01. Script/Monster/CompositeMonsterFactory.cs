@@ -14,7 +14,7 @@ public class CompositeMonsterFactory : MonsterFactoryBase
     {
         return typeof(MonsterData);  // 일반 몬스터는 MonsterData 사용
     }
-    public override IMonsterClass CreateMonster(Vector3 spawnPosition, Action<IMonsterClass> onMonsterCreated)
+    public override ICreatureStatus CreateMonster(Vector3 spawnPosition, Action<ICreatureStatus> onMonsterCreated)
     {
         if (factories.Length > 0)
         {

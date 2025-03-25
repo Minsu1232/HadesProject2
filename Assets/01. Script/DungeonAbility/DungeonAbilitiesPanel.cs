@@ -112,9 +112,9 @@ public class DungeonAbilitiesPanel : MonoBehaviour
         }
         else
         {
-            // 테스트용 더미 데이터
-            Debug.Log("DungeonAbilityManager가 없습니다. 테스트 데이터를 사용합니다.");
-            CreateDummyData(abilities);
+          
+            Debug.Log("DungeonAbilityManager가 없습니다.");
+           
         }
 
         // 각 어빌리티에 대한 UI 항목 생성
@@ -129,53 +129,8 @@ public class DungeonAbilitiesPanel : MonoBehaviour
             scrollRect.normalizedPosition = new Vector2(0, 1);
         }
     }
-
-    // 테스트용 더미 데이터 생성
-    private void CreateDummyData(List<DungeonAbility> abilities)
-    {
-        // 실제 게임에서는 이 부분을 제거하고 DungeonAbilityManager에서 데이터를 가져옴
-        // 여기서는 테스트를 위해 PassiveAbility 객체를 생성하지만,
-        // 다른 어빌리티 타입도 추가할 수 있습니다
-
-        if (typeof(PassiveAbility) != null) // 컴파일 에러 방지용 체크
-        {
-            try
-            {
-                // 데미지 감소 어빌리티
-                PassiveAbility damageReduction = new PassiveAbility();
-                damageReduction.Initialize(PassiveAbility.PassiveType.DamageReduction, 15f,
-                    "데미지 감소", "받는 데미지가 15% 감소합니다", Rarity.Rare);
-                damageReduction.level = 2;
-                abilities.Add(damageReduction);
-
-                // 흡혈 어빌리티
-                PassiveAbility lifeSteal = new PassiveAbility();
-                lifeSteal.Initialize(PassiveAbility.PassiveType.LifeSteal, 10f,
-                    "생명력 흡수", "공격 시 데미지의 10%를 생명력으로 회복합니다", Rarity.Uncommon);
-                lifeSteal.level = 1;
-                abilities.Add(lifeSteal);
-
-                // 반격 어빌리티
-                PassiveAbility counterattack = new PassiveAbility();
-                counterattack.Initialize(PassiveAbility.PassiveType.Counterattack, 30f,
-                    "반격", "피격 시 받은 데미지의 30%를 반사합니다", Rarity.Epic);
-                counterattack.level = 1;
-                abilities.Add(counterattack);
-
-                // 아이템 찾기 어빌리티
-                PassiveAbility itemFind = new PassiveAbility();
-                itemFind.Initialize(PassiveAbility.PassiveType.ItemFind, 30f,
-                    "아이템 찾기", "아이템 드롭 확률이 30% 증가합니다", Rarity.Rare);
-                itemFind.level = 2;
-                abilities.Add(itemFind);
-            }
-            catch (System.Exception e)
-            {
-                Debug.LogError("테스트 데이터 생성 중 오류 발생: " + e.Message);
-            }
-        }
-    }
-
+    
+   
     // 어빌리티 항목 생성
     private void CreateAbilityItem(DungeonAbility ability)
     {

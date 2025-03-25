@@ -1,6 +1,8 @@
 // SpecialAbility.cs - 특수 스킬 관련 능력 클래스 (DungeonAbility 상속)
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.AddressableAssets;
+using UnityEngine.ResourceManagement.AsyncOperations;
 
 [System.Serializable]
 public class SpecialAbility : DungeonAbility
@@ -54,7 +56,25 @@ public class SpecialAbility : DungeonAbility
         // 아이콘 경로가 있다면 어드레서블로 로드
         if (csvData.ContainsKey("IconPath") && !string.IsNullOrEmpty(csvData["IconPath"]))
         {
-            // 어드레서블 로드 코드 (기존 코드와 동일)
+            string iconAddress = csvData["IconPath"];
+            Debug.Log(iconAddress);
+            // 애드레서블 비동기 로드
+            Addressables.LoadAssetAsync<Sprite>(iconAddress).Completed += handle =>
+            {
+                if (handle.Status == AsyncOperationStatus.Succeeded)
+                {
+                    ability.icon = handle.Result;
+                    Debug.Log($"아이콘 로드 성공: {iconAddress}");
+                }
+                else
+                {
+                    Debug.LogWarning($"아이콘을 로드할 수 없습니다: {iconAddress}");
+                }
+            };
+        }
+        else
+        {
+            Debug.LogWarning($"아이콘을 로드할 수 없습니다");
         }
 
         return ability;

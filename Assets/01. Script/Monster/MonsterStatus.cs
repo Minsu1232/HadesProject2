@@ -191,7 +191,7 @@ public class MonsterStatus : MonoBehaviour, IDamageable, ICreatureStatus
 
                 // 아이템 드롭 실행
                 ItemDropSystem.Instance.DropItemFromMonster(monData, transform.position);
-                DungeonManager.Instance.OnMonsterDefeated(monsterClass);
+                DungeonManager.Instance.OnMonsterDefeated(this);
             }
 
             Destroy(gameObject); // 몬스터 오브젝트 삭제
@@ -377,6 +377,7 @@ public class MonsterStatus : MonoBehaviour, IDamageable, ICreatureStatus
 
     public Transform GetMonsterTransform()
     {
+        Debug.Log("호출!@!@!@");
         return gameObject.transform;
     }
 }

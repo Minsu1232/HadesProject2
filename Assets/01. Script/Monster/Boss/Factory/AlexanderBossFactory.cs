@@ -19,7 +19,7 @@ public class AlexanderBossFactory : MonsterFactoryBase
     protected override string GetMonsterDataKey() => $"BossData_1002";
     protected override bool IsEliteAvailable() => false;
 
-    protected override void FinalizeMonsterCreation(GameObject bossObject, ICreatureData data, Action<IMonsterClass> onMonsterCreated)
+    protected override void FinalizeMonsterCreation(GameObject bossObject, ICreatureData data, Action<ICreatureStatus> onMonsterCreated)
     {
         if (data is BossData bossData)
         {
@@ -28,7 +28,7 @@ public class AlexanderBossFactory : MonsterFactoryBase
             {
                 GameObject.Instantiate(bossData.spawnEffect, bossObject.transform.position, Quaternion.identity);
             }
-
+            ICreatureStatus status = bossObject.AddComponent<BossStatus>();
             IMonsterClass boss = CreateMonsterInstance(data);
             if (boss == null)
             {
@@ -36,7 +36,7 @@ public class AlexanderBossFactory : MonsterFactoryBase
                 return;
             }
 
-            ICreatureStatus status = bossObject.AddComponent<BossStatus>();
+          
             status.Initialize(boss);
             Debug.Log($"{bossData.MonsterName} º“»Ø (AlexanderBoss)");
 
@@ -85,7 +85,7 @@ public class AlexanderBossFactory : MonsterFactoryBase
                 stone.InitializeWithBoss(boss as AlexanderBoss);
             }
 
-            onMonsterCreated?.Invoke(boss);
+            onMonsterCreated?.Invoke(status);
         }
     }
 }

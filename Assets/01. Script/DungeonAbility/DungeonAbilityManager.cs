@@ -95,26 +95,26 @@ public class DungeonAbilityManager : MonoBehaviour
     }
 
     // 스테이지 클리어 시 선택지 생성
-    public List<DungeonAbility> GetAbilitySelection()
-    {
-        List<DungeonAbility> availableAbilities = FilterAvailableAbilities();
-        List<DungeonAbility> selection = new List<DungeonAbility>();
+    //public List<DungeonAbility> GetAbilitySelection()
+    //{
+    //    List<DungeonAbility> availableAbilities = FilterAvailableAbilities();
+    //    List<DungeonAbility> selection = new List<DungeonAbility>();
 
-        // 필요한 개수만큼 랜덤하게 선택
-        for (int i = 0; i < abilitiesPerSelection; i++)
-        {
-            if (availableAbilities.Count == 0) break;
+    //    // 필요한 개수만큼 랜덤하게 선택
+    //    for (int i = 0; i < abilitiesPerSelection; i++)
+    //    {
+    //        if (availableAbilities.Count == 0) break;
 
-            // 가중치 기반 랜덤 선택
-            DungeonAbility selectedAbility = SelectWeightedRandomAbility(availableAbilities);
-            selection.Add(selectedAbility);
+    //        // 가중치 기반 랜덤 선택
+    //        DungeonAbility selectedAbility = SelectWeightedRandomAbility(availableAbilities);
+    //        selection.Add(selectedAbility);
 
-            // 중복 방지를 위해 이미 선택된 능력과 같은 ID를 가진 능력 제거
-            availableAbilities.RemoveAll(a => a.id == selectedAbility.id);
-        }
+    //        // 중복 방지를 위해 이미 선택된 능력과 같은 ID를 가진 능력 제거
+    //        availableAbilities.RemoveAll(a => a.id == selectedAbility.id);
+    //    }
 
-        return selection;
-    }
+    //    return selection;
+    //}
 
     // 현재 상황에 맞는 능력 필터링
     private List<DungeonAbility> FilterAvailableAbilities()
@@ -221,6 +221,19 @@ public class DungeonAbilityManager : MonoBehaviour
             upgraded.level = existingAbility.level;
             return upgraded;
         }
+        else if (templateAbility is SpecialAbility specialAbility)
+        {
+            SpecialAbility upgraded = new SpecialAbility();
+            upgraded.Initialize(
+                ((SpecialAbility)specialAbility).specialType,
+                ((SpecialAbility)specialAbility).effectValue,
+                templateAbility.name,
+                $"{templateAbility.description} (현재 Lv.{existingAbility.level})",
+                templateAbility.rarity);
+            upgraded.id = specialAbility.id;
+            upgraded.level = existingAbility.level;
+            return upgraded;
+        }
         // 다른 타입의 능력도 여기에 추가...
 
         Debug.LogWarning($"능력 {templateAbility.id}의 업그레이드 복사본을 생성할 수 없습니다. 지원되지 않는 타입: {templateAbility.GetType().Name}");
@@ -306,5 +319,163 @@ public class DungeonAbilityManager : MonoBehaviour
     public DungeonAbility GetAbilityById(string id)
     {
         return currentAbilities.Find(a => a.id == id);
+    }
+
+    public List<DungeonAbility> GetSmartAbilitySelection()
+    {
+        List<DungeonAbility> selection = new List<DungeonAbility>();
+
+        // 1. 진행 상황에 따라 희귀도 풀 선택
+        float dungeonProgress = 0f;
+        if (DungeonManager.Instance != null)
+        {
+            dungeonProgress = DungeonManager.Instance.GetDungeonProgress();
+            Debug.Log($"스마트 선택: 현재 던전 진행도 = {dungeonProgress:F2}");
+        }
+
+        // 희귀도 풀 결정
+        Rarity[] rarityPool;
+        float randomRoll = UnityEngine.Random.value;
+
+        if (randomRoll < 0.3f) // 30% 확률로 혼합 희귀도 풀
+        {
+            rarityPool = new Rarity[] {
+        Rarity.Common, Rarity.Common, Rarity.Uncommon,
+        Rarity.Uncommon, Rarity.Rare, Rarity.Epic, Rarity.Legendary
+    };
+            Debug.Log("스마트 선택: 혼합 희귀도 풀 사용");
+        }
+        else // 50% 확률로 일관된 희귀도 풀
+        {
+            Rarity selectedRarity;
+            float rarityRoll = UnityEngine.Random.value;
+
+            // 진행도에 따른 희귀도 선택 확률 조정 (수정된 버전)
+            float legendaryChance = 0.02f + (dungeonProgress * 0.05f); // 최대 7% 확률
+            float epicChance = 0.05f + (dungeonProgress * 0.07f); // 최대 12% 확률
+            float rareChance = 0.10f + (dungeonProgress * 0.08f); // 최대 18% 확률
+            float uncommonChance = 0.35f - (dungeonProgress * 0.1f); // 최소 25% 확률
+            float commonChance = 1.0f - (legendaryChance + epicChance + rareChance + uncommonChance); // 나머지
+
+            // 랜덤 값 기반으로 희귀도 선택
+            if (rarityRoll < commonChance) selectedRarity = Rarity.Common;
+            else if (rarityRoll < commonChance + uncommonChance) selectedRarity = Rarity.Uncommon;
+            else if (rarityRoll < commonChance + uncommonChance + rareChance) selectedRarity = Rarity.Rare;
+            else if (rarityRoll < commonChance + uncommonChance + rareChance + epicChance) selectedRarity = Rarity.Epic;
+            else selectedRarity = Rarity.Legendary;
+
+            rarityPool = Enumerable.Repeat(selectedRarity, 6).ToArray();
+            Debug.Log($"스마트 선택: 일관된 희귀도 풀 사용 (선택 희귀도: {selectedRarity})");
+        }
+
+        // 2. 레벨업 기회 추가 (20% 확률)
+        if (currentAbilities.Count > 0)
+        {
+            // 레벨업 가능한 어빌리티 필터링
+            var upgradable = currentAbilities.Where(a => a.level < 5).ToList();
+            Debug.Log($"스마트 선택: 현재 레벨업 가능한 어빌리티 수 = {upgradable.Count}");
+
+            if (upgradable.Count > 0 && UnityEngine.Random.value < 0.2f)
+            {
+                var toUpgrade = upgradable[UnityEngine.Random.Range(0, upgradable.Count)];
+                var upgraded = CreateUpgradedAbilityCopy(toUpgrade, toUpgrade);
+                selection.Add(upgraded);
+                Debug.Log($"스마트 선택: 레벨업 선택지 추가됨 - {toUpgrade.name} (현재 Lv.{toUpgrade.level})");
+            }
+            else
+            {
+                Debug.Log("스마트 선택: 레벨업 선택지 추가되지 않음 (확률에 따라)");
+            }
+        }
+
+        // 3. 남은 슬롯 채우기
+        List<DungeonAbility> allAvailable = FilterAvailableAbilities();
+        Debug.Log($"스마트 선택: 사용 가능한 총 어빌리티 수 = {allAvailable.Count}");
+
+        // 이미 선택된 어빌리티 제외
+        foreach (var ability in selection)
+        {
+            allAvailable.RemoveAll(a => a.id == ability.id);
+        }
+
+        // 각 희귀도 슬롯에 맞는 어빌리티 선택
+        for (int i = selection.Count; i < abilitiesPerSelection; i++)
+        {
+            if (allAvailable.Count == 0)
+            {
+                Debug.Log("스마트 선택: 더 이상 사용 가능한 어빌리티가 없음");
+                break;
+            }
+
+            // 해당 희귀도 인덱스 (배열 범위 초과 방지)
+            int rarityIndex = Mathf.Min(i, rarityPool.Length - 1);
+            Rarity targetRarity = rarityPool[rarityIndex];
+            Debug.Log($"스마트 선택: 슬롯 {i + 1} - 목표 희귀도: {targetRarity}");
+
+            // 해당 희귀도의 어빌리티 필터링
+            var abilitiesOfRarity = allAvailable.Where(a => a.rarity == targetRarity).ToList();
+            Debug.Log($"스마트 선택: {targetRarity} 희귀도의 사용 가능한 어빌리티 수 = {abilitiesOfRarity.Count}");
+
+            // 해당 희귀도 어빌리티가 없으면 더 낮은 희귀도 시도
+            Rarity originalRarity = targetRarity;
+            while (abilitiesOfRarity.Count == 0 && (int)targetRarity > 0)
+            {
+                targetRarity = (Rarity)((int)targetRarity - 1);
+                abilitiesOfRarity = allAvailable.Where(a => a.rarity == targetRarity).ToList();
+                Debug.Log($"스마트 선택: 희귀도 하락 {originalRarity} -> {targetRarity}, 사용 가능 수 = {abilitiesOfRarity.Count}");
+            }
+
+            // 어빌리티 선택 (카테고리 다양성 고려)
+            if (abilitiesOfRarity.Count > 0)
+            {
+                // 카테고리 중복 방지
+                var currentTypes = selection.Select(a => a.GetType()).ToList();
+                string currentCategoriesStr = string.Join(", ", currentTypes.Select(t => t.Name));
+                Debug.Log($"스마트 선택: 현재 선택된 카테고리 = {currentCategoriesStr}");
+
+                // 중복되지 않는 카테고리 우선 선택
+                var nonDuplicateTypes = abilitiesOfRarity
+                    .Where(a => !currentTypes.Contains(a.GetType()))
+                    .ToList();
+
+                Debug.Log($"스마트 선택: 중복되지 않는 카테고리의 어빌리티 수 = {nonDuplicateTypes.Count}");
+
+                if (nonDuplicateTypes.Count > 0)
+                {
+                    var selected = nonDuplicateTypes[UnityEngine.Random.Range(0, nonDuplicateTypes.Count)];
+                    selection.Add(selected);
+                    allAvailable.Remove(selected);
+                    Debug.Log($"스마트 선택: 중복되지 않는 카테고리에서 선택함 - {selected.name} ({selected.GetType().Name}, {selected.rarity})");
+                }
+                else // 중복된 카테고리도 괜찮음
+                {
+                    var selected = abilitiesOfRarity[UnityEngine.Random.Range(0, abilitiesOfRarity.Count)];
+                    selection.Add(selected);
+                    allAvailable.Remove(selected);
+                    Debug.Log($"스마트 선택: 중복 카테고리에서 선택함 - {selected.name} ({selected.GetType().Name}, {selected.rarity})");
+                }
+            }
+            else
+            {
+                Debug.Log("스마트 선택: 적합한 희귀도의 어빌리티가 없음");
+            }
+        }
+
+        // 최종 결과 로그
+        Debug.Log($"스마트 선택: 최종 선택된 어빌리티 수 = {selection.Count}");
+        foreach (var ability in selection)
+        {
+            Debug.Log($"스마트 선택 결과: {ability.name} (타입: {ability.GetType().Name}, 희귀도: {ability.rarity}, 레벨: {ability.level})");
+        }
+
+        return selection;
+    }
+
+    // 어빌리티 타입으로 필터링하는 헬퍼 메서드
+    private List<DungeonAbility> FilterAvailableAbilitiesByType(System.Type abilityType)
+    {
+        return FilterAvailableAbilities()
+            .Where(a => a.GetType() == abilityType)
+            .ToList();
     }
 }
