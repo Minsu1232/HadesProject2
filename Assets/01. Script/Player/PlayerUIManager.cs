@@ -153,6 +153,7 @@ public class PlayerUIManager : MonoBehaviour
 
     private void UpdateChargeTimeUI(float chargeTime)
     {
+        if (player.weaponType == PlayerClass.WeaponType.None) return;
         float chargeRatio = Mathf.Clamp01(chargeTime / weaponManager.MaxChargeTime);
 
         if (chargeGageBar != null)

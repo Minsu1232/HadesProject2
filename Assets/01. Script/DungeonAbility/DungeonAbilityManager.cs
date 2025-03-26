@@ -325,37 +325,45 @@ public class DungeonAbilityManager : MonoBehaviour
     {
         List<DungeonAbility> selection = new List<DungeonAbility>();
 
+        // 희귀도 보너스 계산
+        float rarityBonus = 0f;
+        if (StatUpgradeManager.Instance != null)
+        {
+            rarityBonus = StatUpgradeManager.Instance.GetTotalRarityBonus();
+            //ex 공격력 2(1.0%), 체력 3(0.9%), 이속 1(0.7%) = 총 2.6% 보너스
+            Debug.Log($"스마트 선택: 희귀도 보너스 +{rarityBonus:F1}% 적용");
+        }
+
         // 1. 진행 상황에 따라 희귀도 풀 선택
         float dungeonProgress = 0f;
         if (DungeonManager.Instance != null)
         {
             dungeonProgress = DungeonManager.Instance.GetDungeonProgress();
-            Debug.Log($"스마트 선택: 현재 던전 진행도 = {dungeonProgress:F2}");
         }
 
-        // 희귀도 풀 결정
+        // 희귀도 풀 결정 (20% → 20+2.6% = 22.6% 확률로 혼합 풀 선택)
         Rarity[] rarityPool;
         float randomRoll = UnityEngine.Random.value;
 
-        if (randomRoll < 0.3f) // 30% 확률로 혼합 희귀도 풀
+        if (randomRoll < 0.2f + (rarityBonus * 0.01f)) // 보너스에 따라 혼합 희귀도 풀 확률 증가 (최대 +10%)
         {
             rarityPool = new Rarity[] {
-        Rarity.Common, Rarity.Common, Rarity.Uncommon,
-        Rarity.Uncommon, Rarity.Rare, Rarity.Epic, Rarity.Legendary
-    };
+            Rarity.Common, Rarity.Common, Rarity.Uncommon,
+            Rarity.Uncommon, Rarity.Rare, Rarity.Epic, Rarity.Legendary
+        };
             Debug.Log("스마트 선택: 혼합 희귀도 풀 사용");
         }
-        else // 50% 확률로 일관된 희귀도 풀
+        else // 일관된 희귀도 풀
         {
             Rarity selectedRarity;
             float rarityRoll = UnityEngine.Random.value;
 
-            // 진행도에 따른 희귀도 선택 확률 조정 (수정된 버전)
-            float legendaryChance = 0.02f + (dungeonProgress * 0.05f); // 최대 7% 확률
-            float epicChance = 0.05f + (dungeonProgress * 0.07f); // 최대 12% 확률
-            float rareChance = 0.10f + (dungeonProgress * 0.08f); // 최대 18% 확률
-            float uncommonChance = 0.35f - (dungeonProgress * 0.1f); // 최소 25% 확률
-            float commonChance = 1.0f - (legendaryChance + epicChance + rareChance + uncommonChance); // 나머지
+            // 진행도와 희귀도 보너스에 따른 확률 조정
+            float legendaryChance = 0.02f + (dungeonProgress * 0.05f) + (rarityBonus * 0.002f); // +0.0052%
+            float epicChance = 0.05f + (dungeonProgress * 0.07f) + (rarityBonus * 0.003f);     // +0.0078%
+            float rareChance = 0.10f + (dungeonProgress * 0.08f) + (rarityBonus * 0.005f);     // +0.013%
+            float uncommonChance = 0.35f - (dungeonProgress * 0.1f);
+            float commonChance = 1.0f - (legendaryChance + epicChance + rareChance + uncommonChance);
 
             // 랜덤 값 기반으로 희귀도 선택
             if (rarityRoll < commonChance) selectedRarity = Rarity.Common;
@@ -365,26 +373,25 @@ public class DungeonAbilityManager : MonoBehaviour
             else selectedRarity = Rarity.Legendary;
 
             rarityPool = Enumerable.Repeat(selectedRarity, 6).ToArray();
-            Debug.Log($"스마트 선택: 일관된 희귀도 풀 사용 (선택 희귀도: {selectedRarity})");
         }
 
-        // 2. 레벨업 기회 추가 (20% 확률)
+        // 2. 레벨업 기회 추가 (20% → 20+1.3% = 21.3% 확률)
         if (currentAbilities.Count > 0)
         {
-            // 레벨업 가능한 어빌리티 필터링
             var upgradable = currentAbilities.Where(a => a.level < 5).ToList();
-            Debug.Log($"스마트 선택: 현재 레벨업 가능한 어빌리티 수 = {upgradable.Count}");
 
-            if (upgradable.Count > 0 && UnityEngine.Random.value < 0.2f)
+            if (upgradable.Count > 0)
             {
-                var toUpgrade = upgradable[UnityEngine.Random.Range(0, upgradable.Count)];
-                var upgraded = CreateUpgradedAbilityCopy(toUpgrade, toUpgrade);
-                selection.Add(upgraded);
-                Debug.Log($"스마트 선택: 레벨업 선택지 추가됨 - {toUpgrade.name} (현재 Lv.{toUpgrade.level})");
-            }
-            else
-            {
-                Debug.Log("스마트 선택: 레벨업 선택지 추가되지 않음 (확률에 따라)");
+                // 희귀도 보너스에 따라 레벨업 확률 증가 (기본 20% + 보너스/2, 최대 30%)
+                float levelUpChance = 0.2f + (rarityBonus * 0.005f);
+                levelUpChance = Mathf.Min(levelUpChance, 0.3f); // 최대 30%로 제한
+
+                if (UnityEngine.Random.value < levelUpChance)
+                {
+                    var toUpgrade = upgradable[UnityEngine.Random.Range(0, upgradable.Count)];
+                    var upgraded = CreateUpgradedAbilityCopy(toUpgrade, toUpgrade);
+                    selection.Add(upgraded);
+                }
             }
         }
 

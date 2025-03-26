@@ -659,14 +659,24 @@ Commit = Item/framework
 
 먼저 시스템이 40:60 확률로 두 가지 방식 중 하나를 선택합니다:
 
-30% 확률: 다양한 희귀도가 섞인 풀 사용 (Common부터 Legendary까지)
-70% 확률: 진행도에 따라 조정된 확률로 단일 희귀도 선택 후 해당 희귀도만으로 풀 구성
+20% 확률: 다양한 희귀도가 섞인 풀 사용 (Common부터 Legendary까지 균등하게)
+80% 확률: 진행도에 따라 조정된 확률로 단일 희귀도 선택 후 해당 희귀도만으로 풀 구성
 
 20% 확률로 레벨업 가능한 기존 능력 중 하나를 선택지에 추가합니다.
 남은 선택 슬롯을 1번에서 결정된 희귀도 풀에서 선택합니다:
 
 다양한 희귀도 풀이 선택된 경우: 풀에서 랜덤하게 희귀도 선택
 단일 희귀도 풀이 선택된 경우: 모두 같은 희귀도의 능력으로 채움 												
+
+
+3/26 = Material 아이템을 이용해 스탯 강화 기능 제작 => StatUpgradeManager,StatUpgradeUI,StatItemUI,UpgradeMaterials.csv 제작, 아이템테이블 조정 및 Icon추가
+
+			StatUpgadeManager =>재료를 이용한 스탯 강화는 공격력, 헬스, 스피드를 PlayerClass와 연동해 UpgradeCount를 올려주고, 올려줄수록 Ability의 높은 희귀도 등장 확률 Up
+								Max레벨이 존재하며 10단위로 티어가 오르고 이때 요구 재료도 바뀜		
+
+			StatUpgradUI 프리팹들 제작 => 이후 UIManager를 만들어 토글되는 패널창은 ToggleCs를 추가하여 Esc누르면 닫아지게끔 함
+
+			UpgradeMaterials => StatType	Tier	ItemID	BaseQuantity	MaxLevel 작성
 
 
 					

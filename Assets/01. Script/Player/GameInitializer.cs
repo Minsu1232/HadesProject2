@@ -1,3 +1,4 @@
+using DG.Tweening;
 using UnityEngine;
 
 public class GameInitializer : Singleton<GameInitializer>
@@ -27,8 +28,8 @@ public class GameInitializer : Singleton<GameInitializer>
 
     private void Start()
     {
-        // 모든 초기화 후 데이터 적용
-        ApplySavedDataToGame();
+        // 모든 초기화 이후 0.1 후 데이터 적용
+        DOVirtual.DelayedCall(0.1f, ApplySavedDataToGame);
     }
 
     private void InitializeComponents()
@@ -83,7 +84,7 @@ public class GameInitializer : Singleton<GameInitializer>
     private void InitializePlayerClass()
     {
         playerClass = new PlayerClass(playerClassData, characterAttack, transform, animator);
-        Debug.Log($"플레이어 클래스 초기화 완료: {playerClassData.name}");
+        Debug.Log($"플레이어 클래스 초기화 완료!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!: {playerClassData.name}");
     }
 
     private void OnWeaponChanged(WeaponManager weapon)

@@ -54,7 +54,7 @@
 //    {
 //        // 기본 챕터 설정 (첫 번째만 해금)
 //        unlockedChapters["YasuoChapter"] = true;
-//        unlockedChapters["YongzokChapter"] = false;
+//        unlockedChapters["YongzokChapter"] = true;
 //        unlockedChapters["DeathChapter"] = false;
 //        unlockedChapters["HeartChapter"] = false;
 

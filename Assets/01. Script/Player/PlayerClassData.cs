@@ -52,7 +52,7 @@ public class PlayerClassData : ScriptableObject
 
         public float GetCalculatedSpeed()
         {
-            return StatConstants.BASE_SPEED + (speedUpgradeCount * StatConstants.SPEED_PER_UPGRADE);
+            return StatConstants.BASE_SPEED * (1 + speedUpgradeCount * StatConstants.SPEED_PER_UPGRADE);
         }
 
         public float GetCalculatedDamageReceiveRate()

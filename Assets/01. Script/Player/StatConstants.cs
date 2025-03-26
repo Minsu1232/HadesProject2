@@ -16,7 +16,7 @@ public static class StatConstants
     public const int ATTACK_POWER_PER_UPGRADE = 2;
     public const float ATTACK_SPEED_PER_UPGRADE = 0.1f;
     public const float CRITICAL_CHANCE_PER_UPGRADE = 0.05f;
-    public const float SPEED_PER_UPGRADE = 0.1f;
+    public const float SPEED_PER_UPGRADE = 0.03f;
     public const float DAMAGE_REDUCE_PER_UPGRADE = 0.05f;
 
     // 대시 관련 상수

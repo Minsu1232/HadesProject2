@@ -16,7 +16,7 @@ public class SkillConfigManager : Singleton<SkillConfigManager>
     {
         //skillConfigPath = Path.Combine(Application.persistentDataPath, "BossSkillConfigs.csv");
         //CopyCSVFromStreamingAssets();
-        Debug.Log("#@$@#($@#)($@#)($@#)$!)@#");
+        
     }
 
     private void CopyCSVFromStreamingAssets()

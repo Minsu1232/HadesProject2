@@ -382,7 +382,7 @@ public class SaveManager : Singleton<SaveManager>
         if (inventory == null) return;
 
         // 인벤토리 초기화
-        inventory.ClearInventory();
+        //inventory.ClearInventory();
 
         // 저장된 아이템 추가
         foreach (var item in playerData.inventory)

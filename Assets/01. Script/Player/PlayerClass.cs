@@ -149,8 +149,13 @@ public class PlayerClass : ICreature, IDamageable
 
     public void UpgradeSpeed(int count = 1)
     {
+        // 카운트 증가
         _playerClassData.characterStats.speedUpgradeCount += count;
+
+        // RefreshStats()를 통해 새로운 스탯 계산 및 적용
         RefreshStats();
+
+        // 저장
         SaveManager.Instance.UpdatePlayerStats(PlayerStats);
     }
 

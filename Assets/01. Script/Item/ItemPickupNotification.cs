@@ -64,17 +64,6 @@ public class ItemPickupNotification : MonoBehaviour
 
     private void Awake()
     {
-        // 싱글톤 설정
-        if (Instance == null)
-        {
-            Instance = this;
-            DontDestroyOnLoad(gameObject);
-        }
-        else
-        {
-            Destroy(gameObject);
-        }
-
         // 부모 Transform이 지정되지 않은 경우 현재 객체의 Transform 사용
         if (notificationParent == null)
         {
