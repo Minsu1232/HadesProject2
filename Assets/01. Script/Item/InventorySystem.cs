@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -24,13 +25,12 @@ public class InventorySystem : MonoBehaviour
     [SerializeField] private int maxInventorySize = 20;
     [SerializeField] private bool hasFoundFirstFragment = false; // 첫 파편 획득 여부
 
-    // 이벤트
-    public delegate void InventoryChangedHandler();
-    public event InventoryChangedHandler OnInventoryChanged;
 
-    public delegate void FirstFragmentFoundHandler();
-    public event FirstFragmentFoundHandler OnFirstFragmentFound;
+    public event Action OnInventoryChanged;
 
+    public event Action OnFirstFragmentFound;
+    
+    public event Action<int, int> OnItemAdded;
     // 플레이어 참조 (아이템 사용 효과 적용용)
     [SerializeField] private PlayerClass playerClass;
     [SerializeField] private GameObject inventoryPanel;
@@ -57,8 +57,10 @@ public class InventorySystem : MonoBehaviour
         {
             ItemDataManager.Instance.OnAnyItemIconLoaded += OnIconLoaded;
         }
-        
-        
+
+        playerClass = GameInitializer.Instance.GetPlayerClass();
+
+
     }
     private void Update()
     {
@@ -103,8 +105,16 @@ public class InventorySystem : MonoBehaviour
             Debug.LogError($"아이템 추가 실패. ID {itemId}인 아이템을 찾을 수 없습니다.");
             return false;
         }
+        Debug.Log("아이템획득 성공");
+        bool result = AddItem(itemToAdd, quantity);
 
-        return AddItem(itemToAdd, quantity);
+        //// 아이템 추가 성공 시 이벤트 발생
+        //if (result)
+        //{
+        //    OnItemAdded?.Invoke(itemId, quantity);
+        //}
+
+        return result;
     }
 
     // 아이템 객체로 아이템 추가
@@ -122,7 +132,7 @@ public class InventorySystem : MonoBehaviour
             OnFirstFragmentFound?.Invoke();
             Debug.Log("첫 파편을 획득했습니다! 파편 UI가 활성화됩니다.");
         }
-
+    
         // 스택 가능한 아이템인 경우 기존 스택에 추가 시도
         if (itemToAdd.isStackable)
         {
@@ -159,7 +169,12 @@ public class InventorySystem : MonoBehaviour
             Debug.LogWarning("인벤토리가 가득 찼습니다!");
             return false;
         }
-
+        if (itemToAdd is FragmentItem)
+        {
+            OnItemAdded?.Invoke(itemToAdd.itemID, quantity);
+            FragmentItem fragmentItem = (FragmentItem) itemToAdd;
+            FragmentManager.Instance.EquipFragment(fragmentItem);
+        }
         // 새 슬롯에 아이템 추가
         itemSlots.Add(new ItemSlot(itemToAdd, quantity));
         OnInventoryChanged?.Invoke();

@@ -66,9 +66,36 @@ public class BossStatus : MonsterStatus
 
     public override void Die()
     {
-        if (!IsDead)
+        if (!isDie)
         {
-            base.Die();
+            Debug.Log(monsterClass.MONSTERNAME);
+            Debug.Log("쭉었다");
+            monsterClass.Die();
+            isDie = true;
+            Debug.Log(monsterClass.IsAlive);
+            if (ItemDropSystem.Instance != null)
+            {
+                // 몬스터 데이터 확인
+                ICreatureData monData = monsterClass.GetMonsterData();
+                Debug.Log($"[Monster] Die - 몬스터 ID: {monData.MonsterID}, 드롭 아이템: {monData.dropItem}, 드롭 확률: {monData.dropChance}");
+
+                // 드롭 테이블 확인
+                if (DropTableManager.Instance != null)
+                {
+                    var dropTable = DropTableManager.Instance.GetBossDropTable(monData.MonsterID);
+                    Debug.Log($"[Monster] 드롭 테이블 검색 결과: {monsterClass.MONSTERNAME}{(dropTable != null ? dropTable.Count + "개 항목" : "없음")}");
+                }
+                else
+                {
+                    Debug.LogError("[Monster] DropTableManager 인스턴스가 null입니다!");
+                }
+
+                // 아이템 드롭 실행
+                ItemDropSystem.Instance.DropItemFromBoss(monData, transform.position);
+                DungeonManager.Instance.OnMonsterDefeated(this);
+            }
+
+            Destroy(gameObject); // 몬스터 오브젝트 삭제
         }
     }
 

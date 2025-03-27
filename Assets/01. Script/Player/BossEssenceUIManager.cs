@@ -134,7 +134,11 @@ public class BossEssenceUIManager : MonoBehaviour
             currentEssenceSystem.OnEssenceChanged -= UpdateEssenceBar;
             currentEssenceSystem.OnEssenceStateChanged -= UpdateEssenceState;
             currentEssenceSystem.OnMaxEssenceStateChanged -= UpdateMaxEssenceState;
-            vignetteMaterial.SetFloat("_VignetteIntensity", 0);
+            if(vignetteMaterial != null)
+            {
+                vignetteMaterial.SetFloat("_VignetteIntensity", 0);
+            }
+            
                 
         }
 

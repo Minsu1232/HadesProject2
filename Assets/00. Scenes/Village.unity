@@ -1059,6 +1059,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 410e18b4c6f6cc6439a3af23d572df98, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  notificationPrefab: {fileID: 8023130824206001220, guid: 12e7902127005d64b87e5b4e6fe860bd, type: 3}
+  notificationParent: {fileID: 487754841}
+  notificationDuration: 3
+  fadeTime: 0.5
 --- !u!1 &90071816 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 7916179359554949497, guid: 31309c040744e0149bb65485f25ed02a, type: 3}
@@ -2266,7 +2270,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 0}
-  m_RaycastTarget: 0
+  m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
   m_OnCullStateChanged:
@@ -2302,8 +2306,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 11076065459773148a7bb373e00b1901, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  chapterId: YongzokChapter
   dungeonSceneName: Chapter2Dungeon
   startingStageID: 2_1
+  lockIcon: {fileID: 1799535339}
 --- !u!114 &199647745
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5367,26 +5373,6 @@ MeshCollider:
   m_Convex: 1
   m_CookingOptions: 30
   m_Mesh: {fileID: 0}
---- !u!114 &379261521
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 49490255aaf1a2641a4c5771511bd253, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _halfSpace: 1
-  _alignAxis: 0
-  _alignmentAxis: 1
-  _invertAlignmentAxis: 0
-  _projectAsUnit: 0
-  _embedInSurface: 1
-  _inFrontOffset: 0
-  _behindOffset: 0
 --- !u!1 &379493202
 GameObject:
   m_ObjectHideFlags: 0
@@ -6000,7 +5986,7 @@ MonoBehaviour:
   _extensionPlane:
     _refOBBFace: 4
   _heightPatternDirection: 0
-  _modularSnapSession: {fileID: 2136077062}
+  _modularSnapSession: {fileID: 1725670267}
   _mirrorGizmo: {fileID: 1118604797}
 --- !u!114 &438852328
 MonoBehaviour:
@@ -6789,6 +6775,11 @@ MeshCollider:
   m_Convex: 1
   m_CookingOptions: 30
   m_Mesh: {fileID: -3217460365241906745, guid: c186054e04897406a82d4dcfe0aa97fd, type: 3}
+--- !u!224 &487754841 stripped
+RectTransform:
+  m_CorrespondingSourceObject: {fileID: 2151301654215437805, guid: 8c4d273ccf351e74a8376ac12acc2ff8, type: 3}
+  m_PrefabInstance: {fileID: 1159248876}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &489321652 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 4829379904865708375, guid: 40f978a930c930f4881e5ef011be10fe, type: 3}
@@ -14076,6 +14067,26 @@ MeshCollider:
   m_Convex: 1
   m_CookingOptions: 30
   m_Mesh: {fileID: 855509779468359848, guid: 03dd95a962b8c8644866fad2fba346ca, type: 3}
+--- !u!114 &905088580
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 49490255aaf1a2641a4c5771511bd253, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _halfSpace: 1
+  _alignAxis: 0
+  _alignmentAxis: 1
+  _invertAlignmentAxis: 0
+  _projectAsUnit: 0
+  _embedInSurface: 1
+  _inFrontOffset: 0
+  _behindOffset: 0
 --- !u!1 &905867424 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 4388988116141355667, guid: 7187eb6ab7edcaa489c26bb9cd8b6ff7, type: 3}
@@ -17187,7 +17198,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1143647212
 RectTransform:
   m_ObjectHideFlags: 0
@@ -17260,21 +17271,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6d870872b6f357e4b88a48a5111156ae, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &1148885097
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 38a40404d9721ed4f984030fbce11d53, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _snapMode: 0
-  _snapHalfSpace: 0
-  _projectionSettings: {fileID: 0}
 --- !u!1 &1150687105 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 6513778148138650771, guid: ea898230af995224383f1f522a2083c2, type: 3}
@@ -17342,6 +17338,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1100854326994590344, guid: 8c4d273ccf351e74a8376ac12acc2ff8, type: 3}
+      propertyPath: m_Name
+      value: OverlayCanvas
+      objectReference: {fileID: 0}
     - target: {fileID: 1190189760348602278, guid: 8c4d273ccf351e74a8376ac12acc2ff8, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -17390,6 +17390,14 @@ PrefabInstance:
       propertyPath: m_Enabled
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 6286482461084674549, guid: 8c4d273ccf351e74a8376ac12acc2ff8, type: 3}
+      propertyPath: dashParticleSystem
+      value: 
+      objectReference: {fileID: 4629116891520832364, guid: 15a2a89b5459d534894b0f7b460682f4, type: 3}
+    - target: {fileID: 7487020385559726513, guid: 8c4d273ccf351e74a8376ac12acc2ff8, type: 3}
+      propertyPath: m_Name
+      value: WorldCanvas
+      objectReference: {fileID: 0}
     - target: {fileID: 8725537167669334154, guid: 8c4d273ccf351e74a8376ac12acc2ff8, type: 3}
       propertyPath: m_UseGravity
       value: 1
@@ -17403,7 +17411,8 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
-    m_RemovedGameObjects: []
+    m_RemovedGameObjects:
+    - {fileID: 1940490189290971234, guid: 8c4d273ccf351e74a8376ac12acc2ff8, type: 3}
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 8c4d273ccf351e74a8376ac12acc2ff8, type: 3}
@@ -21356,7 +21365,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 0}
-  m_RaycastTarget: 0
+  m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
   m_OnCullStateChanged:
@@ -21392,8 +21401,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 11076065459773148a7bb373e00b1901, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  chapterId: HeartChapter
   dungeonSceneName: Chapter4Dungeon
   startingStageID: 4_1
+  lockIcon: {fileID: 463243938}
 --- !u!114 &1432344401
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -22105,6 +22116,7 @@ GameObject:
   - component: {fileID: 1465207504}
   - component: {fileID: 1465207505}
   - component: {fileID: 1465207501}
+  - component: {fileID: 1465207506}
   m_Layer: 0
   m_Name: DungeonDataManager
   m_TagString: Untagged
@@ -22249,6 +22261,28 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 062d3e452467d3f4fb91f896644cb3c2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &1465207506
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1465207493}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2929cde7bef110c47933c1b46c639a2d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  fragmentChapterMappings:
+  - fragmentId: 1001
+    chapterId: YongzokChapter
+    chapterName: "\uC6A9\uC871\uC758 \uC601\uC5ED"
+  - fragmentId: 1003
+    chapterId: DeathChapter
+    chapterName: "\uC8FD\uC74C\uC758 \uBB38"
+  - fragmentId: 1005
+    chapterId: HeartChapter
+    chapterName: "\uC2EC\uC7A5\uBD80"
 --- !u!1 &1468028544 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 9130838433790624872, guid: 40f978a930c930f4881e5ef011be10fe, type: 3}
@@ -23890,7 +23924,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c8725edae6a1fd4408036dedaf0199f0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _projectionSettings: {fileID: 379261521}
+  _projectionSettings: {fileID: 905088580}
   _dragAndDropGuide: {fileID: 0}
 --- !u!114 &1644050454
 MonoBehaviour:
@@ -24085,7 +24119,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 0}
-  m_RaycastTarget: 0
+  m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
   m_OnCullStateChanged:
@@ -24121,8 +24155,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 11076065459773148a7bb373e00b1901, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  chapterId: YasuoChapter
   dungeonSceneName: Chapter1Dungeon
   startingStageID: 1_1
+  lockIcon: {fileID: 104534, guid: 285fea52c9d61ed44bdf840f7faf946f, type: 3}
 --- !u!114 &1650625246
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -24280,7 +24316,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 0}
-  m_RaycastTarget: 0
+  m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
   m_OnCullStateChanged:
@@ -24316,8 +24352,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 11076065459773148a7bb373e00b1901, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  chapterId: DeathChapter
   dungeonSceneName: Chapter3Dungeon
   startingStageID: 3_1
+  lockIcon: {fileID: 1445123611}
 --- !u!114 &1659913404
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -25190,6 +25228,21 @@ MeshCollider:
   m_Convex: 1
   m_CookingOptions: 30
   m_Mesh: {fileID: 7163544684638238907, guid: 03dd95a962b8c8644866fad2fba346ca, type: 3}
+--- !u!114 &1725670267
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 38a40404d9721ed4f984030fbce11d53, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _snapMode: 0
+  _snapHalfSpace: 0
+  _projectionSettings: {fileID: 0}
 --- !u!1 &1726618020 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 620832903303449659, guid: 94d43cd3785471340aa315bbbd100eab, type: 3}
@@ -27150,7 +27203,7 @@ MonoBehaviour:
   _spawnGuide: {fileID: 1454016087}
   _extensionPlane:
     _refOBBFace: 4
-  _modularSnapSession: {fileID: 1148885097}
+  _modularSnapSession: {fileID: 2077105807}
   _mirrorGizmo: {fileID: 1262915059}
 --- !u!1 &1839720524 stripped
 GameObject:
@@ -30040,6 +30093,10 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3470840442401576887, guid: bd6539f63acf172418a72b97d38eddd3, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 3599220030374401307, guid: bd6539f63acf172418a72b97d38eddd3, type: 3}
       propertyPath: m_AnchorMax.y
       value: 0
@@ -30087,6 +30144,10 @@ PrefabInstance:
     - target: {fileID: 3663839045783660873, guid: bd6539f63acf172418a72b97d38eddd3, type: 3}
       propertyPath: m_AnchoredPosition.y
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4064618814566885173, guid: bd6539f63acf172418a72b97d38eddd3, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4289930596525820217, guid: bd6539f63acf172418a72b97d38eddd3, type: 3}
       propertyPath: m_AnchorMax.y
@@ -30176,6 +30237,10 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5729323708405259234, guid: bd6539f63acf172418a72b97d38eddd3, type: 3}
+      propertyPath: fragmentTabButton
+      value: 
+      objectReference: {fileID: 2139153115}
     - target: {fileID: 5969587784483852520, guid: bd6539f63acf172418a72b97d38eddd3, type: 3}
       propertyPath: m_AnchorMax.y
       value: 0
@@ -30199,6 +30264,10 @@ PrefabInstance:
     - target: {fileID: 5969587784483852520, guid: bd6539f63acf172418a72b97d38eddd3, type: 3}
       propertyPath: m_AnchoredPosition.y
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6870922690402103118, guid: bd6539f63acf172418a72b97d38eddd3, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6937911625728994798, guid: bd6539f63acf172418a72b97d38eddd3, type: 3}
       propertyPath: m_AnchorMax.y
@@ -31630,6 +31699,21 @@ MeshCollider:
   m_Convex: 1
   m_CookingOptions: 30
   m_Mesh: {fileID: 5304787786472004496, guid: 03dd95a962b8c8644866fad2fba346ca, type: 3}
+--- !u!114 &2077105807
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 38a40404d9721ed4f984030fbce11d53, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _snapMode: 0
+  _snapHalfSpace: 0
+  _projectionSettings: {fileID: 0}
 --- !u!1 &2078131204 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 7471907596289420637, guid: b913678717447184eb957b6d5eaf3d7a, type: 3}
@@ -32206,21 +32290,11 @@ MeshCollider:
   m_Convex: 1
   m_CookingOptions: 30
   m_Mesh: {fileID: -1537373508570212854, guid: 03dd95a962b8c8644866fad2fba346ca, type: 3}
---- !u!114 &2136077062
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
+--- !u!1 &2139153115 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4064618814566885173, guid: bd6539f63acf172418a72b97d38eddd3, type: 3}
+  m_PrefabInstance: {fileID: 2002773997}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 38a40404d9721ed4f984030fbce11d53, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _snapMode: 0
-  _snapHalfSpace: 0
-  _projectionSettings: {fileID: 0}
 --- !u!1001 &1957578570119807302
 PrefabInstance:
   m_ObjectHideFlags: 0

@@ -182,6 +182,7 @@ public abstract class WeaponManager : MonoBehaviour, IWeapon
         }
         else
         {
+            Debug.Log("리셋됐다!@!@!@!@");
             // 일반적인 경우 (지정된 값으로 게이지 설정)
             CurrentGage = currentGage_;
         }

@@ -678,6 +678,60 @@ Commit = Item/framework
 
 			UpgradeMaterials => StatType	Tier	ItemID	BaseQuantity	MaxLevel 작성
 
+			챕터 해금 기능 제작 =>	FragmentChpaterUnloacker제작 아이템ID와 챕터ID 맵핑 후 InventorySystem에 Add아이템 이벤트 추가 맵핑된 아이템을 최초 획득 시 맵핑된 챕터 개봉
+									기존 BossID도 그냥 MonsterID받는거로 통일
+									기존 던전입장버튼 리뉴얼 => DungeonEntryButton 해금전엔 ImageObejct True,intereactable false
+																
+																언락스크립트의 OnChapterUnlocked구독 => 보스파편먹으면 해금ON
+
+			버그 수정 예정 = 대시시 Gage 초기화 버그 / 로그라이크 이미지 로드 버그(Special류가 유독)
+					  개선 = 유저에게 언제든 알릴 공지사항(nofication)제작 ex) 2챕터 해금, @@무기 해금 이런식
+
+
+3/27 = 버그 수정 = Gage버그는 무기장착이 중첩으로 적용되어 그런거였음 => 무기테스트버튼을 기존무기가 이미 껴져있으면 작동 못하게 변경
+				   이미지 로드 버그 => 일단 사전에 0.3초딜레이를 주던걸 0.5초로 변경
+
+			개선 = UIManager에 공지기능 추가 필요한타이밍에 Instance로 호출 현재 UI는 꾸밈없이 그냥 투명도와 글씨뿐
+
+			기존 Unloacker개선 => add이벤트로 fragment를 인식하여 처음이면 해금이었는데 기존 이벤트인보크를 다른곳에 했음 => 올바른 곳으로 변경 후 아이템 드랍시 해금 (차후 무기까지 해금 예정)
+									
+									개선하면서 Fragment도 있으면 드랍하지 않게 개선 (고유아이템)
+								  
+
+			기존 InventorySystem 개선 => 보스용 추가 드랍에서 fragment관련 삭제(어짜피 최초 처치시 100퍼드랍임) 
+
+										 SaveData에 fragment리스트 안에 넣어주지 않고 있어서 InventorySystem에 아이템 획득시 파편이면 넣어주고 fragmentmanager도 적용시킴
+
+										 저장 흐름 => FragmentManager에 fragmentitem list가 존재 해당 리스트를 SaveManager에서 Get해와서 Gameinit에서 게임종료시 저장
+
+										 
+
+			버그 수정 예정 = 1_10 이후 =>	빌리지갈때 젠되는 위치 => 임시로라도 지정
+											보스방 전 포탈은 빨갛게 변경
+											보스에센스 임시로0.25로해 둔거 0으로 변경
+											보스처치 후 빌리지로 오는 포탈 제작 및 현재 5초뒤 무조건 빌리지가 너무 짧음 30초로 연장 및 UI표시
+											
+									
+
+							Dungeon관련 =>  스테이지 넘어갈때 페이드아웃이 2번됨
+
+			기능 추가 예정 =	프래그먼트 획득시 컨텐츠 해금
+
+								던전 시작시 시간 체크 시작 및 최고기록 스테이지 기록, 도전 횟수 저장 및 기록변경 (어느정도 구성되어있음) 기록류만 표기 도전 횟수는 스팀 업적 대비
+
+								처치한 몬스터 기록 및 저장 => 스팀 업적 대비
+								
+
+
+		   
+
+
+
+
+
+
+
+
 
 					
 

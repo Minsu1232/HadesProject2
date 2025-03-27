@@ -119,11 +119,22 @@ public class PlayerDashComponent : MonoBehaviour
     {
         if (dashParticleSystem != null)
         {
+            // 파티클 시스템 복제본을 현재 위치에 생성
+            ParticleSystem newDashEffect = Instantiate(
+                dashParticleSystem,
+                transform.position,
+                Quaternion.identity
+            );
+
             // 파티클 방향 설정
-            dashParticleSystem.transform.forward = direction;
+            newDashEffect.transform.forward = direction;
 
             // 파티클 재생
-            dashParticleSystem.Play();
+            newDashEffect.Play();
+
+            // 파티클 시스템 지속 시간 후 자동 삭제
+            float particleDuration = newDashEffect.main.duration + newDashEffect.main.startLifetime.constant;
+            Destroy(newDashEffect.gameObject, particleDuration);
         }
     }
 

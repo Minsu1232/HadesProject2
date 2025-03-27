@@ -45,14 +45,11 @@ public class FragmentManager : MonoBehaviour
             InventorySystem.Instance.OnFirstFragmentFound += OnFirstFragmentFound;
         }
 
-        // 플레이어 클래스 찾기
-        if (playerClass == null)
-        {
-            // 씬에서 PlayerClass를 가진 오브젝트 찾기
-            // 실제 구현은 PlayerClass가 어떻게 관리되는지에 따라 달라짐
-            // 예: PlayerManager.Instance.GetPlayerClass() 등
-            Debug.LogWarning("playerClass가 FragmentManager에 할당되지 않았습니다.");
-        }
+       
+            playerClass = GameInitializer.Instance.GetPlayerClass();
+
+
+        
     }
 
     // 첫 파편 획득 시 호출될 메서드

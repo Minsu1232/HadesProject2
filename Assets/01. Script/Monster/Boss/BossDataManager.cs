@@ -826,7 +826,7 @@ public class BossDataManager : Singleton<BossDataManager>
     }
     private void UpdateBossBaseData(BossData bossData, Dictionary<string, string> baseData)
     {
-        //bossData.BossID = int.Parse(baseData["BossID"]);
+        bossData.MonsterID = int.Parse(baseData["BossID"]);
         bossData.MonsterName = baseData["Name"];
         bossData.initialHp = int.Parse(baseData["HP"]);
         bossData.initialAttackPower = int.Parse(baseData["AttackPower"]);

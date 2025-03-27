@@ -42,19 +42,23 @@ public class WeaponService : MonoBehaviour
 
     public async Task<bool> EquipWeapon(string weaponName)
     {
+        // 이미 같은 무기를 착용중인지 확인
+        if (currentWeapon != null && currentWeapon.WeaponName == weaponName)
+        {
+            Debug.Log($"Already equipped the same weapon: {weaponName}");
+            return false;
+        }
+
         if (isChangingWeapon)
         {
             Debug.LogWarning("Weapon change already in progress");
             return false;
         }
-
         isChangingWeapon = true;
-
         try
         {
             // 기존 무기 제거
-            await UnequipCurrentWeapon();
-
+            UnequipCurrentWeapon();
             // 새 무기 생성 및 설정
             var newWeapon = await weaponFactory.CreateWeapon(weaponName, gameObject.transform);
             if (newWeapon == null)
@@ -62,11 +66,9 @@ public class WeaponService : MonoBehaviour
                 Debug.LogError($"Failed to create weapon: {weaponName}");
                 return false;
             }
-
             // 무기 초기화 및 설정
             currentWeapon = newWeapon;
             await InitializeNewWeapon(currentWeapon);
-
             OnWeaponChanged?.Invoke(currentWeapon);
             Debug.Log($"Successfully equipped weapon: {weaponName}");
             return true;
@@ -82,14 +84,14 @@ public class WeaponService : MonoBehaviour
         }
     }
 
-    private async Task UnequipCurrentWeapon()
-    {
+    private void UnequipCurrentWeapon()
+    { 
         if (currentWeapon != null)
         {
             OnWeaponUnequipped?.Invoke(currentWeapon);
             Destroy(currentWeapon);
             currentWeapon = null;
-            await Task.Yield(); // 한 프레임 대기하여 Destroy 완료 보장
+            
         }
     }
 

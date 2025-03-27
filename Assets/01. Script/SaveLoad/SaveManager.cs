@@ -101,9 +101,7 @@ public class SaveManager : Singleton<SaveManager>
     {
         // 처음 실행 시 기본 아이템 추가
         if (playerData.inventory.Count == 0)
-        {
-            playerData.inventory.Add(new InventoryItemData(3001, 3)); // 체력 포션
-            playerData.inventory.Add(new InventoryItemData(3002, 1)); // 기본 재료
+        {            
             SavePlayerData();
         }
     }
@@ -382,7 +380,7 @@ public class SaveManager : Singleton<SaveManager>
         if (inventory == null) return;
 
         // 인벤토리 초기화
-        //inventory.ClearInventory();
+        inventory.ClearInventory();
 
         // 저장된 아이템 추가
         foreach (var item in playerData.inventory)

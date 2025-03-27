@@ -74,11 +74,11 @@ public class ItemDropSystem : MonoBehaviour
     }
 
     // 보스 처치시 호출되는 메서드
-    public void DropItemFromBoss(BossData bossData, Vector3 dropPosition)
+    public void DropItemFromBoss(ICreatureData bossData, Vector3 dropPosition)
     {
         if (bossData == null) return;
 
-        int bossId = bossData.BossID;
+        int bossId = bossData.MonsterID;
 
         // DropTableManager에서 드롭 테이블 가져오기
         List<ItemDropEntry> dropTable = DropTableManager.Instance.GetBossDropTable(bossId);
@@ -91,7 +91,7 @@ public class ItemDropSystem : MonoBehaviour
         else
         {
             // 기존 방식으로 fallback
-            Item itemToDrop = ItemDataManager.Instance.GetItem(bossData.dropItem);
+            Item itemToDrop = ItemDataManager.Instance.GetItem(bossData.dropItem);         
             if (itemToDrop != null)
             {
                 SpawnItemDrop(itemToDrop, 1, dropPosition, true);
@@ -109,6 +109,7 @@ public class ItemDropSystem : MonoBehaviour
 
         foreach (var entry in dropTable)
         {
+            
             // 기본 드롭 확률 계산
             float baseDropChance = entry.dropChance / 100f;
             float finalDropChance = baseDropChance;
@@ -123,7 +124,14 @@ public class ItemDropSystem : MonoBehaviour
 
             // 아이템 정보 가져오기
             Item itemToDrop = ItemDataManager.Instance.GetItem(entry.itemId);
-            if (itemToDrop == null) continue;
+            List<InventorySystem.ItemSlot> fragments = InventorySystem.Instance.GetItemsByType(Item.ItemType.Fragment);
+            foreach(var slot in fragments)
+            {
+                if (slot.item.itemID == entry.itemId)
+                {
+                    return;
+                }
+            }          
 
             // 희귀도 보정 적용
             float rateMultiplier = GetRarityDropRateMultiplier(itemToDrop.rarity);
@@ -166,38 +174,38 @@ public class ItemDropSystem : MonoBehaviour
     }
 
     // 보스의 추가 아이템 드롭 처리
-    private void DropBossAdditionalItems(BossData bossData, Vector3 dropPosition)
+    private void DropBossAdditionalItems(ICreatureData bossData, Vector3 dropPosition)
     {
-        // 보스는 파편 아이템 드롭 확률 증가
-        float fragmentDropChance = 0.5f; // 50% 확률
+        //// 보스는 파편 아이템 드롭 확률 증가
+        //float fragmentDropChance = 0.5f; // 50% 확률
 
-        if (Random.value <= fragmentDropChance)
-        {
-            // 보스 ID와 관련된 파편 찾기
-            FragmentItem fragment = null;
+        //if (Random.value <= fragmentDropChance)
+        //{
+        //    // 보스 ID와 관련된 파편 찾기
+        //    FragmentItem fragment = null;
 
-            // 1. 먼저 보스 ID 관련 파편 찾기 시도
-            FragmentItem bossFragment = ItemDataManager.Instance.GetFragmentByBossID(bossData.BossID.ToString());
-            if (bossFragment != null)
-            {
-                fragment = bossFragment;
-            }
-            else
-            {
-                // 2. 랜덤 파편 선택
-                List<Item> fragments = ItemDataManager.Instance.GetItemsByType(Item.ItemType.Fragment);
-                if (fragments != null && fragments.Count > 0)
-                {
-                    fragment = fragments[Random.Range(0, fragments.Count)] as FragmentItem;
-                }
-            }
+        //    // 1. 먼저 보스 ID 관련 파편 찾기 시도
+        //    FragmentItem bossFragment = ItemDataManager.Instance.GetFragmentByBossID(bossData.MonsterID.ToString());
+        //    if (bossFragment != null)
+        //    {
+        //        fragment = bossFragment;
+        //    }
+        //    else
+        //    {
+        //        // 2. 랜덤 파편 선택
+        //        List<Item> fragments = ItemDataManager.Instance.GetItemsByType(Item.ItemType.Fragment);
+        //        if (fragments != null && fragments.Count > 0)
+        //        {
+        //            fragment = fragments[Random.Range(0, fragments.Count)] as FragmentItem;
+        //        }
+        //    }
 
-            // 파편 드롭
-            if (fragment != null)
-            {
-                SpawnItemDrop(fragment, 1, dropPosition + new Vector3(0, 0.5f, 0), true);
-            }
-        }
+        //    // 파편 드롭
+        //    if (fragment != null)
+        //    {
+        //        SpawnItemDrop(fragment, 1, dropPosition + new Vector3(0, 0.5f, 0), true);
+        //    }
+        //}
 
         // 드롭 테이블에 없는 추가 재료 아이템 드롭 (옵션)
         if (enableBonusDrops)

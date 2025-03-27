@@ -14,7 +14,7 @@ public class MonsterStatus : MonoBehaviour, IDamageable, ICreatureStatus
     [SerializeField] CreatureAI creatureAI;
     [SerializeField] private Transform skillSpawnPoint;
     private MonsterUIManager uiManager;
-    private bool isDie = false;
+    protected bool isDie = false;
     [FoldoutGroup("Monster Stats")]
     [ReadOnly]
     [ShowInInspector]    
@@ -182,7 +182,7 @@ public class MonsterStatus : MonoBehaviour, IDamageable, ICreatureStatus
                 if (DropTableManager.Instance != null)
                 {
                     var dropTable = DropTableManager.Instance.GetMonsterDropTable(monData.MonsterID);
-                    Debug.Log($"[Monster] 드롭 테이블 검색 결과: {(dropTable != null ? dropTable.Count + "개 항목" : "없음")}");
+                    Debug.Log($"[Monster] 드롭 테이블 검색 결과: {monsterClass.MONSTERNAME}{(dropTable != null ? dropTable.Count + "개 항목" : "없음")}");
                 }
                 else
                 {
