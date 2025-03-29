@@ -115,6 +115,7 @@ public class AbilityCardUI : MonoBehaviour, IPointerEnterHandler, IPointerExitHa
         {
             UpdateShaderValues((int)ability.rarity);
         }
+       
     }
 
     private void OnDisable()

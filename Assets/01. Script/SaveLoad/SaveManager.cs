@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using System.IO;
 using UnityEngine;
 
@@ -408,4 +409,27 @@ public class SaveManager : Singleton<SaveManager>
         }
     }
     #endregion
+    public void SaveDeviceUnlockStatus(Dictionary<int, bool> deviceStatus)
+    {
+        playerData.unlockedDevicesList.Clear();
+        foreach (var pair in deviceStatus)
+        {
+            playerData.unlockedDevicesList.Add(new DeviceUnlockData(pair.Key, pair.Value));
+        }
+        SavePlayerData();
+    }
+
+    public Dictionary<int, bool> GetDeviceUnlockStatus()
+    {
+        Dictionary<int, bool> result = new Dictionary<int, bool>();
+        if (playerData?.unlockedDevicesList != null)
+        {
+            foreach (var data in playerData.unlockedDevicesList)
+            {
+                result[data.deviceId] = data.isUnlocked;
+            }
+        }
+        return result;
+    }
+
 }

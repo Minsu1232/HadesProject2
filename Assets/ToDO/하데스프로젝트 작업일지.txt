@@ -720,6 +720,45 @@ Commit = Item/framework
 								던전 시작시 시간 체크 시작 및 최고기록 스테이지 기록, 도전 횟수 저장 및 기록변경 (어느정도 구성되어있음) 기록류만 표기 도전 횟수는 스팀 업적 대비
 
 								처치한 몬스터 기록 및 저장 => 스팀 업적 대비
+
+
+
+3/29 = 하데스 프로젝트 : 시간 장치 시스템 구현 (3/30) => 프래그먼트 획득 시 해금되는 컨텐츠 //PlayerData에서 VillageManager를 통해 최초 Fragment(1001)을 찾아서 활성화
+
+시간 장치 시스템 기반 구축:
+
+TemporalDeviceManager, DeviceVisualController 스크립트 구현
+장치 데이터 관리를 위한 CSV 파일 설정
+장치 해금 상태 저장을 위한 PlayerSaveData에 unlockedDevices 필드 추가
+SaveManager에 장치 저장/로드 메서드 추가
+
+
+운명의 진자 (ID 0) 구현 완료:
+
+로그라이크 능력 선택 시 레어 이상 등급 등장 확률 15% 증가 효과
+DungeonAbilityManager와 연동하여 GetSmartAbilitySelection 메서드에 효과 적용
+시각적 피드백 및 UI 추가
+
+
+가능성의 거울 (ID 1) 구현 완료:
+
+로그라이크 능력 선택 시 선택지가 3개에서 4개로 증가하는 효과
+DungeonAbilityManager의 abilitiesPerSelection 변수 조정
+복수 카드 UI 레이아웃 수정으로 4개 카드 표시 지원
+
+
+풍요의 모래시계 (ID 2) 구현:
+
+방 클리어 시 10% 확률로 추가 시간 조각(5-10개) 획득 효과
+던전 매니저에 TryGenerateExtraReward 메서드 추가
+능력 선택 완료 후 추가 보상 확률 체크 및 적용
+
+
+초기화 순서 문제 해결:
+
+TemporalDeviceManager의 초기화 로직을 Awake에서 Start로 이동
+InitializeDevices를 Start에서 호출하여 다른 매니저들의 초기화 보장
+장치 효과가 게임 재시작 후에도 정상적으로 적용되도록 개선
 								
 
 

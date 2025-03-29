@@ -457,10 +457,45 @@ public class DungeonManager : Singleton<DungeonManager>
             }
         }
     }
+    // 추가 보상 확률 체크 및 생성
+    private void TryGenerateExtraReward()
+    {
+        // 추가 보상 확률 (기본값 0, 풍요의 모래시계 효과로 증가)
+        float extraRewardChance = 0f;
 
+        // 풍요의 모래시계 효과 적용
+        if (TemporalDeviceManager.Instance != null)
+        {
+            TemporalDevice hourglassDevice = TemporalDeviceManager.Instance.GetDevice(2); // ID 2: 풍요의 모래시계
+            if (hourglassDevice != null && hourglassDevice.IsUnlocked)
+            {
+                extraRewardChance = hourglassDevice.EffectValue; // CSV에 설정된 값 (0.1 = 10%)
+                Debug.Log($"풍요의 모래시계 효과 적용: 추가 보상 확률 {extraRewardChance * 100}%");
+            }
+        }
+
+        // 확률 체크
+        if (Random.value < extraRewardChance)
+        {
+            Debug.Log("풍요의 모래시계 효과 발동: 추가 시간 조각 획득!");
+
+            // 추가 시간 조각 생성
+            int crystalAmount = Random.Range(5, 11); // 5-10개
+            InventorySystem.Instance.AddItem(3001, crystalAmount);
+            Debug.Log($"추가 보상: 시간 조각 {crystalAmount}개");
+
+            // 효과 알림 (선택사항)
+            if (UIManager.Instance != null)
+            {
+                UIManager.Instance.ShowNotification($"풍요의 모래시계 효과: 시간 조각 {crystalAmount}개 획득!");
+            }
+             
+        }
+    }
     // 패시브 어빌리티 선택 UI 표시 메서드 추가
     private void ShowAbilitySelection()
     {
+        
         // AbilitySelectionPanel 컴포넌트를 찾거나 생성
         if (abilitySelectionPanel == null)
         {
@@ -529,6 +564,7 @@ public class DungeonManager : Singleton<DungeonManager>
     // 포탈 생성
     private void SpawnPortal(string nextStageID)
     {
+        TryGenerateExtraReward();
         if (currentPortal != null)
         {
             Destroy(currentPortal);

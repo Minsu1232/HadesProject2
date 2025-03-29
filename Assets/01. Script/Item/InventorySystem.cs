@@ -367,7 +367,11 @@ public class InventorySystem : MonoBehaviour
     {
         return itemSlots.Find(slot => slot.item.itemID == itemID);
     }
-
+    public int GetItemQuantity(int itemID)
+    {
+        ItemSlot slot = FindItemSlot(itemID);
+        return slot != null ? slot.quantity : 0;
+    }
     // 디버깅용: 인벤토리 내용 출력
     public void DebugPrintInventory()
     {

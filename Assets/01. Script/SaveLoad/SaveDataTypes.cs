@@ -71,6 +71,9 @@ public class PlayerSaveData
     public CharacterStatsData characterStats = new CharacterStatsData();
     public List<InventoryItemData> inventory = new List<InventoryItemData>();
     public List<int> equippedFragments = new List<int>();
+    public List<DeviceUnlockData> unlockedDevicesList = new List<DeviceUnlockData>();
+    // PlayerSaveData에 추가
+    public bool workshopUnlocked = false;
 }
 
 // 챕터 진행 데이터
@@ -204,7 +207,18 @@ public class ChapterProgressData
         return chapter?.bestRecord ?? "";
     }
 }
+[Serializable]
+public class DeviceUnlockData
+{
+    public int deviceId;
+    public bool isUnlocked;
 
+    public DeviceUnlockData(int id, bool unlocked)
+    {
+        deviceId = id;
+        isUnlocked = unlocked;
+    }
+}
 // 게임 설정 데이터
 [System.Serializable]
 public class GameSettingsData

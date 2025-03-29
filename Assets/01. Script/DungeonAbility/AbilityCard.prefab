@@ -732,7 +732,7 @@ RectTransform:
   m_GameObject: {fileID: 7705316944105321357}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 0.9, y: 0.9, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 6009630227352714883}
@@ -813,6 +813,18 @@ MonoBehaviour:
   - {r: 0.3, g: 0.3, b: 0.9, a: 1}
   - {r: 0.7, g: 0.3, b: 0.9, a: 1}
   - {r: 1, g: 0.8, b: 0, a: 1}
+  outlineColors:
+  - {r: 1, g: 1, b: 1, a: 1}
+  - {r: 0.4, g: 0.9, b: 0.4, a: 1}
+  - {r: 0.4, g: 0.4, b: 1, a: 1}
+  - {r: 0.9, g: 0.4, b: 1, a: 1}
+  - {r: 1, g: 0.9, b: 0.2, a: 1}
+  patrolColors:
+  - {r: 0.9, g: 0.9, b: 0.9, a: 1}
+  - {r: 1, g: 0.5, b: 0.5, a: 1}
+  - {r: 1, g: 0.7, b: 0.3, a: 1}
+  - {r: 0.5, g: 1, b: 0.5, a: 1}
+  - {r: 0.3, g: 0.7, b: 1, a: 1}
   hoverScaleAmount: 1.1
   hoverScaleDuration: 0.2
   glowPowerValues:
@@ -839,6 +851,18 @@ MonoBehaviour:
   - 0.2
   - 0.3
   - 0.4
+  patrolGlowValues:
+  - 1
+  - 2
+  - 3
+  - 4
+  - 5
+  flashSpeedValues:
+  - 0
+  - 0.5
+  - 1
+  - 1.5
+  - 2
   hoverSound: {fileID: 0}
   selectSound: {fileID: 0}
 --- !u!114 &1451486998402829603

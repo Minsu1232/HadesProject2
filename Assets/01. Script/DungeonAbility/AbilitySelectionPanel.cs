@@ -135,7 +135,7 @@ public class AbilitySelectionPanel : MonoBehaviour
             }
 
             // 카드 등장 애니메이션
-            cardObj.transform.DOScale(Vector3.one, cardAppearDuration)
+            cardObj.transform.DOScale(abilityCardPrefab.gameObject.transform.localScale, cardAppearDuration)
                 .SetEase(Ease.OutBack)
                 .SetDelay(i * cardAppearDelay);
 

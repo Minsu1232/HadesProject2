@@ -1,0 +1,11 @@
+﻿ID,DeviceName,Description,TimeCrystalCost,IsUnlocked,IconKey,EffectType,EffectValue,UnlockRequirement
+0,운명의 진자,로그라이크 능력 선택 시 레어 이상 등급 등장 확률 15% 증가,30,FALSE,device_pendulum,RARE_ABILITY_CHANCE,0.15,50
+1,가능성의 거울,로그라이크 능력 선택 시 능력이 하나 더 등장합니다.,40,FALSE,device_mirror,ABILITY_SELECTION_COUNT,4,70
+2,풍요의 모래시계,방 클리어 시 추가 보상으로 15% 확률로 시간 조각을 얻습니다,35,FALSE,device_hourglass,EXTRA_REWARD_CHANCE,0.15,90
+3,치유의 시간 렌즈,체력 포션 회복량 20% 증가,25,FALSE,device_lens,HEALING_BOOST,0.2,110
+4,영혼 공명기,프래그먼트 효과 10% 강화,50,FALSE,device_resonator,FRAGMENT_BOOST,0.1,130
+5,물질 가속기,모든 재료 아이템 드롭 확률 25% 증가,45,FALSE,device_accelerator,MATERIAL_DROP_CHANCE,0.25,55
+6,시간 방패 생성기,체력 30% 이하일 때 받는 피해 15% 감소,40,FALSE,device_shield,LOW_HP_DAMAGE_REDUCTION,0.15,56
+7,가능성 주입기,던전 입장 시 로그라이크 능력 1개 무작위 획득,60,FALSE,device_injector,RANDOM_ABILITY_START,1,57
+8,에너지 증폭기,게이지 충전 속도 15% 증가,55,FALSE,device_amplifier,GAUGE_CHARGE_RATE,0.15,58
+9,생명력 앵커,사망 시 15% 확률로 체력 50%로 부활 (던전당 1회),70,FALSE,device_anchor,REVIVAL_CHANCE,0.15,59
