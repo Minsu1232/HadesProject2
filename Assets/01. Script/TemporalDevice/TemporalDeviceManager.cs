@@ -50,6 +50,9 @@ public class TemporalDeviceManager : MonoBehaviour
     // 장치 해금 이벤트
     public event Action<TemporalDevice> OnDeviceUnlocked;
 
+    public event Action OnLoadedDebice;
+
+    [SerializeField] private SimpleTemporalDeviceUI ui;
     private void Awake()
     {
         if (Instance == null)
@@ -82,11 +85,17 @@ public class TemporalDeviceManager : MonoBehaviour
        
         InitializeDevices();
         // 3D 오브젝트 가져오기
-        SetupDeviceObjects();
+       
 
         // 모든 해금된 장치 효과 적용
         ApplyAllUnlockedDeviceEffects();
+
+
+
+        SetupDeviceObjects();
+
        
+
     }
 
     private void InitializeDevices()
@@ -145,7 +154,7 @@ public class TemporalDeviceManager : MonoBehaviour
 
             allDevices.Add(device);
         }
-
+        ui.InitializeDeviceButtons();
         Debug.Log($"Loaded {allDevices.Count} temporal devices from CSV");
     }
 

@@ -370,6 +370,7 @@ public class InventorySystem : MonoBehaviour
     public int GetItemQuantity(int itemID)
     {
         ItemSlot slot = FindItemSlot(itemID);
+        
         return slot != null ? slot.quantity : 0;
     }
     // 디버깅용: 인벤토리 내용 출력
