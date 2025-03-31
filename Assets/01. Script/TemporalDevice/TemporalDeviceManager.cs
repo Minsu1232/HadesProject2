@@ -58,7 +58,7 @@ public class TemporalDeviceManager : MonoBehaviour
         if (Instance == null)
         {
             Instance = this;
-            DontDestroyOnLoad(gameObject);
+            //DontDestroyOnLoad(gameObject);
             
         }
         else
@@ -97,7 +97,13 @@ public class TemporalDeviceManager : MonoBehaviour
        
 
     }
-
+    public void NotifyUIReady()
+    {
+        if (ui != null)
+        {
+            ui.InitializeDeviceButtons();
+        }
+    }
     private void InitializeDevices()
     {
         // CSV 파일에서 장치 데이터 로드
@@ -115,47 +121,94 @@ public class TemporalDeviceManager : MonoBehaviour
 
     private void LoadDevicesFromCSV()
     {
-        string csvPath = Path.Combine(Application.streamingAssetsPath, "TemporalDevices.csv");
-
-        if (!File.Exists(csvPath))
+        try
         {
-            Debug.LogError($"TemporalDevices.csv not found at path: {csvPath}");
-            return;
-        }
+            string csvPath = Path.Combine(Application.streamingAssetsPath, "TemporalDevices.csv");
+            Debug.Log($"Attempting to load file from: {csvPath}");
 
-        string[] lines = File.ReadAllLines(csvPath);
-        bool isFirstLine = true;
-
-        foreach (string line in lines)
-        {
-            if (string.IsNullOrWhiteSpace(line)) continue;
-
-            if (isFirstLine)
+            if (!File.Exists(csvPath))
             {
-                isFirstLine = false;
-                continue; // 헤더 라인 스킵
+                Debug.LogError($"TemporalDevices.csv not found at path: {csvPath}");
+                return;
             }
 
-            string[] values = line.Split(',');
-            if (values.Length < 9) continue;
+            Debug.Log("File exists, reading lines...");
+            string[] lines = File.ReadAllLines(csvPath);
+            Debug.Log($"Read {lines.Length} lines");
 
-            TemporalDevice device = new TemporalDevice
+            bool isFirstLine = true;
+            int processedLines = 0;
+
+            foreach (string line in lines)
             {
-                ID = int.Parse(values[0]),
-                DeviceName = values[1],
-                Description = values[2],
-                TimeCrystalCost = int.Parse(values[3]),
-                IsUnlocked = bool.Parse(values[4]),
-                IconKey = values[5],
-                EffectType = ParseEffectType(values[6]),
-                EffectValue = float.Parse(values[7]),
-                UnlockRequirement = int.Parse(values[8])
-            };
+                try
+                {
+                    Debug.Log($"Processing line: {line}");
 
-            allDevices.Add(device);
+                    if (string.IsNullOrWhiteSpace(line))
+                    {
+                        Debug.Log("Skipping empty line");
+                        continue;
+                    }
+
+                    if (isFirstLine)
+                    {
+                        isFirstLine = false;
+                        Debug.Log("Skipping header line");
+                        continue;
+                    }
+
+                    string[] values = line.Split(',');
+                    Debug.Log($"Line split into {values.Length} values");
+
+                    if (values.Length < 9)
+                    {
+                        Debug.LogWarning($"Skipping line, not enough values: {line}");
+                        continue;
+                    }
+
+                    // 각 값을 개별적으로 파싱하여 문제 지점 확인
+                    int id = int.Parse(values[0]);
+                    string deviceName = values[1];
+                    string description = values[2];
+                    int timeCrystalCost = int.Parse(values[3]);
+                    bool isUnlocked = bool.Parse(values[4]);
+                    string iconKey = values[5];
+                    var effectType = ParseEffectType(values[6]);
+                    float effectValue = float.Parse(values[7]);
+                    int unlockRequirement = int.Parse(values[8]);
+
+                    TemporalDevice device = new TemporalDevice
+                    {
+                        ID = id,
+                        DeviceName = deviceName,
+                        Description = description,
+                        TimeCrystalCost = timeCrystalCost,
+                        IsUnlocked = isUnlocked,
+                        IconKey = iconKey,
+                        EffectType = effectType,
+                        EffectValue = effectValue,
+                        UnlockRequirement = unlockRequirement
+                    };
+
+                    allDevices.Add(device);
+                    processedLines++;
+                    Debug.Log($"Successfully added device: {deviceName}");
+                }
+                catch (Exception e)
+                {
+                    Debug.LogError($"Error processing line: {line}. Exception: {e.Message}");
+                }
+            }
+
+      
+            //ui.InitializeDeviceButtons();
+       
         }
-        ui.InitializeDeviceButtons();
-        Debug.Log($"Loaded {allDevices.Count} temporal devices from CSV");
+        catch (Exception e)
+        {
+            Debug.LogError($"Fatal error in LoadDevicesFromCSV: {e.Message}\n{e.StackTrace}");
+        }
     }
 
     private EffectType ParseEffectType(string effectTypeStr)
@@ -189,7 +242,10 @@ public class TemporalDeviceManager : MonoBehaviour
 
         }
     }
-
+    public void OnVillageEnter()
+    {
+        SetupDeviceObjects();
+    }
     // 3D 장치 오브젝트 설정
     private void SetupDeviceObjects()
     {

@@ -5,8 +5,9 @@ using UnityEngine.SceneManagement;
 using System.Collections;
 using DG.Tweening;
 
-public class DungeonManager : Singleton<DungeonManager>
+public class DungeonManager : MonoBehaviour
 {
+    public static DungeonManager Instance { get; private set; }
     [Header("기본 설정")]
     [SerializeField] private bool usePortalSystem = true;
 
@@ -44,14 +45,23 @@ public class DungeonManager : Singleton<DungeonManager>
         "Chapter1Dungeon", "Chapter2Dungeon", "Chapter3Dungeon", "Chapter4Dungeon"
     };
 
-    protected override void Awake()
+    private void Awake()
     {
-        base.Awake();
-        SceneManager.sceneLoaded += OnSceneLoaded;
-    }
+        if (Instance == null)
+        {
+            Instance = this;
+            //DontDestroyOnLoad(gameObject);
+            SceneManager.sceneLoaded += OnSceneLoaded;
 
+        }
+        else
+        {
+            Destroy(gameObject);
+        }
+    }
     private void OnDestroy()
     {
+       
         // 이벤트 해제
         SceneManager.sceneLoaded -= OnSceneLoaded;
     }
@@ -616,7 +626,11 @@ public class DungeonManager : Singleton<DungeonManager>
     private async Task ReturnToVillage()
     {
         Debug.Log("빌리지로 귀환합니다.");
-
+        // 빌리지 스폰 위치 설정 (고정 좌표 사용)
+        PlayerPrefs.SetFloat("VillageSpawnX", -6.6f);
+        PlayerPrefs.SetFloat("VillageSpawnY", 0.1f);
+        PlayerPrefs.SetFloat("VillageSpawnZ", -20f);
+        PlayerPrefs.SetInt("ReturnFromDungeon", 1); // 던전에서 돌아왔음을 표시
         // 로딩 화면 표시 (있을 경우) - 페이드 효과 내장
         if (LoadingScreen.Instance != null)
         {

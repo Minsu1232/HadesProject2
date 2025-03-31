@@ -1,0 +1,11 @@
+﻿ID,DeviceName,Description,TimeCrystalCost,IsUnlocked,IconKey,EffectType,EffectValue,UnlockRequirement
+0,천칭자리의 균형,로그라이크 능력 선택 시 레어 이상 등급 등장 확률 15% 증가,30,FALSE,device_pendulum,RARE_ABILITY_CHANCE,0.15,50
+1,쌍둥이자리의 다면경,로그라이크 능력 선택 시 능력이 하나 더 등장합니다.,40,FALSE,device_mirror,ABILITY_SELECTION_COUNT,4,70
+2,물병자리의 흐름,방 클리어 시 추가 보상으로 15% 확률로 시간 조각을 얻습니다,35,FALSE,device_hourglass,EXTRA_REWARD_CHANCE,0.15,90
+,황소자리의 활력,체력 포션 회복량 20% 증가,25,FALSE,device_lens,HEALING_BOOST,0.2,110
+,레오의 울림,프래그먼트 효과 10% 강화,50,FALSE,device_resonator,FRAGMENT_BOOST,0.1,130
+,양자리의 수확,모든 재료 아이템 드롭 확률 25% 증가,45,FALSE,device_accelerator,MATERIAL_DROP_CHANCE,0.25,55
+,암자리의 보호막,체력 30% 이하일 때 받는 피해 15% 감소,40,FALSE,device_shield,LOW_HP_DAMAGE_REDUCTION,0.15,56
+,염소자리의 지혜,던전 입장 시 로그라이크 능력 1개 무작위 획득,60,FALSE,device_injector,RANDOM_ABILITY_START,1,57
+,오피우쿠스의 문,게이지 충전 속도 15% 증가,55,FALSE,device_amplifier,GAUGE_CHARGE_RATE,0.15,58
+,사수자리의 생명력,사망 시 15% 확률로 체력 50%로 부활 (던전당 1회),70,FALSE,device_anchor,REVIVAL_CHANCE,0.15,59

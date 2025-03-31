@@ -808,7 +808,11 @@ SaveManager를 통해 장치 해금 상태 저장/로드 기능 구현
 				다이얼로그시스템 구축 및 게임 전체 흐름 잡기
 
 
+3/31 UI 정리 및 시간장치(별자리화) 제작 완료 Icon은 오브젝트의 문자를 Sprite화해서 사용 예정
 
+	=> 각종 싱글턴을 남발한 부분들 수정이 필요함 (Scene넘어갈때 Missing) 현재 DungeonManager, TemporalManager 수정 완료
+
+	Village씬에서 플레이어 최초스폰 고정 완료 (플레이어프랩스 활용) 
 
 
 

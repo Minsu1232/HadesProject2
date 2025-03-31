@@ -2,6 +2,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
+using System;
 
 public class SimpleTemporalDeviceUI : MonoBehaviour
 {
@@ -56,14 +57,15 @@ public class SimpleTemporalDeviceUI : MonoBehaviour
             return;
         }
 
-        // 장치 버튼 초기화
-        InitializeDeviceButtons();
 
+        InitializeDeviceButtons();
         // 크리스탈 개수 업데이트
         UpdateCrystalCount();
 
         // 장치 해금 이벤트 연결
         deviceManager.OnDeviceUnlocked += OnDeviceUnlocked;
+        // 장치 버튼 초기화
+        deviceManager.NotifyUIReady();
     }
 
     private void OnDestroy()
@@ -106,6 +108,7 @@ public class SimpleTemporalDeviceUI : MonoBehaviour
     // 장치 버튼 초기화
     public void InitializeDeviceButtons()
     {
+
         if (deviceContainer == null || deviceButtonPrefab == null) return;
 
         // 기존 버튼 제거
@@ -116,9 +119,24 @@ public class SimpleTemporalDeviceUI : MonoBehaviour
         deviceButtons.Clear();
 
         // 새 버튼 생성
+      
         List<TemporalDevice> devices = deviceManager.GetAllDevices();
+        if (devices == null)
+        {
+            Debug.LogError("devices 목록이 null입니다.");
+            return;
+        }
+        Debug.Log($"디바이스 개수: {devices.Count}");
         foreach (var device in devices)
         {
+            if (device == null)
+            {
+                Debug.LogWarning("null 디바이스 발견, 건너뜁니다.");
+                continue;
+            }
+
+            Debug.Log($"디바이스 생성 중: {device.DeviceName}, ID: {device.ID}");
+
             GameObject buttonObj = Instantiate(deviceButtonPrefab, deviceContainer);
             deviceButtons.Add(buttonObj);
 
@@ -131,11 +149,29 @@ public class SimpleTemporalDeviceUI : MonoBehaviour
                 if (device.ID < deviceIcons.Count)
                 {
                     icon = deviceIcons[device.ID];
+                    Debug.Log($"아이콘 설정: {(icon != null ? "성공" : "null")}");
+                }
+                else
+                {
+                    Debug.LogWarning($"디바이스 ID({device.ID})가 아이콘 인덱스를 벗어남 (아이콘 개수: {deviceIcons.Count})");
                 }
 
                 // 버튼 초기화
-                buttonScript.Initialize(device, icon);
-                buttonScript.OnButtonClicked += ShowDeviceDetail;
+                Debug.Log("버튼 초기화 중");
+                try 
+                {
+                    buttonScript.Initialize(device, icon);
+                    buttonScript.OnButtonClicked += ShowDeviceDetail;
+                    Debug.Log("버튼 초기화 성공");
+                }
+                catch (Exception e)
+                {
+                    Debug.LogError($"버튼 초기화 중 오류: {e.Message}");
+                }
+            }
+            else
+            {
+                Debug.LogError("버튼 오브젝트에서 DeviceButton 컴포넌트를 찾을 수 없습니다.");
             }
         }
 
