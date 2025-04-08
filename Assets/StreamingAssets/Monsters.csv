@@ -1,5 +1,5 @@
 ID,Name,Health,AttackPower,AttackSpeed,Speed,AttackRange,DropChance,DropItemID,MoveRange,ChaseRange,MonsterPrefab,Grade,ArmorValue,InitialDefense,AggroDropRange,GroggyTime,ChargeSpeed,ChargeDuration,ChargePrepare,ChargeIndicatorPrefab,Charge1,Charge2,Charge3,Charge4,Charge5
-1,Dummy,1,20,1,1,2,0,0,5,7,Monster_DummyMonster,Normal,50,0,12,3,0,0,0,,,,,,
+1,Dummy,99999,20,1,1,2,0,0,5,7,Monster_DummyMonster,Normal,50,0,12,3,0,0,0,,,,,,
 2,Bat,1,25,1,3,2,0,0,5,7,Monster_Bat,Normal,50,0,12,3,0,0,0,,,,,,
 3,Spider,1,30,1,2,2,100,1001,6,7,Monster_Spider,Normal,50,0,12,3,0,0,0,,,,,,
 4,Slime,1,25,6,5,5,0,0,5,7,Monster_Slime,Normal,50,0,12,3,0,0,0,,,,,,

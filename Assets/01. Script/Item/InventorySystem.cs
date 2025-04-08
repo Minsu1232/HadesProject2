@@ -107,7 +107,7 @@ public class InventorySystem : MonoBehaviour
         }
         Debug.Log("아이템획득 성공");
         bool result = AddItem(itemToAdd, quantity);
-
+        SaveManager.Instance.SaveAllData();
         //// 아이템 추가 성공 시 이벤트 발생
         //if (result)
         //{
@@ -178,6 +178,8 @@ public class InventorySystem : MonoBehaviour
         // 새 슬롯에 아이템 추가
         itemSlots.Add(new ItemSlot(itemToAdd, quantity));
         OnInventoryChanged?.Invoke();
+        //SaveManager.Instance.SavePlayerData();
+        SaveManager.Instance.UpdateInventory(this);
         Debug.Log($"{itemToAdd.itemName} x{quantity}개를 인벤토리에 추가했습니다. (새 슬롯)");
         return true;
     }

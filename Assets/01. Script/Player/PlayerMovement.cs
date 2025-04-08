@@ -13,8 +13,7 @@ public class PlayerMovement : MonoBehaviour
     private Camera mainCamera;
     private Animator animator;
     private float smoothTime = 0.1f;
-    private Vector2 currentAnimatorParameters;
-    // isDashing 제거하고 대시 컴포넌트 참조 추가
+    private Vector2 currentAnimatorParameters;    
     private PlayerDashComponent dashComponent;
     public Rigidbody rb;
 
@@ -24,7 +23,10 @@ public class PlayerMovement : MonoBehaviour
     private Vector3 moveDirection;
     private Vector3 currentVelocity;
     private Vector3 smoothVelocity;
-
+  
+    // 
+    private bool canMove = true;
+    private bool canRotate = true;
     void Awake()
     {
         // 대시 컴포넌트 참조 설정
@@ -62,6 +64,8 @@ public class PlayerMovement : MonoBehaviour
         rb.collisionDetectionMode = CollisionDetectionMode.Continuous;
     }
 
+
+    // 기존 메서드 수정 - Update
     private void Update()
     {
         if (playerClass == null) return;
@@ -70,7 +74,7 @@ public class PlayerMovement : MonoBehaviour
         if (mainCamera == null)
         {
             mainCamera = Camera.main;
-            if (mainCamera == null) return; // 카메라가 없으면 이동 처리 건너뛰기
+            if (mainCamera == null) return;
         }
 
         if (playerClass.IsStunned)
@@ -79,52 +83,59 @@ public class PlayerMovement : MonoBehaviour
             return;
         }
 
-        moveDirection = GetCameraRelativeMovement();
-        SetAnimatorParameters(moveDirection);
-        RotateTowardsMouse();
+        // 이동 제어 확인 추가
+        if (canMove)
+        {
+            moveDirection = GetCameraRelativeMovement();
+            SetAnimatorParameters(moveDirection);
+        }
+        else
+        {
+            moveDirection = Vector3.zero;
+            SetAnimatorParameters(Vector3.zero);
+        }
 
-        // 대시 처리는 PlayerDashComponent에서 관리하므로 제거
+        // 회전 제어 확인 추가
+        if (canRotate)
+        {
+            RotateTowardsMouse();
+        }
     }
 
+    // 기존 메서드 수정 - FixedUpdate
     private void FixedUpdate()
     {
         if (playerClass == null) return;
 
-        // 대시 중이 아닐 때만 이동 처리
-        if (dashComponent == null || !dashComponent.IsDashing())
+        // 이동 제어 확인 추가
+        if (canMove && (dashComponent == null || !dashComponent.IsDashing()))
         {
             SmoothMove(moveDirection);
         }
-    }
-
-    // PlayerMovement 클래스에 추가
-    public void TeleportTo(Vector3 position)
-    {
-        // 물리 계산 일시 중지
-        bool wasKinematic = rb.isKinematic;
-        rb.isKinematic = true;
-
-        // 속도 및 가속도 초기화
-        rb.velocity = Vector3.zero;
-        rb.angularVelocity = Vector3.zero;
-
-        // 위치 설정
-        transform.position = position;
-
-        // PlayerClass의 위치도 동기화 (필요한 경우)
-        if (playerClass != null && playerClass.playerTransform != null)
+        else if (!canMove)
         {
-            playerClass.playerTransform.position = position;
+            // 이동 불가 시 수평 속도 감소
+            Vector3 velocity = rb.velocity;
+            velocity.x = Mathf.Lerp(velocity.x, 0, 0.2f);
+            velocity.z = Mathf.Lerp(velocity.z, 0, 0.2f);
+            rb.velocity = velocity;
         }
-
-        // 물리 상태 복원
-        rb.isKinematic = wasKinematic;
-
-        // 이동 관련 변수 초기화
-        moveDirection = Vector3.zero;
-        smoothVelocity = Vector3.zero;
-
-        Debug.Log($"플레이어 텔레포트 완료: {position}");
+    }
+    // 이동 제어 (다이얼로그 시스템에서 호출)
+    public void SetMovementEnabled(bool enabled)
+    {
+        canMove = enabled;
+        dashComponent.enabled = enabled;
+        // 이동 불가 시 속도 즉시 멈춤
+        if (!canMove && rb != null)
+        {
+            rb.velocity = new Vector3(0, rb.velocity.y, 0);
+        }
+    }
+    // 회전 제어 (다이얼로그 시스템에서 호출)
+    public void SetRotationEnabled(bool enabled)
+    {
+        canRotate = enabled;
     }
 
     // 카메라 기준 이동 방향 얻기 - public으로 변경하여 DashComponent에서 참조할 수 있게 함

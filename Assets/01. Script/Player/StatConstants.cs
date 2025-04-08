@@ -2,7 +2,7 @@
 public static class StatConstants
 {
     // 베이스 스탯 상수
-    public const int BASE_HP = 20000;
+    public const int BASE_HP = 1;
     public const int BASE_GAGE = 0;
     public const int BASE_ATTACK_POWER = 10;
     public const float BASE_ATTACK_SPEED = 1f;

@@ -1,6 +1,10 @@
 using UnityEngine;
 using System;
 using System.Threading.Tasks;
+using UnityEngine.AddressableAssets;
+using UnityEngine.ResourceManagement.AsyncOperations;
+using System.Linq;
+using System.Collections.Generic;
 
 public class WeaponService : MonoBehaviour
 {
@@ -84,15 +88,85 @@ public class WeaponService : MonoBehaviour
         }
     }
 
-    private void UnequipCurrentWeapon()
-    { 
-        if (currentWeapon != null)
+    public void UnequipCurrentWeapon()
+    {
+        if (currentWeapon == null)
         {
-            OnWeaponUnequipped?.Invoke(currentWeapon);
-            Destroy(currentWeapon);
-            currentWeapon = null;
-            
+            Debug.Log("장착된 무기가 없습니다.");
+            return;
         }
+
+        string weaponName = currentWeapon.WeaponName; // 로그용 이름 미리 저장
+        Debug.Log($"무기 해제 시작: {weaponName}");
+
+        // 1. 먼저 애니메이션 컨트롤러 비동기 로드 시작
+        LoadDefaultAnimatorController();
+
+        // 2. DamageDealer 컴포넌트 찾기 (무기 제거 전)
+        var damageDealers = new List<MonoBehaviour>();
+        foreach (var mb in gameObject.GetComponentsInChildren<MonoBehaviour>())
+        {
+            if (mb is IDamageDealer)
+            {
+                damageDealers.Add(mb);
+            }
+        }
+
+        // 3. 무기 제거 전 이벤트 발생
+        OnWeaponUnequipped?.Invoke(currentWeapon);
+
+        // 4. 현재 무기 참조 로컬 변수에 저장 후 초기화
+        WeaponManager weaponToDestroy = currentWeapon;
+        currentWeapon = null; // 먼저 참조 제거
+
+        // 5. DamageDealer 컴포넌트 제거
+        foreach (var dealer in damageDealers)
+        {
+            if (dealer != null)
+            {
+                Debug.Log($"무기 관련 DamageDealer 제거: {dealer.name}");
+                Destroy(dealer.gameObject);
+            }
+        }
+
+        // 6. 마지막으로 무기 컴포넌트 자체 제거
+        if (weaponToDestroy != null)
+        {
+            Destroy(weaponToDestroy);
+            Debug.Log($"무기 해제 완료: {weaponName}");
+        }
+    }
+
+    private void LoadDefaultAnimatorController()
+    {
+        if (characterAnimator == null)
+        {
+            Debug.LogWarning("Animator가 null입니다. 기본 애니메이션을 로드하지 않습니다.");
+            return;
+        }
+
+        // 비동기 로드 시작
+        Debug.Log("기본 애니메이터 컨트롤러 로드 시작...");
+        Addressables.LoadAssetAsync<RuntimeAnimatorController>("VillageAnimationController").Completed += handle =>
+        {
+            if (handle.Status == AsyncOperationStatus.Succeeded && handle.Result != null)
+            {
+                // 로드 성공 시 적용
+                if (characterAnimator != null) // 이중 체크
+                {
+                    characterAnimator.runtimeAnimatorController = handle.Result;
+                    Debug.Log("기본 애니메이터 컨트롤러 로드 완료: VillageAnimationController");
+                }
+                else
+                {
+                    Debug.LogWarning("애니메이터 컨트롤러를 로드했으나 Animator가 이미 null입니다.");
+                }
+            }
+            else
+            {
+                Debug.LogError($"기본 애니메이터 컨트롤러 로드 실패: VillageAnimationController, 상태: {handle.Status}");
+            }
+        };
     }
 
     private async Task InitializeNewWeapon(WeaponManager weapon)

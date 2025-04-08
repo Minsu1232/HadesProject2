@@ -112,7 +112,7 @@ public class BasicCreatureAI : CreatureAI
     {
         base.Update();
         behaviorTree?.Execute();
-        Debug.Log(currentState.ToString());
+        
     }
 
     #region Strategy Getters

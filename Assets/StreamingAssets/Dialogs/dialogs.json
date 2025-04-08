@@ -1,0 +1,610 @@
+{
+  "dialogSequences": [
+    {
+      "dialogID": "game_intro",
+      "dialogMode": 1,
+      "lines": [
+        {
+          "speakerName": "???",
+
+          "dialogText": "...일어나세요, 수호자님. 아직 모든 것이 끝나지 않았습니다.",
+          "portraitName": "Timekeeper/Neutral",
+          "eventTrigger": ""
+        },
+        {
+          "speakerName": "타임키퍼",
+          "dialogText": "저는 타임키퍼라고 합니다. 시간의 흐름을 관리하는 존재죠. 당신이 기억을 잃었다는 것을 알고 있습니다.",
+          "portraitName": "Timekeeper/Concerned",
+          "eventTrigger": ""
+        },
+        {
+          "speakerName": "타임키퍼",
+          "dialogText": "영혼석이 파괴되고, 모든 종족이 뒤틀렸습니다. 당신의 기억과 함께 세계의 균형도 산산조각 났죠.",
+          "portraitName": "Timekeeper/Sad",
+          "eventTrigger": ""
+        },
+        {
+          "speakerName": "타임키퍼",
+          "dialogText": "하지만 아직 희망은 있습니다. 당신의 영혼은 파편화되었지만, 다른 영혼들의 파편을 모아 힘을 되찾을 수 있습니다.",
+          "portraitName": "Timekeeper/Hopeful",
+          "eventTrigger": ""
+        },
+        {
+          "speakerName": "타임키퍼",
+          "dialogText": "저는 당신이 강해질 때까지 시간을 되돌릴 수 있습니다. 실패해도 괜찮습니다. 그럴 때마다 우리는 다시 시작할 수 있으니까요.",
+          "portraitName": "Timekeeper/Determined",
+          "eventTrigger": ""
+        },
+        {
+          "speakerName": "타임키퍼",
+          "dialogText": "첫 번째 영역, 야수의 슬픔으로 향하십시오. 알렉산더를 찾아 그의 파편을 획득해야 합니다.",
+          "portraitName": "Timekeeper/Instructive",
+          "eventTrigger": ""
+        },
+        {
+          "speakerName": "타임키퍼",
+          "dialogText": "먼저 녹색 길을따라 걸어보세요.",
+          "portraitName": "Timekeeper/Instructive",
+          "eventTrigger": ""
+        },
+        {
+          "speakerName": "타임키퍼",
+          "dialogText": "제가 필요할 때 다시 나타나겠습니다. 행운을 빕니다, 수호자님.",
+          "portraitName": "Timekeeper/Farewell",
+          "eventTrigger": "StartGameplay"
+        }
+      ]
+    },
+    {
+      "dialogID": "weapon_tutorial",
+      "dialogMode": 1,
+      "lines": [
+        {
+          "speakerName": "타임키퍼",
+          "dialogText": "앞에 보이는 대검이 당신의 첫 번째 무기입니다.",
+          "portraitName": "Timekeeper/Instructive",
+          "eventTrigger": "HighlightWeapon"
+        },
+        {
+          "speakerName": "타임키퍼",
+          "dialogText": "무기를 장착하려면 무기에 다가가 [F] 키를 누르세요.",
+          "portraitName": "Timekeeper/Instructive",
+          "eventTrigger": "HighlightInteractKey"
+        },
+        {
+          "speakerName": "타임키퍼",
+          "dialogText": "지금은 하나지만 기억을 되찾을 때마다 다루는 무기가 늘어날 겁니다.",
+          "portraitName": "Timekeeper/Instructive",
+          "eventTrigger": "HighlightTabKey"
+        },
+        {
+          "speakerName": "타임키퍼",
+          "dialogText": "좋습니다. 이제 무기를 들고 앞으로 나아가 보세요. 옆에있는 허수아비로 가보세요.",
+          "portraitName": "Timekeeper/Encouraging",
+          "eventTrigger": "EnableMovement"
+        }
+      ]
+    },
+    {
+      "dialogID": "combat_tutorial",
+      "dialogMode": 1,
+      "lines": [
+        {
+          "speakerName": "타임키퍼",
+          "dialogText": "앞에 허수아비가 보입니다. 기본 전투 방법을 알려드리겠습니다.",
+          "portraitName": "Timekeeper/Alert",
+          "eventTrigger": "HighlightEnemy"
+        },
+        {
+          "speakerName": "타임키퍼",
+          "dialogText": "기본 공격은 마우스 좌클릭으로 할 수 있습니다. 연속해서 클릭하면 콤보 공격이 발동됩니다.",
+          "portraitName": "Timekeeper/Instructive",
+          "eventTrigger": ""
+        },
+        {
+          "speakerName": "타임키퍼",
+          "dialogText": "위험을 감지했다면 [Space] 키를 눌러 빠르게 회피할 수 있습니다.",
+          "portraitName": "Timekeeper/Warning",
+          "eventTrigger": ""
+        },
+        {
+          "speakerName": "타임키퍼",
+          "dialogText": "마우스 우클릭을 꾹 누르면 차지공격이 가능합니다.",
+          "portraitName": "Timekeeper/Strategic",
+          "eventTrigger": ""
+        },
+        {
+          "speakerName": "타임키퍼",
+          "dialogText": "체력 아래 게이지는 무기게이지 입니다. 100이 될때 [Q]버튼을 누르면 특수 스킬이 사용이 가능합니다.",
+          "portraitName": "Timekeeper/Excited",
+          "eventTrigger": ""
+        },
+        {
+          "speakerName": "타임키퍼",
+          "dialogText": "이제 포탈로 이동해 야수의 슬픔에 도전해 보세요. 행운을 빕니다.",
+          "portraitName": "Timekeeper/Encouraging",
+          "eventTrigger": ""
+        }
+      ]
+    },
+    {
+      "dialogID": "dungeon1_entrance",
+      "dialogMode": 3,
+      "lines": [
+        {
+          "speakerName": "수호자",
+          "dialogText": "(이곳은... 야수족의 영역인가? 한때는 생명력 넘치는 곳이었던 것 같은데...)",
+          "portraitName": "Guardian/Thinking",
+          "eventTrigger": "FocusCamera:DungeonEntrance:0,0,1.5"
+        },
+        {
+          "speakerName": "타임키퍼",
+          "dialogText": "이곳은 야수의 슬픔이라 불리는 영역입니다. 한때 야수족과 인간이 평화롭게 공존하던 곳이었죠.",
+          "portraitName": "Timekeeper/Sad",
+          "eventTrigger": ""
+        },
+        {
+          "speakerName": "타임키퍼",
+          "dialogText": "알렉산더는 영혼석의 야수 영역 수호자였습니다. 지금은 자신의 부족이 광기에 물들어가는 것을 지켜봐야 하는 슬픔에 잠겨 있죠.",
+          "portraitName": "Timekeeper/Explaining",
+          "eventTrigger": ""
+        },
+        {
+          "speakerName": "타임키퍼",
+          "dialogText": "영역 끝에 있는 알렉산더를 찾아 그를 완전히 정화 하고 '야수왕의 슬픔' 파편을 얻어 오세요.",
+          "portraitName": "Timekeeper/Hopeful",
+          "eventTrigger": "ResetCamera"
+        },
+        {
+          "speakerName": "타임키퍼",
+          "dialogText": "너무 걱정 마세요. 나아갈수록 영역 내에서 유지되는 행운이 깃들겁니다.",
+          "portraitName": "Timekeeper/Hopeful",
+          "eventTrigger": ""
+        }
+      ]
+    },
+    {
+      "dialogID": "first_death_tutorial",
+      "dialogMode": 1,
+      "lines": [
+        {
+          "speakerName": "타임키퍼",
+          "dialogText": "당신의 영혼이 흩어졌군요... 하지만 걱정하지 마세요. 제가 시간을 되돌려 당신에게 또 다른 기회를 드리겠습니다.",
+          "portraitName": "Timekeeper/Concerned",
+          "eventTrigger": "StartRevival"
+        },
+        {
+          "speakerName": "타임키퍼",
+          "dialogText": "이것이 제가 할 수 있는 일입니다. 당신이 실패해도 처음부터 다시 시작할 수 있게 해주죠. 하지만 몇몇 경험과 지식은 유지됩니다.",
+          "portraitName": "Timekeeper/Explaining",
+          "eventTrigger": ""
+        },
+        {
+          "speakerName": "타임키퍼",
+          "dialogText": "경험을 통해 나아가세요. 그렇다면 점점 환경이 개선될것입니다.",
+          "portraitName": "Timekeeper/Instructive",
+          "eventTrigger": "ShowShop"
+        },
+        {
+          "speakerName": "타임키퍼",
+          "dialogText": "실패는 끝이 아닌 또 다른 시작입니다. 다시 도전하여 더 강해지세요.",
+          "portraitName": "Timekeeper/Encouraging",
+          "eventTrigger": "RestartGame"
+        }
+      ]
+    },
+    {
+      "dialogID": "second_death",
+      "dialogMode": 1,
+      "lines": [
+        {
+          "speakerName": "타임키퍼",
+          "dialogText": "또 다시 패배하셨군요. 괜찮습니다. 시간의 흐름을 되돌려 다시 도전할 수 있습니다.",
+          "portraitName": "Timekeeper/Encouraging",
+          "eventTrigger": "StartRevival"
+        },
+        {
+          "speakerName": "타임키퍼",
+          "dialogText": "이번에는 적의 패턴을 더 잘 관찰해보세요. 다시 올때까지 저도 방법을 탐색하겠습니다.",
+          "portraitName": "Timekeeper/Strategic",
+          "eventTrigger": ""
+        }
+      ]
+    },
+    {
+      "dialogID": "third_death",
+      "dialogMode": 1,
+      "lines": [
+        {
+          "speakerName": "타임키퍼",
+          "dialogText": "좌절하지 마세요. 이 여정은 쉽지 않습니다. 하지만 시간은 당신의 편입니다.",
+          "portraitName": "Timekeeper/Determined",
+          "eventTrigger": "StartRevival"
+        },
+        {
+          "speakerName": "타임키퍼",
+          "dialogText": "더 강해질 방법을 찾았습니다. 저의 권능으로 기억을 되돌릴 방법을요.",
+          "portraitName": "Timekeeper/Helpful",
+          "eventTrigger": "ShowShopButton"
+        },
+        {
+          "speakerName": "타임키퍼",
+          "dialogText": "늘 가던길로 가다보면 보일것입니다.",
+          "portraitName": "Timekeeper/Helpful",
+          "eventTrigger": "ShowShopButton"
+        }
+      ]
+    },
+    {
+      "dialogID": "many_deaths",
+      "dialogMode": 1,
+      "lines": [
+        {
+          "speakerName": "타임키퍼",
+          "dialogText": "이 정도 도전은... 사실 예상했습니다. 하지만 시간의 힘으로 계속 도전할 수 있으니 다행이군요.",
+          "portraitName": "Timekeeper/Amused",
+          "eventTrigger": "StartRevival"
+        },
+        {
+          "speakerName": "타임키퍼",
+          "dialogText": "어쩌면 조금 다른 전략을 시도해보는 건 어떨까요? 같은 방식으로는 같은 결과만 얻게 될 테니까요.",
+          "portraitName": "Timekeeper/Thoughtful",
+          "eventTrigger": ""
+        },
+        {
+          "speakerName": "타임키퍼",
+          "dialogText": "실패는 성공의 어머니라고 하죠. 당신의 의지가 꺾이지 않는 한, 언젠가는 성공할 것입니다.",
+          "portraitName": "Timekeeper/Philosophical",
+          "eventTrigger": "StartRevival"
+        },
+        {
+          "speakerName": "수호자",
+          "dialogText": "다시",
+          "portraitName": "Timekeeper/Philosophical",
+          "eventTrigger": "StartRevival"
+        },
+        {
+          "speakerName": "수호자",
+          "dialogText": "한번 더",
+          "portraitName": "Timekeeper/Philosophical",
+          "eventTrigger": "StartRevival"
+        },
+        {
+          "speakerName": "수호자",
+          "dialogText": "괜찮아",
+          "portraitName": "Timekeeper/Philosophical",
+          "eventTrigger": "StartRevival"
+        }
+      ]
+    },
+
+
+    {
+      "dialogID": "alexander_encounter",
+      "dialogMode": 3,
+      "lines": [
+        {
+          "speakerName": "알렉산더",
+          "dialogText": "멈춰라, 이방인. 여기는 더 이상 방문객을 환영하지 않는 곳이다.",
+          "portraitName": "Alexander/Hostile",
+          "eventTrigger": "FocusCamera:BossEncounter:0,0,1.5"
+        },
+        {
+          "speakerName": "알렉산더",
+          "dialogText": "네가... 인간 수호자? 불가능해. 그는 재앙과 함께 사라졌다.",
+          "portraitName": "Alexander/Surprised",
+          "eventTrigger": ""
+        },
+        {
+          "speakerName": "수호자",
+          "dialogText": "난 내 기억을 잃었다. 하지만 타임키퍼가 도와주고 있어. 균형을 되찾기 위해서 네 파편이 필요해.",
+          "portraitName": "Guardian/Determined",
+          "eventTrigger": ""
+        },
+        {
+          "speakerName": "알렉산더",
+          "dialogText": "타임키퍼라... 그럼 정말 너일지도 모르겠군. 하지만 내 부족은 광기에 물들었고, 난 그들을 구하지 못했다.",
+          "portraitName": "Alexander/Sad",
+          "eventTrigger": ""
+        },
+        {
+          "speakerName": "알렉산더",
+          "dialogText": "모든 것이 너희 형제의 갈등 때문이다. 특히 네 동생이... 모든 것을 망쳤어.",
+          "portraitName": "Alexander/Angry",
+          "eventTrigger": ""
+        },
+        {
+          "speakerName": "수호자",
+          "dialogText": "내 동생...? 무슨 일이 있었던 거지?",
+          "portraitName": "Guardian/Confused",
+          "eventTrigger": ""
+        },
+        {
+          "speakerName": "알렉산더",
+          "dialogText": "기억이 없다면 어쩌면 축복일지도 모르겠군. 하지만 네가 진정 수호자라면, 나와의 일전을 벌여 증명해 보여라!",
+          "portraitName": "Alexander/Battle",
+          "eventTrigger": "StartBossPrepare"
+        },
+        {
+          "speakerName": "알렉산더",
+          "dialogText": "내 슬픔과 분노를 모두 받아내 보아라!",
+          "portraitName": "Alexander/BattleRage",
+          "eventTrigger": "StartBossFight"
+        }
+      ]
+    },
+
+    {
+      "dialogID": "alexander_defeated",
+      "dialogMode": 1,
+      "lines": [
+        {
+          "speakerName": "알렉산더",
+          "dialogText": "크윽... 역시... 너는 진정한 수호자로군...",
+          "portraitName": "Alexander/Defeated",
+          "eventTrigger": ""
+        },
+        {
+          "speakerName": "알렉산더",
+          "dialogText": "내 파편을 가져가라... 하지만 기억해라. 네 동생은 모든 종족의 힘을 하나로 모으려 했고, 그 실험이 비극을 불러왔다.",
+          "portraitName": "Alexander/Dying",
+          "eventTrigger": ""
+        },
+        {
+          "speakerName": "알렉산더",
+          "dialogText": "그를 막기 위해 너는... 큰 희생을 치렀지... 부디 이번에는... 성공하길...",
+          "portraitName": "Alexander/Peace",
+          "eventTrigger": ""
+        },
+
+        {
+          "speakerName": "타임키퍼",
+          "dialogText": "'야수왕의 슬픔' 파편을 획득했습니다. 이 파편은 야수의 민첩함과 날카로운 공격력을 당신에게 부여할 것입니다.",
+          "portraitName": "Timekeeper/Pleased",
+          "eventTrigger": "AcquireFragment"
+        },
+        {
+          "speakerName": "타임키퍼",
+          "dialogText": "또한 알렉산더의 기억 일부도 함께 담겨 있습니다. 당신의 과거와 동생에 대한 진실에 한 걸음 더 가까워졌습니다.",
+          "portraitName": "Timekeeper/Mystic",
+          "eventTrigger": ""
+        },
+        {
+          "speakerName": "타임키퍼",
+          "dialogText": "이제 첫 번째 영역을 정화했습니다. 다음은 용족의 영역, '용족의 맹세'로 향해야 합니다. 시리우스가 기다리고 있을 것입니다.",
+          "portraitName": "Timekeeper/Instructive",
+          "eventTrigger": "UnlockChapter2"
+        }
+      ]
+    },
+
+    {
+      "dialogID": "timesphere_first",
+      "dialogMode": 1,
+      "lines": [
+        {
+          "speakerName": "수호자",
+          "dialogText": "(이것은... 빛나는 구체? 뭔가 끌리는 느낌이 든다.)",
+          "portraitName": "Guardian/Curious",
+          "eventTrigger": ""
+        },
+        {
+          "speakerName": "타임키퍼",
+          "dialogText": "시간의 구체를 발견하셨군요. 이것은 시간의 흐름이 균열된 곳에 나타납니다.",
+          "portraitName": "Timekeeper/Explaining",
+          "eventTrigger": ""
+        },
+        {
+          "speakerName": "타임키퍼",
+          "dialogText": "구체를 통해 과거 또는 미래의 단편을 볼 수 있습니다. 때로는 진행에 도움이 되는 힌트나 특별한 파편도 얻을 수 있죠.",
+          "portraitName": "Timekeeper/Instructive",
+          "eventTrigger": ""
+        },
+        {
+          "speakerName": "타임키퍼",
+          "dialogText": "이 구체를 통해 과거의 기억을 엿보겠습니다...",
+          "portraitName": "Timekeeper/Mystic",
+          "eventTrigger": "ShowPastVision"
+        }
+      ]
+    },
+
+    {
+      "dialogID": "past_vision_alexander",
+      "dialogMode": 1,
+      "lines": [
+        {
+          "speakerName": "알렉산더(과거)",
+          "dialogText": "인간 수호자여, 우리는 오랜 적대감을 버리고 함께 영혼석을 지켜야 합니다. 우리 종족들이 힘을 합치면, 어떤 위협도 이겨낼 수 있을 것입니다.",
+          "portraitName": "Alexander/Past",
+          "eventTrigger": "PlayPastMusic"
+        },
+        {
+          "speakerName": "인간 수호자(과거)",
+          "dialogText": "동의합니다, 알렉산더. 이제 야수족과 인간은 더 이상 적이 아닌 동맹입니다. 함께 조화를 이루며 살아갑시다.",
+          "portraitName": "Guardian/Past",
+          "eventTrigger": ""
+        },
+        {
+          "speakerName": "인간 수호자의 동생(과거)",
+          "dialogText": "(속삭임) 형님... 정말 야수들을 믿으시는 건가요? 그들의 힘은 우리가 통제할 수 없습니다. 더 강력한 방법이 필요합니다.",
+          "portraitName": "Brother/Scheming",
+          "eventTrigger": ""
+        },
+        {
+          "speakerName": "타임키퍼",
+          "dialogText": "과거의 단편이 사라집니다. 당신의 동생과의 갈등이 이 모든 비극의 시작이었던 것 같군요.",
+          "portraitName": "Timekeeper/Thoughtful",
+          "eventTrigger": "EndPastVision"
+        },
+        {
+          "speakerName": "타임키퍼",
+          "dialogText": "시간의 구체에서 '잊혀진 동맹' 파편을 획득했습니다. 이 파편은 당신의 체력을 일시적으로 강화할 것입니다.",
+          "portraitName": "Timekeeper/Pleased",
+          "eventTrigger": "AcquireTimesphereFragment"
+        }
+      ]
+    },
+
+    {
+      "dialogID": "homunculus_encounter",
+      "dialogMode": 1,
+      "lines": [
+        {
+          "speakerName": "수호자",
+          "dialogText": "(무언가 이상한 기운이 느껴진다. 이것은...?)",
+          "portraitName": "Guardian/Alert",
+          "eventTrigger": "PlayEerieMusic"
+        },
+        {
+          "speakerName": "???",
+          "dialogText": "크아아악... 찾았다... 수호자의 파편...",
+          "portraitName": "Enemies/Homunculus",
+          "eventTrigger": ""
+        },
+        {
+          "speakerName": "타임키퍼",
+          "dialogText": "조심하세요! 호문쿨루스입니다. 뒤틀린 실험의 산물로, 당신의 파편을 흡수하려 합니다!",
+          "portraitName": "Timekeeper/Warning",
+          "eventTrigger": ""
+        },
+        {
+          "speakerName": "호문쿨루스",
+          "dialogText": "주인님... 파편... 가져와야... 해... 모든 것을... 하나로...",
+          "portraitName": "Enemies/HomunculusRage",
+          "eventTrigger": "StartHomunculusFight"
+        }
+      ]
+    },
+
+    {
+      "dialogID": "homunculus_defeated",
+      "dialogMode": 1,
+      "lines": [
+        {
+          "speakerName": "호문쿨루스",
+          "dialogText": "크윽... 주인님... 실패... 했습니다...",
+          "portraitName": "Enemies/HomunculusDying",
+          "eventTrigger": ""
+        },
+        {
+          "speakerName": "수호자",
+          "dialogText": "(이 생물이 말하는 '주인님'은 누구지?)",
+          "portraitName": "Guardian/Confused",
+          "eventTrigger": ""
+        },
+        {
+          "speakerName": "타임키퍼",
+          "dialogText": "호문쿨루스에서 '이형 파편'을 획득했습니다. 이것은 일반적인 파편과는 다른 특성을 가지고 있습니다.",
+          "portraitName": "Timekeeper/Analyzing",
+          "eventTrigger": "AcquireAberrantFragment"
+        },
+        {
+          "speakerName": "타임키퍼",
+          "dialogText": "이 파편을 다른 파편과 조합하면 특수한 효과를 발휘할 수 있을 것입니다.",
+          "portraitName": "Timekeeper/Instructive",
+          "eventTrigger": ""
+        }
+      ]
+    },
+
+    {
+      "dialogID": "time_jump_offer",
+      "dialogMode": 1,
+      "lines": [
+        {
+          "speakerName": "타임키퍼",
+          "dialogText": "수호자님, 당신의 여정이 어려움에 봉착한 것 같군요. 특별한 방법을 제안해 드리겠습니다.",
+          "portraitName": "Timekeeper/Concerned",
+          "eventTrigger": ""
+        },
+        {
+          "speakerName": "타임키퍼",
+          "dialogText": "시간의 균열을 통해 앞으로 건너뛸 수 있습니다. 위험하지만 현재의 난관을 우회할 수 있는 방법입니다.",
+          "portraitName": "Timekeeper/Explaining",
+          "eventTrigger": ""
+        },
+        {
+          "speakerName": "타임키퍼",
+          "dialogText": "단, 건너뛴 구간에서 얻을 수 있었던 파편과 아이템을 포기해야 합니다. 양날의 검과 같은 선택입니다.",
+          "portraitName": "Timekeeper/Warning",
+          "eventTrigger": ""
+        },
+        {
+          "speakerName": "타임키퍼",
+          "dialogText": "시간의 균열을 여겠습니다. 들어가시면 앞쪽 지역으로 이동하게 됩니다.",
+          "portraitName": "Timekeeper/Focused",
+          "eventTrigger": "CreateTimeRift"
+        }
+      ]
+    },
+
+    {
+      "dialogID": "chapter2_start",
+      "dialogMode": 1,
+      "lines": [
+        {
+          "speakerName": "수호자",
+          "dialogText": "(이곳은... 용족의 영역이군. 뜨거운 열기와 고대의 지식이 느껴진다.)",
+          "portraitName": "Guardian/Observing",
+          "eventTrigger": ""
+        },
+        {
+          "speakerName": "타임키퍼",
+          "dialogText": "용족의 맹세에 오신 것을 환영합니다. 이곳은 시리우스가 다스리던 지식과 마법의 영역입니다.",
+          "portraitName": "Timekeeper/Welcoming",
+          "eventTrigger": ""
+        },
+        {
+          "speakerName": "타임키퍼",
+          "dialogText": "시리우스는 영혼석의 힘을 연구하던 용족 학자였습니다. 그의 지식이 동생의 실험에 이용되었고, 그로 인한 죄책감에 괴로워하고 있죠.",
+          "portraitName": "Timekeeper/Sad",
+          "eventTrigger": ""
+        },
+        {
+          "speakerName": "타임키퍼",
+          "dialogText": "이 영역에서도 '타락한 용족 마법사'와 '혼돈의 와이번'을 처치하여 불완전한 파편을 얻은 후, 시리우스와 대면해야 합니다.",
+          "portraitName": "Timekeeper/Instructive",
+          "eventTrigger": "ShowChapter2Markers"
+        },
+        {
+          "speakerName": "타임키퍼",
+          "dialogText": "또한 이 영역에서 새로운 무기, '활'을 발견할 수 있을 것입니다. 원거리 공격이 가능해질 것입니다.",
+          "portraitName": "Timekeeper/Encouraging",
+          "eventTrigger": ""
+        }
+      ]
+    },
+
+    {
+      "dialogID": "weapon_unlock_bow",
+      "dialogMode": 1,
+      "lines": [
+        {
+          "speakerName": "수호자",
+          "dialogText": "(이것은... 용족의 활? 특별한 에너지가 깃들어 있는 것 같다.)",
+          "portraitName": "Guardian/Curious",
+          "eventTrigger": ""
+        },
+        {
+          "speakerName": "타임키퍼",
+          "dialogText": "드래곤 레인저의 활을 발견했습니다! 용족의 마법이 깃든 이 무기는 강력한 원거리 공격을 가능하게 합니다.",
+          "portraitName": "Timekeeper/Excited",
+          "eventTrigger": "UnlockBowWeapon"
+        },
+        {
+          "speakerName": "타임키퍼",
+          "dialogText": "또한 카운터 공격 기술도 함께 습득했습니다. 적의 공격을 정확한 타이밍에 피하면 강력한 반격이 가능합니다.",
+          "portraitName": "Timekeeper/Instructive",
+          "eventTrigger": "UnlockCounterSkill"
+        },
+        {
+          "speakerName": "타임키퍼",
+          "dialogText": "이 무기를 활용하여 남은 적들을 처치하세요. 특히 원거리에서 마법을 사용하는 용족 마법사에게 효과적일 것입니다.",
+          "portraitName": "Timekeeper/Encouraging",
+          "eventTrigger": ""
+        }
+      ]
+    }
+  ]
+}

@@ -52,7 +52,22 @@ public class MeleeDamageDealer : MonoBehaviour, IDamageDealer
             Debug.Log("Sanrl없음");
             return;
         }
+        // 더미 확인 - 새로 추가된 부분
+        if (other.CompareTag("Dummy"))
+        {
+            IDamageable dummyTarget = other.GetComponent<IDamageable>();
+            if (dummyTarget != null)
+            {
+                int damage = GetDamage();
+                dummyTarget.TakeDamage(damage);
 
+                // 게이지 충전
+                weapon.GetGage(weapon.GagePerHit);
+
+                Debug.Log($"더미 타격: {damage} 데미지");
+                return; // 더미 처리 후 종료
+            }
+        }
         MonsterHitBox hitBox = other.GetComponent<MonsterHitBox>();
         if (hitBox == null)
         {
@@ -99,6 +114,8 @@ public class MeleeDamageDealer : MonoBehaviour, IDamageDealer
             weapon.GetGage(weapon.GagePerHit);
             Debug.Log($"damagedMonsters에 추가됨. 현재 수: {damagedMonsters.Count}");
         }
+
+  
     }
 
     public void ClearDamagedMonsters()

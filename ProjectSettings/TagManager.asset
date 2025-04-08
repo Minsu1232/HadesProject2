@@ -11,6 +11,11 @@ TagManager:
   - Weapon
   - NotificationBackground
   - PlayerObj
+  - Dummy
+  - DungeonEntrance
+  - PlayerBack
+  - BossEntrance
+  - BossEncounter
   layers:
   - Default
   - TransparentFX

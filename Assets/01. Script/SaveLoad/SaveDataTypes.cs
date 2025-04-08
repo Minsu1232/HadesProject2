@@ -60,7 +60,6 @@ public class InventoryItemData
         quantity = qty;
     }
 }
-
 // 플레이어 저장 데이터
 [System.Serializable]
 public class PlayerSaveData
@@ -72,10 +71,17 @@ public class PlayerSaveData
     public List<InventoryItemData> inventory = new List<InventoryItemData>();
     public List<int> equippedFragments = new List<int>();
     public List<DeviceUnlockData> unlockedDevicesList = new List<DeviceUnlockData>();
-    // PlayerSaveData에 추가
-    public bool workshopUnlocked = false;
-}
+    
 
+    // 다이얼로그 시스템을 위한 필드 추가
+    public List<string> shownDialogs = new List<string>();
+    public Dictionary<string, bool> gameFlags = new Dictionary<string, bool>();
+    public Dictionary<string, int> locationVisits = new Dictionary<string, int>();
+    public List<string> unlockedWeapons = new List<string>();
+    public List<string> acquiredFragments = new List<string>();
+
+    public int deathCount = 0; // 죽음 횟수
+}
 // 챕터 진행 데이터
 [System.Serializable]
 public class ChapterProgressData

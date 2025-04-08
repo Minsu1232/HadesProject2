@@ -22,6 +22,8 @@ public class LoadingScreen : MonoBehaviour
 
     private bool isLoading = false;
 
+   
+
     private void Awake()
     {
         if (Instance == null)
@@ -149,6 +151,7 @@ public class LoadingScreen : MonoBehaviour
         isLoading = false;
 
         onComplete?.Invoke();
+      
     }
 
     public void HideLoading()

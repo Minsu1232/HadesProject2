@@ -72,7 +72,7 @@ public abstract class MonsterClass : ICreature,IMonsterClass, IDamageable
     public int CurrentHealth
     {
         get => _currentHealth;
-        private set => _currentHealth = Mathf.Clamp(value, 0, MaxHealth);
+        protected set => _currentHealth = Mathf.Clamp(value, 0, MaxHealth);
     }
 
     private int _maxHealth;

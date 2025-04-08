@@ -83,7 +83,7 @@ public class FragmentManager : MonoBehaviour
 
         // 파편 장착
         equippedFragments.Add(fragment);
-
+        SaveManager.Instance.SavePlayerData();
         // 파편 효과 적용
         ApplyFragmentEffects(fragment);
 

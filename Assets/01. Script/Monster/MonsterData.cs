@@ -278,6 +278,7 @@ public enum SpawnStrategyType
 
 public enum MovementStrategyType
 {
+    None,
     Basic,
     Aggressive,    // 적극적 추적
     Defensive,     // 거리 유지
@@ -288,6 +289,7 @@ public enum MovementStrategyType
 
 public enum AttackStrategyType
 {
+    None,
     Basic,
     Charge,
     Rush,
@@ -316,6 +318,7 @@ public enum IdleStrategyType
 
 public enum SkillStrategyType
 {
+    None,
     Basic,
     Buff,          // 자신 강화
     Debuff,        // 적 약화
@@ -370,6 +373,7 @@ public enum ProjectileImpactType
 
 public enum GroggyStrategyType
 {
+    None,
     Basic,
     Poison,
     //Explosion,

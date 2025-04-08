@@ -114,6 +114,7 @@ public class PlayerClass : ICreature, IDamageable
     public void ResetPower(bool health, bool maxHealth, bool mana, bool attackPw, bool attackSp, bool speed, bool critical, bool damageReceive)
     {
         PlayerStats.ResetStats(health, maxHealth, mana, attackPw, attackSp, speed, critical, damageReceive);
+        
     }
     #endregion
     // PlayerClass¿¡ Ãß°¡
@@ -243,9 +244,11 @@ public class PlayerClass : ICreature, IDamageable
         if (!isDead)
         {
             isDead = true;
-            animator?.SetTrigger("Die");
+            animator?.SetTrigger("Die");            
             Debug.Log("Á×À½");
+            DeathHandler.HandlePlayerDeath();
             ResetPower(true, true, true, true, true, true, true, true);
+            isDead = false;
         }
     }
 
