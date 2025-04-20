@@ -71,9 +71,27 @@ public static class PassiveAbilityFactory
         abilities.Add(CreateItemFindAbility(Rarity.Epic, 40f, "황금의 손", "아이템 드롭 확률이 40% 증가합니다. (레벨당 +12%)"));
         abilities.Add(CreateItemFindAbility(Rarity.Legendary, 50f, "만물의 발견자", "아이템 드롭 확률이 50% 증가합니다. (레벨당 +15%)"));
 
+
+        abilities.Add(CreateStageHealAbility(Rarity.Common, 2f, "회복의 기운", "스테이지 클리어 시 최대 체력의 2%를 회복합니다. (레벨당 +0.6%)"));
+        abilities.Add(CreateStageHealAbility(Rarity.Uncommon, 3f, "생명의 숨결", "스테이지 클리어 시 최대 체력의 3%를 회복합니다. (레벨당 +0.9%)"));
+        abilities.Add(CreateStageHealAbility(Rarity.Rare, 4f, "치유의 기운", "스테이지 클리어 시 최대 체력의 4%를 회복합니다. (레벨당 +1.2%)"));
+        abilities.Add(CreateStageHealAbility(Rarity.Epic, 5f, "생명의 활력", "스테이지 클리어 시 최대 체력의 5%를 회복합니다. (레벨당 +1.5%)"));
+        abilities.Add(CreateStageHealAbility(Rarity.Legendary, 6f, "불멸의 회복", "스테이지 클리어 시 최대 체력의 6%를 회복합니다. (레벨당 +1.8%)"));
         return abilities;
     }
-
+    private static PassiveAbility CreateStageHealAbility(Rarity rarity, float value, string name, string description)
+    {
+        PassiveAbility ability = new PassiveAbility();
+        ability.Initialize(
+            PassiveAbility.PassiveType.StageHeal,
+            value,
+            name,
+            description,
+            rarity
+        );
+        ability.id = $"stage_heal_{rarity.ToString().ToLower()}";
+        return ability;
+    }
     // 피해 감소 능력 생성 도우미 메서드
     private static PassiveAbility CreateDamageReductionAbility(Rarity rarity, float value, string name, string description)
     {

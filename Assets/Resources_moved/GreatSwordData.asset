@@ -13,8 +13,8 @@ MonoBehaviour:
   m_Name: GreatSwordData
   m_EditorClassIdentifier: 
   weaponName: GreatSword
-  baseDamage: 20
-  baseGagePerHit: 15
+  baseDamage: 0
+  baseGagePerHit: 0
   defaultPosition: {x: 0.096, y: -0.133, z: 0.2663}
   defaultRotation: {x: 8.5, y: -3.539, z: 159.05}
   maxChargeTime: 2

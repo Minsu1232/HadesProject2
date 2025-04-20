@@ -1813,6 +1813,7 @@ GameObject:
   - component: {fileID: 1853139621167967799}
   - component: {fileID: 4361914683621853054}
   - component: {fileID: 2514112347399297827}
+  - component: {fileID: 2220578775102061760}
   m_Layer: 14
   m_Name: Monster_Spider
   m_TagString: Monster
@@ -1913,6 +1914,20 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 84
   m_CollisionDetection: 1
+--- !u!114 &2220578775102061760
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8276800062681565950}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 30498d39774294d49ae12659247b05b8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  dissolveMaterial: {fileID: 2100000, guid: 456f480772f75634a96f1fe29baa634a, type: 2}
+  dissolveTime: 3
 --- !u!1 &8737521057812998296
 GameObject:
   m_ObjectHideFlags: 0

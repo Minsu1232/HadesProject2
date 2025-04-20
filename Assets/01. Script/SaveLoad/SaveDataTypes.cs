@@ -146,8 +146,8 @@ public class ChapterProgressData
                 UnlockNextChapter(chapterId);
             }
 
-            // 시도 횟수 증가
-            chapter.attemptCount++;
+          
+            
 
             // 기록 업데이트 (비어있거나 더 나은 기록인 경우)
             if (!string.IsNullOrEmpty(record) &&
@@ -229,8 +229,12 @@ public class DeviceUnlockData
 [System.Serializable]
 public class GameSettingsData
 {
-    public float musicVolume = 0.7f;
-    public float sfxVolume = 0.8f;
+    // 오디오 설정
+    public float musicVolume = 0.5f;
+
+    // 화면 설정
     public bool fullscreen = true;
-    public int resolutionIndex = 0;
+
+    // 언어 설정
+    public string language = "Korean"; // "Korean" 또는 "English"
 }

@@ -95,7 +95,7 @@ public class BossStatus : MonsterStatus
                 DungeonManager.Instance.OnMonsterDefeated(this);
             }
 
-            Destroy(gameObject); // 몬스터 오브젝트 삭제
+            simpleDissolveContorller.OnMonsterDeath();
         }
     }
 

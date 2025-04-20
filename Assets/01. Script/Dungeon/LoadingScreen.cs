@@ -22,8 +22,6 @@ public class LoadingScreen : MonoBehaviour
 
     private bool isLoading = false;
 
-   
-
     private void Awake()
     {
         if (Instance == null)
@@ -61,6 +59,13 @@ public class LoadingScreen : MonoBehaviour
     {
         isLoading = true;
 
+        // 음악 일시 정지
+        if (AudioManager.Instance != null)
+        {
+            AudioManager.Instance.PauseMusic();
+            Debug.Log("로딩 시작: 음악 일시 정지됨 (같은 씬)");
+        }
+
         // 랜덤 팁 선택
         if (loadingTips != null && loadingTips.Length > 0)
         {
@@ -69,7 +74,7 @@ public class LoadingScreen : MonoBehaviour
 
         // 로딩 UI 활성화 및 페이드 인
         canvasGroup.gameObject.SetActive(true);
-        
+
         progressBar.fillAmount = 0f;
 
         // 페이드 인
@@ -86,7 +91,6 @@ public class LoadingScreen : MonoBehaviour
         }
 
         // 로딩 완료
-     
         progressBar.fillAmount = 1f;
 
         yield return new WaitForSeconds(0.5f);
@@ -98,6 +102,13 @@ public class LoadingScreen : MonoBehaviour
         canvasGroup.gameObject.SetActive(false);
         isLoading = false;
 
+        // 음악 재개
+        if (AudioManager.Instance != null)
+        {
+            AudioManager.Instance.ResumeMusic();
+            Debug.Log("로딩 완료: 음악 재개됨 (같은 씬)");
+        }
+
         onComplete?.Invoke();
     }
 
@@ -105,9 +116,15 @@ public class LoadingScreen : MonoBehaviour
     {
         isLoading = true;
 
+        // 음악 일시 정지
+        if (AudioManager.Instance != null)
+        {
+            AudioManager.Instance.PauseMusic();
+            Debug.Log("로딩 시작: 음악 일시 정지됨 (씬 전환)");
+        }
+
         // 로딩 UI 활성화 및 페이드 인
         canvasGroup.gameObject.SetActive(true);
-        
 
         // 랜덤 팁 선택
         if (loadingTips != null && loadingTips.Length > 0)
@@ -125,22 +142,35 @@ public class LoadingScreen : MonoBehaviour
 
         float progress = 0f;
 
-        // 로딩 진행 상황 표시
-        while (progress < 0.9f)
+        // 로딩 진행 상황 표시 (0 ~ 90%)
+        while (progress < 0.90f)
         {
             progress = Mathf.MoveTowards(progress, asyncOperation.progress, Time.deltaTime);
             progressBar.fillAmount = progress;
             yield return null;
         }
 
-       
-       
+        // 90 ~ 100% 부분을 수동으로 부드럽게 완성
+        float finalProgress = 0.9f;
+        while (finalProgress < 1.0f)
+        {
+            finalProgress += Time.deltaTime * 0.2f; // 속도 조절
+            progressBar.fillAmount = finalProgress;
+            yield return null;
+        }
+
         progressBar.fillAmount = 1f;
 
-        yield return new WaitForSeconds(1f);
+        yield return new WaitForSeconds(0.5f);
 
         // 씬 활성화
         asyncOperation.allowSceneActivation = true;
+
+        // 씬이 로드될 때까지 대기
+        while (!asyncOperation.isDone)
+        {
+            yield return null;
+        }
 
         // 씬이 로드된 후 페이드 아웃
         yield return new WaitForSeconds(0.5f);
@@ -150,8 +180,11 @@ public class LoadingScreen : MonoBehaviour
         canvasGroup.gameObject.SetActive(false);
         isLoading = false;
 
+        // 씬 전환 후에는 음악을 재개하지 않음
+        // AudioManager의 OnSceneLoaded 이벤트가 새 씬에 맞는 음악을 자동으로 재생
+        Debug.Log("로딩 완료: 새 씬에 맞는 음악이 AudioManager에 의해 자동 재생됨");
+
         onComplete?.Invoke();
-      
     }
 
     public void HideLoading()
@@ -163,6 +196,13 @@ public class LoadingScreen : MonoBehaviour
                 .OnComplete(() => {
                     canvasGroup.gameObject.SetActive(false);
                     isLoading = false;
+
+                    // 음악 재개
+                    if (AudioManager.Instance != null)
+                    {
+                        AudioManager.Instance.ResumeMusic();
+                        Debug.Log("로딩 취소: 음악 재개됨");
+                    }
                 });
         }
     }

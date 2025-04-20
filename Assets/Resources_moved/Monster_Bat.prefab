@@ -669,6 +669,7 @@ GameObject:
   - component: {fileID: 5162169000348315039}
   - component: {fileID: 932920876197638158}
   - component: {fileID: 5033184145659526898}
+  - component: {fileID: 6461368453744136831}
   m_Layer: 14
   m_Name: Monster_Bat
   m_TagString: Monster
@@ -769,6 +770,21 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 84
   m_CollisionDetection: 1
+--- !u!114 &6461368453744136831
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3575780994127212936}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 30498d39774294d49ae12659247b05b8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  dissolveMaterial: {fileID: 2100000, guid: 456f480772f75634a96f1fe29baa634a, type: 2}
+  dissolveTime: 3
+  destroyAfterDissolve: 0
 --- !u!1 &4229964476476442274
 GameObject:
   m_ObjectHideFlags: 0
@@ -1914,7 +1930,7 @@ Canvas:
   m_AdditionalShaderChannelsFlag: 25
   m_UpdateRectTransformForStandalone: 0
   m_SortingLayerID: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 3
   m_TargetDisplay: 0
 --- !u!114 &7578311663827272964
 MonoBehaviour:

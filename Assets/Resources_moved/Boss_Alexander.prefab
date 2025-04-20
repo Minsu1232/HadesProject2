@@ -5381,8 +5381,14 @@ PrefabInstance:
       propertyPath: m_Color.r
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 8764682648001825192, guid: 29cfab70966f3ca4aa9a82c81e760097, type: 3}
+      propertyPath: m_FillAmount
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
-    m_RemovedGameObjects: []
+    m_RemovedGameObjects:
+    - {fileID: 7069792015382536264, guid: 29cfab70966f3ca4aa9a82c81e760097, type: 3}
+    - {fileID: 7798408601172694568, guid: 29cfab70966f3ca4aa9a82c81e760097, type: 3}
     m_AddedGameObjects:
     - targetCorrespondingSourceObject: {fileID: 9184637033628566120, guid: 29cfab70966f3ca4aa9a82c81e760097, type: 3}
       insertIndex: -1

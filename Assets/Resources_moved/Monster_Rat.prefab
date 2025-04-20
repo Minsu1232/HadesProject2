@@ -579,7 +579,7 @@ Canvas:
   m_AdditionalShaderChannelsFlag: 25
   m_UpdateRectTransformForStandalone: 0
   m_SortingLayerID: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 3
   m_TargetDisplay: 0
 --- !u!114 &1766429175149497466
 MonoBehaviour:
@@ -3199,6 +3199,7 @@ GameObject:
   - component: {fileID: 878740695120425125}
   - component: {fileID: 5003775989325333531}
   - component: {fileID: 5205895719992479529}
+  - component: {fileID: 558521794859465055}
   m_Layer: 0
   m_Name: Monster_Rat
   m_TagString: Untagged
@@ -3299,6 +3300,21 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 84
   m_CollisionDetection: 1
+--- !u!114 &558521794859465055
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8690438161083494863}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 30498d39774294d49ae12659247b05b8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  dissolveMaterial: {fileID: 2100000, guid: 456f480772f75634a96f1fe29baa634a, type: 2}
+  dissolveTime: 3
+  destroyAfterDissolve: 0
 --- !u!1 &8796903765628117812
 GameObject:
   m_ObjectHideFlags: 0

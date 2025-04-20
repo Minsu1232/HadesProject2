@@ -75,6 +75,9 @@ public class DialogSystem : MonoBehaviour
     public delegate void DialogEvent(string eventName);
     public static event DialogEvent OnDialogEvent;
 
+    public delegate void DialogStateChanged(bool isActive);
+    public static event DialogStateChanged OnDialogStateChanged;
+
     private DialogMode currentDialogMode;
     private float originalTimeScale;
     private Queue<DialogLine> currentDialog = new Queue<DialogLine>();
@@ -276,7 +279,31 @@ public class DialogSystem : MonoBehaviour
     }
 
     #endregion
+    #region 추가 기능 - 다이얼로그 시퀀스 접근 및 커스텀 다이얼로그
 
+    // 다이얼로그 시퀀스 가져오기 시도
+    public bool TryGetDialogSequence(string dialogID, out DialogSequence sequence)
+    {
+        if (dialogDictionary.TryGetValue(dialogID, out sequence))
+        {
+            return true;
+        }
+
+        sequence = null;
+        return false;
+    }
+
+    // 커스텀 다이얼로그 등록
+    public void RegisterCustomDialog(DialogSequence sequence)
+    {
+        if (!string.IsNullOrEmpty(sequence.dialogID))
+        {
+            // 이미 존재하면 업데이트, 없으면 새로 추가
+            dialogDictionary[sequence.dialogID] = sequence;
+        }
+    }
+
+    #endregion
     #region 다이얼로그 표시 및 제어
 
     // 진행 상태에 따른 다이얼로그 표시
@@ -326,6 +353,7 @@ public class DialogSystem : MonoBehaviour
         // 대화 패널 활성화 및 첫 대화 표시
         dialogPanel.SetActive(true);
         isDialogActive = true;
+        OnDialogStateChanged?.Invoke(true);
         DisplayNextLine();
     }
 
@@ -364,7 +392,7 @@ public class DialogSystem : MonoBehaviour
         // 이벤트 트리거 처리
         if (!string.IsNullOrEmpty(line.eventTrigger))
         {
-            HandleEventFromDialog(line.eventTrigger);
+            //HandleEventFromDialog(line.eventTrigger);
             OnDialogEvent?.Invoke(line.eventTrigger);
         }
     }
@@ -401,6 +429,7 @@ public class DialogSystem : MonoBehaviour
 
         dialogPanel.SetActive(false);
         isDialogActive = false;
+        OnDialogStateChanged?.Invoke(false);
 
         // 다이얼로그 완료 이벤트 발생
         if (currentDialogID != null)
@@ -412,7 +441,10 @@ public class DialogSystem : MonoBehaviour
         currentDialog.Clear();
         currentDialogID = null;
     }
-
+    public bool IsDialogActive()
+    {
+        return isDialogActive;
+    }
     #endregion
 
     #region 게임 제어 및 상태 관리
@@ -501,53 +533,53 @@ public class DialogSystem : MonoBehaviour
     #region 이벤트 처리
 
     // 다이얼로그 이벤트 처리를 확장
-    private void HandleEventFromDialog(string eventName)
-    {
-        // 플래그 설정 이벤트 처리
-        if (eventName.StartsWith("SetFlag:"))
-        {
-            string[] parts = eventName.Split(':');
-            if (parts.Length >= 3)
-            {
-                string flagName = parts[1];
-                bool value = bool.Parse(parts[2]);
-                GameProgressManager.Instance.SetFlag(flagName, value);
-            }
-        }
-        // 챕터 해금 이벤트 처리
-        else if (eventName.StartsWith("UnlockChapter:"))
-        {
-            string[] parts = eventName.Split(':');
-            if (parts.Length >= 2)
-            {
-                int chapter = int.Parse(parts[1]);
-                GameProgressManager.Instance.SetCurrentChapter(chapter);
-            }
-        }
-        // 무기 해금 이벤트 처리
-        else if (eventName.StartsWith("UnlockWeapon:"))
-        {
-            string[] parts = eventName.Split(':');
-            if (parts.Length >= 2)
-            {
-                string weaponID = parts[1];
-                GameProgressManager.Instance.UnlockWeapon(weaponID);
-            }
-        }
-        // 파편 획득 이벤트 처리
-        else if (eventName.StartsWith("AcquireFragment:"))
-        {
-            string[] parts = eventName.Split(':');
-            if (parts.Length >= 2)
-            {
-                string fragmentID = parts[1];
-                GameProgressManager.Instance.AcquireFragment(fragmentID);
-            }
-        }
+    //private void HandleEventFromDialog(string eventName)
+    //{
+    //    // 플래그 설정 이벤트 처리
+    //    if (eventName.StartsWith("SetFlag:"))
+    //    {
+    //        string[] parts = eventName.Split(':');
+    //        if (parts.Length >= 3)
+    //        {
+    //            string flagName = parts[1];
+    //            bool value = bool.Parse(parts[2]);
+    //            GameProgressManager.Instance.SetFlag(flagName, value);
+    //        }
+    //    }
+    //    // 챕터 해금 이벤트 처리
+    //    else if (eventName.StartsWith("UnlockChapter:"))
+    //    {
+    //        string[] parts = eventName.Split(':');
+    //        if (parts.Length >= 2)
+    //        {
+    //            int chapter = int.Parse(parts[1]);
+    //            GameProgressManager.Instance.SetCurrentChapter(chapter);
+    //        }
+    //    }
+    //    // 무기 해금 이벤트 처리
+    //    else if (eventName.StartsWith("UnlockWeapon:"))
+    //    {
+    //        string[] parts = eventName.Split(':');
+    //        if (parts.Length >= 2)
+    //        {
+    //            string weaponID = parts[1];
+    //            GameProgressManager.Instance.UnlockWeapon(weaponID);
+    //        }
+    //    }
+    //    // 파편 획득 이벤트 처리
+    //    else if (eventName.StartsWith("AcquireFragment:"))
+    //    {
+    //        string[] parts = eventName.Split(':');
+    //        if (parts.Length >= 2)
+    //        {
+    //            string fragmentID = parts[1];
+    //            GameProgressManager.Instance.AcquireFragment(fragmentID);
+    //        }
+    //    }
 
-        // 기존 이벤트 처리 호출
-        OnDialogEvent?.Invoke(eventName);
-    }
+    //    // 기존 이벤트 처리 호출
+    //    OnDialogEvent?.Invoke(eventName);
+    //}
 
     #endregion
 }

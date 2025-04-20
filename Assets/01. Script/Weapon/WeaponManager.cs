@@ -1,4 +1,3 @@
-using RPGCharacterAnims.Lookups;
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -14,7 +13,7 @@ public abstract class WeaponManager : MonoBehaviour, IWeapon
     #region 변수들
     [SerializeField] public WeaponScriptableObject weaponData;
     protected WeaponChargeBase chargeComponent;
-    protected SpecialAttackBase specialAttackComponent;
+    public SpecialAttackBase specialAttackComponent;
 
     // 초기화된 속성값
     protected GameObject _weaponInstance;
@@ -51,12 +50,14 @@ public abstract class WeaponManager : MonoBehaviour, IWeapon
 
     public Color GageColor => weaponData?.gageColor ?? Color.yellow;
 
+    public abstract PlayerClass.WeaponType weaponType { get; }
+
 
 
     #endregion
 
 
-    
+
     public virtual void InitializeWeapon(Animator animator) // 무기 초기화
     {
         LoadAnimatorOverride(WeaponName, animator);

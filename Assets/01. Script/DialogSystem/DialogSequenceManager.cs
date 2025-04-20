@@ -70,10 +70,11 @@ public class DialogSequenceManager : MonoBehaviour
         if (lastDialogID != null && sequenceMap.ContainsKey(lastDialogID))
         {
             var sequence = sequenceMap[lastDialogID];
-            if (sequence.nextTriggerToActivate != null)
+            if (sequence.nextTriggerToActivate != null && !GameProgressManager.Instance.IsDialogShown(lastDialogID))
             {
                 sequence.nextTriggerToActivate.SetActive(true);
                 Debug.Log($"마지막 다이얼로그 '{lastDialogID}' 다음 트리거 활성화");
+               
             }
         }
     }

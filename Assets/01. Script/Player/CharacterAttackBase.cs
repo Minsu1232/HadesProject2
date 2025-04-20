@@ -43,7 +43,19 @@ public class CharacterAttackBase : MonoBehaviour, ICharacterAttack
         currentWeapon = weapon;
         currentWeapon?.InitializeWeapon(animator);
     }
+    public void UnequipWeapon()
+    {
+        // 무기 참조 제거
+        currentWeapon = null;
+        comboStep = 0;
+        isCharging = false;
+        currentChargeTime = 0f;
 
+        // 차지 상태 업데이트 이벤트 호출
+        OnChargeTimeUpdated?.Invoke(0f);
+
+        Debug.Log("CharacterAttackBase: 무기 참조가 제거되었습니다.");
+    }
     public virtual void BasicAttack()
     {
         animator?.SetTrigger(HashAttack);

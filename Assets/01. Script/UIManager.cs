@@ -19,6 +19,8 @@ public class UIManager : MonoBehaviour
     private Stack<GameObject> activeUIStack = new Stack<GameObject>();
     private Queue<NotificationInfo> notificationQueue = new Queue<NotificationInfo>();
     private bool isShowingNotification = false;
+
+    private string lastMessageContent = string.Empty;
     // 알림 정보 클래스
     #region 알림 기능
     private class NotificationInfo
@@ -33,12 +35,14 @@ public class UIManager : MonoBehaviour
     public void ShowNotification(string message)
     {
         ShowNotification(message, Color.white, notificationDuration, false, null);
+        Debug.Log($"공지사항!!!!!!!!{message}");
     }
 
     // 알림 보여주기 (색상 지정)
     public void ShowNotification(string message, Color color)
     {
         ShowNotification(message, color, notificationDuration, false, null);
+        Debug.Log($"공지사항!!!!!!!!222{message}");
     }
 
     // 알림 보여주기 (아이콘 포함)
@@ -50,6 +54,16 @@ public class UIManager : MonoBehaviour
     // 알림 보여주기 (모든 옵션)
     public void ShowNotification(string message, Color color, float duration, bool hasIcon, Sprite icon)
     {
+        // 직전 메시지와 똑같은 내용인지 확인 (중복 방지)
+        if (message == lastMessageContent && notificationQueue.Count > 0)
+        {
+            Debug.Log($"중복 알림 무시: {message}");
+            return; // 중복 알림 무시
+        }
+
+        // 마지막 메시지 내용 업데이트
+        lastMessageContent = message;
+
         NotificationInfo info = new NotificationInfo
         {
             message = message,

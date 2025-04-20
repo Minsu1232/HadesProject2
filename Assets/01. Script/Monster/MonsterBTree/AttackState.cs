@@ -52,7 +52,7 @@ public class AttackState : MonsterBaseState
     public override void Execute()
     {
         // 디버그 로그 추가
-        Debug.Log($"AttackState Execute - IsAttacking: {attackStrategy.IsAttacking}");
+       
         if (attackStrategy is ChargeAttackStrategy chargeStrategy) // 일반몬스터옹
         {
             chargeStrategy.UpdateCharge(transform);

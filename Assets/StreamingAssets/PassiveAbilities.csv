@@ -3,12 +3,12 @@ damage_reduction_common,DamageReduction,기본 방어,받는 피해가 3% 감소
 damage_reduction_uncommon,DamageReduction,강건한 방어,받는 피해가 5% 감소합니다. ,1,5,0.3,DamageReduction2
 damage_reduction_rare,DamageReduction,철벽 방어,받는 피해가 7% 감소합니다. ,2,7,0.3,DamageReduction3
 damage_reduction_epic,DamageReduction,불가침 방어,받는 피해가 8.5% 감소합니다. ,3,8.5,0.3,DamageReduction4
-damage_reduction_legendary,DamageReduction,신의 방패,받는 피해가 10% 감소합니다. ,4,10,0.3,DamageReduction5
+damage_reduction_legendary,DamageReduction,신의 방패,받는 피해가 15% 감소합니다. ,4,15,0.3,DamageReduction5
 life_steal_common,LifeSteal,피의 갈증,공격 시 데미지의 3%만큼 체력을 회복합니다. ,0,3,0.3,LifeSteal1
 life_steal_uncommon,LifeSteal,생명력 흡수,공격 시 데미지의 4%만큼 체력을 회복합니다. ,1,4,0.3,LifeSteal2
 life_steal_rare,LifeSteal,피의 계약,공격 시 데미지의 6%만큼 체력을 회복합니다. ,2,6,0.3,LifeSteal3
 life_steal_epic,LifeSteal,피의 의식,공격 시 데미지의 8%만큼 체력을 회복합니다. ,3,8,0.3,LifeSteal4
-life_steal_legendary,LifeSteal,불멸의 흡혈,공격 시 데미지의 10%만큼 체력을 회복합니다. ,4,10,0.3,LifeSteal5
+life_steal_legendary,LifeSteal,불멸의 흡혈,공격 시 데미지의 12%만큼 체력을 회복합니다. ,4,12,0.3,LifeSteal5
 counterattack_common,Counterattack,기본 반격,피격 시 받은 데미지의 100%를 공격자에게 반사합니다. ,0,100,0.3,Counterattack1
 counterattack_uncommon,Counterattack,가시 갑옷,피격 시 받은 데미지의 150%를 공격자에게 반사합니다. ,1,150,0.3,Counterattack2
 counterattack_rare,Counterattack,복수의 갑옷,피격 시 받은 데미지의 200%를 공격자에게 반사합니다. ,2,200,0.3,Counterattack3
@@ -19,3 +19,8 @@ item_find_uncommon,ItemFind,행운의 손길,아이템 드롭 확률이 2% 증�
 item_find_rare,ItemFind,보물 사냥꾼,아이템 드롭 확률이 3% 증가합니다. ,2,3,0.3,ItemFind3
 item_find_epic,ItemFind,황금의 손,아이템 드롭 확률이 4% 증가합니다. ,3,4,0.3,ItemFind4
 item_find_legendary,ItemFind,만물의 발견자,아이템 드롭 확률이 5% 증가합니다. ,4,5,0.3,ItemFind5
+StageHeal_common,StageHeal,회복의 기운,스테이지 클리어 시 최대 체력의 2%를 회복합니다,0,2,0.3,StageHeal1
+StageHeal_uncommon,StageHeal,생명의 숨결,스테이지 클리어 시 최대 체력의 3%를 회복합니다,1,3,0.3,StageHeal2
+StageHeal_rare,StageHeal,치유의 기운,스테이지 클리어 시 최대 체력의 4%를 회복합니다,2,4,0.3,StageHeal3
+StageHeal_epic,StageHeal,생명의 활력,스테이지 클리어 시 최대 체력의 5%를 회복합니다,3,5,0.3,StageHeal4
+StageHeal_legendary,StageHeal,불멸의 회복,스테이지 클리어 시 최대 체력의 6%를 회복합니다,4,6,0.3,StageHeal5

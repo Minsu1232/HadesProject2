@@ -16,6 +16,9 @@ TagManager:
   - PlayerBack
   - BossEntrance
   - BossEncounter
+  - StatsUpgrade
+  - Weaponzone
+  - Constellation
   layers:
   - Default
   - TransparentFX
@@ -29,7 +32,7 @@ TagManager:
   - CameraIgnore
   - Ground
   - WarningEffect
-  - 
+  - DamageText
   - ForegroundParticles
   - Monster
   - Player

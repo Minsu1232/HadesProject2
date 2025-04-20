@@ -8,8 +8,9 @@ public class GreatSword : WeaponBase
 // Start is called before the first frame update
 {    
     private MeleeDamageDealer damageDealer;
+    
     bool isSpecialAttacking = false;
-
+    public override PlayerClass.WeaponType weaponType => PlayerClass.WeaponType.GreatSword;
     protected override void InitializeComponents()
     {
         if (_weaponInstance != null)

@@ -11,8 +11,9 @@ public class WeaponDataManager : Singleton<WeaponDataManager>
     private string persistentFilePath; // 경로 초기화는 Awake에서 수행
     private string streamingFilePath;  // StreamingAssets 경로
 
-    private void Awake()
+    protected override void Awake()
     {
+        base.Awake();
         // 경로 초기화
         persistentFilePath = Path.Combine(Application.persistentDataPath, "Weapons.csv");
         streamingFilePath = Path.Combine(Application.streamingAssetsPath, "Weapons.csv");
@@ -27,6 +28,7 @@ public class WeaponDataManager : Singleton<WeaponDataManager>
         // CSV 로드
         LoadWeaponDataFromCSV();
     }
+
  
     private void CopyCSVFromStreamingAssets()
     {
@@ -67,7 +69,7 @@ public class WeaponDataManager : Singleton<WeaponDataManager>
             int gageUpgradeCount = int.Parse(values[8]);
             int additionalDamage = int.Parse(values[9]);
             int additionalGagePerHit = int.Parse(values[10]);
-
+            Debug.Log($"무기이름 {weaponName}");
             WeaponScriptableObject weaponSO = weaponScriptableObjects.Find(w => w.weaponName == weaponName);
             if (weaponSO != null)
             {
@@ -83,7 +85,7 @@ public class WeaponDataManager : Singleton<WeaponDataManager>
                 weaponSO.additionalDamage = additionalDamage;
                 weaponSO.additionalGagePerHit = additionalGagePerHit;
 
-                Debug.Log($"CSV 데이터 로드 완료: {weaponName}");
+                Debug.Log($"CSV 데이터 로드 완료: {weaponName} 공격력{baseDamage}");
             }
             else
             {

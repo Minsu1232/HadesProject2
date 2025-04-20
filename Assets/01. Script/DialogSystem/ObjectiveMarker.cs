@@ -13,7 +13,7 @@ public class ObjectiveMarker : MonoBehaviour
 
     [Header("거리 설정")]
     [SerializeField] private float minDistance = 2f;  // 이 거리 이하면 화살표 숨김
-    [SerializeField] private float maxDistance = 50f; // 최대 표시 거리
+    [SerializeField] private float maxDistance = 50f; // 최대 표시 거리 
 
     private GameObject arrowInstance;
     private Transform playerTransform;

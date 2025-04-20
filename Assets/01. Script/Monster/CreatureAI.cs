@@ -77,22 +77,55 @@ public abstract class CreatureAI : MonoBehaviour, ICreatureAI
         currentState = states[newStateType];
         currentState.Enter();
     }
+    protected void ForceChangeState(MonsterStateType newStateType)
+    {
+        // 현재 상태와 같은 상태로 변경하려고 하면 무시
+        if (currentState != null && currentState == states[newStateType])
+            return;
+   
+        if (currentState != null)
+        {
+            // CanTransition 체크를 건너뛰고 강제로 상태 전환
+            currentState.Exit();
+        }
 
+        currentState = states[newStateType];
+        currentState.Enter();
+    }
     public IMonsterState GetCurrentState() => currentState;
 
     //public MonsterStatus GetStatus() => monsterStatus;
 
-    public virtual void OnDamaged(int damage)
+    public void OnDamaged(int damage)
     {
         if (currentState is DieState)
             return;
-
+        if (creatureStatus.GetMonsterClass().CurrentHealth <= 0)
+        {
+            ForceChangeState(MonsterStateType.Die);
+            return;
+        }
         if (currentState.CanTransition())
         {
             ChangeState(MonsterStateType.Hit);
         } 
    
        
+    }
+    public virtual void Die()
+    {
+        // 현재 상태가 이미 죽음인 경우 무시
+        if (currentState is DieState)
+            return;
+
+        // 다른 상태의 전환 가능 여부와 관계없이 강제로 Death 상태로 전환
+        if (currentState != null)
+        {
+            currentState.Exit();
+        }
+
+        currentState = states[MonsterStateType.Die];
+        currentState.Enter();
     }
     #endregion
 

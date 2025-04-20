@@ -2,13 +2,14 @@ using static AttackData;
 using UnityEngine;
 using System.Collections.Generic;
 using DG.Tweening;
+using System;
 
 public class EliteMonsterController : MonoBehaviour
 {
     private MonsterStatus monsterStatus;
     private EliteMonster eliteMonster;
     private const float SIZE_INCREASE = 1.3f;
-
+   
     private List<Material> outlineMaterials = new List<Material>();
     private Color[] targetColors = new Color[]
     {

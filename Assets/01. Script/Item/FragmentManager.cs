@@ -124,7 +124,7 @@ public class FragmentManager : MonoBehaviour
     }
 
     // 파편 효과 적용 (PlayerClass 클래스 호환 버전)
-    private void ApplyFragmentEffects(FragmentItem fragment)
+    public void ApplyFragmentEffects(FragmentItem fragment)
     {
         if (playerClass != null)
         {

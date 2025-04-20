@@ -93,6 +93,14 @@ public class PlayerUIManager : MonoBehaviour
     private void HandleWeaponChanged(IWeapon newWeapon)
     {
         UnsubscribeFromWeaponEvents();
+
+        // 무기가 null이거나 무기가 해제된 경우
+        if (newWeapon == null)
+        {
+            ClearWeaponUI();
+            return;
+        }
+
         SetupNewWeapon(newWeapon);
     }
 
@@ -153,6 +161,7 @@ public class PlayerUIManager : MonoBehaviour
 
     private void UpdateChargeTimeUI(float chargeTime)
     {
+        Debug.Log(player.weaponType);
         if (player.weaponType == PlayerClass.WeaponType.None) return;
         float chargeRatio = Mathf.Clamp01(chargeTime / weaponManager.MaxChargeTime);
 
@@ -203,6 +212,15 @@ public class PlayerUIManager : MonoBehaviour
             weaponGageBar.gameObject.SetActive(active);
     }
 
+
+    // 무기 UI 초기화 메서드 추가
+    private void ClearWeaponUI()
+    {
+        weaponManager = null;
+        SetWeaponUIActive(false);
+        SetChargeUIActive(false);
+        Debug.Log("무기 UI가 초기화되었습니다.");
+    }
     private void SetChargeUIActive(bool active)
     {
         if (chargeCanvas != null)

@@ -44,6 +44,7 @@ public abstract class WeaponBase : WeaponManager, IWeaponCollider
     {
         if (weaponCollider != null)
         {
+            Debug.Log("애니메이션이벤트호출");
             weaponCollider.enabled = true;
 
         }

@@ -18,8 +18,10 @@ public abstract class MonsterClass : ICreature,IMonsterClass, IDamageable
     protected float defaultBuffValue;
     protected float defaultSkillRange;
     protected float defaultAttackRange;
-    protected int defaultArmor; 
-    
+    protected int defaultArmor;
+
+    private int _lastAppliedDamage = 0;
+    public int LastAppliedDamage => _lastAppliedDamage;
     protected virtual void SaveDefaultStats()
     {
         defaultMaxHealth = MaxHealth;
@@ -279,7 +281,8 @@ public abstract class MonsterClass : ICreature,IMonsterClass, IDamageable
 
         int incomingDamage = Mathf.Max(1, (int)(damage * damageTakenMultiplier));
 
-        Debug.Log($"방어력 적용된 최종 데미지: {incomingDamage}");
+        // 저장할 최종 데미지 초기화
+        _lastAppliedDamage = incomingDamage;
 
         // 아머 처리
         if (CurrentArmor > 0)
@@ -287,10 +290,9 @@ public abstract class MonsterClass : ICreature,IMonsterClass, IDamageable
             // 아머에 흡수되는 데미지 계산
             int armorDamage = Mathf.Min(CurrentArmor, incomingDamage);
             CurrentArmor -= armorDamage;
-            Debug.Log($"아머가 흡수한 데미지: {armorDamage}, 남은 아머: {CurrentArmor}");
 
             // 아머를 뚫고 들어가는 남은 데미지 계산
-            incomingDamage -= armorDamage;
+            _lastAppliedDamage -= armorDamage;
 
             // 아머가 파괴되었을 때 이벤트 발생
             if (CurrentArmor == 0)
@@ -300,11 +302,10 @@ public abstract class MonsterClass : ICreature,IMonsterClass, IDamageable
         }
 
         // 남은 데미지로 체력 감소
-        if (incomingDamage > 0)
+        if (_lastAppliedDamage > 0)
         {
             int previousHealth = CurrentHealth;
-            CurrentHealth -= incomingDamage;
-            Debug.Log($"체력 감소: {previousHealth} -> {CurrentHealth} (감소량: {incomingDamage})");
+            CurrentHealth -= _lastAppliedDamage;
 
             if (CurrentHealth <= 0)
             {

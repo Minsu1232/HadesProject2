@@ -197,7 +197,7 @@ public class SaveSlotUIManager : MonoBehaviour
                 ui.saveTimeText.text = info.lastSaveTime.ToString();
 
                 // 플레이 시간 표시
-                ui.playTimeText.text = $"플레이 시간: {SaveManager.Instance.GetFormattedPlayTime()}";
+                ui.playTimeText.text = $"플레이 시간:{SaveManager.Instance.GetFormattedPlayTimeForSlot(i)}";
             }
             else
             {

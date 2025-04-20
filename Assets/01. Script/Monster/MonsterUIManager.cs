@@ -145,7 +145,7 @@ public class MonsterUIManager : MonoBehaviour
             armorBreakText.color = Color.yellow;
             armorBreakText.fontSize *= 1.2f;
             armorBreakText.text = "Baam";
-            HitStopManager.TriggerHitStop(0.5f, 3);
+            CameraShakeManager.TriggerShake(0.5f, 3f);
             StartCoroutine(AnimateDamageText(armorBreakTextObj));
         }
     }

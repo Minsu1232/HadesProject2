@@ -31,6 +31,8 @@ public interface IMonsterClass
     float CurrentDeathDuration { get; }
     float CurrentSpawnDuration { get; }
 
+    int LastAppliedDamage { get; }
+
     MonsterGrade grade { get; }
     SpawnStrategyType CurrentSpawnStrategy { get; }
     MovementStrategyType CurrentMoveStrategy { get; }

@@ -1,4 +1,3 @@
-using RPGCharacterAnims.Lookups;
 using Sirenix.OdinInspector;
 using System.Collections;
 using System.Collections.Generic;
@@ -14,6 +13,7 @@ public class MonsterStatus : MonoBehaviour, IDamageable, ICreatureStatus
     [SerializeField] CreatureAI creatureAI;
     [SerializeField] private Transform skillSpawnPoint;
     private MonsterUIManager uiManager;
+    protected SimpleDissolveController simpleDissolveContorller;
     protected bool isDie = false;
     [FoldoutGroup("Monster Stats")]
     [ReadOnly]
@@ -84,7 +84,7 @@ public class MonsterStatus : MonoBehaviour, IDamageable, ICreatureStatus
     private void Awake()
     {
         uiManager = GetComponent<MonsterUIManager>(); // 시작 시 한 번만 가져오기
-       
+        simpleDissolveContorller = GetComponent<SimpleDissolveController>();
         skillSpawnPoint = GetComponentsInChildren<Transform>()
           .FirstOrDefault(t => t.name == "SkillSpawnPoint");
 
@@ -92,6 +92,7 @@ public class MonsterStatus : MonoBehaviour, IDamageable, ICreatureStatus
         {
             Debug.LogWarning($"{gameObject.name}에서 SkillSpawnPoint를 찾지 못했습니다. 몬스터 위치를 사용합니다.");
             skillSpawnPoint = transform;
+           
         }
     }
 
@@ -112,34 +113,40 @@ public class MonsterStatus : MonoBehaviour, IDamageable, ICreatureStatus
     public virtual void TakeDamage(int damage)
     {
         if (isDie) return;
-        //리지드바디의 속도와 회전 속도를 0으로 초기화
-   
-        Debug.Log($"{monsterClass.CurrentArmor}");
-        monsterClass.TakeDamage(damage);
-        Debug.Log($"{monsterClass.CurrentArmor}");
-        //Debug.Log($"맞기전 체력 아머 {monsterClass.CurrentHealth + damage},  맞은 후 체력 {monsterClass.CurrentHealth}");
 
-        // 캐싱된 uiManager 사용
+        // 원래 데미지 저장
+        int originalDamage = damage;
+
+        // TakeDamage 호출
+        monsterClass.TakeDamage(damage);
+
+        // 최종 적용된 데미지 가져오기
+        int finalDamage = monsterClass.LastAppliedDamage;
+
+        // UI 업데이트
         if (uiManager != null)
         {
             uiManager.UpdateHealthUI(monsterClass.CurrentHealth);
             uiManager.UpdateArmorUI(monsterClass.CurrentArmor);
-            uiManager.SpawnDamageText(damage);
+            uiManager.SpawnDamageText(finalDamage); // 실제 적용된 데미지
         }
 
+        // 나머지 코드는 그대로
         var CreatureAI = GetComponent<CreatureAI>();
         if (CreatureAI != null)
         {
-            CreatureAI.OnDamaged(damage);
+            CreatureAI.OnDamaged(originalDamage); // AI에는 원래 데미지 전달
         }
+
         Rigidbody rb = GetComponent<Rigidbody>();
         if (rb != null)
         {
-            // 속도 초기화
             rb.velocity = Vector3.zero;
             rb.angularVelocity = Vector3.zero;
         }
+
         CameraShakeManager.TriggerShake(0.5f, 0.05f);
+
         if (monsterClass.CurrentHealth <= 0 && gameObject != null)
         {
             Die();
@@ -193,8 +200,11 @@ public class MonsterStatus : MonoBehaviour, IDamageable, ICreatureStatus
                 ItemDropSystem.Instance.DropItemFromMonster(monData, transform.position);
                 DungeonManager.Instance.OnMonsterDefeated(this);
             }
-
-            Destroy(gameObject); // 몬스터 오브젝트 삭제
+            if (simpleDissolveContorller != null)
+            {
+                simpleDissolveContorller.OnMonsterDeath();
+            }
+            /*Destroy(gameObject);*/ // 몬스터 오브젝트 삭제 => 디졸브에서 관리
         }
 
     }

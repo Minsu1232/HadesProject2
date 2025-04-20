@@ -4,7 +4,8 @@ using UnityEngine;
 public class GameInitializer : Singleton<GameInitializer>
 {
     [SerializeField] private PlayerClassData playerClassData;
-    [SerializeField] private Transform weaponMount;
+    [SerializeField] private Transform weaponMount;        // 기존 왼손 마운트
+    [SerializeField] private Transform rightWeaponMount;   // 새로 추가할 오른손 마운트
 
     private WeaponService weaponService;
     [SerializeField] private PlayerClass playerClass;
@@ -26,6 +27,12 @@ public class GameInitializer : Singleton<GameInitializer>
 
     public GameObject flameWall;
     public GameObject lightningEffect;
+
+    [Header("무기이펙트 설정")]
+    public GameObject chronoLeftEffect;
+    public GameObject chronoRightEffect;
+    public GameObject chargeBladeWavePrefab;
+    public GameObject chronoSpecialEffectPrefab;
 
     protected override void Awake()
     {
@@ -98,11 +105,22 @@ public class GameInitializer : Singleton<GameInitializer>
         }
     }
 
-    private void InitializeWeaponService()
+    private void InitializeWeaponService() 
     {
         weaponService = gameObject.AddComponent<WeaponService>();
         weaponService.OnWeaponChanged += OnWeaponChanged;
-        weaponService.weaponMount = weaponMount;
+        weaponService.weaponMount = weaponMount; // 기존 왼손 마운트
+
+        // 오른손 마운트 설정
+        if (rightWeaponMount != null)
+        {
+            weaponService.rightWeaponMount = rightWeaponMount;
+        }
+        else
+        {
+            // 없으면 Unity Inspector에서 할당하라는 경고
+            Debug.LogWarning("오른손 무기 마운트(rightWeaponMount)가 할당되지 않았습니다. Unity Inspector에서 할당해주세요.");
+        }
     }
 
     private void InitializePlayerClass()

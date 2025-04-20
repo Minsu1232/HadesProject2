@@ -211,27 +211,28 @@
         }
       ]
     },
+
     {
-      "dialogID": "third_death",
-      "dialogMode": 1,
+      "dialogID": "stats_upgrade_unlock_dialog",
+      "dialogMode": 3,
       "lines": [
         {
           "speakerName": "타임키퍼",
           "dialogText": "좌절하지 마세요. 이 여정은 쉽지 않습니다. 하지만 시간은 당신의 편입니다.",
           "portraitName": "Timekeeper/Determined",
-          "eventTrigger": "StartRevival"
+          "eventTrigger": ""
         },
         {
           "speakerName": "타임키퍼",
-          "dialogText": "더 강해질 방법을 찾았습니다. 저의 권능으로 기억을 되돌릴 방법을요.",
+          "dialogText": "더 강해질 방법을 찾았습니다. 기억 해금에 도움을 드리겠습니다.",
           "portraitName": "Timekeeper/Helpful",
-          "eventTrigger": "ShowShopButton"
+          "eventTrigger": "FocusCamera:StatsUpgrade:0,0,1.5"
         },
         {
           "speakerName": "타임키퍼",
-          "dialogText": "늘 가던길로 가다보면 보일것입니다.",
+          "dialogText": "제 피조물에 한번 다가가 보세요.",
           "portraitName": "Timekeeper/Helpful",
-          "eventTrigger": "ShowShopButton"
+          "eventTrigger": "ResetCamera"
         }
       ]
     },
@@ -278,7 +279,6 @@
       ]
     },
 
-
     {
       "dialogID": "alexander_encounter",
       "dialogMode": 3,
@@ -317,7 +317,7 @@
           "speakerName": "수호자",
           "dialogText": "내 동생...? 무슨 일이 있었던 거지?",
           "portraitName": "Guardian/Confused",
-          "eventTrigger": ""
+          "eventTrigger": "ResetCamera"
         },
         {
           "speakerName": "알렉산더",
@@ -336,7 +336,7 @@
 
     {
       "dialogID": "alexander_defeated",
-      "dialogMode": 1,
+      "dialogMode": 3,
       "lines": [
         {
           "speakerName": "알렉산더",
@@ -361,23 +361,47 @@
           "speakerName": "타임키퍼",
           "dialogText": "'야수왕의 슬픔' 파편을 획득했습니다. 이 파편은 야수의 민첩함과 날카로운 공격력을 당신에게 부여할 것입니다.",
           "portraitName": "Timekeeper/Pleased",
-          "eventTrigger": "AcquireFragment"
+          "eventTrigger": ""
         },
         {
           "speakerName": "타임키퍼",
           "dialogText": "또한 알렉산더의 기억 일부도 함께 담겨 있습니다. 당신의 과거와 동생에 대한 진실에 한 걸음 더 가까워졌습니다.",
           "portraitName": "Timekeeper/Mystic",
-          "eventTrigger": ""
+          "eventTrigger": "UnlockChronofactuerWeapon"
         },
         {
           "speakerName": "타임키퍼",
           "dialogText": "이제 첫 번째 영역을 정화했습니다. 다음은 용족의 영역, '용족의 맹세'로 향해야 합니다. 시리우스가 기다리고 있을 것입니다.",
           "portraitName": "Timekeeper/Instructive",
-          "eventTrigger": "UnlockChapter2"
+          "eventTrigger": ""
         }
       ]
     },
-
+    {
+      "dialogID": "chronofactuer_unlock_dialog",
+      "dialogMode": 3,
+      "lines": [
+        {
+          "speakerName": "타임키퍼",
+          "dialogText": "첫 번째 영역이 정화되면서 우물 별자리가 완성되었습니다. 나아가는 길에 있어 도움이 될겁니다.",
+          "portraitName": "Timekeeper/Explaining",
+          "eventTrigger": "FocusCamera:Constellation:0,0,1.5"
+        },
+        {
+          "speakerName": "타임키퍼",
+          "dialogText": "또한 알렉산더의 발톱을 통해 새로운 무기도 제작해봤습니다. 무기 선택은 당신의 자유입니다.",
+          "portraitName": "Timekeeper/Explaining",
+          "eventTrigger": "FocusCamera:Weaponzone:0,0,1.5"
+        },
+        {
+          "speakerName": "타임키퍼",
+          "dialogText": "점점 상황은 좋아질겁니다. 앞으로 나아가세요",
+          "portraitName": "Timekeeper/Instructive",
+          "eventTrigger": "ResetCamera"
+        }      
+      ]
+    },
+    
     {
       "dialogID": "timesphere_first",
       "dialogMode": 1,

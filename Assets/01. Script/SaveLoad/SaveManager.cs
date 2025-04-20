@@ -1038,7 +1038,31 @@ public class SaveManager : Singleton<SaveManager>
             }
         }
         return result;
-    } 
+    }
+    public int GetTotalPlayTimeForSlot(int slotIndex)
+    {
+        if (slotMetadataList != null && slotIndex < slotMetadataList.Count)
+        {
+            return slotMetadataList[slotIndex].totalPlayTime;
+        }
+        return 0;
+    }
+    // 특정 슬롯의 포맷된 플레이 타임 가져오기
+    public string GetFormattedPlayTimeForSlot(int slotIndex)
+    {
+        int totalSeconds = GetTotalPlayTimeForSlot(slotIndex);
+
+        if (totalSeconds <= 0)
+            return "0분";
+
+        int hours = totalSeconds / 3600;
+        int minutes = (totalSeconds % 3600) / 60;
+
+        if (hours > 0)
+            return $"{hours}시간 {minutes}분";
+        else
+            return $"{minutes}분";
+    }
 }
 
 #endregion

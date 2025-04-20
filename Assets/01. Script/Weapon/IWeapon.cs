@@ -1,7 +1,9 @@
 ﻿using UnityEngine;
+using static PlayerClass;
 
 public interface IWeapon
 {    // 초기화/로드
+    WeaponType weaponType { get; }
     GameObject WeaponLoad(Transform parentTransform);
     void InitializeWeapon(Animator animator);
 

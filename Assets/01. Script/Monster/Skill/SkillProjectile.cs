@@ -10,12 +10,13 @@ public class SkillProjectile : BaseProjectile
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.CompareTag("Monster")) return;  // 몬스터는 무시
+        if (other.CompareTag("Monster") || hasDamageApplied) return;  // 몬스터는 무시
 
         // 충돌 지점에 효과 생성
         impactEffect?.OnImpact(transform.position, damage);
         OnImpact(other);
         Debug.Log("독구름펑");
+        hasDamageApplied = true;
         // 발사체 제거
         Destroy(gameObject);
     }

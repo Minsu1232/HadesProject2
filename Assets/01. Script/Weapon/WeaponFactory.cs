@@ -19,7 +19,8 @@ public class WeaponFactory : MonoBehaviour
         Debug.Log("Initializing WeaponTypes Dictionary");
         weaponTypes = new Dictionary<string, Type>()
         {
-            { "GreatSword", typeof(GreatSword) }
+            { "GreatSword", typeof(GreatSword) },
+            { "Chronofracture", typeof(Chronofracture)}
         };
 
         foreach (var type in weaponTypes)

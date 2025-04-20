@@ -13,7 +13,7 @@ public class PlayerClass : ICreature, IDamageable
     {
         None,
         GreatSword,
-        Sword,
+        Chronofracture,
         Staff
     }
 
@@ -68,7 +68,7 @@ public class PlayerClass : ICreature, IDamageable
         Debug.Log($"현재 플레이어 스탯 : 체력 {PlayerStats.Health}, 마나: {PlayerStats.Mana}, 파워: {PlayerStats.AttackPower}, 공속: {PlayerStats.AttackSpeed}, 이속: {PlayerStats.Speed}, 치확: {PlayerStats.CriticalChance}, 데미지배율: {PlayerStats.DamageReceiveRate}");
     }
 
-    // 지울 가능성 있음 현재 사용 x
+   
     public void ChangeWeapon(IWeapon newWeapon)
     {
         currentWeapon = newWeapon;
@@ -76,16 +76,23 @@ public class PlayerClass : ICreature, IDamageable
 
         SelectWeapon(currentWeapon);
     }
-    // 지울 가능성 있음 현재 사용 x
+   
     public void SelectWeapon(IWeapon weapon)
     {
         currentWeapon = weapon;
-        if (Enum.TryParse(weapon.GetType().Name, out WeaponType parsedWeaponType))
-        {
-            weaponType = parsedWeaponType;
+      
+        
+            weaponType = weapon.weaponType;
             Debug.Log($"무기가 변경되었습니다: {weaponType}");
-        }
+        
         OnWeaponSelected?.Invoke(currentWeapon); // 무기 선택 이벤트 발생
+    }
+    public void ClearWeapon()
+    {
+        currentWeapon = null;
+        OnWeaponSelected?.Invoke(null); // null을 전달하여 무기가 해제되었음을 알림
+        weaponType = WeaponType.None;
+        Debug.Log("플레이어의 무기가 해제되었습니다.");
     }
     public virtual void LevelUp()
     {
@@ -246,8 +253,7 @@ public class PlayerClass : ICreature, IDamageable
             isDead = true;
             animator?.SetTrigger("Die");            
             Debug.Log("죽음");
-            DeathHandler.HandlePlayerDeath();
-            ResetPower(true, true, true, true, true, true, true, true);
+            DeathHandler.HandlePlayerDeath();            
             isDead = false;
         }
     }

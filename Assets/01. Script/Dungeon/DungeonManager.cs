@@ -4,6 +4,8 @@ using System.Threading.Tasks;
 using UnityEngine.SceneManagement;
 using System.Collections;
 using DG.Tweening;
+using UnityEngine.UI;
+using Unity.VisualScripting;
 
 public class DungeonManager : MonoBehaviour
 {
@@ -26,7 +28,14 @@ public class DungeonManager : MonoBehaviour
     [SerializeField] private float transitionDelay = 0.5f;
     [SerializeField] private Color bossRoomColor = new Color(0.5f, 0, 0, 0.3f);
     public event System.Action<StageData> OnStageLoaded; // 챕터 보스방 도달 이벤트
+    public static event System.Action OnStageCleared; // 스테이지 클리어 이벤트
     [SerializeField] private GameObject bossEssenceUI; // 챕터 보스방 EssenceUI
+
+    [SerializeField] private Button returnToVillageButton; // 인스펙터에서 할당
+    [SerializeField] private float autoReturnDelay = 20f; // 자동 귀환 시간 (20초)
+    private int currentReturnCountdown;
+    private DG.Tweening.Sequence returnCountdownSequence;
+
 
     [Header("패시브 어빌리티 설정")]
     [SerializeField] private AbilitySelectionPanel abilitySelectionPanel;
@@ -52,7 +61,15 @@ public class DungeonManager : MonoBehaviour
             Instance = this;
             //DontDestroyOnLoad(gameObject);
             SceneManager.sceneLoaded += OnSceneLoaded;
-
+            // 기존 이벤트 리스너가 있다면 함께 유지
+            if (DialogSystem.Instance != null)
+            {
+                DialogSystem.OnDialogEvent += HandleDialogEvents;
+            }
+            if (returnToVillageButton != null)
+            {
+                returnToVillageButton.onClick.AddListener(() => ReturnToVillage().ConfigureAwait(false));
+            }
         }
         else
         {
@@ -60,10 +77,11 @@ public class DungeonManager : MonoBehaviour
         }
     }
     private void OnDestroy()
-    {
-       
+    {       
         // 이벤트 해제
         SceneManager.sceneLoaded -= OnSceneLoaded;
+        DialogSystem.OnDialogEvent -= HandleDialogEvents;
+        returnCountdownSequence.Kill();
     }
 
     // 씬 로드 시 호출되는 이벤트 핸들러
@@ -71,7 +89,28 @@ public class DungeonManager : MonoBehaviour
     {
         // 등록된 던전 씬 확인
         if (dungeonSceneNames.Contains(scene.name))
-        {
+        {   
+            // 현재 챕터 ID 가져오기
+            string chapterId = PlayerPrefs.GetString("CurrentChapterID", "");
+
+
+            // 챕터 시도 횟수 직접 증가 (UpdateChapter 호출 없이)
+            if (!string.IsNullOrEmpty(chapterId) && SaveManager.Instance != null)
+            {
+                ChapterProgressData chapterData = SaveManager.Instance.GetChapterData();
+                if (chapterData != null)
+                {
+                    ChapterProgressData.ChapterData chapter = chapterData.GetChapterData(chapterId);
+                    if (chapter != null)
+                    {
+                        // 시도 횟수만 증가
+                        chapter.attemptCount++;
+                        SaveManager.Instance.SaveChapterData();
+                        Debug.Log($"챕터 {chapterId} 시도 횟수 증가: {chapter.attemptCount}회");
+                    }
+                }
+            }
+
             // 스테이지 로드 로직
             if (DungeonDataManager.Instance.IsInitialized())
             {
@@ -430,14 +469,29 @@ public class DungeonManager : MonoBehaviour
     }
 
     // 스테이지 클리어 처리
+    // 스테이지 클리어 처리
     private void OnStageClear()
     {
         Debug.Log($"스테이지 클리어: {currentStage.stageName}");
         isStageClear = true;
+        OnStageCleared?.Invoke();
+        // 현재 스테이지의 챕터 ID 가져오기
+        string chapterId = PlayerPrefs.GetString("CurrentChapterID", "");
+
+        // 현재 스테이지 기록 생성 (예: "1-5")
+        string stageRecord = FormatStageRecord(currentStage.stageID);
+
+        // 기록 업데이트 (SaveManager 사용)
+        if (SaveManager.Instance != null && !string.IsNullOrEmpty(chapterId))
+        {
+            // completed 파라미터는 보스 스테이지인 경우만 true (다음 챕터 해금용)
+            SaveManager.Instance.UpdateChapterProgress(chapterId, currentStage.isBossStage, stageRecord);
+            Debug.Log($"챕터 {chapterId} 기록 업데이트: {stageRecord}");
+        }
 
         if (currentStage.isBossStage)
         {
-            Debug.Log("챕터 클리어! 빌리지로 귀환합니다.");
+            Debug.Log("챕터 클리어! 보스 처치 다이얼로그를 시작합니다.");
 
             // 보스 처치 연출 효과
             if (SceneTransitionManager.Instance != null)
@@ -445,28 +499,166 @@ public class DungeonManager : MonoBehaviour
                 SceneTransitionManager.Instance.ScreenColorEffect(Color.white, 0.3f, 1.5f);
             }
 
-            // 딜레이 후 빌리지로 이동
-            DOVirtual.DelayedCall(5f, async () => {
-                await ReturnToVillage();
-            });
+            // 보스 타입에 따른 다이얼로그 ID 결정
+            string bossDialogID = GetBossDefeatDialogID();
+
+            if (!string.IsNullOrEmpty(bossDialogID) && DialogSystem.Instance != null)
+            {
+                // 이미 표시된 다이얼로그인지 확인
+                bool alreadyShown = false;
+                if (GameProgressManager.Instance != null)
+                {
+                    alreadyShown = GameProgressManager.Instance.IsDialogShown(bossDialogID);
+                }
+
+                if (!alreadyShown)
+                {
+                    // DialogSystem에 이벤트 리스너 추가 - 다이얼로그 완료 시 마을로 귀환
+                    DialogSystem.OnDialogEvent += OnBossDefeatDialogComplete;
+
+                    // 보스 처치 다이얼로그 시작
+                    DialogSystem.Instance.StartDialog(bossDialogID);
+
+                    // 다이얼로그 표시 마킹
+                    if (GameProgressManager.Instance != null)
+                    {
+                        GameProgressManager.Instance.MarkDialogAsShown(bossDialogID);
+                    }
+
+                    // 보스 처치 플래그 설정 (예: "boss_defeated_chapter1")
+                    string bossDefeatFlag = $"boss_defeated_chapter{currentStage.chapterID}";
+                    if (GameProgressManager.Instance != null)
+                    {
+                        GameProgressManager.Instance.SetFlag(bossDefeatFlag, true);
+                        Debug.Log($"보스 처치 플래그 설정: {bossDefeatFlag}");
+                    }
+
+                    return; // 다이얼로그 이벤트에서 마을로 귀환 처리
+                }
+            }
+
+            StartReturnCountdown();
         }
         else
         {
             // 패시브 어빌리티 선택 UI 표시
             ShowAbilitySelection();
+        }
+    }
 
-            // 다음 스테이지 ID
-            string nextStageID = currentStage.nextStageID;
+    // 스테이지 ID를 기록 형식으로 변환 (예: "1_5" -> "1-5")
+    private string FormatStageRecord(string stageId)
+    {
+        if (string.IsNullOrEmpty(stageId) || !stageId.Contains("_"))
+            return "1-1"; // 기본값
 
-            if (nextStageID == "Village")
+        string[] parts = stageId.Split('_');
+        if (parts.Length >= 2)
+        {
+            return $"{parts[0]}-{parts[1]}"; // "챕터-스테이지" 형식
+        }
+
+        return "1-1"; // 기본값
+    }
+    private void StartReturnCountdown()
+    {
+        // 이미 실행 중인 시퀀스 정지
+        if (returnCountdownSequence != null)
+        {
+            returnCountdownSequence.Kill();
+        }
+
+        // 초기값 설정
+        currentReturnCountdown = Mathf.FloorToInt(autoReturnDelay);
+
+        // 초기 알림
+        if (UIManager.Instance != null)
+        {
+            UIManager.Instance.ShowNotification($"{currentReturnCountdown}초 후 마을로 귀환합니다", Color.white);
+        }
+
+        // DOTween 시퀀스 생성
+        returnCountdownSequence = DOTween.Sequence();
+
+        for (int i = 1; i <= currentReturnCountdown; i++)
+        {
+            int capturedI = i; // 클로저 문제 방지를 위한 값 캡처
+            returnCountdownSequence.AppendCallback(() => {
+                // 매 초마다 카운트다운 감소
+                currentReturnCountdown--;
+
+                // 5초 간격으로 알림 (20, 15, 10, 5초)
+                if (currentReturnCountdown % 5 == 0 && currentReturnCountdown > 0)
+                {
+                    if (UIManager.Instance != null)
+                    {
+                        UIManager.Instance.ShowNotification($"{currentReturnCountdown}초 후 마을로 귀환합니다", Color.white);
+                    }
+                }
+            }).AppendInterval(1f); // 1초 딜레이
+        }
+
+        // 카운트다운 완료 후 마을로 귀환
+        returnCountdownSequence.OnComplete(() => {
+            ReturnToVillage().ConfigureAwait(false);
+        });
+
+        // 시퀀스 실행
+        returnCountdownSequence.Play();
+    }
+    private void HandleDialogEvents(string eventName)
+    {
+        // 무기 해금 이벤트 처리
+        if (eventName == "UnlockChronofactuerWeapon")
+        {
+            // 플래그 설정 (마을에서 확인용)
+            if (GameProgressManager.Instance != null)
             {
-                // 빌리지로 귀환
-                DOVirtual.DelayedCall(3f, async () => {
-                    await ReturnToVillage();
-                });
+                GameProgressManager.Instance.SetFlag("weapon_unlocked_chronofactuer", true);
+                Debug.Log("무기 해금 플래그 설정: weapon_unlocked_chronofactuer");
+            }
+
+            // 즉시 알림 표시
+            if (UIManager.Instance != null)
+            {
+                Color goldColor = new Color(1f, 0.84f, 0f); // 금색
+                UIManager.Instance.ShowNotification("새로운 무기 해금: 시간 절단자", goldColor);
+                Debug.Log("넌왜두번되니??");
             }
         }
     }
+    private string GetBossDefeatDialogID()
+    {
+        // 챕터 번호나 보스 ID로 적절한 다이얼로그 ID 반환
+        int chapterNumber = currentStage.chapterID;
+
+        switch (chapterNumber)
+        {
+            case 1:
+                return "alexander_defeated";
+            case 2:
+                return "sirius_defeated";  // 추후 확장용
+                                           // 추가 챕터용 case 추가 가능
+            default:
+                return "";
+        }
+    }
+    // 다이얼로그 완료 이벤트 핸들러
+    private void OnBossDefeatDialogComplete(string eventName)
+    {
+        // "DialogComplete:보스ID_defeated" 형식의 이벤트 확인
+        if (eventName.StartsWith("DialogComplete:") &&
+            eventName.Contains("_defeated"))
+        {
+            // 이벤트 리스너 제거
+            DialogSystem.OnDialogEvent -= OnBossDefeatDialogComplete;
+
+            StartReturnCountdown();
+        }
+    }
+
+    // 챕터 번호 추출 메서드
+
     // 추가 보상 확률 체크 및 생성
     private void TryGenerateExtraReward()
     {
@@ -631,6 +823,9 @@ public class DungeonManager : MonoBehaviour
         PlayerPrefs.SetFloat("VillageSpawnY", 0.1f);
         PlayerPrefs.SetFloat("VillageSpawnZ", -20f);
         PlayerPrefs.SetInt("ReturnFromDungeon", 1); // 던전에서 돌아왔음을 표시
+
+        // 사망으로 인한 귀환이 아님을 명시적으로 설정
+        PlayerPrefs.SetInt("ReturnByDeath", 0);
         // 로딩 화면 표시 (있을 경우) - 페이드 효과 내장
         if (LoadingScreen.Instance != null)
         {
@@ -750,4 +945,5 @@ public class DungeonManager : MonoBehaviour
         Debug.LogWarning($"스테이지 번호 추출 실패: {stageID}, 기본값 1 사용");
         return 1; // 파싱 실패 시 기본값
     }
+    
 }

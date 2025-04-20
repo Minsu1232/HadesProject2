@@ -65,6 +65,7 @@ public class MeleeDamageDealer : MonoBehaviour, IDamageDealer
                 weapon.GetGage(weapon.GagePerHit);
 
                 Debug.Log($"더미 타격: {damage} 데미지");
+
                 return; // 더미 처리 후 종료
             }
         }

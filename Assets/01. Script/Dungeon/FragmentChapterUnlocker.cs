@@ -118,7 +118,7 @@ public class FragmentChapterUnlocker : MonoBehaviour
                 // UI 알림 표시 (UIManager가 있다면)
                 if (UIManager.Instance != null)
                 {
-                    UIManager.Instance.ShowNotification($"새로운 챕터가 해금되었습니다: {chapterName}");
+                    UIManager.Instance.ShowNotification($"새로운 챕터가 해금되었습니다: {chapterName}",Color.magenta);
                 }
             }
             else

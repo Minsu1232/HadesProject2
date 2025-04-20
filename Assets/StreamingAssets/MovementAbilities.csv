@@ -8,12 +8,12 @@ dash_invincible_common,DashInvincible,순간 회피,대시 중 0.2초 동안 무
 dash_invincible_uncommon,DashInvincible,잔상 대시,대시 중 0.3초 동안 무적 상태가 됩니다.,1,0.3,0.3,DashInvincible2
 dash_invincible_rare,DashInvincible,유령 대시,대시 중 0.4초 동안 무적 상태가 됩니다.,2,0.4,0.3,DashInvincible3
 dash_invincible_epic,DashInvincible,차원 이동,대시 중 0.5초 동안 무적 상태가 됩니다. ,3,0.5,0.3,DashInvincible4
-dash_invincible_legendary,DashInvincible,시간 정지,대시 중 0.7초 동안 무적 상태가 됩니다. ,4,0.7,0.3,DashInvincible5
+dash_invincible_legendary,DashInvincible,시간 정지,대시 중 0.6초 동안 무적 상태가 됩니다. ,4,0.6,0.3,DashInvincible5
 dash_impact_common,DashImpact,충격 대시,대시 시 적과 충돌하면 10% 피해를 입힙니다,0,10,0.3,DashImpact1
 dash_impact_uncommon,DashImpact,돌진 타격,대시 시 적과 충돌하면 20% 피해를 입힙니다. ,1,20,0.3,DashImpact2
 dash_impact_rare,DashImpact,관통 대시,대시 시 적과 충돌하면 30% 피해를 입힙니다. ,2,30,0.3,DashImpact3
 dash_impact_epic,DashImpact,파괴적 돌진,대시 시 적과 충돌하면 40% 피해를 입힙니다. ,3,40,0.3,DashImpact4
-dash_impact_legendary,DashImpact,진격의 파괴자,대시 시 적과 충돌하면 60% 피해를 입힙니다. ,4,60,0.3,DashImpact5
+dash_impact_legendary,DashImpact,진격의 파괴자,대시 시 적과 충돌하면 65% 피해를 입힙니다. ,4,65,0.3,DashImpact5
 dash_flame_common,DashFlame,불길 흔적,대시 후 불길이 생겨 초당 5% 피해를 입힙니다. ,0,5,0.3,DashFlame1
 dash_flame_uncommon,DashFlame,화염 대시,대시 후 불길이 생겨 초당 10% 피해를 입힙니다. ,1,10,0.3,DashFlame2
 dash_flame_rare,DashFlame,맹렬한 불길,대시 후 불길이 생겨 초당 15% 피해를 입힙니다. ,2,15,0.3,DashFlame3

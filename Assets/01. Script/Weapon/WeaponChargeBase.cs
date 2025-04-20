@@ -16,14 +16,14 @@ public abstract class WeaponChargeBase
     {        
         return Damage;
     }
-    public void StartCharge()
+    public virtual void StartCharge()
     {
         isCharging = true;
         currentChargeTime = 0f;
         Debug.Log($"{weaponManager.WeaponName}: Â÷Â¡ ½ÃÀÛ!");
     }
 
-    public void UpdateCharge(float deltaTime)
+    public virtual void UpdateCharge(float deltaTime)
     {
         if (!isCharging) return;
 

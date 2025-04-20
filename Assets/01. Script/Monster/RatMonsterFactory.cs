@@ -3,7 +3,7 @@ using System;
 public class RatMonsterFactory : MonsterFactoryBase
 {
 
-    private const float ELITE_CHANCE = 0.001f;
+    private const float ELITE_CHANCE = 0.1f;
     protected override Type GetDataType()
     {
         return typeof(MonsterData);  // 일반 몬스터는 MonsterData 사용

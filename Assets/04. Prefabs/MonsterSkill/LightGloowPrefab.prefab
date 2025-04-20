@@ -13,7 +13,8 @@ GameObject:
   - component: {fileID: 9186446616439801708}
   - component: {fileID: 4636239176762039874}
   - component: {fileID: -4128530915627365870}
-  m_Layer: 0
+  - component: {fileID: 6586877557092410581}
+  m_Layer: 8
   m_Name: LightGloowPrefab
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5041,6 +5042,29 @@ MonoBehaviour:
   heightFactor: 0
   damage: 0
   isLaunched: 0
+--- !u!136 &6586877557092410581
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1590415177872986601}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 1
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 1.2425
+  m_Height: 2.485
+  m_Direction: 1
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &3550968669729317587
 GameObject:
   m_ObjectHideFlags: 0
@@ -5052,7 +5076,7 @@ GameObject:
   - component: {fileID: 1024848595224900949}
   - component: {fileID: 2279940887822484597}
   - component: {fileID: 3319026295740190429}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Rays
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -9894,7 +9918,7 @@ GameObject:
   - component: {fileID: 7684714519609379852}
   - component: {fileID: 8986935675043883179}
   - component: {fileID: 8366612028392416556}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Small Stars
   m_TagString: Untagged
   m_Icon: {fileID: 0}

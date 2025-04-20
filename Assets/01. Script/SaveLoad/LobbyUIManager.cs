@@ -2,6 +2,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
 using UnityEngine.SceneManagement;
+using UnityEngine.EventSystems;
 
 public class LobbyUIManager : MonoBehaviour
 {
@@ -11,12 +12,21 @@ public class LobbyUIManager : MonoBehaviour
     [SerializeField] private Button optionsButton;  // 옵션 버튼
     [SerializeField] private Button quitButton;     // 종료 버튼 (필요시)
 
+    [Header("버튼 호버 효과 설정")]
+    [SerializeField] private float hoverScaleMultiplier = 1.1f;  // 호버 시 버튼 크기 배율
+    [SerializeField] private float hoverAnimationSpeed = 5f;     // 호버 애니메이션 속도
+
     [Header("패널")]
     [SerializeField] private GameObject saveSlotPanel; // 세이브 슬롯 UI 패널
     [SerializeField] private GameObject optionsPanel;  // 옵션 패널
 
     [Header("컴포넌트 참조")]
     [SerializeField] private SaveSlotUIManager saveSlotUIManager;
+
+    // 원래 크기를 저장할 Dictionary
+    private System.Collections.Generic.Dictionary<Button, Vector3> originalScales = new System.Collections.Generic.Dictionary<Button, Vector3>();
+    // 현재 호버 중인 버튼
+    private Button currentHoveredButton = null;
 
     private void Start()
     {
@@ -33,6 +43,64 @@ public class LobbyUIManager : MonoBehaviour
         // 패널 초기 상태 설정
         saveSlotPanel.SetActive(false);
         optionsPanel.SetActive(false);
+
+        // 버튼 호버 이벤트 설정
+        SetupButtonHoverEffects();
+    }
+
+    private void SetupButtonHoverEffects()
+    {
+        // 모든 버튼에 호버 효과 추가
+        SetupButtonHoverEffect(startButton);
+        SetupButtonHoverEffect(loadButton);
+        SetupButtonHoverEffect(optionsButton);
+
+        if (quitButton != null)
+        {
+            SetupButtonHoverEffect(quitButton);
+        }
+    }
+
+    private void SetupButtonHoverEffect(Button button)
+    {
+        if (button == null) return;
+
+        // 원래 크기 저장
+        originalScales[button] = button.transform.localScale;
+
+        // 이벤트 트리거 컴포넌트 가져오기 또는 추가
+        EventTrigger trigger = button.gameObject.GetComponent<EventTrigger>();
+        if (trigger == null)
+        {
+            trigger = button.gameObject.AddComponent<EventTrigger>();
+        }
+
+        // 포인터 진입 이벤트 설정
+        EventTrigger.Entry entryEvent = new EventTrigger.Entry();
+        entryEvent.eventID = EventTriggerType.PointerEnter;
+        entryEvent.callback.AddListener((data) => { OnPointerEnter(button); });
+        trigger.triggers.Add(entryEvent);
+
+        // 포인터 퇴출 이벤트 설정
+        EventTrigger.Entry exitEvent = new EventTrigger.Entry();
+        exitEvent.eventID = EventTriggerType.PointerExit;
+        exitEvent.callback.AddListener((data) => { OnPointerExit(button); });
+        trigger.triggers.Add(exitEvent);
+    }
+
+    private void OnPointerEnter(Button button)
+    {
+        // 현재 호버 중인 버튼 설정
+        currentHoveredButton = button;
+    }
+
+    private void OnPointerExit(Button button)
+    {
+        // 호버 효과 제거
+        if (currentHoveredButton == button)
+        {
+            currentHoveredButton = null;
+        }
     }
 
     private void Update()
@@ -50,6 +118,46 @@ public class LobbyUIManager : MonoBehaviour
                 optionsPanel.SetActive(false);
             }
         }
+
+        // 호버 애니메이션 업데이트
+        UpdateHoverEffects();
+    }
+
+    private void UpdateHoverEffects()
+    {
+        // 모든 버튼 확인
+        UpdateButtonScale(startButton);
+        UpdateButtonScale(loadButton);
+        UpdateButtonScale(optionsButton);
+
+        if (quitButton != null)
+        {
+            UpdateButtonScale(quitButton);
+        }
+    }
+
+    private void UpdateButtonScale(Button button)
+    {
+        if (button == null || !originalScales.ContainsKey(button)) return;
+
+        Vector3 targetScale;
+
+        // 호버 중인 버튼이면 크기 확대
+        if (button == currentHoveredButton)
+        {
+            targetScale = originalScales[button] * hoverScaleMultiplier;
+        }
+        else
+        {
+            targetScale = originalScales[button];
+        }
+
+        // 부드러운 애니메이션으로 크기 변경
+        button.transform.localScale = Vector3.Lerp(
+            button.transform.localScale,
+            targetScale,
+            Time.deltaTime * hoverAnimationSpeed
+        );
     }
 
     // 새 게임용 세이브 슬롯 패널 표시

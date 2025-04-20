@@ -158,7 +158,7 @@ MonoBehaviour:
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
-  - m_GUID: 29321d9f3ca22774caba5e8e8679e682
+  - m_GUID: 02169a29bc93499d91fdd5dd16ead51a
     m_Address: PBRDefault
     m_ReadOnly: 0
     m_SerializedLabels: []
@@ -315,6 +315,31 @@ MonoBehaviour:
     FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: ff25455985f6bd8468349d030160d023
     m_Address: VillageAnimationController
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 6f40451918100254e9fecb212857272b
+    m_Address: ChronofractureData
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: b3a8472833b8f934594b3988825c1572
+    m_Address: ChronofractureRed
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 681433d5ac3d2c34bb99eaa72d329e36
+    m_Address: ChronofractureBlue
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: ab5efdb836c39d243aeec53494a1a6d2
+    m_Address: ChronofractureController
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 485911c3b7d8d1742a06d2b6bab97764
+    m_Address: ChronofractureStatData
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0

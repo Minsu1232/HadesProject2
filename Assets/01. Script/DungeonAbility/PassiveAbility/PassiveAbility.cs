@@ -12,7 +12,8 @@ public class PassiveAbility : DungeonAbility
         DamageReduction,  // 피해 감소
         LifeSteal,        // 흡혈
         Counterattack,    // 피격 시 반격
-        ItemFind          // 아이템 찾기 확률 증가
+        ItemFind,         // 아이템 찾기 확률 증가
+        StageHeal         // 스테이지 클리어 시 체력 회복 (새로 추가)
     }
 
     public PassiveType passiveType;       
@@ -128,6 +129,9 @@ public class PassiveAbility : DungeonAbility
             case PassiveType.ItemFind:
                 ApplyItemFind(player, value);
                 break;
+            case PassiveType.StageHeal:
+                ApplyStageHeal(player, value);
+                break;
         }
     }
 
@@ -147,6 +151,9 @@ public class PassiveAbility : DungeonAbility
                 break;
             case PassiveType.ItemFind:
                 RemoveItemFind(player, value);
+                break;
+            case PassiveType.StageHeal:
+                RemoveStageHeal(player, value);
                 break;
         }
     }
@@ -258,6 +265,36 @@ public class PassiveAbility : DungeonAbility
             if (Mathf.Approximately(itemFindComp.GetItemFindBonus(), 0f))
             {
                 GameObject.Destroy(itemFindComp);
+            }
+        }
+    }
+    // 스테이지 클리어 시 체력 회복 효과 적용
+    private void ApplyStageHeal(PlayerClass player, float healPercent)
+    {
+        GameObject playerObj = GameInitializer.Instance.gameObject;
+        StageHealComponent healComp = playerObj.GetComponent<StageHealComponent>();
+        if (healComp == null)
+        {
+            healComp = playerObj.AddComponent<StageHealComponent>();
+        }
+
+        healComp.AddHealPercent(healPercent / 100f);
+        Debug.Log($"스테이지 클리어 체력 회복 효과 적용: {healPercent}%, 현재 회복률: {healComp.GetHealPercent() * 100f}%");
+    }
+
+    // 스테이지 클리어 시 체력 회복 효과 제거
+    private void RemoveStageHeal(PlayerClass player, float healPercent)
+    {
+        GameObject playerObj = GameInitializer.Instance.gameObject;
+        StageHealComponent healComp = playerObj.GetComponent<StageHealComponent>();
+        if (healComp != null)
+        {
+            healComp.RemoveHealPercent(healPercent / 100f);
+
+            // 회복 효과가 0이면 컴포넌트 제거
+            if (Mathf.Approximately(healComp.GetHealPercent(), 0f))
+            {
+                GameObject.Destroy(healComp);
             }
         }
     }
