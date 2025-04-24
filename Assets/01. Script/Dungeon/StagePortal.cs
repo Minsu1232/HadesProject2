@@ -6,7 +6,7 @@ using DG.Tweening;
 public class StagePortal : MonoBehaviour
 {
     [Header("UI 요소")]
-    [SerializeField] private GameObject interactionPrompt;
+    [SerializeField] public GameObject interactionPrompt;
     [SerializeField] private Image interactionProgressBar;
 
     [Header("포탈 설정")]
@@ -20,6 +20,7 @@ public class StagePortal : MonoBehaviour
 
     private void Start()
     {
+      
         if (interactionPrompt != null) interactionPrompt.SetActive(false);
         if (interactionProgressBar != null) interactionProgressBar.fillAmount = 0f;
     }
@@ -128,7 +129,7 @@ public class StagePortal : MonoBehaviour
             Debug.LogError("포탈의 타겟 스테이지 ID가 설정되지 않았습니다.");
             return;
         }
-
+        interactionPrompt.SetActive(false);
         // 트랜지션 효과
         if (SceneTransitionManager.Instance != null)
         {

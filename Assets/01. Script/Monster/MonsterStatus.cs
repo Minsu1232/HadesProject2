@@ -178,6 +178,40 @@ public class MonsterStatus : MonoBehaviour, IDamageable, ICreatureStatus
             Debug.Log("쭉었다");
             monsterClass.Die();
             isDie = true;
+            // 몬스터 타입에 따라 업적 진행도 증가
+            if (monsterClass is BossMonster)
+            {
+                AchievementManager.Instance.IncrementAchievement(1004); // 보스 업적 ID
+               
+            }
+            else if (monsterClass is EliteMonster)
+            {
+                AchievementManager.Instance.IncrementAchievement(1003); // 엘리트 업적 ID
+            }
+            else
+            {
+                AchievementManager.Instance.IncrementAchievement(1001); // 일반 몬스터 업적 ID
+                AchievementManager.Instance.IncrementAchievement(1002); // 일반 업적 ID
+            }
+            if (SaveManager.Instance != null)
+            {
+                var playerData = SaveManager.Instance.GetPlayerData();
+
+                if (monsterClass is BossMonster)
+                {
+                    playerData.bossKillCount++; 
+                }
+                else if (monsterClass is EliteMonster)
+                {
+                    playerData.eliteMonsterKillCount++;
+                }
+                else
+                {
+                    playerData.normalMonsterKillCount++;
+                }
+
+                SaveManager.Instance.SavePlayerData();
+            }
             Debug.Log(monsterClass.IsAlive);
             if (ItemDropSystem.Instance != null)
             {

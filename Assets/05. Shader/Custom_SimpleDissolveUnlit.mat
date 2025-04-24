@@ -30,7 +30,7 @@ Material:
     m_Ints: []
     m_Floats:
     - _BurnSize: 0.15
-    - _DissolveAmount: 0.9996247
+    - _DissolveAmount: 0.9988485
     - _EmissionStrength: 7
     - _FlameSpeed: 5.28
     - _NoiseScale: 5.1

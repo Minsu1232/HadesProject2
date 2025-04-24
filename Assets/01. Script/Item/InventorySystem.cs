@@ -118,6 +118,7 @@ public class InventorySystem : MonoBehaviour
     }
 
     // 아이템 객체로 아이템 추가
+    // InventorySystem.cs의 AddItem 메서드 수정
     public bool AddItem(Item itemToAdd, int quantity = 1)
     {
         if (itemToAdd == null || quantity <= 0)
@@ -132,57 +133,77 @@ public class InventorySystem : MonoBehaviour
             OnFirstFragmentFound?.Invoke();
             Debug.Log("첫 파편을 획득했습니다! 파편 UI가 활성화됩니다.");
         }
-    
-        // 스택 가능한 아이템인 경우 기존 스택에 추가 시도
+
+        // 유형별 특수 처리
+        if (itemToAdd.itemType == Item.ItemType.Fragment)
+        {
+            OnItemAdded?.Invoke(itemToAdd.itemID, quantity);
+            FragmentItem fragmentItem = (FragmentItem)itemToAdd;
+            FragmentManager.Instance.EquipFragment(fragmentItem);
+        }
+
+        // 남은 추가할 아이템 수량
+        int remainingQuantity = quantity;
+
+        // 1. 먼저 기존 슬롯에 스택 가능한 경우 추가
         if (itemToAdd.isStackable)
         {
             for (int i = 0; i < itemSlots.Count; i++)
             {
-                if (itemSlots[i].item.itemID == itemToAdd.itemID)
+                // 같은 아이템이고 최대 스택에 도달하지 않은 슬롯 찾기
+                if (itemSlots[i].item.itemID == itemToAdd.itemID && itemSlots[i].quantity < itemToAdd.maxStackSize)
                 {
-                    // 최대 스택 크기 체크
-                    if (itemSlots[i].quantity + quantity <= itemToAdd.maxStackSize)
+                    // 현재 슬롯에 추가할 수 있는 최대 수량 계산
+                    int spaceInSlot = itemToAdd.maxStackSize - itemSlots[i].quantity;
+                    int amountToAdd = Mathf.Min(spaceInSlot, remainingQuantity);
+
+                    // 슬롯에 추가
+                    itemSlots[i].quantity += amountToAdd;
+                    remainingQuantity -= amountToAdd;
+
+                    Debug.Log($"{itemToAdd.itemName} x{amountToAdd}개를 기존 슬롯({i})에 추가했습니다. 남은 수량: {remainingQuantity}");
+
+                    // 모든 아이템이 추가되었으면 종료
+                    if (remainingQuantity <= 0)
                     {
-                        itemSlots[i].quantity += quantity;
                         OnInventoryChanged?.Invoke();
-                        Debug.Log($"{itemToAdd.itemName} x{quantity}개를 인벤토리에 추가했습니다. (스택)");
+                        SaveManager.Instance.UpdateInventory(this);
                         return true;
-                    }
-                    else
-                    {
-                        // 일부만 스택에 추가하고 나머지는 새 슬롯에 추가
-                        int remainingSpace = itemToAdd.maxStackSize - itemSlots[i].quantity;
-                        itemSlots[i].quantity = itemToAdd.maxStackSize;
-
-                        //Debug.Log($"{itemToAdd.itemName} x{remainingSpace}개를 기존 슬롯에 추가하고, 나머지를 새 슬롯에 추가합니다.");
-
-                        // 나머지 수량으로 재귀 호출
-                        return AddItem(itemToAdd, quantity - remainingSpace);
                     }
                 }
             }
         }
 
-        // 새 슬롯 필요
-        if (itemSlots.Count >= maxInventorySize)
+        // 2. 남은 아이템을 새 슬롯에 추가
+        while (remainingQuantity > 0)
         {
-            Debug.LogWarning("인벤토리가 가득 찼습니다!");
-            return false;
+            // 인벤토리가 가득 찼는지 확인
+            if (itemSlots.Count >= maxInventorySize)
+            {
+                Debug.LogWarning($"인벤토리가 가득 찼습니다! {remainingQuantity}개의 아이템을 추가할 수 없습니다.");
+                OnInventoryChanged?.Invoke();
+                SaveManager.Instance.UpdateInventory(this);
+                return false;
+            }
+
+            // 새 슬롯에 추가할 양 계산 (최대 스택 크기 이하)
+            int amountForNewSlot = Mathf.Min(remainingQuantity, itemToAdd.maxStackSize);
+
+            // 새 슬롯 생성
+            itemSlots.Add(new ItemSlot(itemToAdd, amountForNewSlot));
+            remainingQuantity -= amountForNewSlot;
+
+            Debug.Log($"{itemToAdd.itemName} x{amountForNewSlot}개를 새 슬롯에 추가했습니다. 남은 수량: {remainingQuantity}");
         }
-        if (itemToAdd is FragmentItem)
-        {
-            OnItemAdded?.Invoke(itemToAdd.itemID, quantity);
-            FragmentItem fragmentItem = (FragmentItem) itemToAdd;
-            FragmentManager.Instance.EquipFragment(fragmentItem);
-        }
-        // 새 슬롯에 아이템 추가
-        itemSlots.Add(new ItemSlot(itemToAdd, quantity));
+
+        // 인벤토리 업데이트 이벤트 발생
         OnInventoryChanged?.Invoke();
-        //SaveManager.Instance.SavePlayerData();
         SaveManager.Instance.UpdateInventory(this);
-        Debug.Log($"{itemToAdd.itemName} x{quantity}개를 인벤토리에 추가했습니다. (새 슬롯)");
         return true;
     }
+
+ 
+  
 
     // 아이템 제거
     public bool RemoveItem(int itemID, int quantity = 1)

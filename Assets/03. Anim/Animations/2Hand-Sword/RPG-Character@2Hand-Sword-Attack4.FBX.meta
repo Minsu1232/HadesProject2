@@ -775,21 +775,21 @@ ModelImporter:
       bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
       curves: []
       events:
-      - time: 0.32267404
+      - time: 0.26834807
         functionName: ComboStepUpdate
         data: 
         objectReferenceParameter: {instanceID: 0}
         floatParameter: 0
         intParameter: 2
         messageOptions: 0
-      - time: 0.33407208
+      - time: 0.28377026
         functionName: ActivateCollider
         data: 
         objectReferenceParameter: {instanceID: 0}
         floatParameter: 0
         intParameter: 0
         messageOptions: 0
-      - time: 0.47067693
+      - time: 0.72419804
         functionName: DeactivateCollider
         data: 
         objectReferenceParameter: {instanceID: 0}

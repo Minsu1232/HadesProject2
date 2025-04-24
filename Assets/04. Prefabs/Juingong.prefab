@@ -480,6 +480,37 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
+--- !u!1 &894555395642086695
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1075096382772402647}
+  m_Layer: 15
+  m_Name: GameObject
+  m_TagString: PlayerBack
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1075096382772402647
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 894555395642086695}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0.723, y: 1.796, z: 0.127}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1190189760348602278}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1047720303312871447
 GameObject:
   m_ObjectHideFlags: 0
@@ -772,7 +803,7 @@ GameObject:
   - component: {fileID: 624340208381263348}
   - component: {fileID: 1465338956564039291}
   m_Layer: 0
-  m_Name: UIManager
+  m_Name: PlayerUIManager
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2122,6 +2153,7 @@ Transform:
   - {fileID: 5894639299424304595}
   - {fileID: 624340208381263348}
   - {fileID: 2151301654215437805}
+  - {fileID: 1075096382772402647}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!95 &422216220227662352
@@ -2199,6 +2231,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   playerClassData: {fileID: 11400000, guid: 42c9dc5ba03cf984e92175507862f6a9, type: 2}
   weaponMount: {fileID: 7657672828252969023}
+  rightWeaponMount: {fileID: 2409982384079885740}
   playerClass:
     weaponType: 0
     isInvicible: 0
@@ -2210,6 +2243,10 @@ MonoBehaviour:
   autoSaveInterval: 300
   flameWall: {fileID: 8088238897108349300, guid: 2678a8ffef5a1c94fb2c40322c8ecc41, type: 3}
   lightningEffect: {fileID: 6891291519092082853, guid: a7b45ff18dcba5b43a87dfcb2d1bbca7, type: 3}
+  chronoLeftEffect: {fileID: 3395042842049835052, guid: 4c63de3e4c7244342941f50e9009a0e4, type: 3}
+  chronoRightEffect: {fileID: 9004423416485458292, guid: 35998f4ac1ed7634d97d91a9b9ac4ac2, type: 3}
+  chargeBladeWavePrefab: {fileID: 7117780902303389602, guid: 09cb298e4b4c3114d90717d33b54183d, type: 3}
+  chronoSpecialEffectPrefab: {fileID: 5130597283453171639, guid: 6b731c0a242efe54f99df67f85354fb7, type: 3}
 --- !u!54 &8725537167669334154
 Rigidbody:
   m_ObjectHideFlags: 0

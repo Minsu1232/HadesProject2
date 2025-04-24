@@ -1,5 +1,4 @@
 using System.Collections.Generic;
-using Unity.Burst.CompilerServices;
 using UnityEngine;
 
 public class Stalactite : HazardObject
@@ -180,9 +179,9 @@ public class Stalactite : HazardObject
         Gizmos.DrawWireSphere(transform.position, damageRadius);
     }
 
-    protected override void CheckDamage()
-    {
-        throw new System.NotImplementedException();
-    }
+    //protected override void CheckDamage()
+    //{
+        
+    //}
 #endif
 }

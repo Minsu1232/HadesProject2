@@ -19,7 +19,8 @@ public class DungeonManager : MonoBehaviour
     [SerializeField] private float bossIntroDelay = 2f;
 
     [Header("포탈 설정")]
-    [SerializeField] private GameObject portalPrefab;
+    [SerializeField] private StagePortal portalPrefab;
+    [SerializeField] private GameObject prompt;
     [SerializeField] private float portalSpawnDelay = 2f;
     [SerializeField] private Vector3 portalSpawnOffset = new Vector3(0, 0.1f, 0);
     [SerializeField] private GameObject portalAppearEffectPrefab;
@@ -75,6 +76,7 @@ public class DungeonManager : MonoBehaviour
         {
             Destroy(gameObject);
         }
+        portalPrefab.interactionPrompt = prompt;
     }
     private void OnDestroy()
     {       
@@ -102,7 +104,11 @@ public class DungeonManager : MonoBehaviour
                 {
                     ChapterProgressData.ChapterData chapter = chapterData.GetChapterData(chapterId);
                     if (chapter != null)
-                    {
+                    {   
+                        if(chapter.attemptCount == 0)
+                        {
+                            AchievementManager.Instance.UpdateAchievement(3001, 1);
+                        }
                         // 시도 횟수만 증가
                         chapter.attemptCount++;
                         SaveManager.Instance.SaveChapterData();
@@ -784,7 +790,7 @@ public class DungeonManager : MonoBehaviour
         // 딜레이 후 포탈 생성
         DOVirtual.DelayedCall(0.5f, () => {
             // 포탈 프리팹 생성
-            currentPortal = Instantiate(portalPrefab, portalPosition, Quaternion.identity);
+            currentPortal = Instantiate(portalPrefab.gameObject, portalPosition, Quaternion.identity);
 
             // 크기 애니메이션
             currentPortal.transform.localScale = Vector3.zero;

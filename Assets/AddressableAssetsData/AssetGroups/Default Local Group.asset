@@ -28,7 +28,7 @@ MonoBehaviour:
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 6b9e51e3f804ef14291d70fcba9d7dbe
-    m_Address: Assets/Resources/GreatSword.prefab
+    m_Address: GreatSword
     m_ReadOnly: 0
     m_SerializedLabels:
     - GreatSwordSO
@@ -58,8 +58,8 @@ MonoBehaviour:
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
-  - m_GUID: 4904de8edb64a9142b24db921f452130
-    m_Address: Monster_Bat
+  - m_GUID: c0a606ffa3d47c8419395fd296a5b0c0
+    m_Address: Monster_Warm
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
@@ -73,8 +73,8 @@ MonoBehaviour:
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
-  - m_GUID: 33bfb77d8043e9f4c8f6b4ad7187b873
-    m_Address: Monster_Spider
+  - m_GUID: 06572b43c50f7e54c93f47d81dbb416a
+    m_Address: Monster_Ray
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
@@ -88,8 +88,8 @@ MonoBehaviour:
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
-  - m_GUID: f41d36b8b10892644ac8a54e22d1be6e
-    m_Address: Monster_Turtle
+  - m_GUID: 71af270e140db81438b6c28eecde5ad7
+    m_Address: Monster_Rat
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
@@ -108,8 +108,8 @@ MonoBehaviour:
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
-  - m_GUID: 63dcd42ad46024b409548fc3468a1079
-    m_Address: Boss_Crab
+  - m_GUID: 2df3d01ed5b176248803c80b36ba1783
+    m_Address: Boss_Alexander
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
@@ -178,8 +178,8 @@ MonoBehaviour:
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
-  - m_GUID: 06572b43c50f7e54c93f47d81dbb416a
-    m_Address: Monster_Ray
+  - m_GUID: 33bfb77d8043e9f4c8f6b4ad7187b873
+    m_Address: Monster_Spider
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
@@ -193,8 +193,8 @@ MonoBehaviour:
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
-  - m_GUID: c0a606ffa3d47c8419395fd296a5b0c0
-    m_Address: Monster_Warm
+  - m_GUID: 4904de8edb64a9142b24db921f452130
+    m_Address: Monster_Bat
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
@@ -208,8 +208,8 @@ MonoBehaviour:
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
-  - m_GUID: 71af270e140db81438b6c28eecde5ad7
-    m_Address: Monster_Rat
+  - m_GUID: f41d36b8b10892644ac8a54e22d1be6e
+    m_Address: Monster_Turtle
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
@@ -218,8 +218,8 @@ MonoBehaviour:
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
-  - m_GUID: 2df3d01ed5b176248803c80b36ba1783
-    m_Address: Boss_Alexander
+  - m_GUID: 63dcd42ad46024b409548fc3468a1079
+    m_Address: Boss_Crab
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0

@@ -251,6 +251,7 @@ public class PlayerClass : ICreature, IDamageable
         if (!isDead)
         {
             isDead = true;
+            isInvicible = true;
             animator?.SetTrigger("Die");            
             Debug.Log("Á×À½");
             DeathHandler.HandlePlayerDeath();            
@@ -279,7 +280,10 @@ public class PlayerClass : ICreature, IDamageable
             });
         }
     }
-
+    public void SetInvicibleToFalse()
+    {
+        isInvicible = false;
+    }
     #endregion
 
 }

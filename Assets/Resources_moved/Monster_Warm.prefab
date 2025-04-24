@@ -9,7 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6307297005433459767}
-  m_Layer: 7
+  m_Layer: 14
   m_Name: LowerJaw03
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -42,7 +42,7 @@ GameObject:
   - component: {fileID: 1353241204911811142}
   - component: {fileID: 8159253160219591344}
   - component: {fileID: 2907889272264525877}
-  m_Layer: 7
+  m_Layer: 14
   m_Name: Head
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -116,7 +116,7 @@ GameObject:
   - component: {fileID: 596751074964735582}
   - component: {fileID: 2775397472277056165}
   - component: {fileID: 1529011048972775037}
-  m_Layer: 7
+  m_Layer: 14
   m_Name: UpperFinB02
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -185,7 +185,7 @@ GameObject:
   - component: {fileID: 4967997541666643404}
   - component: {fileID: 6972056205707914216}
   - component: {fileID: 4433626871112282599}
-  m_Layer: 7
+  m_Layer: 14
   m_Name: Armor
   m_TagString: Monster
   m_Icon: {fileID: 0}
@@ -258,7 +258,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3771641954657904657}
-  m_Layer: 7
+  m_Layer: 14
   m_Name: SideFin02_L
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -291,7 +291,7 @@ GameObject:
   - component: {fileID: 7793732156158020509}
   - component: {fileID: 9218069354340658084}
   - component: {fileID: 3445399969195686144}
-  m_Layer: 7
+  m_Layer: 14
   m_Name: Eye01
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -358,7 +358,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8547452170461841982}
-  m_Layer: 7
+  m_Layer: 14
   m_Name: SideFin01_L
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -392,7 +392,7 @@ GameObject:
   - component: {fileID: 6709049710748168695}
   - component: {fileID: 972371161179546217}
   - component: {fileID: 6108393163822208798}
-  m_Layer: 7
+  m_Layer: 14
   m_Name: Spine01
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -461,7 +461,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 903121819352608501}
-  m_Layer: 7
+  m_Layer: 14
   m_Name: LowerJaw02
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -495,7 +495,7 @@ GameObject:
   - component: {fileID: 6524406329070961718}
   - component: {fileID: 7121133513774714390}
   - component: {fileID: 1037837334851346944}
-  m_Layer: 7
+  m_Layer: 14
   m_Name: Eye07
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -562,7 +562,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2013144599788027357}
-  m_Layer: 7
+  m_Layer: 14
   m_Name: UpperFinC01
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -596,7 +596,7 @@ GameObject:
   - component: {fileID: 2030936966546805249}
   - component: {fileID: 4497585398424093898}
   - component: {fileID: 5978458397184506681}
-  m_Layer: 7
+  m_Layer: 14
   m_Name: Eye03
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -663,7 +663,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5490604771821482751}
-  m_Layer: 7
+  m_Layer: 14
   m_Name: SideFin02_R
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -696,7 +696,7 @@ GameObject:
   - component: {fileID: 8465640459696704874}
   - component: {fileID: 5380375640674740768}
   - component: {fileID: 3331941622915246384}
-  m_Layer: 7
+  m_Layer: 14
   m_Name: Eye05
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -763,7 +763,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6657507772284095372}
-  m_Layer: 7
+  m_Layer: 14
   m_Name: UpperFinB01
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -797,7 +797,7 @@ GameObject:
   - component: {fileID: 6563534365259666369}
   - component: {fileID: 3980261094485090824}
   - component: {fileID: 7184705387996968407}
-  m_Layer: 7
+  m_Layer: 14
   m_Name: Eye06
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -866,7 +866,7 @@ GameObject:
   - component: {fileID: 2629212872036121228}
   - component: {fileID: 600930973662848070}
   - component: {fileID: 2428375480533291138}
-  m_Layer: 7
+  m_Layer: 14
   m_Name: UpperJaw02
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -947,7 +947,7 @@ GameObject:
   - component: {fileID: 7982483614415587083}
   - component: {fileID: 7891908240203841144}
   - component: {fileID: -681606949105075518}
-  m_Layer: 7
+  m_Layer: 14
   m_Name: Monster_Warm
   m_TagString: Monster
   m_Icon: {fileID: 0}
@@ -1061,6 +1061,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   dissolveMaterial: {fileID: 2100000, guid: 456f480772f75634a96f1fe29baa634a, type: 2}
   dissolveTime: 3
+  destroyAfterDissolve: 0
 --- !u!1 &4939590657281659143
 GameObject:
   m_ObjectHideFlags: 0
@@ -1070,7 +1071,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1511408535644156357}
-  m_Layer: 7
+  m_Layer: 14
   m_Name: SkillSpawnPoint
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1103,7 +1104,7 @@ GameObject:
   - component: {fileID: 3345294815670901150}
   - component: {fileID: 1268119007165137033}
   - component: {fileID: 7108036633250823563}
-  m_Layer: 7
+  m_Layer: 14
   m_Name: UpperJaw01
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1173,7 +1174,7 @@ GameObject:
   - component: {fileID: 5169992570240370363}
   - component: {fileID: 107349050690809156}
   - component: {fileID: 3090682079028389568}
-  m_Layer: 7
+  m_Layer: 14
   m_Name: LowerJaw01
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1241,7 +1242,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8829275679420631783}
-  m_Layer: 7
+  m_Layer: 14
   m_Name: UpperFinD01
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1275,7 +1276,7 @@ GameObject:
   - component: {fileID: 3219439190747259387}
   - component: {fileID: 3020164735918677605}
   - component: {fileID: 2739286826294931992}
-  m_Layer: 7
+  m_Layer: 14
   m_Name: Spine04
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1346,7 +1347,7 @@ GameObject:
   - component: {fileID: 8456824056247368397}
   - component: {fileID: 1513556030332672689}
   - component: {fileID: 3425260355324867403}
-  m_Layer: 7
+  m_Layer: 14
   m_Name: Eye04
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1415,7 +1416,7 @@ GameObject:
   - component: {fileID: 6364403398180813488}
   - component: {fileID: 5718486192117190887}
   - component: {fileID: 1854320520896932237}
-  m_Layer: 7
+  m_Layer: 14
   m_Name: Spine03
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1484,7 +1485,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2391046295024576204}
-  m_Layer: 7
+  m_Layer: 14
   m_Name: UpperFinE02
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1517,7 +1518,7 @@ GameObject:
   - component: {fileID: 2252656679361540525}
   - component: {fileID: 7780355645946360055}
   - component: {fileID: 7046161951626966907}
-  m_Layer: 7
+  m_Layer: 14
   m_Name: UpperFinD02
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1586,7 +1587,7 @@ GameObject:
   - component: {fileID: 3591263947820641360}
   - component: {fileID: 6893604410761363056}
   - component: {fileID: 680552259661497726}
-  m_Layer: 7
+  m_Layer: 14
   m_Name: UpperJaw03
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1655,7 +1656,7 @@ GameObject:
   - component: {fileID: 4572643078645213697}
   - component: {fileID: 8934713141964157228}
   - component: {fileID: 2413073294321977516}
-  m_Layer: 7
+  m_Layer: 14
   m_Name: UpperFinC02
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1724,7 +1725,7 @@ GameObject:
   - component: {fileID: 901483300917987400}
   - component: {fileID: 4176603831993120911}
   - component: {fileID: 7229959204155561693}
-  m_Layer: 7
+  m_Layer: 14
   m_Name: Hp
   m_TagString: Monster
   m_Icon: {fileID: 0}
@@ -1797,7 +1798,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3412781235041954316}
-  m_Layer: 7
+  m_Layer: 14
   m_Name: UpperFinE01
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1832,7 +1833,7 @@ GameObject:
   - component: {fileID: 4280695975623489423}
   - component: {fileID: 4956370192373013900}
   - component: {fileID: 7537877724913548873}
-  m_Layer: 7
+  m_Layer: 14
   m_Name: Canvas (3)
   m_TagString: Monster
   m_Icon: {fileID: 0}
@@ -1931,7 +1932,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2946115722281178954}
-  m_Layer: 7
+  m_Layer: 14
   m_Name: UpperFinA01
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1963,7 +1964,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1178454122008682365}
-  m_Layer: 7
+  m_Layer: 14
   m_Name: SideFin01_R
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1996,7 +1997,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4243916544257815174}
   - component: {fileID: 6914048278994925686}
-  m_Layer: 7
+  m_Layer: 14
   m_Name: Body
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2116,7 +2117,7 @@ GameObject:
   - component: {fileID: 6722317847433858599}
   - component: {fileID: 6353204630584149232}
   - component: {fileID: 7625299701955435462}
-  m_Layer: 7
+  m_Layer: 14
   m_Name: Eye02
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2183,7 +2184,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 515687600597395851}
-  m_Layer: 7
+  m_Layer: 14
   m_Name: UpperFinA02
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2216,7 +2217,7 @@ GameObject:
   - component: {fileID: 1108755892570709839}
   - component: {fileID: 5931494912876185985}
   - component: {fileID: 8272458624140718715}
-  m_Layer: 7
+  m_Layer: 14
   m_Name: HpBarBg
   m_TagString: Monster
   m_Icon: {fileID: 0}
@@ -2293,7 +2294,7 @@ GameObject:
   - component: {fileID: 6128621191392359896}
   - component: {fileID: 755800023152149094}
   - component: {fileID: 7017325634294334525}
-  m_Layer: 7
+  m_Layer: 14
   m_Name: Spine02
   m_TagString: Untagged
   m_Icon: {fileID: 0}

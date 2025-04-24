@@ -79,8 +79,56 @@ public class PlayerSaveData
     public Dictionary<string, int> locationVisits = new Dictionary<string, int>();
     public List<string> unlockedWeapons = new List<string>();
     public List<string> acquiredFragments = new List<string>();
-
+    public Dictionary<int, AchievementProgress> achievementProgress = new Dictionary<int, AchievementProgress>();
+    
+    public List<AchievementProgressData> achievementProgressList = new List<AchievementProgressData>();
     public int deathCount = 0; // 죽음 횟수
+    public int bossKillCount;
+    public int eliteMonsterKillCount;
+    public int normalMonsterKillCount;
+
+    // Dictionary -> List 변환 메서드
+    public void ConvertDictionaryToList()
+    {
+        achievementProgressList.Clear();
+
+        if (achievementProgress != null)
+        {
+            foreach (var pair in achievementProgress)
+            {
+                achievementProgressList.Add(new AchievementProgressData(pair.Key, pair.Value));
+            }
+        }
+    }
+
+    // List -> Dictionary 변환 메서드
+    public void ConvertListToDictionary()
+    {
+        if (achievementProgress == null)
+            achievementProgress = new Dictionary<int, AchievementProgress>();
+        else
+            achievementProgress.Clear();
+
+        if (achievementProgressList != null)
+        {
+            foreach (var data in achievementProgressList)
+            {
+                achievementProgress[data.achievementId] = data.progress;
+            }
+        }
+    }
+}
+[Serializable]
+public class AchievementProgressData
+{
+    public int achievementId;
+    public AchievementProgress progress;
+
+    public AchievementProgressData(int id, AchievementProgress progressData)
+    {
+        achievementId = id;
+        progress = progressData;
+    }
 }
 // 챕터 진행 데이터
 [System.Serializable]

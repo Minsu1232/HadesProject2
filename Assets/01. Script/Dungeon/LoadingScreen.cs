@@ -17,8 +17,18 @@ public class LoadingScreen : MonoBehaviour
     [SerializeField] private TextMeshProUGUI tipText;
 
     [Header("설정")]
-    [SerializeField] private float fadeTime = 0.5f;
-    [SerializeField] private string[] loadingTips;
+    [SerializeField] private float fadeTime = 0.5f;    
+    private string[] loadingTips = new string[]
+    {
+        "용족은 고대부터 세계의 균형을 유지하는 역할을 해왔습니다.",
+        "심연의 파편이 인간 세계에 처음 등장한 것은 200년 전이라고 합니다.",
+        "데스 영역의 지배자는 한때 위대한 영웅이었다고 전해집니다.",
+        "ESC 키를 누르면 게임 설정을 언제든지 열 수 있습니다.",
+        "우측 상단을 눌러 업적을 확인하세요.",
+        "죽지 않는 것이 승리의 가장 확실한 방법입니다.",
+        "가끔은 도망치는 것도 전략입니다.",
+        "마을의 우물 아래에는 비밀이 숨겨져 있다고 합니다."
+    };
 
     private bool isLoading = false;
 

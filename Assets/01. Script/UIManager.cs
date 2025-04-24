@@ -189,7 +189,19 @@ public class UIManager : MonoBehaviour
         // ESC 키 입력 감지
         if (Input.GetKeyDown(KeyCode.Escape))
         {
-            CloseTopUI();
+            if (activeUIStack.Count > 0)
+            {
+                // 열린 UI가 있으면 최상위 UI 닫기
+                CloseTopUI();
+            }
+            else
+            {
+                // 열린 UI가 없으면 설정 패널 토글
+                if (SettingsManager.Instance != null)
+                {
+                    SettingsManager.Instance.ToggleSettingsPanel();
+                }
+            }
         }
     }
 

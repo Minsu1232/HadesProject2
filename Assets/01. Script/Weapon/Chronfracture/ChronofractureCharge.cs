@@ -122,7 +122,8 @@ public class ChronofractureCharge : WeaponChargeBase
 
         // 기본 데미지 계산
         int baseDamage = weaponManager.BaseDamage;
-        int totalDamage = Mathf.RoundToInt(baseDamage * (1 + chargeRatio * weaponManager.weaponData.chargeMultiplier));
+        int playerDamage = GameInitializer.Instance.GetPlayerClass().GetStats().AttackPower;
+        int totalDamage = Mathf.RoundToInt((baseDamage * (1 + chargeRatio * weaponManager.weaponData.chargeMultiplier)) + playerDamage);
         Damage = totalDamage;
 
         // 대시 방향 결정 (입력 방향 또는 플레이어가 바라보는 방향)

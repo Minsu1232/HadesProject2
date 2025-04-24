@@ -46,7 +46,7 @@ public class ChargeAttackStrategy : BasePhysicalAttackStrategy
         prepareTime = data.prepareTime;
         indicatorPrefab = data.chargeIndicatorPrefab;
         this.animator = animator;
-
+        Debug.Log("@#$@#$@#$####" + indicatorPrefab);
         // ¿Ã∆Â∆Æ «¡∏Æ∆’ ¬¸¡∂
         prepareDustEffectPrefab = data.ChargePrepareDustEffect;
         startEffectPrefab = data.ChargeStartEffect;

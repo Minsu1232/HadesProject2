@@ -119,7 +119,9 @@ public class PassiveAbilityLoader : MonoBehaviour
         Dictionary<string, string> data = GetPassiveAbilityData(id);
         if (data != null)
         {
+            Debug.Log("여기서 아이콘");
             return PassiveAbility.FromCSVData(data);
+            
         }
         return null;
     }
@@ -130,6 +132,7 @@ public class PassiveAbilityLoader : MonoBehaviour
         List<PassiveAbility> abilities = new List<PassiveAbility>();
         foreach (var data in passiveAbilityData.Values)
         {
+            Debug.Log("여기서 아이콘2");
             PassiveAbility ability = PassiveAbility.FromCSVData(data);
             abilities.Add(ability);
         }

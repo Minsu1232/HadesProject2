@@ -26,14 +26,36 @@ public class PlayerUIManager : MonoBehaviour
     [SerializeField] private Image chargeGageBar;
     [SerializeField] private TextMeshProUGUI chargeTimeText;
 
+    [Header("Option")]
+    [SerializeField] private Button openOptionPanel;
+    [SerializeField] private Button settingButton;
+    [SerializeField] private Button archievementPanelButton;
+    [SerializeField] private GameObject optionPanel;   
+    [SerializeField] private GameObject archievementPanel;
+    
     private void Start()
     {
         InitializePlayerReferences();
         SubscribeToEvents();
         UpdateAllUI();
         SetChargeUIActive(false);
+        settingButton.onClick.AddListener(SettingsManager.Instance.ShowSettingsPanel);
+        openOptionPanel.onClick.AddListener(OpenOptionPanel);
+        archievementPanelButton.onClick.AddListener(OpenArchievementPanel);
+        
     }
-
+    void OpenOptionPanel()
+    {
+        if(!optionPanel.activeSelf)
+        optionPanel.SetActive(true);
+    }
+    void OpenArchievementPanel()
+    {
+        if (!archievementPanel.activeSelf)
+        {
+            archievementPanel.SetActive(true);
+        }
+    }
     private void InitializePlayerReferences()
     {
         player = GameInitializer.Instance.GetPlayerClass();

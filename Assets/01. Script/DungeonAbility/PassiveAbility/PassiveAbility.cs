@@ -16,9 +16,7 @@ public class PassiveAbility : DungeonAbility
         StageHeal         // 스테이지 클리어 시 체력 회복 (새로 추가)
     }
 
-    public PassiveType passiveType;       
-
-    private float originalValue;         // 원래 효과값 (레벨업 시 사용)
+    public PassiveType passiveType;
 
     // 생성자로 초기화
     public void Initialize(PassiveType type, float value, string abilityName, string abilityDescription, Rarity abilityRarity)
@@ -84,7 +82,7 @@ public class PassiveAbility : DungeonAbility
     public override void OnAcquire(PlayerClass player)
     {
         // 패시브 효과 적용
-        ApplyPassiveEffect(player, effectValue);
+        ApplyEffect(player, effectValue);
 
         // 디버그 로그
         Debug.Log($"획득한 패시브 능력: {name} (Lv.{level}) - {effectValue}");
@@ -92,6 +90,9 @@ public class PassiveAbility : DungeonAbility
 
     public override void OnLevelUp(PlayerClass player)
     {
+        // 레벨업 플래그 설정
+        isLevelingUp = true;
+
         // 기존 효과 제거
         OnReset(player);
 
@@ -102,6 +103,9 @@ public class PassiveAbility : DungeonAbility
         // 새 효과 적용
         OnAcquire(player);
 
+        // 레벨업 플래그 해제
+        isLevelingUp = false;
+
         // 디버그 로그
         Debug.Log($"레벨업한 패시브 능력: {name} (Lv.{level}) - {effectValue}");
     }
@@ -109,11 +113,11 @@ public class PassiveAbility : DungeonAbility
     public override void OnReset(PlayerClass player)
     {
         // 패시브 효과 제거
-        RemovePassiveEffect(player, effectValue);
+        RemoveEffect(player, effectValue);
     }
 
     // 패시브 효과 적용
-    private void ApplyPassiveEffect(PlayerClass player, float value)
+    protected override void ApplyEffect(PlayerClass player, float value)
     {
         switch (passiveType)
         {
@@ -136,7 +140,7 @@ public class PassiveAbility : DungeonAbility
     }
 
     // 패시브 효과 제거
-    private void RemovePassiveEffect(PlayerClass player, float value)
+    protected override void RemoveEffect(PlayerClass player, float value)
     {
         switch (passiveType)
         {
@@ -170,7 +174,7 @@ public class PassiveAbility : DungeonAbility
 
     // 피해 감소 효과 제거
     private void RemoveDamageReduction(PlayerClass player, float reductionPercent)
-    {       
+    {
         player.ResetPower(false, false, false, false, false, false, false, true); // 리셋
 
         Debug.Log($"피해 감소 효과 제거: {reductionPercent}%, 현재 피해 계수: {player.PlayerStats.DamageReceiveRate}");
@@ -190,7 +194,7 @@ public class PassiveAbility : DungeonAbility
         Debug.Log($"흡혈 효과 적용: {lifeStealPercent}%, 현재 흡혈율: {lifeStealComp.GetLifeStealAmount() * 100f}%");
     }
 
-    // 흡혈 효과 제거
+    // 흡혈 효과 제거 - 레벨업 중에는 컴포넌트 제거하지 않도록 수정
     private void RemoveLifeSteal(PlayerClass player, float lifeStealPercent)
     {
         GameObject playerObj = GameInitializer.Instance.gameObject;
@@ -199,8 +203,8 @@ public class PassiveAbility : DungeonAbility
         {
             lifeStealComp.RemoveLifeSteal(lifeStealPercent / 100f);
 
-            // 흡혈 효과가 0이면 컴포넌트 제거
-            if (Mathf.Approximately(lifeStealComp.GetLifeStealAmount(), 0f))
+            // 흡혈 효과가 0이면 컴포넌트 제거 (레벨업 중이 아닐 때만)
+            if (Mathf.Approximately(lifeStealComp.GetLifeStealAmount(), 0f) && !isLevelingUp)
             {
                 GameObject.Destroy(lifeStealComp);
             }
@@ -221,7 +225,7 @@ public class PassiveAbility : DungeonAbility
         Debug.Log($"반격 효과 적용: {counterDamagePercent}%, 현재 반격 데미지: {counterComp.GetCounterDamageAmount() * 100f}%");
     }
 
-    // 반격 효과 제거
+    // 반격 효과 제거 - 레벨업 중에는 컴포넌트 제거하지 않도록 수정
     private void RemoveCounterattack(PlayerClass player, float counterDamagePercent)
     {
         GameObject playerObj = GameInitializer.Instance.gameObject;
@@ -230,8 +234,8 @@ public class PassiveAbility : DungeonAbility
         {
             counterComp.RemoveCounterDamage(counterDamagePercent / 100f);
 
-            // 반격 효과가 0이면 컴포넌트 제거
-            if (Mathf.Approximately(counterComp.GetCounterDamageAmount(), 0f))
+            // 반격 효과가 0이면 컴포넌트 제거 (레벨업 중이 아닐 때만)
+            if (Mathf.Approximately(counterComp.GetCounterDamageAmount(), 0f) && !isLevelingUp)
             {
                 GameObject.Destroy(counterComp);
             }
@@ -252,7 +256,7 @@ public class PassiveAbility : DungeonAbility
         Debug.Log($"아이템 찾기 효과 적용: +{findChanceBonus}%, 현재 보너스: +{itemFindComp.GetItemFindBonus() * 100f}%");
     }
 
-    // 아이템 찾기 확률 증가 효과 제거
+    // 아이템 찾기 확률 증가 효과 제거 - 레벨업 중에는 컴포넌트 제거하지 않도록 수정
     private void RemoveItemFind(PlayerClass player, float findChanceBonus)
     {
         GameObject playerObj = GameInitializer.Instance.gameObject;
@@ -261,13 +265,14 @@ public class PassiveAbility : DungeonAbility
         {
             itemFindComp.RemoveItemFindBonus(findChanceBonus / 100f);
 
-            // 아이템 찾기 효과가 0이면 컴포넌트 제거
-            if (Mathf.Approximately(itemFindComp.GetItemFindBonus(), 0f))
+            // 아이템 찾기 효과가 0이면 컴포넌트 제거 (레벨업 중이 아닐 때만)
+            if (Mathf.Approximately(itemFindComp.GetItemFindBonus(), 0f) && !isLevelingUp)
             {
                 GameObject.Destroy(itemFindComp);
             }
         }
     }
+
     // 스테이지 클리어 시 체력 회복 효과 적용
     private void ApplyStageHeal(PlayerClass player, float healPercent)
     {
@@ -282,7 +287,7 @@ public class PassiveAbility : DungeonAbility
         Debug.Log($"스테이지 클리어 체력 회복 효과 적용: {healPercent}%, 현재 회복률: {healComp.GetHealPercent() * 100f}%");
     }
 
-    // 스테이지 클리어 시 체력 회복 효과 제거
+    // 스테이지 클리어 시 체력 회복 효과 제거 - 레벨업 중에는 컴포넌트 제거하지 않도록 수정
     private void RemoveStageHeal(PlayerClass player, float healPercent)
     {
         GameObject playerObj = GameInitializer.Instance.gameObject;
@@ -291,8 +296,8 @@ public class PassiveAbility : DungeonAbility
         {
             healComp.RemoveHealPercent(healPercent / 100f);
 
-            // 회복 효과가 0이면 컴포넌트 제거
-            if (Mathf.Approximately(healComp.GetHealPercent(), 0f))
+            // 회복 효과가 0이면 컴포넌트 제거 (레벨업 중이 아닐 때만)
+            if (Mathf.Approximately(healComp.GetHealPercent(), 0f) && !isLevelingUp)
             {
                 GameObject.Destroy(healComp);
             }

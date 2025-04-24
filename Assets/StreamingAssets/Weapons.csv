@@ -1,3 +1,3 @@
 ﻿weaponName,baseDamage,baseGagePerHit,maxChargeTime,chargeMultiplier,defaultPosition,defaultRotation,damageUpgradeCount,gageUpgradeCount,additionalDamage,additionalGagePerHit
-GreatSword,25,12,0.5,2,0.096/-0.133/0.2663,8.5/-3.539/159.05,0,0,0,0
+GreatSword,25,12,1,2,0.096/-0.133/0.2663,8.5/-3.539/159.05,0,0,0,0
 Chronofracture,15,10,2,2.5,0.1/0.1/0.1,0.1/0.1/0.1,0,0,0,0

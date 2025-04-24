@@ -201,7 +201,7 @@ public abstract class HazardObject : MonoBehaviour
     /// <summary>
     /// 데미지 판정을 체크합니다.
     /// </summary>
-    protected abstract void CheckDamage();
+    //protected abstract void CheckDamage();
 
     /// <summary>
     /// 충돌시 발생하는 효과를 처리합니다.

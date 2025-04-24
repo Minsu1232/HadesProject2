@@ -25,7 +25,7 @@ public class VillageManager : MonoBehaviour
     private void Start()
     {
         playerClass = GameInitializer.Instance.GetPlayerClass();
-
+        playerClass.SetInvicibleToFalse();
         // 다이얼로그 매니저 참조 확인
         if (dialogManager == null)
         {

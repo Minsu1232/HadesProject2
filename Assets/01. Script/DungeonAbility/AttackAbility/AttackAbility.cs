@@ -16,8 +16,8 @@ public class AttackAbility : DungeonAbility
         ArmorCrush         // 방어력 파괴 (적 방어력 감소)
     }
 
-    public AttackAbilityType attackType;         
-    private float originalValue;         // 원래 효과값 (레벨업 시 사용)
+    public AttackAbilityType attackType;
+  
 
     // 생성자로 초기화
     public void Initialize(AttackAbilityType type, float value, string abilityName, string abilityDescription, Rarity abilityRarity)
@@ -54,7 +54,7 @@ public class AttackAbility : DungeonAbility
         ability.Initialize(type, baseValue, name, description, rarity);
         ability.id = id; // ID 값 덮어쓰기 (유니크한 ID 사용)
 
-  if (csvData.ContainsKey("IconPath") && !string.IsNullOrEmpty(csvData["IconPath"]))
+        if (csvData.ContainsKey("IconPath") && !string.IsNullOrEmpty(csvData["IconPath"]))
         {
             string iconAddress = csvData["IconPath"];
             Debug.Log(iconAddress);
@@ -83,14 +83,18 @@ public class AttackAbility : DungeonAbility
     public override void OnAcquire(PlayerClass player)
     {
         // 공격 능력 효과 적용
-        ApplyAttackEffect(player, effectValue);
+        ApplyEffect(player, effectValue);
 
         // 디버그 로그
         Debug.Log($"획득한 공격 능력: {name} (Lv.{level}) - {effectValue}");
     }
 
+    // OnLevelUp 메서드 수정
     public override void OnLevelUp(PlayerClass player)
     {
+        // 레벨업 플래그 설정
+        isLevelingUp = true;
+
         // 기존 효과 제거
         OnReset(player);
 
@@ -101,6 +105,9 @@ public class AttackAbility : DungeonAbility
         // 새 효과 적용
         OnAcquire(player);
 
+        // 레벨업 플래그 해제
+        isLevelingUp = false;
+
         // 디버그 로그
         Debug.Log($"레벨업한 공격 능력: {name} (Lv.{level}) - {effectValue}");
     }
@@ -108,11 +115,11 @@ public class AttackAbility : DungeonAbility
     public override void OnReset(PlayerClass player)
     {
         // 공격 능력 효과 제거
-        RemoveAttackEffect(player, effectValue);
+        RemoveEffect(player, effectValue);
     }
 
     // 공격 능력 효과 적용
-    private void ApplyAttackEffect(PlayerClass player, float value)
+    protected override void ApplyEffect(PlayerClass player, float value)
     {
         switch (attackType)
         {
@@ -135,7 +142,7 @@ public class AttackAbility : DungeonAbility
     }
 
     // 공격 능력 효과 제거
-    private void RemoveAttackEffect(PlayerClass player, float value)
+    protected override void RemoveEffect(PlayerClass player, float value)
     {
         switch (attackType)
         {
@@ -181,8 +188,8 @@ public class AttackAbility : DungeonAbility
         {
             comboComp.RemoveEnhancement(enhancementPercent / 100f);
 
-            // 효과가 0이면 컴포넌트 제거
-            if (Mathf.Approximately(comboComp.GetEnhancementAmount(), 0f))
+            // 효과가 0이면 컴포넌트 제거 (레벨업 중이 아닐 때만)
+            if (Mathf.Approximately(comboComp.GetEnhancementAmount(), 0f) && !isLevelingUp)
             {
                 GameObject.Destroy(comboComp);
             }
@@ -212,8 +219,8 @@ public class AttackAbility : DungeonAbility
         {
             weakPreyComp.RemoveDamageBonus(damageBonus / 100f);
 
-            // 효과가 0이면 컴포넌트 제거
-            if (Mathf.Approximately(weakPreyComp.GetDamageBonus(), 0f))
+            // 효과가 0이면 컴포넌트 제거 (레벨업 중이 아닐 때만)
+            if (Mathf.Approximately(weakPreyComp.GetDamageBonus(), 0f) && !isLevelingUp)
             {
                 GameObject.Destroy(weakPreyComp);
             }
@@ -243,8 +250,8 @@ public class AttackAbility : DungeonAbility
         {
             chainStrikeComp.RemoveChainChance(chancePercent / 100f);
 
-            // 효과가 0이면 컴포넌트 제거
-            if (Mathf.Approximately(chainStrikeComp.GetChainChance(), 0f))
+            // 효과가 0이면 컴포넌트 제거 (레벨업 중이 아닐 때만)
+            if (Mathf.Approximately(chainStrikeComp.GetChainChance(), 0f) && !isLevelingUp)
             {
                 GameObject.Destroy(chainStrikeComp);
             }
@@ -274,8 +281,8 @@ public class AttackAbility : DungeonAbility
         {
             gaugeBoostComp.RemoveGaugeBoost(boostPercent / 100f);
 
-            // 효과가 0이면 컴포넌트 제거
-            if (Mathf.Approximately(gaugeBoostComp.GetGaugeBoost(), 0f))
+            // 효과가 0이면 컴포넌트 제거 (레벨업 중이 아닐 때만)
+            if (Mathf.Approximately(gaugeBoostComp.GetGaugeBoost(), 0f) && !isLevelingUp)
             {
                 GameObject.Destroy(gaugeBoostComp);
             }
@@ -305,8 +312,8 @@ public class AttackAbility : DungeonAbility
         {
             armorCrushComp.RemoveCrushAmount(crushPercent / 100f);
 
-            // 효과가 0이면 컴포넌트 제거
-            if (Mathf.Approximately(armorCrushComp.GetCrushAmount(), 0f))
+            // 효과가 0이면 컴포넌트 제거 (레벨업 중이 아닐 때만)
+            if (Mathf.Approximately(armorCrushComp.GetCrushAmount(), 0f) && !isLevelingUp)
             {
                 GameObject.Destroy(armorCrushComp);
             }

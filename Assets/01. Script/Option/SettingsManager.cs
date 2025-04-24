@@ -14,6 +14,8 @@ public class SettingsManager : MonoBehaviour
     [SerializeField] private Toggle fullscreenToggle;
     [SerializeField] private TMP_InputField languageInputField;
     [SerializeField] private Button applyButton;
+    [SerializeField] private Button saveGameButton; // 게임 저장 버튼
+    [SerializeField] private Button quitGameButton; // 게임 종료 버튼
 
     // 현재 설정
     private GameSettingsData currentSettings;
@@ -30,13 +32,10 @@ public class SettingsManager : MonoBehaviour
         Instance = this;
         DontDestroyOnLoad(gameObject);
 
-      
-    }
-    private void Start()
-    {
         // 초기화
         Initialize();
     }
+
     private void Initialize()
     {
         // 설정 데이터 로드
@@ -96,6 +95,18 @@ public class SettingsManager : MonoBehaviour
         if (applyButton != null)
         {
             applyButton.onClick.AddListener(OnApplyButtonClicked);
+        }
+
+        // 게임 저장 버튼 설정
+        if (saveGameButton != null)
+        {
+            saveGameButton.onClick.AddListener(SaveGame);
+        }
+
+        // 게임 종료 버튼 설정
+        if (quitGameButton != null)
+        {
+            quitGameButton.onClick.AddListener(QuitGame);
         }
     }
 
@@ -183,6 +194,51 @@ public class SettingsManager : MonoBehaviour
         // HideSettingsPanel();
     }
 
+    // 게임 저장 버튼 클릭 이벤트
+    private void SaveGame()
+    {
+        // 설정 저장
+        SaveSettings();
+
+        // 게임 전체 데이터 저장
+        if (SaveManager.Instance != null)
+        {
+            SaveManager.Instance.SaveAllData();
+            Debug.Log("게임 데이터가 저장되었습니다.");
+
+            // 저장 완료 메시지를 표시할 수 있습니다 (선택적)
+            ShowSaveCompleteMessage();
+        }
+        else
+        {
+            Debug.LogError("SaveManager를 찾을 수 없어 게임을 저장할 수 없습니다.");
+        }
+    }
+
+    // 게임 종료 버튼 클릭 이벤트
+    private void QuitGame()
+    {
+        // 종료 전 데이터 저장 (선택적)
+        SaveGame();
+
+        Debug.Log("게임을 종료합니다.");
+
+        // 게임 종료
+#if UNITY_EDITOR
+        UnityEditor.EditorApplication.isPlaying = false;
+#else
+        Application.Quit();
+#endif
+    }
+
+    // 저장 완료 메시지 표시 (필요에 따라 구현)
+    private void ShowSaveCompleteMessage()
+    {
+        if(UIManager.Instance != null)
+        UIManager.Instance.ShowNotification("저장완료");
+       
+    }
+
     #endregion
 
     #region 공개 메서드
@@ -221,4 +277,10 @@ public class SettingsManager : MonoBehaviour
     }
 
     #endregion
+
+    private void OnApplicationQuit()
+    {
+        // 게임 종료 시 설정 자동 저장
+        SaveSettings();
+    }
 }

@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7805537455592321260}
   - component: {fileID: 7581036575835657285}
-  m_Layer: 7
+  m_Layer: 14
   m_Name: stingRay_root
   m_TagString: Monster
   m_Icon: {fileID: 0}
@@ -141,7 +141,7 @@ GameObject:
   - component: {fileID: 3440916273020472436}
   - component: {fileID: 5248746200768013915}
   - component: {fileID: 7432752189994015872}
-  m_Layer: 7
+  m_Layer: 14
   m_Name: stingRay_tail02
   m_TagString: Monster
   m_Icon: {fileID: 0}
@@ -211,7 +211,7 @@ GameObject:
   - component: {fileID: 7155357083686912931}
   - component: {fileID: 4213351274991224619}
   - component: {fileID: 5762513223150369721}
-  m_Layer: 7
+  m_Layer: 14
   m_Name: stingRay_wing01Right
   m_TagString: Monster
   m_Icon: {fileID: 0}
@@ -279,7 +279,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6161771920416893557}
-  m_Layer: 7
+  m_Layer: 14
   m_Name: stingRay_horn03Left
   m_TagString: Monster
   m_Icon: {fileID: 0}
@@ -311,7 +311,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1415890342121826269}
-  m_Layer: 7
+  m_Layer: 14
   m_Name: stingRay_rib02Right
   m_TagString: Monster
   m_Icon: {fileID: 0}
@@ -342,7 +342,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 852317257163437514}
-  m_Layer: 7
+  m_Layer: 14
   m_Name: stingRay_horn04Right
   m_TagString: Monster
   m_Icon: {fileID: 0}
@@ -373,7 +373,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 9047789951184791617}
-  m_Layer: 7
+  m_Layer: 14
   m_Name: stingRay_underWing03Left
   m_TagString: Monster
   m_Icon: {fileID: 0}
@@ -404,7 +404,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7324859324107718103}
-  m_Layer: 7
+  m_Layer: 14
   m_Name: stingRay_tail01
   m_TagString: Monster
   m_Icon: {fileID: 0}
@@ -438,7 +438,7 @@ GameObject:
   - component: {fileID: 4738174072364630323}
   - component: {fileID: 78241341584178556}
   - component: {fileID: 2402099654642220776}
-  m_Layer: 7
+  m_Layer: 14
   m_Name: stingRay_lowerMouth02
   m_TagString: Monster
   m_Icon: {fileID: 0}
@@ -505,7 +505,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 166119548813786246}
-  m_Layer: 7
+  m_Layer: 14
   m_Name: stingRay_upperMouth01
   m_TagString: Monster
   m_Icon: {fileID: 0}
@@ -539,7 +539,7 @@ GameObject:
   - component: {fileID: 4435686320585546838}
   - component: {fileID: 7684912984264438501}
   - component: {fileID: 4958803328224029882}
-  m_Layer: 7
+  m_Layer: 14
   m_Name: stingRay_spine02
   m_TagString: Monster
   m_Icon: {fileID: 0}
@@ -611,7 +611,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8036525823518531802}
-  m_Layer: 7
+  m_Layer: 14
   m_Name: stingRay_rib02Left
   m_TagString: Monster
   m_Icon: {fileID: 0}
@@ -647,7 +647,7 @@ GameObject:
   - component: {fileID: 460406694547173998}
   - component: {fileID: 7166035689826796185}
   - component: {fileID: 7323842572025932874}
-  m_Layer: 7
+  m_Layer: 14
   m_Name: Monster_Ray
   m_TagString: Monster
   m_Icon: {fileID: 0}
@@ -773,7 +773,7 @@ GameObject:
   - component: {fileID: 7750582404387988081}
   - component: {fileID: 3584816242261984491}
   - component: {fileID: 452143342189370538}
-  m_Layer: 7
+  m_Layer: 14
   m_Name: HpBarBg
   m_TagString: Monster
   m_Icon: {fileID: 0}
@@ -848,7 +848,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3905358706342780218}
-  m_Layer: 7
+  m_Layer: 14
   m_Name: stingRay_horn03Right
   m_TagString: Monster
   m_Icon: {fileID: 0}
@@ -882,7 +882,7 @@ GameObject:
   - component: {fileID: 1463145053152217219}
   - component: {fileID: 336284137748246377}
   - component: {fileID: 6569398654795345075}
-  m_Layer: 7
+  m_Layer: 14
   m_Name: Hp
   m_TagString: Monster
   m_Icon: {fileID: 0}
@@ -955,7 +955,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4893206442509500107}
-  m_Layer: 7
+  m_Layer: 14
   m_Name: stingRay_tail04
   m_TagString: Monster
   m_Icon: {fileID: 0}
@@ -989,7 +989,7 @@ GameObject:
   - component: {fileID: 6344365273010541452}
   - component: {fileID: 4370160023540919754}
   - component: {fileID: 2557535440443524478}
-  m_Layer: 7
+  m_Layer: 14
   m_Name: stingRay_underWing01Right
   m_TagString: Monster
   m_Icon: {fileID: 0}
@@ -1059,7 +1059,7 @@ GameObject:
   - component: {fileID: 2817549326038255302}
   - component: {fileID: 5838981575032739194}
   - component: {fileID: 972948371704507619}
-  m_Layer: 7
+  m_Layer: 14
   m_Name: stingRay_wing02Right
   m_TagString: Monster
   m_Icon: {fileID: 0}
@@ -1128,7 +1128,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1563364916565670492}
-  m_Layer: 7
+  m_Layer: 14
   m_Name: stingRay_rib01Right
   m_TagString: Monster
   m_Icon: {fileID: 0}
@@ -1159,7 +1159,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 84176209823756288}
-  m_Layer: 7
+  m_Layer: 14
   m_Name: stingRay_wing03Right
   m_TagString: Monster
   m_Icon: {fileID: 0}
@@ -1191,7 +1191,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3362086201289545531}
-  m_Layer: 7
+  m_Layer: 14
   m_Name: stingRay_underWing03Right
   m_TagString: Monster
   m_Icon: {fileID: 0}
@@ -1222,7 +1222,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4424246997607933507}
-  m_Layer: 7
+  m_Layer: 14
   m_Name: stingRay_horn01Right
   m_TagString: Monster
   m_Icon: {fileID: 0}
@@ -1256,7 +1256,7 @@ GameObject:
   - component: {fileID: 5506817838205024201}
   - component: {fileID: 7114090848576511542}
   - component: {fileID: 7254977627991799829}
-  m_Layer: 7
+  m_Layer: 14
   m_Name: stingRay_wing02Left
   m_TagString: Monster
   m_Icon: {fileID: 0}
@@ -1325,7 +1325,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6852647439638814920}
-  m_Layer: 7
+  m_Layer: 14
   m_Name: stingRay_wing03Left
   m_TagString: Monster
   m_Icon: {fileID: 0}
@@ -1357,7 +1357,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6580832765121177301}
-  m_Layer: 7
+  m_Layer: 14
   m_Name: stingRay_horn04Left
   m_TagString: Monster
   m_Icon: {fileID: 0}
@@ -1391,7 +1391,7 @@ GameObject:
   - component: {fileID: 8568314668716750054}
   - component: {fileID: 3777406551039746910}
   - component: {fileID: 3353883025176667556}
-  m_Layer: 7
+  m_Layer: 14
   m_Name: Canvas (2)
   m_TagString: Monster
   m_Icon: {fileID: 0}
@@ -1490,7 +1490,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7979015993266934240}
-  m_Layer: 7
+  m_Layer: 14
   m_Name: stingRay_rib01Left
   m_TagString: Monster
   m_Icon: {fileID: 0}
@@ -1521,7 +1521,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5916254836947674872}
-  m_Layer: 7
+  m_Layer: 14
   m_Name: SkillSpawnPoint
   m_TagString: Monster
   m_Icon: {fileID: 0}
@@ -1554,7 +1554,7 @@ GameObject:
   - component: {fileID: 308013369689656644}
   - component: {fileID: 9113321214863139772}
   - component: {fileID: 8198409174573186212}
-  m_Layer: 7
+  m_Layer: 14
   m_Name: stingRay_underWing02Right
   m_TagString: Monster
   m_Icon: {fileID: 0}
@@ -1622,7 +1622,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1964538925927560534}
-  m_Layer: 7
+  m_Layer: 14
   m_Name: stingRay_pin02
   m_TagString: Monster
   m_Icon: {fileID: 0}
@@ -1654,7 +1654,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7227753070384480914}
-  m_Layer: 7
+  m_Layer: 14
   m_Name: stingRay_pin01
   m_TagString: Monster
   m_Icon: {fileID: 0}
@@ -1688,7 +1688,7 @@ GameObject:
   - component: {fileID: 4876610662757748362}
   - component: {fileID: 9193285644560219874}
   - component: {fileID: 4624872943553852769}
-  m_Layer: 7
+  m_Layer: 14
   m_Name: stingRay_wing04Right
   m_TagString: Monster
   m_Icon: {fileID: 0}
@@ -1755,7 +1755,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1450573002958538161}
-  m_Layer: 7
+  m_Layer: 14
   m_Name: stingRay_horn01Left
   m_TagString: Monster
   m_Icon: {fileID: 0}
@@ -1789,7 +1789,7 @@ GameObject:
   - component: {fileID: 3369223113560566927}
   - component: {fileID: 3957465343011475552}
   - component: {fileID: 3236669914718344037}
-  m_Layer: 7
+  m_Layer: 14
   m_Name: stingRay_underWing01Left
   m_TagString: Monster
   m_Icon: {fileID: 0}
@@ -1859,7 +1859,7 @@ GameObject:
   - component: {fileID: 7374579714983625401}
   - component: {fileID: 8695837539239895907}
   - component: {fileID: 486524272503702036}
-  m_Layer: 7
+  m_Layer: 14
   m_Name: stingRay_underWing02Left
   m_TagString: Monster
   m_Icon: {fileID: 0}
@@ -1929,7 +1929,7 @@ GameObject:
   - component: {fileID: 7873781560650362407}
   - component: {fileID: 6575323187305706859}
   - component: {fileID: 2983726606509565014}
-  m_Layer: 7
+  m_Layer: 14
   m_Name: stingRay_pin03
   m_TagString: Monster
   m_Icon: {fileID: 0}
@@ -1998,7 +1998,7 @@ GameObject:
   - component: {fileID: 3568433110725285647}
   - component: {fileID: 7103210726164483430}
   - component: {fileID: 8982345702037597927}
-  m_Layer: 7
+  m_Layer: 14
   m_Name: stingRay_horn02Right
   m_TagString: Monster
   m_Icon: {fileID: 0}
@@ -2068,7 +2068,7 @@ GameObject:
   - component: {fileID: 8351150088310857977}
   - component: {fileID: 6193320868059621812}
   - component: {fileID: 5403218181108321664}
-  m_Layer: 7
+  m_Layer: 14
   m_Name: Armor
   m_TagString: Monster
   m_Icon: {fileID: 0}
@@ -2143,7 +2143,7 @@ GameObject:
   - component: {fileID: 3750020144239486490}
   - component: {fileID: 5639446542999702113}
   - component: {fileID: 1467490255809393403}
-  m_Layer: 7
+  m_Layer: 14
   m_Name: stingRay_wing04Left
   m_TagString: Monster
   m_Icon: {fileID: 0}
@@ -2210,7 +2210,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5040061580347514357}
-  m_Layer: 7
+  m_Layer: 14
   m_Name: stingRay_chin
   m_TagString: Monster
   m_Icon: {fileID: 0}
@@ -2243,7 +2243,7 @@ GameObject:
   - component: {fileID: 2267225557021851077}
   - component: {fileID: 1202771313454256504}
   - component: {fileID: 4416427679573149866}
-  m_Layer: 7
+  m_Layer: 14
   m_Name: stingRay_upperMouth02
   m_TagString: Monster
   m_Icon: {fileID: 0}
@@ -2312,7 +2312,7 @@ GameObject:
   - component: {fileID: 4896094120132766673}
   - component: {fileID: 520814622072223886}
   - component: {fileID: 9083234650934409017}
-  m_Layer: 7
+  m_Layer: 14
   m_Name: stingRay_head
   m_TagString: Monster
   m_Icon: {fileID: 0}
@@ -2384,7 +2384,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1213782635617290260}
-  m_Layer: 7
+  m_Layer: 14
   m_Name: stingRay_lowerMouth01
   m_TagString: Monster
   m_Icon: {fileID: 0}
@@ -2419,7 +2419,7 @@ GameObject:
   - component: {fileID: 3770857905657835310}
   - component: {fileID: 3622733869564892067}
   - component: {fileID: 3552748583099278107}
-  m_Layer: 7
+  m_Layer: 14
   m_Name: stingRay_tail05
   m_TagString: Monster
   m_Icon: {fileID: 0}
@@ -2486,7 +2486,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5025438121840904435}
-  m_Layer: 7
+  m_Layer: 14
   m_Name: stingRay_tail03
   m_TagString: Monster
   m_Icon: {fileID: 0}
@@ -2520,7 +2520,7 @@ GameObject:
   - component: {fileID: 1854628105054030238}
   - component: {fileID: 6875873117266455852}
   - component: {fileID: 7900086322997605876}
-  m_Layer: 7
+  m_Layer: 14
   m_Name: stingRay_wing01Left
   m_TagString: Monster
   m_Icon: {fileID: 0}
@@ -2590,7 +2590,7 @@ GameObject:
   - component: {fileID: 5943038543065056167}
   - component: {fileID: 6070584191340662215}
   - component: {fileID: 198744743141964430}
-  m_Layer: 7
+  m_Layer: 14
   m_Name: stingRay_spine01
   m_TagString: Monster
   m_Icon: {fileID: 0}
@@ -2663,7 +2663,7 @@ GameObject:
   - component: {fileID: 4453618451451233383}
   - component: {fileID: 7051020198993066745}
   - component: {fileID: 1686090941682982704}
-  m_Layer: 7
+  m_Layer: 14
   m_Name: stingRay_horn02Left
   m_TagString: Monster
   m_Icon: {fileID: 0}

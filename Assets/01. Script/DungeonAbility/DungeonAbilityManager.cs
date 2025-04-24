@@ -125,13 +125,17 @@ public class DungeonAbilityManager : MonoBehaviour
     {
         List<DungeonAbility> filtered = new List<DungeonAbility>();
         List<DungeonAbility> allAbilities = GetAllAbilities();
-
+        Debug.Log("여기서 아이콘3");
         foreach (DungeonAbility ability in allAbilities)
         {
             // 이미 보유 중인 능력은 복제본을 만들어 레벨업 옵션으로 제공
+            Debug.Log(currentAbilities);
+            
             DungeonAbility existingAbility = currentAbilities.Find(a => a.id == ability.id);
+           
             if (existingAbility != null)
             {
+                Debug.Log(existingAbility.id);
                 // 최대 레벨이 아닌 경우에만 레벨업 옵션 제공
                 if (existingAbility.level < 5) // 최대 레벨 예시
                 {
@@ -178,6 +182,7 @@ public class DungeonAbilityManager : MonoBehaviour
     }
 
     // 레벨업을 위한 능력 복제본 생성
+    // 레벨업을 위한 능력 복제본 생성
     private DungeonAbility CreateUpgradedAbilityCopy(DungeonAbility templateAbility, DungeonAbility existingAbility)
     {
         // 패시브 능력인 경우
@@ -185,14 +190,18 @@ public class DungeonAbilityManager : MonoBehaviour
         {
             PassiveAbility upgraded = new PassiveAbility();
             upgraded.Initialize(
-                ((PassiveAbility)passiveTemplate).passiveType,
-                ((PassiveAbility)passiveTemplate).effectValue,
-                templateAbility.name,
-                $"{templateAbility.description} (현재 Lv.{existingAbility.level})",
-                templateAbility.rarity
+                ((PassiveAbility)existingAbility).passiveType,
+                ((PassiveAbility)existingAbility).effectValue,
+                existingAbility.name,
+                $"{existingAbility.description} (현재 Lv.{existingAbility.level})",
+                existingAbility.rarity
             );
-            upgraded.id = templateAbility.id;
+            upgraded.id = existingAbility.id;
             upgraded.level = existingAbility.level;
+
+            // 아이콘 복사 추가
+            upgraded.icon = existingAbility.icon;
+
             return upgraded;
         }
         // 공격 능력인 경우
@@ -200,14 +209,18 @@ public class DungeonAbilityManager : MonoBehaviour
         {
             AttackAbility upgraded = new AttackAbility();
             upgraded.Initialize(
-                ((AttackAbility)attackTemplate).attackType,
-                ((AttackAbility)attackTemplate).effectValue,
-                templateAbility.name,
-                $"{templateAbility.description} (현재 Lv.{existingAbility.level})",
-                templateAbility.rarity
+                ((AttackAbility)existingAbility).attackType,
+                ((AttackAbility)existingAbility).effectValue,
+                existingAbility.name,
+                $"{existingAbility.description} (현재 Lv.{existingAbility.level})",
+                existingAbility.rarity
             );
-            upgraded.id = templateAbility.id;
+            upgraded.id = existingAbility.id;
             upgraded.level = existingAbility.level;
+
+            // 아이콘 복사 추가
+            upgraded.icon = existingAbility.icon;
+
             return upgraded;
         }
         // 이동 능력인 경우
@@ -215,30 +228,39 @@ public class DungeonAbilityManager : MonoBehaviour
         {
             MovementAbility upgraded = new MovementAbility();
             upgraded.Initialize(
-                ((MovementAbility)movementTemplate).movementType,
-                ((MovementAbility)movementTemplate).effectValue,
-                templateAbility.name,
-                $"{templateAbility.description} (현재 Lv.{existingAbility.level})",
-                templateAbility.rarity
+                ((MovementAbility)existingAbility).movementType,
+                ((MovementAbility)existingAbility).effectValue,
+                existingAbility.name,
+                $"{existingAbility.description} (현재 Lv.{existingAbility.level})",
+                existingAbility.rarity
             );
-            upgraded.id = templateAbility.id;
+            upgraded.id = existingAbility.id;
             upgraded.level = existingAbility.level;
+
+            // 아이콘 복사 추가
+            upgraded.icon = existingAbility.icon;
+
             return upgraded;
         }
+        // 특수 능력인 경우
         else if (templateAbility is SpecialAbility specialAbility)
         {
             SpecialAbility upgraded = new SpecialAbility();
             upgraded.Initialize(
-                ((SpecialAbility)specialAbility).specialType,
-                ((SpecialAbility)specialAbility).effectValue,
-                templateAbility.name,
-                $"{templateAbility.description} (현재 Lv.{existingAbility.level})",
-                templateAbility.rarity);
-            upgraded.id = specialAbility.id;
+                ((SpecialAbility)existingAbility).specialType,
+                ((SpecialAbility)existingAbility).effectValue,
+                existingAbility.name,
+                $"{existingAbility.description} (현재 Lv.{existingAbility.level})",
+                existingAbility.rarity
+            );
+            upgraded.id = existingAbility.id;
             upgraded.level = existingAbility.level;
+
+            // 아이콘 복사 추가
+            upgraded.icon = existingAbility.icon;
+
             return upgraded;
         }
-        // 다른 타입의 능력도 여기에 추가...
 
         Debug.LogWarning($"능력 {templateAbility.id}의 업그레이드 복사본을 생성할 수 없습니다. 지원되지 않는 타입: {templateAbility.GetType().Name}");
         return null;

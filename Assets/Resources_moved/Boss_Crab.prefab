@@ -9,7 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5648608138052477101}
-  m_Layer: 7
+  m_Layer: 14
   m_Name: Horn01
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -44,7 +44,7 @@ GameObject:
   - component: {fileID: 5287119408824810861}
   - component: {fileID: 9014014476410418220}
   - component: {fileID: 7232500327312757259}
-  m_Layer: 7
+  m_Layer: 14
   m_Name: Claw05
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -112,7 +112,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1169520337785784306}
-  m_Layer: 7
+  m_Layer: 14
   m_Name: Claw06
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -145,7 +145,7 @@ GameObject:
   - component: {fileID: 5326201132622478692}
   - component: {fileID: 6387258080501914521}
   - component: {fileID: 847470382122321939}
-  m_Layer: 7
+  m_Layer: 14
   m_Name: BackGround
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -219,7 +219,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2925017189735743927}
-  m_Layer: 7
+  m_Layer: 14
   m_Name: FrontRightLeg01
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -253,7 +253,7 @@ GameObject:
   - component: {fileID: 6494741570915931838}
   - component: {fileID: 1982402400851199227}
   - component: {fileID: 5361469599492555377}
-  m_Layer: 7
+  m_Layer: 14
   m_Name: Spike0801
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -323,7 +323,7 @@ GameObject:
   - component: {fileID: 8832050381257482879}
   - component: {fileID: 863929471388090326}
   - component: {fileID: 1300711209984746128}
-  m_Layer: 7
+  m_Layer: 14
   m_Name: SuccessCountText
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -455,7 +455,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6429934528609862095}
-  m_Layer: 7
+  m_Layer: 14
   m_Name: Spike0702
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -486,7 +486,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4598465848941757855}
-  m_Layer: 7
+  m_Layer: 14
   m_Name: SkillSpawnPoint
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -517,7 +517,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2567080157585589895}
-  m_Layer: 7
+  m_Layer: 14
   m_Name: Eye03
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -550,7 +550,7 @@ GameObject:
   - component: {fileID: 9018013328586430908}
   - component: {fileID: 4284184923017556251}
   - component: {fileID: 7365948963014169292}
-  m_Layer: 7
+  m_Layer: 14
   m_Name: PatternImage
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -625,7 +625,7 @@ GameObject:
   - component: {fileID: 1870382707275379111}
   - component: {fileID: 5817005452669555482}
   - component: {fileID: 1176051142461297772}
-  m_Layer: 7
+  m_Layer: 14
   m_Name: Text (TMP)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -757,7 +757,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1387664401896257873}
-  m_Layer: 7
+  m_Layer: 14
   m_Name: Horn03
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -788,7 +788,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 836848408772497879}
-  m_Layer: 7
+  m_Layer: 14
   m_Name: Eye02
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -820,7 +820,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1058965214769536006}
-  m_Layer: 7
+  m_Layer: 14
   m_Name: RearRightLeg03
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -854,7 +854,7 @@ GameObject:
   - component: {fileID: 9022803470941833240}
   - component: {fileID: 6246085526475659689}
   - component: {fileID: 1540603103951353325}
-  m_Layer: 7
+  m_Layer: 14
   m_Name: RearRightLeg02
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -922,7 +922,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1246721864847675762}
-  m_Layer: 7
+  m_Layer: 14
   m_Name: UpperArm
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -956,7 +956,7 @@ GameObject:
   - component: {fileID: 710401055058682983}
   - component: {fileID: 6062587992654004630}
   - component: {fileID: 3523152856354319791}
-  m_Layer: 7
+  m_Layer: 14
   m_Name: Claw03
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1023,7 +1023,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6748990560143854144}
-  m_Layer: 7
+  m_Layer: 14
   m_Name: Spike0102
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1057,7 +1057,7 @@ GameObject:
   - component: {fileID: 6115808555655246504}
   - component: {fileID: 4102580438575087493}
   - component: {fileID: 1078322318393491051}
-  m_Layer: 7
+  m_Layer: 14
   m_Name: Panel
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1150,7 +1150,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6902116879091961227}
-  m_Layer: 7
+  m_Layer: 14
   m_Name: Hand
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1182,7 +1182,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3299805749894994808}
-  m_Layer: 7
+  m_Layer: 14
   m_Name: FrontLeftLeg01
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1214,7 +1214,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7860082663467487058}
-  m_Layer: 7
+  m_Layer: 14
   m_Name: EyePatch
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1247,7 +1247,7 @@ GameObject:
   - component: {fileID: 8345623842062300638}
   - component: {fileID: 5441091388923170717}
   - component: {fileID: 3999703919673527757}
-  m_Layer: 7
+  m_Layer: 14
   m_Name: Claw01
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1317,7 +1317,7 @@ GameObject:
   - component: {fileID: 3164958384105254537}
   - component: {fileID: 2264202898427517322}
   - component: {fileID: 6534740053359952906}
-  m_Layer: 7
+  m_Layer: 14
   m_Name: Spike0601
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1385,7 +1385,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8581663453731102199}
-  m_Layer: 7
+  m_Layer: 14
   m_Name: Horn02
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1416,7 +1416,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5207709411568628607}
-  m_Layer: 7
+  m_Layer: 14
   m_Name: RearLeftLeg03
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1448,7 +1448,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7657080151317696039}
-  m_Layer: 7
+  m_Layer: 14
   m_Name: Claw04
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1480,7 +1480,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2595730822433859342}
-  m_Layer: 7
+  m_Layer: 14
   m_Name: Mouth
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1511,7 +1511,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6764522029873753895}
-  m_Layer: 7
+  m_Layer: 14
   m_Name: Head
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1548,7 +1548,7 @@ GameObject:
   - component: {fileID: 7448432505818892724}
   - component: {fileID: 9187052430053476505}
   - component: {fileID: 156725797474884624}
-  m_Layer: 7
+  m_Layer: 14
   m_Name: Spike0101
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1616,7 +1616,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3407639914565524295}
-  m_Layer: 7
+  m_Layer: 14
   m_Name: RearLeftLeg05
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1647,7 +1647,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2364764034410267984}
-  m_Layer: 7
+  m_Layer: 14
   m_Name: Spike0502
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1678,7 +1678,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8385898102488364546}
-  m_Layer: 7
+  m_Layer: 14
   m_Name: RearRightLeg04
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1710,7 +1710,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 237973644554215517}
-  m_Layer: 7
+  m_Layer: 14
   m_Name: Eye01
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1742,7 +1742,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 862036290443589546}
-  m_Layer: 7
+  m_Layer: 14
   m_Name: RearRightLeg01
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1778,7 +1778,7 @@ GameObject:
   - component: {fileID: 4855009042562051404}
   - component: {fileID: 41827275201409302}
   - component: {fileID: 2901938196869253923}
-  m_Layer: 7
+  m_Layer: 14
   m_Name: GimmickWarningCanvas
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1889,7 +1889,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6149797759087962544}
-  m_Layer: 7
+  m_Layer: 14
   m_Name: RearLeftLeg01
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1923,7 +1923,7 @@ GameObject:
   - component: {fileID: 1303689321747944732}
   - component: {fileID: 7819298461863653805}
   - component: {fileID: 6037191606306087758}
-  m_Layer: 7
+  m_Layer: 14
   m_Name: Spine02
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1993,7 +1993,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4148764493966011132}
-  m_Layer: 7
+  m_Layer: 14
   m_Name: Spike0302
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2024,7 +2024,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6868779496867065275}
-  m_Layer: 7
+  m_Layer: 14
   m_Name: joint1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2059,7 +2059,7 @@ GameObject:
   - component: {fileID: 1963530162292139886}
   - component: {fileID: 6492526577825537404}
   - component: {fileID: 916632195772697574}
-  m_Layer: 7
+  m_Layer: 14
   m_Name: FrontRightLeg02
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2129,7 +2129,7 @@ GameObject:
   - component: {fileID: 5031553485736029029}
   - component: {fileID: 8034308875198772261}
   - component: {fileID: 8741325120904946594}
-  m_Layer: 7
+  m_Layer: 14
   m_Name: FrontLeftLeg02
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2197,7 +2197,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2087157223943911472}
-  m_Layer: 7
+  m_Layer: 14
   m_Name: FrontLeftLeg04
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2229,7 +2229,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7827407548414510353}
-  m_Layer: 7
+  m_Layer: 14
   m_Name: RearLeftLeg04
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2263,7 +2263,7 @@ GameObject:
   - component: {fileID: 9164472139154063285}
   - component: {fileID: 5038244584654100005}
   - component: {fileID: 7202677587136711848}
-  m_Layer: 7
+  m_Layer: 14
   m_Name: Spike0201
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2331,7 +2331,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8580820053296018972}
-  m_Layer: 7
+  m_Layer: 14
   m_Name: FrontRightLeg04
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2365,7 +2365,7 @@ GameObject:
   - component: {fileID: 5183695613931981038}
   - component: {fileID: 2097830032124777230}
   - component: {fileID: 7723875790892328951}
-  m_Layer: 7
+  m_Layer: 14
   m_Name: Spike0501
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2436,7 +2436,7 @@ GameObject:
   - component: {fileID: 4422858447070595267}
   - component: {fileID: 4805193653205805956}
   - component: {fileID: 2066241147436629158}
-  m_Layer: 7
+  m_Layer: 14
   m_Name: GimmickSuccessCanvas
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2535,7 +2535,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8227495156388271631}
-  m_Layer: 7
+  m_Layer: 14
   m_Name: FrontRightLeg05
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2566,7 +2566,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3640506745208104945}
-  m_Layer: 7
+  m_Layer: 14
   m_Name: FrontRightLeg03
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2600,7 +2600,7 @@ GameObject:
   - component: {fileID: 6614621749431805028}
   - component: {fileID: 901265861819192042}
   - component: {fileID: 3530531404733362788}
-  m_Layer: 7
+  m_Layer: 14
   m_Name: BarBack
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2678,7 +2678,8 @@ GameObject:
   - component: {fileID: 5364885836530180073}
   - component: {fileID: -6502023126797328451}
   - component: {fileID: 7909718724106875549}
-  m_Layer: 7
+  - component: {fileID: 7513136354778155280}
+  m_Layer: 14
   m_Name: Boss_Crab
   m_TagString: Monster
   m_Icon: {fileID: 0}
@@ -2817,6 +2818,21 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 84
   m_CollisionDetection: 0
+--- !u!114 &7513136354778155280
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6688987851389203449}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 30498d39774294d49ae12659247b05b8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  dissolveMaterial: {fileID: 2100000, guid: 456f480772f75634a96f1fe29baa634a, type: 2}
+  dissolveTime: 2
+  destroyAfterDissolve: 0
 --- !u!1 &6812807174012496384
 GameObject:
   m_ObjectHideFlags: 0
@@ -2828,7 +2844,7 @@ GameObject:
   - component: {fileID: 4699267953507631090}
   - component: {fileID: 4179496099576222228}
   - component: {fileID: 5226799794649235917}
-  m_Layer: 7
+  m_Layer: 14
   m_Name: Spike0301
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2896,7 +2912,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8339640444916771891}
-  m_Layer: 7
+  m_Layer: 14
   m_Name: FrontLeftLeg05
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2929,7 +2945,7 @@ GameObject:
   - component: {fileID: 5507609203530072984}
   - component: {fileID: 8723663263597944149}
   - component: {fileID: 1522040786137692415}
-  m_Layer: 7
+  m_Layer: 14
   m_Name: Bar
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3002,7 +3018,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5958019803473651071}
-  m_Layer: 7
+  m_Layer: 14
   m_Name: Claw02
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3036,7 +3052,7 @@ GameObject:
   - component: {fileID: 2860806790860960440}
   - component: {fileID: 4872396999422118001}
   - component: {fileID: 6425929466089081398}
-  m_Layer: 7
+  m_Layer: 14
   m_Name: Spike0701
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3104,7 +3120,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1748495186035707468}
-  m_Layer: 7
+  m_Layer: 14
   m_Name: Spike0402
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3137,7 +3153,7 @@ GameObject:
   - component: {fileID: 4410879506252912090}
   - component: {fileID: 5653590605817832155}
   - component: {fileID: 3990042321826491414}
-  m_Layer: 7
+  m_Layer: 14
   m_Name: Spike0401
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3205,7 +3221,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1556193906283233353}
-  m_Layer: 7
+  m_Layer: 14
   m_Name: FrontLeftLeg03
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3237,7 +3253,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1682508840425477156}
-  m_Layer: 7
+  m_Layer: 14
   m_Name: Spike0602
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3270,7 +3286,7 @@ GameObject:
   - component: {fileID: 4318039078070815885}
   - component: {fileID: 2923758717959837251}
   - component: {fileID: 8666018554203078112}
-  m_Layer: 7
+  m_Layer: 14
   m_Name: RearLeftLeg02
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3340,7 +3356,7 @@ GameObject:
   - component: {fileID: 175357897016147738}
   - component: {fileID: 4685267027195176120}
   - component: {fileID: 6067045554285805690}
-  m_Layer: 7
+  m_Layer: 14
   m_Name: GimmickImage
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3416,7 +3432,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4957162279861798910}
-  m_Layer: 7
+  m_Layer: 14
   m_Name: LowerArm
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3449,7 +3465,7 @@ GameObject:
   m_Component:
   - component: {fileID: 490472014333222421}
   - component: {fileID: 2257155267511205124}
-  m_Layer: 7
+  m_Layer: 14
   m_Name: Body
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3598,7 +3614,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6100050627441765812}
-  m_Layer: 7
+  m_Layer: 14
   m_Name: SpikeCTRL
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3637,7 +3653,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8663032576608737600}
-  m_Layer: 7
+  m_Layer: 14
   m_Name: Spine01
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3669,7 +3685,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5637578652405935567}
-  m_Layer: 7
+  m_Layer: 14
   m_Name: Spike0202
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3700,7 +3716,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6342118404686383950}
-  m_Layer: 7
+  m_Layer: 14
   m_Name: Spike0802
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3731,7 +3747,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6390929092080241108}
-  m_Layer: 7
+  m_Layer: 14
   m_Name: RearRightLeg05
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3761,6 +3777,18 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 9217860393213746986}
     m_Modifications:
+    - target: {fileID: 85777733188016056, guid: 29cfab70966f3ca4aa9a82c81e760097, type: 3}
+      propertyPath: m_fontAsset
+      value: 
+      objectReference: {fileID: 11400000, guid: 5310aa066c1f46241a2d06c680c53f0a, type: 2}
+    - target: {fileID: 85777733188016056, guid: 29cfab70966f3ca4aa9a82c81e760097, type: 3}
+      propertyPath: m_sharedMaterial
+      value: 
+      objectReference: {fileID: -652894299288326567, guid: 5310aa066c1f46241a2d06c680c53f0a, type: 2}
+    - target: {fileID: 85777733188016056, guid: 29cfab70966f3ca4aa9a82c81e760097, type: 3}
+      propertyPath: m_hasFontAssetChanged
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 783021565724962179, guid: 29cfab70966f3ca4aa9a82c81e760097, type: 3}
       propertyPath: m_Pivot.y
       value: 1
@@ -3785,9 +3813,21 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: -1.28
       objectReference: {fileID: 0}
+    - target: {fileID: 1235035401880245710, guid: 29cfab70966f3ca4aa9a82c81e760097, type: 3}
+      propertyPath: m_Layer
+      value: 14
+      objectReference: {fileID: 0}
     - target: {fileID: 1650552041671731900, guid: 29cfab70966f3ca4aa9a82c81e760097, type: 3}
       propertyPath: m_Name
       value: StateIconPrefab
+      objectReference: {fileID: 0}
+    - target: {fileID: 1650552041671731900, guid: 29cfab70966f3ca4aa9a82c81e760097, type: 3}
+      propertyPath: m_Layer
+      value: 14
+      objectReference: {fileID: 0}
+    - target: {fileID: 2069712716409536067, guid: 29cfab70966f3ca4aa9a82c81e760097, type: 3}
+      propertyPath: m_Layer
+      value: 14
       objectReference: {fileID: 0}
     - target: {fileID: 2181441986840446507, guid: 29cfab70966f3ca4aa9a82c81e760097, type: 3}
       propertyPath: m_AnchoredPosition.x
@@ -3797,6 +3837,14 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: 0.8399999
       objectReference: {fileID: 0}
+    - target: {fileID: 2275918897903128220, guid: 29cfab70966f3ca4aa9a82c81e760097, type: 3}
+      propertyPath: m_text
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 2275918897903128220, guid: 29cfab70966f3ca4aa9a82c81e760097, type: 3}
+      propertyPath: m_fontAsset
+      value: 
+      objectReference: {fileID: 11400000, guid: 5310aa066c1f46241a2d06c680c53f0a, type: 2}
     - target: {fileID: 2275918897903128220, guid: 29cfab70966f3ca4aa9a82c81e760097, type: 3}
       propertyPath: m_fontColor.b
       value: 1
@@ -3810,8 +3858,16 @@ PrefabInstance:
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2275918897903128220, guid: 29cfab70966f3ca4aa9a82c81e760097, type: 3}
+      propertyPath: m_sharedMaterial
+      value: 
+      objectReference: {fileID: -652894299288326567, guid: 5310aa066c1f46241a2d06c680c53f0a, type: 2}
+    - target: {fileID: 2275918897903128220, guid: 29cfab70966f3ca4aa9a82c81e760097, type: 3}
       propertyPath: m_fontColor32.rgba
       value: 4294967295
+      objectReference: {fileID: 0}
+    - target: {fileID: 2275918897903128220, guid: 29cfab70966f3ca4aa9a82c81e760097, type: 3}
+      propertyPath: m_hasFontAssetChanged
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2455161381703482668, guid: 29cfab70966f3ca4aa9a82c81e760097, type: 3}
       propertyPath: m_Sprite
@@ -3828,6 +3884,14 @@ PrefabInstance:
     - target: {fileID: 2455161381703482668, guid: 29cfab70966f3ca4aa9a82c81e760097, type: 3}
       propertyPath: m_Color.r
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2455952902256807837, guid: 29cfab70966f3ca4aa9a82c81e760097, type: 3}
+      propertyPath: m_Layer
+      value: 14
+      objectReference: {fileID: 0}
+    - target: {fileID: 2753035677539796517, guid: 29cfab70966f3ca4aa9a82c81e760097, type: 3}
+      propertyPath: m_Layer
+      value: 14
       objectReference: {fileID: 0}
     - target: {fileID: 3043350957081211616, guid: 29cfab70966f3ca4aa9a82c81e760097, type: 3}
       propertyPath: m_LocalScale.x
@@ -3857,6 +3921,38 @@ PrefabInstance:
       propertyPath: m_Sprite
       value: 
       objectReference: {fileID: 21300000, guid: 1f66b3fdc2cfc644da7ed089e6c70b90, type: 3}
+    - target: {fileID: 3450583117838174825, guid: 29cfab70966f3ca4aa9a82c81e760097, type: 3}
+      propertyPath: m_Layer
+      value: 14
+      objectReference: {fileID: 0}
+    - target: {fileID: 4301568040004098728, guid: 29cfab70966f3ca4aa9a82c81e760097, type: 3}
+      propertyPath: m_Layer
+      value: 14
+      objectReference: {fileID: 0}
+    - target: {fileID: 4726601766022527410, guid: 29cfab70966f3ca4aa9a82c81e760097, type: 3}
+      propertyPath: m_Layer
+      value: 14
+      objectReference: {fileID: 0}
+    - target: {fileID: 5044223809559988177, guid: 29cfab70966f3ca4aa9a82c81e760097, type: 3}
+      propertyPath: m_Layer
+      value: 14
+      objectReference: {fileID: 0}
+    - target: {fileID: 5139484930459018216, guid: 29cfab70966f3ca4aa9a82c81e760097, type: 3}
+      propertyPath: m_fontAsset
+      value: 
+      objectReference: {fileID: 11400000, guid: 5310aa066c1f46241a2d06c680c53f0a, type: 2}
+    - target: {fileID: 5139484930459018216, guid: 29cfab70966f3ca4aa9a82c81e760097, type: 3}
+      propertyPath: m_sharedMaterial
+      value: 
+      objectReference: {fileID: -652894299288326567, guid: 5310aa066c1f46241a2d06c680c53f0a, type: 2}
+    - target: {fileID: 5139484930459018216, guid: 29cfab70966f3ca4aa9a82c81e760097, type: 3}
+      propertyPath: m_hasFontAssetChanged
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5281198939000628319, guid: 29cfab70966f3ca4aa9a82c81e760097, type: 3}
+      propertyPath: m_Layer
+      value: 14
+      objectReference: {fileID: 0}
     - target: {fileID: 5655722525713475279, guid: 29cfab70966f3ca4aa9a82c81e760097, type: 3}
       propertyPath: m_Sprite
       value: 
@@ -3865,13 +3961,45 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: 11.54
       objectReference: {fileID: 0}
+    - target: {fileID: 6211493420259879473, guid: 29cfab70966f3ca4aa9a82c81e760097, type: 3}
+      propertyPath: m_Layer
+      value: 14
+      objectReference: {fileID: 0}
+    - target: {fileID: 6993632057428300446, guid: 29cfab70966f3ca4aa9a82c81e760097, type: 3}
+      propertyPath: m_Layer
+      value: 14
+      objectReference: {fileID: 0}
     - target: {fileID: 6999488616071790685, guid: 29cfab70966f3ca4aa9a82c81e760097, type: 3}
       propertyPath: m_Sprite
       value: 
       objectReference: {fileID: 21300000, guid: 4f8e653bf1c0b054680c13a05741c202, type: 3}
+    - target: {fileID: 7069792015382536264, guid: 29cfab70966f3ca4aa9a82c81e760097, type: 3}
+      propertyPath: m_Layer
+      value: 14
+      objectReference: {fileID: 0}
     - target: {fileID: 7364660121040157652, guid: 29cfab70966f3ca4aa9a82c81e760097, type: 3}
       propertyPath: m_Name
       value: BossCanvas
+      objectReference: {fileID: 0}
+    - target: {fileID: 7364660121040157652, guid: 29cfab70966f3ca4aa9a82c81e760097, type: 3}
+      propertyPath: m_Layer
+      value: 14
+      objectReference: {fileID: 0}
+    - target: {fileID: 7499524291160407394, guid: 29cfab70966f3ca4aa9a82c81e760097, type: 3}
+      propertyPath: m_text
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 7499524291160407394, guid: 29cfab70966f3ca4aa9a82c81e760097, type: 3}
+      propertyPath: m_fontAsset
+      value: 
+      objectReference: {fileID: 11400000, guid: 5310aa066c1f46241a2d06c680c53f0a, type: 2}
+    - target: {fileID: 7499524291160407394, guid: 29cfab70966f3ca4aa9a82c81e760097, type: 3}
+      propertyPath: m_sharedMaterial
+      value: 
+      objectReference: {fileID: -652894299288326567, guid: 5310aa066c1f46241a2d06c680c53f0a, type: 2}
+    - target: {fileID: 7499524291160407394, guid: 29cfab70966f3ca4aa9a82c81e760097, type: 3}
+      propertyPath: m_hasFontAssetChanged
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7586162419911920416, guid: 29cfab70966f3ca4aa9a82c81e760097, type: 3}
       propertyPath: m_AnchorMax.y
@@ -3892,6 +4020,10 @@ PrefabInstance:
     - target: {fileID: 7586162419911920416, guid: 29cfab70966f3ca4aa9a82c81e760097, type: 3}
       propertyPath: m_AnchoredPosition.y
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7798408601172694568, guid: 29cfab70966f3ca4aa9a82c81e760097, type: 3}
+      propertyPath: m_Layer
+      value: 14
       objectReference: {fileID: 0}
     - target: {fileID: 7852478154135069514, guid: 29cfab70966f3ca4aa9a82c81e760097, type: 3}
       propertyPath: m_Sprite
@@ -3988,6 +4120,10 @@ PrefabInstance:
     - target: {fileID: 8764682648001825192, guid: 29cfab70966f3ca4aa9a82c81e760097, type: 3}
       propertyPath: m_Color.r
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9189539540930561863, guid: 29cfab70966f3ca4aa9a82c81e760097, type: 3}
+      propertyPath: m_Layer
+      value: 14
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -4115,6 +4251,10 @@ PrefabInstance:
       value: Phase1
       objectReference: {fileID: 0}
     - target: {fileID: 1407745159309373318, guid: f90a0f9eceeb541458fab55ee01e5091, type: 3}
+      propertyPath: m_Layer
+      value: 14
+      objectReference: {fileID: 0}
+    - target: {fileID: 1407745159309373318, guid: f90a0f9eceeb541458fab55ee01e5091, type: 3}
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
@@ -4230,6 +4370,10 @@ PrefabInstance:
     - target: {fileID: 3686489198010313537, guid: 969df340333d2a44ca886d36fcb0a5d9, type: 3}
       propertyPath: m_Name
       value: Phase2
+      objectReference: {fileID: 0}
+    - target: {fileID: 3686489198010313537, guid: 969df340333d2a44ca886d36fcb0a5d9, type: 3}
+      propertyPath: m_Layer
+      value: 14
       objectReference: {fileID: 0}
     - target: {fileID: 3686489198010313537, guid: 969df340333d2a44ca886d36fcb0a5d9, type: 3}
       propertyPath: m_IsActive
@@ -4359,6 +4503,10 @@ PrefabInstance:
     - target: {fileID: 5260351542395991880, guid: 94f96d5e132c79144b740964bd5d9fb6, type: 3}
       propertyPath: m_Name
       value: BossWorldCanvas
+      objectReference: {fileID: 0}
+    - target: {fileID: 5260351542395991880, guid: 94f96d5e132c79144b740964bd5d9fb6, type: 3}
+      propertyPath: m_Layer
+      value: 14
       objectReference: {fileID: 0}
     - target: {fileID: 7114848403813760469, guid: 94f96d5e132c79144b740964bd5d9fb6, type: 3}
       propertyPath: m_Pivot.x
@@ -4546,6 +4694,10 @@ PrefabInstance:
     - target: {fileID: 3070944894907959833, guid: 3e90324bae17c484185d3188db554010, type: 3}
       propertyPath: m_Name
       value: Phase3
+      objectReference: {fileID: 0}
+    - target: {fileID: 3070944894907959833, guid: 3e90324bae17c484185d3188db554010, type: 3}
+      propertyPath: m_Layer
+      value: 14
       objectReference: {fileID: 0}
     - target: {fileID: 3070944894907959833, guid: 3e90324bae17c484185d3188db554010, type: 3}
       propertyPath: m_IsActive

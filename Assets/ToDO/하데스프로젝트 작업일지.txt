@@ -1113,9 +1113,29 @@ VillageManager에서 플래그를 확인해 크로노팩처 무기를 마을에�
 		
 		DieState를 CreatureAI의 Ondamage매서드에서 체력을 추적해 DieState상태에 들어가게끔 설정
 
-	작업 할 사항 - 
+	
 
+4/20 - 빌드 후 고칠점과 추가 작업
 
+		인게임(Village씬)내 설정 및 끄기 UI 넣기 - 완료
+		로딩씬 내 멘트 넣던지 빼던지 결정 - 간단한 팁 및 스토리떡밥 투척
+		로컬라이징 작업 결정 - 추후 해야할거같음
+		업적 생성 - 진행중
+		현재 던전 난이도가 높음 좀 낮출 예정
+
+4/21 - 업적UI,데이터csv 완성 및 로직 작업중
+
+4/22 - 업적 UI 완료. 보상 밸런스 작업 예정
+
+	Achievement 클래스에서 업적들 정보 및 증가매서드,UI용 매서드 등 작성 및 Progress 클래스도 작성
+	AchievementManager에서 Csv를 통해 로드 및 세이브와 로드 작업까지 해줌(PlayerSaveData에 추가된 데이터(	Dictionary = achievementProgress, List = achievementProgressList(딕셔너리 직렬화용)
+																											bossKillCount,eliteCount,monstercount추가 / MonsterStatus에서 발생)
+
+4/23 - 업적작업 완료
+
+	다음 할일 - 빌드, 보스 기울어짐 수정
+   
+	
 		
 
 '				

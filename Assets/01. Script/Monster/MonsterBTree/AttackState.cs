@@ -69,15 +69,28 @@ public class AttackState : MonsterBaseState
             return;
         }
 
-        
-        //// 필요한 경우 공격 중 타겟 방향 업데이트
-        //if (player != null)
-        //{
-        //    Vector3 directionToPlayer = (player.position - transform.position).normalized;
-        //    transform.rotation = Quaternion.Lerp(transform.rotation,
-        //                                       Quaternion.LookRotation(directionToPlayer),
-        //                                       Time.deltaTime * 5f);
-        //}
+
+        // 플레이어와의 거리 계산
+        float distanceToPlayer = Vector3.Distance(transform.position, player.position);
+
+        // 최소 거리 설정 (이 값은 보스 크기에 따라 조정)
+        float minDistance = 2.0f;
+
+        // 너무 가까이 있으면 회전하지 않음
+        if (distanceToPlayer < minDistance)
+            return;
+
+        Vector3 directionToPlayer = (player.position - transform.position).normalized;
+        if (directionToPlayer != Vector3.zero)
+        {
+            // Y축만 회전하도록 수정
+            Vector3 flatDirection = new Vector3(directionToPlayer.x, 0, directionToPlayer.z);
+            if (flatDirection.magnitude > 0.01f) // 방향 벡터가 너무 작지 않은지 확인
+            {
+                Quaternion targetRotation = Quaternion.LookRotation(flatDirection);
+                transform.rotation = Quaternion.Lerp(transform.rotation, targetRotation, Time.deltaTime * 5f);
+            }
+        }
     }
 
 

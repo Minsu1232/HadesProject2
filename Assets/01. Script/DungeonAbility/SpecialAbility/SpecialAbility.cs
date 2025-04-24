@@ -15,7 +15,6 @@ public class SpecialAbility : DungeonAbility
     }
 
     public SpecialAbilityType specialType;
-    private float originalValue;
 
     // 생성자로 초기화
     public void Initialize(SpecialAbilityType type, float value, string abilityName, string abilityDescription, Rarity abilityRarity)
@@ -83,12 +82,15 @@ public class SpecialAbility : DungeonAbility
     public override void OnAcquire(PlayerClass player)
     {
         // 특수 효과 적용
-        ApplySpecialEffect(player, effectValue);
+        ApplyEffect(player, effectValue);
         Debug.Log($"획득한 특수 스킬 능력: {name} (Lv.{level}) - {effectValue}");
     }
 
     public override void OnLevelUp(PlayerClass player)
     {
+        // 레벨업 플래그 설정
+        isLevelingUp = true;
+
         // 기존 효과 제거
         OnReset(player);
 
@@ -98,17 +100,21 @@ public class SpecialAbility : DungeonAbility
 
         // 새 효과 적용
         OnAcquire(player);
+
+        // 레벨업 플래그 해제
+        isLevelingUp = false;
+
         Debug.Log($"레벨업한 특수 스킬 능력: {name} (Lv.{level}) - {effectValue}");
     }
 
     public override void OnReset(PlayerClass player)
     {
         // 특수 효과 제거
-        RemoveSpecialEffect(player, effectValue);
+        RemoveEffect(player, effectValue);
     }
 
     // 특수 효과 적용
-    private void ApplySpecialEffect(PlayerClass player, float value)
+    protected override void ApplyEffect(PlayerClass player, float value)
     {
         switch (specialType)
         {
@@ -123,7 +129,7 @@ public class SpecialAbility : DungeonAbility
     }
 
     // 특수 효과 제거
-    private void RemoveSpecialEffect(PlayerClass player, float value)
+    protected override void RemoveEffect(PlayerClass player, float value)
     {
         switch (specialType)
         {
@@ -160,13 +166,15 @@ public class SpecialAbility : DungeonAbility
         {
             retentionComp.RemoveRetentionRate(retentionPercent / 100f);
 
-            // 효과가 0이면 컴포넌트 제거
-            if (Mathf.Approximately(retentionComp.GetRetentionRate(), 0f))
+            // 효과가 0이면 컴포넌트 제거 (레벨업 중이 아닐 때만)
+            if (Mathf.Approximately(retentionComp.GetRetentionRate(), 0f) && !isLevelingUp)
             {
+                Debug.Log("제거");
                 GameObject.Destroy(retentionComp);
             }
         }
     }
+
     private void ApplyLightningJudgment(PlayerClass player, float damagePercent)
     {
         GameObject playerObj = GameInitializer.Instance.gameObject;
@@ -181,7 +189,6 @@ public class SpecialAbility : DungeonAbility
         Debug.Log($"번개 심판 효과 적용: 공격력의 {damagePercent}%");
     }
 
-    // SpecialAbility.cs의 RemoveSpecialEffect 메서드에 추가
     private void RemoveLightningJudgment(PlayerClass player, float damagePercent)
     {
         GameObject playerObj = GameInitializer.Instance.gameObject;
@@ -190,8 +197,8 @@ public class SpecialAbility : DungeonAbility
         {
             lightningComp.SetDamageMultiplier(lightningComp.GetDamageMultiplier() - damagePercent / 100f);
 
-            // 효과가 0이면 컴포넌트 제거
-            if (Mathf.Approximately(lightningComp.GetDamageMultiplier(), 0f))
+            // 효과가 0이면 컴포넌트 제거 (레벨업 중이 아닐 때만)
+            if (Mathf.Approximately(lightningComp.GetDamageMultiplier(), 0f) && !isLevelingUp)
             {
                 GameObject.Destroy(lightningComp);
             }

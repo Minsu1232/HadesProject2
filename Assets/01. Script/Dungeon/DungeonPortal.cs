@@ -1,3 +1,4 @@
+using TMPro;
 using UnityEngine;
 
 public class DungeonPortal : MonoBehaviour
@@ -26,6 +27,8 @@ public class DungeonPortal : MonoBehaviour
         if (other.CompareTag("Player"))
         {
             playerInRange = true;
+            TextMeshProUGUI text = interactionPrompt.GetComponentInChildren<TextMeshProUGUI>();
+            text.text = "F키 눌러 던전 보기";
             if (interactionPrompt != null) interactionPrompt.SetActive(true);
         }
     }

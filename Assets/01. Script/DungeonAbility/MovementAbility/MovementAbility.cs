@@ -15,8 +15,8 @@ public class MovementAbility : DungeonAbility
         DashFlame        // 대시 시 불꽃 생성하여 데미지
     }
 
-    public MovementAbilityType movementType;            
-    private float originalValue;         // 원래 효과값 (레벨업 시 사용)
+    public MovementAbilityType movementType;
+
 
     // 생성자로 초기화
     public void Initialize(MovementAbilityType type, float value, string abilityName, string abilityDescription, Rarity abilityRarity)
@@ -84,7 +84,7 @@ public class MovementAbility : DungeonAbility
     public override void OnAcquire(PlayerClass player)
     {
         // 이동 능력 효과 적용
-        ApplyMovementEffect(player, effectValue);
+        ApplyEffect(player, effectValue);
 
         // 디버그 로그
         Debug.Log($"획득한 이동 능력: {name} (Lv.{level}) - {effectValue}");
@@ -92,6 +92,9 @@ public class MovementAbility : DungeonAbility
 
     public override void OnLevelUp(PlayerClass player)
     {
+        // 레벨업 플래그 설정
+        isLevelingUp = true;
+
         // 기존 효과 제거
         OnReset(player);
 
@@ -102,6 +105,9 @@ public class MovementAbility : DungeonAbility
         // 새 효과 적용
         OnAcquire(player);
 
+        // 레벨업 플래그 해제
+        isLevelingUp = false;
+
         // 디버그 로그
         Debug.Log($"레벨업한 이동 능력: {name} (Lv.{level}) - {effectValue}");
     }
@@ -109,11 +115,11 @@ public class MovementAbility : DungeonAbility
     public override void OnReset(PlayerClass player)
     {
         // 이동 능력 효과 제거
-        RemoveMovementEffect(player, effectValue);
+        RemoveEffect(player, effectValue);
     }
 
     // 이동 능력 효과 적용
-    private void ApplyMovementEffect(PlayerClass player, float value)
+    protected override void ApplyEffect(PlayerClass player, float value)
     {
         switch (movementType)
         {
@@ -139,7 +145,7 @@ public class MovementAbility : DungeonAbility
     }
 
     // 이동 능력 효과 제거
-    private void RemoveMovementEffect(PlayerClass player, float value)
+    protected override void RemoveEffect(PlayerClass player, float value)
     {
         switch (movementType)
         {
@@ -147,16 +153,16 @@ public class MovementAbility : DungeonAbility
                 RemoveDashForce(player, value);
                 break;
             case MovementAbilityType.DashInvincible:
-               
-                 RemoveDashInvincible(player, value);
+
+                RemoveDashInvincible(player, value);
                 break;
             case MovementAbilityType.DashImpact:
-                
-                 RemoveDashImpact(player, value);
+
+                RemoveDashImpact(player, value);
                 break;
             case MovementAbilityType.DashFlame:
-                
-                 RemoveDashFlame(player, value);
+
+                RemoveDashFlame(player, value);
                 break;
         }
     }
@@ -216,8 +222,8 @@ public class MovementAbility : DungeonAbility
         {
             invincibleComp.SetInvincibleDuration(invincibleComp.GetInvincibleDuration() - duration);
 
-            // 효과가 0이면 컴포넌트 제거
-            if (invincibleComp.GetInvincibleDuration() <= 0f)
+            // 효과가 0이면 컴포넌트 제거 (레벨업 중이 아닐 때만)
+            if (invincibleComp.GetInvincibleDuration() <= 0f && !isLevelingUp)
             {
                 GameObject.Destroy(invincibleComp);
             }
@@ -243,7 +249,7 @@ public class MovementAbility : DungeonAbility
 
         // 증가 비율을 백분율로 변환 (예: 20% -> 0.2)
         float multiplier = multiplierAmount / 100f;
-        impactComp.SetDamageMultiplier(impactComp.GetDamageMultiplier() + multiplier);  
+        impactComp.SetDamageMultiplier(impactComp.GetDamageMultiplier() + multiplier);
         Debug.Log($"대시 충격 데미지 효과 적용: 공격력의 {multiplier * 100}%");
     }
 
@@ -258,8 +264,8 @@ public class MovementAbility : DungeonAbility
             float multiplier = multiplierAmount / 100f;
             impactComp.SetDamageMultiplier(impactComp.GetDamageMultiplier() - multiplier);
 
-            // 효과가 0이면 컴포넌트 제거
-            if (impactComp.GetDamageMultiplier() <= 0f)
+            // 효과가 0이면 컴포넌트 제거 (레벨업 중이 아닐 때만)
+            if (impactComp.GetDamageMultiplier() <= 0f && !isLevelingUp)
             {
                 GameObject.Destroy(impactComp);
             }
@@ -300,12 +306,11 @@ public class MovementAbility : DungeonAbility
             float multiplier = damageAmount / 100f;
             flameComp.SetDamageMultiplier(flameComp.GetDamageMultiplier() - multiplier);
 
-            // 효과가 0이면 컴포넌트 비활성화
-            if (flameComp.GetDamageMultiplier() <= 0f)
+            // 효과가 0이면 컴포넌트 비활성화 (레벨업 중이 아닐 때만)
+            if (flameComp.GetDamageMultiplier() <= 0f && !isLevelingUp)
             {
                 flameComp.enabled = false;
             }
         }
     }
-
 }

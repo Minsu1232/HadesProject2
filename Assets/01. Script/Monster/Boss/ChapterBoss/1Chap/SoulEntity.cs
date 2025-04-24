@@ -120,10 +120,10 @@ public class SoulEntity : HazardObject
         }
     }
 
-    protected override void CheckDamage()
-    {
-        // 이 기믹은 데미지를 주지 않으므로 구현 불필요
-    }
+    //protected override void CheckDamage()
+    //{
+    //    // 이 기믹은 데미지를 주지 않으므로 구현 불필요
+    //}
 
     protected override void OnImpact()
     {
