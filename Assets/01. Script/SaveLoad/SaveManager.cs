@@ -22,18 +22,19 @@ public class SaveManager : Singleton<SaveManager>
     private ChapterProgressData chapterData;
     private GameSettingsData settingsData;
 
-    // 슬롯 메타데이터를 저장할 클래스
+    // 슬롯 메타데이터를 저장할 클래스 
     [Serializable]
-    private class SlotMetadata
+    public class SlotMetadata
     {
         public string playerName = "";
         public int chapterProgress = 0;
         public string lastSaveTimeStr = "";
         public int totalPlayTime = 0; // 초 단위
+        public bool hasData = false;  // 데이터 존재 여부 필드 추가
 
         public void SetLastSaveTime(DateTime time)
         {
-            lastSaveTimeStr = time.ToString("o"); // ISO 8601 포맷 (예: 2024-04-03T15:12:31.1234567Z)
+            lastSaveTimeStr = time.ToString("o");
         }
 
         public DateTime GetLastSaveTime()
@@ -42,7 +43,7 @@ public class SaveManager : Singleton<SaveManager>
         }
     }
     [Serializable]
-    private class SlotMetadataWrapper
+    public class SlotMetadataWrapper
     {
         public List<SlotMetadata> slots;
     }
@@ -55,7 +56,20 @@ public class SaveManager : Singleton<SaveManager>
     protected override void Awake()
     {
         base.Awake();
-        saveSystem = new JsonSaveSystem();
+        // 스팀이 초기화되었는지 확인
+        if (SteamworksManager.Instance != null && SteamworksManager.Instance.Initialized)
+        {
+            saveSystem = new SteamCloudSaveSystem();
+            Debug.Log("스팀 클라우드 저장 시스템을 사용합니다.");
+
+            // 클라우드와 로컬 데이터 동기화
+            SyncCloudAndLocalData();
+        }
+        else
+        {
+            saveSystem = new JsonSaveSystem();
+            Debug.Log("로컬 JSON 저장 시스템을 사용합니다.");
+        }
 
         // 슬롯 메타데이터 초기화 (메모리에만 로드)
         InitializeSlotMetadata();
@@ -70,7 +84,37 @@ public class SaveManager : Singleton<SaveManager>
         playerData = new PlayerSaveData();
         chapterData = new ChapterProgressData();
     }
+    // 클라우드와 로컬 데이터 동기화 메서드 추가
+    private void SyncCloudAndLocalData()
+    {
+        if (saveSystem is SteamCloudSaveSystem steamSaveSystem)
+        {
+            // 클라우드와 로컬 데이터 비교 후 최신 데이터 사용
+            steamSaveSystem.CompareAndSelectBestData();
 
+            // 슬롯 메타데이터도 강제로 다시 로드 - 클라우드 데이터 반영
+            string metadataPath = Path.Combine(Application.persistentDataPath, "SaveFiles", SLOT_METADATA_FILE + ".json");
+            if (File.Exists(metadataPath))
+            {
+                // 강제로 파일에서 다시 로드
+                try
+                {
+                    string json = File.ReadAllText(metadataPath);
+                    SlotMetadataWrapper wrapper = JsonUtility.FromJson<SlotMetadataWrapper>(json);
+
+                    if (wrapper != null && wrapper.slots != null)
+                    {
+                        slotMetadataList = wrapper.slots;
+                        Debug.Log($"클라우드/로컬 동기화 후 슬롯 메타데이터 다시 로드: {slotMetadataList.Count}개");
+                    }
+                }
+                catch (Exception e)
+                {
+                    Debug.LogError($"슬롯 메타데이터 동기화 로드 실패: {e.Message}");
+                }
+            }
+        }
+    }
     // 플레이 타임 업데이트 메서드
     public void UpdatePlayTime(int totalSeconds)
     {
@@ -125,25 +169,28 @@ public class SaveManager : Singleton<SaveManager>
                 {
                     slotMetadataList = wrapper.slots;
                     Debug.Log($"슬롯 메타데이터 로드: {slotMetadataList.Count}개");
+
+                    // 메타데이터와 실제 데이터 일치 여부 확인 및 수정
+                    ValidateSlotMetadata();
                 }
                 else
                 {
                     Debug.LogError("슬롯 메타데이터 역직렬화 실패");
                     slotMetadataList = new List<SlotMetadata>();
-                    CreateDefaultSlotMetadata();
+                    CreateDefaultSlotMetadata(false); // false = 데이터 없음으로 설정
                 }
             }
             catch (Exception e)
             {
                 Debug.LogError($"슬롯 메타데이터 로드 실패: {e.Message}");
                 slotMetadataList = new List<SlotMetadata>();
-                CreateDefaultSlotMetadata();
+                CreateDefaultSlotMetadata(false); // false = 데이터 없음으로 설정
             }
         }
         else
         {
             slotMetadataList = new List<SlotMetadata>();
-            CreateDefaultSlotMetadata();
+            CreateDefaultSlotMetadata(false); // false = 데이터 없음으로 설정
         }
 
         // 메타데이터 리스트 크기 확인 및 조정
@@ -151,13 +198,17 @@ public class SaveManager : Singleton<SaveManager>
     }
 
     // 기본 슬롯 메타데이터 생성
-    private void CreateDefaultSlotMetadata()
+    // CreateDefaultSlotMetadata 메서드 수정 - hasData 파라미터 추가
+    private void CreateDefaultSlotMetadata(bool hasData = false)
     {
         slotMetadataList = new List<SlotMetadata>();
         for (int i = 0; i < MAX_SLOTS; i++)
         {
-            slotMetadataList.Add(new SlotMetadata());
-            Debug.Log(slotMetadataList.Count);
+            // SlotMetadata에 hasData 필드가 없다면 추가 필요
+            SlotMetadata metadata = new SlotMetadata();
+            // metadata.hasData = hasData; // SlotMetadata 클래스에 이 필드를 추가했다면 사용
+            slotMetadataList.Add(metadata);
+            Debug.Log($"슬롯 {i}: 기본 메타데이터 생성, 데이터 있음={hasData}");
         }
 
         // 로비 씬에서는 파일을 생성하지 않음
@@ -167,7 +218,52 @@ public class SaveManager : Singleton<SaveManager>
             SaveSlotMetadata();
         }
     }
+    // 새로운 메서드 추가: 메타데이터와 실제 데이터 검증
+    private void ValidateSlotMetadata()
+    {
+        // 각 슬롯의 메타데이터와 실제 데이터 존재 여부 비교
+        for (int i = 0; i < slotMetadataList.Count; i++)
+        {
+            // 현재 슬롯 임시 저장
+            int originalSlot = currentSlot;
+            currentSlot = i;
 
+            // 실제 데이터 파일 존재 여부 확인
+            string playerDataPath = GetSaveFilePath(PLAYER_DATA_FILE);
+            string chapterDataPath = GetSaveFilePath(CHAPTER_PROGRESS_FILE);
+            bool actualDataExists = File.Exists(playerDataPath) || File.Exists(chapterDataPath);
+
+            // 클라우드 데이터도 확인 (스팀 클라우드 사용 시)
+            if (saveSystem is SteamCloudSaveSystem && !actualDataExists)
+            {
+                saveSystem.SetCurrentSlot(i);
+                actualDataExists = saveSystem.SlotExists();
+            }
+
+            // 슬롯 메타데이터 정보 로깅
+            Debug.Log($"슬롯 {i} 검증: 저장시간={slotMetadataList[i].GetLastSaveTime()}, " +
+                     $"챕터={slotMetadataList[i].chapterProgress}, 플레이시간={slotMetadataList[i].totalPlayTime}");
+
+            // 메타데이터 정보가 초기화 상태인지 확인
+            bool isMetadataEmpty = slotMetadataList[i].GetLastSaveTime() == DateTime.MinValue &&
+                                slotMetadataList[i].chapterProgress == 0 &&
+                                slotMetadataList[i].totalPlayTime == 0;
+
+            // 실제 데이터 없음 + 메타데이터 초기화 상태 = 빈 슬롯
+            if (!actualDataExists && isMetadataEmpty)
+            {
+                // 메타데이터의 hasData 필드가 있다면 false로 설정
+                // slotMetadataList[i].hasData = false;
+                Debug.Log($"슬롯 {i}: 실제 데이터 없음, 메타데이터도 초기 상태 - 빈 슬롯으로 처리");
+            }
+
+            // 원래 슬롯으로 복구
+            currentSlot = originalSlot;
+        }
+
+        // 변경사항이 있으면 메타데이터 저장
+        SaveSlotMetadata();
+    }
     // 메타데이터 리스트 크기 확인 및 조정
     private void EnsureMetadataListSize()
     {
@@ -265,7 +361,7 @@ public class SaveManager : Singleton<SaveManager>
 
             // 슬롯 변경
             currentSlot = slotIndex;
-            ((JsonSaveSystem)saveSystem).SetCurrentSlot(currentSlot);
+            saveSystem.SetCurrentSlot(currentSlot); // 인터페이스 메서드 호출
 
             // loadData가 true인 경우에만 실제 데이터 로드
             if (loadData)
@@ -296,14 +392,16 @@ public class SaveManager : Singleton<SaveManager>
     {
         List<SlotMetadataInfo> result = new List<SlotMetadataInfo>();
         int originalSlot = currentSlot;
+
         for (int i = 0; i < MAX_SLOTS; i++)
         {
-            // 임시로 현재 슬롯 설정 (파일 생성하지 않도록 주의)
-
+            // 임시로 현재 슬롯 설정
             currentSlot = i;
-            ((JsonSaveSystem)saveSystem).SetCurrentSlot(i);
+            saveSystem.SetCurrentSlot(i);
 
-            bool hasData = ((JsonSaveSystem)saveSystem).SlotExists();
+            // 더 정확한 데이터 존재 여부 확인
+            bool hasData = CheckSlotHasActualData(i);
+
             SlotMetadataInfo info = new SlotMetadataInfo
             {
                 slotIndex = i,
@@ -315,15 +413,79 @@ public class SaveManager : Singleton<SaveManager>
             };
 
             result.Add(info);
+            Debug.Log($"슬롯 {i} 상태: 데이터 있음={hasData}, 챕터={info.chapterProgress}, 저장시간={info.lastSaveTime}");
         }
 
         // 원래 슬롯으로 되돌림
         currentSlot = originalSlot;
-        ((JsonSaveSystem)saveSystem).SetCurrentSlot(currentSlot);
+        saveSystem.SetCurrentSlot(currentSlot);
 
         return result;
     }
+    // 새 메서드: 슬롯에 실제 데이터가 있는지 더 정확하게 확인
+    private bool CheckSlotHasActualData(int slotIndex)
+    {
+        // 실제 데이터 파일 존재 여부 확인
+        string playerDataPath = Path.Combine(Application.persistentDataPath, "SaveFiles", $"Slot{slotIndex}", $"{PLAYER_DATA_FILE}.json");
+        string chapterDataPath = Path.Combine(Application.persistentDataPath, "SaveFiles", $"Slot{slotIndex}", $"{CHAPTER_PROGRESS_FILE}.json");
+        bool localDataExists = File.Exists(playerDataPath) || File.Exists(chapterDataPath);
 
+        // 로컬에 데이터가 있으면 바로 true 반환
+        if (localDataExists)
+        {
+            return true;
+        }
+
+        // 스팀 클라우드 사용 중이면 클라우드에서도 확인
+        if (saveSystem is SteamCloudSaveSystem)
+        {
+            bool cloudDataExists = saveSystem.SlotExists();
+
+            // 클라우드에만 데이터가 있는 경우, 메타데이터로 추가 검증 (0번 슬롯 특별 처리)
+            if (cloudDataExists && slotIndex == 0)
+            {
+                // 메타데이터가 초기 상태인지 확인
+                bool isMetadataEmpty = slotMetadataList[slotIndex].GetLastSaveTime() == DateTime.MinValue &&
+                                      slotMetadataList[slotIndex].chapterProgress == 0 &&
+                                      slotMetadataList[slotIndex].totalPlayTime == 0;
+
+                // 메타데이터가 초기 상태면 진짜 데이터가 있는지 의심스러움
+                if (isMetadataEmpty)
+                {
+                    Debug.LogWarning($"슬롯 {slotIndex}: 클라우드는 데이터 있음, 그러나 메타데이터는 초기 상태 - 추가 검증 필요");
+
+                    // 클라우드에서 실제 파일 내용 확인 시도
+                    if (saveSystem is SteamCloudSaveSystem steamSaveSystem)
+                    {
+                        string cloudPlayerDataFileName = $"cloud_slot{slotIndex}_playerData.json";
+                        byte[] data = SteamworksManager.Instance?.LoadFromCloud(cloudPlayerDataFileName);
+
+                        // 파일이 존재하고 내용이 있으면 진짜 데이터 있음
+                        if (data != null && data.Length > 0)
+                        {
+                            string json = System.Text.Encoding.UTF8.GetString(data);
+                            // 간단한 내용 확인 (실제 데이터가 있는지)
+                            if (json.Length > 50 && json.Contains("inventory"))
+                            {
+                                return true;
+                            }
+                        }
+
+                        // 여기까지 왔다면 클라우드에 실제 데이터가 없는 것으로 판단
+                        Debug.Log($"슬롯 {slotIndex}: 클라우드 파일 내용 확인 결과 실제 데이터 없음");
+                        return false;
+                    }
+                }
+
+                return cloudDataExists;
+            }
+
+            return cloudDataExists;
+        }
+
+        // 여기까지 왔다면 데이터 없음
+        return false;
+    }
     // 현재 슬롯 데이터 로드
     private void LoadSlotData()
     {
@@ -379,7 +541,7 @@ public class SaveManager : Singleton<SaveManager>
         string playerDataPath = GetSaveFilePath(PLAYER_DATA_FILE);
 
         // 파일이 없고, 슬롯이 이미 존재하면 기본 데이터 복사
-        if (!File.Exists(playerDataPath) && ((JsonSaveSystem)saveSystem).SlotExists())
+        if (!File.Exists(playerDataPath) && saveSystem.SlotExists())  // 인터페이스 메서드 사용
         {
             CopyDefaultDataFromStreamingAssets(PLAYER_DATA_FILE);
         }
@@ -417,7 +579,7 @@ public class SaveManager : Singleton<SaveManager>
         string chapterDataPath = GetSaveFilePath(CHAPTER_PROGRESS_FILE);
 
         // 파일이 없고, 슬롯이 이미 존재하면 기본 데이터 복사
-        if (!File.Exists(chapterDataPath) && ((JsonSaveSystem)saveSystem).SlotExists())
+        if (!File.Exists(chapterDataPath) && saveSystem.SlotExists())  // 인터페이스 메서드 사용
         {
             CopyDefaultDataFromStreamingAssets(CHAPTER_PROGRESS_FILE);
         }
@@ -696,26 +858,94 @@ public class SaveManager : Singleton<SaveManager>
     // 현재 슬롯 삭제
     public void DeleteCurrentSlot()
     {
-        ((JsonSaveSystem)saveSystem).DeleteSlot();
+        Debug.Log($"슬롯 {currentSlot} 삭제 시작");
+
+        // ISaveSystem 인터페이스를 통해 슬롯 삭제 (로컬 및 클라우드)
+        saveSystem.DeleteSlot();
 
         // 메타데이터 초기화
         if (currentSlot < slotMetadataList.Count)
         {
+            // 슬롯 메타데이터 초기화
             slotMetadataList[currentSlot] = new SlotMetadata();
+            // hasData 필드가 있다면 명시적으로 false 설정
+            // slotMetadataList[currentSlot].hasData = false;
+
+            // 로비가 아닌 경우만 저장하는 조건 제거하고 항상 저장
             SaveSlotMetadata();
+            Debug.Log($"슬롯 {currentSlot} 메타데이터 초기화 및 저장 완료");
+
+            // 스팀 클라우드 사용 중인 경우, 메타데이터도 클라우드에 강제 동기화
+            if (saveSystem is SteamCloudSaveSystem)
+            {
+                string metadataPath = Path.Combine(Application.persistentDataPath, "SaveFiles", SLOT_METADATA_FILE + ".json");
+                if (File.Exists(metadataPath))
+                {
+                    bool success = SteamworksManager.Instance?.SyncLocalToCloud(
+                        metadataPath,
+                        $"cloud_slotMetadata.json"
+                    ) ?? false;
+
+                    Debug.Log($"슬롯 {currentSlot} 메타데이터 클라우드 동기화 {(success ? "성공" : "실패")}");
+                }
+            }
         }
 
         // 빈 데이터로 초기화
         playerData = new PlayerSaveData();
         chapterData = new ChapterProgressData();
 
-        Debug.Log($"슬롯 {currentSlot} 삭제 완료");
+        // 실제로 삭제되었는지 확인 (재검증)
+        string slotPath = Path.Combine(Application.persistentDataPath, "SaveFiles", $"Slot{currentSlot}");
+        if (Directory.Exists(slotPath))
+        {
+            try
+            {
+                string[] files = Directory.GetFiles(slotPath, "*.json");
+                if (files.Length > 0)
+                {
+                    Debug.LogWarning($"슬롯 {currentSlot} 삭제 후에도 {files.Length}개 파일이 남아있음. 강제 삭제 시도...");
+                    foreach (string file in files)
+                    {
+                        File.Delete(file);
+                    }
+
+                    // 폴더가 비어있으면 폴더도 삭제
+                    if (Directory.GetFiles(slotPath).Length == 0)
+                    {
+                        Directory.Delete(slotPath);
+                    }
+                }
+            }
+            catch (Exception e)
+            {
+                Debug.LogError($"슬롯 {currentSlot} 강제 삭제 중 오류: {e.Message}");
+            }
+        }
+
+        // 클라우드 데이터도 확실히 삭제되었는지 확인
+        if (saveSystem is SteamCloudSaveSystem && SteamworksManager.Instance != null)
+        {
+            string[] cloudFiles = SteamworksManager.Instance.GetCloudFileList();
+            string slotPrefix = $"cloud_slot{currentSlot}_";
+
+            foreach (string fileName in cloudFiles)
+            {
+                if (fileName.StartsWith(slotPrefix))
+                {
+                    Debug.LogWarning($"클라우드에 여전히 파일이 남아있음: {fileName}, 다시 삭제 시도");
+                    SteamworksManager.Instance.DeleteCloudFile(fileName);
+                }
+            }
+        }
+
+        Debug.Log($"슬롯 {currentSlot} 삭제 및 검증 완료");
     }
 
     // 현재 슬롯에 데이터가 있는지 확인
     public bool CurrentSlotHasData()
     {
-        return ((JsonSaveSystem)saveSystem).SlotExists();
+        return saveSystem.SlotExists();  // 인터페이스 메서드 사용
     }
     #endregion
 
@@ -1062,6 +1292,81 @@ public class SaveManager : Singleton<SaveManager>
             return $"{hours}시간 {minutes}분";
         else
             return $"{minutes}분";
+    }
+    // 스팀 클라우드를 사용 중인지 확인
+    public bool IsUsingSteamCloud()
+    {
+        return saveSystem is SteamCloudSaveSystem;
+    }
+
+    // 슬롯 메타데이터 강제 재로드
+    // 슬롯 메타데이터 강제 재로드 - 클라우드 데이터 기반
+    public void ReloadSlotMetadata()
+    {
+        if (!(saveSystem is SteamCloudSaveSystem steamSaveSystem))
+        {
+            return; // 스팀 클라우드 사용 안 함
+        }
+
+        Debug.Log("스팀 클라우드에서 슬롯 메타데이터 재로드 중...");
+
+        // 1. 클라우드에서 메타데이터 파일이 있는지 확인
+        string[] cloudFiles = SteamworksManager.Instance.GetCloudFileList();
+        bool foundMetadata = false;
+
+        // 2. 클라우드에서 슬롯 데이터 조사
+        foreach (string cloudFileName in cloudFiles)
+        {
+            // 슬롯 데이터 파일 패턴 찾기
+            if (cloudFileName.StartsWith("cloud_slot") && cloudFileName.Contains("playerData"))
+            {
+                // 슬롯 번호 추출 시도
+                try
+                {
+                    // "cloud_slot0_playerData.json" 형식에서 슬롯 번호 추출
+                    int slotIdx = int.Parse(cloudFileName.Substring(10, 1));
+
+                    if (slotIdx >= 0 && slotIdx < slotMetadataList.Count)
+                    {
+                        // 이 슬롯에 데이터가 있음을 표시
+                        foundMetadata = true;
+
+                        // 클라우드에서 파일 내용 로드 시도
+                        byte[] data = SteamworksManager.Instance.LoadFromCloud(cloudFileName);
+                        if (data != null && data.Length > 0)
+                        {
+                            string json = System.Text.Encoding.UTF8.GetString(data);
+                            PlayerSaveData playerData = JsonUtility.FromJson<PlayerSaveData>(json);
+
+                            if (playerData != null)
+                            {
+                                // 메타데이터 업데이트
+                                slotMetadataList[slotIdx].playerName = playerData.userID;
+                                slotMetadataList[slotIdx].chapterProgress = playerData.currentChapter;
+                                slotMetadataList[slotIdx].SetLastSaveTime(System.DateTime.Now); // 현재 시간으로 설정
+
+                                Debug.Log($"클라우드에서 슬롯 {slotIdx} 메타데이터 재구성: 유저={playerData.userID}, 챕터={playerData.currentChapter}");
+                            }
+                        }
+                    }
+                }
+                catch (System.Exception e)
+                {
+                    Debug.LogError($"클라우드 파일명 파싱 오류: {e.Message}");
+                }
+            }
+        }
+
+        if (foundMetadata)
+        {
+            // 메타데이터 저장
+            SaveSlotMetadata();
+            Debug.Log("클라우드 기반 메타데이터 재구성 완료 및 저장됨");
+        }
+        else
+        {
+            Debug.LogWarning("클라우드에서 슬롯 데이터를 찾지 못했습니다.");
+        }
     }
 }
 

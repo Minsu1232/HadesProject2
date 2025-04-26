@@ -120,7 +120,7 @@ public abstract class WeaponManager : MonoBehaviour, IWeapon
         if (!specialAttackComponent.isSpecialAttack) // 스킬 실행중엔 게이지 획득 x
         {
             CurrentGage += amount; // CurrentGage를 통해 값 변경
-            Debug.Log($"{WeaponName} 게이지 증가: {CurrentGage}/100");
+            Debug.Log($"{WeaponName} 게이지 증가:({amount}만큼)  {CurrentGage}/100");
         }
        
     }

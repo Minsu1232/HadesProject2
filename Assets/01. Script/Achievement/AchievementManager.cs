@@ -17,6 +17,9 @@ public class AchievementManager : MonoBehaviour
     // 업적 데이터 새로고침 이벤트
     public event System.Action OnAchievementDataRefreshed;
 
+    // 게임 업적 ID와 스팀 업적 API 이름 매핑
+    private Dictionary<int, string> steamAchievementMapping = new Dictionary<int, string>();
+
     private void Awake()
     {
         if (Instance == null)
@@ -30,6 +33,7 @@ public class AchievementManager : MonoBehaviour
             Destroy(gameObject);
         }
     }
+
     private void Start()
     {
         if (InventorySystem.Instance != null)
@@ -37,6 +41,7 @@ public class AchievementManager : MonoBehaviour
             InventorySystem.Instance.OnFirstFragmentFound += HandleFirstFragmentFound;
         }
     }
+
     // 업적 초기화
     private void InitializeAchievements()
     {
@@ -45,7 +50,11 @@ public class AchievementManager : MonoBehaviour
 
         // 현재 슬롯의 진행도 로드
         LoadAchievementProgress();
+
+        // 스팀 업적 동기화 - 로컬에서 달성한 업적을 스팀에도 반영
+        SyncAchievementsWithSteam();
     }
+
     private void HandleFirstFragmentFound()
     {
         // 파편 관련 업적 업데이트
@@ -58,7 +67,7 @@ public class AchievementManager : MonoBehaviour
 
         Debug.Log("첫 파편 획득 관련 업적이 업데이트되었습니다.");
     }
-    // CSV에서 업적 정보 로드
+
     // CSV에서 업적 정보 로드
     private void LoadAchievementsFromCSV()
     {
@@ -74,6 +83,7 @@ public class AchievementManager : MonoBehaviour
         {
             // 기존 업적 목록 초기화
             achievements.Clear();
+            steamAchievementMapping.Clear();
 
             // CSV 파일 읽기
             string[] lines = File.ReadAllLines(filePath);
@@ -83,7 +93,7 @@ public class AchievementManager : MonoBehaviour
             {
                 string[] values = lines[i].Split(',');
 
-                if (values.Length < 8) // rewardDescription 열을 제거하면 최소 8개 필드 필요
+                if (values.Length < 9) // SteamAchievementID 열이 추가되어 최소 9개 필드 필요
                 {
                     Debug.LogWarning($"CSV 라인 {i + 1}에 데이터가 부족합니다. 건너뜁니다.");
                     continue;
@@ -96,10 +106,10 @@ public class AchievementManager : MonoBehaviour
                     string description = values[2];
                     AchievementCategory category = (AchievementCategory)int.Parse(values[3]);
                     int progressRequired = int.Parse(values[4]);
-                    // RewardItemID 필드에 파이프(|) 기호가 있는지 확인
                     string rewardItemIdStr = values[5];
                     string rewardAmountStr = values[6];
                     bool isHidden = bool.Parse(values[7]);
+                    string steamAchievementId = values[8].Trim();
 
                     // 파이프 기호로 분리
                     string[] itemIdSplit = rewardItemIdStr.Split('|');
@@ -143,6 +153,13 @@ public class AchievementManager : MonoBehaviour
                     }
 
                     achievements.Add(achievement);
+
+                    // 스팀 업적 ID 매핑 추가 (비어있지 않은 경우)
+                    if (!string.IsNullOrEmpty(steamAchievementId))
+                    {
+                        steamAchievementMapping[id] = steamAchievementId;
+                        Debug.Log($"스팀 업적 매핑 추가: 게임 ID {id} -> 스팀 ID {steamAchievementId}");
+                    }
                 }
                 catch (Exception e)
                 {
@@ -151,6 +168,7 @@ public class AchievementManager : MonoBehaviour
             }
 
             Debug.Log($"CSV에서 {achievements.Count}개의 업적 로드 완료");
+            Debug.Log($"스팀 업적 매핑 {steamAchievementMapping.Count}개 로드 완료");
         }
         catch (Exception e)
         {
@@ -190,6 +208,32 @@ public class AchievementManager : MonoBehaviour
         }
     }
 
+    // 스팀 업적과 동기화 (로컬 업적을 스팀에 반영)
+    private void SyncAchievementsWithSteam()
+    {
+        // 스팀 매니저 초기화 확인
+        if (SteamworksManager.Instance == null || !SteamworksManager.Instance.Initialized)
+        {
+            Debug.LogWarning("스팀 매니저가 초기화되지 않았습니다. 업적 동기화를 건너뜁니다.");
+            return;
+        }
+
+        // 완료된 업적을 스팀에 알림
+        foreach (var achievement in achievements)
+        {
+            if (achievement.isCompleted)
+            {
+                // 스팀 업적 ID 찾기
+                if (steamAchievementMapping.TryGetValue(achievement.id, out string steamAchievementId))
+                {
+                    // 스팀 업적 해제
+                    SteamworksManager.Instance.UnlockAchievement(steamAchievementId);
+                    Debug.Log($"스팀 업적 동기화: {achievement.name} (ID: {steamAchievementId})");
+                }
+            }
+        }
+    }
+
     // 세이브 데이터 기반 업적 업데이트
     private void UpdateAchievementsFromSaveData(PlayerSaveData saveData)
     {
@@ -197,28 +241,6 @@ public class AchievementManager : MonoBehaviour
 
         // 죽음 관련 업적 (ID: 2001)
         UpdateAchievement(2001, saveData.deathCount);
-
-        //// 챕터 진행 관련 업적
-        //if (saveData.currentChapter >= 2)
-        //{
-        //    // 첫 번째 장벽 업적 (ID: 3002)
-        //    UpdateAchievement(3002, 1);
-        //}
-
-        //// 모험의 시작 업적 (ID: 3001)
-        //UpdateAchievement(3001, 1);
-
-        //// 장비한 파편 개수 관련 업적 (ID: 4002)
-        //if (saveData.equippedFragments != null)
-        //{
-        //    UpdateAchievement(4002, saveData.equippedFragments.Count);
-        //}
-
-        //// 파편 획득 관련 업적 (ID: 4001)
-        //if (saveData.acquiredFragments != null && saveData.acquiredFragments.Count > 0)
-        //{
-        //    UpdateAchievement(4001, 1);
-        //}
 
         // 방문한 장소 관련 업적 (ID: 5002)
         if (saveData.locationVisits != null)
@@ -319,6 +341,39 @@ public class AchievementManager : MonoBehaviour
         if (UIManager.Instance != null)
         {
             UIManager.Instance.ShowNotification($"업적 달성: {achievement.name}", Color.yellow);
+        }
+
+        // 스팀 업적 해제
+        UnlockSteamAchievement(achievement.id);
+    }
+
+    // 스팀 업적 해제
+    private void UnlockSteamAchievement(int achievementId)
+    {
+        // 스팀 연동 확인
+        if (SteamworksManager.Instance == null || !SteamworksManager.Instance.Initialized)
+        {
+            Debug.LogWarning("스팀 매니저가 초기화되지 않아 스팀 업적을 해제할 수 없습니다.");
+            return;
+        }
+
+        // 매핑된 스팀 업적 API 이름 찾기
+        if (steamAchievementMapping.TryGetValue(achievementId, out string steamAchievementId))
+        {
+            // 스팀 업적 해제
+            bool success = SteamworksManager.Instance.UnlockAchievement(steamAchievementId);
+            if (success)
+            {
+                Debug.Log($"스팀 업적 해제 성공: {steamAchievementId}");
+            }
+            else
+            {
+                Debug.LogWarning($"스팀 업적 해제 실패: {steamAchievementId}");
+            }
+        }
+        else
+        {
+            Debug.LogWarning($"게임 업적 ID {achievementId}에 대응하는 스팀 업적 ID를 찾을 수 없습니다.");
         }
     }
 

@@ -105,14 +105,13 @@ public class MeleeDamageDealer : MonoBehaviour, IDamageDealer
             {
                 Debug.Log("백어택!");
             }
-
+            Debug.Log("무기스크립터블 게이지 획득 량"+weapon.weaponData.baseGagePerHit);
+            weapon.GetGage(weapon.GagePerHit);
             damageable.TakeDamage(finalDamage);
             OnFinalDamageCalculated?.Invoke(finalDamage, monster);
             string monsterType = monster is BossStatus ? "보스" : "일반몹";
             Debug.Log($"{monsterType} : {monster.GetMonsterClass().CurrentHealth}");
-
-            damagedMonsters.Add(monster);
-            weapon.GetGage(weapon.GagePerHit);
+            damagedMonsters.Add(monster);            
             Debug.Log($"damagedMonsters에 추가됨. 현재 수: {damagedMonsters.Count}");
         }
 

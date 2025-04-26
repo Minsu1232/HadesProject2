@@ -145,7 +145,7 @@ public class SaveSlotUIManager : MonoBehaviour
             slotUIs[i].slotButton.onClick.AddListener(() => SelectSlot(slotIndex));
         }
     }
-
+   
     // 슬롯 UI 업데이트
     public void UpdateSlotUI()
     {
@@ -153,6 +153,12 @@ public class SaveSlotUIManager : MonoBehaviour
         {
             Debug.LogError("SaveManager Instance가 존재하지 않습니다.");
             return;
+        }
+
+        // 스팀 클라우드 사용 시 메타데이터 재로드
+        if (SaveManager.Instance.IsUsingSteamCloud())
+        {
+            SaveManager.Instance.ReloadSlotMetadata();
         }
 
         // 모든 슬롯 메타데이터 가져오기
