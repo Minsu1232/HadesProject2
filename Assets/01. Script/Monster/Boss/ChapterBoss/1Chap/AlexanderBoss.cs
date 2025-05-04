@@ -49,6 +49,7 @@ public class AlexanderBoss : BossMonster, IBossWithEssenceSystem
         if (essenceSystem.IsInEssenceState)
         {
             // 플레이어 광기 70% 이상 - 강해지지만 위험한 상태
+            // 현잰 AlexanderEssenceSystem에서 작동중
             Debug.Log($"[Alexander] Player Essence High State");
         }
         else

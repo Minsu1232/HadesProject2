@@ -73,6 +73,10 @@ public class VillageManager : MonoBehaviour
                 statsUpgradeNPC != null && statsUpgradeNPC.activeInHierarchy               
             );
         }
+
+        // 마을에선 항상 능력 초기화
+        playerClass.ResetPower(true, true, true, true, true, true, true, true);
+        DungeonAbilityManager.Instance.ResetAllAbilities(); 
     }
 
     // 보스 프래그먼트 소유 여부 확인
@@ -186,7 +190,7 @@ public class VillageManager : MonoBehaviour
 
         // 플레이어 찾기
         GameObject player = GameInitializer.Instance.gameObject;
-        playerClass.ResetPower(true, true, true, true, true, true, true, true);
+        
         if (player != null)
         {
             // 저장된 위치로 플레이어 이동

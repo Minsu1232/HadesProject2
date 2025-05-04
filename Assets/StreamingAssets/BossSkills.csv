@@ -1,4 +1,4 @@
 BossID,PhaseNumber,SkillID,SkillName,SkillCooldown,SkillRange,SkillDuration,SkillDamage,ProjectileType,SkillEffectType,ProjectileSpeed,AreaRadius,HitStunDuration,KnockbackForce,PreDelayTime,PostDelayTime,EffectPrefab,HitEffect,SoundEffect,CameraShakeIntensity,CameraShakeDuration,ShockwaveRadius,ProjectileRotationAxis,ProjectileRotationSpeed,HeightFactor,HowlRadius,EssenceAmount,howlDuration,safeZoneRadius,dangerRadiusMultiplier
-1001,1,101,FireBreath,10,5,0,100,Straight,Projectile,15,0,0.5,10,0.5,1,FX_FireBreath,FX_FireHit,SFX_Fire,1,0.15,3,0|0|0,0,1,0,0,0,0,0
+1001,1,101,FireBreath,10,5,0,100,Straight,Projectile,10,0,0.5,10,0.5,1,FX_FireBreath,FX_FireHit,SFX_Fire,1,0.15,3,0|0|0,0,1,0,0,0,0,0
 1001,2,102,MeteorStrike,4,6,0,150,Homing,Projectile,15,5,0.6,15,1,1.5,FX_Meteor,FX_Explosion,SFX_Meteor,1,0.15,3,0|0|0,0,1,0,0,0,0,0
 1002,1,201,RockThrow,3,4,0,120,Parabolic,Projectile,10,2,0.5,10,0.8,1,FX_RockThrow,FX_RockBreak,SFX_Rock,1,0.15,3,0|0|0,0,2,10,10,1.5,4,1.5

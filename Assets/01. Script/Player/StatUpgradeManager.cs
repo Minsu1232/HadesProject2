@@ -315,102 +315,7 @@ public class StatUpgradeManager : MonoBehaviour
 
         return totalBonus;
     }
-    // 스탯 강화 비용 초기화
-    // 초기화 메서드 수정
-    //private void InitializeUpgradeCosts()
-    //{
-    //    statUpgradeCosts = new Dictionary<UpgradeableStatType, List<MaterialRequirement>>();
-    //    tieredUpgradeCosts = new Dictionary<UpgradeableStatType, List<TieredMaterial>>();
-    //    maxUpgradeLevels = new Dictionary<UpgradeableStatType, int>();
 
-    //    // 공격력 티어별 재료 설정
-    //    var attackTiers = new List<TieredMaterial>
-    //{
-    //    new TieredMaterial {
-    //        Tier = 1,
-    //        Materials = new List<MaterialRequirement> {
-    //            new MaterialRequirement { ItemID = 3001, BaseQuantity = 5 }, // 철 광석 5개
-    //            new MaterialRequirement { ItemID = 3004, BaseQuantity = 2 }  // 불꽃의 결정 2개
-    //        }
-    //    },
-    //    new TieredMaterial {
-    //        Tier = 2,
-    //        Materials = new List<MaterialRequirement> {
-    //            new MaterialRequirement { ItemID = 3004, BaseQuantity = 5 }, // 불꽃의 결정 5개
-    //            new MaterialRequirement { ItemID = 3007, BaseQuantity = 2 }  // 강화된 불꽃의 결정 2개
-    //        }
-    //    },
-    //    new TieredMaterial {
-    //        Tier = 3,
-    //        Materials = new List<MaterialRequirement> {
-    //            new MaterialRequirement { ItemID = 3007, BaseQuantity = 5 }, // 강화된 불꽃의 결정 5개
-    //            new MaterialRequirement { ItemID = 3010, BaseQuantity = 1 }  // 티어3 아이템 1개
-    //        }
-    //    }
-    //};
-    //    tieredUpgradeCosts[UpgradeableStatType.AttackPower] = attackTiers;
-
-    //    // 체력 티어별 재료 설정
-    //    var healthTiers = new List<TieredMaterial>
-    //{
-    //    new TieredMaterial {
-    //        Tier = 1,
-    //        Materials = new List<MaterialRequirement> {
-    //            new MaterialRequirement { ItemID = 3002, BaseQuantity = 5 }, // 생명의 수액 5개
-    //            new MaterialRequirement { ItemID = 3005, BaseQuantity = 2 }  // 강화된 조각 2개
-    //        }
-    //    },
-    //    new TieredMaterial {
-    //        Tier = 2,
-    //        Materials = new List<MaterialRequirement> {
-    //            new MaterialRequirement { ItemID = 3005, BaseQuantity = 5 }, // 강화된 조각 5개
-    //            new MaterialRequirement { ItemID = 3008, BaseQuantity = 2 }  // 영혼의 결정체 2개
-    //        }
-    //    },
-    //    new TieredMaterial {
-    //        Tier = 3,
-    //        Materials = new List<MaterialRequirement> {
-    //            new MaterialRequirement { ItemID = 3008, BaseQuantity = 5 }, // 영혼의 결정체 5개
-    //            new MaterialRequirement { ItemID = 3011, BaseQuantity = 1 }  // 티어3 아이템 1개
-    //        }
-    //    }
-    //};
-    //    tieredUpgradeCosts[UpgradeableStatType.Health] = healthTiers;
-
-    //    // 이동속도 티어별 재료 설정
-    //    var speedTiers = new List<TieredMaterial>
-    //{
-    //    new TieredMaterial {
-    //        Tier = 1,
-    //        Materials = new List<MaterialRequirement> {
-    //            new MaterialRequirement { ItemID = 3003, BaseQuantity = 4 }, // 바람의 결정 4개
-    //            new MaterialRequirement { ItemID = 3006, BaseQuantity = 1 }  // 속도의 파편 1개
-    //        }
-    //    },
-    //    new TieredMaterial {
-    //        Tier = 2,
-    //        Materials = new List<MaterialRequirement> {
-    //            new MaterialRequirement { ItemID = 3006, BaseQuantity = 4 }, // 속도의 파편 4개
-    //            new MaterialRequirement { ItemID = 3009, BaseQuantity = 1 }  // 시간의 결정체 1개
-    //        }
-    //    },
-    //    new TieredMaterial {
-    //        Tier = 3,
-    //        Materials = new List<MaterialRequirement> {
-    //            new MaterialRequirement { ItemID = 3009, BaseQuantity = 4 }, // 시간의 결정체 4개
-    //            new MaterialRequirement { ItemID = 3012, BaseQuantity = 1 }  // 티어3 아이템 1개
-    //        }
-    //    }
-    //};
-    //    tieredUpgradeCosts[UpgradeableStatType.Speed] = speedTiers;
-
-    //    // 최대 레벨 설정
-    //    maxUpgradeLevels[UpgradeableStatType.AttackPower] = 50;
-    //    maxUpgradeLevels[UpgradeableStatType.Health] = 50;
-    //    maxUpgradeLevels[UpgradeableStatType.Speed] = 30;
-    //}
-
-    // 업그레이드 비용 계산 메서드 수정
     public List<MaterialCost> GetUpgradeCost(UpgradeableStatType statType)
     {
         if (!tieredUpgradeCosts.ContainsKey(statType))
@@ -572,17 +477,17 @@ public class StatUpgradeManager : MonoBehaviour
         switch (statType)
         {
             case UpgradeableStatType.AttackPower:
-                int currentAttack = currentLevel * StatConstants.ATTACK_POWER_PER_UPGRADE;
+                int currentAttack = GameInitializer.Instance.GetPlayerClass().GetStats().AttackPower;
                 int nextAttack = nextLevel * StatConstants.ATTACK_POWER_PER_UPGRADE;
                 return $"현재: 공격력 +{currentAttack}\n다음: 공격력 +{nextAttack} (+{StatConstants.ATTACK_POWER_PER_UPGRADE})";
 
             case UpgradeableStatType.Health:
-                int currentHealth = currentLevel * StatConstants.HP_PER_UPGRADE;
+                int currentHealth = GameInitializer.Instance.GetPlayerClass().GetStats().Health;
                 int nextHealth = nextLevel * StatConstants.HP_PER_UPGRADE;
                 return $"현재: 체력 +{currentHealth}\n다음: 체력 +{nextHealth} (+{StatConstants.HP_PER_UPGRADE})";
 
             case UpgradeableStatType.Speed:
-                float currentSpeed = currentLevel * StatConstants.SPEED_PER_UPGRADE * 100;
+                float currentSpeed = GameInitializer.Instance.GetPlayerClass().GetStats().Speed;
                 float nextSpeed = nextLevel * StatConstants.SPEED_PER_UPGRADE * 100;
                 return $"현재: 이동속도 +{currentSpeed:F1}%\n다음: 이동속도 +{nextSpeed:F1}% (+{StatConstants.SPEED_PER_UPGRADE * 100:F1}%)";
 

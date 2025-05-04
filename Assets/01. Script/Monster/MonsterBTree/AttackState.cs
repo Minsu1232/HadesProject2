@@ -74,7 +74,7 @@ public class AttackState : MonsterBaseState
         float distanceToPlayer = Vector3.Distance(transform.position, player.position);
 
         // 최소 거리 설정 (이 값은 보스 크기에 따라 조정)
-        float minDistance = 2.0f;
+        float minDistance = 3.0f;
 
         // 너무 가까이 있으면 회전하지 않음
         if (distanceToPlayer < minDistance)

@@ -68,10 +68,15 @@ public class MonsterUIManager : MonoBehaviour
 
     protected virtual void LateUpdate()
     {
+        if (mainCamera == null)
+            Debug.Log("카메라 널");
+        if (worldSpaceCanvas == null)
+            Debug.Log("캔버스 널");
         if (mainCamera != null && worldSpaceCanvas != null)
         {
+            Debug.Log("보스도 되나용?");
             worldSpaceCanvas.transform.rotation = Quaternion.LookRotation(
-                worldSpaceCanvas.transform.position - mainCamera.transform.position
+            worldSpaceCanvas.transform.position - mainCamera.transform.position
             );
         }
     }
@@ -144,7 +149,7 @@ public class MonsterUIManager : MonoBehaviour
         {
             armorBreakText.color = Color.yellow;
             armorBreakText.fontSize *= 1.2f;
-            armorBreakText.text = "Baam";
+            armorBreakText.text = "브레이크";
             CameraShakeManager.TriggerShake(0.5f, 3f);
             StartCoroutine(AnimateDamageText(armorBreakTextObj));
         }

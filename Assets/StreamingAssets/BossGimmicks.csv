@@ -1,4 +1,4 @@
 BossID,GimmickID,PhaseNumber,GimmickName,Type,TriggerHealth,Duration,RequireAction,Interruptible,preparationTime,SuccessCount,Invulnerable,DamageMultiplier,FailDamage,UseCustomPos,PosX,PosY,PosZ,Radius,MakeInvulnerable,Damage,UseCustomPosition,affectStatusEffects,FollowTarget,RepeatInterval,CollisionMask,PreparationTime,MoveSpeed,HazardSpawnType,TargetType,hazardPrefabKey
-1001,1,1,StalactiteFallGimmick,FieldHazard,0.6,30,TRUE,TRUE,10,3,TRUE,2,1000,TRUE,10,0,10,5,TRUE,10,TRUE,FALSE,TRUE,0,TRUE,1,10,AbovePlayer,Player,Stalactite
-1001,2,2,StalactiteFallGimmick,FieldHazard,0.6,30,TRUE,TRUE,10,3,TRUE,2,1000,TRUE,10,0,10,5,TRUE,10,TRUE,FALSE,TRUE,0,TRUE,1,10,AbovePlayer,Player,Stalactite
-1002,3,1,Soul Entity Gimmick,SoulEntity,0,12,TRUE,TRUE,1,3,TRUE,1,300,TRUE,-148,0.5,52.7,15,TRUE,0,TRUE,FALSE,FALSE,0,TRUE,0.5,5,Random,Boss,SoulEntity
+1001,1,1,StalactiteFallGimmick,FieldHazard,0.6,30,TRUE,TRUE,10,3,TRUE,2,90,TRUE,10,0,10,5,TRUE,10,TRUE,FALSE,TRUE,0,TRUE,1,10,AbovePlayer,Player,Stalactite
+1001,2,2,StalactiteFallGimmick,FieldHazard,0.6,30,TRUE,TRUE,10,3,TRUE,2,90,TRUE,10,0,10,5,TRUE,10,TRUE,FALSE,TRUE,0,TRUE,1,10,AbovePlayer,Player,Stalactite
+1002,3,1,Soul Entity Gimmick,SoulEntity,0.4,12,TRUE,TRUE,1,3,TRUE,1,300,TRUE,-148,0.5,52.7,15,TRUE,0,TRUE,FALSE,FALSE,0,TRUE,0.5,5,Random,Boss,SoulEntity

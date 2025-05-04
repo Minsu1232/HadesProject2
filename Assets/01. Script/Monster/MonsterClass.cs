@@ -311,7 +311,7 @@ public abstract class MonsterClass : ICreature,IMonsterClass, IDamageable
             {
                 CurrentHealth = 0;
                 Die();
-                PatternSequenceManager.ClearAllSequences();
+               
             }
         }
 

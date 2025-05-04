@@ -356,7 +356,7 @@ public class DungeonAbilityManager : MonoBehaviour
     {
         List<DungeonAbility> selection = new List<DungeonAbility>();
 
-        // 1. 희귀도 보너스 계산 - 스탯 업그레이드와 시간 장치 효과 합산
+        // 희귀도 보너스 계산 - 스탯 업그레이드와 우물 효과 합산
         float rarityBonus = 0f;
         if (StatUpgradeManager.Instance != null)
         {

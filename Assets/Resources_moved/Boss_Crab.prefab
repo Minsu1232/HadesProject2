@@ -4504,10 +4504,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: BossWorldCanvas
       objectReference: {fileID: 0}
-    - target: {fileID: 5260351542395991880, guid: 94f96d5e132c79144b740964bd5d9fb6, type: 3}
-      propertyPath: m_Layer
-      value: 14
-      objectReference: {fileID: 0}
     - target: {fileID: 7114848403813760469, guid: 94f96d5e132c79144b740964bd5d9fb6, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5
@@ -4570,7 +4566,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7114848403813760469, guid: 94f96d5e132c79144b740964bd5d9fb6, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 6.6806126
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7114848403813760469, guid: 94f96d5e132c79144b740964bd5d9fb6, type: 3}
       propertyPath: m_AnchoredPosition.y

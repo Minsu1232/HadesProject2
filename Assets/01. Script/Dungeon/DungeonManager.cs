@@ -823,7 +823,9 @@ public class DungeonManager : MonoBehaviour
     // 빌리지로 귀환
     private async Task ReturnToVillage()
     {
+        
         Debug.Log("빌리지로 귀환합니다.");
+        
         // 빌리지 스폰 위치 설정 (고정 좌표 사용)
         PlayerPrefs.SetFloat("VillageSpawnX", -6.6f);
         PlayerPrefs.SetFloat("VillageSpawnY", 0.1f);

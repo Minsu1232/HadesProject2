@@ -56,6 +56,18 @@ public class BossUIManager : MonsterUIManager
         Poison,
         Stun
     }
+    protected override void LateUpdate()
+    {
+        Debug.Log($"BossUI: mainCamera={mainCamera}, worldSpaceCanvas={worldSpaceCanvas}");
+
+        // 명시적으로 base 클래스 변수 접근
+        Camera parentCamera = base.mainCamera;
+        Canvas parentCanvas = base.worldSpaceCanvas;
+
+        Debug.Log($"Parent values: mainCamera={parentCamera}, worldSpaceCanvas={parentCanvas}");
+
+        base.LateUpdate();
+    }
     public override void Initialize(IMonsterClass monster)
     {
         base.Initialize(monster);
@@ -67,8 +79,21 @@ public class BossUIManager : MonsterUIManager
             InitializeBossUI();
             bossName.text = bossMonster.MONSTERNAME;
         }
+
+        mainCamera = Camera.main;
     }
 
+
+    protected override void InitializeReferences()
+    {
+        base.InitializeReferences();
+
+        // 추가 검증 및 할당
+        if (worldSpaceCanvas != null && worldSpaceCanvas.worldCamera == null)
+        {
+            worldSpaceCanvas.worldCamera = Camera.main;
+        }
+    }
     private void InitializeBossUI()
     {
         if (patternSuccessGroup != null)

@@ -10,6 +10,8 @@ public static class DeathHandler
         // 사망 횟수 증가
         GameProgressManager.Instance.IncrementDeathCount();
 
+        AchievementManager.Instance.UpdateAchievement(2001,SaveManager.Instance.GetPlayerData().deathCount);
+        AchievementManager.Instance.UpdateAchievement(5003, SaveManager.Instance.GetPlayerData().deathCount);
         // 마을 귀환 준비 (위치와 플래그 설정)
         PlayerPrefs.SetFloat("VillageSpawnX", -6.6f);
         PlayerPrefs.SetFloat("VillageSpawnY", 0.1f);

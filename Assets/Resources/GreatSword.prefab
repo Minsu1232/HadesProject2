@@ -11,8 +11,8 @@ GameObject:
   - component: {fileID: 535186904703426833}
   - component: {fileID: 3098703333072296205}
   - component: {fileID: 7312207304907753754}
-  - component: {fileID: 7769503234080363826}
   - component: {fileID: -7125900706528506141}
+  - component: {fileID: 7010947785082178136}
   m_Layer: 0
   m_Name: GreatSword
   m_TagString: Weapon
@@ -85,28 +85,6 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!64 &7769503234080363826
-MeshCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6661120195794364040}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 1
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 5
-  m_Convex: 1
-  m_CookingOptions: 30
-  m_Mesh: {fileID: 4300018, guid: 8a7b78e82902d1b4eba2923c6a4cf1c7, type: 3}
 --- !u!114 &-7125900706528506141
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -129,3 +107,24 @@ MonoBehaviour:
   - {x: -0.3416791, y: -0.012370549, z: 1.4032818}
   - {x: -0.33511811, y: -0.03835476, z: 1.8299377}
   - {x: -0.35927016, y: -0.049465336, z: 2.228398}
+--- !u!65 &7010947785082178136
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6661120195794364040}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 1
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 0.45359904, y: 0.36258844, z: 2.8652773}
+  m_Center: {x: -0.17672858, y: -0.07667177, z: 0.9112758}
